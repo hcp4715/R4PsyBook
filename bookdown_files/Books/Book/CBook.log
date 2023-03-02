@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2023.3.2)  2 MAR 2023 18:31
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2023.3.2)  2 MAR 2023 18:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -844,7 +844,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 \c@hypothesis=\count480
 \@quotelevel=\count481
 \@quotereset=\count482
-No file CBook.aux.
+(./CBook.aux)
 \openout1 = `CBook.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 158.
@@ -1162,16 +1162,14 @@ Package biblatex Info: Automatic encoding selection.
 \openout4 = `CBook.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'CBook.bbl' not found.
-No file CBook.bbl.
+Package biblatex Info: ... file 'CBook.bbl' found.
+(./CBook.bbl)
 Package biblatex Info: Reference section=0 on input line 158.
 Package biblatex Info: Reference segment=0 on input line 158.
 Package hyperref Info: Link coloring OFF on input line 158.
+(./CBook.out) (./CBook.out)
 \@outlinefile=\write5
 \openout5 = `CBook.out'.
-
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
 
 LaTeX Font Info:    Font shape `TU/SimSun(0)/m/n' will be
 (Font)              scaled to size 17.18529pt on input line 160.
@@ -1209,31 +1207,158 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 160
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-! Font U/rsfs/m/n/12.045=rsfs10 at 12.0pt not loadable: Metric (TFM) file or installed font not found.
-<to be read again> 
-                   relax 
-l.160 
-       
+LaTeX Font Info:    Font shape `TU/SimSun(0)/m/n' will be
+(Font)              scaled to size 11.45686pt on input line 160.
+[1
+
+
+]
+LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
+(Font)              scaled to size 24.61095pt on input line 163.
+(./CBook.toc
+LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
+(Font)              scaled to size 9.93903pt on input line 1.
+LaTeX Font Info:    Font shape `TU/SimSun(0)/m/n' will be
+(Font)              scaled to size 10.02475pt on input line 3.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.37756pt on input line 3.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.26968pt on input line 3.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.54033pt on input line 3.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.37823pt on input line 3.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.27016pt on input line 3.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.53824pt on input line 3.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.37677pt on input line 3.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.26912pt on input line 3.
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.53937> not available
+(Font)              size <10.95> substituted on input line 3.
+
+)
+\tf@toc=\write6
+\openout6 = `CBook.toc'.
+
+[1
+
+] [2
+
+]
+Chapter 1.
+LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
+(Font)              scaled to size 14.19862pt on input line 175.
+
+LaTeX Warning: Reference `usage-gitbook' on page 3 undefined on input line 181.
+
+
+LaTeX Warning: Reference `usage-pdfbook' on page 3 undefined on input line 181.
+
+LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
+(Font)              scaled to size 11.3589pt on input line 187.
+[3
+
+]
+
+Package fontspec Info: FangSong scale = 0.976420540271054.
+
+
+Package fontspec Info: Could not resolve font "FangSong/BI" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "FangSong/B" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "FangSong/I" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: FangSong scale = 0.976420540271054.
+
+
+Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
+(fontspec)             with options [Scale=MatchLowercase,Script={CJK}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.976420540271054]"FangSong/OT:script=hani;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+LaTeX Font Info:    Font shape `TU/FangSong(0)/m/n' will be
+(Font)              scaled to size 10.2909pt on input line 212.
+File: 0001-intro_files/figure-latex/u-w-f-ex01-1.pdf Graphic file (type pdf)
+<use 0001-intro_files/figure-latex/u-w-f-ex01-1.pdf>
+LaTeX Font Info:    Font shape `TU/SimSun(0)/m/sl' in size <10.53937> not available
+(Font)              Font shape `TU/SimSun(0)/m/it' tried instead on input line 232.
+LaTeX Font Info:    Font shape `TU/SimSun(0)/m/it' will be
+(Font)              scaled to size 9.85475pt on input line 232.
+[4] [5]
+Chapter 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
+(Font)              scaled to size 10.53937pt on input line 255.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
+(Font)              scaled to size 7.37756pt on input line 255.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
+(Font)              scaled to size 5.26968pt on input line 255.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
+(Font)              scaled to size 10.54033pt on input line 255.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
+(Font)              scaled to size 7.37823pt on input line 255.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
+(Font)              scaled to size 5.27016pt on input line 255.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
+(Font)              scaled to size 10.53824pt on input line 255.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
+(Font)              scaled to size 7.37677pt on input line 255.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
+(Font)              scaled to size 5.26912pt on input line 255.
+[6
+
+] [7]
+Missing character: There is no ○ (U+25CB) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ○ (U+25CB) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ○ (U+25CB) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ○ (U+25CB) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ○ (U+25CB) in font [lmroman10-regular]:mapping=tex-text;!
+[8]
+
+Package amsmath Warning: Bracket group [aaa] at formula start!
+(amsmath)                It could be a misspelled positional argument.
+(amsmath)                If it belongs to the formula add a \relax in
+(amsmath)                front to hide it on input line 486.
+
+
+LaTeX Warning: Empty bibliography on input line 489.
+
+[9] (./CBook.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.41063pt have occurred.
+
+
+LaTeX Warning: There were undefined references.
+
+Package rerunfilecheck Info: File `CBook.out' has not changed.
+(rerunfilecheck)             Checksum: 77497B7506951B30790E52E10713BC3A;789.
+Package logreq Info: Writing requests to 'CBook.run.xml'.
+\openout1 = `CBook.run.xml'.
+
+ ) 
 Here is how much of TeX's memory you used:
- 28209 strings out of 478683
- 565122 string characters out of 5846910
- 1845012 words of memory out of 5000000
- 47978 multiletter control sequences out of 15000+600000
- 517567 words of font info for 73 fonts, out of 8000000 for 9000
+ 28523 strings out of 478683
+ 578364 string characters out of 5846910
+ 1869012 words of memory out of 5000000
+ 48214 multiletter control sequences out of 15000+600000
+ 523054 words of font info for 131 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 86i,2n,137p,678b,5044s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 86i,12n,137p,678b,5044s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-No pages of output.
-
-! name = rsfs10, rootname = rsfs, pointsize = 10
-! mktexmf: empty or non-existent rootfile!
-
-! kpathsea: Running mktexmf rsfs10.mf
-
-! The command name is C:\Users\Sengoku\AppData\Roaming\TinyTeX\bin\win32\mktexmf
-! Cannot find rsfs10.mf.
-
-! kpathsea: Running mktextfm rsfs10
-
-! The command name is C:\Users\Sengoku\AppData\Roaming\TinyTeX\bin\win32\mktextfm
-! kpathsea: Appending font creation commands to missfont.log.
+Output written on CBook.pdf (10 pages).
