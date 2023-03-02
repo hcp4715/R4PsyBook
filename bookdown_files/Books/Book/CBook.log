@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2023.3.2)  2 MAR 2023 20:14
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2023.3.2)  2 MAR 2023 20:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1194,26 +1194,26 @@ LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
 LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
 (Font)              scaled to size 9.93903pt on input line 1.
 LaTeX Font Info:    Font shape `TU/SimSun(0)/m/n' will be
-(Font)              scaled to size 10.02475pt on input line 3.
+(Font)              scaled to size 10.02475pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.37756pt on input line 3.
+(Font)              scaled to size 7.37756pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.26968pt on input line 3.
+(Font)              scaled to size 5.26968pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.54033pt on input line 3.
+(Font)              scaled to size 10.54033pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.37823pt on input line 3.
+(Font)              scaled to size 7.37823pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.27016pt on input line 3.
+(Font)              scaled to size 5.27016pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.53824pt on input line 3.
+(Font)              scaled to size 10.53824pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.37677pt on input line 3.
+(Font)              scaled to size 7.37677pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.26912pt on input line 3.
+(Font)              scaled to size 5.26912pt on input line 2.
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 3.
+(Font)              size <10.95> substituted on input line 2.
 
 )
 \tf@toc=\write5
@@ -1221,70 +1221,147 @@ LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.53937> not available
 
 [1
 
-] [2
-
 ]
 Chapter 1.
 LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
-(Font)              scaled to size 14.19862pt on input line 118.
-[3
+(Font)              scaled to size 14.19862pt on input line 112.
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--119
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--129
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--134
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 135--139
+
+ []
+
+[2
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 140--144
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 145--148
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--152
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--156
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 157--160
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--164
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 165--169
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--173
+
+ []
+
+LaTeX Font Info:    Font shape `TU/SimSun(0)/m/sl' in size <10.53937> not available
+(Font)              Font shape `TU/SimSun(0)/m/it' tried instead on input line 173.
+LaTeX Font Info:    Font shape `TU/SimSun(0)/m/it' will be
+(Font)              scaled to size 9.85475pt on input line 173.
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 174--179
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 180--183
+
+ []
+
+[4]
+Chapter 2.
 LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
-(Font)              scaled to size 11.3589pt on input line 136.
+(Font)              scaled to size 11.3589pt on input line 197.
+[5
+
+]
 File: 1001-lesson1/image-20230302194802453.png Graphic file (type bmp)
 <1001-lesson1/image-20230302194802453.png>
 File: 1001-lesson1/image-20230302194916461.png Graphic file (type bmp)
 <1001-lesson1/image-20230302194916461.png>
-LaTeX Font Info:    Font shape `TU/SimSun(0)/m/sl' in size <10.53937> not available
-(Font)              Font shape `TU/SimSun(0)/m/it' tried instead on input line 147.
-LaTeX Font Info:    Font shape `TU/SimSun(0)/m/it' will be
-(Font)              scaled to size 9.85475pt on input line 147.
-[4]
+[6]
 File: 1001-lesson1/image-20230302194931963.png Graphic file (type bmp)
 <1001-lesson1/image-20230302194931963.png>
-[5] [6]
+[7] [8]
 File: 1001-lesson1/image-20230302195218412.png Graphic file (type bmp)
 <1001-lesson1/image-20230302195218412.png>
 File: 1001-lesson1/image-20230302195243394.png Graphic file (type bmp)
 <1001-lesson1/image-20230302195243394.png>
-[7]
+[9]
 File: 1001-lesson1/image-20230302195303677.png Graphic file (type bmp)
 <1001-lesson1/image-20230302195303677.png>
-[8] [9] [10] [11]
+[10] [11] [12] [13]
 File: 1001-lesson1/image-20230302201236318.png Graphic file (type bmp)
 <1001-lesson1/image-20230302201236318.png>
 File: 1001-lesson1/image-20230302201246104.png Graphic file (type bmp)
 <1001-lesson1/image-20230302201246104.png>
-[12]
+[14]
 Missing character: There is no α (U+03B1) in font [lmroman10-regular]:mapping=tex-text;!
 File: 1001-lesson1/image-20230302201322126.png Graphic file (type bmp)
 <1001-lesson1/image-20230302201322126.png>
-[13] [14]
+[15] [16]
 File: 1001-lesson1/image-20230302200230583.png Graphic file (type bmp)
 <1001-lesson1/image-20230302200230583.png>
-[15] [16] [17] [18] [19] [20] [21] [22]
+[17] [18] [19] [20] [21] [22] [23] [24]
 
-LaTeX Warning: Empty bibliography on input line 418.
+LaTeX Warning: Empty bibliography on input line 503.
 
-[23] (./CBook.aux)
+[25] (./CBook.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41063pt have occurred.
 
 Package rerunfilecheck Info: File `CBook.out' has not changed.
-(rerunfilecheck)             Checksum: D44A026BF4AB743E3132811B2C8CC9D7;553.
+(rerunfilecheck)             Checksum: D96A5611B4C00355D00F240BA086DECF;795.
 Package logreq Info: Writing requests to 'CBook.run.xml'.
 \openout1 = `CBook.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28079 strings out of 478683
- 578497 string characters out of 5846910
- 1884012 words of memory out of 5000000
- 47794 multiletter control sequences out of 15000+600000
+ 28118 strings out of 478683
+ 580949 string characters out of 5846910
+ 1885012 words of memory out of 5000000
+ 47833 multiletter control sequences out of 15000+600000
  521521 words of font info for 112 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 86i,6n,137p,897b,5044s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 86i,6n,137p,859b,5044s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on CBook.pdf (24 pages).
+Output written on CBook.pdf (26 pages).

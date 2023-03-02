@@ -1,5 +1,7 @@
+id_0-index
+目录
 lesson-1
-id_1-intro
+r在心理科学及社会科学中的运用
 id_1-data-science
 id_1-data-science-born
 为什么要学习r语言1-why-learn-r
@@ -21,3 +23,6 @@ ggplot2画图
 心理学数据分析与结果汇报
 regression
 课程安排
+课程大纲
+成绩分配
+如何学好这门课
