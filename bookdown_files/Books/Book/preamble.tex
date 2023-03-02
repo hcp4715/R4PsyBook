@@ -1,0 +1,20 @@
+\usepackage{ctex}
+
+%\usepackage{xltxtra} % XeLaTeX的一些额外符号
+% 设置中文字体
+%\setCJKmainfont[BoldFont={黑体},ItalicFont={楷体}]{新宋体}
+
+% 设置边距
+\usepackage{geometry}
+\geometry{%
+  left=2.0cm, right=2.0cm, top=3.5cm, bottom=2.5cm} 
+
+\usepackage{amsthm,mathrsfs}
+\usepackage{booktabs}
+\usepackage{longtable}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother

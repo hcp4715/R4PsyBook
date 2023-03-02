@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 格兰格因果性 | R语言在心理学研究中的应用: 从数据到论文</title>
+  <meta name="description" content="这是用R的bookdown功能制作中文图书的模板，输出格式为bookdown::gitbook和bookdown::pdf_book." />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 格兰格因果性 | R语言在心理学研究中的应用: 从数据到论文" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="这是用R的bookdown功能制作中文图书的模板，输出格式为bookdown::gitbook和bookdown::pdf_book." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 格兰格因果性 | R语言在心理学研究中的应用: 从数据到论文" />
+  
+  <meta name="twitter:description" content="这是用R的bookdown功能制作中文图书的模板，输出格式为bookdown::gitbook和bookdown::pdf_book." />
+  
+
+<meta name="author" content="胡传鹏" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="usage.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX","output/SVG"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+   src="../../../MathJax/MathJax.js">
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>简介</a></li>
+<li class="chapter" data-level="1" data-path="usage.html"><a href="usage.html"><i class="fa fa-check"></i><b>1</b> 中文图书Bookdown模板的基本用法</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="usage.html"><a href="usage.html#usage-ins"><i class="fa fa-check"></i><b>1.1</b> 安装设置</a></li>
+<li class="chapter" data-level="1.2" data-path="usage.html"><a href="usage.html#usage-writing"><i class="fa fa-check"></i><b>1.2</b> 编写自己的内容</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="usage.html"><a href="usage.html#usage-writing-struct"><i class="fa fa-check"></i><b>1.2.1</b> 文档结构</a></li>
+<li class="chapter" data-level="1.2.2" data-path="usage.html"><a href="usage.html#usage-writing-fig"><i class="fa fa-check"></i><b>1.2.2</b> 图形自动编号</a></li>
+<li class="chapter" data-level="1.2.3" data-path="usage.html"><a href="usage.html#usage-writing-tab"><i class="fa fa-check"></i><b>1.2.3</b> 表格自动编号</a></li>
+<li class="chapter" data-level="1.2.4" data-path="usage.html"><a href="usage.html#usage-writing-math"><i class="fa fa-check"></i><b>1.2.4</b> 数学公式编号</a></li>
+<li class="chapter" data-level="1.2.5" data-path="usage.html"><a href="usage.html#文献引用与文献列表"><i class="fa fa-check"></i><b>1.2.5</b> 文献引用与文献列表</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="usage.html"><a href="usage.html#usage-output"><i class="fa fa-check"></i><b>1.3</b> 转换</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="usage.html"><a href="usage.html#usage-gitbook"><i class="fa fa-check"></i><b>1.3.1</b> 转换为网页</a></li>
+<li class="chapter" data-level="1.3.2" data-path="usage.html"><a href="usage.html#usage-pdfbook"><i class="fa fa-check"></i><b>1.3.2</b> 生成PDF</a></li>
+<li class="chapter" data-level="1.3.3" data-path="usage.html"><a href="usage.html#usage-website"><i class="fa fa-check"></i><b>1.3.3</b> 上传到网站</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="causal.html"><a href="causal.html"><i class="fa fa-check"></i><b>2</b> 格兰格因果性</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="causal.html"><a href="causal.html#causal-intro"><i class="fa fa-check"></i><b>2.1</b> 介绍</a></li>
+<li class="chapter" data-level="2.2" data-path="causal.html"><a href="causal.html#causal-def"><i class="fa fa-check"></i><b>2.2</b> 格兰格因果性的定义</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言在心理学研究中的应用: 从数据到论文</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="causal" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> 格兰格因果性<a href="causal.html#causal" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="causal-intro" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> 介绍<a href="causal.html#causal-intro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>考虑两个时间序列之间的因果性。
+这里的因果性指的是时间顺序上的关系，
+如果<span class="math inline">\(X_{t-1}, X_{t-2}, \dots\)</span>对<span class="math inline">\(Y_t\)</span>有作用，
+而<span class="math inline">\(Y_{t-1}, Y_{t-2}, \dots\)</span>对<span class="math inline">\(X_t\)</span>没有作用，
+则称<span class="math inline">\(\{X_t \}\)</span>是<span class="math inline">\(\{ Y_t \}\)</span>的格兰格原因，
+而<span class="math inline">\(\{ Y_t \}\)</span>不是<span class="math inline">\(\{ X_t \}\)</span>的格兰格原因。
+如果<span class="math inline">\(X_{t-1}, X_{t-2}, \dots\)</span>对<span class="math inline">\(Y_t\)</span>有作用，
+<span class="math inline">\(Y_{t-1}, Y_{t-2}, \dots\)</span>对<span class="math inline">\(X_t\)</span>也有作用，
+则在没有进一步信息的情况下无法确定两个时间序列的因果性关系。</p>
+<p>注意这种因果性与采样频率有关系，
+在日数据或者月度数据中能发现的领先——滞后性质的因果关系，
+到年度数据可能就以及混杂在以前变成同步的关系了。</p>
+</div>
+<div id="causal-def" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> 格兰格因果性的定义<a href="causal.html#causal-def" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>设<span class="math inline">\(\{ \xi_t \}\)</span>为一个时间序列，
+<span class="math inline">\(\{ \boldsymbol{\eta}_t \}\)</span>为向量时间序列，
+记
+<span class="math display">\[\begin{aligned}
+\bar{\boldsymbol{\eta}}_t =&amp; \{ \boldsymbol{\eta}_{t-1}, \boldsymbol{\eta}_{t-2}, \dots \}
+\end{aligned}\]</span></p>
+<p>记
+<span class="math inline">\(\text{Pred}(\xi_t | \bar{\boldsymbol{\eta}}_t)\)</span>为基于
+<span class="math inline">\(\boldsymbol{\eta}_{t-1}, \boldsymbol{\eta}_{t-2}, \dots\)</span>
+对<span class="math inline">\(\xi_t\)</span>作的最小均方误差无偏预报，
+其解为条件数学期望<span class="math inline">\(E(\xi_t | \boldsymbol{\eta}_{t-1}, \boldsymbol{\eta}_{t-2}, \dots)\)</span>，
+在一定条件下可以等于<span class="math inline">\(\xi_t\)</span>在<span class="math inline">\(\boldsymbol{\eta}_{t-1}, \boldsymbol{\eta}_{t-2}, \dots\)</span>张成的线性Hilbert空间的投影
+（比如，<span class="math inline">\((\xi_t, \boldsymbol{\eta}_t)\)</span>为平稳正态多元时间序列），
+即最优线性预测。
+直观理解成基于过去的<span class="math inline">\(\{\boldsymbol{\eta}_{t-1}, \boldsymbol{\eta}_{t-2}, \dots \}\)</span>的信息对当前的<span class="math inline">\(\xi_t\)</span>作的最优预测。</p>
+<p>令一步预测误差为
+<span class="math display">\[
+  \varepsilon(\xi_t | \bar{\boldsymbol{\eta}}_t)
+  = \xi_t - \text{Pred}(\xi_t | \bar{\boldsymbol{\eta}}_t)
+\]</span>
+令一步预测误差方差，或者均方误差，
+为
+<span class="math display">\[
+  \sigma^2(\xi_t | \bar{\boldsymbol{\eta}}_t)  
+  = \text{Var}(\varepsilon_t(\xi_t | \bar{\boldsymbol{\eta}}_t) )
+  = E \left[ \xi_t - \text{Pred}(\xi_t | \bar{\boldsymbol{\eta}}_t) \right]^2
+\]</span></p>
+<p>考虑两个时间序列<span class="math inline">\(\{ X_t \}\)</span>和<span class="math inline">\(\{ Y_t \}\)</span>，
+<span class="math inline">\(\{(X_t, Y_t) \}\)</span>宽平稳或严平稳。</p>
+<ul>
+<li>如果
+<span class="math display">\[
+\sigma^2(Y_t | \bar Y_t, \bar X_t) &lt; \sigma^2(Y_t | \bar Y_t)
+\]</span>
+则称<span class="math inline">\(\{ X_t \}\)</span>是<span class="math inline">\(\{ Y_t \}\)</span>的<strong>格兰格原因</strong>，
+记作<span class="math inline">\(X_t \Rightarrow Y_t\)</span>。
+这不排除<span class="math inline">\(\{ Y_t \}\)</span>也可以是<span class="math inline">\(\{ X_t \}\)</span>的格兰格原因。</li>
+<li>如果<span class="math inline">\(X_t \Rightarrow Y_t\)</span>，而且<span class="math inline">\(Y_t \Rightarrow X_t\)</span>，
+则称互相有<strong>反馈</strong>关系，
+记作<span class="math inline">\(X_t \Leftrightarrow Y_t\)</span>。</li>
+<li>如果
+<span class="math display">\[
+\sigma^2(Y_t | \bar Y_t, X_t, \bar X_t) &lt; \sigma^2(Y_t | \bar Y_t, \bar X_t)
+\]</span>
+即除了过去的信息，
+增加同时刻的<span class="math inline">\(X_t\)</span>信息后对<span class="math inline">\(Y_t\)</span>预测有改进，
+则称<span class="math inline">\(\{X_t \}\)</span>对<span class="math inline">\(\{Y_t \}\)</span>有瞬时因果性。
+这时<span class="math inline">\(\{Y_t \}\)</span>对<span class="math inline">\(\{X_t \}\)</span>也有瞬时因果性。</li>
+<li>如果<span class="math inline">\(X_t \Rightarrow Y_t\)</span>，
+则存在最小的正整数<span class="math inline">\(m\)</span>，
+使得
+<span class="math display">\[
+\sigma^2(Y_t | \bar Y_t, X_{t-m}, X_{t-m-1}, \dots)
+&lt; \sigma^2(Y_t | \bar Y_t, X_{t-m-1}, X_{t-m-2}, \dots)
+\]</span>
+称<span class="math inline">\(m\)</span>为<strong>因果性滞后值</strong>(causality lag)。
+如果<span class="math inline">\(m&gt;1\)</span>，
+这意味着在已有<span class="math inline">\(Y_{t-1}, Y_{t-2}, \dots\)</span>和<span class="math inline">\(X_{t-m}, X_{t-m-1}, \dots\)</span>的条件下，
+增加<span class="math inline">\(X_{t-1}\)</span>, , <span class="math inline">\(X_{t-m+1}\)</span>不能改进对<span class="math inline">\(Y_t\)</span>的预测。</li>
+</ul>
+<div class="example">
+<p><span id="exm:causal-exaxylag1" class="example"><strong>例2.1  </strong></span>设<span class="math inline">\(\{ \varepsilon_t, \eta_t \}\)</span>是相互独立的零均值白噪声列，
+<span class="math inline">\(\text{Var}(\varepsilon_t)=1\)</span>,
+<span class="math inline">\(\text{Var}(\eta_t)=1\)</span>,
+考虑
+<span class="math display">\[\begin{aligned}
+Y_t =&amp; X_{t-1} + \varepsilon_t \\
+X_t =&amp; \eta_t + 0.5 \eta_{t-1}
+\end{aligned}\]</span></p>
+</div>
+<p>用<span class="math inline">\(L(\cdot|\cdot)\)</span>表示最优线性预测，则
+<span class="math display">\[\begin{aligned}
+&amp; L(Y_t | \bar Y_t, \bar X_t) \\
+=&amp; L(X_{t-1} | X_{t-1}, \dots, Y_{t-1}, \dots)
++ L(\varepsilon_t | \bar Y_t, \bar X_t) \\
+=&amp; X_{t-1} + 0 \\
+=&amp; X_{t-1} \\
+\sigma(Y_t | \bar Y_t, \bar X_t) =&amp;
+\text{Var}(\varepsilon_t) = 1
+\end{aligned}\]</span>
+而
+<span class="math display">\[
+Y_t = \eta_{t-1} + 0.5\eta_{t-2} + \varepsilon_t
+\]</span>
+有
+<span class="math display">\[\begin{aligned}
+\gamma_Y(0) = 2.25,
+\gamma_Y(1) = 0.5,
+\gamma_Y(k) = 0, k \geq 2
+\end{aligned}\]</span>
+所以<span class="math inline">\(\{Y_t \}\)</span>是一个MA(1)序列，
+设其方程为
+<span class="math display">\[
+Y_t = \zeta_t + b \zeta_{t-1},
+\zeta_t \sim \text{WN}(0, \sigma_\zeta^2)
+\]</span>
+可以解出
+<span class="math display">\[\begin{aligned}
+\rho_Y(1) =&amp; \frac{\gamma_Y(1)}{\gamma_Y(0)} = \frac{2}{9} \\
+b =&amp; \frac{1 - \sqrt{1 - 4 \rho_Y^2(1)}}{2 \rho_Y(1)}
+\approx 0.2344 \\
+\sigma_\zeta^2 =&amp; \frac{\gamma_Y(1)}{b} \approx 2.1328
+\end{aligned}\]</span>
+于是
+<span class="math display">\[\begin{aligned}
+\sigma(Y_t | \bar Y_t)
+=&amp; \sigma_\zeta^2 = 2.1328
+\end{aligned}\]</span>
+所以
+<span class="math display">\[\begin{aligned}
+\sigma(Y_t | \bar Y_t, \bar X_t) = 1
+&lt; 2.1328 = \sigma(Y_t | \bar Y_t)
+\end{aligned}\]</span>
+即<span class="math inline">\(X_t\)</span>是<span class="math inline">\(Y_t\)</span>的格兰格原因。</p>
+<p>反之，
+<span class="math inline">\(X_t\)</span>是MA(1)序列，
+有
+<span class="math display">\[
+\eta_t = \frac{1}{1 + 0.5 B} X_t
+= \sum_{j=0}^\infty (-0.5)^j X_{t-j}
+\]</span>
+其中<span class="math inline">\(B\)</span>是推移算子（滞后算子）。
+于是
+<span class="math display">\[\begin{aligned}
+L(X_t | \bar X_t)
+=&amp; L(\eta_t | \bar X_t)
++ 0.5 L(\eta_{t-1} | \bar X_t) \\
+=&amp; 0.5 \sum_{j=0}^\infty (-0.5)^j X_{t-1-j} \\
+=&amp; - \sum_{j=1}^\infty (-0.5)^j X_{t-j} \\
+\sigma(X_t | \bar X_t)
+=&amp; \text{Var}(X_t - L(X_t | \bar X_t)) \\
+=&amp; \text{Var}(\eta_t) = 1
+\end{aligned}\]</span>
+而
+<span class="math display">\[\begin{aligned}
+L(X_t | \bar X_t, \bar Y_t)
+=&amp; L(\eta_t | \bar X_t, \bar Y_t)
++ 0.5 L(\eta_{t-1} | \bar X_t, \bar Y_t) \\
+=&amp; 0 +
+0.5 L(\sum_{j=0}^\infty (-0.5)^j X_{t-1-j} | \bar X_t, \bar Y_t) \\
+=&amp; -\sum_{j=1}^\infty (-0.5)^j X_{t-j} \\
+=&amp; L(X_t | \bar X_t)
+\end{aligned}\]</span>
+所以<span class="math inline">\(Y_t\)</span>不是<span class="math inline">\(X_t\)</span>的格兰格原因。</p>
+<p>考虑瞬时因果性。
+<span class="math display">\[\begin{aligned}
+L(Y_t | \bar X_t, \bar Y_t, X_t)
+=&amp; X_{t-1} + 0 (\text{注意}\varepsilon_t\text{与}\{X_s, \forall s\}\text{不相关} \\
+=&amp; L(Y_t | \bar X_t, \bar Y_t)
+\end{aligned}\]</span>
+所以<span class="math inline">\(X_t\)</span>不是<span class="math inline">\(Y_t\)</span>的瞬时格兰格原因。</p>
+<p>○○○○○</p>
+<div class="example">
+<p><span id="exm:causal-exaxylag2" class="example"><strong>例2.2  </strong></span>在例<a href="causal.html#exm:causal-exaxylag1">2.1</a>中，如果模型改成
+<span class="math display">\[\begin{aligned}
+Y_t =&amp; X_{t} + \varepsilon_t \\
+X_t =&amp; \eta_t + 0.5 \eta_{t-1}
+\end{aligned}\]</span>
+有怎样的结果？</p>
+</div>
+<p>这时
+<span class="math display">\[
+Y_t = \varepsilon_t + \eta_t + 0.5 \eta_{t-1}
+\]</span>
+仍有
+<span class="math display">\[\begin{aligned}
+\gamma_Y(0) = 2.25,
+\gamma_Y(1) = 0.5,
+\gamma_Y(k) = 0, k \geq 2
+\end{aligned}\]</span>
+所以<span class="math inline">\(Y_t\)</span>还服从MA(1)模型
+<span class="math display">\[
+Y_t = \zeta_t + b \zeta_{t-1},
+b \approx 0.2344,
+\sigma^2_\zeta \approx 2.1328
+\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+L(Y_t | \bar Y_t, \bar X_t)
+=&amp; L(X_t | \bar Y_t, \bar X_t) + 0 \\
+=&amp; L(\eta_t | \bar Y_t, \bar X_t)
++ 0.5 L(\eta_{t-1} | \bar Y_t, \bar X_t) \\
+=&amp; 0 + 0.5 L(\sum_{j=0}^\infty (-0.5)^j X_{t-1-j} | \bar Y_t, \bar X_t) \\
+=&amp; - \sum_{j=1}^\infty (-0.5)^j X_{t-j} \\
+=&amp; X_t - \eta_t \\
+\sigma(Y_t | \bar Y_t, \bar X_t)
+=&amp; \text{Var}(\varepsilon_t + \eta_t) = 2
+\end{aligned}\]</span>
+而
+<span class="math display">\[
+\sigma(Y_t | \bar Y_t)
+= \sigma^2_\zeta \approx 2.1328
+&gt; \sigma(Y_t | \bar Y_t, \bar X_t) = 2
+\]</span>
+所以<span class="math inline">\(X_t\)</span>是<span class="math inline">\(Y_t\)</span>的格兰格原因。</p>
+<p>反之，
+<span class="math display">\[\begin{aligned}
+L(X_t | \bar X_t, \bar Y_t)
+=&amp; - \sum_{j=1}^\infty (-0.5)^j X_{t-j} \\
+=&amp; L(X_t | \bar X_t)
+\end{aligned}\]</span>
+所以<span class="math inline">\(Y_t\)</span>不是<span class="math inline">\(X_t\)</span>的格兰格原因。</p>
+<p>考虑瞬时因果性。
+<span class="math display">\[\begin{aligned}
+L(Y_t | \bar X_t, \bar Y_t, X_t)
+=&amp; X_{t} + 0 (\text{注意}\varepsilon_t\text{与}\{X_s, \forall s\}\text{不相关} \\
+=&amp; X_t \\
+\sigma(Y_t | \bar X_t, \bar Y_t, X_t)
+=&amp; \text{Var}(\varepsilon) \\
+=&amp; 1 &lt; 2 = \sigma(Y_t | \bar X_t, \bar Y_t)
+\end{aligned}\]</span>
+所以<span class="math inline">\(X_t\)</span>是<span class="math inline">\(Y_t\)</span>的瞬时格兰格原因。</p>
+<p><span class="math display">\[\begin{aligned}
+[aaa]
+\end{aligned}\]</span></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="usage.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CBook.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
