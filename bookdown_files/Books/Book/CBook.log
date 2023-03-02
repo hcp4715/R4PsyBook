@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2023.3.2)  2 MAR 2023 18:58
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2023.3.2)  2 MAR 2023 20:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -194,93 +194,77 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
-) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Package: fancyvrb 2023/01/19 4.5a verbatim text (tvz,hv)
-(c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks21
-)
-\FV@CodeLineNo=\count286
-\FV@InFile=\read2
-\FV@TabBox=\box54
-\c@FancyVerbLine=\count287
-\FV@StepNumber=\count288
-\FV@OutFile=\write3
-) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
-Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip53
-\fb@frw=\dimen153
-\fb@frh=\dimen154
-\FrameRule=\dimen155
-\FrameSep=\dimen156
 ) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
-\LTleft=\skip54
-\LTright=\skip55
-\LTpre=\skip56
-\LTpost=\skip57
-\LTchunksize=\count289
-\LTcapwidth=\dimen157
-\LT@head=\box55
-\LT@firsthead=\box56
-\LT@foot=\box57
-\LT@lastfoot=\box58
-\LT@gbox=\box59
-\LT@cols=\count290
-\LT@rows=\count291
-\c@LT@tables=\count292
-\c@LT@chunks=\count293
-\LT@p@ftn=\toks22
+\LTleft=\skip53
+\LTright=\skip54
+\LTpre=\skip55
+\LTpost=\skip56
+\LTchunksize=\count286
+\LTcapwidth=\dimen153
+\LT@head=\box54
+\LT@firsthead=\box55
+\LT@foot=\box56
+\LT@lastfoot=\box57
+\LT@gbox=\box58
+\LT@cols=\count287
+\LT@rows=\count288
+\c@LT@tables=\count289
+\c@LT@chunks=\count290
+\LT@p@ftn=\toks21
 ) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen158
-\lightrulewidth=\dimen159
-\cmidrulewidth=\dimen160
-\belowrulesep=\dimen161
-\belowbottomsep=\dimen162
-\aboverulesep=\dimen163
-\abovetopsep=\dimen164
-\cmidrulesep=\dimen165
-\cmidrulekern=\dimen166
-\defaultaddspace=\dimen167
-\@cmidla=\count294
-\@cmidlb=\count295
-\@aboverulesep=\dimen168
-\@belowrulesep=\dimen169
-\@thisruleclass=\count296
-\@lastruleclass=\count297
-\@thisrulewidth=\dimen170
+\heavyrulewidth=\dimen154
+\lightrulewidth=\dimen155
+\cmidrulewidth=\dimen156
+\belowrulesep=\dimen157
+\belowbottomsep=\dimen158
+\aboverulesep=\dimen159
+\abovetopsep=\dimen160
+\cmidrulesep=\dimen161
+\cmidrulekern=\dimen162
+\defaultaddspace=\dimen163
+\@cmidla=\count291
+\@cmidlb=\count292
+\@aboverulesep=\dimen164
+\@belowrulesep=\dimen165
+\@thisruleclass=\count293
+\@lastruleclass=\count294
+\@thisrulewidth=\dimen166
 ) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/array.sty
 Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
-\col@sep=\dimen171
-\ar@mcellbox=\box60
-\extrarowheight=\dimen172
-\NC@list=\toks23
-\extratabsurround=\skip58
-\backup@length=\skip59
-\ar@cellbox=\box61
+\col@sep=\dimen167
+\ar@mcellbox=\box59
+\extrarowheight=\dimen168
+\NC@list=\toks22
+\extratabsurround=\skip57
+\backup@length=\skip58
+\ar@cellbox=\box60
 ) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count298
-\calc@Bcount=\count299
-\calc@Adimen=\dimen173
-\calc@Bdimen=\dimen174
-\calc@Askip=\skip60
-\calc@Bskip=\skip61
+\calc@Acount=\count295
+\calc@Bcount=\count296
+\calc@Adimen=\dimen169
+\calc@Bdimen=\dimen170
+\calc@Askip=\skip59
+\calc@Bskip=\skip60
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count300
-\calc@Cskip=\skip62
+\calc@Ccount=\count297
+\calc@Cskip=\skip61
 ) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count301
+\etb@tempcnta=\count298
 ) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/mdwtools/footnote.sty
 Package: footnote 1997/01/28 1.13 Save footnotes around boxes
-\fn@notes=\box62
-\fn@width=\dimen175
+\fn@notes=\box61
+\fn@width=\dimen171
 ) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
-(c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
+(c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks23
+) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
@@ -289,8 +273,8 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: xetex.def on input line 107.
 )
-\Gin@req@height=\dimen176
-\Gin@req@width=\dimen177
+\Gin@req@height=\dimen172
+\Gin@req@width=\dimen173
 ) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/ctex/ctex.sty
 Package: ctex 2022/07/14 v2.5.10 Chinese adapter in LaTeX (CTEX)
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/ctex/ctexhook.sty
@@ -298,11 +282,11 @@ Package: ctexhook 2022/07/14 v2.5.10 Document and package hooks (CTEX)
 ) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/ctex/ctexpatch.sty
 Package: ctexpatch 2022/07/14 v2.5.10 Patching commands (CTEX)
 )
-\l__ctex_tmp_int=\count302
-\l__ctex_tmp_box=\box63
-\l__ctex_tmp_dim=\dimen178
-\g__ctex_section_depth_int=\count303
-\g__ctex_font_size_int=\count304
+\l__ctex_tmp_int=\count299
+\l__ctex_tmp_box=\box62
+\l__ctex_tmp_dim=\dimen174
+\g__ctex_section_depth_int=\count300
+\g__ctex_font_size_int=\count301
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/ctex/config/ctexopts.cfg
 File: ctexopts.cfg 2022/07/14 v2.5.10 Option configuration file (CTEX)
 ) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/ctex/engine/ctex-engine-xetex.def
@@ -311,18 +295,18 @@ File: ctex-engine-xetex.def 2022/07/14 v2.5.10 XeLaTeX adapter (CTEX)
 Package: xeCJK 2022/08/05 v3.9.1 Typesetting CJK scripts with XeLaTeX
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.sty
 Package: xtemplate 2023-02-02 L3 Experimental prototype document functions
-\l__xtemplate_tmp_dim=\dimen179
-\l__xtemplate_tmp_int=\count305
+\l__xtemplate_tmp_dim=\dimen175
+\l__xtemplate_tmp_int=\count302
 \l__xtemplate_tmp_muskip=\muskip18
-\l__xtemplate_tmp_skip=\skip63
+\l__xtemplate_tmp_skip=\skip62
 )
-\l__xeCJK_tmp_int=\count306
-\l__xeCJK_tmp_box=\box64
-\l__xeCJK_tmp_dim=\dimen180
-\l__xeCJK_tmp_skip=\skip64
-\g__xeCJK_space_factor_int=\count307
-\l__xeCJK_begin_int=\count308
-\l__xeCJK_end_int=\count309
+\l__xeCJK_tmp_int=\count303
+\l__xeCJK_tmp_box=\box63
+\l__xeCJK_tmp_dim=\dimen176
+\l__xeCJK_tmp_skip=\skip63
+\g__xeCJK_space_factor_int=\count304
+\l__xeCJK_begin_int=\count305
+\l__xeCJK_end_int=\count306
 \c__xeCJK_CJK_class_int=\XeTeXcharclass1
 \c__xeCJK_FullLeft_class_int=\XeTeXcharclass2
 \c__xeCJK_FullRight_class_int=\XeTeXcharclass3
@@ -331,62 +315,62 @@ Package: xtemplate 2023-02-02 L3 Experimental prototype document functions
 \c__xeCJK_NormalSpace_class_int=\XeTeXcharclass6
 \c__xeCJK_CM_class_int=\XeTeXcharclass7
 \c__xeCJK_HangulJamo_class_int=\XeTeXcharclass8
-\l__xeCJK_last_skip=\skip65
-\c__xeCJK_none_node=\count310
-\g__xeCJK_node_int=\count311
-\c__xeCJK_CJK_node_dim=\dimen181
-\c__xeCJK_CJK-space_node_dim=\dimen182
-\c__xeCJK_default_node_dim=\dimen183
-\c__xeCJK_CJK-widow_node_dim=\dimen184
-\c__xeCJK_normalspace_node_dim=\dimen185
-\c__xeCJK_default-space_node_skip=\skip66
-\l__xeCJK_ccglue_skip=\skip67
-\l__xeCJK_ecglue_skip=\skip68
-\l__xeCJK_punct_kern_skip=\skip69
-\l__xeCJK_indent_box=\box65
-\l__xeCJK_last_penalty_int=\count312
-\l__xeCJK_last_bound_dim=\dimen186
-\l__xeCJK_last_kern_dim=\dimen187
-\l__xeCJK_widow_penalty_int=\count313
+\l__xeCJK_last_skip=\skip64
+\c__xeCJK_none_node=\count307
+\g__xeCJK_node_int=\count308
+\c__xeCJK_CJK_node_dim=\dimen177
+\c__xeCJK_CJK-space_node_dim=\dimen178
+\c__xeCJK_default_node_dim=\dimen179
+\c__xeCJK_CJK-widow_node_dim=\dimen180
+\c__xeCJK_normalspace_node_dim=\dimen181
+\c__xeCJK_default-space_node_skip=\skip65
+\l__xeCJK_ccglue_skip=\skip66
+\l__xeCJK_ecglue_skip=\skip67
+\l__xeCJK_punct_kern_skip=\skip68
+\l__xeCJK_indent_box=\box64
+\l__xeCJK_last_penalty_int=\count309
+\l__xeCJK_last_bound_dim=\dimen182
+\l__xeCJK_last_kern_dim=\dimen183
+\l__xeCJK_widow_penalty_int=\count310
 
 Package xtemplate Info: Declaring object type 'xeCJK/punctuation' taking 0
 (xtemplate)             argument(s) on line 2396.
 
-\l__xeCJK_fixed_punct_width_dim=\dimen188
-\l__xeCJK_mixed_punct_width_dim=\dimen189
-\l__xeCJK_middle_punct_width_dim=\dimen190
-\l__xeCJK_fixed_margin_width_dim=\dimen191
-\l__xeCJK_mixed_margin_width_dim=\dimen192
-\l__xeCJK_middle_margin_width_dim=\dimen193
-\l__xeCJK_bound_punct_width_dim=\dimen194
-\l__xeCJK_bound_margin_width_dim=\dimen195
-\l__xeCJK_margin_minimum_dim=\dimen196
-\l__xeCJK_kerning_total_width_dim=\dimen197
-\l__xeCJK_same_align_margin_dim=\dimen198
-\l__xeCJK_different_align_margin_dim=\dimen199
-\l__xeCJK_kerning_margin_width_dim=\dimen256
-\l__xeCJK_kerning_margin_minimum_dim=\dimen257
-\l__xeCJK_bound_dim=\dimen258
-\l__xeCJK_reverse_bound_dim=\dimen259
-\l__xeCJK_margin_dim=\dimen260
-\l__xeCJK_minimum_bound_dim=\dimen261
-\l__xeCJK_kerning_margin_dim=\dimen262
-\g__xeCJK_family_int=\count314
-\l__xeCJK_fam_int=\count315
-\g__xeCJK_fam_allocation_int=\count316
-\l__xeCJK_verb_case_int=\count317
-\l__xeCJK_verb_exspace_skip=\skip70
+\l__xeCJK_fixed_punct_width_dim=\dimen184
+\l__xeCJK_mixed_punct_width_dim=\dimen185
+\l__xeCJK_middle_punct_width_dim=\dimen186
+\l__xeCJK_fixed_margin_width_dim=\dimen187
+\l__xeCJK_mixed_margin_width_dim=\dimen188
+\l__xeCJK_middle_margin_width_dim=\dimen189
+\l__xeCJK_bound_punct_width_dim=\dimen190
+\l__xeCJK_bound_margin_width_dim=\dimen191
+\l__xeCJK_margin_minimum_dim=\dimen192
+\l__xeCJK_kerning_total_width_dim=\dimen193
+\l__xeCJK_same_align_margin_dim=\dimen194
+\l__xeCJK_different_align_margin_dim=\dimen195
+\l__xeCJK_kerning_margin_width_dim=\dimen196
+\l__xeCJK_kerning_margin_minimum_dim=\dimen197
+\l__xeCJK_bound_dim=\dimen198
+\l__xeCJK_reverse_bound_dim=\dimen199
+\l__xeCJK_margin_dim=\dimen256
+\l__xeCJK_minimum_bound_dim=\dimen257
+\l__xeCJK_kerning_margin_dim=\dimen258
+\g__xeCJK_family_int=\count311
+\l__xeCJK_fam_int=\count312
+\g__xeCJK_fam_allocation_int=\count313
+\l__xeCJK_verb_case_int=\count314
+\l__xeCJK_verb_exspace_skip=\skip69
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/xelatex/xecjk/xeCJK.cfg
 File: xeCJK.cfg 2022/08/05 v3.9.1 Configuration file for xeCJK package
 ))
-\ccwd=\dimen263
-\l__ctex_ccglue_skip=\skip71
+\ccwd=\dimen259
+\l__ctex_ccglue_skip=\skip70
 )
-\l__ctex_ziju_dim=\dimen264
+\l__ctex_ziju_dim=\dimen260
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/zhnumber/zhnumber.sty
 Package: zhnumber 2022/07/14 v3.0 Typesetting numbers with Chinese glyphs
-\l__zhnum_scale_int=\count318
-\l__zhnum_tmp_int=\count319
+\l__zhnum_scale_int=\count315
+\l__zhnum_tmp_int=\count316
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg
 File: zhnumber-utf8.cfg 2022/07/14 v3.0 Chinese numerals with UTF8 encoding
 )) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/ctex/scheme/ctex-scheme-chinese.def
@@ -448,17 +432,17 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count320
-\Gm@cntv=\count321
-\c@Gm@tempcnt=\count322
-\Gm@bindingoffset=\dimen265
-\Gm@wd@mp=\dimen266
-\Gm@odd@mp=\dimen267
-\Gm@even@mp=\dimen268
-\Gm@layoutwidth=\dimen269
-\Gm@layoutheight=\dimen270
-\Gm@layouthoffset=\dimen271
-\Gm@layoutvoffset=\dimen272
+\Gm@cnth=\count317
+\Gm@cntv=\count318
+\c@Gm@tempcnt=\count319
+\Gm@bindingoffset=\dimen261
+\Gm@wd@mp=\dimen262
+\Gm@odd@mp=\dimen263
+\Gm@even@mp=\dimen264
+\Gm@layoutwidth=\dimen265
+\Gm@layoutheight=\dimen266
+\Gm@layouthoffset=\dimen267
+\Gm@layoutvoffset=\dimen268
 \Gm@dimlist=\toks24
 ) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
@@ -467,9 +451,9 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@headfont=\toks27
 \thm@notefont=\toks28
 \thm@headpunct=\toks29
-\thm@preskip=\skip72
-\thm@postskip=\skip73
-\thm@headsep=\skip74
+\thm@preskip=\skip71
+\thm@postskip=\skip72
+\thm@headsep=\skip73
 \dth@everypar=\toks30
 ) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
@@ -492,7 +476,7 @@ Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 )) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count323
+\lrq@indent=\count320
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 )) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
@@ -501,63 +485,63 @@ Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 \Urlmuskip=\muskip19
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-\c@tabx@nest=\count324
-\c@listtotal=\count325
-\c@listcount=\count326
-\c@liststart=\count327
-\c@liststop=\count328
-\c@citecount=\count329
-\c@citetotal=\count330
-\c@multicitecount=\count331
-\c@multicitetotal=\count332
-\c@instcount=\count333
-\c@maxnames=\count334
-\c@minnames=\count335
-\c@maxitems=\count336
-\c@minitems=\count337
-\c@citecounter=\count338
-\c@maxcitecounter=\count339
-\c@savedcitecounter=\count340
-\c@uniquelist=\count341
-\c@uniquename=\count342
-\c@refsection=\count343
-\c@refsegment=\count344
-\c@maxextratitle=\count345
-\c@maxextratitleyear=\count346
-\c@maxextraname=\count347
-\c@maxextradate=\count348
-\c@maxextraalpha=\count349
-\c@abbrvpenalty=\count350
-\c@highnamepenalty=\count351
-\c@lownamepenalty=\count352
-\c@maxparens=\count353
-\c@parenlevel=\count354
-\blx@tempcnta=\count355
-\blx@tempcntb=\count356
-\blx@tempcntc=\count357
-\c@blx@maxsection=\count358
-\blx@maxsegment@0=\count359
-\blx@notetype=\count360
-\blx@parenlevel@text=\count361
-\blx@parenlevel@foot=\count362
-\blx@sectionciteorder@0=\count363
-\blx@sectionciteorderinternal@0=\count364
-\blx@entrysetcounter=\count365
-\blx@biblioinstance=\count366
-\labelnumberwidth=\skip75
-\labelalphawidth=\skip76
-\biblabelsep=\skip77
-\bibitemsep=\skip78
-\bibnamesep=\skip79
-\bibinitsep=\skip80
-\bibparsep=\skip81
-\bibhang=\skip82
-\blx@bcfin=\read3
-\blx@bcfout=\write4
+\c@tabx@nest=\count321
+\c@listtotal=\count322
+\c@listcount=\count323
+\c@liststart=\count324
+\c@liststop=\count325
+\c@citecount=\count326
+\c@citetotal=\count327
+\c@multicitecount=\count328
+\c@multicitetotal=\count329
+\c@instcount=\count330
+\c@maxnames=\count331
+\c@minnames=\count332
+\c@maxitems=\count333
+\c@minitems=\count334
+\c@citecounter=\count335
+\c@maxcitecounter=\count336
+\c@savedcitecounter=\count337
+\c@uniquelist=\count338
+\c@uniquename=\count339
+\c@refsection=\count340
+\c@refsegment=\count341
+\c@maxextratitle=\count342
+\c@maxextratitleyear=\count343
+\c@maxextraname=\count344
+\c@maxextradate=\count345
+\c@maxextraalpha=\count346
+\c@abbrvpenalty=\count347
+\c@highnamepenalty=\count348
+\c@lownamepenalty=\count349
+\c@maxparens=\count350
+\c@parenlevel=\count351
+\blx@tempcnta=\count352
+\blx@tempcntb=\count353
+\blx@tempcntc=\count354
+\c@blx@maxsection=\count355
+\blx@maxsegment@0=\count356
+\blx@notetype=\count357
+\blx@parenlevel@text=\count358
+\blx@parenlevel@foot=\count359
+\blx@sectionciteorder@0=\count360
+\blx@sectionciteorderinternal@0=\count361
+\blx@entrysetcounter=\count362
+\blx@biblioinstance=\count363
+\labelnumberwidth=\skip74
+\labelalphawidth=\skip75
+\biblabelsep=\skip76
+\bibitemsep=\skip77
+\bibnamesep=\skip78
+\bibinitsep=\skip79
+\bibparsep=\skip80
+\bibhang=\skip81
+\blx@bcfin=\read2
+\blx@bcfout=\write3
 \blx@langwohyphens=\language3
-\c@mincomprange=\count367
-\c@maxcomprange=\count368
-\c@mincompwidth=\count369
+\c@mincomprange=\count364
+\c@maxcomprange=\count365
+\c@mincompwidth=\count366
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/blx-dm.def
@@ -570,98 +554,98 @@ File: apa.dbx 2022/06/22 v9.16 APA biblatex style data model
 )
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count370
-\c@savedafterword=\count371
-\c@annotator=\count372
-\c@savedannotator=\count373
-\c@author=\count374
-\c@savedauthor=\count375
-\c@bookauthor=\count376
-\c@savedbookauthor=\count377
-\c@commentator=\count378
-\c@savedcommentator=\count379
-\c@editor=\count380
-\c@savededitor=\count381
-\c@editora=\count382
-\c@savededitora=\count383
-\c@editorb=\count384
-\c@savededitorb=\count385
-\c@editorc=\count386
-\c@savededitorc=\count387
-\c@foreword=\count388
-\c@savedforeword=\count389
-\c@holder=\count390
-\c@savedholder=\count391
-\c@introduction=\count392
-\c@savedintroduction=\count393
-\c@namea=\count394
-\c@savednamea=\count395
-\c@nameb=\count396
-\c@savednameb=\count397
-\c@namec=\count398
-\c@savednamec=\count399
-\c@translator=\count400
-\c@savedtranslator=\count401
-\c@shortauthor=\count402
-\c@savedshortauthor=\count403
-\c@shorteditor=\count404
-\c@savedshorteditor=\count405
-\c@narrator=\count406
-\c@savednarrator=\count407
-\c@execproducer=\count408
-\c@savedexecproducer=\count409
-\c@execdirector=\count410
-\c@savedexecdirector=\count411
-\c@with=\count412
-\c@savedwith=\count413
-\c@labelname=\count414
-\c@savedlabelname=\count415
-\c@institution=\count416
-\c@savedinstitution=\count417
-\c@lista=\count418
-\c@savedlista=\count419
-\c@listb=\count420
-\c@savedlistb=\count421
-\c@listc=\count422
-\c@savedlistc=\count423
-\c@listd=\count424
-\c@savedlistd=\count425
-\c@liste=\count426
-\c@savedliste=\count427
-\c@listf=\count428
-\c@savedlistf=\count429
-\c@location=\count430
-\c@savedlocation=\count431
-\c@organization=\count432
-\c@savedorganization=\count433
-\c@origlocation=\count434
-\c@savedoriglocation=\count435
-\c@origpublisher=\count436
-\c@savedorigpublisher=\count437
-\c@publisher=\count438
-\c@savedpublisher=\count439
-\c@language=\count440
-\c@savedlanguage=\count441
-\c@origlanguage=\count442
-\c@savedoriglanguage=\count443
-\c@citation=\count444
-\c@savedcitation=\count445
-\c@pageref=\count446
-\c@savedpageref=\count447
-\shorthandwidth=\skip83
-\shortjournalwidth=\skip84
-\shortserieswidth=\skip85
-\shorttitlewidth=\skip86
-\shortauthorwidth=\skip87
-\shorteditorwidth=\skip88
-\locallabelnumberwidth=\skip89
-\locallabelalphawidth=\skip90
-\localshorthandwidth=\skip91
-\localshortjournalwidth=\skip92
-\localshortserieswidth=\skip93
-\localshorttitlewidth=\skip94
-\localshortauthorwidth=\skip95
-\localshorteditorwidth=\skip96
+\c@afterword=\count367
+\c@savedafterword=\count368
+\c@annotator=\count369
+\c@savedannotator=\count370
+\c@author=\count371
+\c@savedauthor=\count372
+\c@bookauthor=\count373
+\c@savedbookauthor=\count374
+\c@commentator=\count375
+\c@savedcommentator=\count376
+\c@editor=\count377
+\c@savededitor=\count378
+\c@editora=\count379
+\c@savededitora=\count380
+\c@editorb=\count381
+\c@savededitorb=\count382
+\c@editorc=\count383
+\c@savededitorc=\count384
+\c@foreword=\count385
+\c@savedforeword=\count386
+\c@holder=\count387
+\c@savedholder=\count388
+\c@introduction=\count389
+\c@savedintroduction=\count390
+\c@namea=\count391
+\c@savednamea=\count392
+\c@nameb=\count393
+\c@savednameb=\count394
+\c@namec=\count395
+\c@savednamec=\count396
+\c@translator=\count397
+\c@savedtranslator=\count398
+\c@shortauthor=\count399
+\c@savedshortauthor=\count400
+\c@shorteditor=\count401
+\c@savedshorteditor=\count402
+\c@narrator=\count403
+\c@savednarrator=\count404
+\c@execproducer=\count405
+\c@savedexecproducer=\count406
+\c@execdirector=\count407
+\c@savedexecdirector=\count408
+\c@with=\count409
+\c@savedwith=\count410
+\c@labelname=\count411
+\c@savedlabelname=\count412
+\c@institution=\count413
+\c@savedinstitution=\count414
+\c@lista=\count415
+\c@savedlista=\count416
+\c@listb=\count417
+\c@savedlistb=\count418
+\c@listc=\count419
+\c@savedlistc=\count420
+\c@listd=\count421
+\c@savedlistd=\count422
+\c@liste=\count423
+\c@savedliste=\count424
+\c@listf=\count425
+\c@savedlistf=\count426
+\c@location=\count427
+\c@savedlocation=\count428
+\c@organization=\count429
+\c@savedorganization=\count430
+\c@origlocation=\count431
+\c@savedoriglocation=\count432
+\c@origpublisher=\count433
+\c@savedorigpublisher=\count434
+\c@publisher=\count435
+\c@savedpublisher=\count436
+\c@language=\count437
+\c@savedlanguage=\count438
+\c@origlanguage=\count439
+\c@savedoriglanguage=\count440
+\c@citation=\count441
+\c@savedcitation=\count442
+\c@pageref=\count443
+\c@savedpageref=\count444
+\shorthandwidth=\skip82
+\shortjournalwidth=\skip83
+\shortserieswidth=\skip84
+\shorttitlewidth=\skip85
+\shortauthorwidth=\skip86
+\shorteditorwidth=\skip87
+\locallabelnumberwidth=\skip88
+\locallabelalphawidth=\skip89
+\localshorthandwidth=\skip90
+\localshortjournalwidth=\skip91
+\localshortserieswidth=\skip92
+\localshorttitlewidth=\skip93
+\localshortauthorwidth=\skip94
+\localshorteditorwidth=\skip95
 Package biblatex Info: Trying to load enhanced support for Unicode engines...
 Package biblatex Info: ... file 'blx-unicode.def' found.
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/blx-unicode.def)
@@ -674,19 +658,19 @@ Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2022/07/12 v3.18b biblatex compatibility (PK/MW)
-\c@textcitecount=\count448
-\c@textcitetotal=\count449
-\c@textcitemaxnames=\count450
-\c@biburlbigbreakpenalty=\count451
-\c@biburlbreakpenalty=\count452
-\c@biburlnumpenalty=\count453
-\c@biburlucpenalty=\count454
-\c@biburllcpenalty=\count455
+\c@textcitecount=\count445
+\c@textcitetotal=\count446
+\c@textcitemaxnames=\count447
+\c@biburlbigbreakpenalty=\count448
+\c@biburlbreakpenalty=\count449
+\c@biburlnumpenalty=\count450
+\c@biburlucpenalty=\count451
+\c@biburllcpenalty=\count452
 \biburlbigskip=\muskip20
 \biburlnumskip=\muskip21
 \biburlucskip=\muskip22
 \biburllcskip=\muskip23
-\c@smartand=\count456
+\c@smartand=\count453
 )
 Package biblatex Info: Trying to load bibliography style 'apa'...
 Package biblatex Info: ... file 'apa.bbx' found.
@@ -696,8 +680,8 @@ Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
 File: standard.bbx 2022/07/12 v3.18b biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count457
-\c@bbx:relatedtotal=\count458
+\c@bbx:relatedcount=\count454
+\c@bbx:relatedtotal=\count455
 )
 Package biblatex Info: Delimiter 'nameyeardelim' in context 'bib' already defined, overwriting.
 Package biblatex Info: Delimiter 'nameyeardelim' in context 'biblist' already defined, overwriting.
@@ -759,11 +743,11 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count459
+\c@section@level=\count456
 )
-\@linkdim=\dimen273
-\Hy@linkcounter=\count460
-\Hy@pagecounter=\count461
+\@linkdim=\dimen269
+\Hy@linkcounter=\count457
+\Hy@pagecounter=\count458
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2023-02-07 v7.00v Hyperref: PDFDocEncoding definition (HO)
 ) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
@@ -771,7 +755,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 ) (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count462
+\Hy@SavedSpaceFactor=\count459
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2023-02-07 v7.00v Hyperref: PDF Unicode definition (HO)
 )
@@ -784,17 +768,17 @@ Package hyperref Info: Plain pages OFF on input line 4192.
 Package hyperref Info: Backreferencing OFF on input line 4197.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4425.
-\c@Hy@tempcnt=\count463
+\c@Hy@tempcnt=\count460
 LaTeX Info: Redefining \url on input line 4763.
-\XeTeXLinkMargin=\dimen274
+\XeTeXLinkMargin=\dimen270
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count464
-\Field@Width=\dimen275
-\Fld@charsize=\dimen276
+\Fld@menulength=\count461
+\Field@Width=\dimen271
+\Fld@charsize=\dimen272
 Package hyperref Info: Hyper figures OFF on input line 6042.
 Package hyperref Info: Link nesting OFF on input line 6047.
 Package hyperref Info: Hyper index ON on input line 6050.
@@ -806,9 +790,9 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count465
-\c@Item=\count466
-\c@Hfootnote=\count467
+\Hy@abspage=\count462
+\c@Item=\count463
+\c@Hfootnote=\count464
 )
 Package hyperref Info: Driver (autodetected): hxetex.
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hxetex.def
@@ -816,11 +800,11 @@ File: hxetex.def 2023-02-07 v7.00v Hyperref driver for XeTeX
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-\pdfm@box=\box66
-\c@Hy@AnnotLevel=\count468
-\HyField@AnnotCount=\count469
-\Fld@listcount=\count470
-\c@bookmark@seq@number=\count471
+\pdfm@box=\box65
+\c@Hy@AnnotLevel=\count465
+\HyField@AnnotCount=\count466
+\Fld@listcount=\count467
+\c@bookmark@seq@number=\count468
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty
@@ -831,56 +815,47 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
-\Hy@SectionHShift=\skip97
+\Hy@SectionHShift=\skip96
 )
-\c@theorem=\count472
-\c@lemma=\count473
-\c@corollary=\count474
-\c@proposition=\count475
-\c@conjecture=\count476
-\c@definition=\count477
-\c@example=\count478
-\c@exercise=\count479
-\c@hypothesis=\count480
-\@quotelevel=\count481
-\@quotereset=\count482
+\@quotelevel=\count469
+\@quotereset=\count470
 (./CBook.aux)
 \openout1 = `CBook.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 158.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 158.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 158.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 158.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 158.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 158.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 158.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 101.
 
 Package fontspec Info: latinmodern-math scale = 0.9999966408685371.
 
@@ -906,7 +881,7 @@ Package fontspec Info: Font family 'latinmodern-math.otf(0)' created for font
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.53937pt on input line 158.
+(Font)              scaled to size 10.53937pt on input line 101.
 
 Package fontspec Info: latinmodern-math scale = 0.9999966408685371.
 
@@ -938,15 +913,15 @@ Package fontspec Info: Font family 'latinmodern-math.otf(1)' created for font
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.53937pt on input line 158.
+(Font)              scaled to size 10.53937pt on input line 101.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 158.
+(Font)              `operators' in the math version `normal' on input line 101.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 158.
+(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 101.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 158.
+(Font)              `operators' in the math version `bold' on input line 101.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 158.
+(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 101.
 
 Package fontspec Info: latinmodern-math scale = 0.9999966408685371.
 
@@ -1025,13 +1000,13 @@ Package fontspec Info: Font family 'latinmodern-math.otf(2)' created for font
 (fontspec)             =0pt\relax \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 158.
+(Font)              `symbols' in the math version `normal' on input line 101.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 158.
+(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 101.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 158.
+(Font)              `symbols' in the math version `bold' on input line 101.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 158.
+(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 101.
 
 Package fontspec Info: latinmodern-math scale = 0.9999966408685371.
 
@@ -1092,13 +1067,13 @@ Package fontspec Info: Font family 'latinmodern-math.otf(3)' created for font
 (fontspec)             =6.32362pt\relax \fontdimen 13\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 158.
+(Font)              `largesymbols' in the math version `normal' on input line 101.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 158.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 101.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 158.
+(Font)              `largesymbols' in the math version `bold' on input line 101.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 158.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 101.
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1159,62 +1134,62 @@ Package biblatex Info: XeTeX detected.
 (biblatex)             Assuming input encoding 'utf8'.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
-\openout4 = `CBook.bcf'.
+\openout3 = `CBook.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'CBook.bbl' found.
 (./CBook.bbl)
-Package biblatex Info: Reference section=0 on input line 158.
-Package biblatex Info: Reference segment=0 on input line 158.
-Package hyperref Info: Link coloring OFF on input line 158.
+Package biblatex Info: Reference section=0 on input line 101.
+Package biblatex Info: Reference segment=0 on input line 101.
+Package hyperref Info: Link coloring OFF on input line 101.
 (./CBook.out) (./CBook.out)
-\@outlinefile=\write5
-\openout5 = `CBook.out'.
+\@outlinefile=\write4
+\openout4 = `CBook.out'.
 
 LaTeX Font Info:    Font shape `TU/SimSun(0)/m/n' will be
-(Font)              scaled to size 17.18529pt on input line 160.
+(Font)              scaled to size 17.18529pt on input line 103.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.045pt on input line 160.
+(Font)              scaled to size 12.045pt on input line 103.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 160.
+(Font)              scaled to size 8.0pt on input line 103.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 160.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 160.
+(Font)              scaled to size 6.0pt on input line 103.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 103.
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0461pt on input line 160.
+(Font)              scaled to size 12.0461pt on input line 103.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 160.
+(Font)              scaled to size 8.00073pt on input line 103.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 160.
+(Font)              scaled to size 6.00055pt on input line 103.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 12.0437pt on input line 160.
+(Font)              scaled to size 12.0437pt on input line 103.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 160.
+(Font)              scaled to size 7.99915pt on input line 103.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 160.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 160.
+(Font)              scaled to size 5.99936pt on input line 103.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 103.
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 160.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 103.
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 160.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 103.
 (c:/Users/Sengoku/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Font shape `TU/SimSun(0)/m/n' will be
-(Font)              scaled to size 11.45686pt on input line 160.
+(Font)              scaled to size 11.45686pt on input line 103.
 [1
 
 
 ]
 LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
-(Font)              scaled to size 24.61095pt on input line 163.
+(Font)              scaled to size 24.61095pt on input line 106.
 (./CBook.toc
 LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
 (Font)              scaled to size 9.93903pt on input line 1.
@@ -1241,8 +1216,8 @@ LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.53937> not available
 (Font)              size <10.95> substituted on input line 3.
 
 )
-\tf@toc=\write6
-\openout6 = `CBook.toc'.
+\tf@toc=\write5
+\openout5 = `CBook.toc'.
 
 [1
 
@@ -1251,114 +1226,65 @@ LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.53937> not available
 ]
 Chapter 1.
 LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
-(Font)              scaled to size 14.19862pt on input line 175.
-
-LaTeX Warning: Reference `usage-gitbook' on page 3 undefined on input line 181.
-
-
-LaTeX Warning: Reference `usage-pdfbook' on page 3 undefined on input line 181.
-
-LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
-(Font)              scaled to size 11.3589pt on input line 187.
+(Font)              scaled to size 14.19862pt on input line 118.
 [3
 
 ]
-
-Package fontspec Info: FangSong scale = 0.976420540271054.
-
-
-Package fontspec Info: Could not resolve font "FangSong/BI" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Could not resolve font "FangSong/B" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Could not resolve font "FangSong/I" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: FangSong scale = 0.976420540271054.
-
-
-Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
-(fontspec)             with options [Scale=MatchLowercase,Script={CJK}].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[0.976420540271054]"FangSong/OT:script=hani;language=dflt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-
-LaTeX Font Info:    Font shape `TU/FangSong(0)/m/n' will be
-(Font)              scaled to size 10.2909pt on input line 212.
-File: 0001-intro_files/figure-latex/u-w-f-ex01-1.pdf Graphic file (type pdf)
-<use 0001-intro_files/figure-latex/u-w-f-ex01-1.pdf>
+LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
+(Font)              scaled to size 11.3589pt on input line 136.
+File: 1001-lesson1/image-20230302194802453.png Graphic file (type bmp)
+<1001-lesson1/image-20230302194802453.png>
+File: 1001-lesson1/image-20230302194916461.png Graphic file (type bmp)
+<1001-lesson1/image-20230302194916461.png>
 LaTeX Font Info:    Font shape `TU/SimSun(0)/m/sl' in size <10.53937> not available
-(Font)              Font shape `TU/SimSun(0)/m/it' tried instead on input line 232.
+(Font)              Font shape `TU/SimSun(0)/m/it' tried instead on input line 147.
 LaTeX Font Info:    Font shape `TU/SimSun(0)/m/it' will be
-(Font)              scaled to size 9.85475pt on input line 232.
-[4] [5]
-Chapter 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 10.53937pt on input line 255.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 7.37756pt on input line 255.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 5.26968pt on input line 255.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 10.54033pt on input line 255.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 7.37823pt on input line 255.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 5.27016pt on input line 255.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 10.53824pt on input line 255.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 7.37677pt on input line 255.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 5.26912pt on input line 255.
-[6
+(Font)              scaled to size 9.85475pt on input line 147.
+[4]
+File: 1001-lesson1/image-20230302194931963.png Graphic file (type bmp)
+<1001-lesson1/image-20230302194931963.png>
+[5] [6]
+File: 1001-lesson1/image-20230302195218412.png Graphic file (type bmp)
+<1001-lesson1/image-20230302195218412.png>
+File: 1001-lesson1/image-20230302195243394.png Graphic file (type bmp)
+<1001-lesson1/image-20230302195243394.png>
+[7]
+File: 1001-lesson1/image-20230302195303677.png Graphic file (type bmp)
+<1001-lesson1/image-20230302195303677.png>
+[8] [9] [10] [11]
+File: 1001-lesson1/image-20230302201236318.png Graphic file (type bmp)
+<1001-lesson1/image-20230302201236318.png>
+File: 1001-lesson1/image-20230302201246104.png Graphic file (type bmp)
+<1001-lesson1/image-20230302201246104.png>
+[12]
+Missing character: There is no α (U+03B1) in font [lmroman10-regular]:mapping=tex-text;!
+File: 1001-lesson1/image-20230302201322126.png Graphic file (type bmp)
+<1001-lesson1/image-20230302201322126.png>
+[13] [14]
+File: 1001-lesson1/image-20230302200230583.png Graphic file (type bmp)
+<1001-lesson1/image-20230302200230583.png>
+[15] [16] [17] [18] [19] [20] [21] [22]
 
-] [7]
-Missing character: There is no ○ (U+25CB) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ○ (U+25CB) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ○ (U+25CB) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ○ (U+25CB) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ○ (U+25CB) in font [lmroman10-regular]:mapping=tex-text;!
-[8]
+LaTeX Warning: Empty bibliography on input line 418.
 
-Package amsmath Warning: Bracket group [aaa] at formula start!
-(amsmath)                It could be a misspelled positional argument.
-(amsmath)                If it belongs to the formula add a \relax in
-(amsmath)                front to hide it on input line 486.
-
-
-LaTeX Warning: Empty bibliography on input line 489.
-
-[9] (./CBook.aux)
+[23] (./CBook.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41063pt have occurred.
 
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `CBook.out' has not changed.
-(rerunfilecheck)             Checksum: 77497B7506951B30790E52E10713BC3A;789.
+(rerunfilecheck)             Checksum: D44A026BF4AB743E3132811B2C8CC9D7;553.
 Package logreq Info: Writing requests to 'CBook.run.xml'.
 \openout1 = `CBook.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28523 strings out of 478683
- 578364 string characters out of 5846910
- 1869012 words of memory out of 5000000
- 48214 multiletter control sequences out of 15000+600000
- 523054 words of font info for 131 fonts, out of 8000000 for 9000
+ 28079 strings out of 478683
+ 578497 string characters out of 5846910
+ 1884012 words of memory out of 5000000
+ 47794 multiletter control sequences out of 15000+600000
+ 521521 words of font info for 112 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 86i,12n,137p,678b,5044s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 86i,6n,137p,897b,5044s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on CBook.pdf (10 pages).
+Output written on CBook.pdf (24 pages).
