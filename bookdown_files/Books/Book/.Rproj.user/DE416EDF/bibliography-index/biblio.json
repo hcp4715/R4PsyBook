@@ -1,0 +1,112 @@
+{
+    "sources": [
+        {
+            "author": [
+                {
+                    "family": "茆诗松"
+                },
+                {
+                    "family": "王静龙"
+                },
+                {
+                    "family": "濮晓龙"
+                }
+            ],
+            "edition": "第二版",
+            "id": "MWP06-HighStat",
+            "issued": {
+                "date-parts": [
+                    [
+                        2006
+                    ]
+                ]
+            },
+            "publisher": "高等教育出版社",
+            "title": "高等数理统计",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Unwin",
+                    "given": "Antony"
+                },
+                {
+                    "family": "Theus",
+                    "given": "Martin"
+                },
+                {
+                    "family": "Hofmann",
+                    "given": "Heike"
+                }
+            ],
+            "id": "Unwin-Visualize06",
+            "issued": {
+                "date-parts": [
+                    [
+                        2006
+                    ]
+                ]
+            },
+            "publisher": "Springer",
+            "title": "Graphics of large datasets visualizing a million",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Wichmann",
+                    "given": "B. A."
+                },
+                {
+                    "family": "Hill",
+                    "given": "I. D."
+                }
+            ],
+            "container-title": "Applied Statistics",
+            "id": "Wichmann1982:RNG",
+            "issued": {
+                "date-parts": [
+                    [
+                        1982
+                    ]
+                ]
+            },
+            "page": "188-190. Remarks: 34, 198 and 35, 89",
+            "title": "Algorithm as 183: An efficient and portable pseudo-random number generator",
+            "title-short": "Algorithm as 183",
+            "type": "article-journal",
+            "volume": "31"
+        },
+        {
+            "author": [
+                {
+                    "family": "钱敏平"
+                },
+                {
+                    "family": "龚光鲁"
+                },
+                {
+                    "family": "陈大岳"
+                },
+                {
+                    "family": "章复熹"
+                }
+            ],
+            "id": "QGCZ2011:StochProc",
+            "issued": {
+                "date-parts": [
+                    [
+                        2011
+                    ]
+                ]
+            },
+            "publisher": "高等教育出版社",
+            "title": "应用随机过程",
+            "type": "book"
+        }
+    ],
+    "project_biblios": [
+        "mybib.bib"
+    ]
+}

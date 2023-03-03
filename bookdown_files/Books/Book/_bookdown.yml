@@ -1,0 +1,18 @@
+book_filename: 'CBook'
+output_dir: "_book"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+language:
+  label:
+    thm: '定理'
+    def: '定义'
+    exm: '例'
+    proof: '证明: '
+    solution: '解: '
+    fig: '图'
+    tab: '表'
+  ui:
+    chapter_name: ''
+delete_merged_file: true
+new_session: true
+
