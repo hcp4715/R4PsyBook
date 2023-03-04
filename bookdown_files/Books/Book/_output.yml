@@ -1,0 +1,12 @@
+bookdown::gitbook:
+  includes:
+    in_header: _header.html
+  config:
+    download: ["pdf"]
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: biblatex
+  keep_tex: true
+bookdown::epub_book: default
