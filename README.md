@@ -2,7 +2,7 @@
 
 本repo用于将《R语言在心理学研究中的应用》一课的内容转化为文字版，并形成一本在线的bookdown电子书。
 
-课程相关的repo：[https://github.com/hcp4715/R4Psy](https://github.com/hcp4715/R4PsyBook){.uri}
+课程相关的repo：[https://github.com/hcp4715/R4Psy](https://github.com/hcp4715/R4PsyBook)
 
 在线电子书地址：
 
