@@ -78,7 +78,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 第十三章：多人协作版本控制:Git？（3学时）\
 13.1 版本控制与git\
-13.2 多人协作与git \
+13.2 多人协作与git\
 
 第十四章：如何帮助我们计划下一个研究？（3学时）\
 14.1 计算效应量：Meta-analysis\
