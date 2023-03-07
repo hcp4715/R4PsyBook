@@ -26,6 +26,12 @@
 
 郑元瑞，昆明城市学院本科生（2019级）。
 
+## 使用许可/LICENSE
 
-## 使用许可
-本电子书使用CC4.0作为使用许可，如诺使用或者在此基本上进行二次创新，请引用本GitHub页面。
+本电子书使用CC4.0作为使用许可。
+
+Shield: [![CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by/4.0/)
+
+This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
+
+[![CC BY 4.0](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
