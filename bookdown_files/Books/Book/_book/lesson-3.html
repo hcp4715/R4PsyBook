@@ -110,27 +110,29 @@ MathJax.Hub.Config({
 <li class="chapter" data-level="3.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-for-lesson"><i class="fa fa-check"></i><b>3.1</b> 要解决的数据分析问题简介</a>
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-1"><i class="fa fa-check"></i><b>3.1.1</b> 第一个数据</a></li>
-<li class="chapter" data-level="3.1.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-2"><i class="fa fa-check"></i><b>3.1.2</b> 第二个数据</a></li>
+<li class="chapter" data-level="3.1.2" data-path="lesson-2.html"><a href="lesson-2.html#第二个数据"><i class="fa fa-check"></i><b>3.1.2</b> 第二个数据</a></li>
+<li class="chapter" data-level="3.1.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-2"><i class="fa fa-check"></i><b>3.1.3</b> </a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-install-R"><i class="fa fa-check"></i><b>3.2</b> 如何安装</a></li>
 <li class="chapter" data-level="3.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio"><i class="fa fa-check"></i><b>3.3</b> 如何方便使用？Rstudio的安装与界面介绍</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio"><i class="fa fa-check"></i><b>3.3.1</b> 如何方便使用？Rstudio的安装与界面介绍</a></li>
+<li class="chapter" data-level="3.3.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-test"><i class="fa fa-check"></i><b>3.3.1</b> 测试Rstudio</a></li>
+<li class="chapter" data-level="3.3.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-packges"><i class="fa fa-check"></i><b>3.3.2</b> R语言中的包</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="lesson-3.html"><a href="lesson-3.html"><i class="fa fa-check"></i><b>4</b> 第三讲：如何导入数据</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path-working-dir"><i class="fa fa-check"></i><b>4.1</b> 路径与工作目录</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="lesson-3.html"><a href="lesson-3.html#相对路径与绝对路径"><i class="fa fa-check"></i><b>4.1.1</b> 相对路径与绝对路径</a></li>
-<li class="chapter" data-level="4.1.2" data-path="lesson-3.html"><a href="lesson-3.html#here包的使用"><i class="fa fa-check"></i><b>4.1.2</b> Here包的使用</a></li>
+<li class="chapter" data-level="4.1.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path"><i class="fa fa-check"></i><b>4.1.1</b> 相对路径与绝对路径</a></li>
+<li class="chapter" data-level="4.1.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-packge-here"><i class="fa fa-check"></i><b>4.1.2</b> Here包的使用</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="lesson-3.html"><a href="lesson-3.html#读取数据"><i class="fa fa-check"></i><b>4.2</b> 读取数据</a>
+<li class="chapter" data-level="4.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-data"><i class="fa fa-check"></i><b>4.2</b> 读取数据</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="lesson-3.html"><a href="lesson-3.html#read.csv函数"><i class="fa fa-check"></i><b>4.2.1</b> read.csv函数</a></li>
+<li class="chapter" data-level="4.2.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-csv"><i class="fa fa-check"></i><b>4.2.1</b> read.csv函数</a></li>
 <li class="chapter" data-level="4.2.2" data-path="lesson-3.html"><a href="lesson-3.html#命名"><i class="fa fa-check"></i><b>4.2.2</b> 命名</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="lesson-3.html"><a href="lesson-3.html#了解r里的数据-r语言中的对象"><i class="fa fa-check"></i><b>4.3</b> 了解R里的数据 （R语言中的对象）</a></li>
+<li class="chapter" data-level="4.3" data-path="lesson-3.html"><a href="lesson-3.html#id_3-data-object"><i class="fa fa-check"></i><b>4.3</b> 了解R里的数据 （R语言中的对象）</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -155,36 +157,43 @@ MathJax.Hub.Config({
 <div id="id_3-path-working-dir" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> 路径与工作目录<a href="lesson-3.html#id_3-path-working-dir" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>那么什么是工作目录呢？简单来说，工作目录就是R会在其中寻找文件的文件夹。如果你没有指定工作目录，那么R会默认使用你的用户文件夹作为工作目录。但是，如果你的数据文件不在用户文件夹中，那么你需要告诉R去哪里找这些文件。这就是为什么我们需要设置工作目录的原因。我们可以使用“get.wd”命令来查看当前的工作目录。当我们打开一个R项目时，它会自动打开项目所在的目录。</p>
-<div id="相对路径与绝对路径" class="section level3 hasAnchor" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> 相对路径与绝对路径<a href="lesson-3.html#相对路径与绝对路径" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>我们建议在新建数据分析项目时，将其放在一个文件夹中，并创建一个R项目。这样，每次打开项目时，它都会自动打开所在的位置。在讲解路径和工作目录的概念时，我们需要了解两个概念：<strong>绝对路径</strong>和<strong>相对路径</strong>。绝对路径指的是文件或文件夹在硬盘上的真实路径，而相对路径则是指相对于当前路径的位置。例如，在chapter3文件夹中，data文件夹的相对路径为./data。相对路径的好处在于，当我们复制整个文件夹时，相对路径的位置不会改变。相对路径是相对于当前路径的位置，而绝对路径则是相对于硬盘的起始位置。</p>
+<div id="id_3-path" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> 相对路径与绝对路径<a href="lesson-3.html#id_3-path" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>建议为每一个数据分析项目设立一个文件夹，并且在其中创建一个R项目。这样，每次打开项目时，它都会自动打开所在的位置。在讲解路径和工作目录的概念时，我们需要先了解两个概念：<strong>绝对路径</strong>和<strong>相对路径</strong>。绝对路径指的是文件或文件夹在硬盘上的真实路径，而相对路径则是指相对于当前路径的位置。例如，在chapter3文件夹中，data文件夹的相对路径为./data。相对路径的好处在于，当我们复制整个文件夹时，相对路径的位置不会改变。相对路径是相对于当前路径的位置，而绝对路径则是相对于硬盘的起始位置。</p>
 <p>如果我们有一个子文件夹叫做data，那么它就是当前文件夹的子文件夹，也可以称为子目录，而当前文件夹则是它的父文件夹，也可以称为父目录。如果我们复制这个文件夹到另一个电脑上，它们之间的相对关系不会改变，但如果我们把它从D盘复制到E盘，那么绝对路径就会改变，相对路径仍然保持不变。因此，我们建议把所有文件都放在一个文件夹中，这样所有文件的相对路径都是相对于这个文件夹的，方便编写代码。如果文件夹放在不同的位置，每次引用或查找文件时都需要使用绝对路径，非常麻烦。</p>
 <p>在Windows系统中，每个磁盘都有自己的盘符，例如C、D、E、F盘。绝对路径是从盘符开始一直写到当前文件夹，对于Mac和Linux系统，它们只有一个根目录，没有盘符的概念。我们最常用的是“用户”，比如我的用户名，然后有一个“主目录”，这就是用户的文件夹。当我们使用苹果系统或者Linux系统时，基本上很多时候都是基于这个“用户”文件夹或者“users.html4c”进行操作。除了“主目录”以外，它可能还有一个“下载”，就是你下载的文件都放在哪里，还可能有一个“图片”，就是你的各种图等等。所以它就是在一个文件夹下面有不同的子文件夹，比如有“etc”、“用户”还有其他的“根目录”等等。我们主要就是基于“用户”，然后建立自己的一系列的文件。在Windows中，它可以分成三个盘，每个区都是自己的盘符，然后基于这个盘符你又可以重新定义一个新的路径。这就相当于路径的定义不太一样。我们刚刚也讲了相对路径和绝对路径。如果我们所有的分析都放在一起的话，那么我们用相对路径是更好的。就像我们写代码的时候，不要把C盘D盘什么这些一整串写进来，因为写进来之后你换一个电脑，这个C盘它就不是C盘了，它可能是变成D盘了，或者你换到苹果上面之后，它可能就没有C盘了，它就是“用户”开头了。</p>
 </div>
-<div id="here包的使用" class="section level3 hasAnchor" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Here包的使用<a href="lesson-3.html#here包的使用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>另外一个就是我非常常用的一个包，就是这个Here这个包。Here这个包可以帮助你很快地去定位你的，因为它能够很快地返回你当前的新的目录。然后你打开了这个之后，我们就能够迅速地看到我自己就是说它在哪。它另外一个好处就是我们能够不用考虑我的系统是什么，然后我就直接能够把它的一系列文件夹都调出来。然后我先看一下我这里有没有Here这个包，好像还没有，现场直接安装。网速有点慢，OK，大家看到现在成功安装了。我们再看一下，它有一些警告的信息，但是它告诉了我们一个结果，就是把这个关于这个Here，它我们现在这个文件夹在哪输出来。我们刚才说它有一个好处就是比如说，我们不知道这个当前的这个文件夹它到底是哪个，我们可以不用去写这个，它的符号跟Windows的地址栏是有区别的。我们的Windows系统中的地址栏和R中的地址栏斜线方向不同。如果我们直接复制Windows地址栏的地址作为绝对路径，可能会出现错误。为了避免手动拼接路径出错，我们可以使用here函数来自动补全路径。这个函数会自动将当前文件夹的路径补全，我们只需要在路径中加入文件夹名即可。例如，我们可以使用here(“data”, “match”)来获取data文件夹下的match文件。这个小技巧可以帮助我们避免一些错误，特别是在不同电脑之间切换时。</p>
+<div id="id_3-packge-here" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Here包的使用<a href="lesson-3.html#id_3-packge-here" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>介绍一个常用的包，包名叫做Here。Here这个包可以帮助你很快地去定位你的当前的新的目录。打开了这个，就能够迅速地看到我自己在哪。它另外一个好处就是我们能够不用考虑我的系统是什么，然后我就直接能够把它的一系列文件夹都调出来。</p>
+<p>我们的Windows系统中的地址栏和R中的地址栏斜线方向不同。如果我们直接复制Windows地址栏的地址作为绝对路径，可能会出现错误。为了避免手动拼接路径出错，我们可以使用here函数来自动补全路径。这个函数会自动将当前文件夹的路径补全，我们只需要在路径中加入文件夹名即可。例如，我们可以使用here(“data”, “match”)来获取data文件夹下的match文件。这个小技巧可以帮助我们避免一些错误，特别是在不同电脑之间切换时。</p>
 </div>
 </div>
-<div id="读取数据" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> 读取数据<a href="lesson-3.html#读取数据" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>工作目录是R与硬盘交互的接口，我们可以使用getwd()函数来获取当前工作目录的绝对路径。我们需要使用相对路径来调整子文件夹的位置。接下来，我们需要查看数据的相对路径和绝对路径。假设我们的工作目录是在电脑桌面上，数据存储在”data”文件夹中，其中包含两个子文件夹，一个是”match”，包含178个文件，另一个是”pengiun”，只有一个文件。相对路径中的一个点代表当前文件夹，数据在”data”文件夹中，“match”文件夹下有178个文件。如果我们要读取某个文件，必须完整地写出文件名。对于”pengiun”文件夹，它的相对路径是”data/pengiun”，假设它是一个简单的CSV文件。</p>
-<div id="read.csv函数" class="section level3 hasAnchor" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> read.csv函数<a href="lesson-3.html#read.csv函数" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="id_3-read-data" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> 读取数据<a href="lesson-3.html#id_3-read-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>工作目录是R与我们的硬盘交互的接口，我们可以使用getwd()函数来获取当前工作目录的绝对路径。我们可以使用相对路径来引用子文件夹的位置。接下来我想要查看数据的相对路径和绝对路径。假设我们的工作目录是在桌面上，数据存储在”data”文件夹中，其中包含两个子文件夹，一个是”match”，包含178个文件，另一个是”pengiun”，只有一个文件。相对路径中的一个点(.)代表当前文件夹，数据在”data”文件夹中，“match”文件夹下有178个文件。如果我们要读取某个文件，必须完整地写出文件名。对于”pengiun”文件夹，它的相对路径是”./data/pengiun”</p>
+<div id="id_3-read-csv" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> read.csv函数<a href="lesson-3.html#id_3-read-csv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>现在我们知道了数据的相对路径，可以使用”read.csv”函数来读取数据。我们需要给数据一个名称，例如”pengiun.data”，并使用”read.csv”函数来读取数据。在函数中，我们需要指定相对路径。这里建议使用相对路径而不是绝对路径，因为绝对路径需要每次更改代码。</p>
-<p>“head = TRUE”是函数中的一个参数，用于指定文件是否包含列名。如果文件的第一行是列名，则将其设置为”TRUE”，否则为”FALSE”。在统计学中，假用false表示，真用true表示。读取txt文件时，需要使用分隔符来分隔不同列的数据。为了更直观地了解这个过程，我们可以打开csv文件。虽然这是一个csv文件，但我们也可以使用txt打开，这样更清晰。但是，如果我们使用txt打开，数据看起来会很混乱，因为它包含换行符。在第一行中，从site到双行符号之间的所有内容都是第一行。我们可以让它不自动换行，但是每个人打开txt文件时可能会看到不同的行。数字9.1表示第一行的列数。每个字符都是一个列，而不是每个单词。因此，在读取时，我们需要将字符分割成不同的数据。在R中，我们使用逗号来分割。</p>
-<p>因为txt文件包含换行符，所以它会识别行和列。行是通过每一行的数字来识别的，而列必须使用分隔符来识别。在这里，我们使用逗号作为分隔符。这样，我们就可以将数据读取为行和列。当我们遇到字符型数字时，需要将其转换为类别数据。在R中，我们使用负值来表示这个符号。我们可以使用data table包来方便地展示读取后的数据。为了方便在PPT中展示数据，我们可以使用head函数来查看数据，而不必亲自查看。我们已经读取了数据，按照逗号分隔后，第一行是列名，我们可以将其识别为表头。从第二行开始是数据，第一个列的第一个值是1975，后面是1995等等。这是一个问卷数据，每个编号代表一个问卷和其items。我们可以用不同的方式对其进行编号，比如uncertainty等等。对于常用的心理学数据文件，我们可以使用here来定义相对路径，然后使用import来读取数据。读取后，我们可以看到有247个变量。对于.out文件，我们可以使用read csv来读取，但是需要将separator参数设置为斜杠加t，表示以tab为分隔符。在进行统计分析时，我们需要明确定义用于分割数据的符号。除了逗号和tab键，还可以使用分号、空格或分行符等多种方式。</p>
-<p>read_csv是最常用的数据读取函数，但实际上它是read_table的一个特殊形式。因此，我们也可以使用read_table来读取数据。但是，由于.out文件是我们自定义的一个txt文件，无法使用bruce-r的import函数进行导入。这种情况很常见，当你尝试使用不同的分隔符时，你需要清楚你的数据结构，以便正确读取数据。在编写代码时，我们必须注意，没有报错并不代表它一定是正确的。首先，我们需要读取一些数据，包括first path和normalized path。然后，我们可以使用pumping data或match data命令来读取数据。读取数据后，我们需要检查数据是否正确读入。在读取.2文件时，我们只读取了一个文件，而没有将100多个语句全部读入。这是一个非常困难的任务，但是我们可以通过反复比较R界面和文件夹来理解当前工作目录、相对路径和绝对路径的概念。</p>
-<p>完成这些操作后，R中的环境应该发生了变化。在右上角的环境中，我们可以看到两个相应的数据match data和PenguinData。PenguinData是一个符号，我们可以用任何其他符合命名规则的名称来代替它，比如abcd，比如xyz。这里存储了一些可操作和创建的对象，我们称之为R对象。现在我们导入的对象的种类被称之为数据框，有关数据框的知识将在之后讲到。</p>
+<p>“head = TRUE”是函数中的一个参数，用于指定文件是否包含列名。如果文件的第一行是列名，则将其设置为”TRUE”，否则为”FALSE”。在R语言中，假用false表示，真用true表示。读取这样的txt文件时，需要使用分隔符来分隔不同列的数据。为了更直观地了解这个过程，我们可以打开csv文件。虽然这是一个csv文件，但我们也可以使用txt打开，如果我们使用文本编辑器打开，数据看起来会很混乱，因为它包含换行符。</p>
+<p>当使用函数读取时，行是自动识别的来识别的，而列必须使用分隔符来识别。在这里，我们使用逗号作为分隔符。这样，我们就可以将数据读取为行和列。我们可以使用data table包来方便地展示读取后的数据。为了方便在PPT中展示数据，我们可以使用head函数来大致的查看数据。我们已经读取了数据，按照逗号分隔后，第一行是列名，我们可以将其识别为表头。从第二行开始是数据，第一个列的第一个值是1975，后面是1995等等。这是一个问卷数据，每个编号代表一个问卷和其items。我们可以用不同的方式对其进行编号，比如uncertainty等等。</p>
+<p>对于常用的数据文件，我们可以使用here来定义相对路径，然后使用import来读取数据。读取后，我们可以看到有247个变量。对于.out文件，我们可以使用read.csv来读取，但是需要将separator参数设置为斜杠加t，表示以tab为分隔符。在进行统计分析时，我们需要明确定义用于分割数据的符号。除了逗号和tab键，还可以使用分号、空格或分行符等多种方式。</p>
+<p>read.csv是最常用的数据读取函数，但实际上它是read.table的一个特殊形式。因此，我们也可以使用read.table来读取数据。但是，由于.out文件是我们自定义的一个txt文件，无法使用bruce-r的import函数进行导入。这种情况很常见，你需要清楚你的数据结构，包括分隔符和编写模式，以便正确读取数据。</p>
+<p>完成这些操作后，R中的环境environment应该发生了变化。在右上角的环境中，我们可以看到两个相应的数据match data和PenguinData。PenguinData是一个符号，我们可以用任何其他符合命名规则的名称来代替它，比如abcd，比如xyz。这里存储了一些可操作和创建的对象，我们称之为R对象。现在我们导入的对象的种类被称之为数据框，有关数据框的知识将在之后讲到。</p>
 </div>
 <div id="命名" class="section level3 hasAnchor" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> 命名<a href="lesson-3.html#命名" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>在命名时，应尽量简短，避免使用中文。如果发现文件目录没有问题，但仍然出现错误，有两种可能性。一种是拼写错误，例如拼写单词penguin时少了一个字母或交换了两个字母的位置。另一种可能是文件夹的大小写不匹配，例如使用大写字母开头的文件夹，但在输入路径时使用小写字母。在这种情况下，我们需要仔细检查并逐行对比当前工作目录和文件夹的实际目录是否匹配。最有效的方法是直接点击文件的属性，查看其目录和名称是否与输入的完全相同。</p>
 </div>
 </div>
-<div id="了解r里的数据-r语言中的对象" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> 了解R里的数据 （R语言中的对象）<a href="lesson-3.html#了解r里的数据-r语言中的对象" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>刚才提到的几个常用对象包括：向量、矩阵、数组、数据框和列表。其中，向量是一列数字或其他相同类型的元素，而矩阵是一个二维的数据结构，有长和宽，可以看作是将向量按行排列而成的。数组是在矩阵的基础上再往上拓展，变成了一个三维的数据结构。在R语言中，我们更多地使用数据框，它看起来像矩阵，但每个列可以是不同类型的元素。而列表则更加复杂，每个元素都可以是不同类型的对象。这些对象在编程软件中非常常用，比如Python和Matlab。这是修改后的文本：有四种数据类型，它们各自具有独特的特点。其中，向量是将同一类型的数据排列成一列，内部数据必须相同。内部数据类型包括逻辑型（true/false或0/1）、整型数据（整数）、双精度和复数数据、字符和原始形象。这些数据类型有不同的操作方式。在心理学中，有一个因子向量，用于将数据分成不同的类别，例如男性和女性。因子向量对于分类数据的处理非常重要，例如不同的种族和民族。但是，将因子向量转换为数字时需要注意，因为它会按照级别进行变化。数字1对应着“女性”，数字2对应着“男性”。在转换过程中，我们将“女性”转换为1，“男性”转换为2。第三个和第四个数据都是2，因此它们直接转换为2。需要注意的是，我们不一定使用“女性”和“男性”，而是使用数字1到7。如果我们将数字得分和实际数字进行比较，我们将使用“fact”来定义等级，例如54321。如果我们直接将“fact”转换为数字，它将变成12345，因为我们将其定义为分类变量并赋予了等级。如果我们想将其转换为对应的数字，我们需要先将其转换为字符，然后再将其转换为数字。需要注意的是，如果我们不注意这个问题，就会出现错误。</p>
+<div id="id_3-data-object" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> 了解R里的数据 （R语言中的对象）<a href="lesson-3.html#id_3-data-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure">
+<img src="https://devopedia.org/images/article/46/9213.1526125966.png" alt="" />
+<p class="caption">data structure</p>
+</div>
+<p>R语言中的几个常用对象包括：向量、矩阵、数组、数据框和列表。其中，向量是一列数字或其他相同类型的元素，而矩阵是一个二维的数据结构，有长和宽，可以看作是将向量按行排列而成的。数组是在矩阵的基础上再往上拓展，变成了一个三维的数据结构。</p>
+<p>在R语言中，我们更多地使用数据框，它看起来像矩阵，但每个列可以是不同类型的元素。而列表则更加复杂，每个元素都可以是不同类型的对象。这些对象在编程软件中非常常用，比如Python和Matlab。</p>
 <p>我们没有时间讲解数据框，但是我们已经解决了读取数据的问题。我们下节课再深入讲解这些知识。在下节课之前，大家可以查看王敏杰老师和张金星老师的两本书，这些书将更清楚地介绍这些基础知识。</p>
 
 </div>
