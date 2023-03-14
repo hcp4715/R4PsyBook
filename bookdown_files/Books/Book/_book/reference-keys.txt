@@ -26,3 +26,17 @@ regression
 课程大纲
 成绩分配
 如何学好这门课
+lesson-2
+id_2-data-for-lesson
+id_2-data-1
+id_2-data-2
+id_2-install-R
+id_2-Rstudio
+lesson-3
+id_3-path-working-dir
+相对路径与绝对路径
+here包的使用
+读取数据
+read.csv函数
+命名
+了解r里的数据-r语言中的对象
