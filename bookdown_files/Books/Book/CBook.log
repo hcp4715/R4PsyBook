@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2023.3.2)  8 MAR 2023 23:51
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2023.3.2)  9 MAR 2023 16:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1141,8 +1141,8 @@ Package biblatex Info: Automatic encoding selection.
 \openout3 = `CBook.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'CBook.bbl' found.
-(./CBook.bbl)
+Package biblatex Info: ... file 'CBook.bbl' not found.
+No file CBook.bbl.
 Package biblatex Info: Reference section=0 on input line 101.
 Package biblatex Info: Reference segment=0 on input line 101.
 Package hyperref Info: Link coloring OFF on input line 101.
@@ -1194,32 +1194,7 @@ LaTeX Font Info:    Font shape `TU/SimSun(0)/m/n' will be
 ]
 LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
 (Font)              scaled to size 24.61095pt on input line 106.
-(./CBook.toc
-LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
-(Font)              scaled to size 9.93903pt on input line 1.
-LaTeX Font Info:    Font shape `TU/SimSun(0)/m/n' will be
-(Font)              scaled to size 10.02475pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.37756pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.26968pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.54033pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.37823pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.27016pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.53824pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.37677pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.26912pt on input line 2.
-
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 2.
-
-)
+No file CBook.toc.
 \tf@toc=\write5
 \openout5 = `CBook.toc'.
 
@@ -1229,6 +1204,8 @@ LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.53937> not available
 Chapter 1.
 LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
 (Font)              scaled to size 14.19862pt on input line 112.
+LaTeX Font Info:    Font shape `TU/SimSun(0)/m/n' will be
+(Font)              scaled to size 10.02475pt on input line 114.
 
 Underfull \hbox (badness 10000) in paragraph at lines 114--119
 
@@ -1313,6 +1290,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 180--183
 [4]
 Chapter 2.
 LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
+(Font)              scaled to size 9.93903pt on input line 187.
+LaTeX Font Info:    Font shape `TU/SimSun(0)/b/n' will be
 (Font)              scaled to size 11.3589pt on input line 197.
 [5
 
@@ -1344,49 +1323,67 @@ File: 1001-lesson1/image-20230302201322126.png Graphic file (type bmp)
 [15] [16]
 File: 1001-lesson1/image-20230302200230583.png Graphic file (type bmp)
 <1001-lesson1/image-20230302200230583.png>
-[17] [18] [19] [20] [21] [22] [23] [24] [25]
+[17] [18] [19]
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.37756pt on input line 458.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.26968pt on input line 458.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.54033pt on input line 458.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.37823pt on input line 458.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.27016pt on input line 458.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.53824pt on input line 458.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.37677pt on input line 458.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.26912pt on input line 458.
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.53937> not available
+(Font)              size <10.95> substituted on input line 458.
+
+[20] [21] [22] [23] [24] [25]
 Chapter 3.
 [26
 
-] [27] [28] [29] [30]
+] [27] [28] [29]
+File: 1002-lesson2/image-20230309143318248.png Graphic file (type bmp)
+<1002-lesson2/image-20230309143318248.png>
+[30]
+File: 1002-lesson2/image-20230309144756488.png Graphic file (type bmp)
+<1002-lesson2/image-20230309144756488.png>
+[31] [32]
 Chapter 4.
-[31
+[33
 
 ]
-Underfull \hbox (badness 4266) in paragraph at lines 654--655
+Underfull \hbox (badness 4266) in paragraph at lines 728--729
 []\TU/SimSun(0)/m/n/10.53937 现 在 我 们 知 道 了 数 据 的 相 对 路 径，|  可 以 使 用\TU/lmr/m/n/10.53937 ”read.csv” \TU/SimSun(0)/m/n/10.53937 函 数 来 读 取 数 据。|  我 们 需 要 给 数 据 一 个 名 称，|  例
  []
 
 
-Underfull \hbox (badness 1442) in paragraph at lines 654--655
+Underfull \hbox (badness 1442) in paragraph at lines 728--729
 \TU/SimSun(0)/m/n/10.53937 如\TU/lmr/m/n/10.53937 ”pengiun.data”\TU/SimSun(0)/m/n/10.53937 ，|  并 使 用\TU/lmr/m/n/10.53937 ”read.csv” \TU/SimSun(0)/m/n/10.53937 函 数 来 读 取 数 据。|  在 函 数 中，|  我 们 需 要 指 定 相 对 路 径。|  这 里 建 议 使 用
  []
 
-[32] [33]
+[34]
 
-LaTeX Warning: Empty bibliography on input line 676.
+LaTeX Warning: File `https://devopedia.org/images/article/46/9213.1526125966.png' not found on input line 750.
 
-[34] (./CBook.aux)
-
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.41063pt have occurred.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package rerunfilecheck Info: File `CBook.out' has not changed.
-(rerunfilecheck)             Checksum: 7DBA4F2575462BDC36661371716D745D;1877.
-Package logreq Info: Writing requests to 'CBook.run.xml'.
-\openout1 = `CBook.run.xml'.
-
- ) 
+! Unable to load picture or PDF file 'https://devopedia.org/images/article/46/9213.1526125966.png'.
+<to be read again> 
+                   }
+l.750 ...rg/images/article/46/9213.1526125966.png}
+                                                   
 Here is how much of TeX's memory you used:
- 28218 strings out of 478683
- 586997 string characters out of 5846910
- 1886012 words of memory out of 5000000
- 47933 multiletter control sequences out of 15000+600000
+ 28277 strings out of 478683
+ 589637 string characters out of 5846910
+ 1885012 words of memory out of 5000000
+ 47974 multiletter control sequences out of 15000+600000
  521521 words of font info for 112 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 86i,6n,137p,805b,5044s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 86i,6n,137p,679b,5044s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on CBook.pdf (35 pages).
