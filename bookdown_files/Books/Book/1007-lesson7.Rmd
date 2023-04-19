@@ -11,7 +11,6 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse) # Wickham的数据整理的整套工具
 pdf.options(height=10/2.54, width=10/2.54, family="GB1") # 注意：此设置要放在最后
 ```
-这周是第八周，在此之前我们简单的回顾一下之前我们所学的内容。
 
 ## **语法实现**
 
@@ -103,6 +102,24 @@ writeLines(result.ttest, "./output/chp7/pair_t.md")
 
 我们将使用Brusa和Tidyburst软件包，但需要注意，安装BaseFact包可能会出现错误，因为它依赖于Jax包。如果出现错误，可以在官方网站上搜索如何安装BaseFact包。注意安装依赖包，否则可能会出现问题。在使用Pinode时，可能会遇到一些警告和问题，需要自己解决。
 ```{r}
+df.match <-  read.csv('./data/match/match_raw.csv',
+                      header = T, sep=",", stringsAsFactors = FALSE) %>%
+  # 拆分单元格内字符串
+  tidyr::separate(col=Shape,
+                  into=c("Valence","Identity"),
+                  sep="(?<=moral|immoral)(?=Self|Other)") %>% 
+  dplyr::select(Sub, Valence, Identity, everything()) %>%
+  dplyr::filter(ACC == 1) %>%    # 只选择回答正确的数据
+  dplyr::filter(!is.na(RT)) %>%  # 剔除缺失值
+  # remove outliers below and above 3rd sd
+  dplyr::filter(RT > quantile(RT, 0.0015) & RT < quantile(RT, 0.9985)) %>%
+  dplyr::mutate(RT = as.numeric(RT)) %>%
+  dplyr::mutate(Valence = as.factor(Valence),
+                Identity = as.factor(Identity))
+  
+```
+
+```{r}
 WD <-  here::here()
 
 df.match.raw <-  read.csv('./data/match/match_raw.csv',
@@ -135,6 +152,7 @@ df.match.mean <- df.match.raw %>%
     dplyr::ungroup()
 ```
 我们需要求出每个被试在匹配和不匹配任务上的均值，才能进行比较。为此，我们使用分组进行预处理，分组的目标是为了得到每个组的描述性统计，如RT的mean和SD，以及正确试次的个数。我们可以使用summarize快速得出这些统计信息。接着，我们可以使用T-test或方差分析来比较匹配和不匹配反应是否有差异。
+
 ```{r}
 #比较被试在匹配任务和不匹配任务上的反应时是否存在差异
 #单因素被试内设计（长型数据）
@@ -149,4 +167,68 @@ writeLines(result.anova, "./output/chp7/anova_1.md")
 # 若不符合球形假设要加上：sph.correction = "GG"
 ```
 
-在方差分析中，我们可以使用Brusa包中的MLova函数。选中Brusa开始的命名，直到Vizine，去掉大括号和DFVizine，即可直接对其进行操作并输出结果。内设计的统计分析方法。我们可以使用Melova命令来进行分析。第一个参数是要操作的数据框，因为我们在管道操作中，所以可以省略掉。实际上，我们需要选择一个数据框，这个数据框是DFMatch。第二个参数是subject id，这是必须提供的参数。第三个参数是dependent variable，也就是dv。这个参数符合心理学的命名规范。第四个参数是within，也就是被室内因子，这里是match。我们可以得到match和mismatch两种条件的描述性统计，包括f值、p值、eta2、pash2、95%置信区间和generalized eta2。对于混合设计中的被室内因子，pash2和generalized eta2相差很大，因为pash2省略了一部分的variance。推荐使用generalized eta2来进行跨实验的比较。因为这是一个完全被室内设计的分析，所以不需要进行方差齐性检验。这是简化后的文本：在室内设计的情况下，不需要进行方差齐性检验。对于被室内身份和效价这两个因素，我们可以直接从match中选出数值对，然后进行groupby和summarize操作。需要注意的是，我们现在是以subject、variance和identity为基础进行分析。可以在R的帮助文件中查看BruceR和manova，其中包括了数据保存、dv定义、between和within因素、平方和聚散方式等内容。如果违反了求心检验，可以选择不使用默认的校正方法。如果使用宽数据，可以先将其转换为长数据。在选择方法时，不要使用默认的方法，而是直接选择其中的一个方法。如果我们有宽数据的做法，我们可以先将宽数据转成长数据，然后选择变量并按照Bruce R的命名方式在前面加上a和b表示自变量a和自变量b。接着，我们可以使用unite函数将Valence和Identity合并成一个新的变量，再使用pivot wide将其转换为更宽的形式。这样，我们就可以看到每个条件下的性别、baseid和条件。对于更多的columns，我们可以使用Devis函数来选择变量。最后，我们将结果写成md格式，得到一个简洁的表格，其中包含f值、p值、partial square、generalized square和partial square的95%置信区间。长数据也可以使用同样的方法处理。这是简化后的文本：本课程介绍了心理学统计学中的一些概念，包括f值、p值、partial square、generalized square等。我们可以使用长数据或宽数据进行分析，具体取决于个人习惯和使用的软件。除了基础分析方法，我们还可以使用emims包进行简单效应分析和多重比较矫正等操作。通过输入之前的方差分析结果，我们可以使用emines a by b来进行简单效应分析，以比较在不同条件下的主效应是否存在差异。本课程主要讲解心理学统计学，录音稿口语化较严重，需要简化语言并理清逻辑。我们要分析a在b的不同条件下的效应，包括other和self条件。在other条件下，a的效应是b条件的一个主效应，我们称之为简单效应。我们可以看到，在b的两个条件下，a的简单效应实际上应该有一个交互作用。在other条件下，它不显著，在self条件下，它很显著。此外，我们还可以看到a的quantity，即在self条件下，a的主效应moral和immoral之间差异非常大，quantity大于0.8，是一个大的效应。最后，我们介绍了倍时间的设计，需要用到timegrain的数据。我们可以用sex和romantics作为倍时间的变量，进行两因素的倍时间比较。接下来，我们可以在自己的电脑上运行本课程的RMAP档里的代码，选择自己最熟悉的数据进行分析。为了运行我们课堂中的RMAP代码，大家可以先选择一个自己最熟悉的数据类型进行实现。因为大家的背景不同，有些人更熟悉问卷式数据，有些人则更熟悉实验室的实验数据。所以，你可以选择一个你最熟悉的数据类型进行实现。如果你更习惯使用被时间分组的变量，那么你可以选择实现最后一个被时间分组的代码。如果你更多地使用缓和的设计，那么小组长可以和你们讨论，看看你们要选择哪一个进行实现。如果所有的代码都实现，可能会有些困难，所以你们可以讨论，决定哪些代码需要实现。
+在方差分析中，我们可以使用BruceR包中的MANOVA()函数。参数分别是subID,dv和within，即可直接对其进行操作并输出结果。这几个参数符合心理学的命名规范。我们可以得到match和mismatch两种条件的描述性统计，包括f值、p值、eta2、pash2、95%置信区间和generalized eta2。
+
+因为这是一个完全被试内设计的分析，所以不需要进行方差齐性检验。
+```{r}
+df.match.mean <- df.match %>%
+    dplyr::group_by(Sub,Sex, Valence,Identity) %>%
+    dplyr::summarise(
+        n = n(),
+        rt_sd = sd(as.numeric(RT), na.rm = T),
+        rt_mean = mean(as.numeric(RT), na.rm = T)
+        ) %>%
+    dplyr::ungroup()
+```
+对于被试身份和效价这两个因素，我们可以直接从match中选出数值对，然后进行groupby和summarize操作。需要注意的是，我们现在是以subject、variance和identity为基础进行分析。
+```{r}
+df.match.within <- df.match.mean %>%
+  dplyr::select(-c(n, rt_sd)) %>%
+  dplyr::mutate(Valence = paste("A_", Valence, sep = ""),#将变量的名称进行修改转换，不生产新的变量
+                Identity = paste("B_", Identity, sep = "")) %>%
+  # 将morality和identity组合名称起来生成一个新的变量"Conds"
+  tidyr::unite("Conds", Valence:Identity, sep = "&",remove=TRUE) %>% 
+  tidyr::pivot_wider(names_from = Conds,
+                     values_from = rt_mean)
+
+head(df.match.within)
+#str(df.match.within)
+```
+```{r}
+#被试在不同身份(self vs other)与不同效价(moral vs moral)的条件组合下反应时是否存在差异）
+  result.anova <- capture.output({
+  res_rmANOVA_1 <- bruceR::MANOVA(data=df.match.within,
+                   dvs="A_immoral&B_Other:A_moral&B_Self",
+                   dvs.pattern="A_(.+)B_(.+)",#正则表达式
+                   within=c("A_","B_"))#表示2个主条件
+  })
+
+writeLines(result.anova, "./output/chp7/anova_2.md")
+```
+如果我们有的是宽数据，我们可以先将宽数据转成长数据，然后选择变量并按照Bruce R的命名方式在前面加上a和b表示自变量a和自变量b。接着，我们可以使用unite函数将Valence和Identity合并成一个新的变量，再使用pivot wide将其转换为更宽的形式。这样，我们就可以看到每个条件下的性别、被试id和条件。
+最后，我们将结果写成md格式，得到一个简洁的表格，其中包含f值、p值、partial square、generalized square和partial square的95%置信区间。长数据也可以使用同样的方法处理。
+```{r}
+#被试在不同身份(self vs other)与不同效价(good vs bad)的条件组合下反应时是否存在差异）
+#head(df.match.mean)
+  result.anova <- capture.output({
+  res_rmANOVA_2 <- bruceR::MANOVA(data=df.match.mean,
+                   dv="rt_mean",
+                   within=c("Valence","Identity"),
+                   subID="Sub")
+  })
+
+writeLines(result.anova, "./output/chp7/anova_3.md")
+```
+```{r}
+result.check <- capture.output({
+sim_eff_1 <- res_rmANOVA_1 %>%
+  bruceR::EMMEANS("A_", by="B_")#简单效应分析
+})
+writeLines(result.check, "./output/chp7/check.md")
+
+#sim_eff_1 <- res_rmANOVA_1 %>%
+  #EMMEANS("B_", by="A_")   和上一个同理，只是转换了不同的形式
+```
+除了基础分析方法，我们还可以使用EMMEANS进行简单效应分析和多重比较矫正等操作。通过输入之前的方差分析结果，我们可以使用EMMEANS a by b来进行简单效应分析，以比较在不同条件下的主效应是否存在差异。
+我们要分析a在b的不同条件下的效应，包括other和self条件。在other条件下，a的效应是b条件的一个主效应，我们称之为简单效应。我们可以看到，在b的两个条件下，a的简单效应实际上应该有一个交互作用。在other条件下，它不显著，在self条件下，它很显著。
+此外，我们还可以看到a的quantity，即在self条件下，a的主效应moral和immoral之间差异非常大，quantity大于0.8，是一个大的效应。
