@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>9 第八讲：如何进行基本的数据分析: 相关与回归 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿</title>
+  <meta name="description" content="课程bookdown" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="9 第八讲：如何进行基本的数据分析: 相关与回归 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="课程bookdown" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="9 第八讲：如何进行基本的数据分析: 相关与回归 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿" />
+  
+  <meta name="twitter:description" content="课程bookdown" />
+  
+
+<meta name="author" content="胡传鹏" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lesson-7.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.27/datatables.js"></script>
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX","output/SVG"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+   src="../../../MathJax/MathJax.js">
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 教学内容与课时</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#目录"><i class="fa fa-check"></i><b>1.1</b> 目录</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>2</b> 第一讲：为什么要学习R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lesson-1.html"><a href="lesson-1.html#r在心理科学及社会科学中的运用"><i class="fa fa-check"></i><b>2.1</b> R在心理科学及社会科学中的运用</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="lesson-1.html"><a href="lesson-1.html#id_1-data-science"><i class="fa fa-check"></i><b>2.1.1</b> 数据科学</a></li>
+<li class="chapter" data-level="2.1.2" data-path="lesson-1.html"><a href="lesson-1.html#id_1-data-science-born"><i class="fa fa-check"></i><b>2.1.2</b> 数据科学的诞生——数字化时代</a></li>
+<li class="chapter" data-level="2.1.3" data-path="lesson-1.html"><a href="lesson-1.html#为什么要学习r语言1-why-learn-r"><i class="fa fa-check"></i><b>2.1.3</b> 为什么要学习R语言？{1-why-learn-R}</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="lesson-1.html"><a href="lesson-1.html#r语言使用的示例展示"><i class="fa fa-check"></i><b>2.2</b> R语言使用的示例展示</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="lesson-1.html"><a href="lesson-1.html#数据清洗"><i class="fa fa-check"></i><b>2.2.1</b> 数据清洗</a></li>
+<li class="chapter" data-level="2.2.2" data-path="lesson-1.html"><a href="lesson-1.html#ggplot2画图"><i class="fa fa-check"></i><b>2.2.2</b> ggplot2画图</a></li>
+<li class="chapter" data-level="2.2.3" data-path="lesson-1.html"><a href="lesson-1.html#心理学数据分析与结果汇报"><i class="fa fa-check"></i><b>2.2.3</b> 心理学数据分析与结果汇报</a></li>
+<li class="chapter" data-level="2.2.4" data-path="lesson-1.html"><a href="lesson-1.html#regression"><i class="fa fa-check"></i><b>2.2.4</b> Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="lesson-1.html"><a href="lesson-1.html#课程安排"><i class="fa fa-check"></i><b>2.3</b> 课程安排</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="lesson-1.html"><a href="lesson-1.html#课程大纲"><i class="fa fa-check"></i><b>2.3.1</b> 课程大纲</a></li>
+<li class="chapter" data-level="2.3.2" data-path="lesson-1.html"><a href="lesson-1.html#成绩分配"><i class="fa fa-check"></i><b>2.3.2</b> 成绩分配</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="lesson-1.html"><a href="lesson-1.html#如何学好这门课"><i class="fa fa-check"></i><b>2.4</b> 如何学好这门课</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lesson-2.html"><a href="lesson-2.html"><i class="fa fa-check"></i><b>3</b> 第二讲：如何开始使用R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-for-lesson"><i class="fa fa-check"></i><b>3.1</b> 要解决的数据分析问题简介</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-1"><i class="fa fa-check"></i><b>3.1.1</b> 第一个数据: 人类企鹅计划数据</a></li>
+<li class="chapter" data-level="3.1.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-2"><i class="fa fa-check"></i><b>3.1.2</b> 第二个数据: 知觉匹配任务数据</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-install-R"><i class="fa fa-check"></i><b>3.2</b> 如何安装</a></li>
+<li class="chapter" data-level="3.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio"><i class="fa fa-check"></i><b>3.3</b> 如何方便使用？Rstudio的安装与界面介绍</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-install"><i class="fa fa-check"></i><b>3.3.1</b> Rstudio的安装与界面介绍</a></li>
+<li class="chapter" data-level="3.3.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-test"><i class="fa fa-check"></i><b>3.3.2</b> 测试Rstudio</a></li>
+<li class="chapter" data-level="3.3.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-packges"><i class="fa fa-check"></i><b>3.3.3</b> R语言中的包</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lesson-3.html"><a href="lesson-3.html"><i class="fa fa-check"></i><b>4</b> 第三讲：如何导入数据</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path-working-dir"><i class="fa fa-check"></i><b>4.1</b> 路径与工作目录</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path"><i class="fa fa-check"></i><b>4.1.1</b> 相对路径与绝对路径</a></li>
+<li class="chapter" data-level="4.1.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-packge-here"><i class="fa fa-check"></i><b>4.1.2</b> Here包的使用</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-data"><i class="fa fa-check"></i><b>4.2</b> 读取数据</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-csv"><i class="fa fa-check"></i><b>4.2.1</b> read.csv函数</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lesson-3.html"><a href="lesson-3.html#命名"><i class="fa fa-check"></i><b>4.2.2</b> 命名</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="lesson-3.html"><a href="lesson-3.html#id_3-data-object"><i class="fa fa-check"></i><b>4.3</b> 了解R里的数据 （R语言中的对象）</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lesson-4.html"><a href="lesson-4.html"><i class="fa fa-check"></i><b>5</b> 第四讲：如何清理数据—R语言编程基础</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-robject"><i class="fa fa-check"></i><b>5.1</b> R对象的操控</a></li>
+<li class="chapter" data-level="5.2" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-function"><i class="fa fa-check"></i><b>5.2</b> 函数</a></li>
+<li class="chapter" data-level="5.3" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-functions"><i class="fa fa-check"></i><b>5.3</b> 常用函数</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="lesson-4.html"><a href="lesson-4.html#unique"><i class="fa fa-check"></i><b>5.3.1</b> unique()</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lesson-5.html"><a href="lesson-5.html"><i class="fa fa-check"></i><b>6</b> 第五讲：如何清理数据—数据的预处理</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="lesson-5.html"><a href="lesson-5.html#批量读取文件"><i class="fa fa-check"></i><b>6.1</b> <strong>批量读取文件</strong></a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="lesson-5.html"><a href="lesson-5.html#通配符"><i class="fa fa-check"></i><b>6.1.1</b> <strong>通配符</strong></a></li>
+<li class="chapter" data-level="6.1.2" data-path="lesson-5.html"><a href="lesson-5.html#for循环思路"><i class="fa fa-check"></i><b>6.1.2</b> for<strong>循环思路</strong></a></li>
+<li class="chapter" data-level="6.1.3" data-path="lesson-5.html"><a href="lesson-5.html#lapply思路"><i class="fa fa-check"></i><b>6.1.3</b> lapply思路</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="lesson-5.html"><a href="lesson-5.html#数据预处理"><i class="fa fa-check"></i><b>6.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="6.3" data-path="lesson-5.html"><a href="lesson-5.html#函数"><i class="fa fa-check"></i><b>6.3</b> 函数</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="lesson-5.html"><a href="lesson-5.html#函数参数"><i class="fa fa-check"></i><b>6.3.1</b> 函数参数</a></li>
+<li class="chapter" data-level="6.3.2" data-path="lesson-5.html"><a href="lesson-5.html#groupby"><i class="fa fa-check"></i><b>6.3.2</b> groupby()</a></li>
+<li class="chapter" data-level="6.3.3" data-path="lesson-5.html"><a href="lesson-5.html#定义函数"><i class="fa fa-check"></i><b>6.3.3</b> 定义函数</a></li>
+<li class="chapter" data-level="6.3.4" data-path="lesson-5.html"><a href="lesson-5.html#for-loop"><i class="fa fa-check"></i><b>6.3.4</b> for loop</a></li>
+<li class="chapter" data-level="6.3.5" data-path="lesson-5.html"><a href="lesson-5.html#信号检测"><i class="fa fa-check"></i><b>6.3.5</b> 信号检测</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lesson-6.html"><a href="lesson-6.html"><i class="fa fa-check"></i><b>7</b> 第六讲：如何探索数据: 描述性统计与数据可视化基础</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="lesson-6.html"><a href="lesson-6.html#描述性统计"><i class="fa fa-check"></i><b>7.1</b> <strong>描述性统计</strong></a></li>
+<li class="chapter" data-level="7.2" data-path="lesson-6.html"><a href="lesson-6.html#ggplot2的基本使用"><i class="fa fa-check"></i><b>7.2</b> ggplot2的基本使用</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="lesson-6.html"><a href="lesson-6.html#了解ggplot2"><i class="fa fa-check"></i><b>7.2.1</b> 了解ggplot2</a></li>
+<li class="chapter" data-level="7.2.2" data-path="lesson-6.html"><a href="lesson-6.html#密度图"><i class="fa fa-check"></i><b>7.2.2</b> 密度图</a></li>
+<li class="chapter" data-level="7.2.3" data-path="lesson-6.html"><a href="lesson-6.html#叠加绘图"><i class="fa fa-check"></i><b>7.2.3</b> 叠加绘图</a></li>
+<li class="chapter" data-level="7.2.4" data-path="lesson-6.html"><a href="lesson-6.html#散点图"><i class="fa fa-check"></i><b>7.2.4</b> 散点图</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="lesson-6.html"><a href="lesson-6.html#data-explore"><i class="fa fa-check"></i><b>7.3</b> Data Explore</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lesson-7.html"><a href="lesson-7.html"><i class="fa fa-check"></i><b>8</b> 第七讲：如何进行基本的数据分析: t-test和anova</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lesson-7.html"><a href="lesson-7.html#语法实现"><i class="fa fa-check"></i><b>8.1</b> <strong>语法实现</strong></a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="lesson-7.html"><a href="lesson-7.html#t检验"><i class="fa fa-check"></i><b>8.1.1</b> t检验</a></li>
+<li class="chapter" data-level="8.1.2" data-path="lesson-7.html"><a href="lesson-7.html#方差分析"><i class="fa fa-check"></i><b>8.1.2</b> 方差分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lesson-8.html"><a href="lesson-8.html"><i class="fa fa-check"></i><b>9</b> 第八讲：如何进行基本的数据分析: 相关与回归</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="lesson-8.html"><a href="lesson-8.html#什么是相关"><i class="fa fa-check"></i><b>9.1</b> 什么是相关</a></li>
+<li class="chapter" data-level="9.2" data-path="lesson-8.html"><a href="lesson-8.html#相关-代码实现"><i class="fa fa-check"></i><b>9.2</b> 相关-代码实现</a></li>
+<li class="chapter" data-level="9.3" data-path="lesson-8.html"><a href="lesson-8.html#什么是回归"><i class="fa fa-check"></i><b>9.3</b> 什么是回归</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lesson-8" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">9</span> 第八讲：如何进行基本的数据分析: 相关与回归<a href="lesson-8.html#lesson-8" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="什么是相关" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> 什么是相关<a href="lesson-8.html#什么是相关" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>相关分析是一种统计技术，用于测量两个变量之间线性关系的强度和方向。它涉及计算相关系数，这是一个范围从-1到1的值，其中-1表示完全的负相关，0表示无相关，1表示完全正相关。
+<strong>Pearson(皮尔逊)相关</strong>
+Pearson相关系数是最常用的方法之一，用于衡量两个变量之间的线性相关程度，取值范围为-1到1之间，其值越接近于1或-1表示两个变量之间的线性相关程度越强，而越接近于0则表示两个变量之间线性相关程度越弱或不存在线性相关性。
+<strong>Spearman(斯皮尔曼)相关</strong>
+Spearman等级相关系数用于衡量两个变量之间的关联程度，但不要求变量呈现线性关系，而是通过对变量的等级进行比较来计算它们之间的相关性。</p>
+<p><strong>Kendall(肯德尔)相关</strong>
+Kendall秩相关系数也用于衡量两个变量之间的关联程度，其计算方式与Spearman等级相关系数类似，但它是基于每个变量的秩的比较来计算它们之间的相关性。</p>
+<p><strong>假想问题</strong>
+在penguin数据中，参与者压力和自律水平的相关水平？</p>
+</div>
+<div id="相关-代码实现" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> 相关-代码实现<a href="lesson-8.html#相关-代码实现" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="lesson-8.html#cb136-1" tabindex="-1"></a><span class="co"># 检查是否已安装 pacman</span></span>
+<span id="cb136-2"><a href="lesson-8.html#cb136-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;pacman&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb136-3"><a href="lesson-8.html#cb136-3" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>) }   <span class="co"># 如果未安装，则安装包</span></span>
+<span id="cb136-4"><a href="lesson-8.html#cb136-4" tabindex="-1"></a></span>
+<span id="cb136-5"><a href="lesson-8.html#cb136-5" tabindex="-1"></a><span class="co"># 使用p_load来载入需要的包</span></span>
+<span id="cb136-6"><a href="lesson-8.html#cb136-6" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;bruceR&quot;</span>, <span class="st">&quot;performance&quot;</span>)</span>
+<span id="cb136-7"><a href="lesson-8.html#cb136-7" tabindex="-1"></a></span>
+<span id="cb136-8"><a href="lesson-8.html#cb136-8" tabindex="-1"></a><span class="co"># 或者直接使用 easystats这个系列</span></span>
+<span id="cb136-9"><a href="lesson-8.html#cb136-9" tabindex="-1"></a></span>
+<span id="cb136-10"><a href="lesson-8.html#cb136-10" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;bruceR&quot;</span>, <span class="st">&quot;easystats&quot;</span>)</span></code></pre></div>
+<p>检查工作路径 - 导入原始数据</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="lesson-8.html#cb137-1" tabindex="-1"></a><span class="co"># 检查工作路径</span></span>
+<span id="cb137-2"><a href="lesson-8.html#cb137-2" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;C:/GitHub/R4PsyBook/bookdown_files/Books/Book&quot;</code></pre>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="lesson-8.html#cb139-1" tabindex="-1"></a><span class="co">#读取数据</span></span>
+<span id="cb139-2"><a href="lesson-8.html#cb139-2" tabindex="-1"></a>df.pg.raw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;./data/penguin/penguin_rawdata.csv&#39;</span>,</span>
+<span id="cb139-3"><a href="lesson-8.html#cb139-3" tabindex="-1"></a>                      <span class="at">header =</span> T, </span>
+<span id="cb139-4"><a href="lesson-8.html#cb139-4" tabindex="-1"></a>                      <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, </span>
+<span id="cb139-5"><a href="lesson-8.html#cb139-5" tabindex="-1"></a>                      <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>我们需要将数据导入R中，并进行数据清洗和转换。然后，我们可以使用Tidyverse包中的函数来选择和转换数据。在进行反向计分后，我们可以使用mutate函数来计算每个问卷的得分。
+接下来，我们选择性别、压力和自我控制这三个变量，并使用Bruce R中的相关分析方法来计算它们之间的相关性。需要注意的是，当我们有多个变量需要进行两两相关性分析时，需要进行P值的多重性校正。我们最后得到的是一个宽数据，我们可以在此基础上进行进一步的分析。</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="lesson-8.html#cb140-1" tabindex="-1"></a>df.pg.corr <span class="ot">&lt;-</span> df.pg.raw <span class="sc">%&gt;%</span></span>
+<span id="cb140-2"><a href="lesson-8.html#cb140-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(sex <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> sex <span class="sc">&lt;</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span> <span class="co"># 筛选出男性和女性的数据</span></span>
+<span id="cb140-3"><a href="lesson-8.html#cb140-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sex, </span>
+<span id="cb140-4"><a href="lesson-8.html#cb140-4" tabindex="-1"></a>                <span class="fu">starts_with</span>(<span class="st">&quot;scontrol&quot;</span>), </span>
+<span id="cb140-5"><a href="lesson-8.html#cb140-5" tabindex="-1"></a>                <span class="fu">starts_with</span>(<span class="st">&quot;stress&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># 筛选出需要的变量</span></span>
+<span id="cb140-6"><a href="lesson-8.html#cb140-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(scontrol2, scontrol3,scontrol4, </span>
+<span id="cb140-7"><a href="lesson-8.html#cb140-7" tabindex="-1"></a>                         scontrol5,scontrol7, scontrol9,</span>
+<span id="cb140-8"><a href="lesson-8.html#cb140-8" tabindex="-1"></a>                         scontrol10,scontrol12,scontrol13,</span>
+<span id="cb140-9"><a href="lesson-8.html#cb140-9" tabindex="-1"></a>                         stress4, stress5, stress6,stress7, </span>
+<span id="cb140-10"><a href="lesson-8.html#cb140-10" tabindex="-1"></a>                         stress9, stress10,stress13), </span>
+<span id="cb140-11"><a href="lesson-8.html#cb140-11" tabindex="-1"></a>                     <span class="sc">~</span> <span class="fu">case_when</span>(. <span class="sc">==</span> <span class="st">&#39;1&#39;</span> <span class="sc">~</span> <span class="st">&#39;5&#39;</span>,</span>
+<span id="cb140-12"><a href="lesson-8.html#cb140-12" tabindex="-1"></a>                                 . <span class="sc">==</span> <span class="st">&#39;2&#39;</span> <span class="sc">~</span> <span class="st">&#39;4&#39;</span>,</span>
+<span id="cb140-13"><a href="lesson-8.html#cb140-13" tabindex="-1"></a>                                 . <span class="sc">==</span> <span class="st">&#39;3&#39;</span> <span class="sc">~</span> <span class="st">&#39;3&#39;</span>,</span>
+<span id="cb140-14"><a href="lesson-8.html#cb140-14" tabindex="-1"></a>                                 . <span class="sc">==</span> <span class="st">&#39;4&#39;</span> <span class="sc">~</span> <span class="st">&#39;2&#39;</span>,</span>
+<span id="cb140-15"><a href="lesson-8.html#cb140-15" tabindex="-1"></a>                                 . <span class="sc">==</span> <span class="st">&#39;5&#39;</span> <span class="sc">~</span> <span class="st">&#39;1&#39;</span>,</span>
+<span id="cb140-16"><a href="lesson-8.html#cb140-16" tabindex="-1"></a>                                 <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(.)))</span>
+<span id="cb140-17"><a href="lesson-8.html#cb140-17" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span> <span class="co"># 反向计分修正</span></span>
+<span id="cb140-18"><a href="lesson-8.html#cb140-18" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">&quot;scontrol&quot;</span>) </span>
+<span id="cb140-19"><a href="lesson-8.html#cb140-19" tabindex="-1"></a>                       <span class="sc">|</span> <span class="fu">starts_with</span>(<span class="st">&quot;stress&quot;</span>), </span>
+<span id="cb140-20"><a href="lesson-8.html#cb140-20" tabindex="-1"></a>                       <span class="sc">~</span> <span class="fu">as.numeric</span>(.))</span>
+<span id="cb140-21"><a href="lesson-8.html#cb140-21" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span> <span class="co"># 将数据类型转化为numeric</span></span>
+<span id="cb140-22"><a href="lesson-8.html#cb140-22" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">stress_mean =</span> </span>
+<span id="cb140-23"><a href="lesson-8.html#cb140-23" tabindex="-1"></a>                  <span class="fu">rowMeans</span>(<span class="fu">select</span>(.,<span class="fu">starts_with</span>(<span class="st">&quot;stress&quot;</span>)),</span>
+<span id="cb140-24"><a href="lesson-8.html#cb140-24" tabindex="-1"></a>                           <span class="at">na.rm =</span> T),</span>
+<span id="cb140-25"><a href="lesson-8.html#cb140-25" tabindex="-1"></a>                <span class="at">scontrol_mean =</span> </span>
+<span id="cb140-26"><a href="lesson-8.html#cb140-26" tabindex="-1"></a>                  <span class="fu">rowMeans</span>(<span class="fu">select</span>(., <span class="fu">starts_with</span>(<span class="st">&quot;scontrol&quot;</span>)), </span>
+<span id="cb140-27"><a href="lesson-8.html#cb140-27" tabindex="-1"></a>                           <span class="at">na.rm =</span> T)</span>
+<span id="cb140-28"><a href="lesson-8.html#cb140-28" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span> <span class="co"># 根据子项目求综合平均</span></span>
+<span id="cb140-29"><a href="lesson-8.html#cb140-29" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sex, stress_mean, scontrol_mean)</span></code></pre></div>
+<p>查看一下前五行</p>
+<div id="htmlwidget-0eb34935aa8d491c666b" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0eb34935aa8d491c666b">{"x":{"filter":"none","vertical":false,"fillContainer":true,"data":[["1","2","3","4","5"],[1,1,1,2,1],[2.93846153846154,2.96410256410256,3.42564102564103,3.12307692307692,3.5025641025641],[3,2.38461538461538,2.38461538461538,3.46153846153846,2.46153846153846]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>sex<\/th>\n      <th>stress_mean<\/th>\n      <th>scontrol_mean<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p>bruceR::Corr()</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="lesson-8.html#cb141-1" tabindex="-1"></a>results.Corr <span class="ot">&lt;-</span> <span class="fu">capture.output</span>({</span>
+<span id="cb141-2"><a href="lesson-8.html#cb141-2" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">Corr</span>(<span class="at">data =</span> df.pg.corr[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)], </span>
+<span id="cb141-3"><a href="lesson-8.html#cb141-3" tabindex="-1"></a>               <span class="at">file =</span> <span class="st">&quot;./output/chp8/Corr.doc&quot;</span>)</span>
+<span id="cb141-4"><a href="lesson-8.html#cb141-4" tabindex="-1"></a>})</span></code></pre></div>
+<p><img src="1008-lesson8_files/figure-html/result.Corr-1.png" width="672" /></p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="lesson-8.html#cb142-1" tabindex="-1"></a><span class="fu">writeLines</span>(results.Corr, <span class="st">&quot;./output/chp8/Corr.md&quot;</span>) <span class="co"># .md最整齐</span></span></code></pre></div>
+<p>Bruce R默认的采用的是pearson相关，那么你也可以选择使用spearman或者kendall 然后另外如果我们有多个,比方说我们有三个变量，两两之间计算相关的话 那么我们往往是要进行这个P值的多重性的校正的，假如说我们只有两个变量的话 那肯定是不需要了 因为不存在这个多重比较较真的问题，假如说我们有三个以上变量，这个肯定是要校正的。</p>
+<p>在保存文件时，要注意文件名和文件类型的后缀。</p>
+<p>我们也可以用散点图来展示变量之间的相关性。</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="lesson-8.html#cb143-1" tabindex="-1"></a><span class="co">#绘制相关散点图</span></span>
+<span id="cb143-2"><a href="lesson-8.html#cb143-2" tabindex="-1"></a><span class="fu">pairs</span>(df.pg.corr[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)])</span></code></pre></div>
+<p><img src="1008-lesson8_files/figure-html/corr2-1.png" width="672" />
+我们RStudio有4个panel，最右下角的这个面板是用来画图的，有的时候大家可能会觉得发现画的图没有输出，可能就是这个地方 绘图的区域留的不够大，如果这个地方留的不够大的话，有可能就画不出来。</p>
+<p>运行完了之后它会自动的输出一个图 我们可以看到就是stress_mean和control_mean，它自动会以一个矩阵的形式来输出一个相关矩阵
+然后我们可以看到这里有一个从-1到1的一个 legend图例，颜色越浅的话表示相关越低，它应该会把显著的相关会标出来，如果没有记错的话，这个地方可以看到它这里显示的数字 就是它的相关系数0.05，这是一个相当小的一个相关系数。
+我们其实也可以把它输出为一个word文档，需要注意的是我们可能需要精确的指出我们以哪些columns作为输入 假如说大家不选择的话，它会把性别和我们的别的变量也做相关,与其他的两个连续变量也会做相关。但这样的情况是不能用pearson的。
+假如说们有一个变量是男性和女性，另外一个变量是连续的变量，我们不能直接用pearson做相关，我们应该用点二类相关，或者直接使用t检验。</p>
+<p><img src="1008-lesson8/corr_result.png" /></p>
+<p>那么在ezstates里面有一个类似的包叫做correlation，那么correlation它会有一个好处就是它会输出更多的信息，尤其当我们做探索性的分析的时候。我们前面讲探索性的分析，假如说我们对这个变量并不是特别清楚，哪些变量之间有相关，我们想去探索一下。
+它就会以这样一个可说话的方式告诉我，哪两个变量之间相关变强，哪两个变量相对弱，那么我一下可能就能看出变量之间的一个模式。</p>
+</div>
+<div id="什么是回归" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> 什么是回归<a href="lesson-8.html#什么是回归" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>回归模型是通过对观测数据进行拟合来描述变量之间的关系。回归允许我们估计因变量如何随着自变量的变化而变化。
+我们说线性模型, 基本上是我们整个经典统计, 包括我们所有的T-test,LOVA,还有相关,还有我们说的回归分析，包括单变量,多变量,回归分析,它所有的都是有一个共同的技术, 我们说它叫做GLM,Generalized Linear Model, 或者更加复杂点叫做Generalized Linear Mixed Model,它本质上就是Y=A+BX。我们通常会将Y写成为预测项，有时候我们会在预测项上加上一个误差，这是可以扩展的，我们也可以假设他是一个非线性的关系，当它是线性的时候，我们实际上是在预测一个正态分布的均值，如果我们不是预测均值，我们可以通过一个转换，使用一个链接函数，转化后的参数仍然能用这种方法来组合预测，这个自变量或者因变量可以是非连续的变量。
+## 回归-代码实现</p>
+<p><span class="math display">\[y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_p + \epsilon\]</span></p>
+<p>假想的问题
+“在penguin数据中，我们希望找到参与者压力和自律水平关于性别的回归？”</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="lesson-8.html#cb144-1" tabindex="-1"></a><span class="co"># 数据预处理</span></span>
+<span id="cb144-2"><a href="lesson-8.html#cb144-2" tabindex="-1"></a>df.pg.lm <span class="ot">&lt;-</span> df.pg.corr <span class="sc">%&gt;%</span></span>
+<span id="cb144-3"><a href="lesson-8.html#cb144-3" tabindex="-1"></a><span class="co"># 将sex变量转化为factor类型</span></span>
+<span id="cb144-4"><a href="lesson-8.html#cb144-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">as.factor</span>(sex)) <span class="sc">%&gt;%</span></span>
+<span id="cb144-5"><a href="lesson-8.html#cb144-5" tabindex="-1"></a><span class="co"># 自变量为scontrol和sex</span></span>
+<span id="cb144-6"><a href="lesson-8.html#cb144-6" tabindex="-1"></a>  <span class="fu">group_by</span>(scontrol_mean,sex) <span class="sc">%&gt;%</span></span>
+<span id="cb144-7"><a href="lesson-8.html#cb144-7" tabindex="-1"></a><span class="co"># 根据分组获得stress的平均值，。groups属性保留了之前的group_by</span></span>
+<span id="cb144-8"><a href="lesson-8.html#cb144-8" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">stress_Mean =</span> <span class="fu">mean</span>(stress_mean),<span class="at">.groups =</span> <span class="st">&#39;keep&#39;</span>)</span></code></pre></div>
+<p>如果我们希望找到压，自律以及性别之间的一个关系, 我们先做了correlation，然后把性别转换一下,然后再把数据进行group by, 这是我们的数据预处理的过程。
+数据预处理之后的话,我们其实首先可以做一个探索分析，它们是不是有一个关系? 那么我们可以先用ggPlot画一个图，把男性和女性的数据就分别以不同的颜色画出来。 可以看到这里面我们用geom_smooth(), 当我们绘制了散点，需要继续绘制趋势线的时候,他自动使用了一个formula,y ~ x，这就表示用x来预测y。这时候的y就是strength， x就是self-control。两条线看起来是交叉的，这说明 在这个女性当中是有一个相关, 在男性当中好像没有这个相关，那么我们后面可以对它进行一个检验。</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="lesson-8.html#cb145-1" tabindex="-1"></a><span class="co"># 使用ggplot()画图</span></span>
+<span id="cb145-2"><a href="lesson-8.html#cb145-2" tabindex="-1"></a><span class="fu">ggplot</span>(df.pg.lm, <span class="fu">aes</span>(<span class="at">x =</span> scontrol_mean, <span class="at">y =</span> stress_Mean, <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
+<span id="cb145-3"><a href="lesson-8.html#cb145-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb145-4"><a href="lesson-8.html#cb145-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb145-5"><a href="lesson-8.html#cb145-5" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&quot;Gender&quot;</span>,</span>
+<span id="cb145-6"><a href="lesson-8.html#cb145-6" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb145-7"><a href="lesson-8.html#cb145-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="1008-lesson8_files/figure-html/plot.lm-1.png" width="672" />
+那么我们直接使用lm linear model。它实际上是base里面的一个函数。这实际上是R里面写回归的一个常用的公式的写法, 就是说我们把一边选自变量,对吧,一边选因变量,然后另外一个选自备量,然后它就自动给我们输出结果。 那么在R里面的话,你必须要自己把这个公式写清楚。</p>
+<p>我们使用主观压力stress作为一个因变量， 公式右边也就是我们的自变量，分别是sex性别和scontrol_mean，还有第三个自变量就是性别和控制的一个交互作用对吧,因为我们有两个自备量,所以两个自备量之间它可能会有交互作用。<br />
+这种写法大家如果说你后面长期要用它,然后做线性回归,或者是基于线性回归的一些方法的话,这个可能你还是最好要了解一下。
+我们的公式会作为第一个参数被输入到函数里面。你也可以更完善的补全它的argument，它应该就是formula等于这个后面的一串。 然后后面就是data等于df什么什么,这个地方所以我们基本上都把这两个argument给省略掉了。
+那然后的话我们其实你运行了这个代码之后的话,它就会把这个结果,会把这个线性回归的结果存到一个叫mod的变量里去,就在我们电脑上面了对吧,内存里面了。
+那这个时候的话我们可以就是用mod_summary,然后呢来去把它把它结果提取出来。</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="lesson-8.html#cb147-1" tabindex="-1"></a><span class="co"># 建立回归模型</span></span>
+<span id="cb147-2"><a href="lesson-8.html#cb147-2" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(stress_Mean <span class="sc">~</span> scontrol_mean <span class="sc">+</span> sex <span class="sc">+</span> scontrol_mean<span class="sc">:</span>sex, df.pg.lm)</span>
+<span id="cb147-3"><a href="lesson-8.html#cb147-3" tabindex="-1"></a><span class="co"># 使用bruceR::model_summary()输出结果</span></span>
+<span id="cb147-4"><a href="lesson-8.html#cb147-4" tabindex="-1"></a>result.lm <span class="ot">&lt;-</span> <span class="fu">capture.output</span>({</span>
+<span id="cb147-5"><a href="lesson-8.html#cb147-5" tabindex="-1"></a>  <span class="fu">model_summary</span>(mod,</span>
+<span id="cb147-6"><a href="lesson-8.html#cb147-6" tabindex="-1"></a>                <span class="at">std =</span> T,</span>
+<span id="cb147-7"><a href="lesson-8.html#cb147-7" tabindex="-1"></a>                <span class="at">file =</span> <span class="st">&quot;./output/chp8/Lm.doc&quot;</span>)</span>
+<span id="cb147-8"><a href="lesson-8.html#cb147-8" tabindex="-1"></a>  })</span>
+<span id="cb147-9"><a href="lesson-8.html#cb147-9" tabindex="-1"></a><span class="fu">writeLines</span>(result.lm, <span class="st">&quot;./output/chp8/Lm.md&quot;</span>) </span></code></pre></div>
+<p>这是我们的显著性检验，我们可以看到selfcontrol的预测作用和sex的预测作用以及它们之间的交互作用。他们的显著性可以在这里看到，然后呢我们看这个决定系数对吧,这个整个模型的一个决定系数,解释了多少变异,然后adjusted就是调整之后的,还有number of observations 53。
+<img src="1008-lesson8/lm_result.png" />
+我们推荐一个很好的包：performance,这个performance是专门为了解决我们常用的这个统计里面的这个模型,包括像我们Anova T-test等模型。它会检查我们这个模型的各个方面,比如posterior predictive check，inlinearity，方差齐性，共线性等等。 还有正态性的一个检验对吧,这里面会有各种各样的一些检验,那么大家如果需要去做完这个模型之后,需要去对自己的模型是不是符合做这个模型的一个假定一个assumption。
+它还可以进行模型比较,比如我们有模型1是有交互作用的,模型2是没有交互作用的。然后甚至比方说模型3和5只有性别的一个自变量作用,我们有三个模型,我们能够看到哪个模型能够更合理的解释数据的变异,可以用model comparison这个函数来对三个模型进行比较,这个在easy state里面有的。</p>
+<p>那么关于这部分的话,我们就是说有两个需要强调的,第一个就是说我们的公式如何写,对于第一次在R里面接触回归模型的同学来说,我们可能要注意,它是这么一个固定的套路。
+然后第二个就是我们如果说是用简单的回归的话,那基本上用LM这个就可以了,然后大家在心理统计学,一个变量和另外一个变量的预设作用或者多个变量和一个变量的预设作用LM都是可以做到的。 然后比方说甚至你这个变量类型,像我们这里放了一个二分的变量对吧,它也是可以的。</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lesson-7.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CBook.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

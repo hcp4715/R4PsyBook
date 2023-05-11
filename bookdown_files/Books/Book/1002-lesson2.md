@@ -80,7 +80,7 @@ a <- rnorm(100)
 plot(a)
 ```
 
-<img src="1002-lesson2_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+![](1002-lesson2_files/figure-latex/unnamed-chunk-1-1.pdf)<!-- --> 
 
 这个命令将在变量a中存放了100个数据。控制台支持用户输入任何语句，比如demo()，plot(x,y)。（这将自动打开一个窗口显示绘制的图形。）
 
