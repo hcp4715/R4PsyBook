@@ -102,7 +102,7 @@ library("here")#加载here包，install的R包需要library后使用
 ```
 
 ```
-## here() starts at D:/GitHub/R4PsyBook/bookdown_files/Books/Book
+## here() starts at C:/GitHub/R4PsyBook/bookdown_files/Books/Book
 ```
 
 ```r
@@ -110,7 +110,7 @@ here::here()#这里第一个here是R包，第二个here是调用这个包里here
 ```
 
 ```
-## [1] "D:/GitHub/R4PsyBook/bookdown_files/Books/Book"
+## [1] "C:/GitHub/R4PsyBook/bookdown_files/Books/Book"
 ```
 
 ## 常用函数{#lesson-4-functions}

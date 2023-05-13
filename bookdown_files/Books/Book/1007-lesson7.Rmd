@@ -22,7 +22,6 @@ pdf.options(height=10/2.54, width=10/2.54, family="GB1") # 注意：此设置要
 我们载入所需的包。BruceR包载入后会有一大串提示信息，包括载入的包、主要函数和网址等。我们使用相对路径读取之前的数据，可以查看前5行。
 ####解决问题
 ```{r}
-install.packages("bruceR")
 library(bruceR)
 library(dplyr)
 library(tidyr)
