@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 第六讲：如何探索数据: 描述性统计与数据可视化基础 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿</title>
+  <meta name="description" content="课程bookdown" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 第六讲：如何探索数据: 描述性统计与数据可视化基础 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="课程bookdown" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 第六讲：如何探索数据: 描述性统计与数据可视化基础 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿" />
+  
+  <meta name="twitter:description" content="课程bookdown" />
+  
+
+<meta name="author" content="胡传鹏" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lesson-5.html"/>
+<link rel="next" href="lesson-7.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.27/datatables.js"></script>
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX","output/SVG"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+   src="../../../MathJax/MathJax.js">
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 教学内容与课时</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#目录"><i class="fa fa-check"></i><b>1.1</b> 目录</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>2</b> 第一讲：为什么要学习R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lesson-1.html"><a href="lesson-1.html#r在心理科学及社会科学中的运用"><i class="fa fa-check"></i><b>2.1</b> R在心理科学及社会科学中的运用</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="lesson-1.html"><a href="lesson-1.html#id_1-data-science"><i class="fa fa-check"></i><b>2.1.1</b> 数据科学</a></li>
+<li class="chapter" data-level="2.1.2" data-path="lesson-1.html"><a href="lesson-1.html#id_1-data-science-born"><i class="fa fa-check"></i><b>2.1.2</b> 数据科学的诞生——数字化时代</a></li>
+<li class="chapter" data-level="2.1.3" data-path="lesson-1.html"><a href="lesson-1.html#为什么要学习r语言1-why-learn-r"><i class="fa fa-check"></i><b>2.1.3</b> 为什么要学习R语言？{1-why-learn-R}</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="lesson-1.html"><a href="lesson-1.html#r语言使用的示例展示"><i class="fa fa-check"></i><b>2.2</b> R语言使用的示例展示</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="lesson-1.html"><a href="lesson-1.html#数据清洗"><i class="fa fa-check"></i><b>2.2.1</b> 数据清洗</a></li>
+<li class="chapter" data-level="2.2.2" data-path="lesson-1.html"><a href="lesson-1.html#ggplot2画图"><i class="fa fa-check"></i><b>2.2.2</b> ggplot2画图</a></li>
+<li class="chapter" data-level="2.2.3" data-path="lesson-1.html"><a href="lesson-1.html#心理学数据分析与结果汇报"><i class="fa fa-check"></i><b>2.2.3</b> 心理学数据分析与结果汇报</a></li>
+<li class="chapter" data-level="2.2.4" data-path="lesson-1.html"><a href="lesson-1.html#regression"><i class="fa fa-check"></i><b>2.2.4</b> Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="lesson-1.html"><a href="lesson-1.html#课程安排"><i class="fa fa-check"></i><b>2.3</b> 课程安排</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="lesson-1.html"><a href="lesson-1.html#课程大纲"><i class="fa fa-check"></i><b>2.3.1</b> 课程大纲</a></li>
+<li class="chapter" data-level="2.3.2" data-path="lesson-1.html"><a href="lesson-1.html#成绩分配"><i class="fa fa-check"></i><b>2.3.2</b> 成绩分配</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="lesson-1.html"><a href="lesson-1.html#如何学好这门课"><i class="fa fa-check"></i><b>2.4</b> 如何学好这门课</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lesson-2.html"><a href="lesson-2.html"><i class="fa fa-check"></i><b>3</b> 第二讲：如何开始使用R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-for-lesson"><i class="fa fa-check"></i><b>3.1</b> 要解决的数据分析问题简介</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-1"><i class="fa fa-check"></i><b>3.1.1</b> 第一个数据: 人类企鹅计划数据</a></li>
+<li class="chapter" data-level="3.1.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-2"><i class="fa fa-check"></i><b>3.1.2</b> 第二个数据: 知觉匹配任务数据</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-install-R"><i class="fa fa-check"></i><b>3.2</b> 如何安装</a></li>
+<li class="chapter" data-level="3.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio"><i class="fa fa-check"></i><b>3.3</b> 如何方便使用？Rstudio的安装与界面介绍</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-install"><i class="fa fa-check"></i><b>3.3.1</b> Rstudio的安装与界面介绍</a></li>
+<li class="chapter" data-level="3.3.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-test"><i class="fa fa-check"></i><b>3.3.2</b> 测试Rstudio</a></li>
+<li class="chapter" data-level="3.3.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-packges"><i class="fa fa-check"></i><b>3.3.3</b> R语言中的包</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lesson-3.html"><a href="lesson-3.html"><i class="fa fa-check"></i><b>4</b> 第三讲：如何导入数据</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path-working-dir"><i class="fa fa-check"></i><b>4.1</b> 路径与工作目录</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path"><i class="fa fa-check"></i><b>4.1.1</b> 相对路径与绝对路径</a></li>
+<li class="chapter" data-level="4.1.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-packge-here"><i class="fa fa-check"></i><b>4.1.2</b> Here包的使用</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-data"><i class="fa fa-check"></i><b>4.2</b> 读取数据</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-csv"><i class="fa fa-check"></i><b>4.2.1</b> read.csv函数</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lesson-3.html"><a href="lesson-3.html#命名"><i class="fa fa-check"></i><b>4.2.2</b> 命名</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="lesson-3.html"><a href="lesson-3.html#id_3-data-object"><i class="fa fa-check"></i><b>4.3</b> 了解R里的数据 （R语言中的对象）</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lesson-4.html"><a href="lesson-4.html"><i class="fa fa-check"></i><b>5</b> 第四讲：如何清理数据—R语言编程基础</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-robject"><i class="fa fa-check"></i><b>5.1</b> R对象的操控</a></li>
+<li class="chapter" data-level="5.2" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-function"><i class="fa fa-check"></i><b>5.2</b> 函数</a></li>
+<li class="chapter" data-level="5.3" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-functions"><i class="fa fa-check"></i><b>5.3</b> 常用函数</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="lesson-4.html"><a href="lesson-4.html#unique"><i class="fa fa-check"></i><b>5.3.1</b> unique()</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lesson-5.html"><a href="lesson-5.html"><i class="fa fa-check"></i><b>6</b> 第五讲：如何清理数据—数据的预处理</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="lesson-5.html"><a href="lesson-5.html#批量读取文件"><i class="fa fa-check"></i><b>6.1</b> <strong>批量读取文件</strong></a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="lesson-5.html"><a href="lesson-5.html#通配符"><i class="fa fa-check"></i><b>6.1.1</b> <strong>通配符</strong></a></li>
+<li class="chapter" data-level="6.1.2" data-path="lesson-5.html"><a href="lesson-5.html#for循环思路"><i class="fa fa-check"></i><b>6.1.2</b> for<strong>循环思路</strong></a></li>
+<li class="chapter" data-level="6.1.3" data-path="lesson-5.html"><a href="lesson-5.html#lapply思路"><i class="fa fa-check"></i><b>6.1.3</b> lapply思路</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="lesson-5.html"><a href="lesson-5.html#数据预处理"><i class="fa fa-check"></i><b>6.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="6.3" data-path="lesson-5.html"><a href="lesson-5.html#函数"><i class="fa fa-check"></i><b>6.3</b> 函数</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="lesson-5.html"><a href="lesson-5.html#函数参数"><i class="fa fa-check"></i><b>6.3.1</b> 函数参数</a></li>
+<li class="chapter" data-level="6.3.2" data-path="lesson-5.html"><a href="lesson-5.html#groupby"><i class="fa fa-check"></i><b>6.3.2</b> groupby()</a></li>
+<li class="chapter" data-level="6.3.3" data-path="lesson-5.html"><a href="lesson-5.html#定义函数"><i class="fa fa-check"></i><b>6.3.3</b> 定义函数</a></li>
+<li class="chapter" data-level="6.3.4" data-path="lesson-5.html"><a href="lesson-5.html#for-loop"><i class="fa fa-check"></i><b>6.3.4</b> for loop</a></li>
+<li class="chapter" data-level="6.3.5" data-path="lesson-5.html"><a href="lesson-5.html#信号检测"><i class="fa fa-check"></i><b>6.3.5</b> 信号检测</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lesson-6.html"><a href="lesson-6.html"><i class="fa fa-check"></i><b>7</b> 第六讲：如何探索数据: 描述性统计与数据可视化基础</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="lesson-6.html"><a href="lesson-6.html#描述性统计"><i class="fa fa-check"></i><b>7.1</b> <strong>描述性统计</strong></a></li>
+<li class="chapter" data-level="7.2" data-path="lesson-6.html"><a href="lesson-6.html#ggplot2的基本使用"><i class="fa fa-check"></i><b>7.2</b> ggplot2的基本使用</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="lesson-6.html"><a href="lesson-6.html#了解ggplot2"><i class="fa fa-check"></i><b>7.2.1</b> 了解ggplot2</a></li>
+<li class="chapter" data-level="7.2.2" data-path="lesson-6.html"><a href="lesson-6.html#密度图"><i class="fa fa-check"></i><b>7.2.2</b> 密度图</a></li>
+<li class="chapter" data-level="7.2.3" data-path="lesson-6.html"><a href="lesson-6.html#叠加绘图"><i class="fa fa-check"></i><b>7.2.3</b> 叠加绘图</a></li>
+<li class="chapter" data-level="7.2.4" data-path="lesson-6.html"><a href="lesson-6.html#散点图"><i class="fa fa-check"></i><b>7.2.4</b> 散点图</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="lesson-6.html"><a href="lesson-6.html#data-explore"><i class="fa fa-check"></i><b>7.3</b> Data Explore</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lesson-7.html"><a href="lesson-7.html"><i class="fa fa-check"></i><b>8</b> 第七讲：如何进行基本的数据分析: t-test和anova</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lesson-7.html"><a href="lesson-7.html#语法实现"><i class="fa fa-check"></i><b>8.1</b> <strong>语法实现</strong></a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="lesson-7.html"><a href="lesson-7.html#t检验"><i class="fa fa-check"></i><b>8.1.1</b> t检验</a></li>
+<li class="chapter" data-level="8.1.2" data-path="lesson-7.html"><a href="lesson-7.html#方差分析"><i class="fa fa-check"></i><b>8.1.2</b> 方差分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lesson-8.html"><a href="lesson-8.html"><i class="fa fa-check"></i><b>9</b> 第八讲：如何进行基本的数据分析: 相关与回归</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="lesson-8.html"><a href="lesson-8.html#什么是相关"><i class="fa fa-check"></i><b>9.1</b> 什么是相关</a></li>
+<li class="chapter" data-level="9.2" data-path="lesson-8.html"><a href="lesson-8.html#相关-代码实现"><i class="fa fa-check"></i><b>9.2</b> 相关-代码实现</a></li>
+<li class="chapter" data-level="9.3" data-path="lesson-8.html"><a href="lesson-8.html#什么是回归"><i class="fa fa-check"></i><b>9.3</b> 什么是回归</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lesson-6" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> 第六讲：如何探索数据: 描述性统计与数据可视化基础<a href="lesson-6.html#lesson-6" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="描述性统计" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> <strong>描述性统计</strong><a href="lesson-6.html#描述性统计" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>本节课我们将讲探索性数据分析和数据可视化。探索性数据分析是数据科学中的一个重要概念，它可以帮助我们发现数据中的规律和问题。</p>
+<p>在传统的心理学中，我们通常会清楚地知道要进行什么样的分析，但是在数据科学中，我们可能面临的是一个未知的数据集，我们不知道其中的规律和数据的结构。因此，探索性数据分析非常重要。</p>
+<p>在本节课中，我们还将介绍数据可视化的方法，它可以帮助我们更好地理解数据。</p>
+<p>在进行数据分析时，如果我们面对的数据结构不清晰，甚至不确定数据是否干净，那么<strong>探索性数据分析</strong>（EDA）就变得非常重要。EDA的目的是在我们不确定数据结构和分析方法的情况下，通过描述和可视化等方式初步了解数据，从而帮助我们决定下一步使用什么样的统计方法或数据分析方法。在现在的大数据时代，EDA已经成为数据科学家们非常普遍的操作。</p>
+<p>进行EDA时，我们需要了解数据的基本信息，比如数据的<strong>列数</strong>、<strong>变量类型</strong>、<strong>变量值的范围</strong>以及<strong>变量之间的关系</strong>等。</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="lesson-6.html#cb65-1" tabindex="-1"></a><span class="co"># 检查是否已安装 pacman</span></span>
+<span id="cb65-2"><a href="lesson-6.html#cb65-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;pacman&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb65-3"><a href="lesson-6.html#cb65-3" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>) }   <span class="co"># 如果未安装，则安装包</span></span>
+<span id="cb65-4"><a href="lesson-6.html#cb65-4" tabindex="-1"></a></span>
+<span id="cb65-5"><a href="lesson-6.html#cb65-5" tabindex="-1"></a><span class="co"># 加载所需要的R包</span></span>
+<span id="cb65-6"><a href="lesson-6.html#cb65-6" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb65-7"><a href="lesson-6.html#cb65-7" tabindex="-1"></a><span class="co"># 读取数据</span></span>
+<span id="cb65-8"><a href="lesson-6.html#cb65-8" tabindex="-1"></a>df.pg.raw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/penguin/penguin_rawdata.csv&quot;</span>,</span>
+<span id="cb65-9"><a href="lesson-6.html#cb65-9" tabindex="-1"></a>                      <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb65-10"><a href="lesson-6.html#cb65-10" tabindex="-1"></a>df.mt.raw <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&#39;./data/match/match_raw.csv&#39;</span>,</span>
+<span id="cb65-11"><a href="lesson-6.html#cb65-11" tabindex="-1"></a>                       <span class="at">header =</span> T, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) </span></code></pre></div>
+<p>我们首先读取数据，这是我们之前都已经很熟悉的两个读取数据的语句。读取数据了之后，我们的命名方式现在基本上已经固定下来。比方说这个human-penguin-project的这个数据的话，我们就叫做df.pg.raw，这是原始的数据。然后对于那个match的数据的话，我们就叫df.mt.raw。</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="lesson-6.html#cb66-1" tabindex="-1"></a><span class="fu">colnames</span>(df.mt.raw)                <span class="co"># 查看列名，观察有哪些变量</span></span></code></pre></div>
+<pre><code>##  [1] &quot;Date&quot;     &quot;Prac&quot;     &quot;Sub&quot;      &quot;Age&quot;      &quot;Sex&quot;      &quot;Hand&quot;    
+##  [7] &quot;Block&quot;    &quot;Bin&quot;      &quot;Trial&quot;    &quot;Shape&quot;    &quot;Label&quot;    &quot;Match&quot;   
+## [13] &quot;CorrResp&quot; &quot;Resp&quot;     &quot;ACC&quot;      &quot;RT&quot;</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="lesson-6.html#cb68-1" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="fu">head</span>(df.mt.raw, <span class="dv">3</span>))  <span class="co"># 了解数据内容</span></span></code></pre></div>
+<div id="htmlwidget-dae6db785b83d5a73b01" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dae6db785b83d5a73b01">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["02-May-2018_14:23:06","02-May-2018_14:23:08","02-May-2018_14:23:10"],["Exp","Exp","Exp"],[7302,7302,7302],[22,22,22],["female","female","female"],["R","R","R"],[1,1,1],[1,1,1],[1,2,3],["immoralSelf","moralOther","immoralOther"],["immoralSelf","moralOther","immoralOther"],["mismatch","mismatch","mismatch"],["n","n","n"],["m","n","n"],[0,1,1],[0.7561,0.7043,0.9903]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Date<\/th>\n      <th>Prac<\/th>\n      <th>Sub<\/th>\n      <th>Age<\/th>\n      <th>Sex<\/th>\n      <th>Hand<\/th>\n      <th>Block<\/th>\n      <th>Bin<\/th>\n      <th>Trial<\/th>\n      <th>Shape<\/th>\n      <th>Label<\/th>\n      <th>Match<\/th>\n      <th>CorrResp<\/th>\n      <th>Resp<\/th>\n      <th>ACC<\/th>\n      <th>RT<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,7,8,9,15,16]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>我们可以查看每一个数据框里面到底有哪些变量名，用这个colnames。对于我们这个column names比较有限的情况之下的话，我们其实可以用这种方法。比方说像这个mt的这个数据，我们column names之后的话就可以查看它所有的columns的这个名字。假如说它有几百行几千列的话，这个时候就这个命令就不适用了。</p>
+<p>另外的话，我们就可以通常用这个head，就是这个用这个head命令来查看它有前面三行长什么样子。这是最开始了解这个数据。</p>
+<p>我们还可以使用一个str命令。我们也可以用summary，比方说我们可以简单的找到它的这个数据的一个概况，就用summary这个函数。summary函数输出之后它也是一个data frame，然后我们也可以去这么查看。</p>
+<p>如果我们想要去了解这个变量里面的一些我们常用来描述数值的一些统计量，比方说像平均值中位数标准差等等这种，也就是我们说的集中量数和差异量数。那么我们可以用就是psych这个包。那么psych这个包它实际上是主要用来做问卷分析的一个包。大家如果做问卷分析比较多的话，可能会对这个包会越来越熟悉。那么这个包里面有个describe这个函数，是用来描述这个数据的情况的。类似的还有像那个Bruce R那个包里面，它也有一个Describe，它也是可以帮助我们描述一个数据里的情况。</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="lesson-6.html#cb69-1" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="fu">summary</span>(df.mt.raw))</span>
+<span id="cb69-2"><a href="lesson-6.html#cb69-2" tabindex="-1"></a><span class="co">#或者使用psych包</span></span>
+<span id="cb69-3"><a href="lesson-6.html#cb69-3" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(psych<span class="sc">::</span><span class="fu">describe</span>(df.mt.raw))</span></code></pre></div>
+<p>如果我想知道变量的平均数、中位数和标准差等统计量应该怎么办？在我们的数据框中，每个变量（即列）都有一个 <code>n</code> 表示行数，均值、标准差、中位数等常用的描述数据的值也会显示出来。如果我们想提取这些值，可以使用 <code>summarize()</code> 函数。例如，我们可以使用管道将数据框作为输入，然后使用 <code>summarize()</code> 函数来计算某个特定变量（例如 <code>RT</code>）的均值、标准差和行数。我们也可以自己找到感兴趣的变量的值。</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="lesson-6.html#cb70-1" tabindex="-1"></a><span class="co"># 使用dplyr包中的summarise()函数</span></span>
+<span id="cb70-2"><a href="lesson-6.html#cb70-2" tabindex="-1"></a>df.mt.raw <span class="sc">%&gt;%</span></span>
+<span id="cb70-3"><a href="lesson-6.html#cb70-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_RT =</span> <span class="fu">mean</span>(RT),</span>
+<span id="cb70-4"><a href="lesson-6.html#cb70-4" tabindex="-1"></a>            <span class="at">sd_RT =</span> <span class="fu">sd</span>(RT),</span>
+<span id="cb70-5"><a href="lesson-6.html#cb70-5" tabindex="-1"></a>            <span class="at">n_values =</span> <span class="fu">n</span>())</span></code></pre></div>
+<pre><code>##     mean_RT     sd_RT n_values
+## 1 0.7149504 0.1508394    25920</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="lesson-6.html#cb72-1" tabindex="-1"></a><span class="co"># summarise函数不会忽略缺失值，如果计算的列中有缺失值，会有报错。</span></span></code></pre></div>
+<p>需要注意的是，许多汇总数据的函数（例如均值或方差）不会自动忽略缺失值，因此我们需要在计算均值时添加一个参数（例如 <code>na.rm = TRUE</code>）来忽略缺失值。在使用 <code>mean()</code> 函数时，我们可以使用 <code>?mean</code> 命令来查看具体的参数输入。</p>
+<p>总之，我们可以使用描述性统计指标（例如均值和标准差）来了解数据框的情况。</p>
+</div>
+<div id="ggplot2的基本使用" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> ggplot2的基本使用<a href="lesson-6.html#ggplot2的基本使用" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="了解ggplot2" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> 了解ggplot2<a href="lesson-6.html#了解ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>另一种方式是通过可视化的方式来了解数据。我们可以使用 <code>ggplot2</code> 包中的图层来构建图形，这是一种基于语法的图形描述方法。所谓gg源于“grammar of graphics”，即图形语法。</p>
+<p>GGplot2是一种图形语法，它的核心是用图层来描述和构建图形。我们可以将数据映射到不同的图层中，然后将这些图层叠加起来形成最终的图形。</p>
+<p>比如，我们可以用GGplot2来展示被试的正确率情况。我们可以从这个包中调用一个叫做GGplot的函数，然后将数据框作为参数传入。</p>
+<p>aes(Aesthetics)是一个映射关系，它决定了如何将数据映射到图形空间中，并选择使用什么样的几何图形进行可视化。在GGplot2中，我们可以选择使用不同的几何图形，比如bar。</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="lesson-6.html#cb73-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data=</span>df.mt.raw,       <span class="co"># 指定数据</span></span>
+<span id="cb73-2"><a href="lesson-6.html#cb73-2" tabindex="-1"></a>                <span class="fu">aes</span>(<span class="at">x=</span>ACC)) <span class="sc">+</span>         <span class="co"># 确定映射到x轴的变量</span></span>
+<span id="cb73-3"><a href="lesson-6.html#cb73-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span>                        <span class="co"># 绘制直方图</span></span>
+<span id="cb73-4"><a href="lesson-6.html#cb73-4" tabindex="-1"></a>  <span class="fu">theme_classic</span>()                     <span class="co"># 设定绘图风格</span></span></code></pre></div>
+<p><img src="1006-lesson6_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>此外，我们还可以选择不同的绘图风格，比如classical。GGplot2中有三个非常重要的成分，大家需要在自己的电脑上完成这个练习，否则很容易忘记。</p>
+<p>我们可以使用数据来练习GGplot2的使用。首先，我们需要将数据读入到df.mt.row中，然后使用GGplot2来绘制图形。我们需要先加载tidyverse库，然后读取数据，最后才能开始绘图。</p>
+<p>由于前面的课程已经讲解了如何使用library和读取数据，因此这节课是基于前面的数据处理知识的。我们需要回到前面的数据处理知识点，了解如何读取和合并数据。如果你没有保存数据到csv文件中，那么你可能会遇到找不到文件的问题。这个知识点是高度依赖的，前面的知识是后面的基础。如果你在使用前面的代码合并数据时速度太慢，你也可以使用U盘复制一下match_row.csv。</p>
+<p>我们可以使用一个大的data frame，其中有很多行和列，其中一个是acc，它有很多值，例如1、0、0、1、1。</p>
+<p>首先，我们需要使用一个命令来指定数据集，即以data frame作为输入，然后使用data参数和aes参数将数据映射到图层上。</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="lesson-6.html#cb74-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data=</span>df.mt.raw,         <span class="co"># 指定数据</span></span>
+<span id="cb74-2"><a href="lesson-6.html#cb74-2" tabindex="-1"></a>                <span class="fu">aes</span>(<span class="at">x=</span>ACC)) <span class="sc">+</span>           <span class="co"># 确定映射到x轴的变量</span></span>
+<span id="cb74-3"><a href="lesson-6.html#cb74-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span>                          <span class="co"># 绘制直方图</span></span>
+<span id="cb74-4"><a href="lesson-6.html#cb74-4" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span>  <span class="co"># x轴在 y=0 处  </span></span>
+<span id="cb74-5"><a href="lesson-6.html#cb74-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>()                       <span class="co"># 设定绘图风格</span></span></code></pre></div>
+<p><img src="1006-lesson6_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>现在，我们将x设置为ACC，这样我们只选择以它作为x轴。此时，它自动将x轴合并，并找到了它的独特取值，即-1、0和1。我们可以看到，如果将数据映射到二维空间中，它只有x轴，没有y轴。它自动帮我们补全了y轴，使用的是count，即每个取值的计数。</p>
+<p>我们将这个数值映射到一个几何图形中，例如线段、点或条形图。我们选择使用条形图来表示count，因为它适合描述计数数据。因此，我们将数据以直方图的方式进行表示。最后，我们指定了以classical主题呈现图形，ggplot抱包含了很多预设的主题，可以根据自己的需要进行选择。在这个代码中，我们可以注释掉theme_classical()，然后运行代码，看看结果是否正确。如果没有出错，我们会发现画出的图形与之前不同，它有一个灰色的背景和方格。实际上，如果我们不使用theme_classical()，R会使用默认的风格来画图，这个风格可能与我们想要的不同。因此，使用theme classical可以帮助我们选择适合我们要的风格来进行可视化。</p>
+<p>此外，我们还注意到，R的默认风格与我们在心理学或社会科学中常用的图形有所不同，例如字比较小，X轴的0点位置也不同。如果我们要在论文中呈现出这个图形，我们需要改变这些默认设置。我们可以使用scale_y_continuous命令来调整Y轴的连续数据，例如将X轴固定在0的位置。我们可以使用“scale y-continuous”命令来调整Y轴的连续数据。如果Y轴是离散数据，我们需要使用“discrete”命令。此外，我们可以在“theme”中调整字体、颜色和大小等细节，以满足特定目的。</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="lesson-6.html#cb75-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data=</span>df.mt.raw,      <span class="co"># 指定数据</span></span>
+<span id="cb75-2"><a href="lesson-6.html#cb75-2" tabindex="-1"></a>                <span class="fu">aes</span>(<span class="at">x=</span>RT)) <span class="sc">+</span> <span class="co"># 确定映射到x轴的变量</span></span>
+<span id="cb75-3"><a href="lesson-6.html#cb75-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span>                   <span class="co"># 绘制直方图</span></span>
+<span id="cb75-4"><a href="lesson-6.html#cb75-4" tabindex="-1"></a>  <span class="fu">stat_bin</span>(<span class="at">bins =</span> <span class="dv">40</span>) <span class="sc">+</span>                <span class="co"># 设定连续变量分组数量</span></span>
+<span id="cb75-5"><a href="lesson-6.html#cb75-5" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">&quot;RT&quot;</span>) <span class="sc">+</span>    <span class="co"># 命名x轴</span></span>
+<span id="cb75-6"><a href="lesson-6.html#cb75-6" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span> <span class="co"># x轴在 y=0 处 </span></span>
+<span id="cb75-7"><a href="lesson-6.html#cb75-7" tabindex="-1"></a>  <span class="fu">theme_classic</span>()                      <span class="co"># 设定绘图风格</span></span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="1006-lesson6_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="密度图" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> 密度图<a href="lesson-6.html#密度图" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>对于离散数据，我们可以使用条形图来表示，而对于连续数据，我们可以使用直方图或密度图。在直方图中，我们使用高度来表示数据的多少，而在密度图中，我们使用平滑曲线来表示数据的分布情况。在绘制图形时，我们可以使用“geom”命令来选择几何图形，如条形图或密度图。</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="lesson-6.html#cb77-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data=</span>df.mt.raw,         <span class="co"># 指定数据</span></span>
+<span id="cb77-2"><a href="lesson-6.html#cb77-2" tabindex="-1"></a>                <span class="fu">aes</span>(<span class="at">x=</span>RT)) <span class="sc">+</span>  <span class="co"># 确定映射到x轴的变量</span></span>
+<span id="cb77-3"><a href="lesson-6.html#cb77-3" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span>                      <span class="co"># 绘制密度曲线</span></span>
+<span id="cb77-4"><a href="lesson-6.html#cb77-4" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;RT&quot;</span>) <span class="sc">+</span>         <span class="co"># 命名x轴</span></span>
+<span id="cb77-5"><a href="lesson-6.html#cb77-5" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span>  <span class="co"># x轴在 y=0 处 </span></span>
+<span id="cb77-6"><a href="lesson-6.html#cb77-6" tabindex="-1"></a>  <span class="fu">theme_classic</span>()                       <span class="co"># 设定绘图风格</span></span></code></pre></div>
+<p><img src="1006-lesson6_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="叠加绘图" class="section level3 hasAnchor" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> 叠加绘图<a href="lesson-6.html#叠加绘图" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们可以将直方图和密度曲线叠加在一起，这样更能看到它们的分布情况。在这里，我们常用的叠加方式是将alpha参数设置为透明度，数值从0到1之间变化，越小表示透明度越高。我们可以将aes放在geom里面，这样就能够将图形相互叠加，看得更加清楚。alpha是多个条件画图时非常常用的参数。建立好数据映射关系后，我们可以先画一个直方图，然后在其上叠加一个密度图。</p>
+<p>如果我们不想显示alpha设置透明度对应的图例，可以用guide隐藏起来。</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="lesson-6.html#cb78-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data=</span>df.mt.raw,             <span class="co"># 指定数据</span></span>
+<span id="cb78-2"><a href="lesson-6.html#cb78-2" tabindex="-1"></a>                <span class="fu">aes</span>(<span class="at">x=</span>RT,                   <span class="co"># x轴的变量</span></span>
+<span id="cb78-3"><a href="lesson-6.html#cb78-3" tabindex="-1"></a>                    <span class="at">y=</span><span class="fu">after_stat</span>(density),  <span class="co"># y轴对应的是密度曲线</span></span>
+<span id="cb78-4"><a href="lesson-6.html#cb78-4" tabindex="-1"></a>                    <span class="at">alpha=</span><span class="fl">0.8</span>)) <span class="sc">+</span>           <span class="co"># 透明度</span></span>
+<span id="cb78-5"><a href="lesson-6.html#cb78-5" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span>                        <span class="co"># 绘制直方图</span></span>
+<span id="cb78-6"><a href="lesson-6.html#cb78-6" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span>                          <span class="co"># 绘制密度曲线</span></span>
+<span id="cb78-7"><a href="lesson-6.html#cb78-7" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">alpha=</span><span class="cn">FALSE</span>) <span class="sc">+</span>                     <span class="co"># 隐藏透明度alpha设置带来的图例</span></span>
+<span id="cb78-8"><a href="lesson-6.html#cb78-8" tabindex="-1"></a>  <span class="fu">theme_classic</span>()                           <span class="co"># 设定绘图风格</span></span></code></pre></div>
+<pre><code>## Warning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use &quot;none&quot; instead as
+## of ggplot2 3.3.4.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="1006-lesson6_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>箱线图也是我们常用的一种图形，其中黑线表示median，box表示50%的quater，25%和75%的quater。如果我们将x换成一个以上的变量，就会出现四个以上变量的取值。</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="lesson-6.html#cb81-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data=</span>df.mt.raw,  <span class="co"># 指定数据</span></span>
+<span id="cb81-2"><a href="lesson-6.html#cb81-2" tabindex="-1"></a>                <span class="fu">aes</span>(<span class="at">x=</span>Label,     <span class="co"># 确定映射到xy轴的变量</span></span>
+<span id="cb81-3"><a href="lesson-6.html#cb81-3" tabindex="-1"></a>                    <span class="at">y=</span>RT)) <span class="sc">+</span>                 </span>
+<span id="cb81-4"><a href="lesson-6.html#cb81-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span>               <span class="co"># 绘制箱线图</span></span>
+<span id="cb81-5"><a href="lesson-6.html#cb81-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>()                <span class="co"># 设定绘图风格</span></span></code></pre></div>
+<p><img src="1006-lesson6_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>我们以四个独特的取值作为x，然后按照这四个条件将Rt分成四组。每一组都画成一个box plot，按照x的顺序排列，形成四个box plot的图。因为Rt是连续的数据，我们可以对它进行计算统计指标，例如median和四分位。这些数据分成上下两部分，上面50%下面50%、下面25%下面75%、上面25%下面75%。我们可以看到大量的数据都集中在这个附近，同时也可以看出它有一些变化。这主要是让我们初步了解不同条件下的反应情况。</p>
+<p>另一个值得观察的是label。它按照字母顺序排序，因为它是字符类型的数据。在画图时，它会按照abcd的顺序进行排序。所以我们可以看到这个immoral在other之前，而i在m之前。这个顺序不一定是我们想要的，所以有时我们需要改变它的顺序。我们可以将Lable改为factor，并确定它的levels。然后我们可以使用mutate函数，例如label=factor(levels=c(“c”,“b”,“a”,“d”))，来改变它的顺序。这是画图时需要注意的小细节。</p>
+</div>
+<div id="散点图" class="section level3 hasAnchor" number="7.2.4">
+<h3><span class="header-section-number">7.2.4</span> 散点图<a href="lesson-6.html#散点图" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>如果我们有两个变量，想要描述它们之间的关系，我们需要进行探索性分析。我们需要把x轴和y轴分别赋值，然后用点来描绘它们之间的关系。比如，我们可以看一个人在前测和后测的时候，他的体温的变化。我们可以用ggPlot来描述这个关系，x轴是temperature T1，y轴是temperature T2。</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="lesson-6.html#cb82-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data=</span>df.pg.raw,                  <span class="co"># 指定数据</span></span>
+<span id="cb82-2"><a href="lesson-6.html#cb82-2" tabindex="-1"></a>                <span class="fu">aes</span>(<span class="at">x=</span>Temperature_t1,            <span class="co"># 确定映射到xy轴的变量</span></span>
+<span id="cb82-3"><a href="lesson-6.html#cb82-3" tabindex="-1"></a>                    <span class="at">y=</span>Temperature_t2)) <span class="sc">+</span></span>
+<span id="cb82-4"><a href="lesson-6.html#cb82-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>                                 <span class="co"># 绘制散点图</span></span>
+<span id="cb82-5"><a href="lesson-6.html#cb82-5" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">&quot;Temperature_t1&quot;</span>) <span class="sc">+</span>  <span class="co"># 修改X轴的名称</span></span>
+<span id="cb82-6"><a href="lesson-6.html#cb82-6" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">&quot;Temperature_t2&quot;</span>) <span class="sc">+</span>  <span class="co"># 修改Y轴的名称</span></span>
+<span id="cb82-7"><a href="lesson-6.html#cb82-7" tabindex="-1"></a>  <span class="fu">theme_classic</span>()                                <span class="co"># 设定绘图风格</span></span></code></pre></div>
+<pre><code>## Warning: Removed 30 rows containing missing values (`geom_point()`).</code></pre>
+<p><img src="1006-lesson6_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>我们可以用点来描绘这个数据的关系，如果它们沿着对角线，就是一个高度相关的关系。我们也可以加一个回归线，用LM来拟合一个平滑的线来代表它们之间的关系。</p>
+<p>当然，在进行数据探索之前，我们也可以对数据进行预处理。比如，我们可以用penguin data来求出两个问卷的平均分。如果我们需要求出两个问卷的平均分。我们可以使用penguin raw data作为输入，然后使用mutate命令生成两列新的变量。一列叫做stress_ave，表示stress的平均得分。另一列是对手机的依赖，我们同样可以求它的均分。这样我们就得到了两个新的变量，一个叫做stress_ave，另一个叫做phone_ave。</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="lesson-6.html#cb84-1" tabindex="-1"></a><span class="co"># 利用管道符，可以帮助我们更简洁地合并数据处理和可视化的过程。</span></span>
+<span id="cb84-2"><a href="lesson-6.html#cb84-2" tabindex="-1"></a>df.pg.raw <span class="sc">%&gt;%</span> </span>
+<span id="cb84-3"><a href="lesson-6.html#cb84-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">stress_ave=</span><span class="fu">rowMeans</span>(.[,<span class="fu">c</span>(<span class="st">&quot;stress1&quot;</span>, <span class="st">&quot;stress2&quot;</span>, <span class="st">&quot;stress3&quot;</span>,<span class="st">&quot;stress4&quot;</span>, <span class="st">&quot;stress5&quot;</span>, </span>
+<span id="cb84-4"><a href="lesson-6.html#cb84-4" tabindex="-1"></a>                                         <span class="st">&quot;stress6&quot;</span>,<span class="st">&quot;stress7&quot;</span>, <span class="st">&quot;stress8&quot;</span>, <span class="st">&quot;stress9&quot;</span>,<span class="st">&quot;stress10&quot;</span>, </span>
+<span id="cb84-5"><a href="lesson-6.html#cb84-5" tabindex="-1"></a>                                         <span class="st">&quot;stress11&quot;</span>, <span class="st">&quot;stress12&quot;</span>,<span class="st">&quot;stress13&quot;</span>, <span class="st">&quot;stress14&quot;</span>)]),</span>
+<span id="cb84-6"><a href="lesson-6.html#cb84-6" tabindex="-1"></a>                <span class="at">phone_ave=</span><span class="fu">rowMeans</span>(.[,<span class="fu">c</span>(<span class="st">&quot;phone1&quot;</span>,<span class="st">&quot;phone2&quot;</span>,<span class="st">&quot;phone3&quot;</span>,<span class="st">&quot;phone4&quot;</span>,<span class="st">&quot;phone5&quot;</span>,</span>
+<span id="cb84-7"><a href="lesson-6.html#cb84-7" tabindex="-1"></a>                                        <span class="st">&quot;phone6&quot;</span>,<span class="st">&quot;phone7&quot;</span>,<span class="st">&quot;phone8&quot;</span>,<span class="st">&quot;phone9&quot;</span>)])</span>
+<span id="cb84-8"><a href="lesson-6.html#cb84-8" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span> </span>
+<span id="cb84-9"><a href="lesson-6.html#cb84-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>stress_ave, </span>
+<span id="cb84-10"><a href="lesson-6.html#cb84-10" tabindex="-1"></a>             <span class="at">y=</span>phone_ave)) <span class="sc">+</span></span>
+<span id="cb84-11"><a href="lesson-6.html#cb84-11" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb84-12"><a href="lesson-6.html#cb84-12" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) <span class="sc">+</span>    <span class="co"># 在散点图上叠加回归线，语法可以查找帮助文档</span></span>
+<span id="cb84-13"><a href="lesson-6.html#cb84-13" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<pre><code>## Warning: Removed 18 rows containing non-finite values (`stat_smooth()`).</code></pre>
+<pre><code>## Warning: Removed 18 rows containing missing values (`geom_point()`).</code></pre>
+<p><img src="1006-lesson6_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>然后我们把这个data frame作为输入到ggplot里面去，X轴是stress的均值，Y轴是对手机依赖的均值。我们用这个几何图形来表达我们的数据，然后用smooth找到它们相互之间关系的一个回归线。这个回归线是用的linear model，它还有一个回归线的CI，就是95%的一个置信区间。最后是我们这个画图的主题。看到阴影，实际上是R里默认的一个输入，它不仅有一个回归线，还有一个回归线的95%置信区间。</p>
+<p>ggplot2是数据可视化中非常重要的工具，它可以帮助我们化繁为简，不需要为每个参数设定值，因为它有很多默认选项。这样，我们可以快速地进行数据探索，而不需要关注太多细节。</p>
+<p>虽然图表中有许多元素和参数，但我们可以手动控制每个部分，如点的大小、颜色、XY轴的名字、刻度和字体大小等。我们可以在同一图表中叠加多个元素，如散点图、回归线、轴和分布等，以显示丰富的信息。ggplot是一个非常丰富的生态系统，包含许多不同类型的图表，我们可以根据需要进行选择。</p>
+<p>通过Tidyverse下面的数据处理，我们可以直接用ggplot画图，从原始数据到最终图表都可以一个管道完成。ggplot是一个非常常用的工具，可以精确地定制我们想要呈现的图表，并直接输出为PDF格式，方便提交给杂志。</p>
+</div>
+</div>
+<div id="data-explore" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Data Explore<a href="lesson-6.html#data-explore" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>此外，Data Explore也r是一个很不错的数据探索工具，可以帮助我们快速探索数据。我们可以使用安装工具包来实现可视化，比如plot_string，它可以将DataFrame中的所有列名以可视化的形式表达出来，类似于思维导图中的树形图。我们可以试一试。另一个是plot_intro，它可以显示一些信息，比如有多少个离散数据列，有多少个连续数据列等等。我们可以看到，对于我们的匹配数据，离散列占56％，连续列占43％，所有列都是缺失值的占0％。每个数据至少都有一些值，完整的行占97.46％。缺失观测值的数量也可以通过可视化方式快速了解。</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="lesson-6.html#cb88-1" tabindex="-1"></a><span class="co"># load DataExplorer</span></span>
+<span id="cb88-2"><a href="lesson-6.html#cb88-2" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(<span class="st">&quot;DataExplorer&quot;</span>)</span>
+<span id="cb88-3"><a href="lesson-6.html#cb88-3" tabindex="-1"></a></span>
+<span id="cb88-4"><a href="lesson-6.html#cb88-4" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_str</span>(df.pg.raw)</span>
+<span id="cb88-5"><a href="lesson-6.html#cb88-5" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_intro</span>(df.mt.raw)</span></code></pre></div>
+<p><img src="1006-lesson6_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>这是数据探索包的一个独特特点，它可以帮助我们快速可视化数据。关于缺失值，我们可以使用plot_missing命令将具有缺失值的列可视化。大多数列都没有缺失值，只有一个响应列有2.5％的缺失值。</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="lesson-6.html#cb89-1" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_missing</span>(df.mt.raw)</span></code></pre></div>
+<p><img src="1006-lesson6_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>我们可以看到，几乎所有数字化变量的计数都可以用条形图表示。例如，性别可以用female，male，2和1表示。我们可以看到，大多数人是右撇子，而匹配和不匹配的比例是一致的。如果我们在匹配条件下看到匹配比不匹配或不匹配更多，那么可能存在问题，因为我们的实验设计是一致的。同样，我们的实验条件应该是平衡的，因此看起来应该是一模一样的。</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="lesson-6.html#cb90-1" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_bar</span>(df.mt.raw)</span></code></pre></div>
+<p><img src="1006-lesson6_files/figure-html/unnamed-chunk-14-1.png" width="576" /></p>
+<p>我们可以使用plot bar将所有变量以bar图的形式呈现出来。我们还可以根据match条件将数据分成matched和mismatched两部分，并用bar图表示每个部分的比例。在大多数情况下，matched和mismatched是平衡的。我们还可以使用histogram来快速绘制所有变量的分布情况，特别是连续变量的分布情况。我们可以使用qq plot来检验数据是否符合正态分布。</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="lesson-6.html#cb91-1" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_correlation</span>(<span class="fu">na.omit</span>(df.pg.raw[, <span class="dv">2</span><span class="sc">:</span><span class="dv">30</span>]))</span></code></pre></div>
+<p><img src="1006-lesson6_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>我们也可以绘制一个表之间的相关矩阵，这样就更有意义了。这个函数na.omit对我们来说非常有意义，因为它可以去除缺乏值的行，否则会报错。
+我们前面介绍了一个非常常用的工具ggPlot，它是我们整个可视化中非常常用的一个工具。我们还介绍了一个用于数据探索的工具包Data Explorer，它集成了大量的函数，可以快速探索数据结构。大家可以去官网上看看，Data Explorer还有其他一些功能。现在大家可以根据我们课程中的代码来进行修改，练习自己写代码。
+大家可以在Penguin Data里面找出两个自己感兴趣的变量，然后画一个散点图。要选择另外两个变量的话，首先你要知道有哪些变量，所以大家可能先要去查看一下这个数据包含哪些变量，然后选择两个变量画一个散点图来做练习。
+今天我们布置一个小作业，大家可以在match的数据里面选出一个被试，然后把它每个条件以shape作为条件的话，就是画出它的那个反应式的分布。大家可以任意选出一个被试，画八个图出来，画它们的反应式的分布，然后用match和shape分开画，画这个直方图加上这个density plot。最基本的要求就是画出八个图，比方说shape就是immoral self match，match对吧，然后或者是这是第1个图immoral self mismatch第2个图，然后就是比方说immoral other match immoral other mismatch，这样排列组合你最后得到八个图。
+你可以一个一个地画出这些图，这是最简单的作业。然后你可以发挥你的探索能力，对它进行更加 fancy 的呈现，比如进行排列组合，最后把它放到一个图里面。
+我们刚刚讲到了 alpha 值，你可以画一个有两个条级条的图，然后用 alpha 值对它进行叠加，这样你就能把两个图放在一起，但仍然很清晰。当然，还有其他方式，比如你可以分开画这八个图，也可以把它们拼起来放到一个大图里面。这是一个有相当大自由度的小作业，基本的要求是把这八个图画出来，从读取数据开始到数据的选择，最后到画图。
+最后我们希望大家都能够理解这个结构，我们的文件夹里面有这些数据，我们要在这个根目录里面进行操作。如果你的根目录跟我们不一样，我们就需要改一下代码，把它拼出来。每个同学都要选不同的被试，然后画出八种条件下的八个图，怎么画，怎么拼图，这个时候大家可以有自由发挥的空间。</p>
+<p>在使用 R 的时候，我们肯定会不断报错。看到报错之后，第一个不应该是慌了，你应该仔细看这个报错到底说的是什么东西。这个报错本身提示了很多信息，它不是没有意义的。实际上你应该仔细阅读一下，它这个错误的信息到底提示你哪个地方是错了。所有的基本上90%的解决方案都是可以在这里面找到的。</p>
+<ol style="list-style-type: decimal">
+<li>读取match数据，对自己感兴趣的变量进行描述性统计。</li>
+<li>读取match数据，对不同shape的击中率进行分组绘图，可使用boxplot观察差异。</li>
+<li>读取penguin数据，选择自己感兴趣的两个变量进行处理并画出散点图。</li>
+<li>对两个数据中自己感兴趣的变量们做探索性数据分析。</li>
+</ol>
+<p>第二个练习是读取 match 的数据，根据不同的限制的击中率进行分组画图。现在我们需要回到上一节课，将deep prime的击中率数据保存下来，并根据这些数据进行画图。这是一个很综合的应用。</p>
+<p>OK，我再重复一遍，第一次小作业，我们的数据是match的数据，只有我们这个matching task的数据。大家可以随便挑出一个base来，然后对这个base的数据，画它的反应时分布。反应时的分布，大家用什么方法，用什么图都可以。但是一定是反应时数据，第二个就是分布。然后是根据条件，根据不同的条件进行画。因为我们有match这个条件，还有一个shape这个条件，所以我们总共有八个条件。也就是说，我们至少要提交八个图，反映一个base在八个条件下的反应时的分布。大家可以自由发挥，但是我们要看到八个图，这是基本的。大家提交的格式是要用R Markdown，记录下自己的画图思路。
+当读取数据时，要与我们的PPT中的格式一致。因此，最好将你的文件夹组织结构与我们的课件完全相同。否则，我们将无法读取你的文件夹，这表明你的文件夹组织结构存在问题。如果你在GitHub上或之前保存过文件夹，那么这个文件夹应该包含我们的每张PPT，以HTML格式和RMD文件。对于第一次作业，直接将其放在这个文件夹中。我们需要能够在打开文件夹后读取和运行它，不要出现错误。你明白了吗？这意味着你的根目录相对路径必须与我们的保持一致。在第二课中，我们将讨论相对路径。如果你有任何疑问，请随时问。如果没有问题，那么今天的课就结束了。谢谢大家！</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lesson-5.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lesson-7.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CBook.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
