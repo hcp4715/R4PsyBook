@@ -4,7 +4,7 @@
 
 课程相关的repo：[https://github.com/hcp4715/R4Psy](https://github.com/hcp4715/R4PsyBook)
 
-在线电子书地址：
+在线电子书地址：https://bookdown.org/sengokucolaingoo/CBook/
 
 由于文字稿来自于对课堂录音的整理，而且第一版中我们只有精力完成的课堂内容的文字转换，因此，可能存在如下问题：
 
