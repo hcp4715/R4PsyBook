@@ -174,7 +174,7 @@ ggplot(df.pg.lm, aes(x = scontrol_mean, y = stress_Mean, color = sex)) +
 ```
 直接使用lm linear model，它是base中的一个函数。这里是R中进行回归常用的公式写法, 也就是~左边为因变量，~右边为自变量, 运行后R就自动输出结果。 因此在R中因变量自变量要选择清楚。
 
-这个例子中因变量是主观压力stress，三个自变量分别是sex性别、scontrol_mean、以及二者的交互作用（因为sex和scontrol_mean之间可能存在交互作用）。  
+这个例子中因变量是主观压力stress，三个自变量分别是sex性别、scontrol_mean、以及二者的交互作用（因为sex和scontrol_mean之间可能存在交互作用），那么代码就可以写成mod <- lm(stress_Mean ~ scontrol_mean + sex + scontrol_mean:sex, df.pg.lm)。  
 如果后续需要做线性回归及相关的分析，需要掌握这种写法。
 公式会作为第一个参数被输入到函数中，也可以更完善的补全它的argument，也就是formula=之后的内容，在这个例子中其他的argument被省略了、为默认值。
 运行代码之后,线性回归的结果被保存在变量mod中，然后可以用mod_summary将结果提取出来。 
