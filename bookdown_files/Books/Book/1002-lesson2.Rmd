@@ -10,7 +10,7 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ##library(tidyverse) # Wickham的数据整理的整套工具
 pdf.options(height=10/2.54, width=10/2.54, family="GB1") # 注意：此设置要放在最后
-```
+
 
 **前言**
 
