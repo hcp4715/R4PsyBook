@@ -29,6 +29,17 @@ editor_options:
 ## 读取数据{#3-read-data}
 
 工作目录是R与我们的硬盘交互的接口，我们可以使用getwd()函数来获取当前工作目录的绝对路径。我们可以使用相对路径来引用子文件夹的位置。接下来我想要查看数据的相对路径和绝对路径。假设我们的工作目录是在桌面上，数据存储在"data"文件夹中，其中包含两个子文件夹，一个是"match"，包含178个文件，另一个是"pengiun"，只有一个文件。相对路径中的一个点(.)代表当前文件夹，数据在"data"文件夹中，"match"文件夹下有178个文件。如果我们要读取某个文件，必须完整地写出文件名。对于"pengiun"文件夹，它的相对路径是"./data/pengiun"
+######
+对于R语言，有两种主要的方式导入数据。
+一、菜单方式。
+在R语言界面，右侧的Environment中，选择Import Dataset，选择对应的文件类型，再选择文件，即可导入。
+二、代码方式（强烈推荐）
+代码书写主要分为两种，使用package或不使用package
+（1）不使用packahge主要是基本的函数，如read.csv（适用于逗号分隔的文件）/read.table（适用于txt文件）等；
+（2）使用package的根据文件类型可分为以下几类
+1.excel文件，可选择openxlsx::read.xlsx(); readxl::read_excel()
+2.spss文件：foreign::read.spss(); haven::read_sav()
+3.无视文件类型的强大存在：bruceR::import() 强烈推荐
 
 ### read.csv函数{#3-read-csv}
 
