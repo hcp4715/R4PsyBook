@@ -90,7 +90,7 @@ df.pg.corr <- df.pg.raw %>%
 
 ```
 
-查看一下前五行
+使用head查看一下前五行
 ```{r df.pg.mean DT, echo=FALSE}
 # check 5st five rows 
 DT::datatable(head(df.pg.corr, 5),
