@@ -204,7 +204,7 @@ number of observations 为53。
 首先是需要掌握公式如何写,尤其是对于第一次在R中接触回归模型的同学,需要注意这个固定的写公式套路。 
 其次是如果需要做简单的回归分析,那么使用LM就可以；在心理统计学中,一个变量对另外一个变量的预测作用、多个变量对一个变量的预测作用、变量为二分变量这些情况，LM都可以适用。
 
-可以自己试着编写一条进行模型比较的函数，并把相关指标建议附在控制台的输出结果中
+可以自己试着编写一条进行回归模型比较的函数，并把相关指标建议附在控制台的输出结果中
 ```{r mod.compare}
 P_anova<- function(model1, model2, file = NULL){
   if(is.null(file)){
@@ -244,7 +244,7 @@ Model Comparison Table
 
 可以自己试着写一条建立回归模型的函数，基lmerTest、bruceR和一些数据清理的包，这行代码可以输出两个模型（可以是：lm、glm（二项分布、泊松分布、高斯分布）、lmer）的方差分析表、回归系数、标准化系数、(随机效应)、随机效应的显著性检验、输出各自模型的三线表到word文档、两个模型之间的比较（AIC、BIC、LogLik以及似然比检验 /F 检验的结果）。Tips: compare.except指模型二与模型一相比剔除的解释变量，暂不支持对多层线性模型随机斜率的比较。
 ```{r mod}
-function(formula,
+P_regress<- function(formula,
                      data,
                      family = NULL,
                      compare.except = NULL,
@@ -451,7 +451,7 @@ The significance test of random effects
 
 可以自己试着编写一条回归分析中简单斜率检验的函数，并输出简单斜率检验图。适用于绝大多数调节模型。
 ```{r simple slope}
-function(y,x,mod,mod2 = NULL, data, main.title = "Simple Slope Test Graph", way = 2){
+P_simpleslopes<- function(y,x,mod,mod2 = NULL, data, main.title = "Simple Slope Test Graph", way = 2){
   P_dif<- function(x){
     return(length(unique(x)))
   }
