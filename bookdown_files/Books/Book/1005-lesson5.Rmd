@@ -75,7 +75,7 @@ for (i in seq_along(files)) { # 重复"读取到的.out个数"的次数。根据
   # 对每个.out，使用read.table
   df <- read.table(file.path("data/match", files[i]), header = TRUE) #read.table似乎比read.csv更聪明，不需要指定分隔符
   # 给读取到的每个.out文件的每个变量统一变量格式
-  df <- dplyr::filter(df, Date != "Date") %>% # 因为有些.out文件中部还有变量名，所以需要用filter把这些行过滤掉
+  df <- dplyr::filter(df, Date != "Date") %>% # 因为有些.out文件中部还有变量名，所以需要用filter把这些行过滤掉。%>%为管道符，加载tidyverse包后才可以使用，把上一步操作导出的数据结果直接导入下一步操作，就像流水线一样。
     dplyr::mutate(Date = as.character(Date),Prac = as.character(Prac),
                   Sub = as.numeric(Sub),Age = as.numeric(Age),Sex = as.character(Sex),Hand = as.character(Hand),
                   Block = as.numeric(Block),Bin = as.numeric(Bin),Trial = as.numeric(Trial),
