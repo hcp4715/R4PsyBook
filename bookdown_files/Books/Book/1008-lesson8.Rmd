@@ -179,7 +179,7 @@ ggplot(df.pg.lm, aes(x = scontrol_mean, y = stress_Mean, color = sex)) +
 公式会作为第一个参数被输入到函数中，也可以更完善的补全它的argument，也就是formula=之后的内容，在这个例子中其他的argument被省略了、为默认值。
 运行代码之后,线性回归的结果被保存在变量mod中，然后可以用mod_summary将结果提取出来。 
 
-```{r mod}
+```{r mod1}
 # 建立回归模型
 mod <- lm(stress_Mean ~ scontrol_mean + sex + scontrol_mean:sex, df.pg.lm)
 # 使用bruceR::model_summary()输出结果
