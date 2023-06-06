@@ -8,10 +8,9 @@ editor_options:
 
 ```{r setup, include=FALSE}2
 knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)                                       # Wickham的数据整理的整套工具
+library(tidyverse) # Wickham的数据整理的整套工具
 pdf.options(height=10/2.54, width=10/2.54, family="GB1") # 注意：此设置要放在最后
 ```
-
 ## **语法实现**
 
 ### *t*检验
@@ -41,13 +40,11 @@ pdf.options(height=10/2.54, width=10/2.54, family="GB1") # 注意：此设置要
 2. “在penguin数据中，男女生在亲密关系经验(ECR)中的得分是否存在显著差异？”
 3. “在penguin数据中，参与者在不同时间的温度差异是否具有显著性？”
 
-```{r setup}
+
+```{r load data}
 library(bruceR)
 library(dplyr)
 library(tidyr)
-```
-
-```{r load data}
 df.pg.raw <-  read.csv('./data/penguin/penguin_rawdata.csv',
                        header = T, sep=",", stringsAsFactors = FALSE)
 ```
