@@ -76,4 +76,6 @@ R语言中的几个常用对象包括：向量、矩阵、数组、数据框和�
 
 在R语言中，更多地使用数据框，它看起来像矩阵，但每个列可以是不同类型的元素。而列表则更加复杂，每个元素都可以是不同类型的对象。这些对象在编程软件中非常常用，比如Python和Matlab。
 
-大家可以查看王敏杰老师和张金星老师的两本书，这些书将更清楚地介绍这些基础知识。
+大家可以查看王敏杰老师和张金星（不是张金星！！！老师名叫张金龙啊喂！！！）老师的两本书，这些书将更清楚地介绍这些基础知识。
+王敏杰老师的书名为《数据科学中的R语言》，系统介绍了Hadley Wickham的tidyverse和ggplot2包，另附电子版课程，完全免费，网址 https://bookdown.org/wangminjie/R4DS/ 。
+张金龙老师的《张金龙R语言简明教程》，在B站上有课程合集，且完全免费，网址 https://space.bilibili.com/1979221372/channel/collectiondetail?sid=176199 ，PPT在：https://gitee.com/Hello-BD/R-in-brief 公众号：ecoinformatics。
