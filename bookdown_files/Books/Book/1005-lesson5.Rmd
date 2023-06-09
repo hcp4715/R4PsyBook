@@ -75,7 +75,7 @@ for (i in seq_along(files)) { # 重复"读取到的.out个数"的次数。根据
   # 对每个.out，使用read.table
   df <- read.table(file.path("data/match", files[i]), header = TRUE) #read.table似乎比read.csv更聪明，不需要指定分隔符
   # 给读取到的每个.out文件的每个变量统一变量格式
-  df <- dplyr::filter(df, Date != "Date") %>% # 因为有些.out文件中部还有变量名，所以需要用filter把这些行过滤掉
+  df <- dplyr::filter(df, Date != "Date") %>% # 因为有些.out文件中部还有变量名，所以需要用filter把这些行过滤掉。%>%为管道符，加载tidyverse包后才可以使用，把上一步操作导出的数据结果直接导入下一步操作，就像流水线一样。
     dplyr::mutate(Date = as.character(Date),Prac = as.character(Prac),
                   Sub = as.numeric(Sub),Age = as.numeric(Age),Sex = as.character(Sex),Hand = as.character(Hand),
                   Block = as.numeric(Block),Bin = as.numeric(Bin),Trial = as.numeric(Trial),
@@ -216,15 +216,7 @@ df.clean.mutate_3 <- df.pg.raw %>%
   dplyr::select(.,decade, everything())
 ```
 
-我们还可以使用bruceR包的RECODE函数对数据进行重新编码。这个个函数是基于data.table包开发的，其中:=是data.table包中计算新变量的函数，var.new 为新变量的名称，age为旧有变量，生成的新变量将出现在pg_raw中
 
-```{r example of mutate_3 rawdata_penguin}
-pg_raw[,`:=`(var.new = RECODE(age, "0:1969 = 60;
-                              1970:1979 = 70;
-                              1980:1989 = 80;
-                              1990:1999 = 90")
-             )]
-```
 
 ```{r example of mutate_3 rawdata_penguin DT, echo=FALSE}
 DT::datatable(head(df.clean.mutate_3, 10),
