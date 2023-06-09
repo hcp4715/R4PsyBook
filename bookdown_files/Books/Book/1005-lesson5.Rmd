@@ -16,8 +16,8 @@ pdf.options(height=10/2.54, width=10/2.54, family="GB1") # 注意：此设置要
 
 在这节课中我们会讲述如何将我们从实验或者问卷中获得的原始数据进行整理，转化为可以用于统计分析的数据，我们有两种方法，分别是for loop方法和lapply函数方法，他们都可以将多个散数据合并为一个完整的数据。
 两个方法各有优劣：
-for loop方法思维难度低，书写难度高，更好理解，但是代码更长，并且存在中间变量。
-lapply方法思维难度高，书写难度低，更难理解，但是代码更简洁，存在"看不见"的局部变量。
+（1）for loop方法思维难度低，书写难度高，更好理解，但是代码更长，并且存在中间变量。
+（2）lapply方法思维难度高，书写难度低，更难理解，但是代码更简洁，存在"看不见"的局部变量。
 
 在我们的示例数据中，会发现有很多子文件，比如以practice、match和category等结尾的数据，它表示的是三个阶段：practice表示练习阶段，match表示match任务阶段，category表示categorization任务阶段。现在我们需要找出所有包含match且以out结尾的文件，这些才是我们需要读取并合并的数据。
 
@@ -75,7 +75,7 @@ for (i in seq_along(files)) { # 重复"读取到的.out个数"的次数。根据
   # 对每个.out，使用read.table
   df <- read.table(file.path("data/match", files[i]), header = TRUE) #read.table似乎比read.csv更聪明，不需要指定分隔符
   # 给读取到的每个.out文件的每个变量统一变量格式
-  df <- dplyr::filter(df, Date != "Date") %>% # 因为有些.out文件中部还有变量名，所以需要用filter把这些行过滤掉
+  df <- dplyr::filter(df, Date != "Date") %>% # 因为有些.out文件中部还有变量名，所以需要用filter把这些行过滤掉。%>%为管道符，加载tidyverse包后才可以使用，把上一步操作导出的数据结果直接导入下一步操作，就像流水线一样。
     dplyr::mutate(Date = as.character(Date),Prac = as.character(Prac),
                   Sub = as.numeric(Sub),Age = as.numeric(Age),Sex = as.character(Sex),Hand = as.character(Hand),
                   Block = as.numeric(Block),Bin = as.numeric(Bin),Trial = as.numeric(Trial),
@@ -101,8 +101,12 @@ rm(df,df_list,files,i)
 
 将所有数据放入列表后，我们可以使用bind_rows函数将它们合并成一个大的数据框。bind_rows是Dplyr中一个常用的函数，它可以通过行将不同的数据框合并。因此，data列表实际上是一个完整的列表，其中包含一个一个的out文件的数据，经过初步转换后形成的数据框。由于它们的列都是一模一样的，我们可以直接将它们合并成一个完整的数据框。
 
-这就是for循环的逻辑：先获取想要读取的文件名，然后通过迭代的方式一个一个地读取它们，并将它们放入一个DataList中。最后，对这个List进行合并得到完整数据框。
-这个思路非常直接，大家都能够理解。当然，理解for循环的前提是我们要理解它的工作原理。for循环还可以用在很多场景中。比如当你需要重复大量做某件事情而没有现成函数可以辅助时，最简单的方法就是写一个for循环来完成。i可以替代很多东西，比如你有五个东西需要做同样的操作，你可以写一个i从1到5的for循环，将每个东西放进去做同样的操作。这样，你就不用一个一个复制你的代码，然后改变其中的一个值，再运行一遍。如果你经常进行批量处理工作，学会for循环会非常有帮助。为了更方便地读取并合并文件夹中的文件，我们通常需要使用for循环。
+这就是for循环的逻辑：（1）获取想要读取的文件名；（2）通过迭代的方式依次读取这些文件名，并将它们放入一个数据列表（DataList）中；（3）对这个List进行合并得到完整数据框（Dataframe)。
+这个操作思路非常简洁易懂。当然，真正理解for循环的前提是要正确理解它的工作原理。此外，for循环还可以用在很多场景中：
+（1）进行重复性操作。
+当你需要重复大量做某件事情而没有现成函数可以辅助时，最简单的方法就是写一个for循环来完成。i可以替代很多代码，比如你有五个对象需要做同样的操作，你可以写一个i从1到5的for循环，将每个对象放进去做同样的操作。否则，你就需要不断复制你的代码，然后改变其中的一个值，再运行一遍，这样既费时又费力。
+（2）应用于数据的批处理。
+如果你经常进行批量处理工作，学会for循环会非常有帮助。它可以帮助我们更方便地读取并合并文件夹中的文件。
 
 最终的结果应该是25920 obs 16 variables
 
@@ -211,6 +215,9 @@ df.clean.mutate_3 <- df.pg.raw %>%
                 ) %>% #当括号多的时候注意括号的位置 
   dplyr::select(.,decade, everything())
 ```
+
+
+
 ```{r example of mutate_3 rawdata_penguin DT, echo=FALSE}
 DT::datatable(head(df.clean.mutate_3, 10),
               fillContainer = TRUE, options = list(pageLength = 3))
