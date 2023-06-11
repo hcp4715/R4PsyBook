@@ -36,7 +36,7 @@ pdf.options(height=10/2.54, width=10/2.54, family="GB1") # 注意：此设置要
 
 **获取及修改工作目录的基本操作**
 查看当前工作目录：getwd()
-修改当前工作路径：setwd()
+修改当前工作路径：setwd("")在引号里修改你的工作路径
 
 
 ### Here包的使用{#3-packge-here}
