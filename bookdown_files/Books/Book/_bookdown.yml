@@ -1,4 +1,4 @@
-book_filename: 'CBook'
+book_filename: 'R4PsyBook'
 output_dir: "_book"
 output: bookdown::gitbook
 site: bookdown::bookdown_site
