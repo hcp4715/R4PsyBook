@@ -42,9 +42,9 @@ install.packages("papaja") # 安装 papaja包
 ### **Part2: Papaja语法格式**
 （1）YAML头文件
 在所有RMarkdown文件中的头部都会有一个YAML头模块，利用---分隔开，包含标题、作者、摘要等各种信息，同时该部分支持markdown语法进行编写。
-在Papaja的模板中，通讯作者默认数量为一个。**affiliation**在作者栏中编号，在下方统一存放。**authornote**为APA格式风格内容，用于展示该论文之前的故事（如参与哪些报告、是否为毕业论文等）。
+在`papaja`的模板中，通讯作者默认数量为一个。**affiliation**在作者栏中编号，在下方统一存放。**authornote**为APA格式风格内容，用于展示该论文之前的故事（如参与哪些报告、是否为毕业论文等）。
 
-关于参考文献，本例包含了两个.bib文件，**chapter_12-r-references.bib**与**chapter_12-citation.bib**，可以从文献管理软件中导出，papaja将在你引用参考文献时自动从这些文件中查找并使用。
+关于参考文献，本例包含了两个.bib文件，**chapter_12-r-references.bib**与**chapter_12-citation.bib**，可以从文献管理软件中导出，`papaja`将在你引用参考文献时自动从这些文件中查找并使用。
 
 **linenumbers**属性是一个较为常用的属性，能够为文献提供行标，方便审稿人指出需要修改的位置。
 
@@ -163,10 +163,10 @@ p1_dp + p1_rt + plot_annotation(tag_levels = 'A')  + plot_layout(nrow = 1, byrow
 **图片引用** 使用如下格式`\@`ref(fig:plot1) 即可得到\@ref(fig:plot1) 
 
 (4) 数据分析：
-**注意**：bruceR和Papaja可能会因为输出导致冲突，在Papaja中分析数据建议回归更原始的包，如在进行ANOVA分析时使用afex函数
+**注意**：`bruceR`和`papaja`可能会因为输出导致冲突，在`papaja`中分析数据建议回归更原始的包，如在进行ANOVA分析时使用`afex`函数
 
 ### 总结
-Papaja的好处是，数据、分析、格式、参考文献等都储存在同一个工作项目中，能够更整齐更方便的撰写文章。
+`papaja`的好处是，数据、分析、格式、参考文献等都储存在同一个工作项目中，能够更整齐更方便的撰写文章。
 
 #### 小作业
 请大家fork我们的bookdown文件 https://github.com/hcp4715/R4PsyBook 做一个小的更改，并pull request。
