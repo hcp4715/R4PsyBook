@@ -23,7 +23,7 @@
         "License": "LGPL (>= 2.1)",
         "URL": "https://dbi.r-dbi.org, https://github.com/r-dbi/DBI",
         "BugReports": "https://github.com/r-dbi/DBI/issues",
-        "Depends": "methods, R (>= 3.0.0)",
+        "Depends": "methods, R (>= 4.3.1)",
         "Suggests": "blob, covr, DBItest, dbplyr, downlit, dplyr, glue, hms,\nknitr, magrittr, RMariaDB, rmarkdown, rprojroot, RSQLite (>=\n1.1-2), testthat, xml2",
         "VignetteBuilder": "knitr",
         "Config/autostyle/scope": "line_breaks",
