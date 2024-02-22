@@ -43,8 +43,10 @@ library(DT)
 library(here)
 # 包含了dplyr和%>%等好用的包的集合
 library(tidyverse)
-dplyr::filter() masks stats::filter()
-dplyr::lag()    masks stats::lag()
+
+# dplyr::filter() masks stats::filter()
+# dplyr::lag()    masks stats::lag()
+
 # 养成用相对路径的好习惯，便于其他人运行你的代码
 WD <-  here::here()
 getwd()
