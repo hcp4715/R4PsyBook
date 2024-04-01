@@ -4,7 +4,7 @@ editor_options:
     wrap: 72
 ---
 
-# 第四讲：如何清理数据—R语言编程基础 {#lesson-4}
+# 第四讲 & 第五讲 ：数据导入 -- 数据类型与结构{#lesson-4}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -87,12 +87,15 @@ here::here('data','penguin','penguin_rawdata.csv')
 当然，我们更推荐使用代码的方式来导入数据：
 ```{r}
 penguin_data = bruceR::import(here::here('data', 'penguin', 'penguin_rawdata.csv'))
-head(penguin_data)
-tail(penguin_data)
 ncol(penguin_data)
 nrow(penguin_data)
-getwd()
 ```
+
+```{r eval=FALSE}
+head(penguin_data)
+tail(penguin_data)
+```
+
 在上面的代码中，我们使用了 bruceR 包中的 import 函数来导入 penguin_rawdata.csv文件，并将数据命名为penguin_data（即等号'='）；导入成功后，可以在 Environment 界面中看到这个名称，如果在 console 界面中输入penguin_data，就会返回具体的数据内容；使用 `head()`或`tail()`可以查看数据的前 5 行或最后 5 行。`ncol()`和`nrow()`分别查看数据的列数与行数。  
 
 （如果 bruceR包已经加载了，在代码中`bruceR::`部分是可以省略不写的，对于简单的数据处理来说没有问题，但随着数据处理与分析的难度增加，会用调用非常多的包，有时候不同包之间会存在有相同变量名的函数，如果不声明函数来源于哪个包的话，要么 R语言会提示函数存在冲突，要么本来想用 A 包中的函数，但实际上执行了 B 包中的同名函数，因而出现报错。因此建议大家现在就养成在函数声明其来源的好习惯）
@@ -219,7 +222,7 @@ v2 <- bruceR::cc('apple,pear,banana,strawberry,lemon')
 v3 <- c(T,F,F,T,T)
 
 ## 使用 class查看，并不会返回vector
-class(num)
+class(v1)
 ```
 
 #### 类型转换
@@ -251,6 +254,7 @@ as.numeric(c(T,F))
 ```{r}
 is.character(1)
 is.na(1)
+is.numeric(1)
 ```
 
 
@@ -283,7 +287,7 @@ v2[-c(1:2)]
 
 
 ## 也可以利用索引对元素进行更改
-v2[1:2] = cc('APPLE,PEAR')
+v2[1:2] = bruceR::cc('APPLE,PEAR')
 v2
 ```
 
