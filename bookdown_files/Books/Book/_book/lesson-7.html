@@ -4,22 +4,23 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>91 第七讲：如何进行基本的数据分析: t-test和ANOVA | Lecture 12: Preparing journal artical with papaja</title>
+  <title>8 第七讲：如何进行基本的数据分析: t-test和anova | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿</title>
   <meta name="description" content="课程bookdown" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="91 第七讲：如何进行基本的数据分析: t-test和ANOVA | Lecture 12: Preparing journal artical with papaja" />
+  <meta property="og:title" content="8 第七讲：如何进行基本的数据分析: t-test和anova | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="课程bookdown" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="91 第七讲：如何进行基本的数据分析: t-test和ANOVA | Lecture 12: Preparing journal artical with papaja" />
+  <meta name="twitter:title" content="8 第七讲：如何进行基本的数据分析: t-test和anova | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿" />
   
   <meta name="twitter:description" content="课程bookdown" />
   
 
+<meta name="author" content="胡传鹏" />
 
 
 
@@ -28,18 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="参考阅读.html"/>
+<link rel="prev" href="lesson-6.html"/>
 <link rel="next" href="lesson-8.html"/>
-<style type="text/css">
-p.abstract{
-  text-align: center;
-  font-weight: bold;
-}
-div.abstract{
-  margin: auto;
-  width: 90%;
-}
-</style>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -60,16 +51,14 @@ div.abstract{
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.30/datatables.js"></script>
-<link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="libs/datatables-binding-0.27/datatables.js"></script>
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
-<script src="libs/panelset-0.2.6/panelset.js"></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   jax: ["input/TeX","output/SVG"],
@@ -86,7 +75,7 @@ MathJax.Hub.Config({
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -96,7 +85,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -149,33 +138,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 </head>
 
@@ -208,310 +170,96 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.3" data-path="lesson-1.html"><a href="lesson-1.html#心理学数据分析与结果汇报"><i class="fa fa-check"></i><b>2.2.3</b> 心理学数据分析与结果汇报</a></li>
 <li class="chapter" data-level="2.2.4" data-path="lesson-1.html"><a href="lesson-1.html#regression"><i class="fa fa-check"></i><b>2.2.4</b> Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="lesson-1.html"><a href="lesson-1.html#现场运行代码"><i class="fa fa-check"></i><b>2.3</b> 现场运行代码</a></li>
-<li class="chapter" data-level="2.4" data-path="lesson-1.html"><a href="lesson-1.html#课程安排"><i class="fa fa-check"></i><b>2.4</b> 课程安排</a>
+<li class="chapter" data-level="2.3" data-path="lesson-1.html"><a href="lesson-1.html#课程安排"><i class="fa fa-check"></i><b>2.3</b> 课程安排</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="lesson-1.html"><a href="lesson-1.html#课程大纲"><i class="fa fa-check"></i><b>2.4.1</b> 课程大纲</a></li>
-<li class="chapter" data-level="2.4.2" data-path="lesson-1.html"><a href="lesson-1.html#成绩分配"><i class="fa fa-check"></i><b>2.4.2</b> 成绩分配</a></li>
+<li class="chapter" data-level="2.3.1" data-path="lesson-1.html"><a href="lesson-1.html#课程大纲"><i class="fa fa-check"></i><b>2.3.1</b> 课程大纲</a></li>
+<li class="chapter" data-level="2.3.2" data-path="lesson-1.html"><a href="lesson-1.html#成绩分配"><i class="fa fa-check"></i><b>2.3.2</b> 成绩分配</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="lesson-1.html"><a href="lesson-1.html#如何学好这门课"><i class="fa fa-check"></i><b>2.5</b> 如何学好这门课</a></li>
-<li class="chapter" data-level="2.6" data-path="lesson-1.html"><a href="lesson-1.html#课程总结与期望"><i class="fa fa-check"></i><b>2.6</b> 课程总结与期望</a></li>
-<li class="chapter" data-level="2.7" data-path="lesson-1.html"><a href="lesson-1.html#推荐"><i class="fa fa-check"></i><b>2.7</b> 推荐</a></li>
+<li class="chapter" data-level="2.4" data-path="lesson-1.html"><a href="lesson-1.html#如何学好这门课"><i class="fa fa-check"></i><b>2.4</b> 如何学好这门课</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="以下是课堂语音转文字.html"><a href="以下是课堂语音转文字.html"><i class="fa fa-check"></i><b>3</b> 以下是课堂语音转文字</a></li>
-<li class="chapter" data-level="4" data-path="以下是代码部分.html"><a href="以下是代码部分.html"><i class="fa fa-check"></i><b>4</b> 以下是代码部分</a></li>
-<li class="chapter" data-level="5" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html"><i class="fa fa-check"></i><b>5</b> 1 初识R里的数据 （R语言中的对象）</a>
+<li class="chapter" data-level="3" data-path="lesson-2.html"><a href="lesson-2.html"><i class="fa fa-check"></i><b>3</b> 第二讲：如何开始使用R</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html#从计算器说起-数值numeric"><i class="fa fa-check"></i><b>5.1</b> 1.1 从计算器说起 —— 数值(numeric)</a></li>
-<li class="chapter" data-level="5.2" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html#赋值"><i class="fa fa-check"></i><b>5.2</b> 1.1.1 赋值</a></li>
-<li class="chapter" data-level="5.3" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html#比大小-逻辑值logical"><i class="fa fa-check"></i><b>5.3</b> 1.2 比大小 —— 逻辑值（logical）</a></li>
-<li class="chapter" data-level="5.4" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html#字符串character"><i class="fa fa-check"></i><b>5.4</b> 1.3 字符串（character）</a></li>
+<li class="chapter" data-level="3.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-for-lesson"><i class="fa fa-check"></i><b>3.1</b> 要解决的数据分析问题简介</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-1"><i class="fa fa-check"></i><b>3.1.1</b> 第一个数据: 人类企鹅计划数据</a></li>
+<li class="chapter" data-level="3.1.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-2"><i class="fa fa-check"></i><b>3.1.2</b> 第二个数据: 知觉匹配任务数据</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="r-语言中的数据类型.html"><a href="r-语言中的数据类型.html"><i class="fa fa-check"></i><b>6</b> 2 R 语言中的数据类型</a>
+<li class="chapter" data-level="3.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-install-R"><i class="fa fa-check"></i><b>3.2</b> 如何安装</a></li>
+<li class="chapter" data-level="3.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio"><i class="fa fa-check"></i><b>3.3</b> 如何方便使用？Rstudio的安装与界面介绍</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="r-语言中的数据类型.html"><a href="r-语言中的数据类型.html#向量vector"><i class="fa fa-check"></i><b>6.1</b> 2.1 向量（vector）</a></li>
-<li class="chapter" data-level="6.2" data-path="r-语言中的数据类型.html"><a href="r-语言中的数据类型.html#数据框data.frame"><i class="fa fa-check"></i><b>6.2</b> 2.2 数据框（data.frame）</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="lesson-2.html"><a href="lesson-2.html"><i class="fa fa-check"></i><b>7</b> 第二讲：如何开始使用R</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-for-lesson"><i class="fa fa-check"></i><b>7.1</b> 要解决的数据分析问题简介</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-1"><i class="fa fa-check"></i><b>7.1.1</b> 第一个数据: 人类企鹅计划数据</a></li>
-<li class="chapter" data-level="7.1.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-2"><i class="fa fa-check"></i><b>7.1.2</b> 第二个数据: 知觉匹配任务数据</a></li>
-</ul></li>
-<li class="chapter" data-level="7.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-install-R"><i class="fa fa-check"></i><b>7.2</b> 如何安装</a></li>
-<li class="chapter" data-level="7.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio"><i class="fa fa-check"></i><b>7.3</b> 如何方便使用？Rstudio的安装与界面介绍</a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-install"><i class="fa fa-check"></i><b>7.3.1</b> Rstudio的安装与界面介绍</a></li>
-<li class="chapter" data-level="7.3.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-test"><i class="fa fa-check"></i><b>7.3.2</b> 测试Rstudio</a></li>
-<li class="chapter" data-level="7.3.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-packges"><i class="fa fa-check"></i><b>7.3.3</b> R语言中的包</a></li>
+<li class="chapter" data-level="3.3.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-install"><i class="fa fa-check"></i><b>3.3.1</b> Rstudio的安装与界面介绍</a></li>
+<li class="chapter" data-level="3.3.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-test"><i class="fa fa-check"></i><b>3.3.2</b> 测试Rstudio</a></li>
+<li class="chapter" data-level="3.3.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-packges"><i class="fa fa-check"></i><b>3.3.3</b> R语言中的包</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="以下是课堂语音转文字-1.html"><a href="以下是课堂语音转文字-1.html"><i class="fa fa-check"></i><b>8</b> 以下是课堂语音转文字</a></li>
-<li class="chapter" data-level="9" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html"><i class="fa fa-check"></i><b>9</b> 以下是代码部分</a>
+<li class="chapter" data-level="4" data-path="lesson-3.html"><a href="lesson-3.html"><i class="fa fa-check"></i><b>4</b> 第三讲：如何导入数据</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#version-control"><i class="fa fa-check"></i><b>9.1</b> 3.2.1 Version Control</a></li>
-<li class="chapter" data-level="9.2" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#git"><i class="fa fa-check"></i><b>9.2</b> 3.2.2 Git</a></li>
-<li class="chapter" data-level="9.3" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#git-1"><i class="fa fa-check"></i><b>9.3</b> 3.2.2 Git</a></li>
-<li class="chapter" data-level="9.4" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github"><i class="fa fa-check"></i><b>9.4</b> 3.2.3 GitHub</a></li>
-<li class="chapter" data-level="9.5" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-1"><i class="fa fa-check"></i><b>9.5</b> 3.2.3 GitHub</a></li>
-<li class="chapter" data-level="9.6" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-2"><i class="fa fa-check"></i><b>9.6</b> 3.2.3 GitHub</a></li>
-<li class="chapter" data-level="9.7" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-3"><i class="fa fa-check"></i><b>9.7</b> 3.2.3 GitHub</a></li>
-<li class="chapter" data-level="9.8" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-4"><i class="fa fa-check"></i><b>9.8</b> 3.2.3 GitHub</a></li>
-<li class="chapter" data-level="9.9" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-5"><i class="fa fa-check"></i><b>9.9</b> 3.2.3 GitHub</a></li>
-<li class="chapter" data-level="9.10" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-6"><i class="fa fa-check"></i><b>9.10</b> 3.2.3 GitHub</a></li>
-<li class="chapter" data-level="9.11" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-7"><i class="fa fa-check"></i><b>9.11</b> 3.2.3 GitHub</a></li>
-<li class="chapter" data-level="9.12" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#local-version-control"><i class="fa fa-check"></i><b>9.12</b> 3.3.1 Local Version Control</a></li>
-<li class="chapter" data-level="9.13" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#creating-git-repository-for-project"><i class="fa fa-check"></i><b>9.13</b> 3.3.2 Creating Git repository for project</a></li>
-<li class="chapter" data-level="9.14" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git"><i class="fa fa-check"></i><b>9.14</b> 3.3.3 Adding files to Git</a></li>
-<li class="chapter" data-level="9.15" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git-1"><i class="fa fa-check"></i><b>9.15</b> 3.3.3 Adding files to Git</a></li>
-<li class="chapter" data-level="9.16" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git-2"><i class="fa fa-check"></i><b>9.16</b> 3.3.3 Adding files to Git</a></li>
-<li class="chapter" data-level="9.17" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git-3"><i class="fa fa-check"></i><b>9.17</b> 3.3.3 Adding files to Git</a></li>
-<li class="chapter" data-level="9.18" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git-4"><i class="fa fa-check"></i><b>9.18</b> 3.3.3 Adding files to Git</a></li>
-<li class="chapter" data-level="9.19" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#keeping-track-of-changes-with-git"><i class="fa fa-check"></i><b>9.19</b> 3.3.4 Keeping track of changes with Git</a></li>
-<li class="chapter" data-level="9.20" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#accessing-files-past-versions"><i class="fa fa-check"></i><b>9.20</b> 3.3.5 Accessing files’ past versions</a></li>
-<li class="chapter" data-level="9.21" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files"><i class="fa fa-check"></i><b>9.21</b> 3.3.6 Telling Git to ignore files</a></li>
-<li class="chapter" data-level="9.22" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-1"><i class="fa fa-check"></i><b>9.22</b> 3.3.6 Telling Git to ignore files</a></li>
-<li class="chapter" data-level="9.23" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-2"><i class="fa fa-check"></i><b>9.23</b> 3.3.6 Telling Git to ignore files</a></li>
-<li class="chapter" data-level="9.24" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-3"><i class="fa fa-check"></i><b>9.24</b> 3.3.6 Telling Git to ignore files</a></li>
-<li class="chapter" data-level="9.25" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-4"><i class="fa fa-check"></i><b>9.25</b> 3.3.6 Telling Git to ignore files</a></li>
-<li class="chapter" data-level="9.26" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-5"><i class="fa fa-check"></i><b>9.26</b> 3.3.6 Telling Git to ignore files</a></li>
-<li class="chapter" data-level="9.27" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-6"><i class="fa fa-check"></i><b>9.27</b> 3.3.6 Telling Git to ignore files</a></li>
-<li class="chapter" data-level="9.28" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#remote-version-control"><i class="fa fa-check"></i><b>9.28</b> 3.4.1 Remote Version Control</a></li>
-<li class="chapter" data-level="9.29" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#linking-github-repository-with-a-local-git-repository"><i class="fa fa-check"></i><b>9.29</b> 3.4.2 linking GitHub repository with a local Git repository</a></li>
-<li class="chapter" data-level="9.30" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-1"><i class="fa fa-check"></i><b>9.30</b> 3.4.2 Method 1</a></li>
-<li class="chapter" data-level="9.31" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-1-1"><i class="fa fa-check"></i><b>9.31</b> 3.4.2 Method 1</a></li>
-<li class="chapter" data-level="9.32" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-1-2"><i class="fa fa-check"></i><b>9.32</b> 3.4.2 Method 1</a></li>
-<li class="chapter" data-level="9.33" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-1-3"><i class="fa fa-check"></i><b>9.33</b> 3.4.2 Method 1</a></li>
-<li class="chapter" data-level="9.34" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#fork-github-repository"><i class="fa fa-check"></i><b>9.34</b> 3.4.3 Fork GitHub repository</a></li>
-<li class="chapter" data-level="9.35" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-2"><i class="fa fa-check"></i><b>9.35</b> 3.4.2 Method 2</a></li>
-<li class="chapter" data-level="9.36" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-2-1"><i class="fa fa-check"></i><b>9.36</b> 3.4.2 Method 2</a></li>
-<li class="chapter" data-level="9.37" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#push-changes-to-github-repository"><i class="fa fa-check"></i><b>9.37</b> 3.4.4 Push changes to GitHub repository</a></li>
-<li class="chapter" data-level="9.38" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#push-changes-to-github-repository-1"><i class="fa fa-check"></i><b>9.38</b> 3.4.4 Push changes to GitHub repository</a></li>
-<li class="chapter" data-level="9.39" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#pull-changes-from-github-repository"><i class="fa fa-check"></i><b>9.39</b> 3.4.5 Pull changes from GitHub repository</a></li>
-<li class="chapter" data-level="9.40" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#pull-request-to-central-github-repository"><i class="fa fa-check"></i><b>9.40</b> 3.4.6 Pull request to central GitHub repository</a></li>
-<li class="chapter" data-level="9.41" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#pull-request-to-central-github-repository-1"><i class="fa fa-check"></i><b>9.41</b> 3.4.6 Pull request to central GitHub repository</a></li>
-<li class="chapter" data-level="9.42" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#advanced"><i class="fa fa-check"></i><b>9.42</b> Advanced</a></li>
-<li class="chapter" data-level="9.43" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#summary"><i class="fa fa-check"></i><b>9.43</b> Summary</a></li>
-<li class="chapter" data-level="9.44" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#homework"><i class="fa fa-check"></i><b>9.44</b> Homework</a></li>
+<li class="chapter" data-level="4.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path-working-dir"><i class="fa fa-check"></i><b>4.1</b> 路径与工作目录</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path"><i class="fa fa-check"></i><b>4.1.1</b> 相对路径与绝对路径</a></li>
+<li class="chapter" data-level="4.1.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-packge-here"><i class="fa fa-check"></i><b>4.1.2</b> Here包的使用</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="以下是课堂语音转文字-2.html"><a href="以下是课堂语音转文字-2.html"><i class="fa fa-check"></i><b>10</b> 以下是课堂语音转文字</a></li>
-<li class="chapter" data-level="11" data-path="以下是代码部分-2.html"><a href="以下是代码部分-2.html"><i class="fa fa-check"></i><b>11</b> 以下是代码部分</a></li>
-<li class="chapter" data-level="12" data-path="tips.html"><a href="tips.html"><i class="fa fa-check"></i><b>12</b> Tips</a>
+<li class="chapter" data-level="4.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-data"><i class="fa fa-check"></i><b>4.2</b> 读取数据</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="tips.html"><a href="tips.html#将rstudio中报错语言变为英文"><i class="fa fa-check"></i><b>12.1</b> 将<code>Rstudio</code>中报错语言变为英文</a></li>
-<li class="chapter" data-level="12.2" data-path="tips.html"><a href="tips.html#loading-packages"><i class="fa fa-check"></i><b>12.2</b> loading packages</a></li>
+<li class="chapter" data-level="4.2.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-csv"><i class="fa fa-check"></i><b>4.2.1</b> read.csv函数</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lesson-3.html"><a href="lesson-3.html#命名"><i class="fa fa-check"></i><b>4.2.2</b> 命名</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="回顾与问题.html"><a href="回顾与问题.html"><i class="fa fa-check"></i><b>13</b> 4.0 回顾与问题</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="回顾与问题.html"><a href="回顾与问题.html#问题"><i class="fa fa-check"></i><b>13.1</b> 问题:</a></li>
-<li class="chapter" data-level="13.2" data-path="回顾与问题.html"><a href="回顾与问题.html#数据的住址路径-in-mac"><i class="fa fa-check"></i><b>13.2</b> 4.1.1 数据的“住址”——路径 (<em>in Mac</em>)</a></li>
-<li class="chapter" data-level="13.3" data-path="回顾与问题.html"><a href="回顾与问题.html#绝对路径相对路径"><i class="fa fa-check"></i><b>13.3</b> 4.1.2 绝对路径/相对路径</a></li>
-<li class="chapter" data-level="13.4" data-path="回顾与问题.html"><a href="回顾与问题.html#绝对路径相对路径-1"><i class="fa fa-check"></i><b>13.4</b> 4.1.2 绝对路径/相对路径</a></li>
-<li class="chapter" data-level="13.5" data-path="回顾与问题.html"><a href="回顾与问题.html#绝对路径相对路径in-windows"><i class="fa fa-check"></i><b>13.5</b> 4.1.2 绝对路径/相对路径(<em>in Windows</em>)</a></li>
-<li class="chapter" data-level="13.6" data-path="回顾与问题.html"><a href="回顾与问题.html#绝对路径相对路径in-windows-1"><i class="fa fa-check"></i><b>13.6</b> 4.1.2 绝对路径/相对路径(<em>in Windows</em>)</a></li>
-<li class="chapter" data-level="13.7" data-path="回顾与问题.html"><a href="回顾与问题.html#设定工作目录-手动挡与自动挡"><i class="fa fa-check"></i><b>13.7</b> 4.1.3 设定工作目录 手动挡与自动挡</a></li>
-<li class="chapter" data-level="13.8" data-path="回顾与问题.html"><a href="回顾与问题.html#设定工作目录-手动挡与自动挡-1"><i class="fa fa-check"></i><b>13.8</b> 4.1.3 设定工作目录 手动挡与自动挡</a></li>
+<li class="chapter" data-level="4.3" data-path="lesson-3.html"><a href="lesson-3.html#id_3-data-object"><i class="fa fa-check"></i><b>4.3</b> 了解R里的数据 （R语言中的对象）</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="lesson-4.html"><a href="lesson-4.html"><i class="fa fa-check"></i><b>14</b> 第四讲 &amp; 第五讲 ：数据导入 – 数据类型与结构</a>
+<li class="chapter" data-level="5" data-path="lesson-4.html"><a href="lesson-4.html"><i class="fa fa-check"></i><b>5</b> 第四讲：如何清理数据—R语言编程基础</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="lesson-4.html"><a href="lesson-4.html#加载数据"><i class="fa fa-check"></i><b>14.1</b> 加载数据</a></li>
-<li class="chapter" data-level="14.2" data-path="lesson-4.html"><a href="lesson-4.html#数据导入"><i class="fa fa-check"></i><b>14.2</b> 数据导入</a>
+<li class="chapter" data-level="5.1" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-robject"><i class="fa fa-check"></i><b>5.1</b> R对象的操控</a></li>
+<li class="chapter" data-level="5.2" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-function"><i class="fa fa-check"></i><b>5.2</b> 函数</a></li>
+<li class="chapter" data-level="5.3" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-functions"><i class="fa fa-check"></i><b>5.3</b> 常用函数</a>
 <ul>
-<li class="chapter" data-level="14.2.1" data-path="lesson-4.html"><a href="lesson-4.html#数据的地址路径"><i class="fa fa-check"></i><b>14.2.1</b> 数据的“地址”——路径</a></li>
-<li class="chapter" data-level="14.2.2" data-path="lesson-4.html"><a href="lesson-4.html#绝对路径与相对路径"><i class="fa fa-check"></i><b>14.2.2</b> 绝对路径与相对路径</a></li>
-</ul></li>
-<li class="chapter" data-level="14.3" data-path="lesson-4.html"><a href="lesson-4.html#读取数据"><i class="fa fa-check"></i><b>14.3</b> 读取数据</a>
-<ul>
-<li class="chapter" data-level="14.3.1" data-path="lesson-4.html"><a href="lesson-4.html#手动导入"><i class="fa fa-check"></i><b>14.3.1</b> 手动导入</a></li>
-<li class="chapter" data-level="14.3.2" data-path="lesson-4.html"><a href="lesson-4.html#代码导入"><i class="fa fa-check"></i><b>14.3.2</b> 代码导入</a></li>
-</ul></li>
-<li class="chapter" data-level="14.4" data-path="lesson-4.html"><a href="lesson-4.html#赋值-1"><i class="fa fa-check"></i><b>14.4</b> 赋值</a></li>
-<li class="chapter" data-level="14.5" data-path="lesson-4.html"><a href="lesson-4.html#数据类型"><i class="fa fa-check"></i><b>14.5</b> 数据类型</a></li>
-<li class="chapter" data-level="14.6" data-path="lesson-4.html"><a href="lesson-4.html#数据结构"><i class="fa fa-check"></i><b>14.6</b> 数据结构</a>
-<ul>
-<li class="chapter" data-level="14.6.1" data-path="lesson-4.html"><a href="lesson-4.html#向量vector-1"><i class="fa fa-check"></i><b>14.6.1</b> 向量(vector)</a></li>
-<li class="chapter" data-level="14.6.2" data-path="lesson-4.html"><a href="lesson-4.html#数据框"><i class="fa fa-check"></i><b>14.6.2</b> 数据框</a></li>
-<li class="chapter" data-level="14.6.3" data-path="lesson-4.html"><a href="lesson-4.html#矩阵与数组"><i class="fa fa-check"></i><b>14.6.3</b> 矩阵与数组</a></li>
-<li class="chapter" data-level="14.6.4" data-path="lesson-4.html"><a href="lesson-4.html#列表"><i class="fa fa-check"></i><b>14.6.4</b> 列表</a></li>
-</ul></li>
-<li class="chapter" data-level="14.7" data-path="lesson-4.html"><a href="lesson-4.html#函数"><i class="fa fa-check"></i><b>14.7</b> 函数</a>
-<ul>
-<li class="chapter" data-level="14.7.1" data-path="lesson-4.html"><a href="lesson-4.html#函数的调用"><i class="fa fa-check"></i><b>14.7.1</b> 函数的调用</a></li>
-<li class="chapter" data-level="14.7.2" data-path="lesson-4.html"><a href="lesson-4.html#自定义函数"><i class="fa fa-check"></i><b>14.7.2</b> 自定义函数</a></li>
-</ul></li>
-<li class="chapter" data-level="14.8" data-path="lesson-4.html"><a href="lesson-4.html#if-条件语句"><i class="fa fa-check"></i><b>14.8</b> if 条件语句</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="以下是课堂语音转文字-3.html"><a href="以下是课堂语音转文字-3.html"><i class="fa fa-check"></i><b>15</b> 以下是课堂语音转文字</a></li>
-<li class="chapter" data-level="16" data-path="以下是代码部分-3.html"><a href="以下是代码部分-3.html"><i class="fa fa-check"></i><b>16</b> 以下是代码部分</a></li>
-<li class="chapter" data-level="17" data-path="回顾.html"><a href="回顾.html"><i class="fa fa-check"></i><b>17</b> 回顾</a></li>
-<li class="chapter" data-level="18" data-path="本节课内容.html"><a href="本节课内容.html"><i class="fa fa-check"></i><b>18</b> 本节课内容</a></li>
-<li class="chapter" data-level="19" data-path="数据导入-1.html"><a href="数据导入-1.html"><i class="fa fa-check"></i><b>19</b> 5.1 数据导入</a></li>
-<li class="chapter" data-level="20" data-path="问卷数据human-penguin-project-1.html"><a href="问卷数据human-penguin-project-1.html"><i class="fa fa-check"></i><b>20</b> 问卷数据：Human Penguin Project</a></li>
-<li class="chapter" data-level="21" data-path="赋值与变量.html"><a href="赋值与变量.html"><i class="fa fa-check"></i><b>21</b> 5.2 赋值与变量</a></li>
-<li class="chapter" data-level="22" data-path="赋值与变量-1.html"><a href="赋值与变量-1.html"><i class="fa fa-check"></i><b>22</b> 5.2 赋值与变量</a></li>
-<li class="chapter" data-level="23" data-path="赋值与变量-2.html"><a href="赋值与变量-2.html"><i class="fa fa-check"></i><b>23</b> 5.2 赋值与变量</a></li>
-<li class="chapter" data-level="24" data-path="基本数据类型.html"><a href="基本数据类型.html"><i class="fa fa-check"></i><b>24</b> 5.3 基本数据类型</a></li>
-<li class="chapter" data-level="25" data-path="基本数据类型-1.html"><a href="基本数据类型-1.html"><i class="fa fa-check"></i><b>25</b> 5.3 基本数据类型</a></li>
-<li class="chapter" data-level="26" data-path="数据结构-1.html"><a href="数据结构-1.html"><i class="fa fa-check"></i><b>26</b> 5.4 数据结构</a></li>
-<li class="chapter" data-level="27" data-path="以下是课堂语音转文字-4.html"><a href="以下是课堂语音转文字-4.html"><i class="fa fa-check"></i><b>27</b> 以下是课堂语音转文字</a></li>
-<li class="chapter" data-level="28" data-path="以下是代码部分-4.html"><a href="以下是代码部分-4.html"><i class="fa fa-check"></i><b>28</b> 以下是代码部分</a></li>
-<li class="chapter" data-level="29" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>29</b> 6.1 Tidyverse</a></li>
-<li class="chapter" data-level="30" data-path="tidyverse-1.html"><a href="tidyverse-1.html"><i class="fa fa-check"></i><b>30</b> 6.1 Tidyverse</a></li>
-<li class="chapter" data-level="31" data-path="tidyverse-2.html"><a href="tidyverse-2.html"><i class="fa fa-check"></i><b>31</b> 6.1 Tidyverse</a></li>
-<li class="chapter" data-level="32" data-path="问卷数据.html"><a href="问卷数据.html"><i class="fa fa-check"></i><b>32</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="33" data-path="问卷数据-1.html"><a href="问卷数据-1.html"><i class="fa fa-check"></i><b>33</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="34" data-path="问卷数据-2.html"><a href="问卷数据-2.html"><i class="fa fa-check"></i><b>34</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="35" data-path="问卷数据-3.html"><a href="问卷数据-3.html"><i class="fa fa-check"></i><b>35</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="36" data-path="问卷数据-4.html"><a href="问卷数据-4.html"><i class="fa fa-check"></i><b>36</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="37" data-path="问卷数据-5.html"><a href="问卷数据-5.html"><i class="fa fa-check"></i><b>37</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="38" data-path="问卷数据-6.html"><a href="问卷数据-6.html"><i class="fa fa-check"></i><b>38</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="39" data-path="问卷数据-7.html"><a href="问卷数据-7.html"><i class="fa fa-check"></i><b>39</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="40" data-path="问卷数据-8.html"><a href="问卷数据-8.html"><i class="fa fa-check"></i><b>40</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="41" data-path="问卷数据-9.html"><a href="问卷数据-9.html"><i class="fa fa-check"></i><b>41</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="42" data-path="问卷数据-10.html"><a href="问卷数据-10.html"><i class="fa fa-check"></i><b>42</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="43" data-path="问卷数据-11.html"><a href="问卷数据-11.html"><i class="fa fa-check"></i><b>43</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="44" data-path="问卷数据-12.html"><a href="问卷数据-12.html"><i class="fa fa-check"></i><b>44</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="45" data-path="问卷数据-13.html"><a href="问卷数据-13.html"><i class="fa fa-check"></i><b>45</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="46" data-path="问卷数据-14.html"><a href="问卷数据-14.html"><i class="fa fa-check"></i><b>46</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="47" data-path="问卷数据-15.html"><a href="问卷数据-15.html"><i class="fa fa-check"></i><b>47</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="48" data-path="问卷数据-16.html"><a href="问卷数据-16.html"><i class="fa fa-check"></i><b>48</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="49" data-path="问卷数据-17.html"><a href="问卷数据-17.html"><i class="fa fa-check"></i><b>49</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="50" data-path="问卷数据-18.html"><a href="问卷数据-18.html"><i class="fa fa-check"></i><b>50</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="51" data-path="问卷数据-19.html"><a href="问卷数据-19.html"><i class="fa fa-check"></i><b>51</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="52" data-path="问卷数据-20.html"><a href="问卷数据-20.html"><i class="fa fa-check"></i><b>52</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="53" data-path="问卷数据-21.html"><a href="问卷数据-21.html"><i class="fa fa-check"></i><b>53</b> 6.2 问卷数据</a></li>
-<li class="chapter" data-level="54" data-path="反应时数据.html"><a href="反应时数据.html"><i class="fa fa-check"></i><b>54</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="55" data-path="反应时数据-1.html"><a href="反应时数据-1.html"><i class="fa fa-check"></i><b>55</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="56" data-path="反应时数据-2.html"><a href="反应时数据-2.html"><i class="fa fa-check"></i><b>56</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="57" data-path="反应时数据-3.html"><a href="反应时数据-3.html"><i class="fa fa-check"></i><b>57</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="58" data-path="反应时数据-4.html"><a href="反应时数据-4.html"><i class="fa fa-check"></i><b>58</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="59" data-path="反应时数据-5.html"><a href="反应时数据-5.html"><i class="fa fa-check"></i><b>59</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="60" data-path="反应时数据-6.html"><a href="反应时数据-6.html"><i class="fa fa-check"></i><b>60</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="61" data-path="反应时数据-7.html"><a href="反应时数据-7.html"><i class="fa fa-check"></i><b>61</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="62" data-path="反应时数据-8.html"><a href="反应时数据-8.html"><i class="fa fa-check"></i><b>62</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="63" data-path="反应时数据-9.html"><a href="反应时数据-9.html"><i class="fa fa-check"></i><b>63</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="64" data-path="反应时数据-10.html"><a href="反应时数据-10.html"><i class="fa fa-check"></i><b>64</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="65" data-path="反应时数据-11.html"><a href="反应时数据-11.html"><i class="fa fa-check"></i><b>65</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="66" data-path="反应时数据-12.html"><a href="反应时数据-12.html"><i class="fa fa-check"></i><b>66</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="67" data-path="反应时数据-13.html"><a href="反应时数据-13.html"><i class="fa fa-check"></i><b>67</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="68" data-path="反应时数据-14.html"><a href="反应时数据-14.html"><i class="fa fa-check"></i><b>68</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="69" data-path="反应时数据-15.html"><a href="反应时数据-15.html"><i class="fa fa-check"></i><b>69</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="70" data-path="反应时数据-16.html"><a href="反应时数据-16.html"><i class="fa fa-check"></i><b>70</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="71" data-path="反应时数据-17.html"><a href="反应时数据-17.html"><i class="fa fa-check"></i><b>71</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="72" data-path="反应时数据-18.html"><a href="反应时数据-18.html"><i class="fa fa-check"></i><b>72</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="73" data-path="反应时数据-19.html"><a href="反应时数据-19.html"><i class="fa fa-check"></i><b>73</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="74" data-path="反应时数据-20.html"><a href="反应时数据-20.html"><i class="fa fa-check"></i><b>74</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="75" data-path="反应时数据-21.html"><a href="反应时数据-21.html"><i class="fa fa-check"></i><b>75</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="76" data-path="反应时数据-22.html"><a href="反应时数据-22.html"><i class="fa fa-check"></i><b>76</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="77" data-path="反应时数据-23.html"><a href="反应时数据-23.html"><i class="fa fa-check"></i><b>77</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="78" data-path="反应时数据-24.html"><a href="反应时数据-24.html"><i class="fa fa-check"></i><b>78</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="79" data-path="反应时数据-25.html"><a href="反应时数据-25.html"><i class="fa fa-check"></i><b>79</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="80" data-path="反应时数据-26.html"><a href="反应时数据-26.html"><i class="fa fa-check"></i><b>80</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="81" data-path="反应时数据-27.html"><a href="反应时数据-27.html"><i class="fa fa-check"></i><b>81</b> 6.3 反应时数据</a></li>
-<li class="chapter" data-level="82" data-path="lesson-6.html"><a href="lesson-6.html"><i class="fa fa-check"></i><b>82</b> 第六讲：如何探索数据: 描述性统计与数据可视化基础</a>
-<ul>
-<li class="chapter" data-level="82.1" data-path="lesson-6.html"><a href="lesson-6.html#描述性统计"><i class="fa fa-check"></i><b>82.1</b> <strong>描述性统计</strong></a>
-<ul>
-<li class="chapter" data-level="82.1.1" data-path="lesson-6.html"><a href="lesson-6.html#part1-探索性数据分析"><i class="fa fa-check"></i><b>82.1.1</b> <strong>Part1-探索性数据分析</strong></a></li>
-<li class="chapter" data-level="82.1.2" data-path="lesson-6.html"><a href="lesson-6.html#part2-数据可视化-ggplot2的基本使用"><i class="fa fa-check"></i><b>82.1.2</b> <strong>Part2-数据可视化-ggplot2的基本使用</strong></a></li>
-<li class="chapter" data-level="82.1.3" data-path="lesson-6.html"><a href="lesson-6.html#part3-data-explorer"><i class="fa fa-check"></i><b>82.1.3</b> <strong>Part3-Data Explorer</strong></a></li>
+<li class="chapter" data-level="5.3.1" data-path="lesson-4.html"><a href="lesson-4.html#unique"><i class="fa fa-check"></i><b>5.3.1</b> unique()</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="83" data-path="以下是课堂语音转文字-5.html"><a href="以下是课堂语音转文字-5.html"><i class="fa fa-check"></i><b>83</b> 以下是课堂语音转文字</a></li>
-<li class="chapter" data-level="84" data-path="以下是代码部分-5.html"><a href="以下是代码部分-5.html"><i class="fa fa-check"></i><b>84</b> 以下是代码部分</a></li>
-<li class="chapter" data-level="85" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>85</b> Packages</a>
+<li class="chapter" data-level="6" data-path="lesson-5.html"><a href="lesson-5.html"><i class="fa fa-check"></i><b>6</b> 第五讲：如何清理数据—数据的预处理</a>
 <ul>
-<li class="chapter" data-level="85.1" data-path="packages.html"><a href="packages.html#批量导入数据"><i class="fa fa-check"></i><b>85.1</b> 7.0.1 批量导入数据</a></li>
-<li class="chapter" data-level="85.2" data-path="packages.html"><a href="packages.html#代码书写规范"><i class="fa fa-check"></i><b>85.2</b> 7.0.2 代码书写规范</a></li>
-<li class="chapter" data-level="85.3" data-path="packages.html"><a href="packages.html#代码书写规范-1"><i class="fa fa-check"></i><b>85.3</b> 7.0.2 代码书写规范</a></li>
-<li class="chapter" data-level="85.4" data-path="packages.html"><a href="packages.html#数据清洗-1"><i class="fa fa-check"></i><b>85.4</b> 7.0.3 数据清洗</a>
+<li class="chapter" data-level="6.1" data-path="lesson-5.html"><a href="lesson-5.html#批量读取文件"><i class="fa fa-check"></i><b>6.1</b> <strong>批量读取文件</strong></a>
 <ul>
-<li class="chapter" data-level="85.4.1" data-path="packages.html"><a href="packages.html#列操作"><i class="fa fa-check"></i><b>85.4.1</b> 列操作</a></li>
-<li class="chapter" data-level="85.4.2" data-path="packages.html"><a href="packages.html#行操作"><i class="fa fa-check"></i><b>85.4.2</b> 行操作</a></li>
-<li class="chapter" data-level="85.4.3" data-path="packages.html"><a href="packages.html#数据框-1"><i class="fa fa-check"></i><b>85.4.3</b> 数据框</a></li>
-<li class="chapter" data-level="85.4.4" data-path="packages.html"><a href="packages.html#分组计算"><i class="fa fa-check"></i><b>85.4.4</b> 分组计算</a></li>
-<li class="chapter" data-level="85.4.5" data-path="packages.html"><a href="packages.html#字符串stringr-package"><i class="fa fa-check"></i><b>85.4.5</b> 字符串(stringr package)</a></li>
-<li class="chapter" data-level="85.4.6" data-path="packages.html"><a href="packages.html#函数式编程purrr-package"><i class="fa fa-check"></i><b>85.4.6</b> 函数式编程(purrr package)</a></li>
+<li class="chapter" data-level="6.1.1" data-path="lesson-5.html"><a href="lesson-5.html#通配符"><i class="fa fa-check"></i><b>6.1.1</b> <strong>通配符</strong></a></li>
+<li class="chapter" data-level="6.1.2" data-path="lesson-5.html"><a href="lesson-5.html#for循环思路"><i class="fa fa-check"></i><b>6.1.2</b> for<strong>循环思路</strong></a></li>
+<li class="chapter" data-level="6.1.3" data-path="lesson-5.html"><a href="lesson-5.html#lapply思路"><i class="fa fa-check"></i><b>6.1.3</b> lapply思路</a></li>
 </ul></li>
-<li class="chapter" data-level="85.5" data-path="packages.html"><a href="packages.html#常用函数"><i class="fa fa-check"></i><b>85.5</b> 常用函数</a></li>
-</ul></li>
-<li class="chapter" data-level="86" data-path="数据可视化.html"><a href="数据可视化.html"><i class="fa fa-check"></i><b>86</b> 7.2 数据可视化</a>
+<li class="chapter" data-level="6.2" data-path="lesson-5.html"><a href="lesson-5.html#数据预处理"><i class="fa fa-check"></i><b>6.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="6.3" data-path="lesson-5.html"><a href="lesson-5.html#函数"><i class="fa fa-check"></i><b>6.3</b> 函数</a>
 <ul>
-<li class="chapter" data-level="86.1" data-path="数据可视化.html"><a href="数据可视化.html#可视化的重要性"><i class="fa fa-check"></i><b>86.1</b> 7.2.1 可视化的重要性</a></li>
-</ul></li>
-<li class="chapter" data-level="87" data-path="数据可视化-1.html"><a href="数据可视化-1.html"><i class="fa fa-check"></i><b>87</b> 7.2 数据可视化</a>
-<ul>
-<li class="chapter" data-level="87.1" data-path="数据可视化-1.html"><a href="数据可视化-1.html#为何使用-ggplot2"><i class="fa fa-check"></i><b>87.1</b> 7.2.2 为何使用 ggplot2?</a></li>
-<li class="chapter" data-level="87.2" data-path="数据可视化-1.html"><a href="数据可视化-1.html#为何使用-ggplot"><i class="fa fa-check"></i><b>87.2</b> 7.2.2 为何使用 ggplot?</a></li>
-<li class="chapter" data-level="87.3" data-path="数据可视化-1.html"><a href="数据可视化-1.html#为何使用-ggplot-1"><i class="fa fa-check"></i><b>87.3</b> 7.2.2 为何使用 ggplot?</a></li>
-<li class="chapter" data-level="87.4" data-path="数据可视化-1.html"><a href="数据可视化-1.html#ggplot2-的逻辑"><i class="fa fa-check"></i><b>87.4</b> 7.2.3 ggplot2 的逻辑</a></li>
-<li class="chapter" data-level="87.5" data-path="数据可视化-1.html"><a href="数据可视化-1.html#ggplot2-的逻辑-1"><i class="fa fa-check"></i><b>87.5</b> 7.2.3 ggplot2 的逻辑</a></li>
-<li class="chapter" data-level="87.6" data-path="数据可视化-1.html"><a href="数据可视化-1.html#ggplot2-的逻辑-2"><i class="fa fa-check"></i><b>87.6</b> 7.2.3 ggplot2 的逻辑</a></li>
-<li class="chapter" data-level="87.7" data-path="数据可视化-1.html"><a href="数据可视化-1.html#单个图片的组成"><i class="fa fa-check"></i><b>87.7</b> 7.2.4 单个图片的组成</a></li>
-<li class="chapter" data-level="87.8" data-path="数据可视化-1.html"><a href="数据可视化-1.html#单个图片的组成-1"><i class="fa fa-check"></i><b>87.8</b> 7.2.4 单个图片的组成</a></li>
-</ul></li>
-<li class="chapter" data-level="88" data-path="常用图形.html"><a href="常用图形.html"><i class="fa fa-check"></i><b>88</b> 7.3 常用图形</a>
-<ul>
-<li class="chapter" data-level="88.1" data-path="常用图形.html"><a href="常用图形.html#直方图"><i class="fa fa-check"></i><b>88.1</b> 直方图</a></li>
-<li class="chapter" data-level="88.2" data-path="常用图形.html"><a href="常用图形.html#密度图"><i class="fa fa-check"></i><b>88.2</b> 密度图</a></li>
-<li class="chapter" data-level="88.3" data-path="常用图形.html"><a href="常用图形.html#直方图-密度图"><i class="fa fa-check"></i><b>88.3</b> 直方图 + 密度图</a></li>
-<li class="chapter" data-level="88.4" data-path="常用图形.html"><a href="常用图形.html#直方图-密度图-1"><i class="fa fa-check"></i><b>88.4</b> 直方图 + 密度图</a></li>
-<li class="chapter" data-level="88.5" data-path="常用图形.html"><a href="常用图形.html#箱线图"><i class="fa fa-check"></i><b>88.5</b> 箱线图</a></li>
-</ul></li>
-<li class="chapter" data-level="89" data-path="explore-data-with-dataexplorer.html"><a href="explore-data-with-dataexplorer.html"><i class="fa fa-check"></i><b>89</b> 7.4 Explore data with DataExplorer</a>
-<ul>
-<li class="chapter" data-level="89.1" data-path="explore-data-with-dataexplorer.html"><a href="explore-data-with-dataexplorer.html#使用ggpairs"><i class="fa fa-check"></i><b>89.1</b> 使用ggpairs</a></li>
-</ul></li>
-<li class="chapter" data-level="90" data-path="参考阅读.html"><a href="参考阅读.html"><i class="fa fa-check"></i><b>90</b> 参考阅读</a></li>
-<li class="chapter" data-level="91" data-path="lesson-7.html"><a href="lesson-7.html"><i class="fa fa-check"></i><b>91</b> 第七讲：如何进行基本的数据分析: <em>t</em>-test和ANOVA</a>
-<ul>
-<li class="chapter" data-level="91.0.1" data-path="lesson-7.html"><a href="lesson-7.html#t检验"><i class="fa fa-check"></i><b>91.0.1</b> <em>t</em>检验</a></li>
-<li class="chapter" data-level="91.0.2" data-path="lesson-7.html"><a href="lesson-7.html#方差分析"><i class="fa fa-check"></i><b>91.0.2</b> 方差分析</a></li>
-</ul></li>
-<li class="chapter" data-level="92" data-path="lesson-8.html"><a href="lesson-8.html"><i class="fa fa-check"></i><b>92</b> 第八讲：如何进行基本的数据分析: 相关与回归</a>
-<ul>
-<li class="chapter" data-level="92.1" data-path="lesson-8.html"><a href="lesson-8.html#什么是相关"><i class="fa fa-check"></i><b>92.1</b> 什么是相关</a></li>
-<li class="chapter" data-level="92.2" data-path="lesson-8.html"><a href="lesson-8.html#相关-代码实现"><i class="fa fa-check"></i><b>92.2</b> 相关-代码实现</a></li>
-<li class="chapter" data-level="92.3" data-path="lesson-8.html"><a href="lesson-8.html#什么是回归"><i class="fa fa-check"></i><b>92.3</b> 什么是回归</a></li>
-</ul></li>
-<li class="chapter" data-level="93" data-path="lesson-9.html"><a href="lesson-9.html"><i class="fa fa-check"></i><b>93</b> 第九章：如何进行基本的数据分析: 中介分析</a>
-<ul>
-<li class="chapter" data-level="93.1" data-path="lesson-9.html"><a href="lesson-9.html#process"><i class="fa fa-check"></i><b>93.1</b> process</a></li>
-</ul></li>
-<li class="chapter" data-level="94" data-path="lesson-12.html"><a href="lesson-12.html"><i class="fa fa-check"></i><b>94</b> 第十二讲：从分析到手稿</a>
-<ul>
-<li class="chapter" data-level="94.1" data-path="lesson-12.html"><a href="lesson-12.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>94.1</b> <strong>通过Papaja撰写论文</strong></a>
-<ul>
-<li class="chapter" data-level="94.1.1" data-path="lesson-12.html"><a href="lesson-12.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>94.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
-<li class="chapter" data-level="94.1.2" data-path="lesson-12.html"><a href="lesson-12.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>94.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
-<li class="chapter" data-level="94.1.3" data-path="lesson-12.html"><a href="lesson-12.html#part3-正文的撰写"><i class="fa fa-check"></i><b>94.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
-<li class="chapter" data-level="94.1.4" data-path="lesson-12.html"><a href="lesson-12.html#总结"><i class="fa fa-check"></i><b>94.1.4</b> 总结</a></li>
+<li class="chapter" data-level="6.3.1" data-path="lesson-5.html"><a href="lesson-5.html#函数参数"><i class="fa fa-check"></i><b>6.3.1</b> 函数参数</a></li>
+<li class="chapter" data-level="6.3.2" data-path="lesson-5.html"><a href="lesson-5.html#groupby"><i class="fa fa-check"></i><b>6.3.2</b> groupby()</a></li>
+<li class="chapter" data-level="6.3.3" data-path="lesson-5.html"><a href="lesson-5.html#定义函数"><i class="fa fa-check"></i><b>6.3.3</b> 定义函数</a></li>
+<li class="chapter" data-level="6.3.4" data-path="lesson-5.html"><a href="lesson-5.html#for-loop"><i class="fa fa-check"></i><b>6.3.4</b> for loop</a></li>
+<li class="chapter" data-level="6.3.5" data-path="lesson-5.html"><a href="lesson-5.html#信号检测"><i class="fa fa-check"></i><b>6.3.5</b> 信号检测</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="95" data-path="lesson-13.html"><a href="lesson-13.html"><i class="fa fa-check"></i><b>95</b> 第十三章：效应量和元分析</a>
+<li class="chapter" data-level="7" data-path="lesson-6.html"><a href="lesson-6.html"><i class="fa fa-check"></i><b>7</b> 第六讲：如何探索数据: 描述性统计与数据可视化基础</a>
 <ul>
-<li class="chapter" data-level="95.1" data-path="lesson-13.html"><a href="lesson-13.html#效应量简介"><i class="fa fa-check"></i><b>95.1</b> 效应量简介</a></li>
-<li class="chapter" data-level="95.2" data-path="lesson-13.html"><a href="lesson-13.html#算法实现"><i class="fa fa-check"></i><b>95.2</b> 算法实现</a></li>
-<li class="chapter" data-level="95.3" data-path="lesson-13.html"><a href="lesson-13.html#小练习"><i class="fa fa-check"></i><b>95.3</b> 小练习</a></li>
-<li class="chapter" data-level="95.4" data-path="lesson-13.html"><a href="lesson-13.html#元分析简介"><i class="fa fa-check"></i><b>95.4</b> 元分析简介</a></li>
-<li class="chapter" data-level="95.5" data-path="lesson-13.html"><a href="lesson-13.html#元分析实现"><i class="fa fa-check"></i><b>95.5</b> 元分析实现</a></li>
+<li class="chapter" data-level="7.1" data-path="lesson-6.html"><a href="lesson-6.html#描述性统计"><i class="fa fa-check"></i><b>7.1</b> <strong>描述性统计</strong></a></li>
+<li class="chapter" data-level="7.2" data-path="lesson-6.html"><a href="lesson-6.html#ggplot2的基本使用"><i class="fa fa-check"></i><b>7.2</b> ggplot2的基本使用</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="lesson-6.html"><a href="lesson-6.html#了解ggplot2"><i class="fa fa-check"></i><b>7.2.1</b> 了解ggplot2</a></li>
+<li class="chapter" data-level="7.2.2" data-path="lesson-6.html"><a href="lesson-6.html#密度图"><i class="fa fa-check"></i><b>7.2.2</b> 密度图</a></li>
+<li class="chapter" data-level="7.2.3" data-path="lesson-6.html"><a href="lesson-6.html#叠加绘图"><i class="fa fa-check"></i><b>7.2.3</b> 叠加绘图</a></li>
+<li class="chapter" data-level="7.2.4" data-path="lesson-6.html"><a href="lesson-6.html#散点图"><i class="fa fa-check"></i><b>7.2.4</b> 散点图</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="lesson-6.html"><a href="lesson-6.html#data-explore"><i class="fa fa-check"></i><b>7.3</b> Data Explore</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lesson-7.html"><a href="lesson-7.html"><i class="fa fa-check"></i><b>8</b> 第七讲：如何进行基本的数据分析: t-test和anova</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lesson-7.html"><a href="lesson-7.html#语法实现"><i class="fa fa-check"></i><b>8.1</b> <strong>语法实现</strong></a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="lesson-7.html"><a href="lesson-7.html#t检验"><i class="fa fa-check"></i><b>8.1.1</b> t检验</a></li>
+<li class="chapter" data-level="8.1.2" data-path="lesson-7.html"><a href="lesson-7.html#方差分析"><i class="fa fa-check"></i><b>8.1.2</b> 方差分析</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lesson-8.html"><a href="lesson-8.html"><i class="fa fa-check"></i><b>9</b> 第八讲：如何进行基本的数据分析: 相关与回归</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="lesson-8.html"><a href="lesson-8.html#什么是相关"><i class="fa fa-check"></i><b>9.1</b> 什么是相关</a></li>
+<li class="chapter" data-level="9.2" data-path="lesson-8.html"><a href="lesson-8.html#相关-代码实现"><i class="fa fa-check"></i><b>9.2</b> 相关-代码实现</a></li>
+<li class="chapter" data-level="9.3" data-path="lesson-8.html"><a href="lesson-8.html#什么是回归"><i class="fa fa-check"></i><b>9.3</b> 什么是回归</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="96" data-path="lesson-3.html"><a href="lesson-3.html"><i class="fa fa-check"></i><b>96</b> 第三讲：如何导入数据</a>
-<ul>
-<li class="chapter" data-level="96.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path-working-dir"><i class="fa fa-check"></i><b>96.1</b> 路径与工作目录</a>
-<ul>
-<li class="chapter" data-level="96.1.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path"><i class="fa fa-check"></i><b>96.1.1</b> 相对路径与绝对路径</a></li>
-<li class="chapter" data-level="96.1.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-packge-here"><i class="fa fa-check"></i><b>96.1.2</b> Here包的使用</a></li>
-</ul></li>
-<li class="chapter" data-level="96.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-data"><i class="fa fa-check"></i><b>96.2</b> 读取数据</a>
-<ul>
-<li class="chapter" data-level="96.2.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-csv"><i class="fa fa-check"></i><b>96.2.1</b> read.csv函数</a></li>
-<li class="chapter" data-level="96.2.2" data-path="lesson-3.html"><a href="lesson-3.html#命名"><i class="fa fa-check"></i><b>96.2.2</b> 命名</a></li>
-</ul></li>
-<li class="chapter" data-level="96.3" data-path="lesson-3.html"><a href="lesson-3.html#id_3-data-object"><i class="fa fa-check"></i><b>96.3</b> 了解R里的数据 （R语言中的对象）</a></li>
-</ul></li>
 </ul>
 
       </nav>
@@ -521,7 +269,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lecture 12: Preparing journal artical with <em>papaja</em></a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿</a>
           </h1>
         </div>
 
@@ -529,37 +277,23 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lesson-7" class="section level1 hasAnchor" number="91">
-<h1><span class="header-section-number">91</span> 第七讲：如何进行基本的数据分析: <em>t</em>-test和ANOVA<a href="lesson-7.html#lesson-7" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><code>{r setup, include=FALSE}2 knitr::opts_chunk$set(echo = TRUE) library(tidyverse) # Wickham的数据整理的整套工具 pdf.options(height=10/2.54, width=10/2.54, family="GB1") # 注意：此设置要放在最后</code>
-## <strong>语法实现</strong></p>
-<div id="t检验" class="section level3 hasAnchor" number="91.0.1">
-<h3><span class="header-section-number">91.0.1</span> <em>t</em>检验<a href="lesson-7.html#t检验" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="理论基础" class="section level4 hasAnchor" number="91.0.1.1">
-<h4><span class="header-section-number">91.0.1.1</span> 理论基础<a href="lesson-7.html#理论基础" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>我们来讲讲<em>t</em>检验。最简单的是单样本<em>t</em>检验，它将样本的均值与某个固定值进行比较，这个固定的值通常被认为是该样本所在的总体。在这种情境下，按照NHST的逻辑，我们首先假设<span class="math inline">\(H_0\)</span>为真，即样本确实是从总体均值为这个固定值的分布中抽样出来的。然后根据<span class="math inline">\(H_0\)</span>的统计模型来计算当前数据或者更加极端数据的概率。如果概率很低，那么在一次抽样中这样的小概率事件不太可能发生，因此拒绝假设<span class="math inline">\(H_0\)</span>。<span class="math inline">\(p\)</span>值与假设水平进行比较时，我们假设<span class="math inline">\(H_0\)</span>为真。我们有三个选择，等于、大于或小于。如果不等于，那么是双样本检验，如果小于或大于，则为单样本检验。</p>
-<p>下面具体来介绍这些检验的不同类型。
-首先是单样本检验，当p值小于等于<span class="math inline">\(\mu\)</span>时，<span class="math inline">\(H_0\)</span>大于等于<span class="math inline">\(\mu\)</span>。另一种单样本<em>t</em>检验是当<span class="math inline">\(H_0\)</span>大于等于<span class="math inline">\(\mu\)</span>时。</p>
-<p>接下来是双样本检验，其零假设是：两个样本来自同一个总体。我们可以用<em>p</em>值或<em>t</em>值检验来比较两个样本之间的差异。如果两个样本的数据是高度相关的，使用配对样本<em>t</em>检验。如果两个样本的数据是毫不相关即完全独立的，则使用独立样本<em>t</em>检验。</p>
-<p>在R语言中，有多个函数可以用于<em>t</em>检验，这些函数包括在<code>R-base</code>包，也包括在其他的包中。我们将会介绍<code>Bruce R</code>包，它是为心理学数据分析而进行优化过的，更方便。</p>
-<p><code>Bruce R</code>包集成了很多底层R包，有机整合了其中的R函数，功能主要覆盖：
-1.基础R编程（自动设置文件夹路径、一站式数据导入导出、数据匹配拼接等）
-2.多变量计算（极简化计算多题项平均分/总分及反向计分、数值重新编码等）
-3.信度与因素分析（量表信度分析、探索性因素分析EFA、主成分分析PCA、验证性因素分析CFA）
-4.描述与相关分析（描述统计、频数统计、相关分析、相关系数差异性检验）
-5.t检验与方差分析（单样本/独立样本/配对样本t检验、多因素被试间/被试内/混合设计方差分析ANOVA、简单效应检验与多重比较）
-6.普通与多层回归分析（多种回归模型结果的完整报告与表格输出、多层线性模型HLM补充分析）
-7.中介与调节效应分析（普通与多水平的中介效应、调节效应、有调节的中介效应等，包括简单斜率分析、条件中介作用、链式中介作用、跨层调节作用等）
-8.统计与绘图辅助工具（总均值/组均值中心化处理、时间序列交叉相关分析与格兰杰因果检验、ggplot2绘图主题theme_bruce、颜色卡/配色方案展示等）</p>
-<p>####解决问题
-问题：
-1. “在penguin数据中，参与者对于家的依恋水平是否小于/等于/大于均值水平(假设在总体水平上，人们对家庭的依恋水平(HOME)均值为3.5)？”
-2. “在penguin数据中，男女生在亲密关系经验(ECR)中的得分是否存在显著差异？”
-3. “在penguin数据中，参与者在不同时间的温度差异是否具有显著性？”</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="lesson-7.html#cb382-1" tabindex="-1"></a><span class="fu">library</span>(bruceR)</span></code></pre></div>
+<div id="lesson-7" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> 第七讲：如何进行基本的数据分析: t-test和anova<a href="lesson-7.html#lesson-7" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="语法实现" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> <strong>语法实现</strong><a href="lesson-7.html#语法实现" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="t检验" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> t检验<a href="lesson-7.html#t检验" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="理论基础" class="section level4 hasAnchor" number="8.1.1.1">
+<h4><span class="header-section-number">8.1.1.1</span> 理论基础<a href="lesson-7.html#理论基础" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>我们来讲讲t检验。最简单的是单样本t检验，它是一个样本的一系列数据，将其平均值与一个固定值进行比较。我们有两个假设，H0和H1，假设显著水平为0.05。NHST的逻辑是，首先假设H0为真，然后从H0统计模型中提取当前数据，计算概率。如果概率很低，我们认为它不太可能发生，拒绝假设H0。p值与假设水平进行比较时，我们假设H0为真。我们有三个选择，等于、大于或小于。如果不等于，那么是双样本检验，如果小于或大于，则为单样本检验。绍的是这些检验的不同类型。首先是单样本检验，当p值小于等于mu时，H0大于等于mu。另一种单样本检验是当H0大于等于mu时。</p>
+<p>接下来是双样本检验，假设两个样本来自同一个集合。我们可以用p值或t值检验来比较两个样本之间的差异。如果数据是高度相关的，我们可以使用相关数据的t值检验。独立样本t值检验也是双样本检验，它是两对无相关的数据。我们可以使用R语言的函数来进行这些检验。有各种R语言函数可以用于t检验，这些函数包括在R-base基础包中。我们将会介绍Bruce R包，它是为心理学优化设计的，使用它更方便。
+我们载入所需的包。BruceR包载入后会有一大串提示信息，包括载入的包、主要函数和网址等。我们使用相对路径读取之前的数据，可以查看前5行。
+####解决问题</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="lesson-7.html#cb92-1" tabindex="-1"></a><span class="fu">library</span>(bruceR)</span></code></pre></div>
+<pre><code>## Warning: package &#39;bruceR&#39; was built under R version 4.2.3</code></pre>
 <pre><code>## 
-## bruceR (v2023.9)
-## Broadly Useful Convenient and Efficient R functions
+## bruceR (v0.8.10)
+## BRoadly Useful Convenient and Efficient R functions
 ## 
 ## Packages also loaded:
 ## ✔ data.table ✔ emmeans
@@ -580,244 +314,241 @@ div.csl-indent {
 ## install.packages(&quot;bruceR&quot;, dep=TRUE)
 ## 
 ## Online documentation:
-## https://psychbruce.github.io/bruceR
-## 
-## To use this package in publications, please cite:
-## Bao, H.-W.-S. (2023). bruceR: Broadly useful convenient and efficient R functions (Version 2023.9) [Computer software]. https://CRAN.R-project.org/package=bruceR</code></pre>
+## https://psychbruce.github.io/bruceR</code></pre>
 <pre><code>## 
 ## These packages are dependencies of `bruceR` but not installed:
-## - ggtext, vars, phia, GPArotation
+## - cowplot, ggtext, lmtest, vars, phia, BayesFactor, GGally, GPArotation
 ## 
 ## ***** Install all dependencies *****
-## install.packages(&quot;bruceR&quot;, dep=TRUE)</code></pre>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="lesson-7.html#cb385-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb385-2"><a href="lesson-7.html#cb385-2" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb385-3"><a href="lesson-7.html#cb385-3" tabindex="-1"></a>df.pg.raw <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&#39;./data/penguin/penguin_rawdata.csv&#39;</span>,</span>
-<span id="cb385-4"><a href="lesson-7.html#cb385-4" tabindex="-1"></a>                       <span class="at">header =</span> T, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p>首先载入所需的包。<code>BruceR</code>包载入后会有一大串提示信息，包括载入的包、主要函数和网址等。与先前操作相似，我们使用相对路径读取数据，可以查看前5行。</p>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="lesson-7.html#cb386-1" tabindex="-1"></a>df.pg.mean <span class="ot">&lt;-</span> df.pg.raw <span class="sc">%&gt;%</span></span>
-<span id="cb386-2"><a href="lesson-7.html#cb386-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(sex <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> sex <span class="sc">&lt;</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb386-3"><a href="lesson-7.html#cb386-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">ECR_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">select</span>(., <span class="fu">starts_with</span>(<span class="st">&quot;ECR&quot;</span>)),<span class="at">na.rm =</span> T),</span>
-<span id="cb386-4"><a href="lesson-7.html#cb386-4" tabindex="-1"></a>                <span class="at">HOME_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">select</span>(., <span class="fu">starts_with</span>(<span class="st">&quot;HOME&quot;</span>)),<span class="at">na.rm =</span> T),</span>
-<span id="cb386-5"><a href="lesson-7.html#cb386-5" tabindex="-1"></a>                <span class="at">sex=</span><span class="fu">as.factor</span>(sex)</span>
-<span id="cb386-6"><a href="lesson-7.html#cb386-6" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span></span>
-<span id="cb386-7"><a href="lesson-7.html#cb386-7" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sex, ECR_mean, HOME_mean, Temperature_t1,Temperature_t2)</span></code></pre></div>
-<p>其次，我们需要进行数据预处理，计算家庭依恋的均值。这需要使用之前学过的数据预处理函数和方法，我们将使用管道进行操作。为了计算第二个问题，我们首先筛选出两个性别，即男性和女性。然后，我们对数据进行操作，计算两个变量的得分均值，用mutate生成两个新变量。我们使用命令na.rm来去除包含缺失值的数据，以避免出现错误。我们可以使用命令将性别转换为factor，以便在进行t-test时更容易分类。在使用R语言时，不同的函数可能会有微小的区别，因此我们需要注意这些细节。在选择数据时，应该只选取感兴趣的变量进行分析，如年龄、性别、亲密关系、问卷得分和温度测量值等。</p>
-<p>进行<em>t</em>检验时，需要输入数据框、y变量和x变量，同时需要注意是否是配对样本和是否满足方向性。</p>
-<p>问题一（单样本<em>t</em>检验）：</p>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="lesson-7.html#cb387-1" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">TTEST</span>(df.pg.mean, <span class="st">&quot;HOME_mean&quot;</span>, <span class="at">test.value =</span> <span class="fl">3.5</span>, <span class="at">test.sided =</span> <span class="st">&quot;&gt;&quot;</span>)</span></code></pre></div>
+## install.packages(&quot;bruceR&quot;, dep=TRUE)
+## ************************************</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="lesson-7.html#cb96-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb96-2"><a href="lesson-7.html#cb96-2" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li>“在penguin数据中，参与者对于家的依恋水平是否小于/等于/大于均值水平(假设在总体水平上，人们对家庭的依恋水平(HOME)均值为3.5)？”</li>
+<li>“在penguin数据中，男女生在亲密关系经验(ECR)中的得分是否存在显著差异？”</li>
+<li>“在penguin数据中，参与者在不同时间的温度差异是否具有显著性？”</li>
+</ol>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="lesson-7.html#cb97-1" tabindex="-1"></a>WD <span class="ot">&lt;-</span>  here<span class="sc">::</span><span class="fu">here</span>()</span>
+<span id="cb97-2"><a href="lesson-7.html#cb97-2" tabindex="-1"></a></span>
+<span id="cb97-3"><a href="lesson-7.html#cb97-3" tabindex="-1"></a>df.pg.raw <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&#39;./data/penguin/penguin_rawdata.csv&#39;</span>,</span>
+<span id="cb97-4"><a href="lesson-7.html#cb97-4" tabindex="-1"></a>                       <span class="at">header =</span> T, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>首先，我们需要进行数据预处理，计算家庭依恋的均值。这需要使用之前学过的数据预处理函数和方法，我们将使用管道进行操作。为了计算第二个问题，我们首先筛选出两个性别，即男性和女性。然后，我们对数据进行操作，计算两个变量的得分均值，用mutate生成两个新变量。我们使用命令na.rm来去除包含缺失值的数据，以避免出现错误。我们可以使用命令将性别转换为factor，以便在进行t-test时更容易分类。在使用R语言时，不同的函数可能会有微小的区别，因此我们需要注意这些细节。在选择数据时，应该只选取感兴趣的变量进行分析，如年龄、性别、亲密关系、问卷得分和温度测量值等。</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="lesson-7.html#cb98-1" tabindex="-1"></a>df.pg.mean <span class="ot">&lt;-</span> df.pg.raw <span class="sc">%&gt;%</span></span>
+<span id="cb98-2"><a href="lesson-7.html#cb98-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(sex <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> sex <span class="sc">&lt;</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb98-3"><a href="lesson-7.html#cb98-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">ECR_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">select</span>(., <span class="fu">starts_with</span>(<span class="st">&quot;ECR&quot;</span>)),<span class="at">na.rm =</span> T),</span>
+<span id="cb98-4"><a href="lesson-7.html#cb98-4" tabindex="-1"></a>                <span class="at">HOME_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">select</span>(., <span class="fu">starts_with</span>(<span class="st">&quot;HOME&quot;</span>)),<span class="at">na.rm =</span> T),</span>
+<span id="cb98-5"><a href="lesson-7.html#cb98-5" tabindex="-1"></a>                <span class="at">sex=</span><span class="fu">as.factor</span>(sex)</span>
+<span id="cb98-6"><a href="lesson-7.html#cb98-6" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span></span>
+<span id="cb98-7"><a href="lesson-7.html#cb98-7" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sex, ECR_mean, HOME_mean, Temperature_t1,Temperature_t2)</span></code></pre></div>
+<p>进行t-test时，需要输入数据框、y变量和x变量，同时需要注意是否是配对样本和是否满足方向性。</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="lesson-7.html#cb99-1" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">TTEST</span>(df.pg.mean, <span class="st">&quot;HOME_mean&quot;</span>, <span class="at">test.value =</span> <span class="fl">3.5</span>, <span class="at">test.sided =</span> <span class="st">&quot;&gt;&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## One-Sample t-test
 ## 
 ## Hypothesis: one-sided (μ &gt; 3.5)</code></pre>
-<pre><code>## t approximation invoked.</code></pre>
+<pre><code>## `BayesFactor` package needs to be installed.</code></pre>
 <pre><code>## Descriptives:
 ## ───────────────────────────
 ##   Variable    N Mean (S.D.)
 ## ───────────────────────────
-##  HOME_mean 1484 3.99 (0.73)
+##  HOME_mean 1490 3.99 (0.73)
 ## ───────────────────────────
 ## 
 ## Results of t-test:
-## ───────────────────────────────────────────────────────────────────────────────────────────────────
-##                                   t   df     p     Difference [95% CI] Cohen’s d [95% CI]      BF10
-## ───────────────────────────────────────────────────────────────────────────────────────────────────
-## HOME_mean: (HOME_mean - 3.5)  25.70 1483 &lt;.001 ***    0.49 [0.46, Inf]   0.67 [0.62, Inf] 1.63e+117
-## ───────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="lesson-7.html#cb391-1" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">TTEST</span>(df.pg.mean, <span class="st">&quot;HOME_mean&quot;</span>, <span class="at">test.value =</span> <span class="fl">3.5</span>, <span class="at">test.sided =</span> <span class="st">&quot;&lt;&quot;</span>)</span></code></pre></div>
+## ──────────────────────────────────────────────────────────────────────────────────────────────
+##                                   t   df     p     Difference [95% CI] Cohen’s d [95% CI] BF10
+## ──────────────────────────────────────────────────────────────────────────────────────────────
+## HOME_mean: (HOME_mean - 3.5)  25.97 1489 &lt;.001 ***    0.49 [0.46, Inf]   0.67 [0.63, Inf]     
+## ──────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="lesson-7.html#cb103-1" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">TTEST</span>(df.pg.mean, <span class="st">&quot;HOME_mean&quot;</span>, <span class="at">test.value =</span> <span class="fl">3.5</span>, <span class="at">test.sided =</span> <span class="st">&quot;&lt;&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## One-Sample t-test
 ## 
 ## Hypothesis: one-sided (μ &lt; 3.5)</code></pre>
-<pre><code>## t approximation invoked.</code></pre>
+<pre><code>## `BayesFactor` package needs to be installed.</code></pre>
 <pre><code>## Descriptives:
 ## ───────────────────────────
 ##   Variable    N Mean (S.D.)
 ## ───────────────────────────
-##  HOME_mean 1484 3.99 (0.73)
+##  HOME_mean 1490 3.99 (0.73)
 ## ───────────────────────────
 ## 
 ## Results of t-test:
-## ──────────────────────────────────────────────────────────────────────────────────────────────────
-##                                   t   df     p     Difference [95% CI] Cohen’s d [95% CI]     BF10
-## ──────────────────────────────────────────────────────────────────────────────────────────────────
-## HOME_mean: (HOME_mean - 3.5)  25.70 1483 1.000       0.49 [-Inf, 0.52]  0.67 [-Inf, 0.71] 6.95e-04
-## ──────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="lesson-7.html#cb395-1" tabindex="-1"></a>  result.ttest <span class="ot">&lt;-</span> <span class="fu">capture.output</span>({</span>
-<span id="cb395-2"><a href="lesson-7.html#cb395-2" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">TTEST</span>(<span class="at">data=</span>df.pg.mean, </span>
-<span id="cb395-3"><a href="lesson-7.html#cb395-3" tabindex="-1"></a>                <span class="at">y=</span><span class="st">&quot;HOME_mean&quot;</span>, </span>
-<span id="cb395-4"><a href="lesson-7.html#cb395-4" tabindex="-1"></a>                <span class="at">test.value =</span> <span class="fl">3.5</span>, </span>
-<span id="cb395-5"><a href="lesson-7.html#cb395-5" tabindex="-1"></a>                <span class="at">test.sided =</span> <span class="st">&quot;=&quot;</span>,</span>
-<span id="cb395-6"><a href="lesson-7.html#cb395-6" tabindex="-1"></a>                <span class="at">file =</span> <span class="st">&quot;./output/chp7/single_t.doc&quot;</span>)</span>
-<span id="cb395-7"><a href="lesson-7.html#cb395-7" tabindex="-1"></a>})</span>
-<span id="cb395-8"><a href="lesson-7.html#cb395-8" tabindex="-1"></a><span class="fu">writeLines</span>(result.ttest, <span class="st">&quot;./output/chp7/single_t.md&quot;</span>) <span class="co"># .md最整齐</span></span></code></pre></div>
-<p><code>mean difference</code>代表两组数据的均值差异，<code>Cohen's *d*</code>是t-test的一个效应量。<code>test side</code>表示双尾还是单尾。<code>test value</code>是要检验的变量。<code>factor variance</code>表示是否对因素进行反转，<code>digital</code>参数指小数点后保留的位数，<code>file</code>参数用于保存结果到word文档。</p>
-<p>使用<code>capture output</code>函数可以整理结果并复制到<code>results.ttest</code>变量中。将结果复制到名为<code>results.ttest</code>的变量中，并将结果写入一个名为<code>single_t.md</code>的文件中。在根目录中打开<code>R4Psy</code>项目文件，我们可以看到已经运行过的输出结果，其中包括一个符合心理学格式的三线表格，其中包含了均值、<em>t</em>值、自由度、<em>p</em>值、协方差和效应量等信息。这个表格非常干净。</p>
-<p>问题二（独立样本<em>t</em>检验）：</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="lesson-7.html#cb396-1" tabindex="-1"></a>    result.ttest <span class="ot">&lt;-</span> <span class="fu">capture.output</span>({   </span>
-<span id="cb396-2"><a href="lesson-7.html#cb396-2" tabindex="-1"></a>    bruceR<span class="sc">::</span><span class="fu">TTEST</span>(<span class="at">data=</span>df.pg.mean, </span>
-<span id="cb396-3"><a href="lesson-7.html#cb396-3" tabindex="-1"></a>                <span class="at">y=</span><span class="st">&quot;ECR_mean&quot;</span>,</span>
-<span id="cb396-4"><a href="lesson-7.html#cb396-4" tabindex="-1"></a>                <span class="at">x=</span><span class="st">&quot;sex&quot;</span>)</span>
-<span id="cb396-5"><a href="lesson-7.html#cb396-5" tabindex="-1"></a>})</span>
-<span id="cb396-6"><a href="lesson-7.html#cb396-6" tabindex="-1"></a></span>
-<span id="cb396-7"><a href="lesson-7.html#cb396-7" tabindex="-1"></a><span class="fu">writeLines</span>(result.ttest, <span class="st">&quot;./output/chp7/inde_t.md&quot;</span>)</span></code></pre></div>
-<p>然后是独立样本<em>t</em>检验，比较男性和女性之间的差异。使用了<code>ECR_mean</code>作为样本得分，用性别作为分组变量。结果是two-side的，有描述性的结果，结果包括每组的n、均值和方差齐性检验。如果方差不齐性，可以使用校正方法。<em>t</em>检验的结果，包括<em>t</em>值、<em>df</em>值、<em>p</em>值、mean difference、Cohen’s <em>d</em>值。</p>
-<p>问题三（配对样本<em>t</em>检验）：</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="lesson-7.html#cb397-1" tabindex="-1"></a>   result.ttest <span class="ot">&lt;-</span> <span class="fu">capture.output</span>({</span>
-<span id="cb397-2"><a href="lesson-7.html#cb397-2" tabindex="-1"></a>   bruceR<span class="sc">::</span><span class="fu">TTEST</span>(<span class="at">data=</span>df.pg.mean, </span>
-<span id="cb397-3"><a href="lesson-7.html#cb397-3" tabindex="-1"></a>                 <span class="at">y =</span> <span class="fu">c</span>(<span class="st">&quot;Temperature_t1&quot;</span>,              </span>
-<span id="cb397-4"><a href="lesson-7.html#cb397-4" tabindex="-1"></a>                       <span class="st">&quot;Temperature_t2&quot;</span>),</span>
-<span id="cb397-5"><a href="lesson-7.html#cb397-5" tabindex="-1"></a>                 <span class="at">paired =</span> T)  <span class="co">#是否为配对样本t检验？默认是FALSE</span></span>
-<span id="cb397-6"><a href="lesson-7.html#cb397-6" tabindex="-1"></a>})</span>
-<span id="cb397-7"><a href="lesson-7.html#cb397-7" tabindex="-1"></a><span class="fu">writeLines</span>(result.ttest, <span class="st">&quot;./output/chp7/pair_t.md&quot;</span>)</span></code></pre></div>
-<p>配对样本<em>t</em>检验也很简单，只需要将y变成两个值，然后使用t1和t2进行检验。</p>
-<p>请大家注意，我们之前讲过如何管理和放置你的R-Project，可以避免路径错误。如果你不熟悉路径，可以从github上下载整个文件夹，打开R4psy文件夹中的R-Project文件。我们的助教已经在群里分享了GitHub链接。打开链接后，点击绿色按钮下面的“code”，再点击“download zip”，就可以下载整个文件夹。下载后解压，把文件夹放在一个完整的文件夹里。文件夹里有一个叫做“R4Psy.Rproj”的文件，双击它就可以打开Rstudio。</p>
-<p>在console里输入代码时，如果按回车后，有时可能看到一个大于号“&gt;”或加号”+“。其中“+”表示代码没有输完，可能是缺少反括号或者某些代码没有输入完整。可以补上反括号或按退出键（“ESC”，一般在键盘的左上角）退出。Rstudio是一个好的IDE，可以帮助我们导航代码。在Rmarkdown里，代码块以chunk1、chunk2等命名，可以快速定位到代码框。有些chunk没有命名，只有编号。也可以通过outline来定位。</p>
-<p>如果你想要快速运行代码，推荐使用快捷键control+回车，在Mac上是command+回车。也可以通过查找keyboard shortcut来找到更多快捷键。</p>
-<p>在进行统计分析后，可以使用软件包reports来标准化报告结果，包括均值、标准差、<em>t</em>值、<em>p</em>值和Cohen’s <em>d</em>等。</p>
+## ──────────────────────────────────────────────────────────────────────────────────────────────
+##                                   t   df     p     Difference [95% CI] Cohen’s d [95% CI] BF10
+## ──────────────────────────────────────────────────────────────────────────────────────────────
+## HOME_mean: (HOME_mean - 3.5)  25.97 1489 1.000       0.49 [-Inf, 0.52]  0.67 [-Inf, 0.72]     
+## ──────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="lesson-7.html#cb107-1" tabindex="-1"></a>  result.ttest <span class="ot">&lt;-</span> <span class="fu">capture.output</span>({</span>
+<span id="cb107-2"><a href="lesson-7.html#cb107-2" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">TTEST</span>(<span class="at">data=</span>df.pg.mean, </span>
+<span id="cb107-3"><a href="lesson-7.html#cb107-3" tabindex="-1"></a>                <span class="at">y=</span><span class="st">&quot;HOME_mean&quot;</span>, </span>
+<span id="cb107-4"><a href="lesson-7.html#cb107-4" tabindex="-1"></a>                <span class="at">test.value =</span> <span class="fl">3.5</span>, </span>
+<span id="cb107-5"><a href="lesson-7.html#cb107-5" tabindex="-1"></a>                <span class="at">test.sided =</span> <span class="st">&quot;=&quot;</span>,</span>
+<span id="cb107-6"><a href="lesson-7.html#cb107-6" tabindex="-1"></a>                <span class="at">file =</span> <span class="st">&quot;./output/chp7/single_t.doc&quot;</span>)</span>
+<span id="cb107-7"><a href="lesson-7.html#cb107-7" tabindex="-1"></a>})</span></code></pre></div>
+<pre><code>## `BayesFactor` package needs to be installed.</code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="lesson-7.html#cb109-1" tabindex="-1"></a><span class="fu">writeLines</span>(result.ttest, <span class="st">&quot;./output/chp7/single_t.md&quot;</span>) <span class="co"># .md最整齐</span></span></code></pre></div>
+<p>mean difference代表两组数据的均值差异，是t-test的一个效应量。test side表示双维还是单维，。test value是要检验的变量。factor variance表示是否对因素进行反转，digital参数指小数点后保留的位数，file参数用于保存结果到word文档。
+使用capture output output函数可以整理结果并复制到results.ttest变量中。将结果复制到名为“results.ttest”的变量中，并将结果写入一个名为“single_t.md”的文件中。在根目录中打开R4SAC项目文件，我们可以看到已经运行过的输出结果，其中包括一个符合心理学格式的三线表格，其中包含了均值、t值、自由度、p值、协方差和效应量等信息。这个表格非常干净.</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="lesson-7.html#cb110-1" tabindex="-1"></a>    result.ttest <span class="ot">&lt;-</span> <span class="fu">capture.output</span>({   </span>
+<span id="cb110-2"><a href="lesson-7.html#cb110-2" tabindex="-1"></a>    bruceR<span class="sc">::</span><span class="fu">TTEST</span>(<span class="at">data=</span>df.pg.mean, </span>
+<span id="cb110-3"><a href="lesson-7.html#cb110-3" tabindex="-1"></a>                <span class="at">y=</span><span class="st">&quot;ECR_mean&quot;</span>,</span>
+<span id="cb110-4"><a href="lesson-7.html#cb110-4" tabindex="-1"></a>                <span class="at">x=</span><span class="st">&quot;sex&quot;</span>)</span>
+<span id="cb110-5"><a href="lesson-7.html#cb110-5" tabindex="-1"></a>})</span></code></pre></div>
+<pre><code>## `BayesFactor` package needs to be installed.</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="lesson-7.html#cb112-1" tabindex="-1"></a><span class="fu">writeLines</span>(result.ttest, <span class="st">&quot;./output/chp7/inde_t.md&quot;</span>)</span></code></pre></div>
+<p>然后是独立样本t检验，比较男性和女性之间的差异。使用了ECRmin作为样本得分，用性别作为分组变量。结果是two-side的，有描述性的结果，结果包括每组的n、均值和方差齐性检验。如果方差不齐性，可以使用校正方法。t检验的结，包括t值、df值、p值、mean difference</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="lesson-7.html#cb113-1" tabindex="-1"></a>   result.ttest <span class="ot">&lt;-</span> <span class="fu">capture.output</span>({</span>
+<span id="cb113-2"><a href="lesson-7.html#cb113-2" tabindex="-1"></a>   bruceR<span class="sc">::</span><span class="fu">TTEST</span>(<span class="at">data=</span>df.pg.mean, </span>
+<span id="cb113-3"><a href="lesson-7.html#cb113-3" tabindex="-1"></a>                 <span class="at">y =</span> <span class="fu">c</span>(<span class="st">&quot;Temperature_t1&quot;</span>,              </span>
+<span id="cb113-4"><a href="lesson-7.html#cb113-4" tabindex="-1"></a>                       <span class="st">&quot;Temperature_t2&quot;</span>),</span>
+<span id="cb113-5"><a href="lesson-7.html#cb113-5" tabindex="-1"></a>                 <span class="at">paired =</span> T)  <span class="co">#是否为配对样本t检验？默认是FALSE</span></span>
+<span id="cb113-6"><a href="lesson-7.html#cb113-6" tabindex="-1"></a>})</span></code></pre></div>
+<pre><code>## `BayesFactor` package needs to be installed.</code></pre>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="lesson-7.html#cb115-1" tabindex="-1"></a><span class="fu">writeLines</span>(result.ttest, <span class="st">&quot;./output/chp7/pair_t.md&quot;</span>)</span></code></pre></div>
+<p>配对样本t检验也很简单，只需要将y变成两个值，然后使用t1和t2进行检验。</p>
+<p>请大家注意，我们之前讲过如何管理和放置你的R-Project，可以避免路径错误。如果你不熟悉路径，可以从github上下载整个文件夹，打开R4psy文件夹中地R-Project文件。我们的助教已经在群里分享了GitHub链接。打开链接后，点击绿色按钮下面的“code”，再点击“download zip”，就可以下载整个文件夹。下载后解压缩，把文件夹放在一个完整的文件夹里。文件夹里有一个叫做“R4psy”的文件，双击它就可以了。
+有时候打开课程内容，运行代码会看到一个三角或加号，加号表示代码没有输完，可能是缺少反括号或不知道加号前面跟哪个对应。可以补上反括号或按退出键退出。Rstudio是一个好的IDE，可以帮助我们导航代码。在Rmarkdown里，代码块以chunk1、chunk2等命名，可以快速定位到代码框。有些chunk没有命名，只有编号。也可以通过outline来定位。
+如果你想要快速运行代码，推荐使用快捷键control+回车，在Mac上是command+回车。也可以通过查找keyboard shortcut来找到更多快捷键。</p>
+<p>在进行统计分析后，可以使用软件包reports来标准化报告结果，包括均值、标准差、t值、p值和Cohen’s d等。</p>
 </div>
 </div>
-<div id="方差分析" class="section level3 hasAnchor" number="91.0.2">
-<h3><span class="header-section-number">91.0.2</span> 方差分析<a href="lesson-7.html#方差分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>我们将使用<code>BruceR</code>和<code>Tidyverse</code>软件包，但需要注意，安装<code>BayesFactor</code>包可能会出现错误，因为它依赖于<code>Rtools</code>包。如果出现错误，可以在官方网站上搜索如何安装<code>BayesFactor</code>包。注意安装依赖包，否则可能会出现问题。在使用<code>BruceR</code>时，可能会遇到一些警告和问题，需要自己解决。</p>
-<div id="拟解决问题" class="section level4 hasAnchor" number="91.0.2.1">
-<h4><span class="header-section-number">91.0.2.1</span> 拟解决问题<a href="lesson-7.html#拟解决问题" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<ol style="list-style-type: decimal">
-<li>“在match数据中，被试在匹配任务和不匹配任务上的反应时是否存在差异？”</li>
-<li>“在match数据中，被试在不同身份(self vs other)与不同效价(moral vs immoral)的条件组合下反应时是否存在差异？”</li>
-</ol>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="lesson-7.html#cb398-1" tabindex="-1"></a>df.match <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&#39;./data/match/match_raw.csv&#39;</span>,</span>
-<span id="cb398-2"><a href="lesson-7.html#cb398-2" tabindex="-1"></a>                      <span class="at">header =</span> T, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb398-3"><a href="lesson-7.html#cb398-3" tabindex="-1"></a>  <span class="co"># 拆分单元格内字符串</span></span>
-<span id="cb398-4"><a href="lesson-7.html#cb398-4" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">separate</span>(<span class="at">col=</span>Shape,</span>
-<span id="cb398-5"><a href="lesson-7.html#cb398-5" tabindex="-1"></a>                  <span class="at">into=</span><span class="fu">c</span>(<span class="st">&quot;Valence&quot;</span>,<span class="st">&quot;Identity&quot;</span>),</span>
-<span id="cb398-6"><a href="lesson-7.html#cb398-6" tabindex="-1"></a>                  <span class="at">sep=</span><span class="st">&quot;(?&lt;=moral|immoral)(?=Self|Other)&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb398-7"><a href="lesson-7.html#cb398-7" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Sub, Valence, Identity, <span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb398-8"><a href="lesson-7.html#cb398-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(ACC <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span>    <span class="co"># 只选择回答正确的数据</span></span>
-<span id="cb398-9"><a href="lesson-7.html#cb398-9" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(RT)) <span class="sc">%&gt;%</span>  <span class="co"># 剔除缺失值</span></span>
-<span id="cb398-10"><a href="lesson-7.html#cb398-10" tabindex="-1"></a>  <span class="co"># remove outliers below and above 3rd sd</span></span>
-<span id="cb398-11"><a href="lesson-7.html#cb398-11" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(RT <span class="sc">&gt;</span> <span class="fu">quantile</span>(RT, <span class="fl">0.0015</span>) <span class="sc">&amp;</span> RT <span class="sc">&lt;</span> <span class="fu">quantile</span>(RT, <span class="fl">0.9985</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb398-12"><a href="lesson-7.html#cb398-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">RT =</span> <span class="fu">as.numeric</span>(RT)) <span class="sc">%&gt;%</span></span>
-<span id="cb398-13"><a href="lesson-7.html#cb398-13" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Valence =</span> <span class="fu">as.factor</span>(Valence),</span>
-<span id="cb398-14"><a href="lesson-7.html#cb398-14" tabindex="-1"></a>                <span class="at">Identity =</span> <span class="fu">as.factor</span>(Identity))</span></code></pre></div>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="lesson-7.html#cb399-1" tabindex="-1"></a>df.match.raw <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&#39;./data/match/match_raw.csv&#39;</span>,</span>
-<span id="cb399-2"><a href="lesson-7.html#cb399-2" tabindex="-1"></a>                       <span class="at">header =</span> T, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb399-3"><a href="lesson-7.html#cb399-3" tabindex="-1"></a>                 tidyr<span class="sc">::</span><span class="fu">separate</span>(., <span class="at">col=</span>Shape,<span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;Valence&quot;</span>,<span class="st">&quot;Identity&quot;</span>),</span>
-<span id="cb399-4"><a href="lesson-7.html#cb399-4" tabindex="-1"></a>                                              <span class="at">sep =</span> <span class="st">&quot;(?&lt;=moral|immoral)(?=Self|Other)&quot;</span>)<span class="sc">%&gt;%</span> <span class="co"># 拆分单元格内字符串</span></span>
-<span id="cb399-5"><a href="lesson-7.html#cb399-5" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">select</span>(Sub,Valence,Identity,<span class="fu">everything</span>())<span class="sc">%&gt;%</span></span>
-<span id="cb399-6"><a href="lesson-7.html#cb399-6" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">filter</span>(ACC <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span>  <span class="co"># 只选择回答正确的数据</span></span>
-<span id="cb399-7"><a href="lesson-7.html#cb399-7" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">filter</span>(RT <span class="sc">&gt;</span> <span class="fu">quantile</span>(RT, <span class="fl">0.0015</span>) <span class="sc">&amp;</span> RT <span class="sc">&lt;</span> <span class="fu">quantile</span>(RT, <span class="fl">0.9985</span>)) <span class="sc">%&gt;%</span> <span class="co"># remove outliers below and above 3rd sd</span></span>
-<span id="cb399-8"><a href="lesson-7.html#cb399-8" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">RT =</span> <span class="fu">as.numeric</span>(RT)) <span class="sc">%&gt;%</span></span>
-<span id="cb399-9"><a href="lesson-7.html#cb399-9" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="fu">across</span>(<span class="st">&quot;ACC&quot;</span>, as.factor)) <span class="sc">%&gt;%</span></span>
-<span id="cb399-10"><a href="lesson-7.html#cb399-10" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Valence =</span> <span class="fu">as.factor</span>(Valence)) <span class="sc">%&gt;%</span></span>
-<span id="cb399-11"><a href="lesson-7.html#cb399-11" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Identity =</span> <span class="fu">as.factor</span>(Identity)) <span class="sc">%&gt;%</span></span>
-<span id="cb399-12"><a href="lesson-7.html#cb399-12" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(RT)) <span class="co">#剔除缺失值</span></span></code></pre></div>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="lesson-7.html#cb400-1" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="fu">head</span>(df.match.raw, <span class="dv">10</span>),</span>
-<span id="cb400-2"><a href="lesson-7.html#cb400-2" tabindex="-1"></a>              <span class="at">fillContainer =</span> <span class="cn">TRUE</span>, <span class="at">options =</span> <span class="fu">list</span>(<span class="at">pageLength =</span> <span class="dv">5</span>))</span></code></pre></div>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d213c801cc38c01eb169" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-d213c801cc38c01eb169">{"x":{"filter":"none","vertical":false,"fillContainer":true,"data":[["1","2","3","4","5","6","7","8","9","10"],[7302,7302,7302,7302,7302,7302,7302,7302,7302,7302],["moral","immoral","immoral","immoral","moral","moral","moral","immoral","moral","immoral"],["Other","Other","Self","Self","Other","Self","Other","Self","Other","Other"],["02-May-2018_14:23:08","02-May-2018_14:23:10","02-May-2018_14:23:15","02-May-2018_14:23:17","02-May-2018_14:23:19","02-May-2018_14:23:21","02-May-2018_14:23:24","02-May-2018_14:23:26","02-May-2018_14:23:28","02-May-2018_14:23:30"],["Exp","Exp","Exp","Exp","Exp","Exp","Exp","Exp","Exp","Exp"],[22,22,22,22,22,22,22,22,22,22],["female","female","female","female","female","female","female","female","female","female"],["R","R","R","R","R","R","R","R","R","R"],[1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1],[2,3,5,6,7,8,9,10,11,12],["moralSelf","moralOther","immoralSelf","immoralSelf","moralOther","moralSelf","immoralSelf","moralOther","moralSelf","immoralOther"],["mismatch","mismatch","match","match","match","match","mismatch","mismatch","mismatch","match"],["n","n","m","m","m","m","n","n","n","m"],["n","n","m","m","m","m","n","n","n","m"],["1","1","1","1","1","1","1","1","1","1"],[0.7043,0.9903,0.8207,0.7547,0.5429,0.9009,0.9550999999999999,0.6952,0.7593,0.7135]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sub<\/th>\n      <th>Valence<\/th>\n      <th>Identity<\/th>\n      <th>Date<\/th>\n      <th>Prac<\/th>\n      <th>Age<\/th>\n      <th>Sex<\/th>\n      <th>Hand<\/th>\n      <th>Block<\/th>\n      <th>Bin<\/th>\n      <th>Trial<\/th>\n      <th>Label<\/th>\n      <th>Match<\/th>\n      <th>CorrResp<\/th>\n      <th>Resp<\/th>\n      <th>ACC<\/th>\n      <th>RT<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":[1,6,9,10,11,17]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="方差分析" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> 方差分析<a href="lesson-7.html#方差分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们将使用Brusa和Tidyburst软件包，但需要注意，安装BaseFact包可能会出现错误，因为它依赖于Jax包。如果出现错误，可以在官方网站上搜索如何安装BaseFact包。注意安装依赖包，否则可能会出现问题。在使用Pinode时，可能会遇到一些警告和问题，需要自己解决。</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="lesson-7.html#cb116-1" tabindex="-1"></a>df.match <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&#39;./data/match/match_raw.csv&#39;</span>,</span>
+<span id="cb116-2"><a href="lesson-7.html#cb116-2" tabindex="-1"></a>                      <span class="at">header =</span> T, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb116-3"><a href="lesson-7.html#cb116-3" tabindex="-1"></a>  <span class="co"># 拆分单元格内字符串</span></span>
+<span id="cb116-4"><a href="lesson-7.html#cb116-4" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">separate</span>(<span class="at">col=</span>Shape,</span>
+<span id="cb116-5"><a href="lesson-7.html#cb116-5" tabindex="-1"></a>                  <span class="at">into=</span><span class="fu">c</span>(<span class="st">&quot;Valence&quot;</span>,<span class="st">&quot;Identity&quot;</span>),</span>
+<span id="cb116-6"><a href="lesson-7.html#cb116-6" tabindex="-1"></a>                  <span class="at">sep=</span><span class="st">&quot;(?&lt;=moral|immoral)(?=Self|Other)&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb116-7"><a href="lesson-7.html#cb116-7" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Sub, Valence, Identity, <span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb116-8"><a href="lesson-7.html#cb116-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(ACC <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span>    <span class="co"># 只选择回答正确的数据</span></span>
+<span id="cb116-9"><a href="lesson-7.html#cb116-9" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(RT)) <span class="sc">%&gt;%</span>  <span class="co"># 剔除缺失值</span></span>
+<span id="cb116-10"><a href="lesson-7.html#cb116-10" tabindex="-1"></a>  <span class="co"># remove outliers below and above 3rd sd</span></span>
+<span id="cb116-11"><a href="lesson-7.html#cb116-11" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(RT <span class="sc">&gt;</span> <span class="fu">quantile</span>(RT, <span class="fl">0.0015</span>) <span class="sc">&amp;</span> RT <span class="sc">&lt;</span> <span class="fu">quantile</span>(RT, <span class="fl">0.9985</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb116-12"><a href="lesson-7.html#cb116-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">RT =</span> <span class="fu">as.numeric</span>(RT)) <span class="sc">%&gt;%</span></span>
+<span id="cb116-13"><a href="lesson-7.html#cb116-13" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Valence =</span> <span class="fu">as.factor</span>(Valence),</span>
+<span id="cb116-14"><a href="lesson-7.html#cb116-14" tabindex="-1"></a>                <span class="at">Identity =</span> <span class="fu">as.factor</span>(Identity))</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="lesson-7.html#cb117-1" tabindex="-1"></a>WD <span class="ot">&lt;-</span>  here<span class="sc">::</span><span class="fu">here</span>()</span>
+<span id="cb117-2"><a href="lesson-7.html#cb117-2" tabindex="-1"></a></span>
+<span id="cb117-3"><a href="lesson-7.html#cb117-3" tabindex="-1"></a>df.match.raw <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&#39;./data/match/match_raw.csv&#39;</span>,</span>
+<span id="cb117-4"><a href="lesson-7.html#cb117-4" tabindex="-1"></a>                       <span class="at">header =</span> T, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb117-5"><a href="lesson-7.html#cb117-5" tabindex="-1"></a>                 tidyr<span class="sc">::</span><span class="fu">separate</span>(., <span class="at">col=</span>Shape,<span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;Valence&quot;</span>,<span class="st">&quot;Identity&quot;</span>),</span>
+<span id="cb117-6"><a href="lesson-7.html#cb117-6" tabindex="-1"></a>                                              <span class="at">sep =</span> <span class="st">&quot;(?&lt;=moral|immoral)(?=Self|Other)&quot;</span>)<span class="sc">%&gt;%</span> <span class="co">#拆分单元格内字符串</span></span>
+<span id="cb117-7"><a href="lesson-7.html#cb117-7" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">select</span>(Sub,Valence,Identity,<span class="fu">everything</span>())<span class="sc">%&gt;%</span></span>
+<span id="cb117-8"><a href="lesson-7.html#cb117-8" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">filter</span>(ACC <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="co">#只选择回答正确的数据</span></span>
+<span id="cb117-9"><a href="lesson-7.html#cb117-9" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">filter</span>(RT <span class="sc">&gt;</span> <span class="fu">quantile</span>(RT, <span class="fl">0.0015</span>) <span class="sc">&amp;</span> RT <span class="sc">&lt;</span> <span class="fu">quantile</span>(RT, <span class="fl">0.9985</span>)) <span class="sc">%&gt;%</span> <span class="co">#remove outliers below and above 3rd sd</span></span>
+<span id="cb117-10"><a href="lesson-7.html#cb117-10" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">RT =</span> <span class="fu">as.numeric</span>(RT)) <span class="sc">%&gt;%</span></span>
+<span id="cb117-11"><a href="lesson-7.html#cb117-11" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="fu">across</span>(<span class="st">&quot;ACC&quot;</span>, as.factor)) <span class="sc">%&gt;%</span></span>
+<span id="cb117-12"><a href="lesson-7.html#cb117-12" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Valence =</span> <span class="fu">as.factor</span>(Valence)) <span class="sc">%&gt;%</span></span>
+<span id="cb117-13"><a href="lesson-7.html#cb117-13" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Identity =</span> <span class="fu">as.factor</span>(Identity)) <span class="sc">%&gt;%</span></span>
+<span id="cb117-14"><a href="lesson-7.html#cb117-14" tabindex="-1"></a>                 dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(RT)) <span class="co">#剔除缺失值</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="lesson-7.html#cb118-1" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="fu">head</span>(df.match.raw, <span class="dv">10</span>),</span>
+<span id="cb118-2"><a href="lesson-7.html#cb118-2" tabindex="-1"></a>              <span class="at">fillContainer =</span> <span class="cn">TRUE</span>, <span class="at">options =</span> <span class="fu">list</span>(<span class="at">pageLength =</span> <span class="dv">5</span>))</span></code></pre></div>
+<div id="htmlwidget-57b371e62a35ab1f63f7" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-57b371e62a35ab1f63f7">{"x":{"filter":"none","vertical":false,"fillContainer":true,"data":[["1","2","3","4","5","6","7","8","9","10"],[7302,7302,7302,7302,7302,7302,7302,7302,7302,7302],["moral","immoral","immoral","immoral","moral","moral","moral","immoral","moral","immoral"],["Other","Other","Self","Self","Other","Self","Other","Self","Other","Other"],["02-May-2018_14:23:08","02-May-2018_14:23:10","02-May-2018_14:23:15","02-May-2018_14:23:17","02-May-2018_14:23:19","02-May-2018_14:23:21","02-May-2018_14:23:24","02-May-2018_14:23:26","02-May-2018_14:23:28","02-May-2018_14:23:30"],["Exp","Exp","Exp","Exp","Exp","Exp","Exp","Exp","Exp","Exp"],[22,22,22,22,22,22,22,22,22,22],["female","female","female","female","female","female","female","female","female","female"],["R","R","R","R","R","R","R","R","R","R"],[1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1],[2,3,5,6,7,8,9,10,11,12],["moralOther","immoralOther","immoralSelf","immoralSelf","moralOther","moralSelf","moralOther","immoralSelf","moralOther","immoralOther"],["mismatch","mismatch","match","match","match","match","mismatch","mismatch","mismatch","match"],["n","n","m","m","m","m","n","n","n","m"],["n","n","m","m","m","m","n","n","n","m"],["1","1","1","1","1","1","1","1","1","1"],[0.7043,0.9903,0.8207,0.7547,0.5429,0.9009,0.9551,0.6952,0.7593,0.7135]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sub<\/th>\n      <th>Valence<\/th>\n      <th>Identity<\/th>\n      <th>Date<\/th>\n      <th>Prac<\/th>\n      <th>Age<\/th>\n      <th>Sex<\/th>\n      <th>Hand<\/th>\n      <th>Block<\/th>\n      <th>Bin<\/th>\n      <th>Trial<\/th>\n      <th>Label<\/th>\n      <th>Match<\/th>\n      <th>CorrResp<\/th>\n      <th>Resp<\/th>\n      <th>ACC<\/th>\n      <th>RT<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":[1,6,9,10,11,17]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 <p>在数据清理时，可以先读取数据，然后进行管道操作，将Shape列分割成Valence和Identity两列，并选择Base、Valence、Identity和Everything列。然后进行数据清理，只选择反应正确的反应时间，并去掉缺失值和极端反应时间。我们使用了三个标准差的方法来去除极端值。我们将反应时间转换为数值型，将情感和身份转换为因子型。我们将所有操作应用于数据框df.match，这是经过预处理的数据。</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="lesson-7.html#cb401-1" tabindex="-1"></a>df.match.mean <span class="ot">&lt;-</span> df.match.raw <span class="sc">%&gt;%</span></span>
-<span id="cb401-2"><a href="lesson-7.html#cb401-2" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">group_by</span>(Sub, Match) <span class="sc">%&gt;%</span></span>
-<span id="cb401-3"><a href="lesson-7.html#cb401-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
-<span id="cb401-4"><a href="lesson-7.html#cb401-4" tabindex="-1"></a>        <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb401-5"><a href="lesson-7.html#cb401-5" tabindex="-1"></a>        <span class="at">rt_sd =</span> <span class="fu">sd</span>(<span class="fu">as.numeric</span>(RT), <span class="at">na.rm =</span> T),</span>
-<span id="cb401-6"><a href="lesson-7.html#cb401-6" tabindex="-1"></a>        <span class="at">rt_mean =</span> <span class="fu">mean</span>(<span class="fu">as.numeric</span>(RT), <span class="at">na.rm =</span> T),</span>
-<span id="cb401-7"><a href="lesson-7.html#cb401-7" tabindex="-1"></a>        <span class="at">acc_mean=</span><span class="fu">mean</span>(<span class="fu">as.numeric</span>(<span class="fu">as.character</span>(ACC)),<span class="at">na.rm=</span>T)<span class="co">#对于factor数据，先转成character，再变成numeric</span></span>
-<span id="cb401-8"><a href="lesson-7.html#cb401-8" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
-<span id="cb401-9"><a href="lesson-7.html#cb401-9" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">ungroup</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="lesson-7.html#cb119-1" tabindex="-1"></a>df.match.mean <span class="ot">&lt;-</span> df.match.raw <span class="sc">%&gt;%</span></span>
+<span id="cb119-2"><a href="lesson-7.html#cb119-2" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">group_by</span>(Sub, Match) <span class="sc">%&gt;%</span></span>
+<span id="cb119-3"><a href="lesson-7.html#cb119-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb119-4"><a href="lesson-7.html#cb119-4" tabindex="-1"></a>        <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb119-5"><a href="lesson-7.html#cb119-5" tabindex="-1"></a>        <span class="at">rt_sd =</span> <span class="fu">sd</span>(<span class="fu">as.numeric</span>(RT), <span class="at">na.rm =</span> T),</span>
+<span id="cb119-6"><a href="lesson-7.html#cb119-6" tabindex="-1"></a>        <span class="at">rt_mean =</span> <span class="fu">mean</span>(<span class="fu">as.numeric</span>(RT), <span class="at">na.rm =</span> T),</span>
+<span id="cb119-7"><a href="lesson-7.html#cb119-7" tabindex="-1"></a>        <span class="at">acc_mean=</span><span class="fu">mean</span>(<span class="fu">as.numeric</span>(<span class="fu">as.character</span>(ACC)),<span class="at">na.rm=</span>T)<span class="co">#对于factor数据，先转成character，再变成numeric</span></span>
+<span id="cb119-8"><a href="lesson-7.html#cb119-8" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
+<span id="cb119-9"><a href="lesson-7.html#cb119-9" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">ungroup</span>()</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;Sub&#39;. You can override using the `.groups`
 ## argument.</code></pre>
-<p>我们需要求出每个被试在匹配和不匹配任务上的均值，才能进行比较。为此，我们使用分组进行预处理，分组的目标是为了得到每个组的描述性统计，如RT的mean和SD，以及正确试次的个数。我们可以使用summarize快速得出这些统计信息。接着，我们可以使用t-test或方差分析来比较匹配和不匹配反应是否有差异。</p>
-<p>问题一（单因素被试内设计）之单因素方差分析：</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="lesson-7.html#cb403-1" tabindex="-1"></a><span class="co">#比较被试在匹配任务和不匹配任务上的反应时是否存在差异</span></span>
-<span id="cb403-2"><a href="lesson-7.html#cb403-2" tabindex="-1"></a><span class="co">#单因素被试内设计（长型数据）</span></span>
-<span id="cb403-3"><a href="lesson-7.html#cb403-3" tabindex="-1"></a>result.anova <span class="ot">&lt;-</span> <span class="fu">capture.output</span>({</span>
-<span id="cb403-4"><a href="lesson-7.html#cb403-4" tabindex="-1"></a>df_within <span class="ot">&lt;-</span> df.match.mean<span class="sc">%&gt;%</span></span>
-<span id="cb403-5"><a href="lesson-7.html#cb403-5" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(<span class="at">subID=</span><span class="st">&quot;Sub&quot;</span>,<span class="co">#被试id</span></span>
-<span id="cb403-6"><a href="lesson-7.html#cb403-6" tabindex="-1"></a>                 <span class="at">dv=</span><span class="st">&quot;rt_mean&quot;</span>,<span class="co">#因变量，因为是MANOVA，实际上因变量可以再后面设置很多个</span></span>
-<span id="cb403-7"><a href="lesson-7.html#cb403-7" tabindex="-1"></a>                 <span class="at">within=</span><span class="st">&quot;Match&quot;</span>) <span class="co">#设置条件，因素分析的条件</span></span>
-<span id="cb403-8"><a href="lesson-7.html#cb403-8" tabindex="-1"></a>})</span></code></pre></div>
+<p>我们需要求出每个被试在匹配和不匹配任务上的均值，才能进行比较。为此，我们使用分组进行预处理，分组的目标是为了得到每个组的描述性统计，如RT的mean和SD，以及正确试次的个数。我们可以使用summarize快速得出这些统计信息。接着，我们可以使用T-test或方差分析来比较匹配和不匹配反应是否有差异。</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="lesson-7.html#cb121-1" tabindex="-1"></a><span class="co">#比较被试在匹配任务和不匹配任务上的反应时是否存在差异</span></span>
+<span id="cb121-2"><a href="lesson-7.html#cb121-2" tabindex="-1"></a><span class="co">#单因素被试内设计（长型数据）</span></span>
+<span id="cb121-3"><a href="lesson-7.html#cb121-3" tabindex="-1"></a>result.anova <span class="ot">&lt;-</span> <span class="fu">capture.output</span>({</span>
+<span id="cb121-4"><a href="lesson-7.html#cb121-4" tabindex="-1"></a>df_within <span class="ot">&lt;-</span> df.match.mean<span class="sc">%&gt;%</span></span>
+<span id="cb121-5"><a href="lesson-7.html#cb121-5" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(<span class="at">subID=</span><span class="st">&quot;Sub&quot;</span>,<span class="co">#被试id</span></span>
+<span id="cb121-6"><a href="lesson-7.html#cb121-6" tabindex="-1"></a>                 <span class="at">dv=</span><span class="st">&quot;rt_mean&quot;</span>,<span class="co">#因变量，因为是MANOVA，实际上因变量可以再后面设置很多个</span></span>
+<span id="cb121-7"><a href="lesson-7.html#cb121-7" tabindex="-1"></a>                 <span class="at">within=</span><span class="st">&quot;Match&quot;</span>) <span class="co">#设置条件，因素分析的条件</span></span>
+<span id="cb121-8"><a href="lesson-7.html#cb121-8" tabindex="-1"></a>})</span></code></pre></div>
 <pre><code>## 
 ##     * Data are aggregated to mean (across items/trials)
 ##     if there are &gt;=2 observations per subject and cell.
 ##     You may use Linear Mixed Model to analyze the data,
 ##     e.g., with subjects and items as level-2 clusters.</code></pre>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="lesson-7.html#cb405-1" tabindex="-1"></a><span class="fu">writeLines</span>(result.anova, <span class="st">&quot;./output/chp7/anova_1.md&quot;</span>)</span>
-<span id="cb405-2"><a href="lesson-7.html#cb405-2" tabindex="-1"></a><span class="co"># 若不符合球形假设要加上：sph.correction = &quot;GG&quot;</span></span></code></pre></div>
-<p>在方差分析中，我们可以使用BruceR包中的MANOVA()函数。参数分别是subID,dv和within，即可直接对其进行操作并输出结果。这几个参数符合心理学的命名规范。我们可以得到match和mismatch两种条件的描述性统计，包括f值、p值、eta2、pash2、95%置信区间和generalized eta2。因为这是一个完全被试内设计的分析，所以不需要进行方差齐性检验。</p>
-<p>问题二（两因素被试内设计）之重复测量方差分析：</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="lesson-7.html#cb406-1" tabindex="-1"></a>df.match.mean <span class="ot">&lt;-</span> df.match <span class="sc">%&gt;%</span></span>
-<span id="cb406-2"><a href="lesson-7.html#cb406-2" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">group_by</span>(Sub,Sex, Valence,Identity) <span class="sc">%&gt;%</span></span>
-<span id="cb406-3"><a href="lesson-7.html#cb406-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
-<span id="cb406-4"><a href="lesson-7.html#cb406-4" tabindex="-1"></a>        <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb406-5"><a href="lesson-7.html#cb406-5" tabindex="-1"></a>        <span class="at">rt_sd =</span> <span class="fu">sd</span>(<span class="fu">as.numeric</span>(RT), <span class="at">na.rm =</span> T),</span>
-<span id="cb406-6"><a href="lesson-7.html#cb406-6" tabindex="-1"></a>        <span class="at">rt_mean =</span> <span class="fu">mean</span>(<span class="fu">as.numeric</span>(RT), <span class="at">na.rm =</span> T)</span>
-<span id="cb406-7"><a href="lesson-7.html#cb406-7" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
-<span id="cb406-8"><a href="lesson-7.html#cb406-8" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">ungroup</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="lesson-7.html#cb123-1" tabindex="-1"></a><span class="fu">writeLines</span>(result.anova, <span class="st">&quot;./output/chp7/anova_1.md&quot;</span>)</span>
+<span id="cb123-2"><a href="lesson-7.html#cb123-2" tabindex="-1"></a><span class="co"># 若不符合球形假设要加上：sph.correction = &quot;GG&quot;</span></span></code></pre></div>
+<p>在方差分析中，我们可以使用BruceR包中的MANOVA()函数。参数分别是subID,dv和within，即可直接对其进行操作并输出结果。这几个参数符合心理学的命名规范。我们可以得到match和mismatch两种条件的描述性统计，包括f值、p值、eta2、pash2、95%置信区间和generalized eta2。</p>
+<p>因为这是一个完全被试内设计的分析，所以不需要进行方差齐性检验。</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="lesson-7.html#cb124-1" tabindex="-1"></a>df.match.mean <span class="ot">&lt;-</span> df.match <span class="sc">%&gt;%</span></span>
+<span id="cb124-2"><a href="lesson-7.html#cb124-2" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">group_by</span>(Sub,Sex, Valence,Identity) <span class="sc">%&gt;%</span></span>
+<span id="cb124-3"><a href="lesson-7.html#cb124-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb124-4"><a href="lesson-7.html#cb124-4" tabindex="-1"></a>        <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb124-5"><a href="lesson-7.html#cb124-5" tabindex="-1"></a>        <span class="at">rt_sd =</span> <span class="fu">sd</span>(<span class="fu">as.numeric</span>(RT), <span class="at">na.rm =</span> T),</span>
+<span id="cb124-6"><a href="lesson-7.html#cb124-6" tabindex="-1"></a>        <span class="at">rt_mean =</span> <span class="fu">mean</span>(<span class="fu">as.numeric</span>(RT), <span class="at">na.rm =</span> T)</span>
+<span id="cb124-7"><a href="lesson-7.html#cb124-7" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
+<span id="cb124-8"><a href="lesson-7.html#cb124-8" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">ungroup</span>()</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;Sub&#39;, &#39;Sex&#39;, &#39;Valence&#39;. You can override
 ## using the `.groups` argument.</code></pre>
 <p>对于被试身份和效价这两个因素，我们可以直接从match中选出数值对，然后进行groupby和summarize操作。需要注意的是，我们现在是以subject、variance和identity为基础进行分析。</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="lesson-7.html#cb408-1" tabindex="-1"></a>df.match.within <span class="ot">&lt;-</span> df.match.mean <span class="sc">%&gt;%</span></span>
-<span id="cb408-2"><a href="lesson-7.html#cb408-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(n, rt_sd)) <span class="sc">%&gt;%</span></span>
-<span id="cb408-3"><a href="lesson-7.html#cb408-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Valence =</span> <span class="fu">paste</span>(<span class="st">&quot;A_&quot;</span>, Valence, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>),<span class="co">#将变量的名称进行修改转换，不生产新的变量</span></span>
-<span id="cb408-4"><a href="lesson-7.html#cb408-4" tabindex="-1"></a>                <span class="at">Identity =</span> <span class="fu">paste</span>(<span class="st">&quot;B_&quot;</span>, Identity, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb408-5"><a href="lesson-7.html#cb408-5" tabindex="-1"></a>  <span class="co"># 将morality和identity组合名称起来生成一个新的变量&quot;Conds&quot;</span></span>
-<span id="cb408-6"><a href="lesson-7.html#cb408-6" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unite</span>(<span class="st">&quot;Conds&quot;</span>, Valence<span class="sc">:</span>Identity, <span class="at">sep =</span> <span class="st">&quot;&amp;&quot;</span>,<span class="at">remove=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb408-7"><a href="lesson-7.html#cb408-7" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Conds,</span>
-<span id="cb408-8"><a href="lesson-7.html#cb408-8" tabindex="-1"></a>                     <span class="at">values_from =</span> rt_mean)</span>
-<span id="cb408-9"><a href="lesson-7.html#cb408-9" tabindex="-1"></a></span>
-<span id="cb408-10"><a href="lesson-7.html#cb408-10" tabindex="-1"></a><span class="fu">head</span>(df.match.within)</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="lesson-7.html#cb126-1" tabindex="-1"></a>df.match.within <span class="ot">&lt;-</span> df.match.mean <span class="sc">%&gt;%</span></span>
+<span id="cb126-2"><a href="lesson-7.html#cb126-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(n, rt_sd)) <span class="sc">%&gt;%</span></span>
+<span id="cb126-3"><a href="lesson-7.html#cb126-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Valence =</span> <span class="fu">paste</span>(<span class="st">&quot;A_&quot;</span>, Valence, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>),<span class="co">#将变量的名称进行修改转换，不生产新的变量</span></span>
+<span id="cb126-4"><a href="lesson-7.html#cb126-4" tabindex="-1"></a>                <span class="at">Identity =</span> <span class="fu">paste</span>(<span class="st">&quot;B_&quot;</span>, Identity, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb126-5"><a href="lesson-7.html#cb126-5" tabindex="-1"></a>  <span class="co"># 将morality和identity组合名称起来生成一个新的变量&quot;Conds&quot;</span></span>
+<span id="cb126-6"><a href="lesson-7.html#cb126-6" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unite</span>(<span class="st">&quot;Conds&quot;</span>, Valence<span class="sc">:</span>Identity, <span class="at">sep =</span> <span class="st">&quot;&amp;&quot;</span>,<span class="at">remove=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb126-7"><a href="lesson-7.html#cb126-7" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Conds,</span>
+<span id="cb126-8"><a href="lesson-7.html#cb126-8" tabindex="-1"></a>                     <span class="at">values_from =</span> rt_mean)</span>
+<span id="cb126-9"><a href="lesson-7.html#cb126-9" tabindex="-1"></a></span>
+<span id="cb126-10"><a href="lesson-7.html#cb126-10" tabindex="-1"></a><span class="fu">head</span>(df.match.within)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 6
-##     Sub Sex    `A_immoral&amp;B_Other` `A_immoral&amp;B_Self` `A_moral&amp;B_Other`
-##   &lt;int&gt; &lt;chr&gt;                &lt;dbl&gt;              &lt;dbl&gt;             &lt;dbl&gt;
-## 1  7302 female               0.706              0.724             0.662
-## 2  7303 male                 0.741              0.754             0.720
-## 3  7304 female               0.756              0.730             0.757
-## 4  7305 male                 0.685              0.659             0.641
-## 5  7306 male                 0.778              0.763             0.660
-## 6  7307 female               0.751              0.677             0.716
-## # ℹ 1 more variable: `A_moral&amp;B_Self` &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="lesson-7.html#cb410-1" tabindex="-1"></a><span class="co">#str(df.match.within)</span></span></code></pre></div>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="lesson-7.html#cb411-1" tabindex="-1"></a><span class="co">#被试在不同身份(self vs other)与不同效价(moral vs moral)的条件组合下反应时是否存在差异）</span></span>
-<span id="cb411-2"><a href="lesson-7.html#cb411-2" tabindex="-1"></a>  result.anova <span class="ot">&lt;-</span> <span class="fu">capture.output</span>({</span>
-<span id="cb411-3"><a href="lesson-7.html#cb411-3" tabindex="-1"></a>  res_rmANOVA_1 <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(<span class="at">data=</span>df.match.within,</span>
-<span id="cb411-4"><a href="lesson-7.html#cb411-4" tabindex="-1"></a>                   <span class="at">dvs=</span><span class="st">&quot;A_immoral&amp;B_Other:A_moral&amp;B_Self&quot;</span>,</span>
-<span id="cb411-5"><a href="lesson-7.html#cb411-5" tabindex="-1"></a>                   <span class="at">dvs.pattern=</span><span class="st">&quot;A_(.+)B_(.+)&quot;</span>,<span class="co">#正则表达式</span></span>
-<span id="cb411-6"><a href="lesson-7.html#cb411-6" tabindex="-1"></a>                   <span class="at">within=</span><span class="fu">c</span>(<span class="st">&quot;A_&quot;</span>,<span class="st">&quot;B_&quot;</span>))<span class="co">#表示2个主条件</span></span>
-<span id="cb411-7"><a href="lesson-7.html#cb411-7" tabindex="-1"></a>  })</span></code></pre></div>
+##     Sub Sex    `A_immoral&amp;B_Other` `A_immoral&amp;B_Self` `A_moral&amp;B_Other` A_mora…¹
+##   &lt;int&gt; &lt;chr&gt;                &lt;dbl&gt;              &lt;dbl&gt;             &lt;dbl&gt;    &lt;dbl&gt;
+## 1  7302 female               0.706              0.724             0.662    0.721
+## 2  7303 male                 0.741              0.754             0.720    0.700
+## 3  7304 female               0.756              0.730             0.757    0.628
+## 4  7305 male                 0.685              0.659             0.641    0.638
+## 5  7306 male                 0.778              0.763             0.660    0.771
+## 6  7307 female               0.751              0.677             0.716    0.728
+## # … with abbreviated variable name ¹​`A_moral&amp;B_Self`</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="lesson-7.html#cb128-1" tabindex="-1"></a><span class="co">#str(df.match.within)</span></span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="lesson-7.html#cb129-1" tabindex="-1"></a><span class="co">#被试在不同身份(self vs other)与不同效价(moral vs moral)的条件组合下反应时是否存在差异）</span></span>
+<span id="cb129-2"><a href="lesson-7.html#cb129-2" tabindex="-1"></a>  result.anova <span class="ot">&lt;-</span> <span class="fu">capture.output</span>({</span>
+<span id="cb129-3"><a href="lesson-7.html#cb129-3" tabindex="-1"></a>  res_rmANOVA_1 <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(<span class="at">data=</span>df.match.within,</span>
+<span id="cb129-4"><a href="lesson-7.html#cb129-4" tabindex="-1"></a>                   <span class="at">dvs=</span><span class="st">&quot;A_immoral&amp;B_Other:A_moral&amp;B_Self&quot;</span>,</span>
+<span id="cb129-5"><a href="lesson-7.html#cb129-5" tabindex="-1"></a>                   <span class="at">dvs.pattern=</span><span class="st">&quot;A_(.+)B_(.+)&quot;</span>,<span class="co">#正则表达式</span></span>
+<span id="cb129-6"><a href="lesson-7.html#cb129-6" tabindex="-1"></a>                   <span class="at">within=</span><span class="fu">c</span>(<span class="st">&quot;A_&quot;</span>,<span class="st">&quot;B_&quot;</span>))<span class="co">#表示2个主条件</span></span>
+<span id="cb129-7"><a href="lesson-7.html#cb129-7" tabindex="-1"></a>  })</span></code></pre></div>
 <pre><code>## 
 ## Note:
 ## dvs=&quot;A_immoral&amp;B_Other:A_moral&amp;B_Self&quot; is matched to variables:
 ## A_immoral&amp;B_Other, A_immoral&amp;B_Self, A_moral&amp;B_Other, A_moral&amp;B_Self</code></pre>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="lesson-7.html#cb413-1" tabindex="-1"></a><span class="fu">writeLines</span>(result.anova, <span class="st">&quot;./output/chp7/anova_2.md&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="lesson-7.html#cb131-1" tabindex="-1"></a><span class="fu">writeLines</span>(result.anova, <span class="st">&quot;./output/chp7/anova_2.md&quot;</span>)</span></code></pre></div>
 <p>如果我们有的是宽数据，我们可以先将宽数据转成长数据，然后选择变量并按照Bruce R的命名方式在前面加上a和b表示自变量a和自变量b。接着，我们可以使用unite函数将Valence和Identity合并成一个新的变量，再使用pivot wide将其转换为更宽的形式。这样，我们就可以看到每个条件下的性别、被试id和条件。
-最后，我们将结果写成md格式，得到一个简洁的表格，其中包含<em>F</em>值、<em>p</em>值、partial eta square、generalized square和partial eta square的95%置信区间。长数据也可以使用同样的方法处理。</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="lesson-7.html#cb414-1" tabindex="-1"></a><span class="co">#被试在不同身份(self vs other)与不同效价(good vs bad)的条件组合下反应时是否存在差异）</span></span>
-<span id="cb414-2"><a href="lesson-7.html#cb414-2" tabindex="-1"></a><span class="co">#head(df.match.mean)</span></span>
-<span id="cb414-3"><a href="lesson-7.html#cb414-3" tabindex="-1"></a>  result.anova <span class="ot">&lt;-</span> <span class="fu">capture.output</span>({</span>
-<span id="cb414-4"><a href="lesson-7.html#cb414-4" tabindex="-1"></a>  res_rmANOVA_2 <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(<span class="at">data=</span>df.match.mean,</span>
-<span id="cb414-5"><a href="lesson-7.html#cb414-5" tabindex="-1"></a>                   <span class="at">dv=</span><span class="st">&quot;rt_mean&quot;</span>,</span>
-<span id="cb414-6"><a href="lesson-7.html#cb414-6" tabindex="-1"></a>                   <span class="at">within=</span><span class="fu">c</span>(<span class="st">&quot;Valence&quot;</span>,<span class="st">&quot;Identity&quot;</span>),</span>
-<span id="cb414-7"><a href="lesson-7.html#cb414-7" tabindex="-1"></a>                   <span class="at">subID=</span><span class="st">&quot;Sub&quot;</span>)</span>
-<span id="cb414-8"><a href="lesson-7.html#cb414-8" tabindex="-1"></a>  })</span></code></pre></div>
+最后，我们将结果写成md格式，得到一个简洁的表格，其中包含f值、p值、partial square、generalized square和partial square的95%置信区间。长数据也可以使用同样的方法处理。</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="lesson-7.html#cb132-1" tabindex="-1"></a><span class="co">#被试在不同身份(self vs other)与不同效价(good vs bad)的条件组合下反应时是否存在差异）</span></span>
+<span id="cb132-2"><a href="lesson-7.html#cb132-2" tabindex="-1"></a><span class="co">#head(df.match.mean)</span></span>
+<span id="cb132-3"><a href="lesson-7.html#cb132-3" tabindex="-1"></a>  result.anova <span class="ot">&lt;-</span> <span class="fu">capture.output</span>({</span>
+<span id="cb132-4"><a href="lesson-7.html#cb132-4" tabindex="-1"></a>  res_rmANOVA_2 <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(<span class="at">data=</span>df.match.mean,</span>
+<span id="cb132-5"><a href="lesson-7.html#cb132-5" tabindex="-1"></a>                   <span class="at">dv=</span><span class="st">&quot;rt_mean&quot;</span>,</span>
+<span id="cb132-6"><a href="lesson-7.html#cb132-6" tabindex="-1"></a>                   <span class="at">within=</span><span class="fu">c</span>(<span class="st">&quot;Valence&quot;</span>,<span class="st">&quot;Identity&quot;</span>),</span>
+<span id="cb132-7"><a href="lesson-7.html#cb132-7" tabindex="-1"></a>                   <span class="at">subID=</span><span class="st">&quot;Sub&quot;</span>)</span>
+<span id="cb132-8"><a href="lesson-7.html#cb132-8" tabindex="-1"></a>  })</span></code></pre></div>
 <pre><code>## 
 ##     * Data are aggregated to mean (across items/trials)
 ##     if there are &gt;=2 observations per subject and cell.
 ##     You may use Linear Mixed Model to analyze the data,
 ##     e.g., with subjects and items as level-2 clusters.</code></pre>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="lesson-7.html#cb416-1" tabindex="-1"></a><span class="fu">writeLines</span>(result.anova, <span class="st">&quot;./output/chp7/anova_3.md&quot;</span>)</span></code></pre></div>
-<p>简单效应分析：</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="lesson-7.html#cb417-1" tabindex="-1"></a>result.check <span class="ot">&lt;-</span> <span class="fu">capture.output</span>({</span>
-<span id="cb417-2"><a href="lesson-7.html#cb417-2" tabindex="-1"></a>sim_eff_1 <span class="ot">&lt;-</span> res_rmANOVA_1 <span class="sc">%&gt;%</span></span>
-<span id="cb417-3"><a href="lesson-7.html#cb417-3" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">EMMEANS</span>(<span class="st">&quot;A_&quot;</span>, <span class="at">by=</span><span class="st">&quot;B_&quot;</span>) <span class="co"># 简单效应分析</span></span>
-<span id="cb417-4"><a href="lesson-7.html#cb417-4" tabindex="-1"></a>})</span>
-<span id="cb417-5"><a href="lesson-7.html#cb417-5" tabindex="-1"></a><span class="fu">writeLines</span>(result.check, <span class="st">&quot;./output/chp7/check.md&quot;</span>)</span>
-<span id="cb417-6"><a href="lesson-7.html#cb417-6" tabindex="-1"></a></span>
-<span id="cb417-7"><a href="lesson-7.html#cb417-7" tabindex="-1"></a><span class="co">#sim_eff_1 &lt;- res_rmANOVA_1 %&gt;%</span></span>
-<span id="cb417-8"><a href="lesson-7.html#cb417-8" tabindex="-1"></a>  <span class="co">#EMMEANS(&quot;B_&quot;, by=&quot;A_&quot;)   和上一个同理，只是转换了不同的形式</span></span></code></pre></div>
-<p>除了基础分析方法，我们还可以使用EMMEANS进行简单效应分析和多重比较矫正等操作。通过输入之前的方差分析结果，我们可以使用EMMEANS a by b来进行简单效应分析，以比较在不同条件下的主效应是否存在差异。</p>
-<p>我们要分析a在b的不同条件下的效应，包括other和self条件。在other条件下，a的效应是b条件的一个主效应，我们称之为简单效应。我们可以看到，在b的两个条件下，a的简单效应实际上应该有一个交互作用。在other条件下，它不显著，在self条件下，它很显著。
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="lesson-7.html#cb134-1" tabindex="-1"></a><span class="fu">writeLines</span>(result.anova, <span class="st">&quot;./output/chp7/anova_3.md&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="lesson-7.html#cb135-1" tabindex="-1"></a>result.check <span class="ot">&lt;-</span> <span class="fu">capture.output</span>({</span>
+<span id="cb135-2"><a href="lesson-7.html#cb135-2" tabindex="-1"></a>sim_eff_1 <span class="ot">&lt;-</span> res_rmANOVA_1 <span class="sc">%&gt;%</span></span>
+<span id="cb135-3"><a href="lesson-7.html#cb135-3" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">EMMEANS</span>(<span class="st">&quot;A_&quot;</span>, <span class="at">by=</span><span class="st">&quot;B_&quot;</span>)<span class="co">#简单效应分析</span></span>
+<span id="cb135-4"><a href="lesson-7.html#cb135-4" tabindex="-1"></a>})</span>
+<span id="cb135-5"><a href="lesson-7.html#cb135-5" tabindex="-1"></a><span class="fu">writeLines</span>(result.check, <span class="st">&quot;./output/chp7/check.md&quot;</span>)</span>
+<span id="cb135-6"><a href="lesson-7.html#cb135-6" tabindex="-1"></a></span>
+<span id="cb135-7"><a href="lesson-7.html#cb135-7" tabindex="-1"></a><span class="co">#sim_eff_1 &lt;- res_rmANOVA_1 %&gt;%</span></span>
+<span id="cb135-8"><a href="lesson-7.html#cb135-8" tabindex="-1"></a>  <span class="co">#EMMEANS(&quot;B_&quot;, by=&quot;A_&quot;)   和上一个同理，只是转换了不同的形式</span></span></code></pre></div>
+<p>除了基础分析方法，我们还可以使用EMMEANS进行简单效应分析和多重比较矫正等操作。通过输入之前的方差分析结果，我们可以使用EMMEANS a by b来进行简单效应分析，以比较在不同条件下的主效应是否存在差异。
+我们要分析a在b的不同条件下的效应，包括other和self条件。在other条件下，a的效应是b条件的一个主效应，我们称之为简单效应。我们可以看到，在b的两个条件下，a的简单效应实际上应该有一个交互作用。在other条件下，它不显著，在self条件下，它很显著。
 此外，我们还可以看到a的quantity，即在self条件下，a的主效应moral和immoral之间差异非常大，quantity大于0.8，是一个大的效应。</p>
 
 </div>
@@ -828,7 +559,7 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="参考阅读.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lesson-6.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="lesson-8.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -871,7 +602,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["R4PsyBook.pdf"],
+"download": ["CBook.pdf"],
 "search": {
 "engine": "fuse",
 "options": null
