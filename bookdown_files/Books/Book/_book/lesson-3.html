@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 第三讲：如何导入数据 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿</title>
+  <title>4 第三讲：如何导入数据 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</title>
   <meta name="description" content="课程bookdown" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 第三讲：如何导入数据 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿" />
+  <meta property="og:title" content="4 第三讲：如何导入数据 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="课程bookdown" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 第三讲：如何导入数据 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿" />
+  <meta name="twitter:title" content="4 第三讲：如何导入数据 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
   
   <meta name="twitter:description" content="课程bookdown" />
   
@@ -51,12 +51,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.27/datatables.js"></script>
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="libs/datatables-binding-0.30/datatables.js"></script>
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <script type="text/x-mathjax-config">
@@ -75,7 +75,7 @@ MathJax.Hub.Config({
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -85,7 +85,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -138,6 +138,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 </head>
 
@@ -170,12 +174,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.3" data-path="lesson-1.html"><a href="lesson-1.html#心理学数据分析与结果汇报"><i class="fa fa-check"></i><b>2.2.3</b> 心理学数据分析与结果汇报</a></li>
 <li class="chapter" data-level="2.2.4" data-path="lesson-1.html"><a href="lesson-1.html#regression"><i class="fa fa-check"></i><b>2.2.4</b> Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="lesson-1.html"><a href="lesson-1.html#课程安排"><i class="fa fa-check"></i><b>2.3</b> 课程安排</a>
+<li class="chapter" data-level="2.3" data-path="lesson-1.html"><a href="lesson-1.html#现场运行代码"><i class="fa fa-check"></i><b>2.3</b> 现场运行代码</a></li>
+<li class="chapter" data-level="2.4" data-path="lesson-1.html"><a href="lesson-1.html#课程安排"><i class="fa fa-check"></i><b>2.4</b> 课程安排</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="lesson-1.html"><a href="lesson-1.html#课程大纲"><i class="fa fa-check"></i><b>2.3.1</b> 课程大纲</a></li>
-<li class="chapter" data-level="2.3.2" data-path="lesson-1.html"><a href="lesson-1.html#成绩分配"><i class="fa fa-check"></i><b>2.3.2</b> 成绩分配</a></li>
+<li class="chapter" data-level="2.4.1" data-path="lesson-1.html"><a href="lesson-1.html#课程大纲"><i class="fa fa-check"></i><b>2.4.1</b> 课程大纲</a></li>
+<li class="chapter" data-level="2.4.2" data-path="lesson-1.html"><a href="lesson-1.html#成绩分配"><i class="fa fa-check"></i><b>2.4.2</b> 成绩分配</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="lesson-1.html"><a href="lesson-1.html#如何学好这门课"><i class="fa fa-check"></i><b>2.4</b> 如何学好这门课</a></li>
+<li class="chapter" data-level="2.5" data-path="lesson-1.html"><a href="lesson-1.html#如何学好这门课"><i class="fa fa-check"></i><b>2.5</b> 如何学好这门课</a></li>
+<li class="chapter" data-level="2.6" data-path="lesson-1.html"><a href="lesson-1.html#课程总结与期望"><i class="fa fa-check"></i><b>2.6</b> 课程总结与期望</a></li>
+<li class="chapter" data-level="2.7" data-path="lesson-1.html"><a href="lesson-1.html#推荐"><i class="fa fa-check"></i><b>2.7</b> 推荐</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="lesson-2.html"><a href="lesson-2.html"><i class="fa fa-check"></i><b>3</b> 第二讲：如何开始使用R</a>
 <ul>
@@ -199,65 +206,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path"><i class="fa fa-check"></i><b>4.1.1</b> 相对路径与绝对路径</a></li>
 <li class="chapter" data-level="4.1.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-packge-here"><i class="fa fa-check"></i><b>4.1.2</b> Here包的使用</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-data"><i class="fa fa-check"></i><b>4.2</b> 读取数据</a>
+<li class="chapter" data-level="4.2" data-path="lesson-3.html"><a href="lesson-3.html#windows系统中的地址栏和r中的地址栏斜线方向不同如果直接复制windows地址栏的地址作为绝对路径可能会出现错误为了避免手动拼接路径出错"><i class="fa fa-check"></i><b>4.2</b> Windows系统中的地址栏和R中的地址栏斜线方向不同。如果直接复制Windows地址栏的地址作为绝对路径，可能会出现错误。为了避免手动拼接路径出错。</a></li>
+<li class="chapter" data-level="4.3" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-data"><i class="fa fa-check"></i><b>4.3</b> 读取数据</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-csv"><i class="fa fa-check"></i><b>4.2.1</b> read.csv函数</a></li>
-<li class="chapter" data-level="4.2.2" data-path="lesson-3.html"><a href="lesson-3.html#命名"><i class="fa fa-check"></i><b>4.2.2</b> 命名</a></li>
+<li class="chapter" data-level="4.3.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-csv"><i class="fa fa-check"></i><b>4.3.1</b> read.csv函数</a></li>
+<li class="chapter" data-level="4.3.2" data-path="lesson-3.html"><a href="lesson-3.html#命名"><i class="fa fa-check"></i><b>4.3.2</b> 命名</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="lesson-3.html"><a href="lesson-3.html#id_3-data-object"><i class="fa fa-check"></i><b>4.3</b> 了解R里的数据 （R语言中的对象）</a></li>
+<li class="chapter" data-level="4.4" data-path="lesson-3.html"><a href="lesson-3.html#id_3-data-object"><i class="fa fa-check"></i><b>4.4</b> 了解R里的数据 （R语言中的对象）</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="lesson-4.html"><a href="lesson-4.html"><i class="fa fa-check"></i><b>5</b> 第四讲：如何清理数据—R语言编程基础</a>
+<li class="chapter" data-level="5" data-path="lesson-4.html"><a href="lesson-4.html"><i class="fa fa-check"></i><b>5</b> 第四讲 &amp; 第五讲 ：数据导入 – 数据类型与结构</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-robject"><i class="fa fa-check"></i><b>5.1</b> R对象的操控</a></li>
-<li class="chapter" data-level="5.2" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-function"><i class="fa fa-check"></i><b>5.2</b> 函数</a></li>
-<li class="chapter" data-level="5.3" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-functions"><i class="fa fa-check"></i><b>5.3</b> 常用函数</a>
+<li class="chapter" data-level="5.1" data-path="lesson-4.html"><a href="lesson-4.html#加载数据"><i class="fa fa-check"></i><b>5.1</b> 加载数据</a></li>
+<li class="chapter" data-level="5.2" data-path="lesson-4.html"><a href="lesson-4.html#数据导入"><i class="fa fa-check"></i><b>5.2</b> 数据导入</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="lesson-4.html"><a href="lesson-4.html#unique"><i class="fa fa-check"></i><b>5.3.1</b> unique()</a></li>
+<li class="chapter" data-level="5.2.1" data-path="lesson-4.html"><a href="lesson-4.html#数据的地址路径"><i class="fa fa-check"></i><b>5.2.1</b> 数据的“地址”——路径</a></li>
+<li class="chapter" data-level="5.2.2" data-path="lesson-4.html"><a href="lesson-4.html#绝对路径与相对路径"><i class="fa fa-check"></i><b>5.2.2</b> 绝对路径与相对路径</a></li>
 </ul></li>
+<li class="chapter" data-level="5.3" data-path="lesson-4.html"><a href="lesson-4.html#读取数据"><i class="fa fa-check"></i><b>5.3</b> 读取数据</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="lesson-4.html"><a href="lesson-4.html#手动导入"><i class="fa fa-check"></i><b>5.3.1</b> 手动导入</a></li>
+<li class="chapter" data-level="5.3.2" data-path="lesson-4.html"><a href="lesson-4.html#代码导入"><i class="fa fa-check"></i><b>5.3.2</b> 代码导入</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="lesson-5.html"><a href="lesson-5.html"><i class="fa fa-check"></i><b>6</b> 第五讲：如何清理数据—数据的预处理</a>
+<li class="chapter" data-level="5.4" data-path="lesson-4.html"><a href="lesson-4.html#赋值"><i class="fa fa-check"></i><b>5.4</b> 赋值</a></li>
+<li class="chapter" data-level="5.5" data-path="lesson-4.html"><a href="lesson-4.html#数据类型"><i class="fa fa-check"></i><b>5.5</b> 数据类型</a></li>
+<li class="chapter" data-level="5.6" data-path="lesson-4.html"><a href="lesson-4.html#数据结构"><i class="fa fa-check"></i><b>5.6</b> 数据结构</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="lesson-5.html"><a href="lesson-5.html#批量读取文件"><i class="fa fa-check"></i><b>6.1</b> <strong>批量读取文件</strong></a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="lesson-5.html"><a href="lesson-5.html#通配符"><i class="fa fa-check"></i><b>6.1.1</b> <strong>通配符</strong></a></li>
-<li class="chapter" data-level="6.1.2" data-path="lesson-5.html"><a href="lesson-5.html#for循环思路"><i class="fa fa-check"></i><b>6.1.2</b> for<strong>循环思路</strong></a></li>
-<li class="chapter" data-level="6.1.3" data-path="lesson-5.html"><a href="lesson-5.html#lapply思路"><i class="fa fa-check"></i><b>6.1.3</b> lapply思路</a></li>
+<li class="chapter" data-level="5.6.1" data-path="lesson-4.html"><a href="lesson-4.html#向量vector"><i class="fa fa-check"></i><b>5.6.1</b> 向量(vector)</a></li>
+<li class="chapter" data-level="5.6.2" data-path="lesson-4.html"><a href="lesson-4.html#数据框"><i class="fa fa-check"></i><b>5.6.2</b> 数据框</a></li>
+<li class="chapter" data-level="5.6.3" data-path="lesson-4.html"><a href="lesson-4.html#矩阵与数组"><i class="fa fa-check"></i><b>5.6.3</b> 矩阵与数组</a></li>
+<li class="chapter" data-level="5.6.4" data-path="lesson-4.html"><a href="lesson-4.html#列表"><i class="fa fa-check"></i><b>5.6.4</b> 列表</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="lesson-5.html"><a href="lesson-5.html#数据预处理"><i class="fa fa-check"></i><b>6.2</b> 数据预处理</a></li>
-<li class="chapter" data-level="6.3" data-path="lesson-5.html"><a href="lesson-5.html#函数"><i class="fa fa-check"></i><b>6.3</b> 函数</a>
+<li class="chapter" data-level="5.7" data-path="lesson-4.html"><a href="lesson-4.html#函数"><i class="fa fa-check"></i><b>5.7</b> 函数</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="lesson-5.html"><a href="lesson-5.html#函数参数"><i class="fa fa-check"></i><b>6.3.1</b> 函数参数</a></li>
-<li class="chapter" data-level="6.3.2" data-path="lesson-5.html"><a href="lesson-5.html#groupby"><i class="fa fa-check"></i><b>6.3.2</b> groupby()</a></li>
-<li class="chapter" data-level="6.3.3" data-path="lesson-5.html"><a href="lesson-5.html#定义函数"><i class="fa fa-check"></i><b>6.3.3</b> 定义函数</a></li>
-<li class="chapter" data-level="6.3.4" data-path="lesson-5.html"><a href="lesson-5.html#for-loop"><i class="fa fa-check"></i><b>6.3.4</b> for loop</a></li>
-<li class="chapter" data-level="6.3.5" data-path="lesson-5.html"><a href="lesson-5.html#信号检测"><i class="fa fa-check"></i><b>6.3.5</b> 信号检测</a></li>
+<li class="chapter" data-level="5.7.1" data-path="lesson-4.html"><a href="lesson-4.html#函数的调用"><i class="fa fa-check"></i><b>5.7.1</b> 函数的调用</a></li>
+<li class="chapter" data-level="5.7.2" data-path="lesson-4.html"><a href="lesson-4.html#自定义函数"><i class="fa fa-check"></i><b>5.7.2</b> 自定义函数</a></li>
 </ul></li>
+<li class="chapter" data-level="5.8" data-path="lesson-4.html"><a href="lesson-4.html#if-条件语句"><i class="fa fa-check"></i><b>5.8</b> if 条件语句</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="lesson-6.html"><a href="lesson-6.html"><i class="fa fa-check"></i><b>7</b> 第六讲：如何探索数据: 描述性统计与数据可视化基础</a>
+<li class="chapter" data-level="6" data-path="lesson-6.html"><a href="lesson-6.html"><i class="fa fa-check"></i><b>6</b> 第六讲：如何探索数据: 描述性统计与数据可视化基础</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="lesson-6.html"><a href="lesson-6.html#描述性统计"><i class="fa fa-check"></i><b>7.1</b> <strong>描述性统计</strong></a></li>
-<li class="chapter" data-level="7.2" data-path="lesson-6.html"><a href="lesson-6.html#ggplot2的基本使用"><i class="fa fa-check"></i><b>7.2</b> ggplot2的基本使用</a>
+<li class="chapter" data-level="6.1" data-path="lesson-6.html"><a href="lesson-6.html#描述性统计"><i class="fa fa-check"></i><b>6.1</b> <strong>描述性统计</strong></a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="lesson-6.html"><a href="lesson-6.html#了解ggplot2"><i class="fa fa-check"></i><b>7.2.1</b> 了解ggplot2</a></li>
-<li class="chapter" data-level="7.2.2" data-path="lesson-6.html"><a href="lesson-6.html#密度图"><i class="fa fa-check"></i><b>7.2.2</b> 密度图</a></li>
-<li class="chapter" data-level="7.2.3" data-path="lesson-6.html"><a href="lesson-6.html#叠加绘图"><i class="fa fa-check"></i><b>7.2.3</b> 叠加绘图</a></li>
-<li class="chapter" data-level="7.2.4" data-path="lesson-6.html"><a href="lesson-6.html#散点图"><i class="fa fa-check"></i><b>7.2.4</b> 散点图</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="lesson-6.html"><a href="lesson-6.html#data-explore"><i class="fa fa-check"></i><b>7.3</b> Data Explore</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="lesson-7.html"><a href="lesson-7.html"><i class="fa fa-check"></i><b>8</b> 第七讲：如何进行基本的数据分析: t-test和anova</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="lesson-7.html"><a href="lesson-7.html#语法实现"><i class="fa fa-check"></i><b>8.1</b> <strong>语法实现</strong></a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="lesson-7.html"><a href="lesson-7.html#t检验"><i class="fa fa-check"></i><b>8.1.1</b> t检验</a></li>
-<li class="chapter" data-level="8.1.2" data-path="lesson-7.html"><a href="lesson-7.html#方差分析"><i class="fa fa-check"></i><b>8.1.2</b> 方差分析</a></li>
+<li class="chapter" data-level="6.1.1" data-path="lesson-6.html"><a href="lesson-6.html#part1-探索性数据分析"><i class="fa fa-check"></i><b>6.1.1</b> <strong>Part1-探索性数据分析</strong></a></li>
+<li class="chapter" data-level="6.1.2" data-path="lesson-6.html"><a href="lesson-6.html#part2-数据可视化-ggplot2的基本使用"><i class="fa fa-check"></i><b>6.1.2</b> <strong>Part2-数据可视化-ggplot2的基本使用</strong></a></li>
+<li class="chapter" data-level="6.1.3" data-path="lesson-6.html"><a href="lesson-6.html#part3-data-explorer"><i class="fa fa-check"></i><b>6.1.3</b> <strong>Part3-Data Explorer</strong></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="lesson-8.html"><a href="lesson-8.html"><i class="fa fa-check"></i><b>9</b> 第八讲：如何进行基本的数据分析: 相关与回归</a>
+<li class="chapter" data-level="7" data-path="lesson-7.html"><a href="lesson-7.html"><i class="fa fa-check"></i><b>7</b> 第七讲：如何进行基本的数据分析: <em>t</em>-test和ANOVA</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="lesson-8.html"><a href="lesson-8.html#什么是相关"><i class="fa fa-check"></i><b>9.1</b> 什么是相关</a></li>
-<li class="chapter" data-level="9.2" data-path="lesson-8.html"><a href="lesson-8.html#相关-代码实现"><i class="fa fa-check"></i><b>9.2</b> 相关-代码实现</a></li>
-<li class="chapter" data-level="9.3" data-path="lesson-8.html"><a href="lesson-8.html#什么是回归"><i class="fa fa-check"></i><b>9.3</b> 什么是回归</a></li>
+<li class="chapter" data-level="7.0.1" data-path="lesson-7.html"><a href="lesson-7.html#t检验"><i class="fa fa-check"></i><b>7.0.1</b> <em>t</em>检验</a></li>
+<li class="chapter" data-level="7.0.2" data-path="lesson-7.html"><a href="lesson-7.html#方差分析"><i class="fa fa-check"></i><b>7.0.2</b> 方差分析</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lesson-8.html"><a href="lesson-8.html"><i class="fa fa-check"></i><b>8</b> 第八讲：如何进行基本的数据分析: 相关与回归</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lesson-8.html"><a href="lesson-8.html#什么是相关"><i class="fa fa-check"></i><b>8.1</b> 什么是相关</a></li>
+<li class="chapter" data-level="8.2" data-path="lesson-8.html"><a href="lesson-8.html#相关-代码实现"><i class="fa fa-check"></i><b>8.2</b> 相关-代码实现</a></li>
+<li class="chapter" data-level="8.3" data-path="lesson-8.html"><a href="lesson-8.html#什么是回归"><i class="fa fa-check"></i><b>8.3</b> 什么是回归</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lesson-9.html"><a href="lesson-9.html"><i class="fa fa-check"></i><b>9</b> 第九章：如何进行基本的数据分析: 中介分析</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="lesson-9.html"><a href="lesson-9.html#process"><i class="fa fa-check"></i><b>9.1</b> process</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lesson-12.html"><a href="lesson-12.html"><i class="fa fa-check"></i><b>10</b> 第十二讲：从分析到手稿</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="lesson-12.html"><a href="lesson-12.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>10.1</b> <strong>通过Papaja撰写论文</strong></a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="lesson-12.html"><a href="lesson-12.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>10.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
+<li class="chapter" data-level="10.1.2" data-path="lesson-12.html"><a href="lesson-12.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>10.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
+<li class="chapter" data-level="10.1.3" data-path="lesson-12.html"><a href="lesson-12.html#part3-正文的撰写"><i class="fa fa-check"></i><b>10.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
+<li class="chapter" data-level="10.1.4" data-path="lesson-12.html"><a href="lesson-12.html#总结"><i class="fa fa-check"></i><b>10.1.4</b> 总结</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="lesson-13.html"><a href="lesson-13.html"><i class="fa fa-check"></i><b>11</b> 第十三章：效应量和元分析</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="lesson-13.html"><a href="lesson-13.html#效应量简介"><i class="fa fa-check"></i><b>11.1</b> 效应量简介</a></li>
+<li class="chapter" data-level="11.2" data-path="lesson-13.html"><a href="lesson-13.html#算法实现"><i class="fa fa-check"></i><b>11.2</b> 算法实现</a></li>
+<li class="chapter" data-level="11.3" data-path="lesson-13.html"><a href="lesson-13.html#小练习"><i class="fa fa-check"></i><b>11.3</b> 小练习</a></li>
+<li class="chapter" data-level="11.4" data-path="lesson-13.html"><a href="lesson-13.html#元分析简介"><i class="fa fa-check"></i><b>11.4</b> 元分析简介</a></li>
+<li class="chapter" data-level="11.5" data-path="lesson-13.html"><a href="lesson-13.html#元分析实现"><i class="fa fa-check"></i><b>11.5</b> 元分析实现</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -269,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</a>
           </h1>
         </div>
 
@@ -281,45 +307,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">4</span> 第三讲：如何导入数据<a href="lesson-3.html#lesson-3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="id_3-path-working-dir" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> 路径与工作目录<a href="lesson-3.html#id_3-path-working-dir" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>那么什么是工作目录呢？简单来说，工作目录就是R会在其中寻找文件的文件夹。如果你没有指定工作目录，那么R会默认使用你的用户文件夹作为工作目录。但是，如果你的数据文件不在用户文件夹中，那么你需要告诉R去哪里找这些文件。这就是为什么我们需要设置工作目录的原因。我们可以使用“get.wd”命令来查看当前的工作目录。当我们打开一个R项目时，它会自动打开项目所在的目录。</p>
+<p>工作目录（working directory）是指当前的工作台（console）所进行交互的目录/文件夹，简而言之，即R会在其中寻找文件的文件夹。如果没有指定工作目录，R会默认使用用户文件夹作为工作目录。当打开R project时，R会自动将这个R Project 所在的目录作为工作目录，通常为用户文件夹。但是，如果数据文件不在用户文件夹中，那么需要告诉R去哪里找这些文件。这就是为什么我们需要设置工作目录。可以使用“get.wd”命令来查看当前的工作目录。</p>
 <div id="id_3-path" class="section level3 hasAnchor" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> 相对路径与绝对路径<a href="lesson-3.html#id_3-path" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>建议为每一个数据分析项目设立一个文件夹，并且在其中创建一个R项目。这样，每次打开项目时，它都会自动打开所在的位置。在讲解路径和工作目录的概念时，我们需要先了解两个概念：<strong>绝对路径</strong>和<strong>相对路径</strong>。绝对路径指的是文件或文件夹在硬盘上的真实路径，而相对路径则是指相对于当前路径的位置。例如，在chapter3文件夹中，data文件夹的相对路径为./data。相对路径的好处在于，当我们复制整个文件夹时，相对路径的位置不会改变。相对路径是相对于当前路径的位置，而绝对路径则是相对于硬盘的起始位置。</p>
-<p>如果我们有一个子文件夹叫做data，那么它就是当前文件夹的子文件夹，也可以称为子目录，而当前文件夹则是它的父文件夹，也可以称为父目录。如果我们复制这个文件夹到另一个电脑上，它们之间的相对关系不会改变，但如果我们把它从D盘复制到E盘，那么绝对路径就会改变，相对路径仍然保持不变。因此，我们建议把所有文件都放在一个文件夹中，这样所有文件的相对路径都是相对于这个文件夹的，方便编写代码。如果文件夹放在不同的位置，每次引用或查找文件时都需要使用绝对路径，非常麻烦。</p>
-<p>在Windows系统中，每个磁盘都有自己的盘符，例如C、D、E、F盘。绝对路径是从盘符开始一直写到当前文件夹，对于Mac和Linux系统，它们只有一个根目录，没有盘符的概念。我们最常用的是“用户”，比如我的用户名，然后有一个“主目录”，这就是用户的文件夹。当我们使用苹果系统或者Linux系统时，基本上很多时候都是基于这个“用户”文件夹或者“users.html4c”进行操作。除了“主目录”以外，它可能还有一个“下载”，就是你下载的文件都放在哪里，还可能有一个“图片”，就是你的各种图等等。所以它就是在一个文件夹下面有不同的子文件夹，比如有“etc”、“用户”还有其他的“根目录”等等。我们主要就是基于“用户”，然后建立自己的一系列的文件。在Windows中，它可以分成三个盘，每个区都是自己的盘符，然后基于这个盘符你又可以重新定义一个新的路径。这就相当于路径的定义不太一样。我们刚刚也讲了相对路径和绝对路径。如果我们所有的分析都放在一起的话，那么我们用相对路径是更好的。就像我们写代码的时候，不要把C盘D盘什么这些一整串写进来，因为写进来之后你换一个电脑，这个C盘它就不是C盘了，它可能是变成D盘了，或者你换到苹果上面之后，它可能就没有C盘了，它就是“用户”开头了。</p>
+<p>建议为每一个数据分析项目设立一个文件夹，并在其中创建一个R项目。当每次打开项目时，它都会自动打开所在的位置。
+路径是指文件（文件夹）所在位置，包含绝对路径和相对路径：
+<strong>绝对路径</strong>和<strong>相对路径</strong></p>
+<p><em>绝对路径</em>指的是文件或文件夹在硬盘上的真实路径，而<em>相对路径</em>则是指相对于当前文件（或当前工作目录）的路径，如，（D:/Document/r_course/chapter_3/data）。
+相对路径是相对于当前文件（或当前工作目录）的路径，如”data”或者”./data”。相对路径的好处在于，当复制整个文件夹时，相对路径的位置不会改变。
+相对路径是相对于当前路径的位置，而绝对路径则是相对于硬盘的起始位置。</p>
+<p>如果有一个子文件夹叫做data，那么它就是当前文件夹的子文件夹，也可以称为子目录，而当前文件夹则是它的父文件夹，也可以称为父目录。如果复制这个文件夹到另一个电脑上，它们之间的相对关系不会改变，但如果把它从D盘复制到E盘，那么绝对路径就会改变，相对路径仍然保持不变。因此，建议把所有文件都放在一个文件夹中，这样所有文件的相对路径都是相对于这个文件夹的，方便编写代码。如果文件夹放在不同的位置，每次引用或查找文件时都需要使用绝对路径，非常麻烦。</p>
+<p>在Windows系统中，每个磁盘都有自己的盘符，例如C、D、E、F盘。绝对路径是从盘符开始一直写到当前文件夹，相对路径则是当前数据所存储的文件夹。由于Windows系统中可以分成三个盘，每个区都是自己的盘符，然后基于这个盘符又可以重新定义一个新的路径。也就是说，对于路径的定义是不太一样的。因此如果把所有的分析都放在一起的话，那么用相对路径是更好的。比如写代码时，不要把C盘D盘这些一整串写进来，如果换电脑，这个C盘可能会变成D盘，或者换成苹果系统，可能就没有C盘了，而是以“用户”开头。
+对于Mac和Linux系统，它们只有一个根目录，没有盘符的概念。最常用的是“用户”，比如你的用户名，然后有一个“主目录”，这就是用户的文件夹。当使用苹果系统或者Linux系统时，基本上很多时候都是基于这个“用户”文件夹或者“users.html4c”进行操作。除了“主目录”以外，它可能还有一个“下载”，是下载的文件所放的位置，还可能有一个“图片”，包括所存的各种图等等，所以它是在一个文件夹下面有不同的子文件夹，比如有“etc”、“用户”还有其他的“根目录”等等。我们主要就是基于“用户”，然后建立自己的一系列的文件。</p>
+<p><strong>获取及修改工作目录的基本操作</strong>
+查看当前工作目录：getwd()
+修改当前工作路径：setwd(““)在引号里修改你的工作路径</p>
 </div>
 <div id="id_3-packge-here" class="section level3 hasAnchor" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> Here包的使用<a href="lesson-3.html#id_3-packge-here" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>介绍一个常用的包，包名叫做Here。Here这个包可以帮助你很快地去定位你的当前的新的目录。打开了这个，就能够迅速地看到我自己在哪。它另外一个好处就是我们能够不用考虑我的系统是什么，然后我就直接能够把它的一系列文件夹都调出来。</p>
-<p>我们的Windows系统中的地址栏和R中的地址栏斜线方向不同。如果我们直接复制Windows地址栏的地址作为绝对路径，可能会出现错误。为了避免手动拼接路径出错，我们可以使用here函数来自动补全路径。这个函数会自动将当前文件夹的路径补全，我们只需要在路径中加入文件夹名即可。例如，我们可以使用here(“data”, “match”)来获取data文件夹下的match文件。这个小技巧可以帮助我们避免一些错误，特别是在不同电脑之间切换时。</p>
+<p>这是一个常用的包，包名叫做Here。Here这个包可以帮助方便快捷地去定位当前新的目录。使用后，能迅速获取项目的工作路径。它另外一个好处是不用考虑系统，直接能够把它的一系列文件夹调出来。</p>
 </div>
 </div>
-<div id="id_3-read-data" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> 读取数据<a href="lesson-3.html#id_3-read-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>工作目录是R与我们的硬盘交互的接口，我们可以使用getwd()函数来获取当前工作目录的绝对路径。我们可以使用相对路径来引用子文件夹的位置。接下来我想要查看数据的相对路径和绝对路径。假设我们的工作目录是在桌面上，数据存储在”data”文件夹中，其中包含两个子文件夹，一个是”match”，包含178个文件，另一个是”pengiun”，只有一个文件。相对路径中的一个点(.)代表当前文件夹，数据在”data”文件夹中，“match”文件夹下有178个文件。如果我们要读取某个文件，必须完整地写出文件名。对于”pengiun”文件夹，它的相对路径是”./data/pengiun”</p>
-<div id="id_3-read-csv" class="section level3 hasAnchor" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> read.csv函数<a href="lesson-3.html#id_3-read-csv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>现在我们知道了数据的相对路径，可以使用”read.csv”函数来读取数据。我们需要给数据一个名称，例如”pengiun.data”，并使用”read.csv”函数来读取数据。在函数中，我们需要指定相对路径。这里建议使用相对路径而不是绝对路径，因为绝对路径需要每次更改代码。</p>
-<p>“head = TRUE”是函数中的一个参数，用于指定文件是否包含列名。如果文件的第一行是列名，则将其设置为”TRUE”，否则为”FALSE”。在R语言中，假用false表示，真用true表示。读取这样的txt文件时，需要使用分隔符来分隔不同列的数据。为了更直观地了解这个过程，我们可以打开csv文件。虽然这是一个csv文件，但我们也可以使用txt打开，如果我们使用文本编辑器打开，数据看起来会很混乱，因为它包含换行符。</p>
-<p>当使用函数读取时，行是自动识别的来识别的，而列必须使用分隔符来识别。在这里，我们使用逗号作为分隔符。这样，我们就可以将数据读取为行和列。我们可以使用data table包来方便地展示读取后的数据。为了方便在PPT中展示数据，我们可以使用head函数来大致的查看数据。我们已经读取了数据，按照逗号分隔后，第一行是列名，我们可以将其识别为表头。从第二行开始是数据，第一个列的第一个值是1975，后面是1995等等。这是一个问卷数据，每个编号代表一个问卷和其items。我们可以用不同的方式对其进行编号，比如uncertainty等等。</p>
-<p>对于常用的数据文件，我们可以使用here来定义相对路径，然后使用import来读取数据。读取后，我们可以看到有247个变量。对于.out文件，我们可以使用read.csv来读取，但是需要将separator参数设置为斜杠加t，表示以tab为分隔符。在进行统计分析时，我们需要明确定义用于分割数据的符号。除了逗号和tab键，还可以使用分号、空格或分行符等多种方式。</p>
-<p>read.csv是最常用的数据读取函数，但实际上它是read.table的一个特殊形式。因此，我们也可以使用read.table来读取数据。但是，由于.out文件是我们自定义的一个txt文件，无法使用bruce-r的import函数进行导入。这种情况很常见，你需要清楚你的数据结构，包括分隔符和编写模式，以便正确读取数据。</p>
-<p>完成这些操作后，R中的环境environment应该发生了变化。在右上角的环境中，我们可以看到两个相应的数据match data和PenguinData。PenguinData是一个符号，我们可以用任何其他符合命名规则的名称来代替它，比如abcd，比如xyz。这里存储了一些可操作和创建的对象，我们称之为R对象。现在我们导入的对象的种类被称之为数据框，有关数据框的知识将在之后讲到。</p>
+<div id="windows系统中的地址栏和r中的地址栏斜线方向不同如果直接复制windows地址栏的地址作为绝对路径可能会出现错误为了避免手动拼接路径出错" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Windows系统中的地址栏和R中的地址栏斜线方向不同。如果直接复制Windows地址栏的地址作为绝对路径，可能会出现错误。为了避免手动拼接路径出错。<a href="lesson-3.html#windows系统中的地址栏和r中的地址栏斜线方向不同如果直接复制windows地址栏的地址作为绝对路径可能会出现错误为了避免手动拼接路径出错" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>可以使用here函数来自动补全路径。这个函数会自动将当前文件夹的路径补全，只需要在路径中加入文件夹名即可。例如，可以使用here(“data”, “match”)来获取data文件夹下的match文件。这个小技巧可以帮助避免一些错误，特别是在不同电脑之间切换时。</p>
 </div>
-<div id="命名" class="section level3 hasAnchor" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> 命名<a href="lesson-3.html#命名" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>在命名时，应尽量简短，避免使用中文。如果发现文件目录没有问题，但仍然出现错误，有两种可能性。一种是拼写错误，例如拼写单词penguin时少了一个字母或交换了两个字母的位置。另一种可能是文件夹的大小写不匹配，例如使用大写字母开头的文件夹，但在输入路径时使用小写字母。在这种情况下，我们需要仔细检查并逐行对比当前工作目录和文件夹的实际目录是否匹配。最有效的方法是直接点击文件的属性，查看其目录和名称是否与输入的完全相同。</p>
+<div id="id_3-read-data" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> 读取数据<a href="lesson-3.html#id_3-read-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>工作目录是R与硬盘交互的接口，可以使用getwd()函数来获取当前工作目录的绝对路径。使用相对路径来引用子文件夹的位置。接下来查看数据的相对路径和绝对路径。假设工作目录是在桌面上，数据存储在”data”文件夹中，其中包含两个子文件夹，一个是”match”，包含178个文件，另一个是”pengiun”，只有一个文件。相对路径中的一个点(.)代表当前文件夹，数据在”data”文件夹中，“match”文件夹下有178个文件。如果要读取某个文件，必须完整地写出文件名。对于”pengiun”文件夹，它的相对路径是”./data/pengiun”。</p>
+<div id="id_3-read-csv" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> read.csv函数<a href="lesson-3.html#id_3-read-csv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>了解数据的相对路径，可以使用”read.csv”函数来读取数据。需要给数据一个名称，例如”pengiun.data”，并使用”read.csv”函数来读取数据。在函数中，需要指定相对路径。这里建议使用相对路径而不是绝对路径，因为绝对路径需要每次更改代码。</p>
+<p>“head = TRUE”是函数中的一个参数，用于指定文件是否包含列名。如果文件的第一行是列名，则将其设置为”TRUE”，否则为”FALSE”。在R语言中，假用false表示，真用true表示。读取这样的txt文件时，需要使用分隔符来分隔不同列的数据。为了更直观地了解这个过程，可以打开csv文件。虽然这是一个csv文件，但也可以使用txt打开，如果使用文本编辑器打开，数据看起来会很混乱，因为它包含换行符。</p>
+<p>当使用函数读取时，行是自动识别的，而列必须使用分隔符来识别。在这里，使用逗号作为分隔符。这样，就可以将数据读取为行和列。可以使用data table包来方便地展示读取后的数据。为了方便在PPT中展示数据，可以使用head函数来大致地查看数据。读取数据后，按照逗号分隔后，第一行是列名，可以将其识别为表头。从第二行开始是数据，第一个列的第一个值是1975，后面是1995等等。这是一个问卷数据，每个编号代表一个问卷和其items。可以用不同的方式对其进行编号，比如uncertainty等等。</p>
+<p>对于常用的数据文件，可以使用here来定义相对路径，然后使用import来读取数据。读取后，可以看到有247个变量。对于.out文件，可以使用read.csv来读取，但是需要将separator参数设置为斜杠加t，表示以tab为分隔符。在进行统计分析时，需要明确定义用于分割数据的符号。除了逗号和tab键，还可以使用分号、空格或分行符等多种方式。</p>
+<p>read.csv是最常用的数据读取函数，但实际它是read.table的一个特殊形式。因此，也可以使用read.table来读取数据。但是，由于.out文件是自定义的一个txt文件，无法使用bruce-r的import函数进行导入。这种情况很常见，需要清楚自己的数据结构，包括分隔符和编写模式，以便正确读取数据。</p>
+<p>完成这些操作后，R中的环境environment应该发生了变化。在右上角的环境中，可以看到两个相应的数据match data和PenguinData。PenguinData是一个符号，可以用任何其他符合命名规则的名称来代替它，比如abcd，比如xyz。这里存储一些可操作和创建的对象，将其称之为R对象。导入的对象的种类被称之为数据框，有关数据框的知识将在之后讲到。</p>
+</div>
+<div id="命名" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> 命名<a href="lesson-3.html#命名" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在命名时，应尽量简短，避免使用中文。如果发现文件目录没有问题，但仍然出现错误，有两种可能性。一种是拼写错误，例如拼写单词penguin时少一个字母或交换两个字母的位置。另一种可能是文件夹的大小写不匹配，例如使用大写字母开头的文件夹，但在输入路径时使用小写字母。在这种情况下，需要仔细检查并逐行对比当前工作目录和文件夹的实际目录是否匹配。最有效的方法是直接点击文件的属性，查看其目录和名称是否与输入的完全相同。</p>
 </div>
 </div>
-<div id="id_3-data-object" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> 了解R里的数据 （R语言中的对象）<a href="lesson-3.html#id_3-data-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="id_3-data-object" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> 了解R里的数据 （R语言中的对象）<a href="lesson-3.html#id_3-data-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="float">
 <img src="https://devopedia.org/images/article/46/9213.1526125966.png" alt="data structure" />
 <div class="figcaption">data structure</div>
 </div>
 <p>R语言中的几个常用对象包括：向量、矩阵、数组、数据框和列表。其中，向量是一列数字或其他相同类型的元素，而矩阵是一个二维的数据结构，有长和宽，可以看作是将向量按行排列而成的。数组是在矩阵的基础上再往上拓展，变成了一个三维的数据结构。</p>
-<p>在R语言中，我们更多地使用数据框，它看起来像矩阵，但每个列可以是不同类型的元素。而列表则更加复杂，每个元素都可以是不同类型的对象。这些对象在编程软件中非常常用，比如Python和Matlab。</p>
-<p>我们没有时间讲解数据框，但是我们已经解决了读取数据的问题。我们下节课再深入讲解这些知识。在下节课之前，大家可以查看王敏杰老师和张金星老师的两本书，这些书将更清楚地介绍这些基础知识。</p>
+<p>在R语言中，更多地使用数据框，它看起来像矩阵，但每个列可以是不同类型的元素。而列表则更加复杂，每个元素都可以是不同类型的对象。这些对象在编程软件中非常常用，比如Python和Matlab。</p>
+<p>大家可以查看王敏杰老师和张敬信老师的两本书，这些书将更清楚地介绍这些基础知识。
+王敏杰老师的书名为《数据科学中的R语言》，系统介绍了Hadley Wickham的tidyverse和ggplot2包，另附电子版课程，完全免费，网址 <a href="https://bookdown.org/wangminjie/R4DS/" class="uri">https://bookdown.org/wangminjie/R4DS/</a> 。
+张敬信老师的《R语言编程：基于tidyverse》，<a href="https://github.com/zhjx19/introR" class="uri">https://github.com/zhjx19/introR</a></p>
 
 </div>
 </div>
@@ -371,7 +411,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["CBook.pdf"],
+"download": ["R4PsyBook.pdf"],
 "search": {
 "engine": "fuse",
 "options": null

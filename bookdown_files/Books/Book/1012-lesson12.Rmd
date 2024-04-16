@@ -53,6 +53,7 @@ install.packages("papaja") # 安装 papaja包
 
 **linenumbers**属性是一个较为常用的属性，能够为文献提供行标，方便审稿人指出需要修改的位置。
 
+```
 ---
 title             : "Lecture 12: Preparing journal artical with *papaja*"
 shorttitle        : "papaja"
@@ -121,6 +122,8 @@ classoption       : "man"
 output            : papaja::apa6_pdf
 ---
 
+```
+
 （2）包和文件的调用:
 在定义YAML头文件之后，需要进行检查是否该文件已经调用了需要使用的包，以及是否包含了需要的文件（例如.bib格式文件）。
 （3）参考文献的引用方式
@@ -154,7 +157,8 @@ title <- expression(paste("Senesitivity (", italic("d'"), ")"))
 此时将输出Sensitivity(*d*)。
 
 (3)拼图操作：将画好的多图进行拼接，可以使用**patchwork**包
-```{r plot1, fig.cap="Interaction between identity and valence for (A) sensitivity and (B) reaction times.", fig.height=9, fig.width=18, warning=FALSE}
+
+```{r plot1, fig.cap="Interaction between identity and valence for (A) sensitivity and (B) reaction times.", fig.height=9, fig.width=18, warning=FALSE, eval=FALSE}
 
 library(patchwork)
 load("./1012-lesson12/p1_rt.rdata")

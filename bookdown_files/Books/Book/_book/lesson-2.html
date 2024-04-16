@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 第二讲：如何开始使用R | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿</title>
+  <title>3 第二讲：如何开始使用R | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</title>
   <meta name="description" content="课程bookdown" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 第二讲：如何开始使用R | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿" />
+  <meta property="og:title" content="3 第二讲：如何开始使用R | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="课程bookdown" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 第二讲：如何开始使用R | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿" />
+  <meta name="twitter:title" content="3 第二讲：如何开始使用R | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
   
   <meta name="twitter:description" content="课程bookdown" />
   
@@ -51,12 +51,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.27/datatables.js"></script>
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="libs/datatables-binding-0.30/datatables.js"></script>
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <script type="text/x-mathjax-config">
@@ -75,7 +75,7 @@ MathJax.Hub.Config({
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -85,7 +85,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -138,6 +138,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 </head>
 
@@ -170,12 +174,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.3" data-path="lesson-1.html"><a href="lesson-1.html#心理学数据分析与结果汇报"><i class="fa fa-check"></i><b>2.2.3</b> 心理学数据分析与结果汇报</a></li>
 <li class="chapter" data-level="2.2.4" data-path="lesson-1.html"><a href="lesson-1.html#regression"><i class="fa fa-check"></i><b>2.2.4</b> Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="lesson-1.html"><a href="lesson-1.html#课程安排"><i class="fa fa-check"></i><b>2.3</b> 课程安排</a>
+<li class="chapter" data-level="2.3" data-path="lesson-1.html"><a href="lesson-1.html#现场运行代码"><i class="fa fa-check"></i><b>2.3</b> 现场运行代码</a></li>
+<li class="chapter" data-level="2.4" data-path="lesson-1.html"><a href="lesson-1.html#课程安排"><i class="fa fa-check"></i><b>2.4</b> 课程安排</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="lesson-1.html"><a href="lesson-1.html#课程大纲"><i class="fa fa-check"></i><b>2.3.1</b> 课程大纲</a></li>
-<li class="chapter" data-level="2.3.2" data-path="lesson-1.html"><a href="lesson-1.html#成绩分配"><i class="fa fa-check"></i><b>2.3.2</b> 成绩分配</a></li>
+<li class="chapter" data-level="2.4.1" data-path="lesson-1.html"><a href="lesson-1.html#课程大纲"><i class="fa fa-check"></i><b>2.4.1</b> 课程大纲</a></li>
+<li class="chapter" data-level="2.4.2" data-path="lesson-1.html"><a href="lesson-1.html#成绩分配"><i class="fa fa-check"></i><b>2.4.2</b> 成绩分配</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="lesson-1.html"><a href="lesson-1.html#如何学好这门课"><i class="fa fa-check"></i><b>2.4</b> 如何学好这门课</a></li>
+<li class="chapter" data-level="2.5" data-path="lesson-1.html"><a href="lesson-1.html#如何学好这门课"><i class="fa fa-check"></i><b>2.5</b> 如何学好这门课</a></li>
+<li class="chapter" data-level="2.6" data-path="lesson-1.html"><a href="lesson-1.html#课程总结与期望"><i class="fa fa-check"></i><b>2.6</b> 课程总结与期望</a></li>
+<li class="chapter" data-level="2.7" data-path="lesson-1.html"><a href="lesson-1.html#推荐"><i class="fa fa-check"></i><b>2.7</b> 推荐</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="lesson-2.html"><a href="lesson-2.html"><i class="fa fa-check"></i><b>3</b> 第二讲：如何开始使用R</a>
 <ul>
@@ -199,65 +206,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path"><i class="fa fa-check"></i><b>4.1.1</b> 相对路径与绝对路径</a></li>
 <li class="chapter" data-level="4.1.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-packge-here"><i class="fa fa-check"></i><b>4.1.2</b> Here包的使用</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-data"><i class="fa fa-check"></i><b>4.2</b> 读取数据</a>
+<li class="chapter" data-level="4.2" data-path="lesson-3.html"><a href="lesson-3.html#windows系统中的地址栏和r中的地址栏斜线方向不同如果直接复制windows地址栏的地址作为绝对路径可能会出现错误为了避免手动拼接路径出错"><i class="fa fa-check"></i><b>4.2</b> Windows系统中的地址栏和R中的地址栏斜线方向不同。如果直接复制Windows地址栏的地址作为绝对路径，可能会出现错误。为了避免手动拼接路径出错。</a></li>
+<li class="chapter" data-level="4.3" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-data"><i class="fa fa-check"></i><b>4.3</b> 读取数据</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-csv"><i class="fa fa-check"></i><b>4.2.1</b> read.csv函数</a></li>
-<li class="chapter" data-level="4.2.2" data-path="lesson-3.html"><a href="lesson-3.html#命名"><i class="fa fa-check"></i><b>4.2.2</b> 命名</a></li>
+<li class="chapter" data-level="4.3.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-csv"><i class="fa fa-check"></i><b>4.3.1</b> read.csv函数</a></li>
+<li class="chapter" data-level="4.3.2" data-path="lesson-3.html"><a href="lesson-3.html#命名"><i class="fa fa-check"></i><b>4.3.2</b> 命名</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="lesson-3.html"><a href="lesson-3.html#id_3-data-object"><i class="fa fa-check"></i><b>4.3</b> 了解R里的数据 （R语言中的对象）</a></li>
+<li class="chapter" data-level="4.4" data-path="lesson-3.html"><a href="lesson-3.html#id_3-data-object"><i class="fa fa-check"></i><b>4.4</b> 了解R里的数据 （R语言中的对象）</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="lesson-4.html"><a href="lesson-4.html"><i class="fa fa-check"></i><b>5</b> 第四讲：如何清理数据—R语言编程基础</a>
+<li class="chapter" data-level="5" data-path="lesson-4.html"><a href="lesson-4.html"><i class="fa fa-check"></i><b>5</b> 第四讲 &amp; 第五讲 ：数据导入 – 数据类型与结构</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-robject"><i class="fa fa-check"></i><b>5.1</b> R对象的操控</a></li>
-<li class="chapter" data-level="5.2" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-function"><i class="fa fa-check"></i><b>5.2</b> 函数</a></li>
-<li class="chapter" data-level="5.3" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-functions"><i class="fa fa-check"></i><b>5.3</b> 常用函数</a>
+<li class="chapter" data-level="5.1" data-path="lesson-4.html"><a href="lesson-4.html#加载数据"><i class="fa fa-check"></i><b>5.1</b> 加载数据</a></li>
+<li class="chapter" data-level="5.2" data-path="lesson-4.html"><a href="lesson-4.html#数据导入"><i class="fa fa-check"></i><b>5.2</b> 数据导入</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="lesson-4.html"><a href="lesson-4.html#unique"><i class="fa fa-check"></i><b>5.3.1</b> unique()</a></li>
+<li class="chapter" data-level="5.2.1" data-path="lesson-4.html"><a href="lesson-4.html#数据的地址路径"><i class="fa fa-check"></i><b>5.2.1</b> 数据的“地址”——路径</a></li>
+<li class="chapter" data-level="5.2.2" data-path="lesson-4.html"><a href="lesson-4.html#绝对路径与相对路径"><i class="fa fa-check"></i><b>5.2.2</b> 绝对路径与相对路径</a></li>
 </ul></li>
+<li class="chapter" data-level="5.3" data-path="lesson-4.html"><a href="lesson-4.html#读取数据"><i class="fa fa-check"></i><b>5.3</b> 读取数据</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="lesson-4.html"><a href="lesson-4.html#手动导入"><i class="fa fa-check"></i><b>5.3.1</b> 手动导入</a></li>
+<li class="chapter" data-level="5.3.2" data-path="lesson-4.html"><a href="lesson-4.html#代码导入"><i class="fa fa-check"></i><b>5.3.2</b> 代码导入</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="lesson-5.html"><a href="lesson-5.html"><i class="fa fa-check"></i><b>6</b> 第五讲：如何清理数据—数据的预处理</a>
+<li class="chapter" data-level="5.4" data-path="lesson-4.html"><a href="lesson-4.html#赋值"><i class="fa fa-check"></i><b>5.4</b> 赋值</a></li>
+<li class="chapter" data-level="5.5" data-path="lesson-4.html"><a href="lesson-4.html#数据类型"><i class="fa fa-check"></i><b>5.5</b> 数据类型</a></li>
+<li class="chapter" data-level="5.6" data-path="lesson-4.html"><a href="lesson-4.html#数据结构"><i class="fa fa-check"></i><b>5.6</b> 数据结构</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="lesson-5.html"><a href="lesson-5.html#批量读取文件"><i class="fa fa-check"></i><b>6.1</b> <strong>批量读取文件</strong></a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="lesson-5.html"><a href="lesson-5.html#通配符"><i class="fa fa-check"></i><b>6.1.1</b> <strong>通配符</strong></a></li>
-<li class="chapter" data-level="6.1.2" data-path="lesson-5.html"><a href="lesson-5.html#for循环思路"><i class="fa fa-check"></i><b>6.1.2</b> for<strong>循环思路</strong></a></li>
-<li class="chapter" data-level="6.1.3" data-path="lesson-5.html"><a href="lesson-5.html#lapply思路"><i class="fa fa-check"></i><b>6.1.3</b> lapply思路</a></li>
+<li class="chapter" data-level="5.6.1" data-path="lesson-4.html"><a href="lesson-4.html#向量vector"><i class="fa fa-check"></i><b>5.6.1</b> 向量(vector)</a></li>
+<li class="chapter" data-level="5.6.2" data-path="lesson-4.html"><a href="lesson-4.html#数据框"><i class="fa fa-check"></i><b>5.6.2</b> 数据框</a></li>
+<li class="chapter" data-level="5.6.3" data-path="lesson-4.html"><a href="lesson-4.html#矩阵与数组"><i class="fa fa-check"></i><b>5.6.3</b> 矩阵与数组</a></li>
+<li class="chapter" data-level="5.6.4" data-path="lesson-4.html"><a href="lesson-4.html#列表"><i class="fa fa-check"></i><b>5.6.4</b> 列表</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="lesson-5.html"><a href="lesson-5.html#数据预处理"><i class="fa fa-check"></i><b>6.2</b> 数据预处理</a></li>
-<li class="chapter" data-level="6.3" data-path="lesson-5.html"><a href="lesson-5.html#函数"><i class="fa fa-check"></i><b>6.3</b> 函数</a>
+<li class="chapter" data-level="5.7" data-path="lesson-4.html"><a href="lesson-4.html#函数"><i class="fa fa-check"></i><b>5.7</b> 函数</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="lesson-5.html"><a href="lesson-5.html#函数参数"><i class="fa fa-check"></i><b>6.3.1</b> 函数参数</a></li>
-<li class="chapter" data-level="6.3.2" data-path="lesson-5.html"><a href="lesson-5.html#groupby"><i class="fa fa-check"></i><b>6.3.2</b> groupby()</a></li>
-<li class="chapter" data-level="6.3.3" data-path="lesson-5.html"><a href="lesson-5.html#定义函数"><i class="fa fa-check"></i><b>6.3.3</b> 定义函数</a></li>
-<li class="chapter" data-level="6.3.4" data-path="lesson-5.html"><a href="lesson-5.html#for-loop"><i class="fa fa-check"></i><b>6.3.4</b> for loop</a></li>
-<li class="chapter" data-level="6.3.5" data-path="lesson-5.html"><a href="lesson-5.html#信号检测"><i class="fa fa-check"></i><b>6.3.5</b> 信号检测</a></li>
+<li class="chapter" data-level="5.7.1" data-path="lesson-4.html"><a href="lesson-4.html#函数的调用"><i class="fa fa-check"></i><b>5.7.1</b> 函数的调用</a></li>
+<li class="chapter" data-level="5.7.2" data-path="lesson-4.html"><a href="lesson-4.html#自定义函数"><i class="fa fa-check"></i><b>5.7.2</b> 自定义函数</a></li>
 </ul></li>
+<li class="chapter" data-level="5.8" data-path="lesson-4.html"><a href="lesson-4.html#if-条件语句"><i class="fa fa-check"></i><b>5.8</b> if 条件语句</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="lesson-6.html"><a href="lesson-6.html"><i class="fa fa-check"></i><b>7</b> 第六讲：如何探索数据: 描述性统计与数据可视化基础</a>
+<li class="chapter" data-level="6" data-path="lesson-6.html"><a href="lesson-6.html"><i class="fa fa-check"></i><b>6</b> 第六讲：如何探索数据: 描述性统计与数据可视化基础</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="lesson-6.html"><a href="lesson-6.html#描述性统计"><i class="fa fa-check"></i><b>7.1</b> <strong>描述性统计</strong></a></li>
-<li class="chapter" data-level="7.2" data-path="lesson-6.html"><a href="lesson-6.html#ggplot2的基本使用"><i class="fa fa-check"></i><b>7.2</b> ggplot2的基本使用</a>
+<li class="chapter" data-level="6.1" data-path="lesson-6.html"><a href="lesson-6.html#描述性统计"><i class="fa fa-check"></i><b>6.1</b> <strong>描述性统计</strong></a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="lesson-6.html"><a href="lesson-6.html#了解ggplot2"><i class="fa fa-check"></i><b>7.2.1</b> 了解ggplot2</a></li>
-<li class="chapter" data-level="7.2.2" data-path="lesson-6.html"><a href="lesson-6.html#密度图"><i class="fa fa-check"></i><b>7.2.2</b> 密度图</a></li>
-<li class="chapter" data-level="7.2.3" data-path="lesson-6.html"><a href="lesson-6.html#叠加绘图"><i class="fa fa-check"></i><b>7.2.3</b> 叠加绘图</a></li>
-<li class="chapter" data-level="7.2.4" data-path="lesson-6.html"><a href="lesson-6.html#散点图"><i class="fa fa-check"></i><b>7.2.4</b> 散点图</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="lesson-6.html"><a href="lesson-6.html#data-explore"><i class="fa fa-check"></i><b>7.3</b> Data Explore</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="lesson-7.html"><a href="lesson-7.html"><i class="fa fa-check"></i><b>8</b> 第七讲：如何进行基本的数据分析: t-test和anova</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="lesson-7.html"><a href="lesson-7.html#语法实现"><i class="fa fa-check"></i><b>8.1</b> <strong>语法实现</strong></a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="lesson-7.html"><a href="lesson-7.html#t检验"><i class="fa fa-check"></i><b>8.1.1</b> t检验</a></li>
-<li class="chapter" data-level="8.1.2" data-path="lesson-7.html"><a href="lesson-7.html#方差分析"><i class="fa fa-check"></i><b>8.1.2</b> 方差分析</a></li>
+<li class="chapter" data-level="6.1.1" data-path="lesson-6.html"><a href="lesson-6.html#part1-探索性数据分析"><i class="fa fa-check"></i><b>6.1.1</b> <strong>Part1-探索性数据分析</strong></a></li>
+<li class="chapter" data-level="6.1.2" data-path="lesson-6.html"><a href="lesson-6.html#part2-数据可视化-ggplot2的基本使用"><i class="fa fa-check"></i><b>6.1.2</b> <strong>Part2-数据可视化-ggplot2的基本使用</strong></a></li>
+<li class="chapter" data-level="6.1.3" data-path="lesson-6.html"><a href="lesson-6.html#part3-data-explorer"><i class="fa fa-check"></i><b>6.1.3</b> <strong>Part3-Data Explorer</strong></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="lesson-8.html"><a href="lesson-8.html"><i class="fa fa-check"></i><b>9</b> 第八讲：如何进行基本的数据分析: 相关与回归</a>
+<li class="chapter" data-level="7" data-path="lesson-7.html"><a href="lesson-7.html"><i class="fa fa-check"></i><b>7</b> 第七讲：如何进行基本的数据分析: <em>t</em>-test和ANOVA</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="lesson-8.html"><a href="lesson-8.html#什么是相关"><i class="fa fa-check"></i><b>9.1</b> 什么是相关</a></li>
-<li class="chapter" data-level="9.2" data-path="lesson-8.html"><a href="lesson-8.html#相关-代码实现"><i class="fa fa-check"></i><b>9.2</b> 相关-代码实现</a></li>
-<li class="chapter" data-level="9.3" data-path="lesson-8.html"><a href="lesson-8.html#什么是回归"><i class="fa fa-check"></i><b>9.3</b> 什么是回归</a></li>
+<li class="chapter" data-level="7.0.1" data-path="lesson-7.html"><a href="lesson-7.html#t检验"><i class="fa fa-check"></i><b>7.0.1</b> <em>t</em>检验</a></li>
+<li class="chapter" data-level="7.0.2" data-path="lesson-7.html"><a href="lesson-7.html#方差分析"><i class="fa fa-check"></i><b>7.0.2</b> 方差分析</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lesson-8.html"><a href="lesson-8.html"><i class="fa fa-check"></i><b>8</b> 第八讲：如何进行基本的数据分析: 相关与回归</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lesson-8.html"><a href="lesson-8.html#什么是相关"><i class="fa fa-check"></i><b>8.1</b> 什么是相关</a></li>
+<li class="chapter" data-level="8.2" data-path="lesson-8.html"><a href="lesson-8.html#相关-代码实现"><i class="fa fa-check"></i><b>8.2</b> 相关-代码实现</a></li>
+<li class="chapter" data-level="8.3" data-path="lesson-8.html"><a href="lesson-8.html#什么是回归"><i class="fa fa-check"></i><b>8.3</b> 什么是回归</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lesson-9.html"><a href="lesson-9.html"><i class="fa fa-check"></i><b>9</b> 第九章：如何进行基本的数据分析: 中介分析</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="lesson-9.html"><a href="lesson-9.html#process"><i class="fa fa-check"></i><b>9.1</b> process</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lesson-12.html"><a href="lesson-12.html"><i class="fa fa-check"></i><b>10</b> 第十二讲：从分析到手稿</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="lesson-12.html"><a href="lesson-12.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>10.1</b> <strong>通过Papaja撰写论文</strong></a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="lesson-12.html"><a href="lesson-12.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>10.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
+<li class="chapter" data-level="10.1.2" data-path="lesson-12.html"><a href="lesson-12.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>10.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
+<li class="chapter" data-level="10.1.3" data-path="lesson-12.html"><a href="lesson-12.html#part3-正文的撰写"><i class="fa fa-check"></i><b>10.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
+<li class="chapter" data-level="10.1.4" data-path="lesson-12.html"><a href="lesson-12.html#总结"><i class="fa fa-check"></i><b>10.1.4</b> 总结</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="lesson-13.html"><a href="lesson-13.html"><i class="fa fa-check"></i><b>11</b> 第十三章：效应量和元分析</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="lesson-13.html"><a href="lesson-13.html#效应量简介"><i class="fa fa-check"></i><b>11.1</b> 效应量简介</a></li>
+<li class="chapter" data-level="11.2" data-path="lesson-13.html"><a href="lesson-13.html#算法实现"><i class="fa fa-check"></i><b>11.2</b> 算法实现</a></li>
+<li class="chapter" data-level="11.3" data-path="lesson-13.html"><a href="lesson-13.html#小练习"><i class="fa fa-check"></i><b>11.3</b> 小练习</a></li>
+<li class="chapter" data-level="11.4" data-path="lesson-13.html"><a href="lesson-13.html#元分析简介"><i class="fa fa-check"></i><b>11.4</b> 元分析简介</a></li>
+<li class="chapter" data-level="11.5" data-path="lesson-13.html"><a href="lesson-13.html#元分析实现"><i class="fa fa-check"></i><b>11.5</b> 元分析实现</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -269,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</a>
           </h1>
         </div>
 
@@ -280,43 +306,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="lesson-2" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">3</span> 第二讲：如何开始使用R<a href="lesson-2.html#lesson-2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><strong>前言</strong></p>
-<p>数据分析的出发点是解决问题。也就是说，我们数据分析的过程都应该是问题导向的。因此，数据分析中的一个关键在于明确地知道自己要解决什么问题，要有问题的意识，这对科研工作者来说尤为重要。学习R语言或其他计算机语言，或进行一系列的数据分析，其目的都是为了回答一个特定的问题。问题的重要性本身最终决定了数据分析的价值。</p>
-<p>问题可以是科研中的理论问题，也可以是现实生活中的实践问题。例如，交通分流、道路设计、产品质量等的分析。实践问题也可以是收集证据来辅助决策。比如，在新冠疫情期间，行为科学(behavioral science)在公共决策中的作用受到了重视，通过大量的行为数据，可以帮助政府或决策者进行更好地决策。因此，数据分析的出发点是解决问题，这也是学习数据分析中首先需要明确的。让数据分析变得严谨和可重复，是为了更好地解决问题。我们不能忽略这个最根本的出发点。</p>
+<p>数据分析的出发点是解决问题。也就是说，我们数据分析的过程都应该是问题导向的。因此，数据分析中的一个关键在于明确地知道自己要解决什么问题，要有强烈的问题意识，这对科研工作者来说尤为重要。无论是学习R语言或其他计算机语言，还是进行一系列的数据分析，其目的都是为了回答一个特定的问题。问题本身的重要性最终决定了数据分析的价值。</p>
+<p>问题可以是科研中的理论问题，也可以是现实生活中的实践问题。例如，交通分流、道路设计、产品质量等的分析。实践问题也可以是收集证据来辅助决策。比如，在新冠疫情期间，行为科学(behavioral
+science)在公共决策中的作用受到了重视，通过大量的行为数据，可以帮助政府或决策者进行更好地决策。因此，数据分析的出发点是解决问题，这也是学习数据分析中首先需要明确的。让数据分析变得严谨和可重复，是为了更好地解决问题。我们必须时刻牢记这个最根本的出发点。</p>
 <div id="id_2-data-for-lesson" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> 要解决的数据分析问题简介<a href="lesson-2.html#id_2-data-for-lesson" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><img src="1002-lesson2/image-20230309141028497.png" alt="image-20230309141028497" style="zoom:50%;"/></p>
 <div id="id_2-data-1" class="section level3 hasAnchor" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> 第一个数据: 人类企鹅计划数据<a href="lesson-2.html#id_2-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>为了帮助大家更好地学习如何用R语言解决问题，我们提供了两个示例问题。这两个问题是我本人先前的研究中遇到的，因此心理学背景的读者可能会比较熟悉的。</p>
-<p>第一个问题是有关人类社会关系和体温调节之间的关系。我在读博期间参与了<a href="https://www.lippc2s.fr/archives/person/ijzerman-hans/">Hans IJzerman</a>博士的这个项目。他关心的问题是:人类的体温和社会关系的关系。从演化的角度讲，哺乳动物的生存需要苛刻的环境：身体的核心温度必须要维持在很窄的范围之内，哺乳动物才能够生存。作为哺乳动物，人类要在相对恒温的条件下才能生存。生物学的研究发现，哺乳动物会形成一个社群，通过群体来帮助群体中的每个个体调节体温。Hans当时感兴趣的一个问题是：人类身上是否也存在这种机制？人们的社会网络本身，是否能够会帮助我们去体温。Hans提出了自己的理论假设(<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2844963">IJzerman &amp; Hogerzeil, 2018</a>)，并想验证社交网络是否能够调节体温，于是进行了一项大规模的跨国实验，收集了来自十几个国家的数据。</p>
-<p>他首先进行了一个预实验，然后收集了跨国的数据。这个数据集来自12个国家，包含了1,500多个人的信息，其中包括多个问卷，例如，怀旧程度、对家的依恋、主观压力、新陈代和社交网络质量等。这个数据集最初是通过Qualtrics在线收集，现在已经公开可以使用(<a href="https://www.nature.com/articles/s41597-019-0029-2">Hu et al., 2019, sci data</a>)。</p>
-<p>在这门课程中，我们会假设自己是Hans课题组的成员，思考如何进行后续的数据分析。这个过程从数据导入开始，一步一步进行。我们最终可能想要解决的问题是如何预测核心体温，其中一个重要的分析方法是有监督的机器学习(条件随机森林, conditional random forest)。我们将寻找能够预测核心体温的变量。在下图中，红色线以上的变量对预测核心体温有很强的相关性，红色线以下的变量预测效果较弱。换句话说，虽然我们测量了很多变量，但通过机器学习算法，可发现只有部分变量与核心体温有较强的相关：complex social integration (CSI)这个指标。CSI是社交网络的一个指标。在Hans的研究中，也使用了一些传统的问卷分析方法。比如，调节分析。他发现是否处于亲密关系对CSI与体温之间的关系是有调节作用的。</p>
-<p>要进行整套分析的研究，首先需要将原始数据输入到R语言中，然后进行数据清理和描述性统计，例如数据质量、问卷信度、均值、标准差等统计指标。此外，也可以进行探索性的数据分析，例如相关矩阵，来探索变量之间的关系。最后，我们需要呈现研究结果，包括condition random forest的结果和mediation的结果，并将其整合到可视化报告中。原研究实际上并没有将数据分析和结果报告整合到一个完整的RMD文件中，而是采用传统的方式来准备手稿。在我们的课程中，将使用Rmarkdown来完成整个数据分析，并生成PDF文稿。</p>
-<p>我们这里的这个数据分享流程可能只是一个大致的流程，里面可能还会有一些小的细节，例如如何去假定变量之间的关系，当然我们进行的是别人研究的复现，通过复现去了解R语言数据分析中的流程，提高自己的技术。</p>
+<p>为了帮助大家更好地学习如何使用R语言解决问题，我们提供了两个示例问题。这两个问题是我本人在先前的研究中遇到的，因此有心理学背景的读者可能会比较熟悉。</p>
+<p>第一个问题是有关人类社会关系和体温调节之间的关系。我在读博期间参与了<a href="https://www.lippc2s.fr/archives/person/ijzerman-hans/">Hans
+IJzerman</a>博士的这个项目。他关心的问题是人类的体温和社会关系之间的关系。从演化的角度讲，哺乳动物的生存需要苛刻的环境：身体的核心温度必须要维持在很窄的范围之内，哺乳动物才能够生存。作为哺乳动物，人类要在相对恒温的条件下才能生存。生物学的研究发现，哺乳动物会形成一个社群，通过这一社群来帮助其中的每个个体调节体温。由此，Hans对”人类身上是否也存在这种机制？“这一问题产生了兴趣，人们的社会网络本身，是否能够帮助我们去调节体温呢？Hans提出了自己的理论假设(<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2844963">IJzerman
+&amp; Hogerzeil,
+2018</a>)，并试图验证社交网络是否能够调节体温，于是进行了一项大规模的跨国实验，收集了来自十几个国家的数据。</p>
+<p>Hans首先进行了一个预实验，随后收集了横跨12个国家的数据，包含了1,500多个人的信息，其中包括怀旧程度、对家的依恋、主观压力、新陈代谢和社交网络质量等多个问卷。这个数据集最初是通过Qualtrics在线收集，现在已经公开可以使用(<a href="https://www.nature.com/articles/s41597-019-0029-2">Hu
+et al., 2019, sci
+data</a>)。</p>
+<p>请您设想自己是Hans课题组的成员，置身其中地思考如何从数据导入开始一步一步进行后续的数据分析。我们可能最终想要解决的问题是如何预测核心体温，其中一个重要的分析方法是有监督的机器学习(条件随机森林,
+conditional random
+forest)，我们将寻找能够预测核心体温的变量。在下图中，红色线以上的变量对预测核心体温有很强的相关性，反之则预测效果较弱。换句话说，虽然我们测量了很多变量，但通过机器学习算法，可以发现只有部分变量与核心体温有较强的相关：complex
+social integration
+(CSI)，CSI是社交网络的一个指标。在Hans的研究中，也使用了一些传统的问卷分析方法，比如调节分析。他发现是否处于亲密关系对CSI与体温之间的关系是存在调节作用的。</p>
+<p>要进行整套分析的研究，首先需要将原始数据输入到R语言中，然后进行数据清理和描述性统计，例如数据质量、问卷信度、均值、标准差等统计指标。此外，也可以进行探索性的数据分析，例如相关矩阵，来探索变量之间的关系。最后，我们需要呈现研究结果，包括condition
+random
+forest的结果和mediation的结果，并将其整合到可视化报告中。原研究实际上并没有将数据分析和结果报告整合到一个完整的RMD文件中，而是采用传统的方式来准备手稿。在我们的课程中，将使用Rmarkdown来完成整个数据分析，并生成PDF文稿。</p>
+<p>我们所提供的是一个大致的数据分析流程，其中还存在一些细节值得更多关注，例如如何去假定变量之间的关系。我们所进行的是别人研究的复现，通过复现去了解使用R语言进行数据分析的流程，以提高自己的技术。</p>
 <p><img src="1002-lesson2/image-20230309141242197.png" alt="image-20230309141242197" style="zoom:67%;"/></p>
 </div>
 <div id="id_2-data-2" class="section level3 hasAnchor" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> 第二个数据: 知觉匹配任务数据<a href="lesson-2.html#id_2-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="1002-lesson2/image-20230309141403674.png" alt="image-20230309141403674" style="zoom:50%;"/></p>
-<p>这个实验是一项简单的认知实验。在认知心理学中，我们通常会在实验室中进行，让被试进行一些简单的按键反应。这个任务可以分为几个阶段。首先是学习阶段。在这个阶段，我们会呈现几何图形（正方形、三角形和圆形）和三个人物标签（好人、普通人和坏人)，然后让被试在图形与人物标签之间建立联系，例如将三角形和好人联系起来。接着，我们会在电脑屏幕上呈现一个图形和一个标签，被试需要判断屏幕上呈现的图形和人物标签是否匹配。这是一个非常简单的任务，通过被试练习了二三十次后，就能够熟练地完成这个任务。</p>
-<p>接下来，我们会让被试完成两个任务：匹配任务和分类任务。匹配任务需要做出一个决策，即图形和标签是否匹配。它的反应窗口非常短，大约在800到1100毫秒之间。分类任务需要判断图形是好人还是坏人，然后按相应的键。这个任务也需要在非常快速的时间内进行反应。</p>
-<p>我们的实验设计是一个 2*2的被试内实验设计，自变量包括人物标签（自我 vs 他人）和效价（valence）。</p>
+<p>这个实验是一项简单的认知实验。在认知心理学中，我们通常会在实验室中进行，让被试进行一些简单的按键反应。这个任务可以分为几个阶段：首先是学习阶段，在这一阶段我们会呈现几何图形（正方形、三角形和圆形）和三个人物标签（好人、普通人和坏人)，然后让被试在图形与人物标签之间建立联系，例如将三角形和好人联系起来。随后，我们会在电脑屏幕上呈现一个图形和一个标签，被试需要判断屏幕上呈现的图形和人物标签是否匹配。这是一个非常简单的任务，被试练习了二三十次后，就能够熟练地完成这个任务。</p>
+<p>接下来，我们会让被试完成两个任务：匹配任务和分类任务。匹配任务需要被试做出一个决策，即图形和标签是否匹配，它的反应窗口非常短，大约在800到1100毫秒之间。分类任务需要被试判断图形是好人还是坏人，然后进行相应的按键操作，此任务也需要在非常快速的时间内进行反应。</p>
+<p>我们的实验设计是一个2*2的被试内实验设计，自变量包括人物标签（自我 vs
+他人）和效价（valence）。</p>
 <p>在分类任务中，采用两种分类的标准：自我vs他人，好人vs坏人。在学习过程中，记住了四个人物标签和四个几何图形之间的配对关系，并训练匹配任务和分类任务。分类任务包括按身份和效价进行分类。</p>
 <p><img src="1002-lesson2/image-20230309141416270.png" alt="image-20230309141416270" style="zoom:80%;"/></p>
 <p>在研究中，我们想要了解即时学习到的社会意义是否会影响对几何图形的反应。我们发现，给几何图形打上社会标签后，会影响到反应时间。虽然总体上来说，好的自我反应最快，好的他人的反应也不错，但是坏的自我和他人都比较慢。这是一个总体的趋势，但并不是每个几何图形都是这样的。我们使用这种方式来绘制图形，既能看到总体水平上的结果，也能看到个体差异。这可以避免我们的过度推断。</p>
-<p>上图右边是d prime，是信号检测论中的一个指标在心理物理学中，信号检测论是一种常用的数据分析方法，用于认知心理学研究。它可以计算d prime，即敏感性，这比准确率更能判断信号是否敏感。在匹配的任务中，我们将匹配条件视为信号，不匹配条件视为噪音，以此来计算信号检测论。对于非匹配任务，如分类任务，我们也可以计算类似的标准和数据。我们还使用了一个名为Drift Diffusion Model的计算模型来分析数据，它是用Python工具包HDDM完成的，但也可以在R中使用。在这个数据中，导入数据可能有些复杂，因为每个被试的数据都有三个文件，需要合并和清理数据。在数据分析部分，我们进行数据清理和可视化。</p>
-<p>如果使用传统的方式，我们需要使用Excel进行数据预处理，使用SPSS进行统计分析，使用Excel或PS进行图形绘制和美化，最后使用Word文档进行写作。如果使用R语言，我们可以在R语言中完成所有工作，从Tidyverse开始进行数据清洗和工具分析，使用GGPlot2进行图形绘制。我们将使用Markdown或papaja来输出。在BruceR中，我们特别关注T-test、方差分析和多重比较等内容。由于BruceR对心理学数据分析进行优化，因此非常方便。正如我们之前提到的，使用R进行分析可以保留所有分析过程，并且可以通过代码直接重复分析。分析的代码和方法也非常灵活，新的方法也容易共享。</p>
+<p>上图右边是d
+prime，是信号检测论中的一个指标。在心理物理学中，信号检测论是一种常用的数据分析方法，用于认知心理学研究。它可以计算d
+prime，即敏感性，这比准确率更能判断信号是否敏感。在匹配的任务中，我们将匹配条件视为信号，不匹配条件视为噪音，以此来计算信号检测论。对于非匹配任务，如分类任务，我们也可以计算类似的标准和数据。我们还使用了一个名为Drift
+Diffusion
+Model的计算模型来分析数据，它是用Python工具包HDDM完成的，但也可以在R中使用。在这个数据中，导入数据可能有些复杂，因为每个被试的数据都有三个文件，需要进行合并和清理数据的预处理；在数据分析部分，我们进行数据清理和可视化。</p>
+<p>如果使用传统的方式，我们需要使用Excel进行数据预处理，使用SPSS进行统计分析，使用Excel或PS进行图形绘制和美化，最后使用Word文档进行写作。如果使用R语言，我们可以在R语言中完成所有工作，从Tidyverse开始进行数据清洗和工具分析，使用GGPlot2进行图形绘制。我们将使用Markdown或papaja来输出。在BruceR中，我们特别关注T-test、方差分析和多重比较等内容。由于BruceR对心理学数据分析进行优化，因此非常方便。正如我们之前提到的，使用R进行分析可以保留所有分析过程，并且可以通过代码直接重复分析。而分析采用的代码和方法也非常灵活，新的方法也容易共享。</p>
 </div>
 </div>
 <div id="id_2-install-R" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> 如何安装<a href="lesson-2.html#id_2-install-R" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>首先是安装过程，可以在必应(bing.com)中搜索R语言官方网站，然后在该网站中下载安装程序。该程序适用于不同的操作系统和版本。对于Windows系统而言，安装过程比较简单。但对于Mac系统，安装过程可能会稍微复杂一些。Mac系统可能会有两个版本，分别为AMD64和apple芯片版本，你可能需要下载对应的包。</p>
+<p>首先是安装过程，可以在必应(bing.com)中搜索R语言官方网站，然后在该网站中下载安装程序（<a href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/">点击这里</a>跳转到清华镜像下载）。该程序适用于不同的操作系统和版本。对于Windows系统而言，安装过程比较简单。但对于Mac系统，安装过程可能会稍微复杂一些。Mac系统可能会有两个版本，分别为arm64版本（苹果M系列芯片）和
+x86_64版本（英特尔芯片），可根据自身情况下载。</p>
 <p><img src="1002-lesson2/image-20230309141638581.png" alt="image-20230309141638581" style="zoom:33%;"/></p>
 <p><img src="1002-lesson2/image-20230309141555459.png" alt="image-20230309141555459" style="zoom: 33%;"/></p>
-<p>使用中文语言安装R语言会更加方便，可以避免编码问题。下载完成后，运行安装程序。在安装过程中，你可以选择是否自定义一些安装选项，但是默认选项通常已经足够了。为避免出现问题，请确保选择英文路径作为安装目录。完成安装之后，你可以开始实际学习操作。在此我也想提醒大家不要把安装目录放在中文文件夹里，避免中文路径可能会出现的编码问题。</p>
+<p>使用中文语言安装R语言会更加方便，可以避免编码问题。下载完成后，运行安装程序。在安装过程中，你可以选择是否自定义一些安装选项，但是默认选项通常已经足够了。但为避免以后的使用中出现问题，<strong>请确保选择英文路径作为安装目录</strong>。安装完成之后，你可以开始实际学习操作。在此我也想提醒大家要<strong>把安装目录放在英文文件夹里</strong>，避免中文路径可能会出现的编码问题；对于
+Windows
+用户来说，应当尽量将电脑的用户名也改为英文，因为有时在绘图时会调用一个存在于用户名下的某个文件夹，一旦无法识别中文，那么就无法对该文件夹进行识别进而导致出错。</p>
 <p><img src="1002-lesson2/image-20230309141658614.png" alt="image-20230309141658614" style="zoom:33%;"/></p>
-<p>在上图你可以看到，此处默认选择了中文作为系统显示语言，主要是由于系统语言为中文，安装时自动采用中文显示。安装时可能看到了一些警告(warnings)，猜测是语言设置引起的。在R语言中也会遇到这种情况。这里有两种类型的警告：一种是称为”警告（warnings）“，另一种是”错误（errors）“。对于那些被警告的代码，我们需要仔细检查，看看是否会对我们的运行造成严重的影响。如果没有明显的影响，那么就可以忽略。</p>
-<p>我们可能会遇到一些问题，例如，遇到一些非UTF-8编码的语言编码。这意味着我们不是使用Unicode编码方式。为了解决这些问题，我们通常使用UTF-8编码方式，这是中文中非常常见的编码方式。在大部分计算机系统中，我们都可以使用UTF-8编码方式，因为它是国际上通用的编码方式。</p>
+<p>在上图你可以看到，此处默认选择了中文作为系统显示语言，主要是由于系统语言为中文，安装时自动采用中文显示。安装时可能看到了一些警告(warnings)，猜测是语言设置引起的，在R语言中也会遇到这种情况。这里有两种类型的警告：一种是称为”警告（warnings）“，另一种是”错误（errors）“。对于那些被警告的代码，我们需要仔细检查，看看是否会对我们的运行造成严重的影响。如果没有明显的影响，那么就可以忽略。</p>
+<p>在读取一些文件的时候，我们可能会遇到一些问题。例如，遇到一些非UTF-8编码的语言编码。这意味着我们不是使用Unicode编码方式。为了解决这些问题，我们通常使用UTF-8编码方式，这是中文中非常常见的编码方式。在大部分计算机系统中，我们都可以使用UTF-8这一国际通用的编码方式。</p>
 </div>
 <div id="id_2-Rstudio" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> 如何方便使用？Rstudio的安装与界面介绍<a href="lesson-2.html#id_2-Rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -324,63 +370,103 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="lesson-2.html#cb1-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
 <span id="cb1-2"><a href="lesson-2.html#cb1-2" tabindex="-1"></a><span class="fu">plot</span>(a)</span></code></pre></div>
 <p><img src="1002-lesson2_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<p>这个命令将在变量a中存放了100个数据。控制台支持用户输入任何语句，比如demo()，plot(x,y)。（这将自动打开一个窗口显示绘制的图形。）</p>
+<p>第一行命令即随机生成 100 个服从正态分布的数据（rnorm，即random
+generation for the normal distribution的缩写），并贴个“标签”叫
+a，然后绘制散点图。在控制台中，我们可以使用代码与计算机进行交互，即这个窗口会对所输入的内容做出即时的反馈，当然也包括对代码中错误的反馈。</p>
 <p><img src="1002-lesson2/image-20230309141849799.png" alt="R的concole界面" style="zoom:50%;"/></p>
-<p>对于没有编程经验的同学来说，控制台可能是一个不太熟悉的点。为什么我们在这里输入这个东西呢？为什么会跳出这个东西呢？有时候会出错吗？例如，我们输入a会得到一个数字，但是如果输入b，他会告诉你没有这个对象。但如果输入c，又有不同的结果。</p>
-<p>这里的一个难点是，为什么有些输入会被计算机执行，但是有些不会？还有，为什么有些输入会产生图形效果，有些则不会？</p>
-<p>这正是我们写代码与计算机交互的方式。这种方式与图形界面的软件（如SPSS）有所不同。在使用SPSS软件时，我们通过点击屏幕来进行交互，并从菜单中选择选项。然而，当我们使用R语言或其他语言时，我们主要使用的不是这种图形界面，而是只有一个输入代码的窗口，通过在这里输入代码与计算机交互。对于其他语言也是一样。</p>
+<p>对于没有编程经验的同学来说，可能会对控制台感到非常陌生：为什么有些输入会被计算机执行，但是有些不会？还有，为什么有些输入会产生图形效果，有些则不会？这正是我们通过代码与计算机交互的方式。这种方式与图形界面的软件（如SPSS）有所不同。在使用SPSS软件时，我们通过点击屏幕来进行交互，并从菜单中选择选项；然而，在使用R语言或其他语言时，我们则是通过输入代码与计算机交互。对于其他计算机语言也是一样。</p>
 <p><img src="1002-lesson2/image-20230309141938416.png" alt="image-20230309141938416" style="zoom:50%;"/></p>
-<p>这样的交互方式的缺点是，我们不知道哪些变量保留在内存中。当我们进行一系列操作时，我们不知道哪些操作是我们刚才输入的。它们存在于计算机的缓存之中。如果我们输入了许多变量，如a、b、c、d等，我们可无法回忆起这些变量的细节。因此，当我们学习R语言时，我们希望有一个更好的地方来编写代码。我们不希望一次只写一行代码，然后再运行。因此，我们需要一个更友好的代码编辑器，而不仅仅是控制台。虽然控制台是与R进行交互的窗口，但有时不够友好。</p>
+<p>这样的交互方式也存在缺点：我们不知道哪些变量保留在内存中。当进行一系列操作时，我们不知道哪些操作是我们刚才输入的。它们存在于计算机的缓存之中。如果输入了许多变量，如a、b、c、d等，我们可无法回忆起这些变量的细节。因此，当我们学习R语言时，我们希望有一个更清晰、高效的地方来编写代码，而不是一次只写一行代码，然后再运行。因此，我们需要一个更友好的代码编辑器，而不仅仅是控制台。虽然控制台是与R进行交互的窗口，但功能还不够强大。</p>
 <div id="id_2-Rstudio-install" class="section level3 hasAnchor" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Rstudio的安装与界面介绍<a href="lesson-2.html#id_2-Rstudio-install" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>幸运的是，我们可以使用RStudio来完成这项任务。所以我们需要安装好R之后，再安装RStudio。有两个版本可以选择：Windows版和Mac版。安装时，我们需要将其安装在非中文目录下。安装后，我们可以选择64位系统。使用RStudio的最大好处是我们可以一次编写一长串代码，然后执行它们。</p>
+<p>幸运的是，我们可以使用RStudio来完成这项任务。在安装完R后，我们可以安装RStudio，有两个版本可以选择：Windows版和Mac版。安装时，我们需要将其安装在<strong>非中文目录</strong>下。安装后，我们可以选择64位系统。</p>
 <p><img src="1002-lesson2/image-20230309142031899.png" alt="image-20230309142031899" style="zoom:50%;"/></p>
-<p>打开RStudio后，显示出的是一个白色背景的界面，我们可以通过更改外观中的主题来改变界面颜色。在这个地方，工具中有一个全局选项，外观，你可以把它改成更专业的样式。现在界面变得专业很多了，这是我们通过调节一些参数实现的。当然，也可以根据自己的喜好来调整。另外，将界面背景改成灰色可以省些电，因为不用一直发亮光。</p>
+<p>打开RStudio后，显示出的是一个白色背景的界面，我们可以通过更改外观中的主题来改变界面颜色。在这个工具中有一个全局选项，然后选择外观，可以把界面改成你想要的样式。将界面背景改成灰色可以省些电，因为不用一直发亮光。</p>
 <p>接下来讲讲界面的调整。我们的界面是由四个面板组成的，但是在刚安装RStudio时，我们看到的是三个面板的界面，界面可能还有点不一样。我们可以新建一个project来呈现一个新的面板。</p>
 <p><img src="1002-lesson2/image-20230309142101914.png" alt="image-20230309142101914" style="zoom:50%;"/></p>
-<p>现在我们有4个窗口。这4个窗口分别是脚本编辑区、控制台、环境和文件。</p>
+<p>现在我们有4个窗口。这4个窗口分别是脚本编辑区、控制台、环境和文件。
+现在我们可以看到5个部分。1是顶部的菜单栏以及快捷方式栏。2是左上角的脚本编辑区，3是左下角的控制台，4是右上角的环境/历史/链接区，5是右下角的文件/图片/程序包/帮助/预览区。</p>
 <p><strong>脚本编辑区</strong></p>
-<p>脚本编辑区可以记录下我们想要写的代码，并且可以选择性地运行。我们也可以直接创建一个R脚本，然后输入代码。在输入代码的时候，RStudio会提示我们，根据我们之前输入的字符来预测我们可能想要输入的代码。这样的话，我们就不用记住很多代码，可以更方便地完成代码。我们可以将所有的代码放到一起，形成一个脚本文件，一般以R结尾。我们可以用RStudio打开它，这样可以更好地编写R代码。</p>
+<p>脚本编辑区可以记录下我们想要写的代码，并且可以选择性地运行。我们也可以直接创建一个R脚本，然后输入代码。在输入代码的时候，RStudio会提示我们，根据我们之前输入的字符来预测我们可能想要输入的代码。这样的话，我们就不用记住很多代码，可以更方便地完成代码。我们可以将所有的代码放到一起，形成一个脚本文件，一般以
+.R作为文件后缀。我们可以用RStudio打开它，这样可以更好地编写R代码。
+数据对象的具体内容也将显示在脚本编辑区域。</p>
 <p><img src="1002-lesson2/image-20230309142202593.png" alt="脚本编辑区" style="zoom:50%;"/></p>
-<p>右上角这个地方，它实际上它不是一个窗口，而是多个窗口，第一个选项卡，这是一个被称作environment的窗口，类似于人的工作记忆一样，会存储我们运行中的所有的数据和变量。现在这块区域是空白的，因为我们没有进行过任何的数据的操作和读取。如果我们运行了一些有关变量的R指令，涉及到的变量就会在这块区域中出现。</p>
+<p>右上角这个地方，实际上它不是一个窗口，而是多个窗口，第一个选项卡，这是一个被称作environment的窗口，类似于人的工作记忆一样，会存储我们运行中的所有的数据和变量。现在这块区域是空白的，因为我们没有进行过任何的数据的操作和读取。如果我们运行了一些有关变量的R指令，涉及的变量就会在这块区域中出现。
+我们最好经常留意环境区域的变化，如查看新生成的对象是否正确等。</p>
 <p><img src="1002-lesson2/image-20230309142645448.png" alt="运行环境" style="zoom:50%;"/></p>
-<p>第二个窗口是history,我们所有运行过的代码会在这里被列出，就像我们刚才输入的指令，都会保存在里面。</p>
+<p>第二个窗口是history,我们所有运行过的代码会在这里被列出，就像我们刚才输入的指令，都会保存在里面。可以命令运行历史。</p>
+<p>第三个窗口是链接（connections），可以建立与外部数据库、脚本的链接。</p>
 <p><strong>控制台</strong></p>
 <div class="float">
 <img src="1002-lesson2/image-20230309143318248.png" alt="控制台界面" />
 <div class="figcaption">控制台界面</div>
 </div>
-<p>Console，即控制台，展示了所有程序的交互结果。代码的运行结果与报错都会在该窗口展示。在Rstudio中不仅有Console控制台，还有一个teminal，这是一个与windows系统进行交互的界面。在Mac OS中也有相同的Termianl终端。我们可以让它进行在后台安装软件之类的工作，不过我们使用的不多。</p>
+<p>Console，即控制台，展示了所有程序的交互结果。代码的运行结果与报错都会在该窗口展示。在Rstudio中不仅有Console控制台，还有一个teminal，这是一个与windows系统进行交互的界面。在Mac
+OS中也有相同的Termianl终端。我们可以让它进行在后台安装软件之类的工作，不过我们使用的不多。
+Console，即控制台，展示了命令运行的结果，包括计算出的值、提示、报错等信息。也可以在这个区域直接缩写命令行，按回车键运行。但此区的命令为即使命令，无法保存。点击清扫按钮即可将当前的内容清除。</p>
 <p>在后面我们使用github的时候，我们可能会较多的涉及到Teminal相关的内容。</p>
 <p><strong>右下角窗口集</strong></p>
 <p><img src="1002-lesson2/image-20230309143850798.png" alt="image-20230309143850798" style="zoom:67%;"/></p>
 <p>右下角有许多子窗口，我们一般会频繁地用到其中的两三个，一个是files，一个是plot，可能还有一个help。</p>
 <p>当我们对某个指令的具体功能和提供的参数不是很了解的时候，我们可以在help中进行输入和搜索，它就会提供给我们一些相应的解释和说明，我们可以详细的了解相关的函数和包。</p>
-<p>file窗口是我们的文件浏览器，我们可以看到我们打开的文件夹里有什么文件。并且可以进行打开。因为我们打开的是一个R project文件，它会自动将工作目录关联起来。</p>
-<p>plot界面是我们画出来的图的展示的地方，我们使用plot等指令绘制的图表将会在这个界面中呈现。我们可以通过手动拖拽窗口的大小来调整输出图片的大小，并且可以进行保存等操作。</p>
+<p>file窗口是我们的文件浏览器，我们可以看到我们打开的文件夹里有什么文件。并且可以进行打开。因为我们打开的是一个R
+project文件，它会自动将工作目录关联起来。</p>
+<p>plot界面是我们画出来的图的展示的地方，我们使用plot等指令绘制的图表将会在这个界面中呈现。我们可以通过手动拖拽窗口的大小来调整输出图片的大小，并且可以进行保存等操作。
+若想保存图片，可点击窗口上的export按钮，选择想要保存的格式，最好是保存为pdf，可以保证图片的分辨率。</p>
 <p><img src="1002-lesson2/image-20230309144126564.png" alt="image-20230309144126564" style="zoom:67%;"/></p>
 <p>除此之外，我们还有packges选项卡，在其中我们能看到我们安装的包，并且对其进行管理。</p>
 </div>
 <div id="id_2-Rstudio-test" class="section level3 hasAnchor" number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> 测试Rstudio<a href="lesson-2.html#id_2-Rstudio-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>现在，我们可以对我们的安装过程进行一个检查，如果我们能够在Rstudio中正常的输出这样的图表的话，就说明我们的安装基本上没有问题了。</p>
+<p>现在，我们可以对我们的安装过程进行一个检查，如果我们能够在Rstudio中正常的输出这样的图表的话，就说明我们的安装不存在问题。</p>
 <div class="float">
 <img src="1002-lesson2/image-20230309144756488.png" alt="image-20230309144756488" />
 <div class="figcaption">image-20230309144756488</div>
 </div>
 <p><strong>典型问题</strong></p>
-<p>由于大家的输入都是以中文为主，我们是中文用户，所以输入法很多时候会保持在一个中文输入的状态，但是这个时候你的标点符号也会是中文的，但是所有R的指令需要的都是英文的标点符号，如果你输错了，可能就会产生问题。比如产生unexpected
-input这样的报错</p>
+<p>由于大家的输入都是以中文为主，所以输入法很多时候会保持在一个中文输入的状态，这个时候你的标点符号也会是中文的，<strong>但是所有R的指令需要的都是英文的标点符号</strong>。如果你输错了，可能就会发生问题，比如出现unexpected
+input这样的报错。</p>
 </div>
 <div id="id_2-packges" class="section level3 hasAnchor" number="3.3.3">
 <h3><span class="header-section-number">3.3.3</span> R语言中的包<a href="lesson-2.html#id_2-packges" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="1002-lesson2/image-20230309145531807.png" alt="image-20230309145531807" style="zoom:67%;"/></p>
-<p>package是R中非常重要的一个概念，我们在前面提到过package窗口，它管理的对象就是我们的包。</p>
-<p>Packages（包）是一种模块化的方式，用于<strong>扩展</strong>R的基本功能。Package包含了函数、数据集、文档和其他需要扩展R的元素，这些元素按照特定的结构和命名方式进行组织和存储，方便用户引用和使用。它能够以类似R的方法对R的功能进行扩展。有了各种各样的包，才能让R语言的生态变得丰富。</p>
-<p>包里一般会包含一些有特定功能的函数，有些也包括一些数据集，能够让你去方便的测试它的一些函数。也包含了说明文档，来解释包和各个函数的功能。</p>
+<p>包（package）是R中非常重要的一个概念，我们在前面提到过package窗口，它管理的对象就是我们的包。</p>
+<div class="float">
+<img src="1002-lesson2/img_pac.png" alt="RStuidio 中 package 管理界面" />
+<div class="figcaption">RStuidio 中 package 管理界面</div>
+</div>
+<p>Packages
+是一种模块化的方式，用于扩展R的基本功能。Package包含了函数、数据集、文档和其他需要扩展R的元素，这些元素按照特定的结构和命名方式进行组织和存储，方便用户引用和使用。它能够以类似R的方法对R的功能进行扩展。有了各种各样的包，才能让R语言的生态变得丰富。</p>
+<p>包里一般会包含一些有特定功能的函数，有些也包括一些数据集，能够让你去方便的测试它的一些函数；也包含了说明文档，来解释包和各个函数的功能。</p>
 <div id="id_2-packges-cat" class="section level4 hasAnchor" number="3.3.3.1">
-<h4><span class="header-section-number">3.3.3.1</span> 包的分类<a href="lesson-2.html#id_2-packges-cat" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>R包的基本分类大概包括：Base:（安装R时自带的包）和其他由社区所贡献的、内容丰富、领域特异性（数据可视化、统计分析、机器学习、深度学习、自然语言处理、图像处理）的包。有些相关的包会朝着同一个风格进行开发，形成一个系统，例如tidyverse; easystats。他们有一个自己特殊的语法风格。</p>
+<h4><span class="header-section-number">3.3.3.1</span> 包的介绍与调用<a href="lesson-2.html#id_2-packges-cat" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>R包的基本分类大概包括：</p>
+<ul>
+<li><p>Base:（安装R时自带的包）</p></li>
+<li><p>其他:由社区所贡献的、内容丰富、领域特异性（数据可视化、统计分析、机器学习、深度学习、自然语言处理、图像处理）的包。</p></li>
+<li><p>R报系统：有些相关的包会朝着同一个风格进行开发，形成一个系统，例如tidyverse;
+easystats。他们有自己特殊的语法风格。</p></li>
+</ul>
+<p>使用包通常需要先安装，可以通过 install.packages() 函数进行安装，然后使用
+library() 函数加载包。例如：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="lesson-2.html#cb2-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span>
+<span id="cb2-2"><a href="lesson-2.html#cb2-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p><strong>注意：在使用install.packages()
+时，括号内要加引号！括号、引号均为英文输入状态下的半角符号！</strong></p>
+<p>由于 tidyverse
+是一系列包的集合，因此在安装时会下载多个包；有时在安装一些包时，这些包的运行又依赖于其他的包，因此下载时会将这些包都下载下来。</p>
+</div>
+<div id="镜像的选择" class="section level4 hasAnchor" number="3.3.3.2">
+<h4><span class="header-section-number">3.3.3.2</span> 镜像的选择<a href="lesson-2.html#镜像的选择" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>有些安装包安装起来会比较慢，这可能是因为用了国外的镜像网站。镜像网站是一个将完全相同的网站放到了国内的服务器，每个网站都有自己的网址。一般默认使用的是
+CRAN镜像（R
+语言的官方包管理库）；如果想要加快下载速度，就需要切换镜像网站地址（<a href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/index.html">点击这里</a>查看），如切换到清华镜像：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="lesson-2.html#cb3-1" tabindex="-1"></a><span class="co"># 查看当前默认使用的镜像：</span></span>
+<span id="cb3-2"><a href="lesson-2.html#cb3-2" tabindex="-1"></a><span class="fu">getOption</span>(<span class="st">&quot;repos&quot;</span>)</span></code></pre></div>
+<pre><code>##     CRAN 
+## &quot;@CRAN@&quot;</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="lesson-2.html#cb5-1" tabindex="-1"></a><span class="co"># 切换清华镜像</span></span>
+<span id="cb5-2"><a href="lesson-2.html#cb5-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;</span>))</span></code></pre></div>
 
 </div>
 </div>
@@ -434,7 +520,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["CBook.pdf"],
+"download": ["R4PsyBook.pdf"],
 "search": {
 "engine": "fuse",
 "options": null

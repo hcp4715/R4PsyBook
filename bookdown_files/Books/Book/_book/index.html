@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿</title>
+  <title>R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</title>
   <meta name="description" content="课程bookdown" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿" />
+  <meta property="og:title" content="R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="课程bookdown" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿" />
+  <meta name="twitter:title" content="R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
   
   <meta name="twitter:description" content="课程bookdown" />
   
@@ -51,12 +51,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.27/datatables.js"></script>
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="libs/datatables-binding-0.30/datatables.js"></script>
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <script type="text/x-mathjax-config">
@@ -75,7 +75,7 @@ MathJax.Hub.Config({
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -85,7 +85,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -138,6 +138,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 </head>
 
@@ -170,12 +174,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.3" data-path="lesson-1.html"><a href="lesson-1.html#心理学数据分析与结果汇报"><i class="fa fa-check"></i><b>2.2.3</b> 心理学数据分析与结果汇报</a></li>
 <li class="chapter" data-level="2.2.4" data-path="lesson-1.html"><a href="lesson-1.html#regression"><i class="fa fa-check"></i><b>2.2.4</b> Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="lesson-1.html"><a href="lesson-1.html#课程安排"><i class="fa fa-check"></i><b>2.3</b> 课程安排</a>
+<li class="chapter" data-level="2.3" data-path="lesson-1.html"><a href="lesson-1.html#现场运行代码"><i class="fa fa-check"></i><b>2.3</b> 现场运行代码</a></li>
+<li class="chapter" data-level="2.4" data-path="lesson-1.html"><a href="lesson-1.html#课程安排"><i class="fa fa-check"></i><b>2.4</b> 课程安排</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="lesson-1.html"><a href="lesson-1.html#课程大纲"><i class="fa fa-check"></i><b>2.3.1</b> 课程大纲</a></li>
-<li class="chapter" data-level="2.3.2" data-path="lesson-1.html"><a href="lesson-1.html#成绩分配"><i class="fa fa-check"></i><b>2.3.2</b> 成绩分配</a></li>
+<li class="chapter" data-level="2.4.1" data-path="lesson-1.html"><a href="lesson-1.html#课程大纲"><i class="fa fa-check"></i><b>2.4.1</b> 课程大纲</a></li>
+<li class="chapter" data-level="2.4.2" data-path="lesson-1.html"><a href="lesson-1.html#成绩分配"><i class="fa fa-check"></i><b>2.4.2</b> 成绩分配</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="lesson-1.html"><a href="lesson-1.html#如何学好这门课"><i class="fa fa-check"></i><b>2.4</b> 如何学好这门课</a></li>
+<li class="chapter" data-level="2.5" data-path="lesson-1.html"><a href="lesson-1.html#如何学好这门课"><i class="fa fa-check"></i><b>2.5</b> 如何学好这门课</a></li>
+<li class="chapter" data-level="2.6" data-path="lesson-1.html"><a href="lesson-1.html#课程总结与期望"><i class="fa fa-check"></i><b>2.6</b> 课程总结与期望</a></li>
+<li class="chapter" data-level="2.7" data-path="lesson-1.html"><a href="lesson-1.html#推荐"><i class="fa fa-check"></i><b>2.7</b> 推荐</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="lesson-2.html"><a href="lesson-2.html"><i class="fa fa-check"></i><b>3</b> 第二讲：如何开始使用R</a>
 <ul>
@@ -199,65 +206,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path"><i class="fa fa-check"></i><b>4.1.1</b> 相对路径与绝对路径</a></li>
 <li class="chapter" data-level="4.1.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-packge-here"><i class="fa fa-check"></i><b>4.1.2</b> Here包的使用</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-data"><i class="fa fa-check"></i><b>4.2</b> 读取数据</a>
+<li class="chapter" data-level="4.2" data-path="lesson-3.html"><a href="lesson-3.html#windows系统中的地址栏和r中的地址栏斜线方向不同如果直接复制windows地址栏的地址作为绝对路径可能会出现错误为了避免手动拼接路径出错"><i class="fa fa-check"></i><b>4.2</b> Windows系统中的地址栏和R中的地址栏斜线方向不同。如果直接复制Windows地址栏的地址作为绝对路径，可能会出现错误。为了避免手动拼接路径出错。</a></li>
+<li class="chapter" data-level="4.3" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-data"><i class="fa fa-check"></i><b>4.3</b> 读取数据</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-csv"><i class="fa fa-check"></i><b>4.2.1</b> read.csv函数</a></li>
-<li class="chapter" data-level="4.2.2" data-path="lesson-3.html"><a href="lesson-3.html#命名"><i class="fa fa-check"></i><b>4.2.2</b> 命名</a></li>
+<li class="chapter" data-level="4.3.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-csv"><i class="fa fa-check"></i><b>4.3.1</b> read.csv函数</a></li>
+<li class="chapter" data-level="4.3.2" data-path="lesson-3.html"><a href="lesson-3.html#命名"><i class="fa fa-check"></i><b>4.3.2</b> 命名</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="lesson-3.html"><a href="lesson-3.html#id_3-data-object"><i class="fa fa-check"></i><b>4.3</b> 了解R里的数据 （R语言中的对象）</a></li>
+<li class="chapter" data-level="4.4" data-path="lesson-3.html"><a href="lesson-3.html#id_3-data-object"><i class="fa fa-check"></i><b>4.4</b> 了解R里的数据 （R语言中的对象）</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="lesson-4.html"><a href="lesson-4.html"><i class="fa fa-check"></i><b>5</b> 第四讲：如何清理数据—R语言编程基础</a>
+<li class="chapter" data-level="5" data-path="lesson-4.html"><a href="lesson-4.html"><i class="fa fa-check"></i><b>5</b> 第四讲 &amp; 第五讲 ：数据导入 – 数据类型与结构</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-robject"><i class="fa fa-check"></i><b>5.1</b> R对象的操控</a></li>
-<li class="chapter" data-level="5.2" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-function"><i class="fa fa-check"></i><b>5.2</b> 函数</a></li>
-<li class="chapter" data-level="5.3" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-functions"><i class="fa fa-check"></i><b>5.3</b> 常用函数</a>
+<li class="chapter" data-level="5.1" data-path="lesson-4.html"><a href="lesson-4.html#加载数据"><i class="fa fa-check"></i><b>5.1</b> 加载数据</a></li>
+<li class="chapter" data-level="5.2" data-path="lesson-4.html"><a href="lesson-4.html#数据导入"><i class="fa fa-check"></i><b>5.2</b> 数据导入</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="lesson-4.html"><a href="lesson-4.html#unique"><i class="fa fa-check"></i><b>5.3.1</b> unique()</a></li>
+<li class="chapter" data-level="5.2.1" data-path="lesson-4.html"><a href="lesson-4.html#数据的地址路径"><i class="fa fa-check"></i><b>5.2.1</b> 数据的“地址”——路径</a></li>
+<li class="chapter" data-level="5.2.2" data-path="lesson-4.html"><a href="lesson-4.html#绝对路径与相对路径"><i class="fa fa-check"></i><b>5.2.2</b> 绝对路径与相对路径</a></li>
 </ul></li>
+<li class="chapter" data-level="5.3" data-path="lesson-4.html"><a href="lesson-4.html#读取数据"><i class="fa fa-check"></i><b>5.3</b> 读取数据</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="lesson-4.html"><a href="lesson-4.html#手动导入"><i class="fa fa-check"></i><b>5.3.1</b> 手动导入</a></li>
+<li class="chapter" data-level="5.3.2" data-path="lesson-4.html"><a href="lesson-4.html#代码导入"><i class="fa fa-check"></i><b>5.3.2</b> 代码导入</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="lesson-5.html"><a href="lesson-5.html"><i class="fa fa-check"></i><b>6</b> 第五讲：如何清理数据—数据的预处理</a>
+<li class="chapter" data-level="5.4" data-path="lesson-4.html"><a href="lesson-4.html#赋值"><i class="fa fa-check"></i><b>5.4</b> 赋值</a></li>
+<li class="chapter" data-level="5.5" data-path="lesson-4.html"><a href="lesson-4.html#数据类型"><i class="fa fa-check"></i><b>5.5</b> 数据类型</a></li>
+<li class="chapter" data-level="5.6" data-path="lesson-4.html"><a href="lesson-4.html#数据结构"><i class="fa fa-check"></i><b>5.6</b> 数据结构</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="lesson-5.html"><a href="lesson-5.html#批量读取文件"><i class="fa fa-check"></i><b>6.1</b> <strong>批量读取文件</strong></a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="lesson-5.html"><a href="lesson-5.html#通配符"><i class="fa fa-check"></i><b>6.1.1</b> <strong>通配符</strong></a></li>
-<li class="chapter" data-level="6.1.2" data-path="lesson-5.html"><a href="lesson-5.html#for循环思路"><i class="fa fa-check"></i><b>6.1.2</b> for<strong>循环思路</strong></a></li>
-<li class="chapter" data-level="6.1.3" data-path="lesson-5.html"><a href="lesson-5.html#lapply思路"><i class="fa fa-check"></i><b>6.1.3</b> lapply思路</a></li>
+<li class="chapter" data-level="5.6.1" data-path="lesson-4.html"><a href="lesson-4.html#向量vector"><i class="fa fa-check"></i><b>5.6.1</b> 向量(vector)</a></li>
+<li class="chapter" data-level="5.6.2" data-path="lesson-4.html"><a href="lesson-4.html#数据框"><i class="fa fa-check"></i><b>5.6.2</b> 数据框</a></li>
+<li class="chapter" data-level="5.6.3" data-path="lesson-4.html"><a href="lesson-4.html#矩阵与数组"><i class="fa fa-check"></i><b>5.6.3</b> 矩阵与数组</a></li>
+<li class="chapter" data-level="5.6.4" data-path="lesson-4.html"><a href="lesson-4.html#列表"><i class="fa fa-check"></i><b>5.6.4</b> 列表</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="lesson-5.html"><a href="lesson-5.html#数据预处理"><i class="fa fa-check"></i><b>6.2</b> 数据预处理</a></li>
-<li class="chapter" data-level="6.3" data-path="lesson-5.html"><a href="lesson-5.html#函数"><i class="fa fa-check"></i><b>6.3</b> 函数</a>
+<li class="chapter" data-level="5.7" data-path="lesson-4.html"><a href="lesson-4.html#函数"><i class="fa fa-check"></i><b>5.7</b> 函数</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="lesson-5.html"><a href="lesson-5.html#函数参数"><i class="fa fa-check"></i><b>6.3.1</b> 函数参数</a></li>
-<li class="chapter" data-level="6.3.2" data-path="lesson-5.html"><a href="lesson-5.html#groupby"><i class="fa fa-check"></i><b>6.3.2</b> groupby()</a></li>
-<li class="chapter" data-level="6.3.3" data-path="lesson-5.html"><a href="lesson-5.html#定义函数"><i class="fa fa-check"></i><b>6.3.3</b> 定义函数</a></li>
-<li class="chapter" data-level="6.3.4" data-path="lesson-5.html"><a href="lesson-5.html#for-loop"><i class="fa fa-check"></i><b>6.3.4</b> for loop</a></li>
-<li class="chapter" data-level="6.3.5" data-path="lesson-5.html"><a href="lesson-5.html#信号检测"><i class="fa fa-check"></i><b>6.3.5</b> 信号检测</a></li>
+<li class="chapter" data-level="5.7.1" data-path="lesson-4.html"><a href="lesson-4.html#函数的调用"><i class="fa fa-check"></i><b>5.7.1</b> 函数的调用</a></li>
+<li class="chapter" data-level="5.7.2" data-path="lesson-4.html"><a href="lesson-4.html#自定义函数"><i class="fa fa-check"></i><b>5.7.2</b> 自定义函数</a></li>
 </ul></li>
+<li class="chapter" data-level="5.8" data-path="lesson-4.html"><a href="lesson-4.html#if-条件语句"><i class="fa fa-check"></i><b>5.8</b> if 条件语句</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="lesson-6.html"><a href="lesson-6.html"><i class="fa fa-check"></i><b>7</b> 第六讲：如何探索数据: 描述性统计与数据可视化基础</a>
+<li class="chapter" data-level="6" data-path="lesson-6.html"><a href="lesson-6.html"><i class="fa fa-check"></i><b>6</b> 第六讲：如何探索数据: 描述性统计与数据可视化基础</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="lesson-6.html"><a href="lesson-6.html#描述性统计"><i class="fa fa-check"></i><b>7.1</b> <strong>描述性统计</strong></a></li>
-<li class="chapter" data-level="7.2" data-path="lesson-6.html"><a href="lesson-6.html#ggplot2的基本使用"><i class="fa fa-check"></i><b>7.2</b> ggplot2的基本使用</a>
+<li class="chapter" data-level="6.1" data-path="lesson-6.html"><a href="lesson-6.html#描述性统计"><i class="fa fa-check"></i><b>6.1</b> <strong>描述性统计</strong></a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="lesson-6.html"><a href="lesson-6.html#了解ggplot2"><i class="fa fa-check"></i><b>7.2.1</b> 了解ggplot2</a></li>
-<li class="chapter" data-level="7.2.2" data-path="lesson-6.html"><a href="lesson-6.html#密度图"><i class="fa fa-check"></i><b>7.2.2</b> 密度图</a></li>
-<li class="chapter" data-level="7.2.3" data-path="lesson-6.html"><a href="lesson-6.html#叠加绘图"><i class="fa fa-check"></i><b>7.2.3</b> 叠加绘图</a></li>
-<li class="chapter" data-level="7.2.4" data-path="lesson-6.html"><a href="lesson-6.html#散点图"><i class="fa fa-check"></i><b>7.2.4</b> 散点图</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="lesson-6.html"><a href="lesson-6.html#data-explore"><i class="fa fa-check"></i><b>7.3</b> Data Explore</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="lesson-7.html"><a href="lesson-7.html"><i class="fa fa-check"></i><b>8</b> 第七讲：如何进行基本的数据分析: t-test和anova</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="lesson-7.html"><a href="lesson-7.html#语法实现"><i class="fa fa-check"></i><b>8.1</b> <strong>语法实现</strong></a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="lesson-7.html"><a href="lesson-7.html#t检验"><i class="fa fa-check"></i><b>8.1.1</b> t检验</a></li>
-<li class="chapter" data-level="8.1.2" data-path="lesson-7.html"><a href="lesson-7.html#方差分析"><i class="fa fa-check"></i><b>8.1.2</b> 方差分析</a></li>
+<li class="chapter" data-level="6.1.1" data-path="lesson-6.html"><a href="lesson-6.html#part1-探索性数据分析"><i class="fa fa-check"></i><b>6.1.1</b> <strong>Part1-探索性数据分析</strong></a></li>
+<li class="chapter" data-level="6.1.2" data-path="lesson-6.html"><a href="lesson-6.html#part2-数据可视化-ggplot2的基本使用"><i class="fa fa-check"></i><b>6.1.2</b> <strong>Part2-数据可视化-ggplot2的基本使用</strong></a></li>
+<li class="chapter" data-level="6.1.3" data-path="lesson-6.html"><a href="lesson-6.html#part3-data-explorer"><i class="fa fa-check"></i><b>6.1.3</b> <strong>Part3-Data Explorer</strong></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="lesson-8.html"><a href="lesson-8.html"><i class="fa fa-check"></i><b>9</b> 第八讲：如何进行基本的数据分析: 相关与回归</a>
+<li class="chapter" data-level="7" data-path="lesson-7.html"><a href="lesson-7.html"><i class="fa fa-check"></i><b>7</b> 第七讲：如何进行基本的数据分析: <em>t</em>-test和ANOVA</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="lesson-8.html"><a href="lesson-8.html#什么是相关"><i class="fa fa-check"></i><b>9.1</b> 什么是相关</a></li>
-<li class="chapter" data-level="9.2" data-path="lesson-8.html"><a href="lesson-8.html#相关-代码实现"><i class="fa fa-check"></i><b>9.2</b> 相关-代码实现</a></li>
-<li class="chapter" data-level="9.3" data-path="lesson-8.html"><a href="lesson-8.html#什么是回归"><i class="fa fa-check"></i><b>9.3</b> 什么是回归</a></li>
+<li class="chapter" data-level="7.0.1" data-path="lesson-7.html"><a href="lesson-7.html#t检验"><i class="fa fa-check"></i><b>7.0.1</b> <em>t</em>检验</a></li>
+<li class="chapter" data-level="7.0.2" data-path="lesson-7.html"><a href="lesson-7.html#方差分析"><i class="fa fa-check"></i><b>7.0.2</b> 方差分析</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lesson-8.html"><a href="lesson-8.html"><i class="fa fa-check"></i><b>8</b> 第八讲：如何进行基本的数据分析: 相关与回归</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lesson-8.html"><a href="lesson-8.html#什么是相关"><i class="fa fa-check"></i><b>8.1</b> 什么是相关</a></li>
+<li class="chapter" data-level="8.2" data-path="lesson-8.html"><a href="lesson-8.html#相关-代码实现"><i class="fa fa-check"></i><b>8.2</b> 相关-代码实现</a></li>
+<li class="chapter" data-level="8.3" data-path="lesson-8.html"><a href="lesson-8.html#什么是回归"><i class="fa fa-check"></i><b>8.3</b> 什么是回归</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lesson-9.html"><a href="lesson-9.html"><i class="fa fa-check"></i><b>9</b> 第九章：如何进行基本的数据分析: 中介分析</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="lesson-9.html"><a href="lesson-9.html#process"><i class="fa fa-check"></i><b>9.1</b> process</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lesson-12.html"><a href="lesson-12.html"><i class="fa fa-check"></i><b>10</b> 第十二讲：从分析到手稿</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="lesson-12.html"><a href="lesson-12.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>10.1</b> <strong>通过Papaja撰写论文</strong></a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="lesson-12.html"><a href="lesson-12.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>10.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
+<li class="chapter" data-level="10.1.2" data-path="lesson-12.html"><a href="lesson-12.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>10.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
+<li class="chapter" data-level="10.1.3" data-path="lesson-12.html"><a href="lesson-12.html#part3-正文的撰写"><i class="fa fa-check"></i><b>10.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
+<li class="chapter" data-level="10.1.4" data-path="lesson-12.html"><a href="lesson-12.html#总结"><i class="fa fa-check"></i><b>10.1.4</b> 总结</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="lesson-13.html"><a href="lesson-13.html"><i class="fa fa-check"></i><b>11</b> 第十三章：效应量和元分析</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="lesson-13.html"><a href="lesson-13.html#效应量简介"><i class="fa fa-check"></i><b>11.1</b> 效应量简介</a></li>
+<li class="chapter" data-level="11.2" data-path="lesson-13.html"><a href="lesson-13.html#算法实现"><i class="fa fa-check"></i><b>11.2</b> 算法实现</a></li>
+<li class="chapter" data-level="11.3" data-path="lesson-13.html"><a href="lesson-13.html#小练习"><i class="fa fa-check"></i><b>11.3</b> 小练习</a></li>
+<li class="chapter" data-level="11.4" data-path="lesson-13.html"><a href="lesson-13.html#元分析简介"><i class="fa fa-check"></i><b>11.4</b> 元分析简介</a></li>
+<li class="chapter" data-level="11.5" data-path="lesson-13.html"><a href="lesson-13.html#元分析实现"><i class="fa fa-check"></i><b>11.5</b> 元分析实现</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -269,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</a>
           </h1>
         </div>
 
@@ -278,83 +304,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿</h1>
+<h1 class="title">R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</h1>
 <p class="author"><em>胡传鹏</em></p>
-<p class="date"><em>2023年1月5日</em></p>
+<p class="date"><em>2024年04月16日</em></p>
 </div>
 <div id="id_0-index" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">1</span> 教学内容与课时<a href="index.html#id_0-index" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="目录" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> 目录<a href="index.html#目录" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>第一讲：为什么要学习R（3学时）<br />
+<p>第一讲：为什么要学习R<br />
 1.1 R在心理科学及社会科学中的运用<br />
 1.2 R语言使用的示例展示<br />
 1.3 课程安排<br />
 1.4 如何学好这门课<br />
 </p>
-<p>第二讲：如何开始使用R:（3学时）<br />
+<p>第二讲：如何开始使用R<br />
 2.1 要解决的数据分析问题简介[介绍我们的数据和拟解决的问题，对比R和传统flow]<br />
 2.1 如何安装？<br />
 2.2 如何方便使用？Rstudio的安装与界面介绍<br />
 </p>
-<p>第三章：如何导入数据（3学时）<br />
-3.1 路径与工作目录<br />
-3.2 读取数据<br />
-3.3 了解R里的数据 （R语言中的对象）<br />
+<p>第三章：如何使用本课件/电子书资源<br />
+3.1 Git与Github<br />
+3.2 项目、文件与代码的规范化<br />
 </p>
-<p>第四章：如何清理数据一 R语言编程基础（3学时）<br />
-4.1 R对象的操控<br />
-4.2 逻辑运算<br />
-4.3 函数<br />
+<p>第四章：如何导入数据<br />
+4.1 路径与工作目录<br />
+4.2 读取数据<br />
+4.3 了解R里的数据 （R语言中的对象）<br />
 </p>
-<p>第五章：如何清理数据二 数据的预处理（3学时）<br />
-5.1 数据预处理准备<br />
-5.2 数据预处理的基本操作<br />
-5.3 数据预处理的进阶操作<br />
+<p>第五章：如何清理数据一 R语言编程基础<br />
+5.1 R对象的操控<br />
+5.2 逻辑运算<br />
+5.3 函数<br />
 </p>
-<p>第六章：如何探索数据: 描述性统计与数据可视化基础（3学时）<br />
-6.1 描述性统计<br />
-6.2 ggplot2的基本使用<br />
-6.3 ggplot2的元素控制<br />
+<p>第六章：如何清理数据二 数据的预处理<br />
+6.1 Tidyverse简介<br />
+6.2 问卷数据的预处理:基本<br />
+6.3 实验数据的预处理:提高<br />
 </p>
-<p>第七章：如何进行基本的数据分析: t-test和anova（3学时）<br />
-7.1 语法实现<br />
-7.2 分析的流程<br />
+<p>第七章：探索数据: 描述性统计与数据可视化基础<br />
+7.1 描述性统计<br />
+7.2 探索性数据分析(DataExplorer)<br />
+7.3 ggplot2基础<br />
 </p>
-<p>第八章：如何进行基本的数据分析: 相关与回归（3学时）<br />
+<p>第八章：R语言中的统计分析: 线性模型1 (t-test、anova等)<br />
 8.1 语法实现<br />
 8.2 分析的流程<br />
 </p>
-<p>第九章：如何进行基本的数据分析: 中介分析（3学时）<br />
+<p>第九章：R语言中的统计分析: 线性模型2(rm-anova、层级模型)<br />
 9.1 语法实现<br />
 9.2 分析的流程<br />
 </p>
-<p>第十章：结果稳健吗？使用Multiverse比较方法选择对结果的影响（3学时）<br />
-10.1. 多种分析方法的实现<br />
-10.2 代码整合与规范化<br />
+<p>第十章：R语言中的统计分析: 线性模型3(GLM)<br />
+10.1 语法实现<br />
+10.2 分析的流程<br />
 </p>
-<p>第十一章: 如何得到可发表的图像: 数据可视化进阶（3学时）<br />
-11.1 ggplot2的图层与面板控制<br />
-11.2 ggplot2与其他工具的结合<br />
+<p>第十一章：R语言中的统计分析: 线性模型4(中介效应模型)<br />
+11.1. 多种分析方法的实现<br />
+11.2 代码整合与规范化<br />
 </p>
-<p>第十二章：从分析到手稿（3学时）<br />
-12.1 Rmarkdown<br />
-12.2 Latex语法基本介绍<br />
-12.3 papaja工具包的介绍<br />
+<p>第十二章: 如何得到可发表的图像: 数据可视化进阶（3学时）<br />
+12.1 ggplot2的图层与面板控制<br />
+12.2 ggplot2与其他工具的结合<br />
 </p>
-<p>第十三章：多人协作版本控制:Git？（3学时）<br />
-13.1 版本控制与git<br />
-13.2 多人协作与git<br />
+<p>第十三章：待定<br />
 </p>
-<p>第十四章：如何帮助我们计划下一个研究？（3学时）<br />
-14.1 计算效应量：Meta-analysis<br />
-14.2 计划样本量：Power analysis （模拟）<br />
-14.3 计划分析方法：假数据与分析代码（模拟）<br />
-14.4 并行处理<br />
+<p>第十四章：待定<br />
 </p>
-<p>第十五章：如何让导师/合作者完全重复我的分析？（3 学时）<br />
-15.1 软件版本记录<br />
-15.2 容器技术与docker的使用<br />
+<p>第十五章：待定<br />
+</p>
+<p>第十六章： 大作业<br />
 </p>
 
 </div>
@@ -407,7 +426,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["CBook.pdf"],
+"download": ["R4PsyBook.pdf"],
 "search": {
 "engine": "fuse",
 "options": null

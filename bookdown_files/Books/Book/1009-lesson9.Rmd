@@ -24,6 +24,7 @@ pdf.options(height=10/2.54, width=10/2.54, family="GB1") # 注意：此设置要
 
 
 首先是导入这两个包，我们用之前一样的方式来去安装，我建议大家就是现在在讲课的时候，如果手头上有这个代码的话 可以把这个地方先运行一下，因为你可能需要安装新的包。
+
 ```{r pacakge, echo=TRUE, message=FALSE}
 
 # 检查是否已安装 pacman
@@ -33,6 +34,7 @@ if (!requireNamespace("pacman", quietly = TRUE)) {
 # 使用p_load来载入需要的包
 pacman::p_load("tidyverse", "bruceR", "performance", "lavaan", "lavaanPlot")
 ```
+
 导入我们的数据
 ```{r get socialdiversity, eval = FALSE, echo = FALSE}
 
@@ -76,6 +78,7 @@ df.pg.raw$socialdiversity <- snDivData$SNdiversity
 rm(extrDivData, snDivData, extrDiv_r, snDivNames, snDivNames_r, extrDivName)
 write.csv(df.pg.raw, "./data/penguin/penguin_rawdata_new.csv")
 ```
+
 ```{r WD & df.pg.raw}
 
 df.pg.raw <-  read.csv('./data/penguin/penguin_rawdata_new.csv',
@@ -89,7 +92,11 @@ df.pg.raw <-  read.csv('./data/penguin/penguin_rawdata_new.csv',
                 ) 
 # 这些包含原始题目的数据集，将在SEM lavaan中直接使用
 ```
+
 ```{r df.pg.raw DT, echo=FALSE}
+# convert data to utf-8
+df.pg.raw$SNI23 <- iconv(df.pg.raw$SNI23, to = "UTF-8")
+
 DT::datatable(head(df.pg.raw, 10),
               fillContainer = TRUE, options = list(pageLength = 5))
 ```
