@@ -25,11 +25,11 @@ pdf.options(height=10/2.54, width=10/2.54, family="GB1") # 注意：此设置要
 
 ```{r eval=FALSE, include=FALSE}
 # 检查安装 tinytex包
-if(!requireNamespace("tinytex", quietly = TRUE)) install.packages("tinytex")
+pacman::p_load("tinytex")
 
-tinytex::install_tinytex() # 安装 tinytex
+# tinytex::install_tinytex() # 安装 tinytex
 
-install.packages("papaja") # 安装 papaja包
+pacman::p_load("papaja") # 安装 papaja包
 ```
 
 我们为本堂课准备了一个[.rmd文件](https://github.com/hcp4715/R4Psy/blob/main/chapter_12.Rmd)，如果`papaja`包安装成功后，打开该文件并点击**knit**按钮，在相同工作目录下将生成一个与.rmd相同文件名的pdf文件，该文件即为APA论文格式的例子。
@@ -136,30 +136,37 @@ output            : papaja::apa6_pdf
 （1）数据的处理：
 在markdown中创建chunks来存放数据处理代码
 推荐命令，用于清理环境变量
+
 ```{r}
 # empty the global env
 rm(list = ls())
 df.m.basic <- read.csv('./1012-lesson12/data.csv',
                        header = T, sep=",", stringsAsFactors = FALSE)
 ```
+
 数据处理结束后，在撰写文章时就可以通过**``**来引用数据，例如，** \` r df.m.basic$Age_mean \` **就会索引df.m.basic中的Age：`r df.m.basic$Age_mean`
 引用公式的方式也非常方便，在两个\$中间键入符号即公式就可，如输入`$`\pm`$`就会得到$\pm$。
 引用R包：通过如下语句\` r cite_r("chapter_12-r-references.bib", pkgs = c("afex", "emmeans", "ggplot2", "dplyr", "tidyr", "patchwork", "r-base"), withhold=FALSE) \`  即可引用，withhold=FALSE表示选中的包为白名单。上文中的七个包为最经常使用的包，可根据数据的分析代码进行修改引用。
 
 (2)斜体书写：在绘图中将图题部分设置斜体，可用如下代码：
+
 ```{r message=TRUE, warning=TRUE}
 title <- expression(paste("Senesitivity (", italic("d'"), ")"))
-
 ```
+
 此时将输出Sensitivity(*d*)。
 
 (3)拼图操作：将画好的多图进行拼接，可以使用**patchwork**包
-```{r plot1, fig.cap="Interaction between identity and valence for (A) sensitivity and (B) reaction times.", fig.height=9, fig.width=18, warning=FALSE}
+
+```{r plot1, fig.cap="Interaction between identity and valence for (A) sensitivity and (B) reaction times.", fig.height=9, fig.width=18, warning=FALSE, eval=FALSE}
 
 library(patchwork)
 load("./1012-lesson12/p1_rt.rdata")
 load("./1012-lesson12/p1_dp.rdata")
-p1_dp + p1_rt + plot_annotation(tag_levels = 'A')  + plot_layout(nrow = 1, byrow = TRUE, guides = 'collect')
+
+p1_dp + p1_rt + 
+  plot_annotation(tag_levels = 'A')  + 
+  plot_layout(nrow = 1, byrow = TRUE, guides = 'collect')
 
 #plot_annotation属性：设置图片序号为A，B，C...或1，2，3...
 #plot_layout属性：图片怎么排布；guides——图例是否统一放置
