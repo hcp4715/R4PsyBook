@@ -27,39 +27,39 @@ table.texreg th, table.texreg td {padding-left: 5px;padding-right: 5px;}
 <tbody>
 <tr class="rule">
 <td>scontrol_mean</td>
-<td>–.050</td>
+<td>–.554<sup>&#42;&#42;</sup></td>
 </tr>
 <tr>
 <td></td>
-<td>(.167)</td>
+<td>(.204)</td>
 </tr>
 <tr>
 <td>sex2</td>
-<td>–.021</td>
+<td>–1.678<sup>&#42;</sup></td>
 </tr>
 <tr>
 <td></td>
-<td>(.159)</td>
+<td>(.635)</td>
 </tr>
 <tr>
 <td>scontrol_mean:sex2</td>
-<td>&ensp;.111</td>
+<td>&ensp;1.738<sup>&#42;</sup></td>
 </tr>
 <tr>
 <td></td>
-<td>(.195)</td>
+<td>(.660)</td>
 </tr>
 <tr class="rule">
 <td><i>R</i><sup>2</sup></td>
-<td>&ensp;.006</td>
+<td>&ensp;.145</td>
 </tr>
 <tr>
 <td>Adj. <i>R</i><sup>2</sup></td>
-<td>–.037</td>
+<td>&ensp;.092</td>
 </tr>
 <tr class="bottomrule">
 <td>Num. obs.</td>
-<td>73</td>
+<td>53</td>
 </tr>
 </tbody>
 </table>
