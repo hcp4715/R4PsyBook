@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>93 第九章：如何进行基本的数据分析: 中介分析 | Lecture 12: Preparing journal artical with papaja</title>
+  <meta name="description" content="课程bookdown" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="93 第九章：如何进行基本的数据分析: 中介分析 | Lecture 12: Preparing journal artical with papaja" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="课程bookdown" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="93 第九章：如何进行基本的数据分析: 中介分析 | Lecture 12: Preparing journal artical with papaja" />
+  
+  <meta name="twitter:description" content="课程bookdown" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lesson-8.html"/>
+<link rel="next" href="lesson-12.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.30/datatables.js"></script>
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+<script src="libs/panelset-0.2.6/panelset.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX","output/SVG"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+   src="../../../MathJax/MathJax.js">
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 教学内容与课时</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#目录"><i class="fa fa-check"></i><b>1.1</b> 目录</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>2</b> 第一讲：为什么要学习R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lesson-1.html"><a href="lesson-1.html#r在心理科学及社会科学中的运用"><i class="fa fa-check"></i><b>2.1</b> R在心理科学及社会科学中的运用</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="lesson-1.html"><a href="lesson-1.html#id_1-data-science"><i class="fa fa-check"></i><b>2.1.1</b> 数据科学</a></li>
+<li class="chapter" data-level="2.1.2" data-path="lesson-1.html"><a href="lesson-1.html#id_1-data-science-born"><i class="fa fa-check"></i><b>2.1.2</b> 数据科学的诞生——数字化时代</a></li>
+<li class="chapter" data-level="2.1.3" data-path="lesson-1.html"><a href="lesson-1.html#为什么要学习r语言1-why-learn-r"><i class="fa fa-check"></i><b>2.1.3</b> 为什么要学习R语言？{1-why-learn-R}</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="lesson-1.html"><a href="lesson-1.html#r语言使用的示例展示"><i class="fa fa-check"></i><b>2.2</b> R语言使用的示例展示</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="lesson-1.html"><a href="lesson-1.html#数据清洗"><i class="fa fa-check"></i><b>2.2.1</b> 数据清洗</a></li>
+<li class="chapter" data-level="2.2.2" data-path="lesson-1.html"><a href="lesson-1.html#ggplot2画图"><i class="fa fa-check"></i><b>2.2.2</b> ggplot2画图</a></li>
+<li class="chapter" data-level="2.2.3" data-path="lesson-1.html"><a href="lesson-1.html#心理学数据分析与结果汇报"><i class="fa fa-check"></i><b>2.2.3</b> 心理学数据分析与结果汇报</a></li>
+<li class="chapter" data-level="2.2.4" data-path="lesson-1.html"><a href="lesson-1.html#regression"><i class="fa fa-check"></i><b>2.2.4</b> Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="lesson-1.html"><a href="lesson-1.html#现场运行代码"><i class="fa fa-check"></i><b>2.3</b> 现场运行代码</a></li>
+<li class="chapter" data-level="2.4" data-path="lesson-1.html"><a href="lesson-1.html#课程安排"><i class="fa fa-check"></i><b>2.4</b> 课程安排</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="lesson-1.html"><a href="lesson-1.html#课程大纲"><i class="fa fa-check"></i><b>2.4.1</b> 课程大纲</a></li>
+<li class="chapter" data-level="2.4.2" data-path="lesson-1.html"><a href="lesson-1.html#成绩分配"><i class="fa fa-check"></i><b>2.4.2</b> 成绩分配</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="lesson-1.html"><a href="lesson-1.html#如何学好这门课"><i class="fa fa-check"></i><b>2.5</b> 如何学好这门课</a></li>
+<li class="chapter" data-level="2.6" data-path="lesson-1.html"><a href="lesson-1.html#课程总结与期望"><i class="fa fa-check"></i><b>2.6</b> 课程总结与期望</a></li>
+<li class="chapter" data-level="2.7" data-path="lesson-1.html"><a href="lesson-1.html#推荐"><i class="fa fa-check"></i><b>2.7</b> 推荐</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="以下是课堂语音转文字.html"><a href="以下是课堂语音转文字.html"><i class="fa fa-check"></i><b>3</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="4" data-path="以下是代码部分.html"><a href="以下是代码部分.html"><i class="fa fa-check"></i><b>4</b> 以下是代码部分</a></li>
+<li class="chapter" data-level="5" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html"><i class="fa fa-check"></i><b>5</b> 1 初识R里的数据 （R语言中的对象）</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html#从计算器说起-数值numeric"><i class="fa fa-check"></i><b>5.1</b> 1.1 从计算器说起 —— 数值(numeric)</a></li>
+<li class="chapter" data-level="5.2" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html#赋值"><i class="fa fa-check"></i><b>5.2</b> 1.1.1 赋值</a></li>
+<li class="chapter" data-level="5.3" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html#比大小-逻辑值logical"><i class="fa fa-check"></i><b>5.3</b> 1.2 比大小 —— 逻辑值（logical）</a></li>
+<li class="chapter" data-level="5.4" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html#字符串character"><i class="fa fa-check"></i><b>5.4</b> 1.3 字符串（character）</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="r-语言中的数据类型.html"><a href="r-语言中的数据类型.html"><i class="fa fa-check"></i><b>6</b> 2 R 语言中的数据类型</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="r-语言中的数据类型.html"><a href="r-语言中的数据类型.html#向量vector"><i class="fa fa-check"></i><b>6.1</b> 2.1 向量（vector）</a></li>
+<li class="chapter" data-level="6.2" data-path="r-语言中的数据类型.html"><a href="r-语言中的数据类型.html#数据框data.frame"><i class="fa fa-check"></i><b>6.2</b> 2.2 数据框（data.frame）</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lesson-2.html"><a href="lesson-2.html"><i class="fa fa-check"></i><b>7</b> 第二讲：如何开始使用R</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-for-lesson"><i class="fa fa-check"></i><b>7.1</b> 要解决的数据分析问题简介</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-1"><i class="fa fa-check"></i><b>7.1.1</b> 第一个数据: 人类企鹅计划数据</a></li>
+<li class="chapter" data-level="7.1.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-2"><i class="fa fa-check"></i><b>7.1.2</b> 第二个数据: 知觉匹配任务数据</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-install-R"><i class="fa fa-check"></i><b>7.2</b> 如何安装</a></li>
+<li class="chapter" data-level="7.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio"><i class="fa fa-check"></i><b>7.3</b> 如何方便使用？Rstudio的安装与界面介绍</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-install"><i class="fa fa-check"></i><b>7.3.1</b> Rstudio的安装与界面介绍</a></li>
+<li class="chapter" data-level="7.3.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-test"><i class="fa fa-check"></i><b>7.3.2</b> 测试Rstudio</a></li>
+<li class="chapter" data-level="7.3.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-packges"><i class="fa fa-check"></i><b>7.3.3</b> R语言中的包</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="以下是课堂语音转文字-1.html"><a href="以下是课堂语音转文字-1.html"><i class="fa fa-check"></i><b>8</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="9" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html"><i class="fa fa-check"></i><b>9</b> 以下是代码部分</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#version-control"><i class="fa fa-check"></i><b>9.1</b> 3.2.1 Version Control</a></li>
+<li class="chapter" data-level="9.2" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#git"><i class="fa fa-check"></i><b>9.2</b> 3.2.2 Git</a></li>
+<li class="chapter" data-level="9.3" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#git-1"><i class="fa fa-check"></i><b>9.3</b> 3.2.2 Git</a></li>
+<li class="chapter" data-level="9.4" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github"><i class="fa fa-check"></i><b>9.4</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.5" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-1"><i class="fa fa-check"></i><b>9.5</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.6" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-2"><i class="fa fa-check"></i><b>9.6</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.7" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-3"><i class="fa fa-check"></i><b>9.7</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.8" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-4"><i class="fa fa-check"></i><b>9.8</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.9" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-5"><i class="fa fa-check"></i><b>9.9</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.10" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-6"><i class="fa fa-check"></i><b>9.10</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.11" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-7"><i class="fa fa-check"></i><b>9.11</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.12" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#local-version-control"><i class="fa fa-check"></i><b>9.12</b> 3.3.1 Local Version Control</a></li>
+<li class="chapter" data-level="9.13" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#creating-git-repository-for-project"><i class="fa fa-check"></i><b>9.13</b> 3.3.2 Creating Git repository for project</a></li>
+<li class="chapter" data-level="9.14" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git"><i class="fa fa-check"></i><b>9.14</b> 3.3.3 Adding files to Git</a></li>
+<li class="chapter" data-level="9.15" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git-1"><i class="fa fa-check"></i><b>9.15</b> 3.3.3 Adding files to Git</a></li>
+<li class="chapter" data-level="9.16" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git-2"><i class="fa fa-check"></i><b>9.16</b> 3.3.3 Adding files to Git</a></li>
+<li class="chapter" data-level="9.17" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git-3"><i class="fa fa-check"></i><b>9.17</b> 3.3.3 Adding files to Git</a></li>
+<li class="chapter" data-level="9.18" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git-4"><i class="fa fa-check"></i><b>9.18</b> 3.3.3 Adding files to Git</a></li>
+<li class="chapter" data-level="9.19" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#keeping-track-of-changes-with-git"><i class="fa fa-check"></i><b>9.19</b> 3.3.4 Keeping track of changes with Git</a></li>
+<li class="chapter" data-level="9.20" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#accessing-files-past-versions"><i class="fa fa-check"></i><b>9.20</b> 3.3.5 Accessing files’ past versions</a></li>
+<li class="chapter" data-level="9.21" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files"><i class="fa fa-check"></i><b>9.21</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.22" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-1"><i class="fa fa-check"></i><b>9.22</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.23" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-2"><i class="fa fa-check"></i><b>9.23</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.24" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-3"><i class="fa fa-check"></i><b>9.24</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.25" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-4"><i class="fa fa-check"></i><b>9.25</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.26" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-5"><i class="fa fa-check"></i><b>9.26</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.27" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-6"><i class="fa fa-check"></i><b>9.27</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.28" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#remote-version-control"><i class="fa fa-check"></i><b>9.28</b> 3.4.1 Remote Version Control</a></li>
+<li class="chapter" data-level="9.29" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#linking-github-repository-with-a-local-git-repository"><i class="fa fa-check"></i><b>9.29</b> 3.4.2 linking GitHub repository with a local Git repository</a></li>
+<li class="chapter" data-level="9.30" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-1"><i class="fa fa-check"></i><b>9.30</b> 3.4.2 Method 1</a></li>
+<li class="chapter" data-level="9.31" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-1-1"><i class="fa fa-check"></i><b>9.31</b> 3.4.2 Method 1</a></li>
+<li class="chapter" data-level="9.32" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-1-2"><i class="fa fa-check"></i><b>9.32</b> 3.4.2 Method 1</a></li>
+<li class="chapter" data-level="9.33" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-1-3"><i class="fa fa-check"></i><b>9.33</b> 3.4.2 Method 1</a></li>
+<li class="chapter" data-level="9.34" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#fork-github-repository"><i class="fa fa-check"></i><b>9.34</b> 3.4.3 Fork GitHub repository</a></li>
+<li class="chapter" data-level="9.35" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-2"><i class="fa fa-check"></i><b>9.35</b> 3.4.2 Method 2</a></li>
+<li class="chapter" data-level="9.36" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-2-1"><i class="fa fa-check"></i><b>9.36</b> 3.4.2 Method 2</a></li>
+<li class="chapter" data-level="9.37" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#push-changes-to-github-repository"><i class="fa fa-check"></i><b>9.37</b> 3.4.4 Push changes to GitHub repository</a></li>
+<li class="chapter" data-level="9.38" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#push-changes-to-github-repository-1"><i class="fa fa-check"></i><b>9.38</b> 3.4.4 Push changes to GitHub repository</a></li>
+<li class="chapter" data-level="9.39" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#pull-changes-from-github-repository"><i class="fa fa-check"></i><b>9.39</b> 3.4.5 Pull changes from GitHub repository</a></li>
+<li class="chapter" data-level="9.40" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#pull-request-to-central-github-repository"><i class="fa fa-check"></i><b>9.40</b> 3.4.6 Pull request to central GitHub repository</a></li>
+<li class="chapter" data-level="9.41" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#pull-request-to-central-github-repository-1"><i class="fa fa-check"></i><b>9.41</b> 3.4.6 Pull request to central GitHub repository</a></li>
+<li class="chapter" data-level="9.42" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#advanced"><i class="fa fa-check"></i><b>9.42</b> Advanced</a></li>
+<li class="chapter" data-level="9.43" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#summary"><i class="fa fa-check"></i><b>9.43</b> Summary</a></li>
+<li class="chapter" data-level="9.44" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#homework"><i class="fa fa-check"></i><b>9.44</b> Homework</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="以下是课堂语音转文字-2.html"><a href="以下是课堂语音转文字-2.html"><i class="fa fa-check"></i><b>10</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="11" data-path="以下是代码部分-2.html"><a href="以下是代码部分-2.html"><i class="fa fa-check"></i><b>11</b> 以下是代码部分</a></li>
+<li class="chapter" data-level="12" data-path="tips.html"><a href="tips.html"><i class="fa fa-check"></i><b>12</b> Tips</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="tips.html"><a href="tips.html#将rstudio中报错语言变为英文"><i class="fa fa-check"></i><b>12.1</b> 将<code>Rstudio</code>中报错语言变为英文</a></li>
+<li class="chapter" data-level="12.2" data-path="tips.html"><a href="tips.html#loading-packages"><i class="fa fa-check"></i><b>12.2</b> loading packages</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="回顾与问题.html"><a href="回顾与问题.html"><i class="fa fa-check"></i><b>13</b> 4.0 回顾与问题</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="回顾与问题.html"><a href="回顾与问题.html#问题"><i class="fa fa-check"></i><b>13.1</b> 问题:</a></li>
+<li class="chapter" data-level="13.2" data-path="回顾与问题.html"><a href="回顾与问题.html#数据的住址路径-in-mac"><i class="fa fa-check"></i><b>13.2</b> 4.1.1 数据的“住址”——路径 (<em>in Mac</em>)</a></li>
+<li class="chapter" data-level="13.3" data-path="回顾与问题.html"><a href="回顾与问题.html#绝对路径相对路径"><i class="fa fa-check"></i><b>13.3</b> 4.1.2 绝对路径/相对路径</a></li>
+<li class="chapter" data-level="13.4" data-path="回顾与问题.html"><a href="回顾与问题.html#绝对路径相对路径-1"><i class="fa fa-check"></i><b>13.4</b> 4.1.2 绝对路径/相对路径</a></li>
+<li class="chapter" data-level="13.5" data-path="回顾与问题.html"><a href="回顾与问题.html#绝对路径相对路径in-windows"><i class="fa fa-check"></i><b>13.5</b> 4.1.2 绝对路径/相对路径(<em>in Windows</em>)</a></li>
+<li class="chapter" data-level="13.6" data-path="回顾与问题.html"><a href="回顾与问题.html#绝对路径相对路径in-windows-1"><i class="fa fa-check"></i><b>13.6</b> 4.1.2 绝对路径/相对路径(<em>in Windows</em>)</a></li>
+<li class="chapter" data-level="13.7" data-path="回顾与问题.html"><a href="回顾与问题.html#设定工作目录-手动挡与自动挡"><i class="fa fa-check"></i><b>13.7</b> 4.1.3 设定工作目录 手动挡与自动挡</a></li>
+<li class="chapter" data-level="13.8" data-path="回顾与问题.html"><a href="回顾与问题.html#设定工作目录-手动挡与自动挡-1"><i class="fa fa-check"></i><b>13.8</b> 4.1.3 设定工作目录 手动挡与自动挡</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="lesson-4.html"><a href="lesson-4.html"><i class="fa fa-check"></i><b>14</b> 第四讲 &amp; 第五讲 ：数据导入 – 数据类型与结构</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="lesson-4.html"><a href="lesson-4.html#加载数据"><i class="fa fa-check"></i><b>14.1</b> 加载数据</a></li>
+<li class="chapter" data-level="14.2" data-path="lesson-4.html"><a href="lesson-4.html#数据导入"><i class="fa fa-check"></i><b>14.2</b> 数据导入</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="lesson-4.html"><a href="lesson-4.html#数据的地址路径"><i class="fa fa-check"></i><b>14.2.1</b> 数据的“地址”——路径</a></li>
+<li class="chapter" data-level="14.2.2" data-path="lesson-4.html"><a href="lesson-4.html#绝对路径与相对路径"><i class="fa fa-check"></i><b>14.2.2</b> 绝对路径与相对路径</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="lesson-4.html"><a href="lesson-4.html#读取数据"><i class="fa fa-check"></i><b>14.3</b> 读取数据</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="lesson-4.html"><a href="lesson-4.html#手动导入"><i class="fa fa-check"></i><b>14.3.1</b> 手动导入</a></li>
+<li class="chapter" data-level="14.3.2" data-path="lesson-4.html"><a href="lesson-4.html#代码导入"><i class="fa fa-check"></i><b>14.3.2</b> 代码导入</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="lesson-4.html"><a href="lesson-4.html#赋值-1"><i class="fa fa-check"></i><b>14.4</b> 赋值</a></li>
+<li class="chapter" data-level="14.5" data-path="lesson-4.html"><a href="lesson-4.html#数据类型"><i class="fa fa-check"></i><b>14.5</b> 数据类型</a></li>
+<li class="chapter" data-level="14.6" data-path="lesson-4.html"><a href="lesson-4.html#数据结构"><i class="fa fa-check"></i><b>14.6</b> 数据结构</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="lesson-4.html"><a href="lesson-4.html#向量vector-1"><i class="fa fa-check"></i><b>14.6.1</b> 向量(vector)</a></li>
+<li class="chapter" data-level="14.6.2" data-path="lesson-4.html"><a href="lesson-4.html#数据框"><i class="fa fa-check"></i><b>14.6.2</b> 数据框</a></li>
+<li class="chapter" data-level="14.6.3" data-path="lesson-4.html"><a href="lesson-4.html#矩阵与数组"><i class="fa fa-check"></i><b>14.6.3</b> 矩阵与数组</a></li>
+<li class="chapter" data-level="14.6.4" data-path="lesson-4.html"><a href="lesson-4.html#列表"><i class="fa fa-check"></i><b>14.6.4</b> 列表</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="lesson-4.html"><a href="lesson-4.html#函数"><i class="fa fa-check"></i><b>14.7</b> 函数</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="lesson-4.html"><a href="lesson-4.html#函数的调用"><i class="fa fa-check"></i><b>14.7.1</b> 函数的调用</a></li>
+<li class="chapter" data-level="14.7.2" data-path="lesson-4.html"><a href="lesson-4.html#自定义函数"><i class="fa fa-check"></i><b>14.7.2</b> 自定义函数</a></li>
+</ul></li>
+<li class="chapter" data-level="14.8" data-path="lesson-4.html"><a href="lesson-4.html#if-条件语句"><i class="fa fa-check"></i><b>14.8</b> if 条件语句</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="以下是课堂语音转文字-3.html"><a href="以下是课堂语音转文字-3.html"><i class="fa fa-check"></i><b>15</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="16" data-path="以下是代码部分-3.html"><a href="以下是代码部分-3.html"><i class="fa fa-check"></i><b>16</b> 以下是代码部分</a></li>
+<li class="chapter" data-level="17" data-path="回顾.html"><a href="回顾.html"><i class="fa fa-check"></i><b>17</b> 回顾</a></li>
+<li class="chapter" data-level="18" data-path="本节课内容.html"><a href="本节课内容.html"><i class="fa fa-check"></i><b>18</b> 本节课内容</a></li>
+<li class="chapter" data-level="19" data-path="数据导入-1.html"><a href="数据导入-1.html"><i class="fa fa-check"></i><b>19</b> 5.1 数据导入</a></li>
+<li class="chapter" data-level="20" data-path="问卷数据human-penguin-project-1.html"><a href="问卷数据human-penguin-project-1.html"><i class="fa fa-check"></i><b>20</b> 问卷数据：Human Penguin Project</a></li>
+<li class="chapter" data-level="21" data-path="赋值与变量.html"><a href="赋值与变量.html"><i class="fa fa-check"></i><b>21</b> 5.2 赋值与变量</a></li>
+<li class="chapter" data-level="22" data-path="赋值与变量-1.html"><a href="赋值与变量-1.html"><i class="fa fa-check"></i><b>22</b> 5.2 赋值与变量</a></li>
+<li class="chapter" data-level="23" data-path="赋值与变量-2.html"><a href="赋值与变量-2.html"><i class="fa fa-check"></i><b>23</b> 5.2 赋值与变量</a></li>
+<li class="chapter" data-level="24" data-path="基本数据类型.html"><a href="基本数据类型.html"><i class="fa fa-check"></i><b>24</b> 5.3 基本数据类型</a></li>
+<li class="chapter" data-level="25" data-path="基本数据类型-1.html"><a href="基本数据类型-1.html"><i class="fa fa-check"></i><b>25</b> 5.3 基本数据类型</a></li>
+<li class="chapter" data-level="26" data-path="数据结构-1.html"><a href="数据结构-1.html"><i class="fa fa-check"></i><b>26</b> 5.4 数据结构</a></li>
+<li class="chapter" data-level="27" data-path="以下是课堂语音转文字-4.html"><a href="以下是课堂语音转文字-4.html"><i class="fa fa-check"></i><b>27</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="28" data-path="以下是代码部分-4.html"><a href="以下是代码部分-4.html"><i class="fa fa-check"></i><b>28</b> 以下是代码部分</a></li>
+<li class="chapter" data-level="29" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>29</b> 6.1 Tidyverse</a></li>
+<li class="chapter" data-level="30" data-path="tidyverse-1.html"><a href="tidyverse-1.html"><i class="fa fa-check"></i><b>30</b> 6.1 Tidyverse</a></li>
+<li class="chapter" data-level="31" data-path="tidyverse-2.html"><a href="tidyverse-2.html"><i class="fa fa-check"></i><b>31</b> 6.1 Tidyverse</a></li>
+<li class="chapter" data-level="32" data-path="问卷数据.html"><a href="问卷数据.html"><i class="fa fa-check"></i><b>32</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="33" data-path="问卷数据-1.html"><a href="问卷数据-1.html"><i class="fa fa-check"></i><b>33</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="34" data-path="问卷数据-2.html"><a href="问卷数据-2.html"><i class="fa fa-check"></i><b>34</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="35" data-path="问卷数据-3.html"><a href="问卷数据-3.html"><i class="fa fa-check"></i><b>35</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="36" data-path="问卷数据-4.html"><a href="问卷数据-4.html"><i class="fa fa-check"></i><b>36</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="37" data-path="问卷数据-5.html"><a href="问卷数据-5.html"><i class="fa fa-check"></i><b>37</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="38" data-path="问卷数据-6.html"><a href="问卷数据-6.html"><i class="fa fa-check"></i><b>38</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="39" data-path="问卷数据-7.html"><a href="问卷数据-7.html"><i class="fa fa-check"></i><b>39</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="40" data-path="问卷数据-8.html"><a href="问卷数据-8.html"><i class="fa fa-check"></i><b>40</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="41" data-path="问卷数据-9.html"><a href="问卷数据-9.html"><i class="fa fa-check"></i><b>41</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="42" data-path="问卷数据-10.html"><a href="问卷数据-10.html"><i class="fa fa-check"></i><b>42</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="43" data-path="问卷数据-11.html"><a href="问卷数据-11.html"><i class="fa fa-check"></i><b>43</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="44" data-path="问卷数据-12.html"><a href="问卷数据-12.html"><i class="fa fa-check"></i><b>44</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="45" data-path="问卷数据-13.html"><a href="问卷数据-13.html"><i class="fa fa-check"></i><b>45</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="46" data-path="问卷数据-14.html"><a href="问卷数据-14.html"><i class="fa fa-check"></i><b>46</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="47" data-path="问卷数据-15.html"><a href="问卷数据-15.html"><i class="fa fa-check"></i><b>47</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="48" data-path="问卷数据-16.html"><a href="问卷数据-16.html"><i class="fa fa-check"></i><b>48</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="49" data-path="问卷数据-17.html"><a href="问卷数据-17.html"><i class="fa fa-check"></i><b>49</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="50" data-path="问卷数据-18.html"><a href="问卷数据-18.html"><i class="fa fa-check"></i><b>50</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="51" data-path="问卷数据-19.html"><a href="问卷数据-19.html"><i class="fa fa-check"></i><b>51</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="52" data-path="问卷数据-20.html"><a href="问卷数据-20.html"><i class="fa fa-check"></i><b>52</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="53" data-path="问卷数据-21.html"><a href="问卷数据-21.html"><i class="fa fa-check"></i><b>53</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="54" data-path="反应时数据.html"><a href="反应时数据.html"><i class="fa fa-check"></i><b>54</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="55" data-path="反应时数据-1.html"><a href="反应时数据-1.html"><i class="fa fa-check"></i><b>55</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="56" data-path="反应时数据-2.html"><a href="反应时数据-2.html"><i class="fa fa-check"></i><b>56</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="57" data-path="反应时数据-3.html"><a href="反应时数据-3.html"><i class="fa fa-check"></i><b>57</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="58" data-path="反应时数据-4.html"><a href="反应时数据-4.html"><i class="fa fa-check"></i><b>58</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="59" data-path="反应时数据-5.html"><a href="反应时数据-5.html"><i class="fa fa-check"></i><b>59</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="60" data-path="反应时数据-6.html"><a href="反应时数据-6.html"><i class="fa fa-check"></i><b>60</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="61" data-path="反应时数据-7.html"><a href="反应时数据-7.html"><i class="fa fa-check"></i><b>61</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="62" data-path="反应时数据-8.html"><a href="反应时数据-8.html"><i class="fa fa-check"></i><b>62</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="63" data-path="反应时数据-9.html"><a href="反应时数据-9.html"><i class="fa fa-check"></i><b>63</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="64" data-path="反应时数据-10.html"><a href="反应时数据-10.html"><i class="fa fa-check"></i><b>64</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="65" data-path="反应时数据-11.html"><a href="反应时数据-11.html"><i class="fa fa-check"></i><b>65</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="66" data-path="反应时数据-12.html"><a href="反应时数据-12.html"><i class="fa fa-check"></i><b>66</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="67" data-path="反应时数据-13.html"><a href="反应时数据-13.html"><i class="fa fa-check"></i><b>67</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="68" data-path="反应时数据-14.html"><a href="反应时数据-14.html"><i class="fa fa-check"></i><b>68</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="69" data-path="反应时数据-15.html"><a href="反应时数据-15.html"><i class="fa fa-check"></i><b>69</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="70" data-path="反应时数据-16.html"><a href="反应时数据-16.html"><i class="fa fa-check"></i><b>70</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="71" data-path="反应时数据-17.html"><a href="反应时数据-17.html"><i class="fa fa-check"></i><b>71</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="72" data-path="反应时数据-18.html"><a href="反应时数据-18.html"><i class="fa fa-check"></i><b>72</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="73" data-path="反应时数据-19.html"><a href="反应时数据-19.html"><i class="fa fa-check"></i><b>73</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="74" data-path="反应时数据-20.html"><a href="反应时数据-20.html"><i class="fa fa-check"></i><b>74</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="75" data-path="反应时数据-21.html"><a href="反应时数据-21.html"><i class="fa fa-check"></i><b>75</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="76" data-path="反应时数据-22.html"><a href="反应时数据-22.html"><i class="fa fa-check"></i><b>76</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="77" data-path="反应时数据-23.html"><a href="反应时数据-23.html"><i class="fa fa-check"></i><b>77</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="78" data-path="反应时数据-24.html"><a href="反应时数据-24.html"><i class="fa fa-check"></i><b>78</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="79" data-path="反应时数据-25.html"><a href="反应时数据-25.html"><i class="fa fa-check"></i><b>79</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="80" data-path="反应时数据-26.html"><a href="反应时数据-26.html"><i class="fa fa-check"></i><b>80</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="81" data-path="反应时数据-27.html"><a href="反应时数据-27.html"><i class="fa fa-check"></i><b>81</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="82" data-path="lesson-6.html"><a href="lesson-6.html"><i class="fa fa-check"></i><b>82</b> 第六讲：如何探索数据: 描述性统计与数据可视化基础</a>
+<ul>
+<li class="chapter" data-level="82.1" data-path="lesson-6.html"><a href="lesson-6.html#描述性统计"><i class="fa fa-check"></i><b>82.1</b> <strong>描述性统计</strong></a>
+<ul>
+<li class="chapter" data-level="82.1.1" data-path="lesson-6.html"><a href="lesson-6.html#part1-探索性数据分析"><i class="fa fa-check"></i><b>82.1.1</b> <strong>Part1-探索性数据分析</strong></a></li>
+<li class="chapter" data-level="82.1.2" data-path="lesson-6.html"><a href="lesson-6.html#part2-数据可视化-ggplot2的基本使用"><i class="fa fa-check"></i><b>82.1.2</b> <strong>Part2-数据可视化-ggplot2的基本使用</strong></a></li>
+<li class="chapter" data-level="82.1.3" data-path="lesson-6.html"><a href="lesson-6.html#part3-data-explorer"><i class="fa fa-check"></i><b>82.1.3</b> <strong>Part3-Data Explorer</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="83" data-path="以下是课堂语音转文字-5.html"><a href="以下是课堂语音转文字-5.html"><i class="fa fa-check"></i><b>83</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="84" data-path="以下是代码部分-5.html"><a href="以下是代码部分-5.html"><i class="fa fa-check"></i><b>84</b> 以下是代码部分</a></li>
+<li class="chapter" data-level="85" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>85</b> Packages</a>
+<ul>
+<li class="chapter" data-level="85.1" data-path="packages.html"><a href="packages.html#批量导入数据"><i class="fa fa-check"></i><b>85.1</b> 7.0.1 批量导入数据</a></li>
+<li class="chapter" data-level="85.2" data-path="packages.html"><a href="packages.html#代码书写规范"><i class="fa fa-check"></i><b>85.2</b> 7.0.2 代码书写规范</a></li>
+<li class="chapter" data-level="85.3" data-path="packages.html"><a href="packages.html#代码书写规范-1"><i class="fa fa-check"></i><b>85.3</b> 7.0.2 代码书写规范</a></li>
+<li class="chapter" data-level="85.4" data-path="packages.html"><a href="packages.html#数据清洗-1"><i class="fa fa-check"></i><b>85.4</b> 7.0.3 数据清洗</a>
+<ul>
+<li class="chapter" data-level="85.4.1" data-path="packages.html"><a href="packages.html#列操作"><i class="fa fa-check"></i><b>85.4.1</b> 列操作</a></li>
+<li class="chapter" data-level="85.4.2" data-path="packages.html"><a href="packages.html#行操作"><i class="fa fa-check"></i><b>85.4.2</b> 行操作</a></li>
+<li class="chapter" data-level="85.4.3" data-path="packages.html"><a href="packages.html#数据框-1"><i class="fa fa-check"></i><b>85.4.3</b> 数据框</a></li>
+<li class="chapter" data-level="85.4.4" data-path="packages.html"><a href="packages.html#分组计算"><i class="fa fa-check"></i><b>85.4.4</b> 分组计算</a></li>
+<li class="chapter" data-level="85.4.5" data-path="packages.html"><a href="packages.html#字符串stringr-package"><i class="fa fa-check"></i><b>85.4.5</b> 字符串(stringr package)</a></li>
+<li class="chapter" data-level="85.4.6" data-path="packages.html"><a href="packages.html#函数式编程purrr-package"><i class="fa fa-check"></i><b>85.4.6</b> 函数式编程(purrr package)</a></li>
+</ul></li>
+<li class="chapter" data-level="85.5" data-path="packages.html"><a href="packages.html#常用函数"><i class="fa fa-check"></i><b>85.5</b> 常用函数</a></li>
+</ul></li>
+<li class="chapter" data-level="86" data-path="数据可视化.html"><a href="数据可视化.html"><i class="fa fa-check"></i><b>86</b> 7.2 数据可视化</a>
+<ul>
+<li class="chapter" data-level="86.1" data-path="数据可视化.html"><a href="数据可视化.html#可视化的重要性"><i class="fa fa-check"></i><b>86.1</b> 7.2.1 可视化的重要性</a></li>
+</ul></li>
+<li class="chapter" data-level="87" data-path="数据可视化-1.html"><a href="数据可视化-1.html"><i class="fa fa-check"></i><b>87</b> 7.2 数据可视化</a>
+<ul>
+<li class="chapter" data-level="87.1" data-path="数据可视化-1.html"><a href="数据可视化-1.html#为何使用-ggplot2"><i class="fa fa-check"></i><b>87.1</b> 7.2.2 为何使用 ggplot2?</a></li>
+<li class="chapter" data-level="87.2" data-path="数据可视化-1.html"><a href="数据可视化-1.html#为何使用-ggplot"><i class="fa fa-check"></i><b>87.2</b> 7.2.2 为何使用 ggplot?</a></li>
+<li class="chapter" data-level="87.3" data-path="数据可视化-1.html"><a href="数据可视化-1.html#为何使用-ggplot-1"><i class="fa fa-check"></i><b>87.3</b> 7.2.2 为何使用 ggplot?</a></li>
+<li class="chapter" data-level="87.4" data-path="数据可视化-1.html"><a href="数据可视化-1.html#ggplot2-的逻辑"><i class="fa fa-check"></i><b>87.4</b> 7.2.3 ggplot2 的逻辑</a></li>
+<li class="chapter" data-level="87.5" data-path="数据可视化-1.html"><a href="数据可视化-1.html#ggplot2-的逻辑-1"><i class="fa fa-check"></i><b>87.5</b> 7.2.3 ggplot2 的逻辑</a></li>
+<li class="chapter" data-level="87.6" data-path="数据可视化-1.html"><a href="数据可视化-1.html#ggplot2-的逻辑-2"><i class="fa fa-check"></i><b>87.6</b> 7.2.3 ggplot2 的逻辑</a></li>
+<li class="chapter" data-level="87.7" data-path="数据可视化-1.html"><a href="数据可视化-1.html#单个图片的组成"><i class="fa fa-check"></i><b>87.7</b> 7.2.4 单个图片的组成</a></li>
+<li class="chapter" data-level="87.8" data-path="数据可视化-1.html"><a href="数据可视化-1.html#单个图片的组成-1"><i class="fa fa-check"></i><b>87.8</b> 7.2.4 单个图片的组成</a></li>
+</ul></li>
+<li class="chapter" data-level="88" data-path="常用图形.html"><a href="常用图形.html"><i class="fa fa-check"></i><b>88</b> 7.3 常用图形</a>
+<ul>
+<li class="chapter" data-level="88.1" data-path="常用图形.html"><a href="常用图形.html#直方图"><i class="fa fa-check"></i><b>88.1</b> 直方图</a></li>
+<li class="chapter" data-level="88.2" data-path="常用图形.html"><a href="常用图形.html#密度图"><i class="fa fa-check"></i><b>88.2</b> 密度图</a></li>
+<li class="chapter" data-level="88.3" data-path="常用图形.html"><a href="常用图形.html#直方图-密度图"><i class="fa fa-check"></i><b>88.3</b> 直方图 + 密度图</a></li>
+<li class="chapter" data-level="88.4" data-path="常用图形.html"><a href="常用图形.html#直方图-密度图-1"><i class="fa fa-check"></i><b>88.4</b> 直方图 + 密度图</a></li>
+<li class="chapter" data-level="88.5" data-path="常用图形.html"><a href="常用图形.html#箱线图"><i class="fa fa-check"></i><b>88.5</b> 箱线图</a></li>
+</ul></li>
+<li class="chapter" data-level="89" data-path="explore-data-with-dataexplorer.html"><a href="explore-data-with-dataexplorer.html"><i class="fa fa-check"></i><b>89</b> 7.4 Explore data with DataExplorer</a>
+<ul>
+<li class="chapter" data-level="89.1" data-path="explore-data-with-dataexplorer.html"><a href="explore-data-with-dataexplorer.html#使用ggpairs"><i class="fa fa-check"></i><b>89.1</b> 使用ggpairs</a></li>
+</ul></li>
+<li class="chapter" data-level="90" data-path="参考阅读.html"><a href="参考阅读.html"><i class="fa fa-check"></i><b>90</b> 参考阅读</a></li>
+<li class="chapter" data-level="91" data-path="lesson-7.html"><a href="lesson-7.html"><i class="fa fa-check"></i><b>91</b> 第七讲：如何进行基本的数据分析: <em>t</em>-test和ANOVA</a>
+<ul>
+<li class="chapter" data-level="91.0.1" data-path="lesson-7.html"><a href="lesson-7.html#t检验"><i class="fa fa-check"></i><b>91.0.1</b> <em>t</em>检验</a></li>
+<li class="chapter" data-level="91.0.2" data-path="lesson-7.html"><a href="lesson-7.html#方差分析"><i class="fa fa-check"></i><b>91.0.2</b> 方差分析</a></li>
+</ul></li>
+<li class="chapter" data-level="92" data-path="lesson-8.html"><a href="lesson-8.html"><i class="fa fa-check"></i><b>92</b> 第八讲：如何进行基本的数据分析: 相关与回归</a>
+<ul>
+<li class="chapter" data-level="92.1" data-path="lesson-8.html"><a href="lesson-8.html#什么是相关"><i class="fa fa-check"></i><b>92.1</b> 什么是相关</a></li>
+<li class="chapter" data-level="92.2" data-path="lesson-8.html"><a href="lesson-8.html#相关-代码实现"><i class="fa fa-check"></i><b>92.2</b> 相关-代码实现</a></li>
+<li class="chapter" data-level="92.3" data-path="lesson-8.html"><a href="lesson-8.html#什么是回归"><i class="fa fa-check"></i><b>92.3</b> 什么是回归</a></li>
+</ul></li>
+<li class="chapter" data-level="93" data-path="lesson-9.html"><a href="lesson-9.html"><i class="fa fa-check"></i><b>93</b> 第九章：如何进行基本的数据分析: 中介分析</a>
+<ul>
+<li class="chapter" data-level="93.1" data-path="lesson-9.html"><a href="lesson-9.html#process"><i class="fa fa-check"></i><b>93.1</b> process</a></li>
+</ul></li>
+<li class="chapter" data-level="94" data-path="lesson-12.html"><a href="lesson-12.html"><i class="fa fa-check"></i><b>94</b> 第十二讲：从分析到手稿</a>
+<ul>
+<li class="chapter" data-level="94.1" data-path="lesson-12.html"><a href="lesson-12.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>94.1</b> <strong>通过Papaja撰写论文</strong></a>
+<ul>
+<li class="chapter" data-level="94.1.1" data-path="lesson-12.html"><a href="lesson-12.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>94.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
+<li class="chapter" data-level="94.1.2" data-path="lesson-12.html"><a href="lesson-12.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>94.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
+<li class="chapter" data-level="94.1.3" data-path="lesson-12.html"><a href="lesson-12.html#part3-正文的撰写"><i class="fa fa-check"></i><b>94.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
+<li class="chapter" data-level="94.1.4" data-path="lesson-12.html"><a href="lesson-12.html#总结"><i class="fa fa-check"></i><b>94.1.4</b> 总结</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="95" data-path="lesson-13.html"><a href="lesson-13.html"><i class="fa fa-check"></i><b>95</b> 第十三章：效应量和元分析</a>
+<ul>
+<li class="chapter" data-level="95.1" data-path="lesson-13.html"><a href="lesson-13.html#效应量简介"><i class="fa fa-check"></i><b>95.1</b> 效应量简介</a></li>
+<li class="chapter" data-level="95.2" data-path="lesson-13.html"><a href="lesson-13.html#算法实现"><i class="fa fa-check"></i><b>95.2</b> 算法实现</a></li>
+<li class="chapter" data-level="95.3" data-path="lesson-13.html"><a href="lesson-13.html#小练习"><i class="fa fa-check"></i><b>95.3</b> 小练习</a></li>
+<li class="chapter" data-level="95.4" data-path="lesson-13.html"><a href="lesson-13.html#元分析简介"><i class="fa fa-check"></i><b>95.4</b> 元分析简介</a></li>
+<li class="chapter" data-level="95.5" data-path="lesson-13.html"><a href="lesson-13.html#元分析实现"><i class="fa fa-check"></i><b>95.5</b> 元分析实现</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="96" data-path="lesson-3.html"><a href="lesson-3.html"><i class="fa fa-check"></i><b>96</b> 第三讲：如何导入数据</a>
+<ul>
+<li class="chapter" data-level="96.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path-working-dir"><i class="fa fa-check"></i><b>96.1</b> 路径与工作目录</a>
+<ul>
+<li class="chapter" data-level="96.1.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path"><i class="fa fa-check"></i><b>96.1.1</b> 相对路径与绝对路径</a></li>
+<li class="chapter" data-level="96.1.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-packge-here"><i class="fa fa-check"></i><b>96.1.2</b> Here包的使用</a></li>
+</ul></li>
+<li class="chapter" data-level="96.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-data"><i class="fa fa-check"></i><b>96.2</b> 读取数据</a>
+<ul>
+<li class="chapter" data-level="96.2.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-csv"><i class="fa fa-check"></i><b>96.2.1</b> read.csv函数</a></li>
+<li class="chapter" data-level="96.2.2" data-path="lesson-3.html"><a href="lesson-3.html#命名"><i class="fa fa-check"></i><b>96.2.2</b> 命名</a></li>
+</ul></li>
+<li class="chapter" data-level="96.3" data-path="lesson-3.html"><a href="lesson-3.html#id_3-data-object"><i class="fa fa-check"></i><b>96.3</b> 了解R里的数据 （R语言中的对象）</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lecture 12: Preparing journal artical with <em>papaja</em></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lesson-9" class="section level1 hasAnchor" number="93">
+<h1><span class="header-section-number">93</span> 第九章：如何进行基本的数据分析: 中介分析<a href="lesson-9.html#lesson-9" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="process" class="section level2 hasAnchor" number="93.1">
+<h2><span class="header-section-number">93.1</span> process<a href="lesson-9.html#process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>今天我们会讲解SEM的一些简单的操作和画图，画图的部分甚至可以掰开讲：怎么画一个直方图怎么画一个展示反应时的图，箱线图和小提琴图，以及云雨图。</p>
+<p>在接下来的课程中，第11章想要达到一个目标是我们的能够做出来图可以符合格式，大家投稿的时候就可以直接用。第12章的话实际上就是把第10章和第11章的内容进行结合，我们会教授一个papaja包，这个包适合我们APA格式的一个写作。如果我们能够把自己的代码和数据和文字全部整合到一个东西里面去，这样的话就可以直接生成一个APA的手稿，这是12章我们想介绍的。第十三章我们原本想讲github的使用，但是考虑到github可以在后续的学习中反复使用练习，我认为可以移动到下周来讲，然后第14章有一些干货的内容，比如如何对效应量进行综合，这是在meta analysis常用的工作如何进行样本量的规划，这里面最重要的是power analysis。</p>
+<p>这里面可能还会涉及到一些大家以前从来没有——至少我在读研究生的时候从来没有的一个东西就是我们如何在计划研究的时候就把整个代码写出来。我们一般来说是自己先有了数据，然后再去写代码，我们现在我们课题组慢慢的做法是变成一开始就做预注册，做完预注册了以后，就会自己开始写一些伪数据，我们叫假数据，它的结构是跟我们的实验的设计是一模一样的，那么这个时候我们就开始用这样的假数据把自己分析数据的代码就写完，也就是在你没有收集数据之前， 就可以把代码写完。</p>
+<p>其实我用SEM用的很少，主要都是认知心理学舒颜，神经成像之类的东西，很少去做问卷相关的研究。但是我其实对传统的SEM很感兴趣。这里推荐一些经典的文章，比如Baron和Kenny1986年关于中介调节分析的文章。
+那么process是Andrew Hayes，引进的一个很重要的一个工具包，这个工具包某种程度上解放了绝大部分人，他的引用量也非常高 那么process这个SPSS插件出来以后，应该是给很多人都非常大的帮助。
+是2012年左右的时候，他开始还是小的一些工具包，后来就变成了一个插件，后来就越来越好用。大家可以看到， 整个R的这个生态体系 它其实是一个后起之秀，即便如此 因为R是一个开放的生态系统 所以只要有足够的人对它感兴趣的话 很快它就能够迅速的发展。</p>
+<p>首先是导入这两个包，我们用之前一样的方式来去安装，我建议大家就是现在在讲课的时候，如果手头上有这个代码的话 可以把这个地方先运行一下，因为你可能需要安装新的包。</p>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="lesson-9.html#cb433-1" tabindex="-1"></a><span class="co"># 检查是否已安装 pacman</span></span>
+<span id="cb433-2"><a href="lesson-9.html#cb433-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;pacman&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb433-3"><a href="lesson-9.html#cb433-3" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>) }   <span class="co"># 如果未安装，则安装包</span></span>
+<span id="cb433-4"><a href="lesson-9.html#cb433-4" tabindex="-1"></a></span>
+<span id="cb433-5"><a href="lesson-9.html#cb433-5" tabindex="-1"></a><span class="co"># 使用p_load来载入需要的包</span></span>
+<span id="cb433-6"><a href="lesson-9.html#cb433-6" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;bruceR&quot;</span>, <span class="st">&quot;performance&quot;</span>, <span class="st">&quot;lavaan&quot;</span>, <span class="st">&quot;lavaanPlot&quot;</span>)</span></code></pre></div>
+<p>导入我们的数据</p>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="lesson-9.html#cb434-1" tabindex="-1"></a>df.pg.raw <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&#39;./data/penguin/penguin_rawdata_new.csv&#39;</span>,</span>
+<span id="cb434-2"><a href="lesson-9.html#cb434-2" tabindex="-1"></a>                       <span class="at">header =</span> T, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb434-3"><a href="lesson-9.html#cb434-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(., age, language, avgtemp,socialdiversity, DEQ,</span>
+<span id="cb434-4"><a href="lesson-9.html#cb434-4" tabindex="-1"></a>                   <span class="fu">starts_with</span>(<span class="st">&quot;ALEX&quot;</span>),</span>
+<span id="cb434-5"><a href="lesson-9.html#cb434-5" tabindex="-1"></a>                   <span class="fu">starts_with</span>(<span class="st">&quot;ECR&quot;</span>),</span>
+<span id="cb434-6"><a href="lesson-9.html#cb434-6" tabindex="-1"></a>                   <span class="fu">starts_with</span>(<span class="st">&quot;HOME&quot;</span>),</span>
+<span id="cb434-7"><a href="lesson-9.html#cb434-7" tabindex="-1"></a>                   <span class="fu">starts_with</span>(<span class="st">&quot;KAMF&quot;</span>),</span>
+<span id="cb434-8"><a href="lesson-9.html#cb434-8" tabindex="-1"></a>                   <span class="fu">starts_with</span>(<span class="st">&quot;SNI&quot;</span>),</span>
+<span id="cb434-9"><a href="lesson-9.html#cb434-9" tabindex="-1"></a>                ) </span>
+<span id="cb434-10"><a href="lesson-9.html#cb434-10" tabindex="-1"></a><span class="co"># 这些包含原始题目的数据集，将在SEM lavaan中直接使用</span></span></code></pre></div>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d8db0a7cc717dbbcd4cb" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d8db0a7cc717dbbcd4cb">{"x":{"filter":"none","vertical":false,"fillContainer":true,"data":[["1","2","3","4","5","6","7","8","9","10"],[1922,1940,1945,1948,1948,1951,1952,1952,1952,1953],[7,5,5,5,2,1,5,5,5,4],[36.75,35.4,35.1,35.95,36.08333333,35.6,35.4,35.8,35.85,35.6],[8,6,5,7,5,7,4,5,5,7],[26.88780212,51.75,51.75,51.75,42.07719421,51.65660095,51.75,51.75,51.75,59.91270447],[2,1,2,3,1,1,2,1,3,1],[2,1,2,4,1,2,2,2,3,1],[2,1,4,1,1,1,2,1,4,1],[2,1,2,2,1,2,4,2,3,2],[2,1,2,4,1,1,2,2,4,2],[2,1,2,2,1,3,2,1,4,1],[2,1,2,3,2,4,2,1,3,1],[2,1,2,4,1,2,3,1,3,2],[2,1,2,2,2,4,2,2,2,1],[1,1,1,1,1,2,2,2,3,3],[2,1,2,2,1,2,2,1,4,1],[2,2,3,2,2,4,2,2,2,1],[2,3,2,2,2,4,2,1,2,1],[2,2,2,2,2,1,3,1,2,1],[2,3,2,4,1,1,3,2,2,2],[2,2,2,2,4,1,2,1,2,1],[4,1,5,1,2,1,3,5,5,5],[2,1,3,1,2,2,5,5,5,2],[2,1,3,1,4,1,4,5,5,3],[2,1,2,1,2,1,5,2,5,2],[5,1,4,2,5,1,6,4,4,3],[2,1,3,2,6,3,5,2,5,5],[2,1,2,2,1,1,5,3,5,1],[2,1,2,1,1,1,2,5,5,1],[5,1,3,7,4,1,5,5,3,2],[2,1,4,1,2,2,4,2,4,2],[2,1,5,1,2,1,5,6,3,2],[2,1,4,2,5,6,3,3,4,5],[4,1,2,1,4,5,3,4,4,2],[2,4,2,1,1,1,3,2,5,5],[2,1,2,1,1,1,4,3,5,1],[5,1,5,2,2,1,4,4,4,5],[5,1,3,4,2,2,3,4,6,1],[2,1,2,7,5,1,2,2,5,2],[5,7,2,1,2,1,3,2,3,7],[2,1,2,1,2,2,2,3,3,2],[6,3,2,1,2,7,4,5,6,5],[5,1,2,7,2,2,2,2,5,2],[4,1,2,7,2,1,3,4,5,2],[5,1,1,3,1,1,2,3,3,2],[5,1,1,2,2,1,2,3,5,2],[2,1,2,2,2,2,3,2,4,2],[5,1,3,6,4,2,2,5,5,3],[2,4,2,1,1,2,2,2,4,2],[3,4,5,1,2,6,3,2,3,2],[5,4,2,1,2,2,3,3,3,3],[2,2,3,1,2,2,2,2,4,2],[5,1,2,1,1,1,2,2,3,2],[4,4,4,1,6,7,3,5,5,4],[6,4,4,2,5,6,3,6,5,4],[6,1,3,1,1,3,3,2,3,2],[2,1,6,2,5,5,5,4,4,5],[4,5,5,5,5,5,4,5,5,5],[4,3,3,5,5,5,3,5,3,5],[4,3,4,5,5,5,4,5,4,5],[4,3,4,5,5,4,4,5,5,5],[3,3,3,5,5,2,3,5,3,2],[3,1,4,4,3,5,4,5,5,5],[2,1,4,3,2,4,5,3,5,5],[2,1,5,4,4,5,4,5,5,5],[3,1,4,4,3,4,4,5,5,5],[2,1,5,4,4,4,4,4,5,5],[2,1,5,4,5,7,4,6,6,8],[4,1,5,4,5,6,2,4,4,7],[2,1,2,4,3,1,3,4,6,1],[2,1,3,5,3,6,2,4,3,3],[2,1,2,1,2,3,2,3,2,2],[2,1,1,2,1,7,2,3,1,5],[2,3,1,1,5,1,5,4,4,4],[1,8,6,3,4,3,2,3,2,2],[0,4,4,3,4,3,2,3,2,2],[1,1,2,1,1,1,1,2,1,2],[1,null,2,null,1,null,null,2,null,2],[5,2,1,1,1,1,1,1,1,5],[0,2,null,null,null,null,null,null,null,null],[6,1,1,4,6,7,1,2,1,3],[2,null,null,3,4,2,null,2,null,1],[7,8,3,1,7,7,3,5,7,2],[3,5,2,1,5,2,1,3,3,2],[1,2,1,2,1,2,1,1,1,1],[1,1,null,8,null,1,null,null,null,null],[2,1,1,1,1,1,1,1,2,1],[5,null,null,null,null,null,null,null,4,null],[3,2,1,1,1,1,1,1,2,2],[1,1,null,null,null,null,null,null,1,1],[2,8,null,null,null,null,null,null,7,1],[3,1,4,3,4,2,2,3,4,1],[2,1,1,2,1,2,1,1,1,2],[1,null,null,8,null,8,null,null,null,1],[1,2,1,1,1,2,2,2,1,1],[null,"Pensioners",null,null,null,"Telefonseelsorge","badminton","street band",null,null],[null,"Men/women with foreign spouses not in UK",null,null,null,"Seniorenheim","bridge 1","samba band",null,null],[null,null,null,null,null,null,"bridge 2",null,null,null],[null,null,null,null,null,null,"bridge 3",null,null,null],[null,null,null,null,null,null,"badminton 2",null,null,null],[3,25,null,null,null,7,12,10,null,null],[null,30,null,null,null,2,5,10,null,null],[null,null,null,null,null,null,6,null,null,null],[null,null,null,null,null,null,1,null,null,null],[null,null,null,null,null,null,4,null,null,null]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>age<\/th>\n      <th>language<\/th>\n      <th>avgtemp<\/th>\n      <th>socialdiversity<\/th>\n      <th>DEQ<\/th>\n      <th>ALEX1<\/th>\n      <th>ALEX2<\/th>\n      <th>ALEX3<\/th>\n      <th>ALEX4<\/th>\n      <th>ALEX5<\/th>\n      <th>ALEX6<\/th>\n      <th>ALEX7<\/th>\n      <th>ALEX8<\/th>\n      <th>ALEX9<\/th>\n      <th>ALEX10<\/th>\n      <th>ALEX11<\/th>\n      <th>ALEX12<\/th>\n      <th>ALEX13<\/th>\n      <th>ALEX14<\/th>\n      <th>ALEX15<\/th>\n      <th>ALEX16<\/th>\n      <th>ECR1<\/th>\n      <th>ECR2<\/th>\n      <th>ECR3<\/th>\n      <th>ECR4<\/th>\n      <th>ECR5<\/th>\n      <th>ECR6<\/th>\n      <th>ECR7<\/th>\n      <th>ECR8<\/th>\n      <th>ECR9<\/th>\n      <th>ECR10<\/th>\n      <th>ECR11<\/th>\n      <th>ECR12<\/th>\n      <th>ECR13<\/th>\n      <th>ECR14<\/th>\n      <th>ECR15<\/th>\n      <th>ECR16<\/th>\n      <th>ECR17<\/th>\n      <th>ECR18<\/th>\n      <th>ECR19<\/th>\n      <th>ECR20<\/th>\n      <th>ECR21<\/th>\n      <th>ECR22<\/th>\n      <th>ECR23<\/th>\n      <th>ECR24<\/th>\n      <th>ECR25<\/th>\n      <th>ECR26<\/th>\n      <th>ECR27<\/th>\n      <th>ECR28<\/th>\n      <th>ECR29<\/th>\n      <th>ECR30<\/th>\n      <th>ECR31<\/th>\n      <th>ECR32<\/th>\n      <th>ECR33<\/th>\n      <th>ECR34<\/th>\n      <th>ECR35<\/th>\n      <th>ECR36<\/th>\n      <th>HOME1<\/th>\n      <th>HOME2<\/th>\n      <th>HOME3<\/th>\n      <th>HOME4<\/th>\n      <th>HOME5<\/th>\n      <th>HOME6<\/th>\n      <th>HOME7<\/th>\n      <th>HOME8<\/th>\n      <th>HOME9<\/th>\n      <th>KAMF1<\/th>\n      <th>KAMF2<\/th>\n      <th>KAMF3<\/th>\n      <th>KAMF4<\/th>\n      <th>KAMF5<\/th>\n      <th>KAMF6<\/th>\n      <th>KAMF7<\/th>\n      <th>SNI1<\/th>\n      <th>SNI2<\/th>\n      <th>SNI3<\/th>\n      <th>SNI4<\/th>\n      <th>SNI5<\/th>\n      <th>SNI6<\/th>\n      <th>SNI7<\/th>\n      <th>SNI8<\/th>\n      <th>SNI9<\/th>\n      <th>SNI10<\/th>\n      <th>SNI11<\/th>\n      <th>SNI12<\/th>\n      <th>SNI13<\/th>\n      <th>SNI14<\/th>\n      <th>SNI15<\/th>\n      <th>SNI16<\/th>\n      <th>SNI17<\/th>\n      <th>SNI18<\/th>\n      <th>SNI19<\/th>\n      <th>SNI20<\/th>\n      <th>SNI21<\/th>\n      <th>SNI22<\/th>\n      <th>SNI23<\/th>\n      <th>SNI24<\/th>\n      <th>SNI25<\/th>\n      <th>SNI26<\/th>\n      <th>SNI27<\/th>\n      <th>SNI28<\/th>\n      <th>SNI29<\/th>\n      <th>SNI30<\/th>\n      <th>SNI31<\/th>\n      <th>SNI32<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,101,102,103,104,105]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p>刚才助教应该发给大家 大家把它保存在我们原来这个data Pangolin里面 然后叫Pangolin raw data new 为什么用这个新的数据呢 因为它这里面是有一个 有一个新有一个变量 我们原来那个数据里面没有包含 那么假如我们对某几个问卷感兴趣 我们就把它都选出来 然后把其他的这个变量都忽略掉 那么我们这里大概就是要做两个工作 一个工作就是我们要演示两个工作 一个工作就是我们重复一下 艾特曼在2018年发表的 Clever Psychology那篇文章中的一个分析 也就是我们这个数据来源 Pangolin的数据来源 它本来就是在2018年那个文章中 是以最主要的一个研究性的文章对吧 那么我2019年那个文章 实际上是把这个数据进行一个描述 那么第二个工作就是说 我们可不可以对一些问卷来 对它的这个问卷的结构进行一个确认 那么采用CFA的方式 那么或者我们对不同的问卷进行的关系对吧 有没有这个中介调节 采用ICM的方式来做一个分析 这大概就是我们要展示的这几个工作 这个地方是一个数据运输里的过程 就是我们怎么去求 那么在这个 我们这次增加里面不仅仅有一个 我可以给大家看一下 我们这个数据里面 不仅仅增加了一个 就是叫full data 还有一个new data 这个new data是我们对full data进行处理的 然后还有一个codebook 就是关于这个应该是最 就是数据最全的一个 但是它都是原始数据 这个是最全的一个数据 那么刚才孟征发给大家那个 亚述包里面应该有 那么我们还有一个codebook 就是对这个数据本身的一个描述 这个数据它的每一个column 代表的是什么东西 那么这里的有一些数据是没有的 我们把它给去掉了 因为它可能涉及到背后的隐私的问题 那么这里会涉及到一些问卷 比如说这个叫做Alex 它实际上是一个关于 那个肃清障碍的一个问卷 它的这个参考文献是在这 就是叫做Toronto Laximedia 这个我还不知道什么 Alex Thymia Scare 然后这个ERC是关于这个情绪的 和attachment的一个问卷 这个home就是说对家的依恋 是一个互联网出现以后 也不是互联网出现 就是也是一个跟这个依恋相关的一个问卷 那么这个KAMF是一个新的问卷 它实际上是关于人的 会不会产生这种感动的一个情绪 那么我们就是说在process里面 它实际上是一个简化的一个SEM 它只需要对我们变量的题目内部求一个平均分 然后这样就可以了 那么它不需要去了解 这个每一个问卷里面的item 和它的维度 以及和整个问卷是不是有对应的 以及它的loading是什么 那么为什么说它是一个简化的模型呢 这里可能涉及到一个问题 就是说我们到底 当我们用总分代表一个量表得分的时候 它代表的到底是什么 它实际上代表的就是每一个item在这个 维度上面的loading完全是1对吧 它完全是相等的 这是一个非常强的assumption 然后也是一个非常简化的一个模型 那么通过SEM的一些CFA的分析的话 我们其实可以更好的估计它在每个潜变量 就是我们的一个问卷它可能是一个测量了一个或者多个 潜变量的一个问卷一个工具对吧 那么当我们用总分代表一个 潜变量或者一个维度的得分的时候 我们认为所有的item在维度上面或者潜变量 上的loading对吧 这个负荷都是1 但是用LCM的话我们可以把更加精准的建构出来 对于假如说我们要用process对吧 那我们就直接就把每一个维度上的得分求出来 当我们这里没有用process 我们用process没有做他们这些问卷的一个处理 而是去复制了Pandroid data里面的结果 感觉我应该需要展示一下原来那个论文才对 一会儿增加一下 那么在原来这个论文里面 它大概就是有这么一个关系的一个结果 那么我可以简单的跟大家说一下 我们这个项目对吧 原来这个数据项目叫做Human Computing Project Computing是什么是企鹅对吧 人类企鹅计划 它为什么要起这么一个名字呢 它就是觉得我们人类就像企鹅一样 有一个共同的一个体温调节 因为企鹅它生活在一个非常寒冷的地方对吧 它经常就是为了降低它取暖的能耗 它会很多企鹅在一起群聚到一起 这样的话就是说每个在一群里面 每个企鹅它都能够保持着一个相对恒定的体温 但是对于这个群体当中的每一个个体来说 它的能耗是比较小的 大家知道我们要维持一个恒定的体温的话 我们是要去燃烧一些卡路里对吧 那么如果说我们只有一个个体的话 它维持一个恒定的体温所需要的卡路里是非常多的 这样对于人类来说 现在好像卡路里是一个多余的东西 但是对于动物来说 当你在野外的话 其实你要去获得能源获得食物 本身就是一个有动物意志在做的一个事情对吧 所以它需要去尽量减少这个能耗 所以它就会在一起形成这么一个机制 那么这个Human Pending Project想说 就是说我们在人类的身上是不是也找到这种 我们做哺乳动物在演化当中形成的这种 群体体温条件的一些我们说一些traces 就是我们在演化当中 我们现在在现代化社会里面对吧 但是我们的身心上面可能还是遗留了一点点 我们原来做哺乳动物 通过群体来调节我们体温的这些遗迹对吧 所以这是这个项目的一个总的一个大胆理论 那么在这个过程当中 它做了一个什么工作呢 就是测量了很多问卷 并且测量了每个人的一个核心体温 这个核心体温就是说我们自己 Cold Body Temperature 这个时候在文章里面它是用CDP 就是Cold Body Temperature 我们这里是用Belian Temperature 就是Average Temperature 那么这个Cold Body Temperature是什么 就是我们身体核心所需要的一个温度 身体的核心是哪些呢 基本上就是内脏对吧 也就是说我们如果内脏不能够保证 这个恒定的体温的话 基本上就会直接影响到你的生命的安危 包括你的大脑 所以对哺乳动物来说最重要的 其实有的时候像比如说手对吧 你的手和脚 它即便失温了之后 它可能也不会影响你的生存 然后可能手动坏了对吧 有的人他比方说就结织掉了 那么它是会影响 但是它不会影响生存 它还是可以继续活下来对吧 但是如果你的核心体温 如果你不能保持恒定的温度的话 那就就是30的一个问题了 所以最感兴趣的 就在这个语言内容中 最感兴趣就是核心体温的温度 那么我们想如果说想要知道这个人 他我们人类上是不是遗留了这种 群体调节体温的遗迹的话 那我们应该关注的是什么 就是我们的社会关系对吧 你跟社会群体关系相关的一些变量 它会不会影响体温 这就是他最关系的 Hans Eisenberg最关系的一个问题 所以当时他测了很多跟社会关系 社会网络相关的一些变量 就比方说你有 你在过去的一个月当中对吧 你跟多少人联系 然后你比方说平时上班的时候 跟多少人联系 下班之后跟多少人联系 周末跟多少人联系 跟你的父母 跟你的你是不是跟你的 比方说partner对吧 住在一起等等 就有很多这样的问题 那么通过这个问题 他可以得到三个 社会关系网络的一个指标 一个指标就是叫做social diversity 就是你的社交网络 是不是很多元化 还是说你的社交网络就很单一 然后你就只跟父母 跟家人交往对吧 那你的这个社交网络就很单一 然后你有家人有同事 然后还有你自己比方说 你有很多个兴趣爱好对吧 你跳舞有跳舞的朋友 你唱歌有唱歌的朋友 然后你下棋有下棋的朋友 然后等等等等 如果说你的这个 关系网络非常的 就是不同的 在不同的场合跟不同人交往对吧 这样的话就会形成一个 很diverse的一个social network 那么这个social diversity 就指的是这个东西 然后他也测量了比方说 你的身高体重等等等等 然后还测每个人他和赤道说 隔的这个距离 the distance from the equator 就是你赤道这个距离 因为你赤道隔得越远的话 就意味着你这个纬度越高对吧 纬度越高 就意味着当地的气温本身是越低的.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lesson-8.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lesson-12.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R4PsyBook.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

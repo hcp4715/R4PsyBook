@@ -1,0 +1,3330 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>27 以下是课堂语音转文字 | Lecture 12: Preparing journal artical with papaja</title>
+  <meta name="description" content="课程bookdown" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="27 以下是课堂语音转文字 | Lecture 12: Preparing journal artical with papaja" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="课程bookdown" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="27 以下是课堂语音转文字 | Lecture 12: Preparing journal artical with papaja" />
+  
+  <meta name="twitter:description" content="课程bookdown" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="数据结构-1.html"/>
+<link rel="next" href="以下是代码部分-4.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.30/datatables.js"></script>
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+<script src="libs/panelset-0.2.6/panelset.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX","output/SVG"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+   src="../../../MathJax/MathJax.js">
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 教学内容与课时</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#目录"><i class="fa fa-check"></i><b>1.1</b> 目录</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>2</b> 第一讲：为什么要学习R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lesson-1.html"><a href="lesson-1.html#r在心理科学及社会科学中的运用"><i class="fa fa-check"></i><b>2.1</b> R在心理科学及社会科学中的运用</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="lesson-1.html"><a href="lesson-1.html#id_1-data-science"><i class="fa fa-check"></i><b>2.1.1</b> 数据科学</a></li>
+<li class="chapter" data-level="2.1.2" data-path="lesson-1.html"><a href="lesson-1.html#id_1-data-science-born"><i class="fa fa-check"></i><b>2.1.2</b> 数据科学的诞生——数字化时代</a></li>
+<li class="chapter" data-level="2.1.3" data-path="lesson-1.html"><a href="lesson-1.html#为什么要学习r语言1-why-learn-r"><i class="fa fa-check"></i><b>2.1.3</b> 为什么要学习R语言？{1-why-learn-R}</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="lesson-1.html"><a href="lesson-1.html#r语言使用的示例展示"><i class="fa fa-check"></i><b>2.2</b> R语言使用的示例展示</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="lesson-1.html"><a href="lesson-1.html#数据清洗"><i class="fa fa-check"></i><b>2.2.1</b> 数据清洗</a></li>
+<li class="chapter" data-level="2.2.2" data-path="lesson-1.html"><a href="lesson-1.html#ggplot2画图"><i class="fa fa-check"></i><b>2.2.2</b> ggplot2画图</a></li>
+<li class="chapter" data-level="2.2.3" data-path="lesson-1.html"><a href="lesson-1.html#心理学数据分析与结果汇报"><i class="fa fa-check"></i><b>2.2.3</b> 心理学数据分析与结果汇报</a></li>
+<li class="chapter" data-level="2.2.4" data-path="lesson-1.html"><a href="lesson-1.html#regression"><i class="fa fa-check"></i><b>2.2.4</b> Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="lesson-1.html"><a href="lesson-1.html#现场运行代码"><i class="fa fa-check"></i><b>2.3</b> 现场运行代码</a></li>
+<li class="chapter" data-level="2.4" data-path="lesson-1.html"><a href="lesson-1.html#课程安排"><i class="fa fa-check"></i><b>2.4</b> 课程安排</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="lesson-1.html"><a href="lesson-1.html#课程大纲"><i class="fa fa-check"></i><b>2.4.1</b> 课程大纲</a></li>
+<li class="chapter" data-level="2.4.2" data-path="lesson-1.html"><a href="lesson-1.html#成绩分配"><i class="fa fa-check"></i><b>2.4.2</b> 成绩分配</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="lesson-1.html"><a href="lesson-1.html#如何学好这门课"><i class="fa fa-check"></i><b>2.5</b> 如何学好这门课</a></li>
+<li class="chapter" data-level="2.6" data-path="lesson-1.html"><a href="lesson-1.html#课程总结与期望"><i class="fa fa-check"></i><b>2.6</b> 课程总结与期望</a></li>
+<li class="chapter" data-level="2.7" data-path="lesson-1.html"><a href="lesson-1.html#推荐"><i class="fa fa-check"></i><b>2.7</b> 推荐</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="以下是课堂语音转文字.html"><a href="以下是课堂语音转文字.html"><i class="fa fa-check"></i><b>3</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="4" data-path="以下是代码部分.html"><a href="以下是代码部分.html"><i class="fa fa-check"></i><b>4</b> 以下是代码部分</a></li>
+<li class="chapter" data-level="5" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html"><i class="fa fa-check"></i><b>5</b> 1 初识R里的数据 （R语言中的对象）</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html#从计算器说起-数值numeric"><i class="fa fa-check"></i><b>5.1</b> 1.1 从计算器说起 —— 数值(numeric)</a></li>
+<li class="chapter" data-level="5.2" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html#赋值"><i class="fa fa-check"></i><b>5.2</b> 1.1.1 赋值</a></li>
+<li class="chapter" data-level="5.3" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html#比大小-逻辑值logical"><i class="fa fa-check"></i><b>5.3</b> 1.2 比大小 —— 逻辑值（logical）</a></li>
+<li class="chapter" data-level="5.4" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html#字符串character"><i class="fa fa-check"></i><b>5.4</b> 1.3 字符串（character）</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="r-语言中的数据类型.html"><a href="r-语言中的数据类型.html"><i class="fa fa-check"></i><b>6</b> 2 R 语言中的数据类型</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="r-语言中的数据类型.html"><a href="r-语言中的数据类型.html#向量vector"><i class="fa fa-check"></i><b>6.1</b> 2.1 向量（vector）</a></li>
+<li class="chapter" data-level="6.2" data-path="r-语言中的数据类型.html"><a href="r-语言中的数据类型.html#数据框data.frame"><i class="fa fa-check"></i><b>6.2</b> 2.2 数据框（data.frame）</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lesson-2.html"><a href="lesson-2.html"><i class="fa fa-check"></i><b>7</b> 第二讲：如何开始使用R</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-for-lesson"><i class="fa fa-check"></i><b>7.1</b> 要解决的数据分析问题简介</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-1"><i class="fa fa-check"></i><b>7.1.1</b> 第一个数据: 人类企鹅计划数据</a></li>
+<li class="chapter" data-level="7.1.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-2"><i class="fa fa-check"></i><b>7.1.2</b> 第二个数据: 知觉匹配任务数据</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-install-R"><i class="fa fa-check"></i><b>7.2</b> 如何安装</a></li>
+<li class="chapter" data-level="7.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio"><i class="fa fa-check"></i><b>7.3</b> 如何方便使用？Rstudio的安装与界面介绍</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-install"><i class="fa fa-check"></i><b>7.3.1</b> Rstudio的安装与界面介绍</a></li>
+<li class="chapter" data-level="7.3.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-test"><i class="fa fa-check"></i><b>7.3.2</b> 测试Rstudio</a></li>
+<li class="chapter" data-level="7.3.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-packges"><i class="fa fa-check"></i><b>7.3.3</b> R语言中的包</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="以下是课堂语音转文字-1.html"><a href="以下是课堂语音转文字-1.html"><i class="fa fa-check"></i><b>8</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="9" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html"><i class="fa fa-check"></i><b>9</b> 以下是代码部分</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#version-control"><i class="fa fa-check"></i><b>9.1</b> 3.2.1 Version Control</a></li>
+<li class="chapter" data-level="9.2" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#git"><i class="fa fa-check"></i><b>9.2</b> 3.2.2 Git</a></li>
+<li class="chapter" data-level="9.3" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#git-1"><i class="fa fa-check"></i><b>9.3</b> 3.2.2 Git</a></li>
+<li class="chapter" data-level="9.4" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github"><i class="fa fa-check"></i><b>9.4</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.5" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-1"><i class="fa fa-check"></i><b>9.5</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.6" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-2"><i class="fa fa-check"></i><b>9.6</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.7" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-3"><i class="fa fa-check"></i><b>9.7</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.8" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-4"><i class="fa fa-check"></i><b>9.8</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.9" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-5"><i class="fa fa-check"></i><b>9.9</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.10" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-6"><i class="fa fa-check"></i><b>9.10</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.11" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-7"><i class="fa fa-check"></i><b>9.11</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.12" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#local-version-control"><i class="fa fa-check"></i><b>9.12</b> 3.3.1 Local Version Control</a></li>
+<li class="chapter" data-level="9.13" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#creating-git-repository-for-project"><i class="fa fa-check"></i><b>9.13</b> 3.3.2 Creating Git repository for project</a></li>
+<li class="chapter" data-level="9.14" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git"><i class="fa fa-check"></i><b>9.14</b> 3.3.3 Adding files to Git</a></li>
+<li class="chapter" data-level="9.15" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git-1"><i class="fa fa-check"></i><b>9.15</b> 3.3.3 Adding files to Git</a></li>
+<li class="chapter" data-level="9.16" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git-2"><i class="fa fa-check"></i><b>9.16</b> 3.3.3 Adding files to Git</a></li>
+<li class="chapter" data-level="9.17" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git-3"><i class="fa fa-check"></i><b>9.17</b> 3.3.3 Adding files to Git</a></li>
+<li class="chapter" data-level="9.18" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git-4"><i class="fa fa-check"></i><b>9.18</b> 3.3.3 Adding files to Git</a></li>
+<li class="chapter" data-level="9.19" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#keeping-track-of-changes-with-git"><i class="fa fa-check"></i><b>9.19</b> 3.3.4 Keeping track of changes with Git</a></li>
+<li class="chapter" data-level="9.20" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#accessing-files-past-versions"><i class="fa fa-check"></i><b>9.20</b> 3.3.5 Accessing files’ past versions</a></li>
+<li class="chapter" data-level="9.21" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files"><i class="fa fa-check"></i><b>9.21</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.22" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-1"><i class="fa fa-check"></i><b>9.22</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.23" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-2"><i class="fa fa-check"></i><b>9.23</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.24" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-3"><i class="fa fa-check"></i><b>9.24</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.25" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-4"><i class="fa fa-check"></i><b>9.25</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.26" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-5"><i class="fa fa-check"></i><b>9.26</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.27" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-6"><i class="fa fa-check"></i><b>9.27</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.28" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#remote-version-control"><i class="fa fa-check"></i><b>9.28</b> 3.4.1 Remote Version Control</a></li>
+<li class="chapter" data-level="9.29" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#linking-github-repository-with-a-local-git-repository"><i class="fa fa-check"></i><b>9.29</b> 3.4.2 linking GitHub repository with a local Git repository</a></li>
+<li class="chapter" data-level="9.30" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-1"><i class="fa fa-check"></i><b>9.30</b> 3.4.2 Method 1</a></li>
+<li class="chapter" data-level="9.31" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-1-1"><i class="fa fa-check"></i><b>9.31</b> 3.4.2 Method 1</a></li>
+<li class="chapter" data-level="9.32" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-1-2"><i class="fa fa-check"></i><b>9.32</b> 3.4.2 Method 1</a></li>
+<li class="chapter" data-level="9.33" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-1-3"><i class="fa fa-check"></i><b>9.33</b> 3.4.2 Method 1</a></li>
+<li class="chapter" data-level="9.34" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#fork-github-repository"><i class="fa fa-check"></i><b>9.34</b> 3.4.3 Fork GitHub repository</a></li>
+<li class="chapter" data-level="9.35" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-2"><i class="fa fa-check"></i><b>9.35</b> 3.4.2 Method 2</a></li>
+<li class="chapter" data-level="9.36" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-2-1"><i class="fa fa-check"></i><b>9.36</b> 3.4.2 Method 2</a></li>
+<li class="chapter" data-level="9.37" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#push-changes-to-github-repository"><i class="fa fa-check"></i><b>9.37</b> 3.4.4 Push changes to GitHub repository</a></li>
+<li class="chapter" data-level="9.38" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#push-changes-to-github-repository-1"><i class="fa fa-check"></i><b>9.38</b> 3.4.4 Push changes to GitHub repository</a></li>
+<li class="chapter" data-level="9.39" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#pull-changes-from-github-repository"><i class="fa fa-check"></i><b>9.39</b> 3.4.5 Pull changes from GitHub repository</a></li>
+<li class="chapter" data-level="9.40" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#pull-request-to-central-github-repository"><i class="fa fa-check"></i><b>9.40</b> 3.4.6 Pull request to central GitHub repository</a></li>
+<li class="chapter" data-level="9.41" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#pull-request-to-central-github-repository-1"><i class="fa fa-check"></i><b>9.41</b> 3.4.6 Pull request to central GitHub repository</a></li>
+<li class="chapter" data-level="9.42" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#advanced"><i class="fa fa-check"></i><b>9.42</b> Advanced</a></li>
+<li class="chapter" data-level="9.43" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#summary"><i class="fa fa-check"></i><b>9.43</b> Summary</a></li>
+<li class="chapter" data-level="9.44" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#homework"><i class="fa fa-check"></i><b>9.44</b> Homework</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="以下是课堂语音转文字-2.html"><a href="以下是课堂语音转文字-2.html"><i class="fa fa-check"></i><b>10</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="11" data-path="以下是代码部分-2.html"><a href="以下是代码部分-2.html"><i class="fa fa-check"></i><b>11</b> 以下是代码部分</a></li>
+<li class="chapter" data-level="12" data-path="tips.html"><a href="tips.html"><i class="fa fa-check"></i><b>12</b> Tips</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="tips.html"><a href="tips.html#将rstudio中报错语言变为英文"><i class="fa fa-check"></i><b>12.1</b> 将<code>Rstudio</code>中报错语言变为英文</a></li>
+<li class="chapter" data-level="12.2" data-path="tips.html"><a href="tips.html#loading-packages"><i class="fa fa-check"></i><b>12.2</b> loading packages</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="回顾与问题.html"><a href="回顾与问题.html"><i class="fa fa-check"></i><b>13</b> 4.0 回顾与问题</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="回顾与问题.html"><a href="回顾与问题.html#问题"><i class="fa fa-check"></i><b>13.1</b> 问题:</a></li>
+<li class="chapter" data-level="13.2" data-path="回顾与问题.html"><a href="回顾与问题.html#数据的住址路径-in-mac"><i class="fa fa-check"></i><b>13.2</b> 4.1.1 数据的“住址”——路径 (<em>in Mac</em>)</a></li>
+<li class="chapter" data-level="13.3" data-path="回顾与问题.html"><a href="回顾与问题.html#绝对路径相对路径"><i class="fa fa-check"></i><b>13.3</b> 4.1.2 绝对路径/相对路径</a></li>
+<li class="chapter" data-level="13.4" data-path="回顾与问题.html"><a href="回顾与问题.html#绝对路径相对路径-1"><i class="fa fa-check"></i><b>13.4</b> 4.1.2 绝对路径/相对路径</a></li>
+<li class="chapter" data-level="13.5" data-path="回顾与问题.html"><a href="回顾与问题.html#绝对路径相对路径in-windows"><i class="fa fa-check"></i><b>13.5</b> 4.1.2 绝对路径/相对路径(<em>in Windows</em>)</a></li>
+<li class="chapter" data-level="13.6" data-path="回顾与问题.html"><a href="回顾与问题.html#绝对路径相对路径in-windows-1"><i class="fa fa-check"></i><b>13.6</b> 4.1.2 绝对路径/相对路径(<em>in Windows</em>)</a></li>
+<li class="chapter" data-level="13.7" data-path="回顾与问题.html"><a href="回顾与问题.html#设定工作目录-手动挡与自动挡"><i class="fa fa-check"></i><b>13.7</b> 4.1.3 设定工作目录 手动挡与自动挡</a></li>
+<li class="chapter" data-level="13.8" data-path="回顾与问题.html"><a href="回顾与问题.html#设定工作目录-手动挡与自动挡-1"><i class="fa fa-check"></i><b>13.8</b> 4.1.3 设定工作目录 手动挡与自动挡</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="lesson-4.html"><a href="lesson-4.html"><i class="fa fa-check"></i><b>14</b> 第四讲 &amp; 第五讲 ：数据导入 – 数据类型与结构</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="lesson-4.html"><a href="lesson-4.html#加载数据"><i class="fa fa-check"></i><b>14.1</b> 加载数据</a></li>
+<li class="chapter" data-level="14.2" data-path="lesson-4.html"><a href="lesson-4.html#数据导入"><i class="fa fa-check"></i><b>14.2</b> 数据导入</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="lesson-4.html"><a href="lesson-4.html#数据的地址路径"><i class="fa fa-check"></i><b>14.2.1</b> 数据的“地址”——路径</a></li>
+<li class="chapter" data-level="14.2.2" data-path="lesson-4.html"><a href="lesson-4.html#绝对路径与相对路径"><i class="fa fa-check"></i><b>14.2.2</b> 绝对路径与相对路径</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="lesson-4.html"><a href="lesson-4.html#读取数据"><i class="fa fa-check"></i><b>14.3</b> 读取数据</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="lesson-4.html"><a href="lesson-4.html#手动导入"><i class="fa fa-check"></i><b>14.3.1</b> 手动导入</a></li>
+<li class="chapter" data-level="14.3.2" data-path="lesson-4.html"><a href="lesson-4.html#代码导入"><i class="fa fa-check"></i><b>14.3.2</b> 代码导入</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="lesson-4.html"><a href="lesson-4.html#赋值-1"><i class="fa fa-check"></i><b>14.4</b> 赋值</a></li>
+<li class="chapter" data-level="14.5" data-path="lesson-4.html"><a href="lesson-4.html#数据类型"><i class="fa fa-check"></i><b>14.5</b> 数据类型</a></li>
+<li class="chapter" data-level="14.6" data-path="lesson-4.html"><a href="lesson-4.html#数据结构"><i class="fa fa-check"></i><b>14.6</b> 数据结构</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="lesson-4.html"><a href="lesson-4.html#向量vector-1"><i class="fa fa-check"></i><b>14.6.1</b> 向量(vector)</a></li>
+<li class="chapter" data-level="14.6.2" data-path="lesson-4.html"><a href="lesson-4.html#数据框"><i class="fa fa-check"></i><b>14.6.2</b> 数据框</a></li>
+<li class="chapter" data-level="14.6.3" data-path="lesson-4.html"><a href="lesson-4.html#矩阵与数组"><i class="fa fa-check"></i><b>14.6.3</b> 矩阵与数组</a></li>
+<li class="chapter" data-level="14.6.4" data-path="lesson-4.html"><a href="lesson-4.html#列表"><i class="fa fa-check"></i><b>14.6.4</b> 列表</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="lesson-4.html"><a href="lesson-4.html#函数"><i class="fa fa-check"></i><b>14.7</b> 函数</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="lesson-4.html"><a href="lesson-4.html#函数的调用"><i class="fa fa-check"></i><b>14.7.1</b> 函数的调用</a></li>
+<li class="chapter" data-level="14.7.2" data-path="lesson-4.html"><a href="lesson-4.html#自定义函数"><i class="fa fa-check"></i><b>14.7.2</b> 自定义函数</a></li>
+</ul></li>
+<li class="chapter" data-level="14.8" data-path="lesson-4.html"><a href="lesson-4.html#if-条件语句"><i class="fa fa-check"></i><b>14.8</b> if 条件语句</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="以下是课堂语音转文字-3.html"><a href="以下是课堂语音转文字-3.html"><i class="fa fa-check"></i><b>15</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="16" data-path="以下是代码部分-3.html"><a href="以下是代码部分-3.html"><i class="fa fa-check"></i><b>16</b> 以下是代码部分</a></li>
+<li class="chapter" data-level="17" data-path="回顾.html"><a href="回顾.html"><i class="fa fa-check"></i><b>17</b> 回顾</a></li>
+<li class="chapter" data-level="18" data-path="本节课内容.html"><a href="本节课内容.html"><i class="fa fa-check"></i><b>18</b> 本节课内容</a></li>
+<li class="chapter" data-level="19" data-path="数据导入-1.html"><a href="数据导入-1.html"><i class="fa fa-check"></i><b>19</b> 5.1 数据导入</a></li>
+<li class="chapter" data-level="20" data-path="问卷数据human-penguin-project-1.html"><a href="问卷数据human-penguin-project-1.html"><i class="fa fa-check"></i><b>20</b> 问卷数据：Human Penguin Project</a></li>
+<li class="chapter" data-level="21" data-path="赋值与变量.html"><a href="赋值与变量.html"><i class="fa fa-check"></i><b>21</b> 5.2 赋值与变量</a></li>
+<li class="chapter" data-level="22" data-path="赋值与变量-1.html"><a href="赋值与变量-1.html"><i class="fa fa-check"></i><b>22</b> 5.2 赋值与变量</a></li>
+<li class="chapter" data-level="23" data-path="赋值与变量-2.html"><a href="赋值与变量-2.html"><i class="fa fa-check"></i><b>23</b> 5.2 赋值与变量</a></li>
+<li class="chapter" data-level="24" data-path="基本数据类型.html"><a href="基本数据类型.html"><i class="fa fa-check"></i><b>24</b> 5.3 基本数据类型</a></li>
+<li class="chapter" data-level="25" data-path="基本数据类型-1.html"><a href="基本数据类型-1.html"><i class="fa fa-check"></i><b>25</b> 5.3 基本数据类型</a></li>
+<li class="chapter" data-level="26" data-path="数据结构-1.html"><a href="数据结构-1.html"><i class="fa fa-check"></i><b>26</b> 5.4 数据结构</a></li>
+<li class="chapter" data-level="27" data-path="以下是课堂语音转文字-4.html"><a href="以下是课堂语音转文字-4.html"><i class="fa fa-check"></i><b>27</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="28" data-path="以下是代码部分-4.html"><a href="以下是代码部分-4.html"><i class="fa fa-check"></i><b>28</b> 以下是代码部分</a></li>
+<li class="chapter" data-level="29" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>29</b> 6.1 Tidyverse</a></li>
+<li class="chapter" data-level="30" data-path="tidyverse-1.html"><a href="tidyverse-1.html"><i class="fa fa-check"></i><b>30</b> 6.1 Tidyverse</a></li>
+<li class="chapter" data-level="31" data-path="tidyverse-2.html"><a href="tidyverse-2.html"><i class="fa fa-check"></i><b>31</b> 6.1 Tidyverse</a></li>
+<li class="chapter" data-level="32" data-path="问卷数据.html"><a href="问卷数据.html"><i class="fa fa-check"></i><b>32</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="33" data-path="问卷数据-1.html"><a href="问卷数据-1.html"><i class="fa fa-check"></i><b>33</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="34" data-path="问卷数据-2.html"><a href="问卷数据-2.html"><i class="fa fa-check"></i><b>34</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="35" data-path="问卷数据-3.html"><a href="问卷数据-3.html"><i class="fa fa-check"></i><b>35</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="36" data-path="问卷数据-4.html"><a href="问卷数据-4.html"><i class="fa fa-check"></i><b>36</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="37" data-path="问卷数据-5.html"><a href="问卷数据-5.html"><i class="fa fa-check"></i><b>37</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="38" data-path="问卷数据-6.html"><a href="问卷数据-6.html"><i class="fa fa-check"></i><b>38</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="39" data-path="问卷数据-7.html"><a href="问卷数据-7.html"><i class="fa fa-check"></i><b>39</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="40" data-path="问卷数据-8.html"><a href="问卷数据-8.html"><i class="fa fa-check"></i><b>40</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="41" data-path="问卷数据-9.html"><a href="问卷数据-9.html"><i class="fa fa-check"></i><b>41</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="42" data-path="问卷数据-10.html"><a href="问卷数据-10.html"><i class="fa fa-check"></i><b>42</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="43" data-path="问卷数据-11.html"><a href="问卷数据-11.html"><i class="fa fa-check"></i><b>43</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="44" data-path="问卷数据-12.html"><a href="问卷数据-12.html"><i class="fa fa-check"></i><b>44</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="45" data-path="问卷数据-13.html"><a href="问卷数据-13.html"><i class="fa fa-check"></i><b>45</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="46" data-path="问卷数据-14.html"><a href="问卷数据-14.html"><i class="fa fa-check"></i><b>46</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="47" data-path="问卷数据-15.html"><a href="问卷数据-15.html"><i class="fa fa-check"></i><b>47</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="48" data-path="问卷数据-16.html"><a href="问卷数据-16.html"><i class="fa fa-check"></i><b>48</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="49" data-path="问卷数据-17.html"><a href="问卷数据-17.html"><i class="fa fa-check"></i><b>49</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="50" data-path="问卷数据-18.html"><a href="问卷数据-18.html"><i class="fa fa-check"></i><b>50</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="51" data-path="问卷数据-19.html"><a href="问卷数据-19.html"><i class="fa fa-check"></i><b>51</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="52" data-path="问卷数据-20.html"><a href="问卷数据-20.html"><i class="fa fa-check"></i><b>52</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="53" data-path="问卷数据-21.html"><a href="问卷数据-21.html"><i class="fa fa-check"></i><b>53</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="54" data-path="反应时数据.html"><a href="反应时数据.html"><i class="fa fa-check"></i><b>54</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="55" data-path="反应时数据-1.html"><a href="反应时数据-1.html"><i class="fa fa-check"></i><b>55</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="56" data-path="反应时数据-2.html"><a href="反应时数据-2.html"><i class="fa fa-check"></i><b>56</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="57" data-path="反应时数据-3.html"><a href="反应时数据-3.html"><i class="fa fa-check"></i><b>57</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="58" data-path="反应时数据-4.html"><a href="反应时数据-4.html"><i class="fa fa-check"></i><b>58</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="59" data-path="反应时数据-5.html"><a href="反应时数据-5.html"><i class="fa fa-check"></i><b>59</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="60" data-path="反应时数据-6.html"><a href="反应时数据-6.html"><i class="fa fa-check"></i><b>60</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="61" data-path="反应时数据-7.html"><a href="反应时数据-7.html"><i class="fa fa-check"></i><b>61</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="62" data-path="反应时数据-8.html"><a href="反应时数据-8.html"><i class="fa fa-check"></i><b>62</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="63" data-path="反应时数据-9.html"><a href="反应时数据-9.html"><i class="fa fa-check"></i><b>63</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="64" data-path="反应时数据-10.html"><a href="反应时数据-10.html"><i class="fa fa-check"></i><b>64</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="65" data-path="反应时数据-11.html"><a href="反应时数据-11.html"><i class="fa fa-check"></i><b>65</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="66" data-path="反应时数据-12.html"><a href="反应时数据-12.html"><i class="fa fa-check"></i><b>66</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="67" data-path="反应时数据-13.html"><a href="反应时数据-13.html"><i class="fa fa-check"></i><b>67</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="68" data-path="反应时数据-14.html"><a href="反应时数据-14.html"><i class="fa fa-check"></i><b>68</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="69" data-path="反应时数据-15.html"><a href="反应时数据-15.html"><i class="fa fa-check"></i><b>69</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="70" data-path="反应时数据-16.html"><a href="反应时数据-16.html"><i class="fa fa-check"></i><b>70</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="71" data-path="反应时数据-17.html"><a href="反应时数据-17.html"><i class="fa fa-check"></i><b>71</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="72" data-path="反应时数据-18.html"><a href="反应时数据-18.html"><i class="fa fa-check"></i><b>72</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="73" data-path="反应时数据-19.html"><a href="反应时数据-19.html"><i class="fa fa-check"></i><b>73</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="74" data-path="反应时数据-20.html"><a href="反应时数据-20.html"><i class="fa fa-check"></i><b>74</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="75" data-path="反应时数据-21.html"><a href="反应时数据-21.html"><i class="fa fa-check"></i><b>75</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="76" data-path="反应时数据-22.html"><a href="反应时数据-22.html"><i class="fa fa-check"></i><b>76</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="77" data-path="反应时数据-23.html"><a href="反应时数据-23.html"><i class="fa fa-check"></i><b>77</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="78" data-path="反应时数据-24.html"><a href="反应时数据-24.html"><i class="fa fa-check"></i><b>78</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="79" data-path="反应时数据-25.html"><a href="反应时数据-25.html"><i class="fa fa-check"></i><b>79</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="80" data-path="反应时数据-26.html"><a href="反应时数据-26.html"><i class="fa fa-check"></i><b>80</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="81" data-path="反应时数据-27.html"><a href="反应时数据-27.html"><i class="fa fa-check"></i><b>81</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="82" data-path="lesson-6.html"><a href="lesson-6.html"><i class="fa fa-check"></i><b>82</b> 第六讲：如何探索数据: 描述性统计与数据可视化基础</a>
+<ul>
+<li class="chapter" data-level="82.1" data-path="lesson-6.html"><a href="lesson-6.html#描述性统计"><i class="fa fa-check"></i><b>82.1</b> <strong>描述性统计</strong></a>
+<ul>
+<li class="chapter" data-level="82.1.1" data-path="lesson-6.html"><a href="lesson-6.html#part1-探索性数据分析"><i class="fa fa-check"></i><b>82.1.1</b> <strong>Part1-探索性数据分析</strong></a></li>
+<li class="chapter" data-level="82.1.2" data-path="lesson-6.html"><a href="lesson-6.html#part2-数据可视化-ggplot2的基本使用"><i class="fa fa-check"></i><b>82.1.2</b> <strong>Part2-数据可视化-ggplot2的基本使用</strong></a></li>
+<li class="chapter" data-level="82.1.3" data-path="lesson-6.html"><a href="lesson-6.html#part3-data-explorer"><i class="fa fa-check"></i><b>82.1.3</b> <strong>Part3-Data Explorer</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="83" data-path="以下是课堂语音转文字-5.html"><a href="以下是课堂语音转文字-5.html"><i class="fa fa-check"></i><b>83</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="84" data-path="以下是代码部分-5.html"><a href="以下是代码部分-5.html"><i class="fa fa-check"></i><b>84</b> 以下是代码部分</a></li>
+<li class="chapter" data-level="85" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>85</b> Packages</a>
+<ul>
+<li class="chapter" data-level="85.1" data-path="packages.html"><a href="packages.html#批量导入数据"><i class="fa fa-check"></i><b>85.1</b> 7.0.1 批量导入数据</a></li>
+<li class="chapter" data-level="85.2" data-path="packages.html"><a href="packages.html#代码书写规范"><i class="fa fa-check"></i><b>85.2</b> 7.0.2 代码书写规范</a></li>
+<li class="chapter" data-level="85.3" data-path="packages.html"><a href="packages.html#代码书写规范-1"><i class="fa fa-check"></i><b>85.3</b> 7.0.2 代码书写规范</a></li>
+<li class="chapter" data-level="85.4" data-path="packages.html"><a href="packages.html#数据清洗-1"><i class="fa fa-check"></i><b>85.4</b> 7.0.3 数据清洗</a>
+<ul>
+<li class="chapter" data-level="85.4.1" data-path="packages.html"><a href="packages.html#列操作"><i class="fa fa-check"></i><b>85.4.1</b> 列操作</a></li>
+<li class="chapter" data-level="85.4.2" data-path="packages.html"><a href="packages.html#行操作"><i class="fa fa-check"></i><b>85.4.2</b> 行操作</a></li>
+<li class="chapter" data-level="85.4.3" data-path="packages.html"><a href="packages.html#数据框-1"><i class="fa fa-check"></i><b>85.4.3</b> 数据框</a></li>
+<li class="chapter" data-level="85.4.4" data-path="packages.html"><a href="packages.html#分组计算"><i class="fa fa-check"></i><b>85.4.4</b> 分组计算</a></li>
+<li class="chapter" data-level="85.4.5" data-path="packages.html"><a href="packages.html#字符串stringr-package"><i class="fa fa-check"></i><b>85.4.5</b> 字符串(stringr package)</a></li>
+<li class="chapter" data-level="85.4.6" data-path="packages.html"><a href="packages.html#函数式编程purrr-package"><i class="fa fa-check"></i><b>85.4.6</b> 函数式编程(purrr package)</a></li>
+</ul></li>
+<li class="chapter" data-level="85.5" data-path="packages.html"><a href="packages.html#常用函数"><i class="fa fa-check"></i><b>85.5</b> 常用函数</a></li>
+</ul></li>
+<li class="chapter" data-level="86" data-path="数据可视化.html"><a href="数据可视化.html"><i class="fa fa-check"></i><b>86</b> 7.2 数据可视化</a>
+<ul>
+<li class="chapter" data-level="86.1" data-path="数据可视化.html"><a href="数据可视化.html#可视化的重要性"><i class="fa fa-check"></i><b>86.1</b> 7.2.1 可视化的重要性</a></li>
+</ul></li>
+<li class="chapter" data-level="87" data-path="数据可视化-1.html"><a href="数据可视化-1.html"><i class="fa fa-check"></i><b>87</b> 7.2 数据可视化</a>
+<ul>
+<li class="chapter" data-level="87.1" data-path="数据可视化-1.html"><a href="数据可视化-1.html#为何使用-ggplot2"><i class="fa fa-check"></i><b>87.1</b> 7.2.2 为何使用 ggplot2?</a></li>
+<li class="chapter" data-level="87.2" data-path="数据可视化-1.html"><a href="数据可视化-1.html#为何使用-ggplot"><i class="fa fa-check"></i><b>87.2</b> 7.2.2 为何使用 ggplot?</a></li>
+<li class="chapter" data-level="87.3" data-path="数据可视化-1.html"><a href="数据可视化-1.html#为何使用-ggplot-1"><i class="fa fa-check"></i><b>87.3</b> 7.2.2 为何使用 ggplot?</a></li>
+<li class="chapter" data-level="87.4" data-path="数据可视化-1.html"><a href="数据可视化-1.html#ggplot2-的逻辑"><i class="fa fa-check"></i><b>87.4</b> 7.2.3 ggplot2 的逻辑</a></li>
+<li class="chapter" data-level="87.5" data-path="数据可视化-1.html"><a href="数据可视化-1.html#ggplot2-的逻辑-1"><i class="fa fa-check"></i><b>87.5</b> 7.2.3 ggplot2 的逻辑</a></li>
+<li class="chapter" data-level="87.6" data-path="数据可视化-1.html"><a href="数据可视化-1.html#ggplot2-的逻辑-2"><i class="fa fa-check"></i><b>87.6</b> 7.2.3 ggplot2 的逻辑</a></li>
+<li class="chapter" data-level="87.7" data-path="数据可视化-1.html"><a href="数据可视化-1.html#单个图片的组成"><i class="fa fa-check"></i><b>87.7</b> 7.2.4 单个图片的组成</a></li>
+<li class="chapter" data-level="87.8" data-path="数据可视化-1.html"><a href="数据可视化-1.html#单个图片的组成-1"><i class="fa fa-check"></i><b>87.8</b> 7.2.4 单个图片的组成</a></li>
+</ul></li>
+<li class="chapter" data-level="88" data-path="常用图形.html"><a href="常用图形.html"><i class="fa fa-check"></i><b>88</b> 7.3 常用图形</a>
+<ul>
+<li class="chapter" data-level="88.1" data-path="常用图形.html"><a href="常用图形.html#直方图"><i class="fa fa-check"></i><b>88.1</b> 直方图</a></li>
+<li class="chapter" data-level="88.2" data-path="常用图形.html"><a href="常用图形.html#密度图"><i class="fa fa-check"></i><b>88.2</b> 密度图</a></li>
+<li class="chapter" data-level="88.3" data-path="常用图形.html"><a href="常用图形.html#直方图-密度图"><i class="fa fa-check"></i><b>88.3</b> 直方图 + 密度图</a></li>
+<li class="chapter" data-level="88.4" data-path="常用图形.html"><a href="常用图形.html#直方图-密度图-1"><i class="fa fa-check"></i><b>88.4</b> 直方图 + 密度图</a></li>
+<li class="chapter" data-level="88.5" data-path="常用图形.html"><a href="常用图形.html#箱线图"><i class="fa fa-check"></i><b>88.5</b> 箱线图</a></li>
+</ul></li>
+<li class="chapter" data-level="89" data-path="explore-data-with-dataexplorer.html"><a href="explore-data-with-dataexplorer.html"><i class="fa fa-check"></i><b>89</b> 7.4 Explore data with DataExplorer</a>
+<ul>
+<li class="chapter" data-level="89.1" data-path="explore-data-with-dataexplorer.html"><a href="explore-data-with-dataexplorer.html#使用ggpairs"><i class="fa fa-check"></i><b>89.1</b> 使用ggpairs</a></li>
+</ul></li>
+<li class="chapter" data-level="90" data-path="参考阅读.html"><a href="参考阅读.html"><i class="fa fa-check"></i><b>90</b> 参考阅读</a></li>
+<li class="chapter" data-level="91" data-path="lesson-7.html"><a href="lesson-7.html"><i class="fa fa-check"></i><b>91</b> 第七讲：如何进行基本的数据分析: <em>t</em>-test和ANOVA</a>
+<ul>
+<li class="chapter" data-level="91.0.1" data-path="lesson-7.html"><a href="lesson-7.html#t检验"><i class="fa fa-check"></i><b>91.0.1</b> <em>t</em>检验</a></li>
+<li class="chapter" data-level="91.0.2" data-path="lesson-7.html"><a href="lesson-7.html#方差分析"><i class="fa fa-check"></i><b>91.0.2</b> 方差分析</a></li>
+</ul></li>
+<li class="chapter" data-level="92" data-path="lesson-8.html"><a href="lesson-8.html"><i class="fa fa-check"></i><b>92</b> 第八讲：如何进行基本的数据分析: 相关与回归</a>
+<ul>
+<li class="chapter" data-level="92.1" data-path="lesson-8.html"><a href="lesson-8.html#什么是相关"><i class="fa fa-check"></i><b>92.1</b> 什么是相关</a></li>
+<li class="chapter" data-level="92.2" data-path="lesson-8.html"><a href="lesson-8.html#相关-代码实现"><i class="fa fa-check"></i><b>92.2</b> 相关-代码实现</a></li>
+<li class="chapter" data-level="92.3" data-path="lesson-8.html"><a href="lesson-8.html#什么是回归"><i class="fa fa-check"></i><b>92.3</b> 什么是回归</a></li>
+</ul></li>
+<li class="chapter" data-level="93" data-path="lesson-9.html"><a href="lesson-9.html"><i class="fa fa-check"></i><b>93</b> 第九章：如何进行基本的数据分析: 中介分析</a>
+<ul>
+<li class="chapter" data-level="93.1" data-path="lesson-9.html"><a href="lesson-9.html#process"><i class="fa fa-check"></i><b>93.1</b> process</a></li>
+</ul></li>
+<li class="chapter" data-level="94" data-path="lesson-12.html"><a href="lesson-12.html"><i class="fa fa-check"></i><b>94</b> 第十二讲：从分析到手稿</a>
+<ul>
+<li class="chapter" data-level="94.1" data-path="lesson-12.html"><a href="lesson-12.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>94.1</b> <strong>通过Papaja撰写论文</strong></a>
+<ul>
+<li class="chapter" data-level="94.1.1" data-path="lesson-12.html"><a href="lesson-12.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>94.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
+<li class="chapter" data-level="94.1.2" data-path="lesson-12.html"><a href="lesson-12.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>94.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
+<li class="chapter" data-level="94.1.3" data-path="lesson-12.html"><a href="lesson-12.html#part3-正文的撰写"><i class="fa fa-check"></i><b>94.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
+<li class="chapter" data-level="94.1.4" data-path="lesson-12.html"><a href="lesson-12.html#总结"><i class="fa fa-check"></i><b>94.1.4</b> 总结</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="95" data-path="lesson-13.html"><a href="lesson-13.html"><i class="fa fa-check"></i><b>95</b> 第十三章：效应量和元分析</a>
+<ul>
+<li class="chapter" data-level="95.1" data-path="lesson-13.html"><a href="lesson-13.html#效应量简介"><i class="fa fa-check"></i><b>95.1</b> 效应量简介</a></li>
+<li class="chapter" data-level="95.2" data-path="lesson-13.html"><a href="lesson-13.html#算法实现"><i class="fa fa-check"></i><b>95.2</b> 算法实现</a></li>
+<li class="chapter" data-level="95.3" data-path="lesson-13.html"><a href="lesson-13.html#小练习"><i class="fa fa-check"></i><b>95.3</b> 小练习</a></li>
+<li class="chapter" data-level="95.4" data-path="lesson-13.html"><a href="lesson-13.html#元分析简介"><i class="fa fa-check"></i><b>95.4</b> 元分析简介</a></li>
+<li class="chapter" data-level="95.5" data-path="lesson-13.html"><a href="lesson-13.html#元分析实现"><i class="fa fa-check"></i><b>95.5</b> 元分析实现</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="96" data-path="lesson-3.html"><a href="lesson-3.html"><i class="fa fa-check"></i><b>96</b> 第三讲：如何导入数据</a>
+<ul>
+<li class="chapter" data-level="96.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path-working-dir"><i class="fa fa-check"></i><b>96.1</b> 路径与工作目录</a>
+<ul>
+<li class="chapter" data-level="96.1.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path"><i class="fa fa-check"></i><b>96.1.1</b> 相对路径与绝对路径</a></li>
+<li class="chapter" data-level="96.1.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-packge-here"><i class="fa fa-check"></i><b>96.1.2</b> Here包的使用</a></li>
+</ul></li>
+<li class="chapter" data-level="96.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-data"><i class="fa fa-check"></i><b>96.2</b> 读取数据</a>
+<ul>
+<li class="chapter" data-level="96.2.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-csv"><i class="fa fa-check"></i><b>96.2.1</b> read.csv函数</a></li>
+<li class="chapter" data-level="96.2.2" data-path="lesson-3.html"><a href="lesson-3.html#命名"><i class="fa fa-check"></i><b>96.2.2</b> 命名</a></li>
+</ul></li>
+<li class="chapter" data-level="96.3" data-path="lesson-3.html"><a href="lesson-3.html#id_3-data-object"><i class="fa fa-check"></i><b>96.3</b> 了解R里的数据 （R语言中的对象）</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lecture 12: Preparing journal artical with <em>papaja</em></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="以下是课堂语音转文字-4" class="section level1 hasAnchor" number="27">
+<h1><span class="header-section-number">27</span> 以下是课堂语音转文字<a href="以下是课堂语音转文字-4.html#以下是课堂语音转文字-4" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>好大家晚上好
+我们开始上课
+呃
+我们上节课基本上就是把数据导入
+以及导入之后的一些基础知识
+给大家讲一讲
+然后其实
+如果是从纯粹的
+这个数据分析的角度来讲的话
+我们上两节课的内容都是非常简单的
+对吧就是读取数据
+然后查看一下数据的基本类型
+那么了解了这这些基础知识之后呢
+我们才可以做后续的呃
+我们想要做的很多内容
+那么今天我们会讲的一个很重要内容
+就是数据的预处理
+那么这节课的内容呢也比较多
+然后希望大家呃
+把就是get up上面最新的课件
+及时的更新破下来
+呃然后呢
+进行一个呃
+就代码的一个一个演示
+那我们就开始啊呃
+呃数据与数据
+它其实就是我们拿到的数据之后对吧
+你要想做统计分析之前
+你必须要先对它做一些处理
+让它成为一个比较干净的数据
+那么我们心理学很多时候
+以前做数据分析的时候
+都是自己用手动的
+在Excel里面进行的数据清理
+对吧清理好了之后
+我们导入到SPS里面
+进行后续的统计分析
+那么当我们用r以后呢
+呃就是从最原始的数据
+清理的每一个过程
+我们都通过代码把它记录下来
+这样就能够达到我们之前说的这个
+它的可重复性
+那就是预处理
+那么另外一个关于预处理
+呃的一个重要的知识点
+就是我们第一节课可能讲到过
+就是在数据分析中
+可能60%以上的时间
+是用来做数据预处理
+的做统计分析
+的纯粹的做统计分析的
+时间可能是比较少的
+一般的
+尤其是当你的数据量越大的时候对吧
+你要花到这个预算里的时间越长
+这样对我们心理学来说
+可能也没有那么吓人了
+呃基本来说
+我们原始的数据
+就是比较相对来说比较好清理的
+那么我们这一课呢
+主要讲三个方面内容
+第一个呢
+就是我们会介绍一下title works
+这个生态啊
+当然
+我们只会介绍一些最基本的一些知识
+啊尤其是我们常用到的一些知识
+那么对这个对他进行介绍之后呢
+我们就以两个问卷的这个数据的分析
+作为呃作为实例进行一个演示啊
+这是我们在心理学
+以及可能社会中
+也会经常碰到的一个情况
+首先tiding verse
+它基本上就是说是它的这个生态
+就是帮助我们做这个呃数据处理的
+那么我们上节课讲了这个import对吧
+读取数据
+那么他这里面也有一个包
+就是可以用来做这个读取数据
+那么读取完了之后
+当你把这个数据读到r里面
+你后面就要进行一系列的操作对吧
+进行数据的转换
+数据的选择
+然后
+还把它变成一个比较干净的数据框
+对吧啊
+然后还有就是制服串的一些操纵等等
+就它这里面呢
+它的各个包就是为了适用于呃
+各种各样的这个呃预处理
+那么我们接下来会看到
+然后呢对于你有很多这个数据的话
+可能同样的步骤
+你需要做很多次的时候
+他可能会帮你进行批数就
+是这个呃PUR啊
+这个包
+最后呢
+你也可以通过机器Pro进行可视化
+那么这个可视化我们会单单独来讲
+今天核心要讲的就是这一部分啊
+数据的预处理啊
+当然我们所讲的这个g Tidal
+是目前来说比较
+或者说最流行的一个整个生态系统
+那么并不代表说我直接用base啊
+对吧我就不用这个呃
+台里边儿说
+我能不能做完所有这些功能
+理论上讲应该也是可以的
+但是呢呃
+我们之前一直反复强调这个观念
+就是说当我们心理学的研究生对吧
+使用r的时候
+我们最重要就是解决我们的问题
+那么现在已经有这么多人
+开发出了这么多好用的工具
+对吧那么我们就用它
+来去帮助我们解决问题
+在这个解决问题过程中
+如果你对它原理更感兴趣对吧
+可以慢慢进行挖掘
+那么tider
+我们之我们说它是一个很成熟的一个
+呃一个包
+呃一个系统
+所以呢它这里已经有很多类似的
+这种我们叫做机器
+对吧就是这种
+你可以认识为
+认认识为一种手册一样的东西
+它到底有什么样的一些功能
+呃
+这里的话其实在网络上应该也能找到
+我们在这里面仅仅做一个展示
+大家如果感兴趣的话
+可以下载这个课件之后对吧
+直接在这里访问这个网址
+那么它的优势是什么
+就是Tidebergs
+有人说它是整个阿
+生态里面一套非常独立的一个系统
+有人说它是一个邪教对吧
+呃也有人
+当然就是它会特别
+喜欢这个
+而且它是一套
+有自己一套这个底层的设计和语法
+和数据结构的
+那么它内部是具有高度的一致性的
+现在有个趋势
+就是很多
+以前
+他不是在胎底的这个设计理念之下
+设计的包
+他也想把它转到用胎底来重新呃
+来来去写一写
+或者更新一下
+这样的话
+他能够让更多的人更方便的去使用
+对吧
+他就融入到胎底位置这个系统里面
+大家如果说去搜一下
+这个胎底相关的一些包的话
+其实有很大的一个生态啊
+不仅仅是说有胎底verse
+我们前面提到几个包
+那么它的一个好处就是说
+它的这个输入
+一般在数据清理当中啊
+它的输入总是一个参数
+呃总是它的第一个参数
+函数的这个数据框
+呃
+函数的第一个参数总是一个数据框
+也就是说呃
+无论它的函数是什么的排列位
+第一个就是一个数据框
+作为输入对象啊
+后面就是对这个数据框进行处理
+然后另外一个它的一个好处
+就是管道操作
+呃通过这个管道操作符呢
+可以把很多中间的步骤
+就像我们的流水线一样的
+你前面操作完了之后
+然后就直接通过这个管道操作符
+送到下一个操作的呃环节
+然后作为输入
+然后经过下一个处理之后
+然后再直接进入作为下一个处理
+这样的话
+你的整个
+不管你有多么复杂的这个流程
+对吧
+只要你能够通过管道把它写下来
+你最后就只有一个输入
+然后一个输出
+最后你的整个的代码
+包括你的
+这个结果对吧
+你的这个环境里面
+RR虚的里面环境都会非常干净
+那么我们这里做了一个例子
+比方说你需要对一个数据里面的呃
+进行一个筛选对吧
+然后再进行一个排序
+那么我们这里一般来说
+传统的思路就是
+我先有一个中间的变量对吧
+那么我对这个数据进行筛选了之后
+把它存为保存为一个中间的变量
+然后再对这个保存的变量呢
+进行一个排序
+排序完了之后呢
+然后再把它保存为另一个新的变量
+对吧
+这样的话实际上中间我们就产生了
+这么多就是有两步
+所以我们多了feel today的这么一个
+中间的一个变量
+那么它实际上就会保存在
+我们内存当中
+占用我们的内存
+那么如果我们用管道服操纵的话
+它就是直接以这个data作为输入对吧
+然后经过这个filter之后
+然后再经过这个arrange排序之后
+然后它会返回到这个呃
+filter filters sorted data
+这样的话
+我们就省掉了一些中间的步骤
+如果你的中间步骤非常长的话呢
+那你省掉的这个中间面就非常多
+那这样的话你的代码就会
+他不会占用过多的内存
+也会很很整洁
+那么大家可能现在还没有这个感受啊
+使用过了之后慢慢会感受
+我们接下来会会就是例子当中
+大家也能够看得到
+那么在这个台独模式里面
+这个管道横他其实有有多个
+但是我们一般来说
+使用最多就是第一个
+就是呃这个百分号
+中间一个大于号
+然后再一个百分号啊
+一般就是他是向右操作对吧
+把左边的传到右边
+然后你可以反过来把右边的传到左边
+对吧但这个比较少见
+呃还有这个
+就是复合复制的操作符啊
+这个我们也使用的比较少
+一般大家就是用的最多的是这个
+然后另外一个呢
+呃值得就是说一下
+或者说大家如果以后呃使用的时候
+可能会碰到别的
+就是说一些别的语法
+他不是用这样的一个管道操作符对吧
+他可能是用这样一个竖线
+加一个大于号
+那么这是R4.1以后
+他就有一个原生态的一个管道操作符
+比如说r base里面
+它就自带了这个工具工具包
+不需要再用type Mars里面的这个工具包
+来去呃
+实现这个功能
+OK
+那么
+这就是关于Tivers的一个基本的介绍啊
+那么大家如果感兴趣的话
+后面可以去更多的了解
+那么我们这节课呢
+重点在于讲我们如何用Tivers呃
+去做数学的预处理
+那么我们之前说到呃
+我们整个社会科学或心理学员
+我们之所以要学而学这个数据处理
+对吧最终是要解决我们的研究问题
+所以我们这里有一个研究问题
+就是呃
+我们如何
+然后说重复啊
+孩子们
+2018年中一他里面的一些分析对吧
+那么孩子们
+他的这个研究呢
+是一个很典型的心理学的研究问题
+而且也比较大的数据量
+那么他在2015年的时候吧
+应该是在Frontier上面发了一篇论文
+提出了自己的一个理论
+就是说在哺乳动物的整个
+群体当中核心温度是非常重要的
+因为人的这个所有的恒温动物啊
+基本上都是会有一个很苛刻的
+对温度啊
+有个很苛刻的生存条件
+当这个温度过低和过高的时候
+你这个恒温的
+这个动物就立刻就不行了
+对吧
+我们人类也是如此
+那么所以对于呃
+大家考虑一下
+比方说
+在一个很在一个野外的环境的话
+对吧这个温度
+实在是不受你自己机体的控制
+那么对于动物来说
+它是如何调节自己体温的
+那么对于人类的祖先来说
+我们可能也是跟哺乳动物一样
+采用类似的方式来调节体温对吧
+那么在动物领域中就发现
+哺乳动物
+它可能会通过群聚的方式聚到一起
+形成一个整体
+那么它就会能够呃呃
+就是说更好地调节它的核心温度
+比方说呃
+有一些研稍微展开一点
+有些研究发现
+有多个动物在一起的时候
+他保持同样的核心温度
+所耗的这个能量
+要比一个动物保持同样的体温
+耗的能量
+要远远的更低
+那么也就说
+动物
+它可以通过相互在一起的这种社交
+对吧形成一个群体
+那么来调节体温
+那么可想而知
+人类以前可能也是如此对吧
+当我们在人类在漫长的进化历史当中
+可能某一个祖先也是这样的
+那么
+我们现在已经有了很多的外界的条件
+来帮助我们调节体温了
+对吧然后像空调
+那么我们这种在进化过程中的
+这种通过社会的交往
+对吧社会关系的调调节体温
+会不会在进化的这个历
+史上面
+会在我们的人类上留下一点点遗迹
+那么这就是埃及美他的一个理论
+他认为呢
+我们是能够找到这种遗迹的
+那么这种遗迹呢
+就是这种痕痕迹对吧
+曾经的这种社交调节体温这种机制的
+这个这个这个痕迹呢
+就能够通过去去寻找
+在我们的社交关系当中
+和我们身体的核心温度之间
+到底有没有关系
+所以呢他的一个研究问题就是说
+社交关系他能不能影响核心温度对吧
+特别是在离赤道比较远的
+这种低温的地区
+因为在那个温度比较低的地方
+你可可能更多的需要这个体温调节
+对吧在很高的温度地方
+你可能不需要体温调节
+比如基本上三十七八度对吧
+那你其实就人人多了你反而觉得热
+那么所以他的一个研究假设就是说
+在这种比较低温的环境下
+那么在众多的这个变量当中
+社交网络的某一些变量
+会不会跟我们的核心温度
+有密切的关系
+那么这个效益会不会受到这个呃
+一些更加亲密的关系的
+这个状态的影响
+那么所以他的研究方法就是
+通过路径模型对吧
+检验这些调节作用
+然后通过这种有监督的这个呃探索
+探索学习呃
+有有监督的这个机器学习的方法
+来进行探索
+不同的变量之间是不是存在关系
+那么这是他的这个主要的营业结果
+大家感兴趣的话可以去看一下
+这里很明显就是一个中介分析的
+一个呃一个图对吧
+那么另外一个就是去判断呃
+CSI对吧或者说众多的这些呃
+他所测量的变量
+跟身体温度之间到底有没有关系
+那么左边这个图呢
+实际上就是用众多的问卷呃
+去预测核心身体温度
+就是这个叫做core body temperature
+那么右边呢
+就是用用我们身体温度去预测其他的
+对吧我们主要是左边的
+大家如果可以看到的话
+就是在这个地方啊
+呃有一个呃CSI
+那么这表示说呃
+这个社交关系当中的这个复杂度
+你的社交关系网络这个复杂度
+会他是很重要的
+一个预测身体核心温度的一个变量
+当然还有一些更加呃
+就是预测作用更强的
+一些其他的这种非心理因素的
+比方说你的这个呃
+你所在的这个站点
+他的最低温度对吧
+就是你你和这个赤道的距离等等等等
+那么从心理变量角度来讲呢
+他发现身体的这个复杂社会管理
+确实是一个很重要变量
+那么这个大家可以发现
+这个跟我们很多同学
+可能想要做的研究
+可能是具有类似之处对吧
+我们要探索不同变量之间的关系
+然后我们要去建立这种中介
+或者叫做路径模型对吧
+或者是我们更广
+更说的大一点就是这个结构方程模型
+那么对这种数据
+我们肯定必不可少的
+需要进行大量的问卷的数据收集对吧
+那么在这个数据库里面
+我们实际上就是有很多这个呃数据
+包括有身体温度
+那么这个身体温度呢
+是通过测量口腔的温度呃
+来进行测量的
+然后还有一些你生理条件的信息包
+括你的呃用药的情况等等等等
+还有一些基本的信息对吧
+人口学的信息
+包括出生的年
+性别
+呃性取向等等
+那么有一些变量的话
+可能是需要呃
+像呃数据的拥有者对吧
+他是ID进行申请之后呢
+才能够使用的啊
+有一些呢是其他都是开放的
+我们使用的就是完全开放的这些数据
+还有当地的这个地址和信息
+还有这个呃社交网络的信息
+然后呢
+还有一些常见的心理学的变量
+那么当时为什么他做这么多呃
+这么多的问卷呢
+因为他其实也不知道呃
+社交网络信息
+是不是真的能够预测核心体温
+对吧所以呢
+他就尽可能的纳入更多的变量
+这个实际上跟我们很多探索性的研究
+是有高度的一致性的
+那么我们这节课
+假如说我们拿到这些数据
+我们要去像他做的那样对吧
+去解决他要做的那个分析的话
+那么我们可能就要去提取里面的
+这个数据
+里面相关的一些信息
+对吧另外呢
+我们可能需要对这个一些问卷的数据
+进行一些预处理
+比方说每一个问卷
+它测量了某一个维度的得分对吧
+我们肯定要把那个因子得分给求出来
+那么这意味着我们要进行反向计分
+我们要求因子得分
+或者是比方说
+我们或者用个更加粗暴的方法对吧
+我们直接求平均分或者求总分
+作为这个问卷得分对吧
+那就意味着
+我们需要去对问卷进行一些处理
+那么我们这里
+我们来看一下展行里面怎么来处理它
+那么
+首先我们就读取数据对吧
+这里边这个变量我没有展开啊
+但是我们后面会慢慢提到
+所以如何呃
+首先第一步就是这个
+这个读取数据对吧
+那么读取数据的话
+我们跟上节课一样
+我们直接用here这个函数对吧
+然后用pushr的import
+这个是一个最目前为为止
+我们最推荐的
+那么读取完了之后
+我们其实就可以看一下哎
+他会呃就是呈现
+他就就你看
+然后用Pad查看一下
+他就会显示这样一个数据结构对吧
+就站点啊
+年龄啊等等各种各样的数据
+然后我们可以查看他叫的这个colonies
+为什么查看一下colonies呢
+就是说我们可能要进行一些选择
+一些我们呃认为比较重要的变量
+对吧比方说有一些我们可能不需要
+那么我们呃
+可能就可以直接把它筛除掉
+另外的话
+我们要进行
+这个问卷的得分的运算的时候
+我们可能比方说
+我们要求某一个问卷的得分
+对吧我们肯定要选出
+跟那个问卷相关的一些条目
+对吧然后再对他进行一些预处理
+之后就是得到这个问卷的得分
+所以我们必须要知道
+他现在长得什么样子
+对吧每一个column
+每一个列他
+他什么名字
+那么这个数据
+我们其实得到的是比较干净的数据啊
+也就说比方说我们看这里的话
+呃没有每一个名字对吧
+我们基本上都可以看到
+它大致的一个信息
+比方说像这个53
+这里就是self control对吧
+s control 1 s control 2代
+表就是呃
+自我控制问卷的12345678对吧
+那么这个命名本身就是比较规范的
+嗯然后这个缝的话
+比比方说
+指的就是对手机的依赖
+对吧 123456789这个条目
+那么假如说大家
+得到的数据对吧
+他的这个column names没有这么干净的话
+你可能还需要一些额外的运输
+理的步骤
+比如说对问卷进行重新命名啊等等
+呃这个我们今天就在这里有涉及到
+那么
+我们在这里要做的主要的目标是什么
+选择假如说我们是选择几个
+我们回来
+回来
+假如说我们就选择这几个变量呢
+对吧做我们数据预数里的一个练手
+我们把身体温度把它选出来对吧
+然后呢求一个平均的温度
+另外呢
+我们要计算一下这个收缩带verse对吧
+就是hand hands
+就是hands item
+它的这个文章里面
+最核心的这个变量之一
+然后我们也可以把这个site对吧
+就是全世界不同的站点的信息保留着
+这样的话
+我们能够看到各地的信息
+有是不是有区别
+对吧
+然后这个很重要的一个信息就是
+还有一个很重要的信息
+就是跟赤道的距离
+叫做distance from equate对吧
+然后还有就是
+是不是处于这个恋爱关系当中
+另外呢我们要把所有的这个
+挑出一个问卷来做预处理
+其他的预处理的话
+大家就可以按照类似的规则去处理
+那么
+我们挑出了一个叫做塑形障碍的
+一个量表
+他就说你呃
+是不是能够意识到自己的
+情绪表达自己的情绪这么一个量表
+那么他当时汉汉史当时也把这个文
+把这个量表呢加入到里面了
+那么这个量表呢
+有一个呃值得注意的一点
+就是需要在运输理当中
+值得注意的一点
+就是他有一些题目是反向计分的
+所以在预数理当中
+我们必须要把这个反向计分的题目
+给他反过来对吧
+那么最后我们求总分的时候
+我们才可以
+直接就通过相加的方式就可以了
+那所以意味着我们首先需要什么
+选择我们准备预处理的这些变量对吧
+这是第一步
+选择第二步的话
+我们要检查这些数据类型
+是不是我们想要的
+或者说是不是我们预期的
+这个数据类型他有没有偏差对吧
+有偏差的话
+我们可能要进行一些额外的处理
+然后缺失值对吧
+如何进行处理
+是不是要处理一些这个呃
+删除或者什么其他方式
+我们这里就是用比较粗暴的方式啊
+可能就直接删除了
+然后就是进行一些运算
+比方说
+像我们把所有跟塑型障碍的量表
+选出来之后
+它的条目得分
+选出来之后对吧
+我们还要去计算这个量表
+量表或者是这个问卷得分
+那么我们需要一些运算
+那么我们最后还可以比方说
+假如说我们对某一个分组变量感兴趣
+对吧
+我们还可以通过分组的方式求一些呃
+快速的求一些统计量对吧
+比方说均值啊
+标准差诸如此类的
+这样的话
+我们就能够快速的掌握一些
+对这个数据的一些信息
+OK那这就是
+我们现在在这里
+给大家演示的几个步骤
+但是大家可以看到
+在我们不同的数据分析当中
+我们可能会呃进行
+可能步骤是不一样的对吧
+或者是你要进行呃
+各种其他的一种组合
+那么总的来说的话
+这里的几个步骤是一个势力
+大家真正复印数据的时候
+可能要根据自己的要求
+进行灵活的一个选择
+那么这里有个什么好处呢
+为我们把它列到这里
+大家可以看出
+我们在做数据一数据的时候
+我们先要明确我们目标是什么
+一步一步的做什么
+你把这里想清楚非常重要对吧
+如果你想不清楚的话
+那你最后就没办法把它转换
+转换成代码
+你就没办法完成这个数据预处理
+所以你在做数据预处理的时候
+最好就是能够想你的目标是什么
+那你的一第一步要做什么
+第二步要做什么
+第三步做什么
+你一定要把它想的很清楚
+当然你可以边想边尝试对吧
+尝试完了之后发现结果不一样
+然后你再反过头来再去回过来
+再去修改你的步骤
+但是你最终的话
+你要把这个数据预算理好
+这个步骤肯定是要清楚的OK
+好了
+接下来我们就开始用这个泰迪过程
+来根据对这个数据进行处理了
+然后我们第一步
+当然就是把这个包给加载进来对吧
+然后第一步这个选择变量
+我们前面已经提到了对吧
+我们只选择一部分变量
+跟我们感兴趣的这个变量对吧
+我们这里选择的就是呃温度
+一温度2对吧
+两次摄像
+的温度然后设计在vers级这个变量
+然后site站点
+然后DQ romantic
+然后这个地方呢我们用
+就是这个LXE对吧
+就表示输赢障碍的第一个条目
+一直到16个条目
+这里有一个就是
+大家可能后面在处理问题数据的时候
+或者column
+names有相同的命名规则的时候
+我们会使用一个一个办法
+一个快速的办法
+就是我们不会把它一个一个写
+写下来我们中中间加冒号对吧
+他就会自动的帮我们补到L X 1
+L X 2一直到L X 6
+这样的话你就写了一个头
+写了一个尾
+他中间加冒号就是他自动给你补全
+嗯
+那么这里我们这个括号里面的
+是我们要选择的变量
+对吧然后第一个参数
+我们说了
+tidegrass里面
+第一个参数通常都是Beta frame
+对吧我们前面已经把它读起为Beta frame
+然后我们这里用的函数
+就是tinyverse里面的一个包
+叫做DPR YR
+那这个是我们最常用的
+一个做数据处理的一个包
+那么我们用它其中的一个函数
+叫做snap
+非常的符合我们的就是口语对吧
+它实际上就是
+基本上就可以理解为自然语
+在这个框里面你选择snack这个
+这个函数对吧
+第一个
+是从哪一个数据框里面进行选择
+然后后面是你要选择出哪些column
+直接把他的名字打到这里对吧
+然后运行一下他就会选择出来
+我们后面会看到
+那么这里可以呃稍微展开一点
+就是说你在选择的
+时候你可以使用这个列的名字对吧
+比方说我们这里是用列的列的名字
+你也可以用其他的这个方式
+来选择这个列的名字
+比方说你可以说star的位置
+就是这个列的名字是用什么开头的
+是以什么开头的
+或者是以什么结尾的
+或者包含什么特定的这个呃制服
+或者是以什么方式去匹配
+对吧那么或者everything对吧
+就是说所有的东西
+这是一种
+还有另外
+你可以用我们这里还没有打上来
+就是你可以用它的列的这个编号
+123456789来进行筛选
+但这种方式不常见
+为什么呢
+因为我们可能更多的看的是列的名字
+而不是它的编号对吧
+尤其是你的编号很多的时候
+你根本就不知道哪个是编号是多少
+所以我们更常用的是按照列的名字
+comm name来进行选择
+那么这里有一点要注意
+就是说假如说你只写后面这个部分
+我选中了这个部分DRR select对吧
+你做完这个操作之后
+你没有把它复制到一个新的变量的话
+那么你的这个选择下面是他完成了
+但他没有保存
+OK
+然后我们这里是DFE对吧
+我们选择完了之后
+把它再保存到DFE
+这个时候就意味着
+我们把这个选择的结果存到了这个
+复制到了这个DFE这个变量名
+对吧这个时候它就变了对吧
+所以我们再来看的话
+就会发现它已经变小了
+它没有之前那么多了
+我们甚至都可以直接用三轮
+来查看它的结果
+对吧就可以看它每一个这个
+每一个这个变量
+它的一个基本的情况
+那么三个人呢
+也是我们在检查数据的时候
+通常会采用的一个函数
+就是这
+它是背包里面的
+就基础基础的这个包里面的
+那么我们通过它可以快速的看到
+比方说呃
+像这种属于制服的
+它的最小值是多少
+最大值是多少对吧
+那么这个有个什么好处
+就是可以快快速的看一下
+它到底呃这个范围是什么样
+比方说这里temperage它是1,000对吧
+它的match number是1,000
+那这个时候我们一眼就能看出
+这里是有异常的
+对不对
+因为这是人的核心
+身体的核心温度对吧
+相当于你可以理解为人的体温
+然后是它的它的度
+它的单位是摄氏度对吧
+那这里如果是超过100或者怎么样
+那肯定就不太正常了
+所以我们一下就能够看到
+一些最基本的一些情况
+还有他们给我们说有多少个NA对吧
+就是多少个缺失值等等
+这些都我们都能够快速进行查看
+但这里我们可以看到
+它这里没有授权啊
+主要是因为我们通过呃
+页面展示的方式
+如果大家大家在studio里面看的话
+应该是看到比较全面的信息了
+然后你也可以比方说
+发现有一些数据类型好像不太对
+对吧你希望它是制服
+呃不
+你希望它是数字
+但是它实际上呃他他读取进来之后
+他是制服对吧
+这个时候
+你可能要进行一个数据的
+这个类型的一个转换
+那么我们上节课讲的对吧
+数据类型
+转换的时候我们用s
+这个s对吧
+就是把它转成这个制服型的
+那么这个时候转换的时候
+我们需要用到另外一个
+在数据运输里常用的一个函数
+就是mutate newtage
+大家知道就是说变换的意思吗对吧
+呃
+那么它主要用
+比方说创建新的变量
+或者是修改现有的变量
+那么在这个new take这个函数里面
+然后第一个还是知
+还是我们的这个数据框
+对吧那么接下来的话
+你就可以做很多操作了
+然后你前面这个temperature t one对吧
+等于as number
+然后temperature t one
+也就说你在这里做一个什么操作呢
+就是在这个DF这个数据框里面对吧
+让这个temperature one这个这个变量
+这个column这个这一列对吧
+它等于后面这个东西
+后面这个相
+就是
+你把原来的temperature one的这个数据
+面积对吧
+通过s liver转成的数字型之后
+然后再复制到这个column里面
+所以这里面它是用一再用一个类似
+再用一个复制对吧
+那么因为你把以前的这个column
+找回的数值
+之后
+再把它复制到同样一个column name里面
+所以这个时候的话
+整个Beta friend没有变化对吧
+它的cold name还是跟以前一模一样
+比方说你想保留以前的
+然后你可以在这个地方
+比方说t棒后面加个6对吧
+那么这个时候
+它就是生成的一个新的一列新的变量
+而不是原来的变量还在
+那么你的这个temperature t one
+new对吧它就变成了一个新的变量
+那也就是说它可以用来创建新的变量
+那么mutate呢
+它也是一个
+我们可以理解为
+它是一个函数的一个family
+就是说它有一系列类似的一个函数
+比方说mutate at
+它就是通过特殊的
+这个
+就相当于是
+他进行有选择性的进行一个变换
+然后mutate if
+就是通过条件来进行这个变换
+然后newtation里面它会有函数对吧
+比方说我们这里
+这个temperature one等于as number
+什么什么
+那么这个as number
+就是我们在这个函数里面
+在变换的时候
+我们用的某一个函数对不对
+那么这个时候我们需要注意
+你的这个函数
+它原来有什么值得注意的事项
+你在使用在miutake里面使用它的时候
+也还是要注意它
+比方说我们通常比方求均值
+或者是什么时候
+那么它可能会就是碰到缺失值的话
+它就没办法处理了对吧
+那这个时候你把它放在流推的里面
+它还是会没有办法处理的
+你这个它还是会报错
+或者是出出出来的结果跟你不一样
+所以这个时候
+所有的在内部使用的函数
+你都一定要注意
+然后形容不退的
+还有一个注意事项
+就是说转化完了之后
+你需要进行检查
+你希望把它转成什么样子
+运行完了之后
+它是不是转成你希望的样子
+有的时候它没有报错
+但是有可能转化的结果
+并不是你所预期的
+那么你这个时候就可以去检查
+它到底哪个地方出错了
+那么
+同样
+如果我们只做后面这个步骤对吧
+那么他就只是完成这个操作
+完这个操作之后
+我们要把它复制到某一个变量里面
+这样的话
+这个结果才会被保存下来
+那么大家可以看到
+我们在这里的话
+直接就是用这个
+完了之后呢
+就把它复制到原来的这个变量名里面
+对吧相似
+我们就把原来那个变量名给替换掉
+我们这里就没有保存中间的这个变量
+但是一般来说
+我们可能会把这个地方换成一个
+比方说DFE you take对吧
+就保存一个中间变量
+但我们这里啊
+没有保存
+啊等一下
+我还是操操作一下
+要不然就纯奖代码了
+啊这是我们第第六课的这个notebook
+我们可以从这个地方
+就是从导入数据开始
+在这个book里面
+这里有绿
+右上角对吧
+有一个绿色的小的
+这个三角你点一下的话
+表示他就把整个代码框呃
+整个代码框都运行一下
+那么大家可以看到
+就是这三个间号
+然后加上一个r
+这里就表示这个代码框的起始点
+下面再跟3个间号
+表示这个代码框的这个呃终点对吧
+他只会运行
+他只会把这里面的识别为r代码
+而且这里一定要加个r
+表示是r代码
+那么我们假如数据之后
+这里有一个DF one对吧
+它有1,500呃
+17行然后232列对吧
+它在这里叫various
+那么我们可以
+其实可以查看一下它的这个情况
+对吧我们前面说在在studio里面
+有可能我们有可能显示
+不全
+那么在课件里面有可能显示不全
+在这里它会显示
+我们可以看这里可以拖着看
+然后它有两页
+然后我们也可以去查看它的这个
+column names对吧
+那在这里
+我们也可以就非常全的看到
+它说的column names
+然后在这里加入这个tiny verse的包
+好这里就是我们第一步对吧
+select大家可以看到
+我们刚才这个地方是有232个variables
+对吧我们通过选择之后
+这里因为我们没有中间电量
+所以说的话
+它这里就只保只保留了
+我们选择了22个变量
+所以还有其他200多个变量
+都已经被直接被扔掉了
+对吧
+当然
+在r里面这不是一个很大的问题啊
+只要你没有把原数据删呃删掉对吧
+你还可以继续读进来
+继续处理那些被删掉的数据
+嗯
+然后我们可以在这里看一下
+用summary来看一下对吧
+我们刚在课件里面没有看的不是很全
+但在这里面
+然后我们可以看到呃
+基本上每一个变量
+它都会给你一个summary
+然后这个mutate呃
+我们可以看一下
+你这种应该
+这里的数据面积应该本来就正确的
+因为它这里能够给出一个呃均值对吧
+就表明它原来就是memoric
+就是数就是这个这个数字对吧
+然后像site的话
+大家可以看到它就是correct对吧
+就是字符
+然后我们这里还是点一下
+就是做一个示例对吧
+把它转成呃
+转成这个
+这个
+转成制服
+做了一个鲈鱼操作
+我刚刚在这里说我们可以新的升新的
+新的这个变量对吧
+然后我在这里就直接把它改成一个6
+对吧我们先可以点开看一下啊
+他这里是没有6的对不对
+那么我们说Miti的
+它不仅仅可以呃转
+就是改变原来
+修改原来的变量也可以生成新的变量
+那么我们可以通过这种方式来修改
+再点开看一下啊
+这个地方
+我们可以看到这边就有一列新的变量
+对吧
+就是我们刚才在这个temperage t one后面
+再加了一个new
+这么这么一个变量
+所以没有退的话
+是可以生成新的变量的
+也是没有关系的
+这个地方
+就是你生生成的这个新的变量
+或者是修改之后的
+目标的变量的这个名字
+然后处理缺失值的问题啊
+比方说呃
+这个地方就是有的
+有的时候我们确实有一些背式
+因为它有缺失值之后呢
+我们需要把它给删除掉对吧
+那么我们这里可以就通过这个filter
+filter这个函数呢
+它是对立对行进行进行一个过滤
+我们刚刚说的这个select
+是我们选择哪一些columns对吧
+选择哪些列
+那么filter的话就是我们去选择哪些行
+那么这个就是筛选行的时候
+他是用逻辑判断
+就是我们比方说针对某一个变量对吧
+那我们这里要要保留的
+就是它不是NA的那些值
+对吧
+所以我们实际上就是先要对某一个
+我们目标的那个column
+比方说做一个判断
+就说比方说term是one对吧
+我们要所有第一次测量温度的时候
+它是有数
+值的这些倍数
+那么我们用什么函数
+就是用ENA
+然后在前面加一个飞对吧
+以人类表示就是他是NA
+是缺失值对吧
+我们前面加一个感叹号对吧
+我们上节课讲到
+感叹号就表示逻辑上的非对吧
+就是他非NA的数据对吧
+啊其实通过这样的一个处理之后
+大家想哈
+我们得到了一个是是什么东西呢
+就是跟我们的这个temperature t
+one的列的函数一样长的一个项量
+对吧那么这个项量就全部是two和force
+如果比方说它是第一个值
+它不是它是有有有数值的
+它是37.5度对吧
+那么这个时候它就是
+它就不是n a
+所以呢它就是q对吧
+然后一直以此类推对吧
+一直到1,517行
+它就全部会判断一遍
+形成一个形成一个向量
+这个向量里面全都是q force
+那么我们之前说过呃
+我们实际上也可以通过这个q和force
+来进行选择
+对吧那么选择的时候呢
+它会自动的保留那些q的那些行
+把那些force的行呢
+就去掉那么field呢
+其实就是完全就是这个作用
+但是我们这里的筛选条件呢
+可能不止一个对吧
+我们需要
+不仅仅他的第一次的体温测量是呃
+有有这个数值的
+他第二次的也需要有对吧
+而且我们还需要有他的这个地区的
+他跟次道的这个距离的一个数据
+所以实际上
+我们是把三个逻辑的条件进行的一个
+用and对吧
+就是且的这个关系把它连接起来
+那么相当于是我们每一个逻辑判断
+都会得到一个呃一个项量
+对吧得得到一个适合呃去和Forse
+一个呃一个项量
+那么三个项呢
+它通过且的关系连起来之后
+就是说三个都是等于处的时候
+那么这一行它才是为处对吧
+如果三个判断当中有一个为force的话
+那么它最终的这个逻辑判断结果
+就是force
+对吧所以我们通过这种方式呢
+我们就得到了一个
+非常就是符合我们条件的一个项链
+它是一个to和fors一个项链
+然后呢再通过field
+这个field呢
+就是通过这个项链
+对我们的这个DFE进行一个筛选
+那么同样我们筛选完了之后
+我们要把它保存起来
+我们可以
+大家可以看到
+我们现在这里的呃DFE对吧
+它是1,517行
+那假如说我只我只运行后面这个
+大家可以看到
+我选中了这个filter后面的这些代码
+然后用control加回车的话
+那么它只是把这个结果
+打到了我这里
+打到了我们下面这个输出这个地方
+对吧
+大家可以看到它这里显示叫做description
+然后DF 1,427行乘以23对吧
+也就说
+实际上如果我们只运行这个filter
+这个函数本身的话
+它就给我们一个输出
+但是
+他没有把它复制到任何的一个电量
+因为我们只运行后面一半
+后面一半
+所以他没有把它复制到DFE对吧
+所以DFE这里还是1517号
+大家注意到这个区别啊
+所以我们一定要把它整个运行一下
+就是
+从d f 1 然后加上复制符号
+一直到最后对吧
+然后我们这样运行的话呢
+呃他就把它复制到d f一二
+大家可以看到
+这个时候刚才是1,517对吧
+现在就变成了1,000
+呃 427
+也就是他筛掉了一些有确实值的
+一些贝斯的数据
+OK
+那我们就筛选出来了我们想要的数据
+对吧
+而且我们也选择出了我们想要的变量
+那么接下来的话
+我们就可以进行一些预算了
+那么预算的过程中
+其实我们还是要生成这个
+其实
+我们就是要生成一个新的一个变量
+对吧
+比方说我们要我们计算他的一个均值
+那么这个时候
+我们实际上就是对temperature
+t one和t two对吧
+做一个均值
+但是我们先对每一个贝氏做一个君子
+而不是把t one所有贝氏求一个君子
+对吧这两个是不一样的
+一个是每一个贝氏它有两列对吧
+我以行为单位来进行求君子
+另外一个就是说
+我求替换所有背时君子
+这是什么
+以列为单位来求君子对吧
+那么一般来说
+我们的命这里是
+如果你直接用到这个dataframe里面的话
+它就是以页为单位的
+所以我们需要用这个romance来去求
+以行为单位进行求这个均值
+那么这个求均值的这个里面
+就romance是用来求均值
+对吧那么在这个里面
+我们又有一个函数嵌套了一个函数
+就select对吧
+select跟我们前面讲过
+就是我们以哪一些
+the difference里面哪一些
+呃这个column作为来来
+来做我们的输入
+去求这个行的君子对吧
+我们是通过这个选择选择出了start with
+start with对吧
+以temper开头的这些变量相比
+只有两个对吧
+这个我们前面讲过了
+所以这里面就是
+我们选择出temper是t one和temper t two
+对吧然后呢
+来求这个呃romance
+就是以行为单位来求君子
+那么他求完了之后
+他得到了一个
+是一个什么
+也是一个Vector对吧
+我们把这个Vector
+把这个限量
+复制到一个
+叫temperature的这么一个变量里面
+然后呢
+这样的话他就得到了一个新的变量
+我们可以演示一下
+然后就下课休息啊
+这就是我们刚才讲的这个内容啊
+我们印起来之后
+我们可以看到
+这里
+他会多了一个temperature的一个变量
+对吧
+那么这个就是两次
+两次温度的一个一个均值
+OK我们先休息一下
+好大家好
+我们继续刚才讲到这个转化对吧
+然后我们在下一步就是
+可能是我们这个问题
+操作里面很大家经常会常用的一点
+就是我们通过这个呃反向计分
+那么这个反向计分它有很多种方式啊
+我们在这里讲的
+是一个比较通用的一个呃
+一个方式
+就是叫做case问
+首先的话
+我们可能也都是在这个newtate里面
+进行操作的
+因为我们要修改原来的变量对吧
+所以
+我们要在这个newtate里面进行操作
+然后我们用这个比方说
+我们对Irx对吧
+这个竖琴障碍里面的4024和16这几个items
+进行呃反向计分
+那么这个时候有几种方式都可以对吧
+比方说我们这里面呢
+就是case one
+就是实际上就是说对于这一页
+只要是它存在对吧
+我们就通过只要它有有这个数值
+我们就用6减去这个原始的分数
+那么
+它现在是一个条件判断的一个函数
+你说它对
+它可以对于很多条件去判断之后
+然后呢用一个波浪号
+然后如果符合这个条件
+那么我们就做这个波浪号
+后面这个操作
+那么大家可以看到
+我们这个地方直接就是用数对吧
+数就表示我出了一个固定的词
+就是都是真的
+也就说我对这一点
+对这一点我都要做
+后面的这个操作
+就是用这个反向计算的方式
+那么我们可以看一下这个
+其他的啊
+就是我们转换之后的结果
+先看一下转换之后的结果
+那么42对吧
+还有这个
+这个以前是2分对吧
+我们通过反向积分之后
+把它转成这个呃4分
+然后1分转成5分对吧
+这是我们呃
+心理学中常用的这个反向积分
+那么kiss one的话
+他实际上就是
+也可以采用其他条件对吧
+比方说
+你可以你要对年龄进行操作的时候
+对吧如果说他是小于18岁
+你就把他修改为儿童对吧
+然后如果说他大于18岁到65之间
+你把它修改为adult
+然后如果是大于65
+你把它改改成老年人对吧
+那这样也是可以的
+那么前面就是一个判断条件对吧
+后面就是你符合这个条件之后
+你要做的操作是什么
+那么即便他是correct的时候
+大家可以看到也还是可以做这种操作
+因为它就是类似于符合r里面的那种
+呃自动的这种
+这种操作
+kiss one的话是一个就是比较通用的
+因为它前面这个条件判断
+大家还记得我们在做这个
+就是在上节课
+讲数据的这个操作的时候
+对吧做这个逻辑判断
+其实我们在很多讲一下都可以用对吧
+所以大家可以认为
+它是一个睫毛柔的
+一个通用的一种方式
+那么另外一个内饰通用的方式就是呃
+else对吧
+那当然我们在上节课讲到那个
+就是条件判断
+e什么什么什么
+然后l什么什么对吧
+那么在new test里面呢
+它也有类似的用法
+就是就叫e l连到一起来写
+然后第一个就是你的条件
+第二个就是这个判
+第一个就是判断
+第二个2
+就是你判断为真的时候要做什么
+第三个就是你在判断为就是这个
+这个错误的时候做什么
+如果我没有记错的话
+它应该就是衣服钥匙
+然后这里第一个二个就是条件
+然后第二个就是你会真的说做什么
+第三个条件就是你不违规的时候
+大家可以看到
+它也是一种归物的常用方式对吧
+对数据进行转换
+经营符合条件的转换
+但问题就是
+如果你有多个条件要判断的话
+你就要写很长的一串
+一副钥匙对吧
+那么这时候kiss one的话
+就是一个更好的选择
+那么我们可以看到
+就是我想想也可以通过这个哎
+我们应该是不是还有一个
+我们可能把一个入杀的
+这个反向机关的操作
+给呃
+是不是给弄掉了
+哦没有在这儿
+可能有点跳啊
+就播撒里面
+就因为我们之前说过
+播撒是专门针对这个心理学的呃
+一个软件
+所以呢它其实有自己的
+这种
+更符合我们的这个呃思维方式的
+一个反应积分的方式
+所以就是有哪些需要进行反应积分
+对吧
+然后我直接就是在求问卷总分的时候
+我可以直接就有一个revert的这个操作
+就是我我在求问题得分的时候对吧
+我知道我的这个变量名是
+比方说从LX1到LX16
+对吧那么我在求总分的时候
+我就直接把这些需要反向积分的
+这些分数
+写到这里
+然后我同时也把这个理科的
+他是几分到几分的这种方式
+记录方式也算
+他内部就完全自己帮你操作对吧
+也就说
+你甚至不需要去先把它反向积分
+然后再求和
+而是只要告诉这个公司啊
+在求总分的时候
+你需要哪些条目
+经济反向积分就可以了
+那么它是比较符合我们心理学这个
+这个思维方式的
+但实际上我们自己要算的就是
+第一步
+就是通case本或者其他的方式对吧
+或者以files等等这种方式
+去把这个items的分数反过来
+对吧然后是1-5分
+那么我们反向
+基本就是6减去这个原始的分数
+对吧然后呢
+我们再去求这个总分
+那么我们求总分和
+跟之前实际上是一样的
+就是用这个rose on对吧rose
+on然后再加上选择以这个Alice开头的
+这些所有的行
+嗯
+OK这是波杀的操作
+我们刚刚讲过了
+然后我们最后一个操作
+比方说
+我们想要进行这个分组的一个呃
+比较或者是分组的查看对吧
+比方说我们想看呃在这个数据里面
+不同的站点
+他们的平均分数是不是有所区别
+那么我们就可以
+比方说以站点作为分组的一个条件
+就首先把数据方分成不同不同的组
+然后在不同的组里面呢
+对他就求这个描述性的数据对吧
+这里就会涉及到有几个函数
+第一个就是分组
+我们把这个data frame按照某一个
+按照某一个columns
+按照某一个变量进行分组
+那么也就是说这个site里面
+它有几个独特的值
+我们就把它分成几个组
+然后这个site里面我们应该是有12个
+还是有15个独特的词
+那比方说有一个中国的site
+有一个英国的site
+有个德国site对吧
+那么我们就会按照这个site的名字
+把它分成不同的组
+然后第二个呢
+就是summarize
+summarize就是说
+我们去求这个dataframe里面的呃
+做一些运算
+然后呢把它运算完了之后呢
+返回返回成一个columnate
+然后我们这里就是把这个
+就是两次体温测量的均值
+对吧按照site做一个求平均
+那么因为我们前面有一个分组啊
+所以说通过这goodbye之后
+我们把它复制到data from一对吧
+那么这个时候我们这个data from一里面
+它就会自动的有一个分组的标签
+那么当你做3
+就是求用3个y值的时候
+它会自动的分组
+来区做你要做的这个运算
+也就是说
+比方说我们这个size里面有十几个size
+对吧它就会对每一个size的这个数据
+都去求这个温度的平均值
+然后有15个site
+我们最后就得到15个site
+和每个site的一个MID temperature
+那么最后一个就是on group
+就是我们用完了group之后
+即便我们求了这个summer对吧
+它这个分组标签还在里面
+还在里面的话
+我们一般来说
+要把这个分组标签给去掉
+就用on group这个函数
+那么不做这个函数的话
+他后面就会一直要求
+保留这个分组变量
+在这个dataframe里面
+可能到后面
+你希望把这个分组变量不要了
+对吧但是如果你不把它去掉的话
+它可能会一直保持在里面
+会引起一些很奇怪的一些结果
+所以这是分组
+进行一个数据描述呢
+就是有两个呃
+主要的一个函数
+一个是goodbye
+第二个good goodbye了之后
+然后通过summary这个函数
+对数据框里面进行汇总的操作
+那么在这个汇总操作里面呢
+有常用的这种统计的函数
+比方说有n
+因为心理学
+有的时候我们知道
+想要知道这个条件之下
+它有多少个人
+对不对那么我们希望之后就是n有
+然后呢就是me some
+还有me点
+就是我们常用的一些统计量操作一下
+这个地方我们是用case
+when对吧然后
+运行一下没有什么问题
+然后这个地方也是case when的一个演示
+啊
+这个地方注册我们就跳过了
+因为后面还有很多内容啊
+那么这个地方是求求他的呃
+Alex这个问卷得分的和呃
+问卷得呃叫做问卷得分对吧
+然后这个地方
+我们可以用Bruce r的方式来求
+然后这个地方
+就是我们刚才讲goodbye之后的一个呃
+一个特点
+我们我们这里可以先看一下
+在good bye之前和good bye之后
+我们可以看一下
+比方说我们可以看这个地方
+我们直接选中DFE对吧
+然后它有一个description
+然后我们把它分组之后重新赋予它
+对吧然后我们再查看一下
+大家可以看到
+这里的话
+它跟之前就不太一样了对吧
+它这里有个groups
+然后有个set 15
+就表示它打成了一个分体的标签
+如果你不用ungroup的话
+后面这个标签会一直在
+好我们现在比方说用这个group的这个
+这个值对吧
+去求一个
+演示一下
+我们只是用来演示一下求一个值
+那么我们把这个sum right之后的
+赋予到了一个新的一个变量
+变量名叫做DFR对吧
+我们可以看一下
+DFR的话它其实只有两个variables
+第一个就是site
+第二个就是main temperature
+也就是说它这个Samurai就是
+我先根据你的分组这个标签对吧
+每一组球运算出你要得的东西
+然后呢就把它返回对吧
+就形成了一个呃
+你分组的这个变量和你
+要求的这个结果
+这个描述性统计放在一起
+然后你再增加一个对吧
+我们简单的这里简单的增加一个
+比方说你
+n等于n对吧
+我们要求一下它的这个呃多少个样本
+那这个时候大家可以看到
+这个时候这个叠化就变成了
+除了site以外又增加了一个变量对吧
+它不仅有main temperature
+还有一个n
+就是我们关心的这个样本量对吧
+这个时候我们看到
+每个site的样本量都是不一样的
+那么这个对我们去呃描述数据的时候
+或者是你要想把这个数据当中的一些
+描述性统计
+提取掉之后
+是非常有帮助的
+那么我们也可以看一下DFR对吧
+它会是这样的一个呃这个这个table
+然后DF 1的话呢
+它还是有这个group的这个标签的
+那么如果我们把它安group之后
+再来看的话
+它这个group标签就应该就没有了
+OK前面我们讲的是分组对吧
+我们之前跟大家说过
+其实我们可以通过这个
+tiding mash的管道
+操作
+那么这样的话没有任何的中界面呢
+就一下从这个我们呃
+某一个数据框的输入
+对吧最后做到
+得到我们的整个一系列处理之后
+的一个结果
+那么我们通过管道进行操纵
+就直接可以把它连起来
+那么连起来的时候大家可以看到
+这里有一个直接值得注意
+就是我们然后原始数据对吧
+直接通过这个管道
+输入到后面这个函数周围
+作为它的一个输入对吧
+那么
+我们第一个argument就是这个difference
+就可以省掉了
+比如说我们之前做操作的时候呢
+跟select对吧
+第一个参数就是DFE
+然后后面再连我们要选的这些
+呃这些内容对吧
+在这个管道里面
+我们可以直接把它省略掉
+那也可以我们用一个点逗号来表示
+用一个点来表示
+是管道输过来的这个变量
+那么一般如果说你呃
+这样一个管道操作的话
+你把它做这个函数的一个
+第一个ID门的话
+就可以省省略了
+那尽量就是把我们前面的对吧
+完全连起来
+然后做就
+最后就直接就变成了第二发
+我们要的这个结果了
+我们可以看一下
+大家可以看到
+在管道操作当中的话
+看起来整个数据就是比较简洁对吧
+就这里是输入
+这里是整个操作
+完了之后就作为一个输出
+就是整个数字
+就是我们刚才看到的就这个内容对吧
+我们这里这是原来的这个代码对吧
+我们没有加上n
+所以说还是只有这个main temperature
+OK
+那么我们可以看一下
+对问题系数的这个数理对吧
+我们常常用的函数有filter
+然后就是选
+就是选择选择行对吧
+you take就是对这个变量瓶操作之后
+生成性的变量
+或者是修改信用的变量
+这两个操作我们都见过了
+还有case one
+就是在这个new take组里面
+通过条件来对重新编码
+而roof by和Sunrise还有Andro
+这三个通常一起来使用
+来进行分组做一些运算
+然后select就是选择一些columns
+对吧我们感兴趣这些columns
+然后i already就是按照某一个资金排序
+这是我们刚开始的时候演算的
+啊还有一个常用的名字
+我们还有一个
+因为我们形容了一个比较干净的数据
+啊所以我们没有用到它
+就是Relate
+就是重新命名
+然后你刚开始拿拿到的数据
+可能这个列的名字你一看哇
+非常不规范
+对吧然后就是S1
+S2一直到SN
+你觉得这个对你来说没有任何意义
+你想把它修改一下
+那你就可以用Relay这个函数
+这个呃不难啊
+就是操作跟我们这里的都是类似的
+大家可以搜搜索一下
+那么大家如果后面想要强化一下
+这在这一小节学的内容的话
+你们可以去这个上面里面做一下
+比方说分布区
+prosa来去算这个得分对吧
+然后保留特定得分的背式
+然后按照language family的分组
+然后计算campage均值
+然后用管道进行操作
+那么最后
+你可以分组计算它的这个DEQ
+和CSI的均值
+那这些的话
+就是大家可以
+如果说你要去说
+我对这一节内容
+要进行更加深入掌握的话
+最好还是练习一下
+因为写代码要提高的话
+没有别的窍门
+就是多写多敲多犯错
+然后我们得快点啊
+那么还有一半的内容
+我们另外一个研究内容
+然后我们还有这个反应时间的数据
+对吧
+呃也是我们心理学经常会碰到的
+那么我们这里简单的说就是说探讨
+比方说这个人是不是
+会对自我相关的呃
+优这个这个刺激会优先加工
+对吧
+那么这是很多之前的研究都发现了
+那么我们可以探讨
+就是说这个是不是跟
+只有跟特定的自我相关内容的
+这个事迹
+才会被优先加工
+对吧另一些他虽然跟自己相关
+但是呢他可能也不会被优先加工
+那比方说
+我们社会心理学里面有个概念
+叫做self announcement
+对吧就是大家都会觉得自己特别好
+特别积极
+呃特别特别幸运对吧
+前途一片光明
+对
+这个是我们八几年社会心理学的人
+就发现了这么一个呃
+这个积极的自我优势对吧
+那么在这个认知性项目中
+会不会同样存在这个优势呢
+就是说跟我自己相关的这个信息
+有的是好的
+有的不好的对吧
+有的是我不喜欢的
+那么跟我自己
+我自己喜欢的这些信息
+我才进行优先处理
+跟我自己
+我自己没有那么喜欢的
+我可能不会那么呃优先处理
+对吧呃
+我们就做一个简单的实验
+就是说把这个几何图形
+和非常简单的这种出现概念
+对吧好
+好的自己
+好我好的他人
+好人对吧
+坏的自己
+坏人呃
+坏的坏的自己
+坏我坏他人
+坏人坏人
+进行连接
+连接对吧
+然后做一个简单的匹配任务
+就是上面呈现一个图形
+下面呈现这个文字标签
+你去判断这个图形和标签
+是不是符合你刚才学习的这种关系
+那么我们的假设就是说
+可能只有当这个图形对吧
+和好和好的自己相联系的时候
+我们的反应才会又快又准
+那这是我们的那个研究的发现
+确实发现
+这个绿色的就是代表自我的这个条件
+对吧那么大家一定要good bad对吧
+那么good的条例下面
+我们反应的时间是非常快的
+然后相对是bad呢
+就是坏我的时候呢
+就反应的这个时间就变慢了
+那么这是matching touch的呃
+当然我们主要就关注这个数据啊
+其他的时间中
+我们也得到一致的一个结论
+我们主要就关于关于这个matching touch
+的数据那么我们来看一下这个数据
+它是保存在这个data match
+下面这个文件夹
+我们看一下
+它这里有一堆这个点Alt的文件
+对吧它基本上有一个
+呃有一个秘密的规则
+就是data experiment 7对吧
+然后rap然后match呃
+然后下划线对吧
+然后后面就是编号
+那这里就是实际上是呃
+前面一边呢
+就是对这个实验的一个描述对吧
+然后Mac表示matching task
+就是我们关注这个匹配任务
+后面这个新号呢
+就是这个贝时的编号
+那么总共有44个贝时对吧
+所以呢有44个这个文件
+那么我们主要的变量呢
+就是这个标签对吧
+就是一个图形
+一个标签
+他们所代表的概念
+以及他们之间的关系
+那么我们关注这个应变量
+就是背时的反应是不是正确的对吧
+是不是两个
+它符合原来关系的时候
+背背的判断是匹配
+呃不符合原来他学习的关系的时候
+他直接呢他他反应就是不匹配
+那么我们还有两个
+就是一个是-1
+表示6按
+键一个是2的话
+就表示按了两个键或者按了别的键哈
+然后这个是属于错误的这个反应
+然后呢对背时的反应时间呢
+我们比方说要把这个小于200毫秒的
+这个40都去掉对吧
+因为人的这个反应不可能小于200毫秒
+呃
+然后我们可以看一下这个数据
+就是长长成我看一下啊
+它就是类似这样的对吧
+如果我们打开的话
+然后我们现在要去比方说
+要去计算一个自我优势效应
+就是说在这个匹配效应下面
+好的我和好的他人之间对吧
+他有多大的差别
+就好的我和好的他人都是好的对吧
+但是我还是比他人快
+那就说明呢
+这个
+我们对自己的信息有一个优势效应
+那么我们可能就是要去读取数据对吧
+但这里有一个区别
+就是我们要批量的读取
+因为有44个数据
+我们不可能手动的去输入44个数据
+对吧那么我们一定要用代码
+来帮助我们去加快这个效率
+然后其他的都是我们刚才讲到的
+然后另外就是拆分变量
+我们如何对字符进行一些拆分
+然后一个很重要的操作
+就是如何将常数据转成宽数据
+我们待会讲哦
+然后最后就是计算对吧
+计算这个差异
+这个时候
+实际上我们可以用mutation来进行计算
+这个我们直接讲
+那虽然说这里还有一半的内容
+但是很多的
+都是我们刚才在问题顺序里面讲过的
+没有讲过内容的话我就会重点讲
+再讲一讲
+第一个就是批量的读取对吧
+我们刚刚说有44个倍式
+数据
+那么我们可以先读一两个倍式的数据
+来看一看他长什么样子
+对吧然后我们这里就读了P1和P2
+那么这个时候我们用的是read table这个
+这个函数为什么会推广呢
+就是它实际上对所有的这个字
+叫什么TXT的这种文本文件
+都是能够读取的
+然后呢
+它可以去设定你的这个separate是什么
+对吧
+就是它是一个比较灵活的一个方式
+那么我们呃
+这个时候
+比方说我刚开始可能尝试读取CSV
+发现不是不是很理想
+因为发现用用的其他的也不是很理想
+对吧我们就用red CSV
+当然你说我可不可以用PROS啊
+那一Pro它自动帮我识别呢
+也是可以的
+那我们读取了一个之后
+你就发现他可以
+他基本就是他的日期对吧
+然后他的这个呃到底是不是practice
+还是正式的实验背时编号
+年龄等等这些信息
+那假如说我们读起两个之后
+我们想把它合并起来对吧
+那么通常而言的话
+我们是通过这种呃
+r by就是行的合并这种方式来进行呃
+把两个背时的数据合并起来对吧
+那么当然我们也可以用DPLYR
+就Tidy box这个包对吧DPLYR对
+那还有一个band rose
+也是有同样的一个一个呃功能
+就是说
+当两个dataframe
+它是它的column name是一模一样的时候
+我们可以用直接upbine
+就把它相当于是在第一个
+这个dataframe后面
+把它的行往后面叠加就可以了
+这是一个很也很
+符合我们直觉的一个方式对吧
+但是在合并的时候
+一定要确保
+这两个数据框的完全有一模一样的
+就是column names和column的数量
+如果说他的这个列的名字不一样
+或者数量不一样的话
+他肯定会输错的
+那么这里就会有个问题对吧
+假如说我们有有40个倍数的话
+我们不可能就是从P1到P40
+全部这么去粘贴
+对吧非常的累
+而且你你的这个就是up by
+这个地方也会越写越长对吧
+我们肯定不希望就是说呃
+这么笨的方式来去解决
+尤其是当我们有这个follow
+这种呃比较好的这种循环的时候
+对吧
+那么follow呢
+就是相当于说呃
+我们可以重复的
+按照某一个特设定的一个序列
+重复的去做某一个事情
+那么它基本的一个语法就是for
+就是对于什么什么样的一个序列对吧
+然后我们依次去做一个操作
+那么这个缩写比较抽象
+比方说我们就可以看到
+这里一个简单例子就是呃
+four i e 1-10对吧
+那么大家知道1-10的话
+它就会自动升成一个距离
+就是一二三四五六七八九十对吧
+那么i e 1-10就是说
+就是i在这个序列里面对吧
+依次进行迭代
+那么然后做什么呢
+每次迭代的时候
+就是把这个i加上一的结果打印出来
+那么我们可以看到i是从1到10对吧
+如果我们完成这么一个命令之后
+他就会把从把这个结果依次打出来
+第一个i是什么是
+一对吧
+因为是我们从1-10个序列里面
+依次来读取它的每一个元素
+然后把它放到这个后面
+这个中大框里面去做操作
+所以第一个i就是一对吧
+然后一加上i加上一的话就等于什么
+就等于1+1=2对吧
+所以他打出来第一个是2
+那么依次打印完一之后
+他就会再去读取第二个i
+就是2 那么2加上一的话就是3对吧
+就意思是这样
+所以他的一个语法基本上就是这样
+开始的时候从第一个开始
+1到10 从一开始对吧
+然后在他这个范围之内的话
+他就会打印这个i加一
+打印完了之后
+这个i就自动的往下跳一个
+就是i就会变成i加一了
+然后它就会又进入下一个循环
+循环完了之后就结束了
+所以它是一个
+所以为什么叫做循环对吧
+forward它就这么在一个特定的序列之下
+进行循环
+然后我们挨1-5对吧
+就打印出来
+还有这种方式
+就是i e seven 115对吧
+就是1-5 这个训练里面还有这种方式
+也是可以的
+比方说我自己建议Victor 12345对吧
+那么呃他也会打印出来
+大家可以看到你
+你把这个
+大家可以自己试一下
+你把这个Victor标说54321对吧
+你可以试一下这个是什么结果
+然后对于历史也是如此啊
+对吧
+就是比如说我们这里也可以同样打出
+呃我们有一件一个历史对吧
+a对于一这样的
+然后呢for就是i element对吧
+它像也可以用i一样的
+在这个历史里面
+每一个元素对它进行打出来
+然后还有一方
+就比方说
+我们可以对这个strand进行一个循环
+对吧
+那么我们可以去打印出这个这个
+这个字符串里面的每一个字母对吧
+我们都可以把它打印出来
+就是说这里想要展示就是form
+是一个很很很强大的一个工具对吧
+我们可以用来
+把它用在很多的这个循环当中
+去完成我们想要做的事情
+那么这样一来的话意味着什么呢
+就是说嗯
+我还要插入一个
+就是forward里面
+也可以跟我们前面讲的这个异辅
+进行结合
+我们前面讲异辅语句的时候
+就说达到某个条件然后做什么对吧
+如果说我把这个for
+我把这个异辅语句
+放到forward里面的话
+这就意味着什么
+我可以根据不同条件做不同的事情
+对吧
+然后这里我只对i大于5的时候
+我打印出这个i加一对吧
+那么意味着什么呀
+当i不大于5的时候
+什么事情都不做对吧
+所以我们可以看到
+他打印出来的就是 6对吧
+i大于5的话就是67890对吧
+他只会打印出后面的这些数字出来
+我们也可以把这个follow谱
+和我们前面学到的语句
+甚至和函数进行各种组合
+这样去达到我们的任务
+当然刚开始的时候呢
+就是大家可以去模仿啊
+或者做一些简单的事情
+后面的话你熟练了之后
+你就发现这个follow是非常的有帮助的
+follow加函数加上if
+那么我们讲这个follow之后
+那么我们刚刚说的
+其实整个整个这个呃文件对吧
+我们的这个文件它是秘密
+是非常有规律的
+我们能不能把所有的文件名字
+先读到一个微整里面
+对吧变成一个字符串的一个项量
+然后我们就依次去读这个项量的名字
+对吧然后把它放在一个follow里面
+就依次去读每一个文件名
+然后再在这个里面跟他们进行合并
+这样的话我们就你即便有100个
+1,000个背式对吧
+我们也不怕
+我们也不用手写了
+就一个follow就解决了
+所以这里呢
+我们可能是首先要有一个函数
+就是说
+我们要把这个符合我们条件的
+这些文件名
+都列出来
+那么这里我们首先就是用呃
+在r里面啊啊
+这个Mr FILES就在r里面的一个函数啊
+这个实际上在各个语言里面
+都有这样的一个功能
+因为找到一个文件夹里面的
+一个特定
+符合特定命名规则的
+一个文件的所有的名字
+基本上是所有编程语言里面
+经常做的一个事情
+拍照里面也有
+manlab里面有
+把里面也有
+那么我们这里mister boss
+第一个argument就是我们的这个路径
+对吧因为我们已经不在根目录了
+我们的根目录是我们这个课件的目录
+对吧它的这个数据的话
+它是在非的这个指文件夹里面的
+这个叫做match的指文件夹里面
+所以我们这个时候就用here
+这个来去来
+去解决这个这个路径的问
+题对吧
+避免不同操作系统之间的一个转换
+然后这个第二个argument
+就是它拯救说你需要
+如果你什么你不加
+party什么都不加的话
+那就会把这个文件夹里面
+所有文件都列出来
+但这个并不是我们想要的对吧
+我们想要的是什么
+就是以这个day的一EX7对吧
+然后rap
+然后呃match开头的这么一个文件
+为什么呢
+因为这些才是我们要的
+这个匹配的任务下的这个数据
+因为我们还有非匹
+还有其他任务的这个数据对吧
+然后我们的一个通配符
+一个井号对吧
+然后呢以out作为结尾对吧
+这就是这个美元符号
+它的意义就是以什么作为结尾
+像是我们通过这种前面讲字幕操作
+匹配的时候
+这种叫做呃regular expression对吧
+这个这种方式
+去找到符合这种条件的这个呃
+所有的文件
+然后我们用这个就是form等于数
+就是说把它整个路径
+完整路径都列出来
+这有什么好处呢
+就是我们得到的就是这个文件
+以及它整个路径
+这样的话
+我们就可以直接去把这个字符串
+对吧把这整个字符串
+放到我们的read table里面去了
+对吧我们就不需要再做其他的
+再给他补路径啊什么了
+那么我们可以看前面的10个
+大家如果运行这个站的话
+应该这个东西肯定是跟这里不一样的
+他会根据大家自己的电脑
+传放我们这个课件的地址而改变
+然后我们这里是CEU
+是什么什么什么对吧
+但但是从这里起开始是一样的
+从upper site data MAT里面时
+后面是应该是一样的
+那么我们这里就这个花钥匙
+就得到了什么
+一串这个一个项链
+里面的每一个元素
+都是我们对应我们想要的
+这些文件的名字
+以及他们的完整路径对吧
+我们也可以看一下
+它是有44个这个呃元素对吧
+就表示它有44个文件的名字
+那正好跟我们的44个贝时是对上的
+然后呢
+在我们读取数据之前
+我们先定义一个小的函数
+这个函数
+就是我们刚才在上面处理这个问题
+数据时候
+我们用到的
+就是用各种s什么什么什么对吧
+为什么我们要定义这个东西呢
+就是要去保证每一个column对吧
+它的数据类型就是我们想要的
+因为你在数据的这个low buy的时候
+就是r buy
+r buy的时候
+如果你的数据类型不一样的话
+它也是合并不了的
+也可能会出错
+或者或者会给你强行转换
+但是我们这里就先强自己
+给它强行进行一个转换
+对吧比方说我们把该是这个数据的
+像年龄对吧
+背时编号啊转成数据RT对吧
+还有这个ACC转成这个数据
+然后其他的该是这个字符的就走了
+转成字符
+然后转换了之后返回的就会第二
+这里第一个呢
+就是为了后面
+让我们这个follow比较简单一点嘛
+那么我们怎么写这个follow
+首先我们要创建一个新
+一个空的一个数据框
+那么用来抓我们最终读取的数据
+并且把各个背式的数据
+合并到一起之后的一个总的数据
+那么然后呢
+我们就four对吧
+开始写这个four loop
+从1到这个sex
+什么就是沿着这个file这个变量对吧
+那么进行依次的往后面叠代
+然后大家可以看到我们DF
+它是一个临时的变量对吧
+他读取这个table
+然后呢读取的这个table的这个文件名
+就是我们这个fires里面的呃
+这个第i个元素对吧
+也就是说
+他会依次从第一个依次读取到第44个
+那么这个i不断的变化
+然后读取完了之后
+我们可以就是过滤掉它这个数据
+呃这个叫什么
+第一个就是日期
+不等于日期的这个名字的
+呃这个行
+这个就是这里是一个特殊数据
+而且跟我们这个数据是特特别相关的
+因为我们这个点arm进入的时候
+有一些有一些特殊的指数
+我们要进行一些过滤
+但大家自己的数据的话
+不一定要做这个操作
+呃
+有一个这个是一个额外的一个操作
+是为了我们这个处理我们这个数据
+而进行特殊操作
+然后呢
+就是调用我们刚才定的这个函数
+对它进行一个数据的一个转换
+转换了之后
+我们可以看到
+这里有个很关键的操作
+就是我们把原来的这个定义的这个呃
+DF 3对吧
+把它和我们刚才读取的这个呃
+DF进行一个合并
+那么大家想想这里就会
+我们可以想象他逻辑啊
+当2.1的时候
+那么他会
+他会读取第一个贝斯的这个文
+件对吧读取到DF里面
+然后对DF做了一系列的预处理之后
+操作之后对吧
+做了一个简单的预处理之后
+我们把它和DF 3进行一个合并
+刚开始的时候
+第一个做第一时间的时候
+DF 3是空的对不对
+这个能理解吧
+因为我们在前面
+是把它定义成一个空的数据方
+对不对
+所以当我们这个循环刚开始的时候
+第一时间还有一个DF
+读写第一个倍时数据
+然后第二时3这个时候是空的
+那么它是空的
+然后它和第一个倍时的
+这个数据进行结合之后
+它实际上就是被第一个倍时
+就变成第一个倍时数据了
+对吧
+然后这个时候
+循环到了它结束的时候
+然后我们看第二次循环
+i等于2的时候
+它就开始读取第二个倍数的数据
+然后这个时候
+DF就是等于第二个倍数数据
+对吧
+然后也同样进行了一番操作之后
+然后到这个的时候
+DF3
+它刚才已经替换成了第一个倍数数据
+对不对
+所以他又和第二个倍式数据进行结合
+之后这个时候再复制到DF3
+也就是我们把DF3进行的一次更新
+这个时候的DF3
+等于第一个倍式
+和第二个倍式进行结合的结果了
+然后我们再进行第三次操作
+第三操作的时候呢
+就是i变成的3对吧
+然后DF就直接被替换成
+第三个变形数据
+然后再到这里
+我们再把DF 3和DF进行结合的时候
+这个时候DF就变成什么
+把这一行运
+行完了之后
+它就变成前三个倍数的一个结合
+的一个数据
+对吧然后呢
+意思就是
+不断叠带
+最后把所有的四四个倍数的数据
+全部都往后不断加到d f 3
+这个数据放后面去
+也就说他最后这个荒芜完了之后
+DF 3 就是我们的一个完整的合并
+之后的一个数据了
+这个这个大家可能没有办法立刻消化
+我看到好像大家比较迷茫大家
+因为我的后面还没完
+我就接着讲
+大家后面可以看一下视频
+就是我刚举了三个例子啊
+就是一是什么
+二是什么
+三是什么
+大家可以仔细再去在纸上画一画
+用这个用铅笔什么的箭头画一画
+看他这个循环的逻辑
+然后你可以把这个i的这个序列
+减少一点
+你自己看一看他每次这个结果是什么
+然后
+刚才说的是一个follow对吧
+就是我们自己呃
+不断的去迭代的这么一个逻辑
+那么还有另外一个
+就是我可以通过这个APP i这个函数
+对吧就是直接定型的
+把所有的一次性的做完
+当然这个就是比较
+就是压缩高度压缩的一个代码
+然后需要大家去理解自己的这个里面
+这个逻辑
+他先就是把这个函数进行的一个呃
+高度的一个整合
+我这里就不展开了吧
+如果大家去想要理解的话
+可能你先理解的Polo之后
+然后再去再看这个l plus
+这样的话会更好一点
+OK假定大家都理解了这个follow法
+那就我们就能够把这个d f
+3就读取出来
+然后得到了一个数据
+就是把所有44个倍数的数据都合并了
+合并了之后我们可以把它保存下来
+因为我不想再重复这个工作对吧
+或因为每次搜足球的话会他也帮你的
+数据量很大的时候
+你也比较浪费时间
+然后你这样的话
+就可以直接把它就是存在某一个地方
+比方说我们把它存成叫做match row的
+一个CSV的文件
+然后也是存在
+刚才一模一样的这个文件夹
+这个地方有一个稍微值得注意点
+就是这个roll name等于force
+就是不要保存这个行的名字
+你保存的话他会给你增加一行
+增加一列就是这个行的名字
+12345678911 直到所有的这个行数
+这个没有对我们来说
+一般来说没有意义
+所以我们把这个一般人会写成
+那我们
+其实对于我们反义词的操作来说
+就是一个一个背时的数据
+当它是分开的时候
+哇
+这么快
+好稍微拖一点汤啊
+不好意思
+就假如说呃
+对我们这个
+就是有很多被抄的分开文件的话
+对于我的书写来说
+第一步可能就是follow是最最难的
+后面都是我们前面讲过的
+当然选择变量对吧
+然后处理这个缺失值
+用filter然后这里有一个type r
+里面的有一个很好用的一个呃
+一个函数叫做呃drop
+但是用的时候要谨慎一点
+就它是一个比较粗暴的方法
+就是把任何一行只要它有缺失值的话
+就直接直接给扔掉了
+那么有的时候
+你可能知道
+就比方说某一个数据里面
+只要他任何一行里面有一个圈子对吧
+那个数据你就完全你知道你不会用了
+那你可以用错方微
+要不然的话这个会丢掉太多的数据
+这个好用
+但是要谨慎的使用
+然后你可以进行一些其他的选择对吧
+比方说你只选择这个右离手的背式
+因为大家都是右右离手对吧
+然后
+你选择这个反应时间的这么一个范围
+对吧比方他小于0.2
+那你就不要
+因为你觉得这个事实是没有用的
+反应过快对吧
+还有就是把那些比方说无效的做法
+你可以把它排除掉
+它是-1的对吧
+或者是2的
+这些都所以说
+我们可以通过多种方法
+来进行一个一个选择
+然后分条件描述的话呢
+跟之前是一样
+然后我们这里描述就是ACC对吧
+我们可以通过这个条件
+来进行一个描述
+然后
+这里有一个比较有意思的一个操作
+就是拆分变量
+比方说我们原来它是这样的
+就是它是有一个便利格
+shape就是它的图形是什么
+Moro Moro other
+Moro serve对吧
+诸如写的还有Moro serve e Moro other
+它实际上表示的是两个自变量
+一个是它的这个valence道路上的valence
+到底是积极的还是消极的
+另外一个就是他的这个identity
+到底是自我还是他人
+对吧所以我们可以通过这种呃
+字符拆分的方法
+把它拆分成为把线拆分成为两个变量
+那么拆分的方式就是
+前面的要么是more
+要么是more
+后面的要么是SOF
+要么是r
+比如说我们这里extract就是对shift对吧
+对shift这个变量把它提取出两个
+两个color出来
+两个列出来
+一个叫做vanishing
+叫做identity
+提取的方式是按照这种方式进行提取
+然后最后这个目的就说
+是不是要把原来的这个线给呃去掉
+我们这里选择没有去掉对吧
+所以大家可以看到
+我们做完这个操作之后
+线不在这里
+但是同时又增加了变量词
+和单里皮这两个变量
+那么我们可以进行数据选择对吧
+然后我们就想看一下let
+调一下这个moral对吧
+自我和他人之间的一个区别
+那么这个时候
+我们就要做一个长短宽的一个操作
+什么叫长短宽
+就是比方说我们的每一个在SCS当中
+每一个行的人是什么
+一个倍数对吧
+每一列呢
+代表的是一个条件
+但是如果我们看前面的这个操作的话
+我们发现
+比方说这个条件
+每个倍数它有两列对吧
+而且还是我们筛选之后的数据
+那么它有一个wilness
+呃它有一个wilness是more对吧
+这个是我们选择过了
+但它大概单体里还有两个
+就实际上在这个里面是一个
+一个column对吧
+一页它专门来表示这个变量
+然后它在不断的重复单上
+对于每个倍数来说
+它都有一个up
+一个self对不对
+那么它就不太像我们常说的那个数据
+那个那种数据叫做宽数据
+就是说呃
+每一行代表一个背时
+那么我们用增
+加列的方式来去表示不同的变量对吧
+那么它的这个方式就是说
+我们对于每一个变量的不同的水平
+我们就把它放在一单独的一列对吧
+然后我们这个ID它有两个水平
+我们就重复这两个水平
+对每个倍数我们都重复两次
+比方说Relex
+如果说我们看原来数据的话
+它有两个数据
+比方说Moro和in Moro
+那么我们也不断的重复它
+这样的话其实每个倍数就会有几个
+有几行就会有4行的对吧
+就是有Moro self moral art
+morror self moral art这样的一个情况
+那么像这种每一个倍数它有多个行的
+这种情况
+我们叫做长的数据
+那么长它就很长嘛对吧
+就很很直接
+那么宽数据就是每个倍数只有一行
+我们把它转成多个列对吧
+不同的列代表不同的数据
+那这样的话
+这个数据就相比原来数据变宽了对吧
+这就是宽数据
+我们SPS
+传统上面就是用宽的数据的形式
+那么我们一般来说
+我们可以
+我们要进行下一步的运算的时候
+进行不同条件之间比较的时候
+我们肯定要把它转成宽数据对吧
+这样的话
+就可以更好的进行一个比较
+那么然后我们这里就选择几个呃
+在数据里面选择subject
+identity和MINRT对吧
+我们就直接选择这三个感兴趣的
+这个变量
+然后我们的这个pimp wide这个函数
+也非常符合我们的指甲
+它有两个函
+有一个姊妹的函数
+就是说pimp Manger就是一个是长
+把它变得更宽对吧
+或者反过来
+宽的变得更长
+那么这里就是他的数据
+然后names from
+就是说你不是要把它变宽吗
+变宽的意思就是你的列要增加对吧
+那你的列要增加的话
+你的名字从哪来
+你的列的名字从哪来
+你的列的名字
+从原来的这个
+data from 4的这个identity这里过来
+然后你的values from
+就是你的这个值从哪里来
+对吧
+越越值就是我们原来这个min r t对吧
+所以大家看到vivo y的
+其实让我们这个长短宽的
+这个会变得更圆扁的
+就是你转换之后你增加了column name
+你增加了column是把增加了列
+那么你增加了这个列的名字从哪来
+你增加了列的这个数值从哪来
+然后这个参数名字也比较符合字表
+当然
+你可能现在记不住对吧
+但是你如果说你就是真的要用长短
+或者宽短长的时候
+你最好的方法就是去看他的这个教程
+他会告诉你
+用可说话的方式告诉你怎么转的
+你去呃我们叫做照
+照着葫芦画瓢就行了对吧
+然后you take
+就是转弯了之后你检查一下对不对
+因为这个记里面的这个argument
+到底什么意思
+的话其实非常琐碎
+我们也没有必要记
+你就到时候有什么需求你就就转对吧
+比方说
+你可能不止有identity一个变量对吧
+你可能也有moral这个变量的时候
+你有两个column对吧
+你要把它一下转成一个
+就是增加势力的时候怎么转这个
+网上的这个或者
+像这个大约模型有非常多的这个
+这个教程
+这地方是稍微会有一点点细节的地方
+那么最后这个
+这个操作的话就比较简单对吧
+就是我们转完了之后的话
+转弯之后呢
+有subject对吧
+有self add
+那么它就是只有这三个columns
+那么我们把self add相减的话
+就得到我们感兴趣的
+这个自我优势效应
+对吧所以我们这里就是直接就要说
+用new text
+然后生成一个新的我们感兴趣的变量
+那么将上面所有的合并的话
+那就是可以用长串代码对吧
+当我们读取了数据之后
+那这个大家可以后面去
+基本上这里面每一个我们都讲过了
+每一个孩子我们都讲过
+大家可能后面如果呃
+对某一个不太懂的话
+可能再回过头来再看一下这个视频啊
+或者是问我们的助教
+大家要积极主动的向助教提问
+这样的话呃会能够学习的更快一点
+好最后就是一个小节啊
+就是我们呃
+在KDR这个时候
+我们用到KDR对吧
+用了一些跟前面不一样的一些操作
+比方比方说我们提取制服对吧
+还有这里有一个没有讲
+就是我们可以把字母进行一个拆分
+separate这个也非常好用
+然后还有unit
+就是我们把几列对吧
+我们把它合并成一列
+这个也是很好用的一个函数
+还有就是pipit number
+就是宽转长对吧
+pipit wide长转宽
+然后还有drawberry
+那这就是我们常用的去操作
+呃
+另外就是基本上大家能够想到的这
+些预数据处理啊
+只要大家能够用语言描述出来
+基本上都能够找到这种相应的阿
+代码的操作
+那么最后是一个练习啊
+大家可以下面练习一下
+我们比方说在呃学习学里面
+突然有一个信号减速度对吧
+我们把一个作为信号
+另外一个做一个噪音的话
+那么我们就会有这个
+比方说heat
+race force
+alarm means和correct rejection对吧
+那么根据这四个类型的话
+我们可以计算出这个
+呃信号检测量的这个敏感度
+对吧define
+那么实际上我们可以用在这个呃
+DIY里面
+就我们可以用在highdovers里面对吧
+呃一行代码就一个
+一拍plan就可以完成下来
+就你不需要单独定义函数什么的
+那么大家可以考虑一下
+如何把这个Mac里面的
+每个背时的这个DPRAM
+计算出来
+每个背时的每个条件之下
+那么大家
+我们这里提供了一个类似的思路
+和最后解题的一个
+一个大致的一个方案
+就最后你可能得到四种条件对吧
+呃每个条件下面都有一个自己的
+然后每一行的一个背式
+然后最后就是44个背式的
+这个deep prime的数据
+好最后还有一句话
+啊今天我们其实重点啊
+其实不是说告诉大家呃就是怎么用
+而是给大家一一提供一个
+大家可用的一些代码
+第二个就是告诉大家
+我们预数理的一个思路是什么
+然后大家真的在还有就是心态上面
+如果你真的你的数据
+原始的数据没有那么好
+没有那么整洁的
+话要做好心理准备
+就是说呃
+这个数据预处理
+实际上是你数据分析中
+暂时性比较多的一个部分
+所以
+当你发现你这个数据不好处理的时候
+大家有有有耐心一点
+然后多去问
+这个大于模型
+每个人都是这么过来的
+所以说呢
+不要觉得好像只有你那么痛苦
+人在大家都很痛苦的时候
+你会发现好很多对吧
+对
+这样疫情就是这样的好
+这拖堂了
+不好意思啊大家啊
+晚安就是
+假期快乐</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="数据结构-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="以下是代码部分-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R4PsyBook.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

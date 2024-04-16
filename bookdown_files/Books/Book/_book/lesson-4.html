@@ -4,23 +4,22 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 第四讲：如何清理数据—R语言编程基础 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿</title>
+  <title>14 第四讲 &amp; 第五讲 ：数据导入 – 数据类型与结构 | Lecture 12: Preparing journal artical with papaja</title>
   <meta name="description" content="课程bookdown" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 第四讲：如何清理数据—R语言编程基础 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿" />
+  <meta property="og:title" content="14 第四讲 &amp; 第五讲 ：数据导入 – 数据类型与结构 | Lecture 12: Preparing journal artical with papaja" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="课程bookdown" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 第四讲：如何清理数据—R语言编程基础 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿" />
+  <meta name="twitter:title" content="14 第四讲 &amp; 第五讲 ：数据导入 – 数据类型与结构 | Lecture 12: Preparing journal artical with papaja" />
   
   <meta name="twitter:description" content="课程bookdown" />
   
 
-<meta name="author" content="胡传鹏" />
 
 
 
@@ -29,8 +28,18 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lesson-3.html"/>
-<link rel="next" href="lesson-5.html"/>
+<link rel="prev" href="回顾与问题.html"/>
+<link rel="next" href="以下是课堂语音转文字-3.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,14 +60,16 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.27/datatables.js"></script>
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="libs/datatables-binding-0.30/datatables.js"></script>
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+<script src="libs/panelset-0.2.6/panelset.js"></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   jax: ["input/TeX","output/SVG"],
@@ -75,7 +86,7 @@ MathJax.Hub.Config({
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -85,7 +96,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -138,6 +149,33 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 </head>
 
@@ -170,96 +208,310 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.3" data-path="lesson-1.html"><a href="lesson-1.html#心理学数据分析与结果汇报"><i class="fa fa-check"></i><b>2.2.3</b> 心理学数据分析与结果汇报</a></li>
 <li class="chapter" data-level="2.2.4" data-path="lesson-1.html"><a href="lesson-1.html#regression"><i class="fa fa-check"></i><b>2.2.4</b> Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="lesson-1.html"><a href="lesson-1.html#课程安排"><i class="fa fa-check"></i><b>2.3</b> 课程安排</a>
+<li class="chapter" data-level="2.3" data-path="lesson-1.html"><a href="lesson-1.html#现场运行代码"><i class="fa fa-check"></i><b>2.3</b> 现场运行代码</a></li>
+<li class="chapter" data-level="2.4" data-path="lesson-1.html"><a href="lesson-1.html#课程安排"><i class="fa fa-check"></i><b>2.4</b> 课程安排</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="lesson-1.html"><a href="lesson-1.html#课程大纲"><i class="fa fa-check"></i><b>2.3.1</b> 课程大纲</a></li>
-<li class="chapter" data-level="2.3.2" data-path="lesson-1.html"><a href="lesson-1.html#成绩分配"><i class="fa fa-check"></i><b>2.3.2</b> 成绩分配</a></li>
+<li class="chapter" data-level="2.4.1" data-path="lesson-1.html"><a href="lesson-1.html#课程大纲"><i class="fa fa-check"></i><b>2.4.1</b> 课程大纲</a></li>
+<li class="chapter" data-level="2.4.2" data-path="lesson-1.html"><a href="lesson-1.html#成绩分配"><i class="fa fa-check"></i><b>2.4.2</b> 成绩分配</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="lesson-1.html"><a href="lesson-1.html#如何学好这门课"><i class="fa fa-check"></i><b>2.4</b> 如何学好这门课</a></li>
+<li class="chapter" data-level="2.5" data-path="lesson-1.html"><a href="lesson-1.html#如何学好这门课"><i class="fa fa-check"></i><b>2.5</b> 如何学好这门课</a></li>
+<li class="chapter" data-level="2.6" data-path="lesson-1.html"><a href="lesson-1.html#课程总结与期望"><i class="fa fa-check"></i><b>2.6</b> 课程总结与期望</a></li>
+<li class="chapter" data-level="2.7" data-path="lesson-1.html"><a href="lesson-1.html#推荐"><i class="fa fa-check"></i><b>2.7</b> 推荐</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="lesson-2.html"><a href="lesson-2.html"><i class="fa fa-check"></i><b>3</b> 第二讲：如何开始使用R</a>
+<li class="chapter" data-level="3" data-path="以下是课堂语音转文字.html"><a href="以下是课堂语音转文字.html"><i class="fa fa-check"></i><b>3</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="4" data-path="以下是代码部分.html"><a href="以下是代码部分.html"><i class="fa fa-check"></i><b>4</b> 以下是代码部分</a></li>
+<li class="chapter" data-level="5" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html"><i class="fa fa-check"></i><b>5</b> 1 初识R里的数据 （R语言中的对象）</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-for-lesson"><i class="fa fa-check"></i><b>3.1</b> 要解决的数据分析问题简介</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-1"><i class="fa fa-check"></i><b>3.1.1</b> 第一个数据: 人类企鹅计划数据</a></li>
-<li class="chapter" data-level="3.1.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-2"><i class="fa fa-check"></i><b>3.1.2</b> 第二个数据: 知觉匹配任务数据</a></li>
+<li class="chapter" data-level="5.1" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html#从计算器说起-数值numeric"><i class="fa fa-check"></i><b>5.1</b> 1.1 从计算器说起 —— 数值(numeric)</a></li>
+<li class="chapter" data-level="5.2" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html#赋值"><i class="fa fa-check"></i><b>5.2</b> 1.1.1 赋值</a></li>
+<li class="chapter" data-level="5.3" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html#比大小-逻辑值logical"><i class="fa fa-check"></i><b>5.3</b> 1.2 比大小 —— 逻辑值（logical）</a></li>
+<li class="chapter" data-level="5.4" data-path="初识r里的数据-r语言中的对象.html"><a href="初识r里的数据-r语言中的对象.html#字符串character"><i class="fa fa-check"></i><b>5.4</b> 1.3 字符串（character）</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-install-R"><i class="fa fa-check"></i><b>3.2</b> 如何安装</a></li>
-<li class="chapter" data-level="3.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio"><i class="fa fa-check"></i><b>3.3</b> 如何方便使用？Rstudio的安装与界面介绍</a>
+<li class="chapter" data-level="6" data-path="r-语言中的数据类型.html"><a href="r-语言中的数据类型.html"><i class="fa fa-check"></i><b>6</b> 2 R 语言中的数据类型</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-install"><i class="fa fa-check"></i><b>3.3.1</b> Rstudio的安装与界面介绍</a></li>
-<li class="chapter" data-level="3.3.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-test"><i class="fa fa-check"></i><b>3.3.2</b> 测试Rstudio</a></li>
-<li class="chapter" data-level="3.3.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-packges"><i class="fa fa-check"></i><b>3.3.3</b> R语言中的包</a></li>
+<li class="chapter" data-level="6.1" data-path="r-语言中的数据类型.html"><a href="r-语言中的数据类型.html#向量vector"><i class="fa fa-check"></i><b>6.1</b> 2.1 向量（vector）</a></li>
+<li class="chapter" data-level="6.2" data-path="r-语言中的数据类型.html"><a href="r-语言中的数据类型.html#数据框data.frame"><i class="fa fa-check"></i><b>6.2</b> 2.2 数据框（data.frame）</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="lesson-2.html"><a href="lesson-2.html"><i class="fa fa-check"></i><b>7</b> 第二讲：如何开始使用R</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-for-lesson"><i class="fa fa-check"></i><b>7.1</b> 要解决的数据分析问题简介</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-1"><i class="fa fa-check"></i><b>7.1.1</b> 第一个数据: 人类企鹅计划数据</a></li>
+<li class="chapter" data-level="7.1.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-data-2"><i class="fa fa-check"></i><b>7.1.2</b> 第二个数据: 知觉匹配任务数据</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="lesson-3.html"><a href="lesson-3.html"><i class="fa fa-check"></i><b>4</b> 第三讲：如何导入数据</a>
+<li class="chapter" data-level="7.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-install-R"><i class="fa fa-check"></i><b>7.2</b> 如何安装</a></li>
+<li class="chapter" data-level="7.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio"><i class="fa fa-check"></i><b>7.3</b> 如何方便使用？Rstudio的安装与界面介绍</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path-working-dir"><i class="fa fa-check"></i><b>4.1</b> 路径与工作目录</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path"><i class="fa fa-check"></i><b>4.1.1</b> 相对路径与绝对路径</a></li>
-<li class="chapter" data-level="4.1.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-packge-here"><i class="fa fa-check"></i><b>4.1.2</b> Here包的使用</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-data"><i class="fa fa-check"></i><b>4.2</b> 读取数据</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-csv"><i class="fa fa-check"></i><b>4.2.1</b> read.csv函数</a></li>
-<li class="chapter" data-level="4.2.2" data-path="lesson-3.html"><a href="lesson-3.html#命名"><i class="fa fa-check"></i><b>4.2.2</b> 命名</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="lesson-3.html"><a href="lesson-3.html#id_3-data-object"><i class="fa fa-check"></i><b>4.3</b> 了解R里的数据 （R语言中的对象）</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="lesson-4.html"><a href="lesson-4.html"><i class="fa fa-check"></i><b>5</b> 第四讲：如何清理数据—R语言编程基础</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-robject"><i class="fa fa-check"></i><b>5.1</b> R对象的操控</a></li>
-<li class="chapter" data-level="5.2" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-function"><i class="fa fa-check"></i><b>5.2</b> 函数</a></li>
-<li class="chapter" data-level="5.3" data-path="lesson-4.html"><a href="lesson-4.html#lesson-4-functions"><i class="fa fa-check"></i><b>5.3</b> 常用函数</a>
-<ul>
-<li class="chapter" data-level="5.3.1" data-path="lesson-4.html"><a href="lesson-4.html#unique"><i class="fa fa-check"></i><b>5.3.1</b> unique()</a></li>
+<li class="chapter" data-level="7.3.1" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-install"><i class="fa fa-check"></i><b>7.3.1</b> Rstudio的安装与界面介绍</a></li>
+<li class="chapter" data-level="7.3.2" data-path="lesson-2.html"><a href="lesson-2.html#id_2-Rstudio-test"><i class="fa fa-check"></i><b>7.3.2</b> 测试Rstudio</a></li>
+<li class="chapter" data-level="7.3.3" data-path="lesson-2.html"><a href="lesson-2.html#id_2-packges"><i class="fa fa-check"></i><b>7.3.3</b> R语言中的包</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="lesson-5.html"><a href="lesson-5.html"><i class="fa fa-check"></i><b>6</b> 第五讲：如何清理数据—数据的预处理</a>
+<li class="chapter" data-level="8" data-path="以下是课堂语音转文字-1.html"><a href="以下是课堂语音转文字-1.html"><i class="fa fa-check"></i><b>8</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="9" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html"><i class="fa fa-check"></i><b>9</b> 以下是代码部分</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="lesson-5.html"><a href="lesson-5.html#批量读取文件"><i class="fa fa-check"></i><b>6.1</b> <strong>批量读取文件</strong></a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="lesson-5.html"><a href="lesson-5.html#通配符"><i class="fa fa-check"></i><b>6.1.1</b> <strong>通配符</strong></a></li>
-<li class="chapter" data-level="6.1.2" data-path="lesson-5.html"><a href="lesson-5.html#for循环思路"><i class="fa fa-check"></i><b>6.1.2</b> for<strong>循环思路</strong></a></li>
-<li class="chapter" data-level="6.1.3" data-path="lesson-5.html"><a href="lesson-5.html#lapply思路"><i class="fa fa-check"></i><b>6.1.3</b> lapply思路</a></li>
+<li class="chapter" data-level="9.1" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#version-control"><i class="fa fa-check"></i><b>9.1</b> 3.2.1 Version Control</a></li>
+<li class="chapter" data-level="9.2" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#git"><i class="fa fa-check"></i><b>9.2</b> 3.2.2 Git</a></li>
+<li class="chapter" data-level="9.3" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#git-1"><i class="fa fa-check"></i><b>9.3</b> 3.2.2 Git</a></li>
+<li class="chapter" data-level="9.4" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github"><i class="fa fa-check"></i><b>9.4</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.5" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-1"><i class="fa fa-check"></i><b>9.5</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.6" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-2"><i class="fa fa-check"></i><b>9.6</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.7" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-3"><i class="fa fa-check"></i><b>9.7</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.8" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-4"><i class="fa fa-check"></i><b>9.8</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.9" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-5"><i class="fa fa-check"></i><b>9.9</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.10" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-6"><i class="fa fa-check"></i><b>9.10</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.11" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#github-7"><i class="fa fa-check"></i><b>9.11</b> 3.2.3 GitHub</a></li>
+<li class="chapter" data-level="9.12" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#local-version-control"><i class="fa fa-check"></i><b>9.12</b> 3.3.1 Local Version Control</a></li>
+<li class="chapter" data-level="9.13" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#creating-git-repository-for-project"><i class="fa fa-check"></i><b>9.13</b> 3.3.2 Creating Git repository for project</a></li>
+<li class="chapter" data-level="9.14" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git"><i class="fa fa-check"></i><b>9.14</b> 3.3.3 Adding files to Git</a></li>
+<li class="chapter" data-level="9.15" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git-1"><i class="fa fa-check"></i><b>9.15</b> 3.3.3 Adding files to Git</a></li>
+<li class="chapter" data-level="9.16" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git-2"><i class="fa fa-check"></i><b>9.16</b> 3.3.3 Adding files to Git</a></li>
+<li class="chapter" data-level="9.17" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git-3"><i class="fa fa-check"></i><b>9.17</b> 3.3.3 Adding files to Git</a></li>
+<li class="chapter" data-level="9.18" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#adding-files-to-git-4"><i class="fa fa-check"></i><b>9.18</b> 3.3.3 Adding files to Git</a></li>
+<li class="chapter" data-level="9.19" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#keeping-track-of-changes-with-git"><i class="fa fa-check"></i><b>9.19</b> 3.3.4 Keeping track of changes with Git</a></li>
+<li class="chapter" data-level="9.20" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#accessing-files-past-versions"><i class="fa fa-check"></i><b>9.20</b> 3.3.5 Accessing files’ past versions</a></li>
+<li class="chapter" data-level="9.21" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files"><i class="fa fa-check"></i><b>9.21</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.22" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-1"><i class="fa fa-check"></i><b>9.22</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.23" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-2"><i class="fa fa-check"></i><b>9.23</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.24" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-3"><i class="fa fa-check"></i><b>9.24</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.25" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-4"><i class="fa fa-check"></i><b>9.25</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.26" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-5"><i class="fa fa-check"></i><b>9.26</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.27" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#telling-git-to-ignore-files-6"><i class="fa fa-check"></i><b>9.27</b> 3.3.6 Telling Git to ignore files</a></li>
+<li class="chapter" data-level="9.28" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#remote-version-control"><i class="fa fa-check"></i><b>9.28</b> 3.4.1 Remote Version Control</a></li>
+<li class="chapter" data-level="9.29" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#linking-github-repository-with-a-local-git-repository"><i class="fa fa-check"></i><b>9.29</b> 3.4.2 linking GitHub repository with a local Git repository</a></li>
+<li class="chapter" data-level="9.30" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-1"><i class="fa fa-check"></i><b>9.30</b> 3.4.2 Method 1</a></li>
+<li class="chapter" data-level="9.31" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-1-1"><i class="fa fa-check"></i><b>9.31</b> 3.4.2 Method 1</a></li>
+<li class="chapter" data-level="9.32" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-1-2"><i class="fa fa-check"></i><b>9.32</b> 3.4.2 Method 1</a></li>
+<li class="chapter" data-level="9.33" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-1-3"><i class="fa fa-check"></i><b>9.33</b> 3.4.2 Method 1</a></li>
+<li class="chapter" data-level="9.34" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#fork-github-repository"><i class="fa fa-check"></i><b>9.34</b> 3.4.3 Fork GitHub repository</a></li>
+<li class="chapter" data-level="9.35" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-2"><i class="fa fa-check"></i><b>9.35</b> 3.4.2 Method 2</a></li>
+<li class="chapter" data-level="9.36" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#method-2-1"><i class="fa fa-check"></i><b>9.36</b> 3.4.2 Method 2</a></li>
+<li class="chapter" data-level="9.37" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#push-changes-to-github-repository"><i class="fa fa-check"></i><b>9.37</b> 3.4.4 Push changes to GitHub repository</a></li>
+<li class="chapter" data-level="9.38" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#push-changes-to-github-repository-1"><i class="fa fa-check"></i><b>9.38</b> 3.4.4 Push changes to GitHub repository</a></li>
+<li class="chapter" data-level="9.39" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#pull-changes-from-github-repository"><i class="fa fa-check"></i><b>9.39</b> 3.4.5 Pull changes from GitHub repository</a></li>
+<li class="chapter" data-level="9.40" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#pull-request-to-central-github-repository"><i class="fa fa-check"></i><b>9.40</b> 3.4.6 Pull request to central GitHub repository</a></li>
+<li class="chapter" data-level="9.41" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#pull-request-to-central-github-repository-1"><i class="fa fa-check"></i><b>9.41</b> 3.4.6 Pull request to central GitHub repository</a></li>
+<li class="chapter" data-level="9.42" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#advanced"><i class="fa fa-check"></i><b>9.42</b> Advanced</a></li>
+<li class="chapter" data-level="9.43" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#summary"><i class="fa fa-check"></i><b>9.43</b> Summary</a></li>
+<li class="chapter" data-level="9.44" data-path="以下是代码部分-1.html"><a href="以下是代码部分-1.html#homework"><i class="fa fa-check"></i><b>9.44</b> Homework</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="lesson-5.html"><a href="lesson-5.html#数据预处理"><i class="fa fa-check"></i><b>6.2</b> 数据预处理</a></li>
-<li class="chapter" data-level="6.3" data-path="lesson-5.html"><a href="lesson-5.html#函数"><i class="fa fa-check"></i><b>6.3</b> 函数</a>
+<li class="chapter" data-level="10" data-path="以下是课堂语音转文字-2.html"><a href="以下是课堂语音转文字-2.html"><i class="fa fa-check"></i><b>10</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="11" data-path="以下是代码部分-2.html"><a href="以下是代码部分-2.html"><i class="fa fa-check"></i><b>11</b> 以下是代码部分</a></li>
+<li class="chapter" data-level="12" data-path="tips.html"><a href="tips.html"><i class="fa fa-check"></i><b>12</b> Tips</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="lesson-5.html"><a href="lesson-5.html#函数参数"><i class="fa fa-check"></i><b>6.3.1</b> 函数参数</a></li>
-<li class="chapter" data-level="6.3.2" data-path="lesson-5.html"><a href="lesson-5.html#groupby"><i class="fa fa-check"></i><b>6.3.2</b> groupby()</a></li>
-<li class="chapter" data-level="6.3.3" data-path="lesson-5.html"><a href="lesson-5.html#定义函数"><i class="fa fa-check"></i><b>6.3.3</b> 定义函数</a></li>
-<li class="chapter" data-level="6.3.4" data-path="lesson-5.html"><a href="lesson-5.html#for-loop"><i class="fa fa-check"></i><b>6.3.4</b> for loop</a></li>
-<li class="chapter" data-level="6.3.5" data-path="lesson-5.html"><a href="lesson-5.html#信号检测"><i class="fa fa-check"></i><b>6.3.5</b> 信号检测</a></li>
+<li class="chapter" data-level="12.1" data-path="tips.html"><a href="tips.html#将rstudio中报错语言变为英文"><i class="fa fa-check"></i><b>12.1</b> 将<code>Rstudio</code>中报错语言变为英文</a></li>
+<li class="chapter" data-level="12.2" data-path="tips.html"><a href="tips.html#loading-packages"><i class="fa fa-check"></i><b>12.2</b> loading packages</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="回顾与问题.html"><a href="回顾与问题.html"><i class="fa fa-check"></i><b>13</b> 4.0 回顾与问题</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="回顾与问题.html"><a href="回顾与问题.html#问题"><i class="fa fa-check"></i><b>13.1</b> 问题:</a></li>
+<li class="chapter" data-level="13.2" data-path="回顾与问题.html"><a href="回顾与问题.html#数据的住址路径-in-mac"><i class="fa fa-check"></i><b>13.2</b> 4.1.1 数据的“住址”——路径 (<em>in Mac</em>)</a></li>
+<li class="chapter" data-level="13.3" data-path="回顾与问题.html"><a href="回顾与问题.html#绝对路径相对路径"><i class="fa fa-check"></i><b>13.3</b> 4.1.2 绝对路径/相对路径</a></li>
+<li class="chapter" data-level="13.4" data-path="回顾与问题.html"><a href="回顾与问题.html#绝对路径相对路径-1"><i class="fa fa-check"></i><b>13.4</b> 4.1.2 绝对路径/相对路径</a></li>
+<li class="chapter" data-level="13.5" data-path="回顾与问题.html"><a href="回顾与问题.html#绝对路径相对路径in-windows"><i class="fa fa-check"></i><b>13.5</b> 4.1.2 绝对路径/相对路径(<em>in Windows</em>)</a></li>
+<li class="chapter" data-level="13.6" data-path="回顾与问题.html"><a href="回顾与问题.html#绝对路径相对路径in-windows-1"><i class="fa fa-check"></i><b>13.6</b> 4.1.2 绝对路径/相对路径(<em>in Windows</em>)</a></li>
+<li class="chapter" data-level="13.7" data-path="回顾与问题.html"><a href="回顾与问题.html#设定工作目录-手动挡与自动挡"><i class="fa fa-check"></i><b>13.7</b> 4.1.3 设定工作目录 手动挡与自动挡</a></li>
+<li class="chapter" data-level="13.8" data-path="回顾与问题.html"><a href="回顾与问题.html#设定工作目录-手动挡与自动挡-1"><i class="fa fa-check"></i><b>13.8</b> 4.1.3 设定工作目录 手动挡与自动挡</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="lesson-4.html"><a href="lesson-4.html"><i class="fa fa-check"></i><b>14</b> 第四讲 &amp; 第五讲 ：数据导入 – 数据类型与结构</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="lesson-4.html"><a href="lesson-4.html#加载数据"><i class="fa fa-check"></i><b>14.1</b> 加载数据</a></li>
+<li class="chapter" data-level="14.2" data-path="lesson-4.html"><a href="lesson-4.html#数据导入"><i class="fa fa-check"></i><b>14.2</b> 数据导入</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="lesson-4.html"><a href="lesson-4.html#数据的地址路径"><i class="fa fa-check"></i><b>14.2.1</b> 数据的“地址”——路径</a></li>
+<li class="chapter" data-level="14.2.2" data-path="lesson-4.html"><a href="lesson-4.html#绝对路径与相对路径"><i class="fa fa-check"></i><b>14.2.2</b> 绝对路径与相对路径</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="lesson-4.html"><a href="lesson-4.html#读取数据"><i class="fa fa-check"></i><b>14.3</b> 读取数据</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="lesson-4.html"><a href="lesson-4.html#手动导入"><i class="fa fa-check"></i><b>14.3.1</b> 手动导入</a></li>
+<li class="chapter" data-level="14.3.2" data-path="lesson-4.html"><a href="lesson-4.html#代码导入"><i class="fa fa-check"></i><b>14.3.2</b> 代码导入</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="lesson-4.html"><a href="lesson-4.html#赋值-1"><i class="fa fa-check"></i><b>14.4</b> 赋值</a></li>
+<li class="chapter" data-level="14.5" data-path="lesson-4.html"><a href="lesson-4.html#数据类型"><i class="fa fa-check"></i><b>14.5</b> 数据类型</a></li>
+<li class="chapter" data-level="14.6" data-path="lesson-4.html"><a href="lesson-4.html#数据结构"><i class="fa fa-check"></i><b>14.6</b> 数据结构</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="lesson-4.html"><a href="lesson-4.html#向量vector-1"><i class="fa fa-check"></i><b>14.6.1</b> 向量(vector)</a></li>
+<li class="chapter" data-level="14.6.2" data-path="lesson-4.html"><a href="lesson-4.html#数据框"><i class="fa fa-check"></i><b>14.6.2</b> 数据框</a></li>
+<li class="chapter" data-level="14.6.3" data-path="lesson-4.html"><a href="lesson-4.html#矩阵与数组"><i class="fa fa-check"></i><b>14.6.3</b> 矩阵与数组</a></li>
+<li class="chapter" data-level="14.6.4" data-path="lesson-4.html"><a href="lesson-4.html#列表"><i class="fa fa-check"></i><b>14.6.4</b> 列表</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="lesson-4.html"><a href="lesson-4.html#函数"><i class="fa fa-check"></i><b>14.7</b> 函数</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="lesson-4.html"><a href="lesson-4.html#函数的调用"><i class="fa fa-check"></i><b>14.7.1</b> 函数的调用</a></li>
+<li class="chapter" data-level="14.7.2" data-path="lesson-4.html"><a href="lesson-4.html#自定义函数"><i class="fa fa-check"></i><b>14.7.2</b> 自定义函数</a></li>
+</ul></li>
+<li class="chapter" data-level="14.8" data-path="lesson-4.html"><a href="lesson-4.html#if-条件语句"><i class="fa fa-check"></i><b>14.8</b> if 条件语句</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="以下是课堂语音转文字-3.html"><a href="以下是课堂语音转文字-3.html"><i class="fa fa-check"></i><b>15</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="16" data-path="以下是代码部分-3.html"><a href="以下是代码部分-3.html"><i class="fa fa-check"></i><b>16</b> 以下是代码部分</a></li>
+<li class="chapter" data-level="17" data-path="回顾.html"><a href="回顾.html"><i class="fa fa-check"></i><b>17</b> 回顾</a></li>
+<li class="chapter" data-level="18" data-path="本节课内容.html"><a href="本节课内容.html"><i class="fa fa-check"></i><b>18</b> 本节课内容</a></li>
+<li class="chapter" data-level="19" data-path="数据导入-1.html"><a href="数据导入-1.html"><i class="fa fa-check"></i><b>19</b> 5.1 数据导入</a></li>
+<li class="chapter" data-level="20" data-path="问卷数据human-penguin-project-1.html"><a href="问卷数据human-penguin-project-1.html"><i class="fa fa-check"></i><b>20</b> 问卷数据：Human Penguin Project</a></li>
+<li class="chapter" data-level="21" data-path="赋值与变量.html"><a href="赋值与变量.html"><i class="fa fa-check"></i><b>21</b> 5.2 赋值与变量</a></li>
+<li class="chapter" data-level="22" data-path="赋值与变量-1.html"><a href="赋值与变量-1.html"><i class="fa fa-check"></i><b>22</b> 5.2 赋值与变量</a></li>
+<li class="chapter" data-level="23" data-path="赋值与变量-2.html"><a href="赋值与变量-2.html"><i class="fa fa-check"></i><b>23</b> 5.2 赋值与变量</a></li>
+<li class="chapter" data-level="24" data-path="基本数据类型.html"><a href="基本数据类型.html"><i class="fa fa-check"></i><b>24</b> 5.3 基本数据类型</a></li>
+<li class="chapter" data-level="25" data-path="基本数据类型-1.html"><a href="基本数据类型-1.html"><i class="fa fa-check"></i><b>25</b> 5.3 基本数据类型</a></li>
+<li class="chapter" data-level="26" data-path="数据结构-1.html"><a href="数据结构-1.html"><i class="fa fa-check"></i><b>26</b> 5.4 数据结构</a></li>
+<li class="chapter" data-level="27" data-path="以下是课堂语音转文字-4.html"><a href="以下是课堂语音转文字-4.html"><i class="fa fa-check"></i><b>27</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="28" data-path="以下是代码部分-4.html"><a href="以下是代码部分-4.html"><i class="fa fa-check"></i><b>28</b> 以下是代码部分</a></li>
+<li class="chapter" data-level="29" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>29</b> 6.1 Tidyverse</a></li>
+<li class="chapter" data-level="30" data-path="tidyverse-1.html"><a href="tidyverse-1.html"><i class="fa fa-check"></i><b>30</b> 6.1 Tidyverse</a></li>
+<li class="chapter" data-level="31" data-path="tidyverse-2.html"><a href="tidyverse-2.html"><i class="fa fa-check"></i><b>31</b> 6.1 Tidyverse</a></li>
+<li class="chapter" data-level="32" data-path="问卷数据.html"><a href="问卷数据.html"><i class="fa fa-check"></i><b>32</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="33" data-path="问卷数据-1.html"><a href="问卷数据-1.html"><i class="fa fa-check"></i><b>33</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="34" data-path="问卷数据-2.html"><a href="问卷数据-2.html"><i class="fa fa-check"></i><b>34</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="35" data-path="问卷数据-3.html"><a href="问卷数据-3.html"><i class="fa fa-check"></i><b>35</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="36" data-path="问卷数据-4.html"><a href="问卷数据-4.html"><i class="fa fa-check"></i><b>36</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="37" data-path="问卷数据-5.html"><a href="问卷数据-5.html"><i class="fa fa-check"></i><b>37</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="38" data-path="问卷数据-6.html"><a href="问卷数据-6.html"><i class="fa fa-check"></i><b>38</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="39" data-path="问卷数据-7.html"><a href="问卷数据-7.html"><i class="fa fa-check"></i><b>39</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="40" data-path="问卷数据-8.html"><a href="问卷数据-8.html"><i class="fa fa-check"></i><b>40</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="41" data-path="问卷数据-9.html"><a href="问卷数据-9.html"><i class="fa fa-check"></i><b>41</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="42" data-path="问卷数据-10.html"><a href="问卷数据-10.html"><i class="fa fa-check"></i><b>42</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="43" data-path="问卷数据-11.html"><a href="问卷数据-11.html"><i class="fa fa-check"></i><b>43</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="44" data-path="问卷数据-12.html"><a href="问卷数据-12.html"><i class="fa fa-check"></i><b>44</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="45" data-path="问卷数据-13.html"><a href="问卷数据-13.html"><i class="fa fa-check"></i><b>45</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="46" data-path="问卷数据-14.html"><a href="问卷数据-14.html"><i class="fa fa-check"></i><b>46</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="47" data-path="问卷数据-15.html"><a href="问卷数据-15.html"><i class="fa fa-check"></i><b>47</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="48" data-path="问卷数据-16.html"><a href="问卷数据-16.html"><i class="fa fa-check"></i><b>48</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="49" data-path="问卷数据-17.html"><a href="问卷数据-17.html"><i class="fa fa-check"></i><b>49</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="50" data-path="问卷数据-18.html"><a href="问卷数据-18.html"><i class="fa fa-check"></i><b>50</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="51" data-path="问卷数据-19.html"><a href="问卷数据-19.html"><i class="fa fa-check"></i><b>51</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="52" data-path="问卷数据-20.html"><a href="问卷数据-20.html"><i class="fa fa-check"></i><b>52</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="53" data-path="问卷数据-21.html"><a href="问卷数据-21.html"><i class="fa fa-check"></i><b>53</b> 6.2 问卷数据</a></li>
+<li class="chapter" data-level="54" data-path="反应时数据.html"><a href="反应时数据.html"><i class="fa fa-check"></i><b>54</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="55" data-path="反应时数据-1.html"><a href="反应时数据-1.html"><i class="fa fa-check"></i><b>55</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="56" data-path="反应时数据-2.html"><a href="反应时数据-2.html"><i class="fa fa-check"></i><b>56</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="57" data-path="反应时数据-3.html"><a href="反应时数据-3.html"><i class="fa fa-check"></i><b>57</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="58" data-path="反应时数据-4.html"><a href="反应时数据-4.html"><i class="fa fa-check"></i><b>58</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="59" data-path="反应时数据-5.html"><a href="反应时数据-5.html"><i class="fa fa-check"></i><b>59</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="60" data-path="反应时数据-6.html"><a href="反应时数据-6.html"><i class="fa fa-check"></i><b>60</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="61" data-path="反应时数据-7.html"><a href="反应时数据-7.html"><i class="fa fa-check"></i><b>61</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="62" data-path="反应时数据-8.html"><a href="反应时数据-8.html"><i class="fa fa-check"></i><b>62</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="63" data-path="反应时数据-9.html"><a href="反应时数据-9.html"><i class="fa fa-check"></i><b>63</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="64" data-path="反应时数据-10.html"><a href="反应时数据-10.html"><i class="fa fa-check"></i><b>64</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="65" data-path="反应时数据-11.html"><a href="反应时数据-11.html"><i class="fa fa-check"></i><b>65</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="66" data-path="反应时数据-12.html"><a href="反应时数据-12.html"><i class="fa fa-check"></i><b>66</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="67" data-path="反应时数据-13.html"><a href="反应时数据-13.html"><i class="fa fa-check"></i><b>67</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="68" data-path="反应时数据-14.html"><a href="反应时数据-14.html"><i class="fa fa-check"></i><b>68</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="69" data-path="反应时数据-15.html"><a href="反应时数据-15.html"><i class="fa fa-check"></i><b>69</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="70" data-path="反应时数据-16.html"><a href="反应时数据-16.html"><i class="fa fa-check"></i><b>70</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="71" data-path="反应时数据-17.html"><a href="反应时数据-17.html"><i class="fa fa-check"></i><b>71</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="72" data-path="反应时数据-18.html"><a href="反应时数据-18.html"><i class="fa fa-check"></i><b>72</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="73" data-path="反应时数据-19.html"><a href="反应时数据-19.html"><i class="fa fa-check"></i><b>73</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="74" data-path="反应时数据-20.html"><a href="反应时数据-20.html"><i class="fa fa-check"></i><b>74</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="75" data-path="反应时数据-21.html"><a href="反应时数据-21.html"><i class="fa fa-check"></i><b>75</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="76" data-path="反应时数据-22.html"><a href="反应时数据-22.html"><i class="fa fa-check"></i><b>76</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="77" data-path="反应时数据-23.html"><a href="反应时数据-23.html"><i class="fa fa-check"></i><b>77</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="78" data-path="反应时数据-24.html"><a href="反应时数据-24.html"><i class="fa fa-check"></i><b>78</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="79" data-path="反应时数据-25.html"><a href="反应时数据-25.html"><i class="fa fa-check"></i><b>79</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="80" data-path="反应时数据-26.html"><a href="反应时数据-26.html"><i class="fa fa-check"></i><b>80</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="81" data-path="反应时数据-27.html"><a href="反应时数据-27.html"><i class="fa fa-check"></i><b>81</b> 6.3 反应时数据</a></li>
+<li class="chapter" data-level="82" data-path="lesson-6.html"><a href="lesson-6.html"><i class="fa fa-check"></i><b>82</b> 第六讲：如何探索数据: 描述性统计与数据可视化基础</a>
+<ul>
+<li class="chapter" data-level="82.1" data-path="lesson-6.html"><a href="lesson-6.html#描述性统计"><i class="fa fa-check"></i><b>82.1</b> <strong>描述性统计</strong></a>
+<ul>
+<li class="chapter" data-level="82.1.1" data-path="lesson-6.html"><a href="lesson-6.html#part1-探索性数据分析"><i class="fa fa-check"></i><b>82.1.1</b> <strong>Part1-探索性数据分析</strong></a></li>
+<li class="chapter" data-level="82.1.2" data-path="lesson-6.html"><a href="lesson-6.html#part2-数据可视化-ggplot2的基本使用"><i class="fa fa-check"></i><b>82.1.2</b> <strong>Part2-数据可视化-ggplot2的基本使用</strong></a></li>
+<li class="chapter" data-level="82.1.3" data-path="lesson-6.html"><a href="lesson-6.html#part3-data-explorer"><i class="fa fa-check"></i><b>82.1.3</b> <strong>Part3-Data Explorer</strong></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="lesson-6.html"><a href="lesson-6.html"><i class="fa fa-check"></i><b>7</b> 第六讲：如何探索数据: 描述性统计与数据可视化基础</a>
+<li class="chapter" data-level="83" data-path="以下是课堂语音转文字-5.html"><a href="以下是课堂语音转文字-5.html"><i class="fa fa-check"></i><b>83</b> 以下是课堂语音转文字</a></li>
+<li class="chapter" data-level="84" data-path="以下是代码部分-5.html"><a href="以下是代码部分-5.html"><i class="fa fa-check"></i><b>84</b> 以下是代码部分</a></li>
+<li class="chapter" data-level="85" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>85</b> Packages</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="lesson-6.html"><a href="lesson-6.html#描述性统计"><i class="fa fa-check"></i><b>7.1</b> <strong>描述性统计</strong></a></li>
-<li class="chapter" data-level="7.2" data-path="lesson-6.html"><a href="lesson-6.html#ggplot2的基本使用"><i class="fa fa-check"></i><b>7.2</b> ggplot2的基本使用</a>
+<li class="chapter" data-level="85.1" data-path="packages.html"><a href="packages.html#批量导入数据"><i class="fa fa-check"></i><b>85.1</b> 7.0.1 批量导入数据</a></li>
+<li class="chapter" data-level="85.2" data-path="packages.html"><a href="packages.html#代码书写规范"><i class="fa fa-check"></i><b>85.2</b> 7.0.2 代码书写规范</a></li>
+<li class="chapter" data-level="85.3" data-path="packages.html"><a href="packages.html#代码书写规范-1"><i class="fa fa-check"></i><b>85.3</b> 7.0.2 代码书写规范</a></li>
+<li class="chapter" data-level="85.4" data-path="packages.html"><a href="packages.html#数据清洗-1"><i class="fa fa-check"></i><b>85.4</b> 7.0.3 数据清洗</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="lesson-6.html"><a href="lesson-6.html#了解ggplot2"><i class="fa fa-check"></i><b>7.2.1</b> 了解ggplot2</a></li>
-<li class="chapter" data-level="7.2.2" data-path="lesson-6.html"><a href="lesson-6.html#密度图"><i class="fa fa-check"></i><b>7.2.2</b> 密度图</a></li>
-<li class="chapter" data-level="7.2.3" data-path="lesson-6.html"><a href="lesson-6.html#叠加绘图"><i class="fa fa-check"></i><b>7.2.3</b> 叠加绘图</a></li>
-<li class="chapter" data-level="7.2.4" data-path="lesson-6.html"><a href="lesson-6.html#散点图"><i class="fa fa-check"></i><b>7.2.4</b> 散点图</a></li>
+<li class="chapter" data-level="85.4.1" data-path="packages.html"><a href="packages.html#列操作"><i class="fa fa-check"></i><b>85.4.1</b> 列操作</a></li>
+<li class="chapter" data-level="85.4.2" data-path="packages.html"><a href="packages.html#行操作"><i class="fa fa-check"></i><b>85.4.2</b> 行操作</a></li>
+<li class="chapter" data-level="85.4.3" data-path="packages.html"><a href="packages.html#数据框-1"><i class="fa fa-check"></i><b>85.4.3</b> 数据框</a></li>
+<li class="chapter" data-level="85.4.4" data-path="packages.html"><a href="packages.html#分组计算"><i class="fa fa-check"></i><b>85.4.4</b> 分组计算</a></li>
+<li class="chapter" data-level="85.4.5" data-path="packages.html"><a href="packages.html#字符串stringr-package"><i class="fa fa-check"></i><b>85.4.5</b> 字符串(stringr package)</a></li>
+<li class="chapter" data-level="85.4.6" data-path="packages.html"><a href="packages.html#函数式编程purrr-package"><i class="fa fa-check"></i><b>85.4.6</b> 函数式编程(purrr package)</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="lesson-6.html"><a href="lesson-6.html#data-explore"><i class="fa fa-check"></i><b>7.3</b> Data Explore</a></li>
+<li class="chapter" data-level="85.5" data-path="packages.html"><a href="packages.html#常用函数"><i class="fa fa-check"></i><b>85.5</b> 常用函数</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="lesson-7.html"><a href="lesson-7.html"><i class="fa fa-check"></i><b>8</b> 第七讲：如何进行基本的数据分析: t-test和anova</a>
+<li class="chapter" data-level="86" data-path="数据可视化.html"><a href="数据可视化.html"><i class="fa fa-check"></i><b>86</b> 7.2 数据可视化</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="lesson-7.html"><a href="lesson-7.html#语法实现"><i class="fa fa-check"></i><b>8.1</b> <strong>语法实现</strong></a>
+<li class="chapter" data-level="86.1" data-path="数据可视化.html"><a href="数据可视化.html#可视化的重要性"><i class="fa fa-check"></i><b>86.1</b> 7.2.1 可视化的重要性</a></li>
+</ul></li>
+<li class="chapter" data-level="87" data-path="数据可视化-1.html"><a href="数据可视化-1.html"><i class="fa fa-check"></i><b>87</b> 7.2 数据可视化</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="lesson-7.html"><a href="lesson-7.html#t检验"><i class="fa fa-check"></i><b>8.1.1</b> t检验</a></li>
-<li class="chapter" data-level="8.1.2" data-path="lesson-7.html"><a href="lesson-7.html#方差分析"><i class="fa fa-check"></i><b>8.1.2</b> 方差分析</a></li>
+<li class="chapter" data-level="87.1" data-path="数据可视化-1.html"><a href="数据可视化-1.html#为何使用-ggplot2"><i class="fa fa-check"></i><b>87.1</b> 7.2.2 为何使用 ggplot2?</a></li>
+<li class="chapter" data-level="87.2" data-path="数据可视化-1.html"><a href="数据可视化-1.html#为何使用-ggplot"><i class="fa fa-check"></i><b>87.2</b> 7.2.2 为何使用 ggplot?</a></li>
+<li class="chapter" data-level="87.3" data-path="数据可视化-1.html"><a href="数据可视化-1.html#为何使用-ggplot-1"><i class="fa fa-check"></i><b>87.3</b> 7.2.2 为何使用 ggplot?</a></li>
+<li class="chapter" data-level="87.4" data-path="数据可视化-1.html"><a href="数据可视化-1.html#ggplot2-的逻辑"><i class="fa fa-check"></i><b>87.4</b> 7.2.3 ggplot2 的逻辑</a></li>
+<li class="chapter" data-level="87.5" data-path="数据可视化-1.html"><a href="数据可视化-1.html#ggplot2-的逻辑-1"><i class="fa fa-check"></i><b>87.5</b> 7.2.3 ggplot2 的逻辑</a></li>
+<li class="chapter" data-level="87.6" data-path="数据可视化-1.html"><a href="数据可视化-1.html#ggplot2-的逻辑-2"><i class="fa fa-check"></i><b>87.6</b> 7.2.3 ggplot2 的逻辑</a></li>
+<li class="chapter" data-level="87.7" data-path="数据可视化-1.html"><a href="数据可视化-1.html#单个图片的组成"><i class="fa fa-check"></i><b>87.7</b> 7.2.4 单个图片的组成</a></li>
+<li class="chapter" data-level="87.8" data-path="数据可视化-1.html"><a href="数据可视化-1.html#单个图片的组成-1"><i class="fa fa-check"></i><b>87.8</b> 7.2.4 单个图片的组成</a></li>
+</ul></li>
+<li class="chapter" data-level="88" data-path="常用图形.html"><a href="常用图形.html"><i class="fa fa-check"></i><b>88</b> 7.3 常用图形</a>
+<ul>
+<li class="chapter" data-level="88.1" data-path="常用图形.html"><a href="常用图形.html#直方图"><i class="fa fa-check"></i><b>88.1</b> 直方图</a></li>
+<li class="chapter" data-level="88.2" data-path="常用图形.html"><a href="常用图形.html#密度图"><i class="fa fa-check"></i><b>88.2</b> 密度图</a></li>
+<li class="chapter" data-level="88.3" data-path="常用图形.html"><a href="常用图形.html#直方图-密度图"><i class="fa fa-check"></i><b>88.3</b> 直方图 + 密度图</a></li>
+<li class="chapter" data-level="88.4" data-path="常用图形.html"><a href="常用图形.html#直方图-密度图-1"><i class="fa fa-check"></i><b>88.4</b> 直方图 + 密度图</a></li>
+<li class="chapter" data-level="88.5" data-path="常用图形.html"><a href="常用图形.html#箱线图"><i class="fa fa-check"></i><b>88.5</b> 箱线图</a></li>
+</ul></li>
+<li class="chapter" data-level="89" data-path="explore-data-with-dataexplorer.html"><a href="explore-data-with-dataexplorer.html"><i class="fa fa-check"></i><b>89</b> 7.4 Explore data with DataExplorer</a>
+<ul>
+<li class="chapter" data-level="89.1" data-path="explore-data-with-dataexplorer.html"><a href="explore-data-with-dataexplorer.html#使用ggpairs"><i class="fa fa-check"></i><b>89.1</b> 使用ggpairs</a></li>
+</ul></li>
+<li class="chapter" data-level="90" data-path="参考阅读.html"><a href="参考阅读.html"><i class="fa fa-check"></i><b>90</b> 参考阅读</a></li>
+<li class="chapter" data-level="91" data-path="lesson-7.html"><a href="lesson-7.html"><i class="fa fa-check"></i><b>91</b> 第七讲：如何进行基本的数据分析: <em>t</em>-test和ANOVA</a>
+<ul>
+<li class="chapter" data-level="91.0.1" data-path="lesson-7.html"><a href="lesson-7.html#t检验"><i class="fa fa-check"></i><b>91.0.1</b> <em>t</em>检验</a></li>
+<li class="chapter" data-level="91.0.2" data-path="lesson-7.html"><a href="lesson-7.html#方差分析"><i class="fa fa-check"></i><b>91.0.2</b> 方差分析</a></li>
+</ul></li>
+<li class="chapter" data-level="92" data-path="lesson-8.html"><a href="lesson-8.html"><i class="fa fa-check"></i><b>92</b> 第八讲：如何进行基本的数据分析: 相关与回归</a>
+<ul>
+<li class="chapter" data-level="92.1" data-path="lesson-8.html"><a href="lesson-8.html#什么是相关"><i class="fa fa-check"></i><b>92.1</b> 什么是相关</a></li>
+<li class="chapter" data-level="92.2" data-path="lesson-8.html"><a href="lesson-8.html#相关-代码实现"><i class="fa fa-check"></i><b>92.2</b> 相关-代码实现</a></li>
+<li class="chapter" data-level="92.3" data-path="lesson-8.html"><a href="lesson-8.html#什么是回归"><i class="fa fa-check"></i><b>92.3</b> 什么是回归</a></li>
+</ul></li>
+<li class="chapter" data-level="93" data-path="lesson-9.html"><a href="lesson-9.html"><i class="fa fa-check"></i><b>93</b> 第九章：如何进行基本的数据分析: 中介分析</a>
+<ul>
+<li class="chapter" data-level="93.1" data-path="lesson-9.html"><a href="lesson-9.html#process"><i class="fa fa-check"></i><b>93.1</b> process</a></li>
+</ul></li>
+<li class="chapter" data-level="94" data-path="lesson-12.html"><a href="lesson-12.html"><i class="fa fa-check"></i><b>94</b> 第十二讲：从分析到手稿</a>
+<ul>
+<li class="chapter" data-level="94.1" data-path="lesson-12.html"><a href="lesson-12.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>94.1</b> <strong>通过Papaja撰写论文</strong></a>
+<ul>
+<li class="chapter" data-level="94.1.1" data-path="lesson-12.html"><a href="lesson-12.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>94.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
+<li class="chapter" data-level="94.1.2" data-path="lesson-12.html"><a href="lesson-12.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>94.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
+<li class="chapter" data-level="94.1.3" data-path="lesson-12.html"><a href="lesson-12.html#part3-正文的撰写"><i class="fa fa-check"></i><b>94.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
+<li class="chapter" data-level="94.1.4" data-path="lesson-12.html"><a href="lesson-12.html#总结"><i class="fa fa-check"></i><b>94.1.4</b> 总结</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="lesson-8.html"><a href="lesson-8.html"><i class="fa fa-check"></i><b>9</b> 第八讲：如何进行基本的数据分析: 相关与回归</a>
+<li class="chapter" data-level="95" data-path="lesson-13.html"><a href="lesson-13.html"><i class="fa fa-check"></i><b>95</b> 第十三章：效应量和元分析</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="lesson-8.html"><a href="lesson-8.html#什么是相关"><i class="fa fa-check"></i><b>9.1</b> 什么是相关</a></li>
-<li class="chapter" data-level="9.2" data-path="lesson-8.html"><a href="lesson-8.html#相关-代码实现"><i class="fa fa-check"></i><b>9.2</b> 相关-代码实现</a></li>
-<li class="chapter" data-level="9.3" data-path="lesson-8.html"><a href="lesson-8.html#什么是回归"><i class="fa fa-check"></i><b>9.3</b> 什么是回归</a></li>
+<li class="chapter" data-level="95.1" data-path="lesson-13.html"><a href="lesson-13.html#效应量简介"><i class="fa fa-check"></i><b>95.1</b> 效应量简介</a></li>
+<li class="chapter" data-level="95.2" data-path="lesson-13.html"><a href="lesson-13.html#算法实现"><i class="fa fa-check"></i><b>95.2</b> 算法实现</a></li>
+<li class="chapter" data-level="95.3" data-path="lesson-13.html"><a href="lesson-13.html#小练习"><i class="fa fa-check"></i><b>95.3</b> 小练习</a></li>
+<li class="chapter" data-level="95.4" data-path="lesson-13.html"><a href="lesson-13.html#元分析简介"><i class="fa fa-check"></i><b>95.4</b> 元分析简介</a></li>
+<li class="chapter" data-level="95.5" data-path="lesson-13.html"><a href="lesson-13.html#元分析实现"><i class="fa fa-check"></i><b>95.5</b> 元分析实现</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="96" data-path="lesson-3.html"><a href="lesson-3.html"><i class="fa fa-check"></i><b>96</b> 第三讲：如何导入数据</a>
+<ul>
+<li class="chapter" data-level="96.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path-working-dir"><i class="fa fa-check"></i><b>96.1</b> 路径与工作目录</a>
+<ul>
+<li class="chapter" data-level="96.1.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-path"><i class="fa fa-check"></i><b>96.1.1</b> 相对路径与绝对路径</a></li>
+<li class="chapter" data-level="96.1.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-packge-here"><i class="fa fa-check"></i><b>96.1.2</b> Here包的使用</a></li>
+</ul></li>
+<li class="chapter" data-level="96.2" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-data"><i class="fa fa-check"></i><b>96.2</b> 读取数据</a>
+<ul>
+<li class="chapter" data-level="96.2.1" data-path="lesson-3.html"><a href="lesson-3.html#id_3-read-csv"><i class="fa fa-check"></i><b>96.2.1</b> read.csv函数</a></li>
+<li class="chapter" data-level="96.2.2" data-path="lesson-3.html"><a href="lesson-3.html#命名"><i class="fa fa-check"></i><b>96.2.2</b> 命名</a></li>
+</ul></li>
+<li class="chapter" data-level="96.3" data-path="lesson-3.html"><a href="lesson-3.html#id_3-data-object"><i class="fa fa-check"></i><b>96.3</b> 了解R里的数据 （R语言中的对象）</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -269,7 +521,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lecture 12: Preparing journal artical with <em>papaja</em></a>
           </h1>
         </div>
 
@@ -277,119 +529,538 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lesson-4" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">5</span> 第四讲：如何清理数据—R语言编程基础<a href="lesson-4.html#lesson-4" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><strong>前言</strong></p>
-<p>大家解压好我们发在群里的压缩文件，在里面，有几个文件对大家都是有用的。第一个是Rproject，打开它后会自动启动相应的路径，这是上一节课讲过的。有了这个Rproject，我们就不需要再去寻找文件，只要把所有东西都放在这里面，所有的读取和保存文件都可以通过相对路径来解决。在这里面，有一个chap4的网页html文件，它实际上就是我们今晚的PPT。还有一个叫做RMD的文件，里面有代码。大家可以打开它，可能跟我看到的现在看到的应该是一个类似的界面。在右下角的窗口里，有一个chap4 RMD，里面都是关于代码的。大家可能有一些地方不需要自己去抄代码，可以去找一些相关的代码。因为之前有同学会抄PPT上的代码，这样很慢。在这个地方，我们读取数据的代码都在这里面。在自己电脑操作的时候，可以直接点开这个RMD，这样就可以直接进行复制粘贴来完成运行，因为都是相对路径，所以实际上是比较容易，基本上不会出错。</p>
-<div class="float">
-<img src="1004-lesson4/mulu.png" alt="mulu" />
-<div class="figcaption">mulu</div>
+<div id="lesson-4" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">14</span> 第四讲 &amp; 第五讲 ：数据导入 – 数据类型与结构<a href="lesson-4.html#lesson-4" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>今天我们正式开始用r来处理数据。记得去年教授这门课程时，有同学遇到了报错和乱码的问题，无法正常显示，这是因为部分语言设置不正确。为避免此类问题，大家可以将自己的编程语言设置为英文，这样就不会出现乱码了。也就是说，当你遇到报错时，如果系统默认语言是中文，那么在输出时可能会有乱码，无法被识别，这是一个小问题。将界面语言设置成英文的代码如下：</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="lesson-4.html#cb77-1" tabindex="-1"></a><span class="co"># set local encoding to English</span></span>
+<span id="cb77-2"><a href="lesson-4.html#cb77-2" tabindex="-1"></a><span class="cf">if</span> (.Platform<span class="sc">$</span>OS.type <span class="sc">==</span> <span class="st">&#39;windows&#39;</span>) {</span>
+<span id="cb77-3"><a href="lesson-4.html#cb77-3" tabindex="-1"></a>  <span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&#39;LC_ALL&#39;</span>,<span class="st">&#39;English_United States.1250&#39;</span>)</span>
+<span id="cb77-4"><a href="lesson-4.html#cb77-4" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb77-5"><a href="lesson-4.html#cb77-5" tabindex="-1"></a>  <span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&#39;LC_ALL&#39;</span>,<span class="st">&#39;en_US.UTF-8&#39;</span>)</span>
+<span id="cb77-6"><a href="lesson-4.html#cb77-6" tabindex="-1"></a>}</span>
+<span id="cb77-7"><a href="lesson-4.html#cb77-7" tabindex="-1"></a><span class="co"># set the feedback language to English</span></span>
+<span id="cb77-8"><a href="lesson-4.html#cb77-8" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">LANG =</span> <span class="st">&quot;en&quot;</span>) </span></code></pre></div>
+<p>在开始分析数据数据之前，我们需要加载分析数据时所需要的包，一般使用<code>library()</code>函数。但更推荐大家使用名为<code>packman</code>（Package Management ）的包来加载，使用<code>pacman::p_load</code>不仅可以批量加载包，而且遇到没有安装的包时会自动为我们安装。</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="lesson-4.html#cb78-1" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&#39;pacman&#39;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb78-2"><a href="lesson-4.html#cb78-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&#39;pacman&#39;</span>)</span>
+<span id="cb78-3"><a href="lesson-4.html#cb78-3" tabindex="-1"></a>}</span>
+<span id="cb78-4"><a href="lesson-4.html#cb78-4" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(bruceR,here)</span></code></pre></div>
+<div id="加载数据" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> 加载数据<a href="lesson-4.html#加载数据" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>既然我们要开始处理数据，而R作为一种工具，是解决数据分析问题的关键。我们需要将R整合到数据分析流程中，用R来完成整个数据分析过程。数据分析的第一步通常是获取数据。对于心理学专业的同学来说，大多数人获取数据的方式是通过自己进行实验和发放问卷来收集数据，并通过问卷平台或实验数据收集工具将数据汇总。而在其他情况下，获取数据的方式可能会有所不同。例如，你毕业后可能会在其他地方工作，此时你遇到的数据可能不是通过实验收集的，而是需要通过网络或其他途径来获取，或者可能是别人交给你的未经整理的数据。</p>
+<p>在处理数据之前，你可能需要进行一些额外的步骤，比如通过网络爬虫技术来爬取数据，这是一种获取数据的方式。假设现在大家手头已经有了一些数据，接下来，我们要探讨的是如何将这些数据导入到我们的数据分析软件中。对于本科毕业论文，我们都知道SPSS是如何导入数据的。</p>
+<p>同样，我们也可以尝试在R环境中进行类似的操作，比如在R Studio的界面中，我们通过File-Import Dataset选项中手动导入数据，选择数据打开后，在右上角的 Environment 界面中会显示已导入的数据的名称。但是如果我们要导入的数据非常多时，或者我们需要将许多分散的数据合并成一个数据时，使用手动点击的方式一个个导入就会非常费时费力，因此代码会是效率更高的选择。</p>
+<p>在课程中，我们会遇到两个主要的数据集，一个是Human Penguin Project问卷数据集，另一个是Perceptual matching 实验数据集。我们刚才通过点击操作完成了数据导入并查看了问卷数据，现在则要通过代码来完成相同的操作，包括尝试选择一些变量进行初步统计。这就是我们在数据分析中遇到的第一个问题。本节课的主要目标就是要解决这一问题。</p>
 </div>
-<p>此外，我们还有一个小技巧。在上次课上，我们的助教发现大家都直接在控制台里面写代码，这会导致代码难以查找错误。因此，我们可以使用一个叫做Rscript的脚本来记录我们所有的代码。如何创建Rscript呢？很简单，只需要在RStudio中点击“文件”，然后选择“新建文件”。这个Rscript实际上是一个txt文件，但我们可以在其中记录代码。这将在调试时非常方便。</p>
-<div class="float">
-<img src="1004-lesson4/scrip.png" alt="scrip" />
-<div class="figcaption">scrip</div>
+<div id="数据导入" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> 数据导入<a href="lesson-4.html#数据导入" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="数据的地址路径" class="section level3 hasAnchor" number="14.2.1">
+<h3><span class="header-section-number">14.2.1</span> 数据的“地址”——路径<a href="lesson-4.html#数据的地址路径" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>如果我们希望通过代码来导入数据，那么首先需要告诉电脑数据“住在”哪里（address），即到哪个文件夹来寻找数据。如果只是在文件夹中以点击的方式来寻找我们想要的数据，比要在 R4Psy 中找到名为 penguin_rawdata.csv 的数据，则需要按照以下步骤进行点击（以 Macos 系统为例）：<br />
+<img src="pic_new/chp4/path1.jpg" alt="path2" /></p>
+<p>如果将点击文件夹的名称按顺序组合起来，并且中间使用斜杠(/)作为分隔符，就形成了计算机寻找文件的路径：“./data/penguin/penguin_rawdata.csv” 或 “data/penguin/penguin_rawdata.csv”（注意，路径的前后都需要有引号，单引号双引号都可以，具体原因会在这节课的结尾解释）。</p>
+<p>但是很容易发现，在 R4Psy 文件之前仍然存在文件夹，如果一直追溯的话会发现路径会变得非常非常长：<br />
+<img src="pic_new/chp4/path2.jpg" alt="path2" />
+完整的路径写成代码的话应该表示为：“/Users/cz***/Documents/github/R4Psy/data/penguin/penguin_rawdata.csv”。</p>
 </div>
-<div id="lesson-4-robject" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> R对象的操控<a href="lesson-4.html#lesson-4-robject" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>好，那么我们上次课花了一节课帮助大家解决了很小的几个问题，就是知道什么是工作路径、什么是工作目录以及什么是目录、相对路径和绝对路径。然后在理解了这些概念之后，我们第一次读取了一个数据。</p>
-<p>这节课我们讲一下在R里面，它到底有哪些数据类型，我们如何得到进行操作。我们上节课很快地讲完了R的数据类型，但大家当时可能听得很懵。如果我们按照讲R语言的方式，它会一直都是很懵。为什么呢？因为它跟我们的数据完全是脱节的。所以这节课我们通过对数据进行操作，进行数据筛选的学习。上次课我们已经读取过数据，这次我们将按照相同的方式再次读取数据。</p>
-<p>我们将使用read.csv来读取三个数据，并将它们合并。在这里，我们有三个数据文件，分别是707304、7305和7306。我们的分隔符与上次不同，我们使用空格而不是制表符。在空格中间，有两个引号<strong>（““）</strong>。我们这次的数据分割方法与上节课不同。上节课我们使用了斜杠和t作为分割符号，但是我们发现使用tab作为分割符号时会出现问题，无法真正进行分割。因此我们进行了尝试，发现使用空格作为分割符号更为合适，空格中间有两个引号，不加任何东西。这与上节课不同。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="lesson-4.html#cb2-1" tabindex="-1"></a><span class="co">#实验数据参考读取方法，这里我们随便选择三个被试：</span></span>
-<span id="cb2-2"><a href="lesson-4.html#cb2-2" tabindex="-1"></a>match.data1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/match/data_exp7_rep_match_7304.out&quot;</span>, </span>
-<span id="cb2-3"><a href="lesson-4.html#cb2-3" tabindex="-1"></a>                        <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>, </span>
-<span id="cb2-4"><a href="lesson-4.html#cb2-4" tabindex="-1"></a>                        <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb2-5"><a href="lesson-4.html#cb2-5" tabindex="-1"></a>match.data2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/match/data_exp7_rep_match_7305.out&quot;</span>, </span>
-<span id="cb2-6"><a href="lesson-4.html#cb2-6" tabindex="-1"></a>                        <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>, </span>
-<span id="cb2-7"><a href="lesson-4.html#cb2-7" tabindex="-1"></a>                        <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb2-8"><a href="lesson-4.html#cb2-8" tabindex="-1"></a>match.data3 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/match/data_exp7_rep_match_7306.out&quot;</span>, </span>
-<span id="cb2-9"><a href="lesson-4.html#cb2-9" tabindex="-1"></a>                        <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>, </span>
-<span id="cb2-10"><a href="lesson-4.html#cb2-10" tabindex="-1"></a>                        <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p>我们将每个被试的数据读取到单独的变量名下面。这个符号（<strong>&lt;-</strong>）是R语言中的一个复制符号，我们通过读取.csv和.out文件，将它们复制到一个变量中，比如match data 1。因为有三个被试，我们将它们变成三个数据。然后我们使用rbind函数，将不同的数据框进行合并，合并它们的列。这个函数很简单，我们有一个新的变量名match_data.all，然后用rbind函数将所有的数据都放到里面去，包括match data 1、match data 2和match data 3。我们刚才的操作就是从这里开始的，先读取单个被试的数据，然后再将它们合并。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="lesson-4.html#cb3-1" tabindex="-1"></a><span class="co">#组合三个数据：</span></span>
-<span id="cb3-2"><a href="lesson-4.html#cb3-2" tabindex="-1"></a>match.data.all <span class="ot">&lt;-</span> <span class="fu">rbind</span>(match.data1, match.data2, match.data3)</span></code></pre></div>
-<p>我们涉及到了哪些R语言的特性呢？第一个是赋值符号，我们之前已经讲过了。为什么我们需要赋值符号呢？因为它表示将一个值附到一个变量名上，比如将10复制到object中。我们可以对它进行操作。如果我们在object后面加上2，输出就是10 + 2，但是object本身没有变。因此，每当要保存某一个结果的时候，我们一定要把它复制到某一个特定的变量里面去。相当于说，object 只是一个标签，它下面的内容会根据我们的赋值的改变而改变。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="lesson-4.html#cb4-1" tabindex="-1"></a>object <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb4-2"><a href="lesson-4.html#cb4-2" tabindex="-1"></a>object </span></code></pre></div>
+<div id="绝对路径与相对路径" class="section level3 hasAnchor" number="14.2.2">
+<h3><span class="header-section-number">14.2.2</span> 绝对路径与相对路径<a href="lesson-4.html#绝对路径与相对路径" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>对于这两种路径，后者（即完整的路径）称为绝对路径，而前者（不完全的路径）称为相对路径，二者区别在于是否要设置一个文件夹所谓搜索的起始点，比如在上面例子中，相对路径设置了
+R4Psy 作为搜索的起始点，而绝对路径则从硬盘所在的文件夹开始搜索。显然，就写法而言相对路径会更加轻松。而这个起始文件夹被称为工作路径(working directory，绝对路径 = 工作路径+相对路径)，如果设定了工作路径，在工作路径之前的内容就可以省略不写。</p>
+<p>在RStudio 的 global options-General中可以设置默认的工作路径；当然，也可以使用<code>setwd()</code>函数来手动修改，使用<code>getwd()</code>函数来查看当前的工作路径；另外， Rmarkdown(.Rmd) 和Rproject(.Rproj)这两种文件对于路径的处理会比较特殊，它们会默认将文件所在的地址作为工作路径，这非常有利于和别人分享你的结果：我们一般会将打包放在和 Rmarkdown 文件相同路径的文件夹中，如果你将 Rmarkdown 及数据打包分享给他人时，别人使用你的 Rmarkdown 来加载数据，比如 R4Psy 文件夹，尽管在别人的电脑中 R4Psy 之前的路径和你完全不同，但别人运行 Rmd 文件时完全不用对路径做任何修改，也不用重新修改默认的工作路径。</p>
+<p>对于工作路径的设置，除了使用 <code>setwd()</code>函数外，还可使用 bruceR 包中的<code>set_wd(ask = T)</code>或<code>set.wd(ask = T)</code>进行设置，另参数 ask = T 可以调出可视化界面通过点击的方式进行选择。</p>
+<p>在 Windows 系统中道理是一样的，但如果大家点击地址栏的话，会发现路径的分隔符使用的是反斜杠（\）而非上里面例子中所展示的(/)：</p>
+<div class="center">
+<pre><code>&lt;img src=&quot;pic_new/chp4/abspath.jpg&quot; alt=&quot;abs_path&quot; style=&quot;zoom:50%;&quot;/&gt;</code></pre>
+<p>在 R语言中，路径分隔符要求为斜杠（/），注意不能直接从路径栏中直接复制地址。这是一个非常细节的问题，但也有更加方便的方式来解决这个问题，即使用<code>here::here()</code>函数，只需要在这个函数中按顺序依次输出，比如对于上面的相对路径就可以写为：</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="lesson-4.html#cb80-1" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>,<span class="st">&#39;penguin&#39;</span>,<span class="st">&#39;penguin_rawdata.csv&#39;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="读取数据" class="section level2 hasAnchor" number="14.3">
+<h2><span class="header-section-number">14.3</span> 读取数据<a href="lesson-4.html#读取数据" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="手动导入" class="section level3 hasAnchor" number="14.3.1">
+<h3><span class="header-section-number">14.3.1</span> 手动导入<a href="lesson-4.html#手动导入" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在设置好工作路径后，可以在 Files 窗口中直接点击数据，这个过程与 SPSS 或 Excel 里导入数据的操作类似。
+<img src="pic_new/chp4/imp1.png" alt="imp1" /></p>
+</div>
+<div id="代码导入" class="section level3 hasAnchor" number="14.3.2">
+<h3><span class="header-section-number">14.3.2</span> 代码导入<a href="lesson-4.html#代码导入" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>当然，我们更推荐使用代码的方式来导入数据：</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="lesson-4.html#cb81-1" tabindex="-1"></a>penguin_data <span class="ot">=</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>))</span>
+<span id="cb81-2"><a href="lesson-4.html#cb81-2" tabindex="-1"></a><span class="fu">ncol</span>(penguin_data)</span></code></pre></div>
+<pre><code>## [1] 232</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="lesson-4.html#cb83-1" tabindex="-1"></a><span class="fu">nrow</span>(penguin_data)</span></code></pre></div>
+<pre><code>## [1] 1517</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="lesson-4.html#cb85-1" tabindex="-1"></a><span class="fu">head</span>(penguin_data)</span>
+<span id="cb85-2"><a href="lesson-4.html#cb85-2" tabindex="-1"></a><span class="fu">tail</span>(penguin_data)</span></code></pre></div>
+<p>在上面的代码中，我们使用了 bruceR 包中的 import 函数来导入 penguin_rawdata.csv文件，并将数据命名为penguin_data（即等号’=’）；导入成功后，可以在 Environment 界面中看到这个名称，如果在 console 界面中输入penguin_data，就会返回具体的数据内容；使用 <code>head()</code>或<code>tail()</code>可以查看数据的前 5 行或最后 5 行。<code>ncol()</code>和<code>nrow()</code>分别查看数据的列数与行数。</p>
+<p>（如果 bruceR包已经加载了，在代码中<code>bruceR::</code>部分是可以省略不写的，对于简单的数据处理来说没有问题，但随着数据处理与分析的难度增加，会用调用非常多的包，有时候不同包之间会存在有相同变量名的函数，如果不声明函数来源于哪个包的话，要么 R语言会提示函数存在冲突，要么本来想用 A 包中的函数，但实际上执行了 B 包中的同名函数，因而出现报错。因此建议大家现在就养成在函数声明其来源的好习惯）</p>
+<p>如果大家之前使用点击的方式来导入数据，会发现在 console 中会显示导入数据的代码，代码中使用的是<code>read.csv()</code>函数，而我们更推荐使用<code>import()</code>函数作为替代，因为<code>import()</code>函数对于心理学常见数据几乎都是适用的(如txt,csv,sav,dta等等，可通过<code>?bruceR::import()</code>查看具体信息)，而<code>read.csv()</code>只适用于 csv 类型的数据。</p>
+</div>
+</div>
+<div id="赋值-1" class="section level2 hasAnchor" number="14.4">
+<h2><span class="header-section-number">14.4</span> 赋值<a href="lesson-4.html#赋值-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在导入数据时，我们使用了等号进行赋值。而在R中，赋值操作符可以使用“&lt;-”，也可以使用“=”，二者是等价的。</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="lesson-4.html#cb86-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb86-2"><a href="lesson-4.html#cb86-2" tabindex="-1"></a>y <span class="ot">=</span> x <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb86-3"><a href="lesson-4.html#cb86-3" tabindex="-1"></a><span class="do">## cat函数将值的内容输出到屏幕上</span></span>
+<span id="cb86-4"><a href="lesson-4.html#cb86-4" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="lesson-4.html#cb88-1" tabindex="-1"></a>y</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="lesson-4.html#cb90-1" tabindex="-1"></a><span class="do">## 重新对 x 进行赋值</span></span>
+<span id="cb90-2"><a href="lesson-4.html#cb90-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb90-3"><a href="lesson-4.html#cb90-3" tabindex="-1"></a><span class="do">## x</span></span>
+<span id="cb90-4"><a href="lesson-4.html#cb90-4" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 1000</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="lesson-4.html#cb92-1" tabindex="-1"></a>y</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<p>通过上面的例子可以发现，对 x 进行赋值，并利用 x 进行计算后，更改 x 的值并不会影响 y的结果。此外，如果仅仅只是利用数据进行计算而没有复制操作的话，计算结果并不会被保存：</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="lesson-4.html#cb94-1" tabindex="-1"></a>object <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb94-2"><a href="lesson-4.html#cb94-2" tabindex="-1"></a>object</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="lesson-4.html#cb6-1" tabindex="-1"></a>object <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="lesson-4.html#cb96-1" tabindex="-1"></a><span class="co"># 利用 object 进行计算但不赋值</span></span>
+<span id="cb96-2"><a href="lesson-4.html#cb96-2" tabindex="-1"></a>object <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="lesson-4.html#cb8-1" tabindex="-1"></a>object </span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="lesson-4.html#cb98-1" tabindex="-1"></a><span class="co"># object 数值并没有发生改变</span></span>
+<span id="cb98-2"><a href="lesson-4.html#cb98-2" tabindex="-1"></a>object</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
-<p>在R中，变量名由字母、数字和两个特定的符号（下划线和点）组成，其他符号是不被接受的。我们也不推荐使用中文，因为在不同的电脑上可能会出现编码不一致的问题。为了避免这种情况，我们尽量使用拼音。关于变量命名的可读性，我们应该让变量名称易于理解，一看就知道它代表什么。例如，在我们的课程中，我们有两个数据，一个是match data，另一个是human penguin project的数据，我们可以将它们分别命名为match data和penguin data，这样我们就能够一看到这个名字就知道它代表的是哪个实验的数据。这是关于R对象的复制和变量命名的基础知识。</p>
+<p>此外需要注意的是，R语言中的变量名的命名有一系列的规则：</p>
+<ul>
+<li><p>区分大小写，’Object’和’object’是两个不同的变量名；</p></li>
+<li><p>变量名内不能使用空格，但可以用下划线代替空格；</p></li>
+<li><p>变量名开头不能是数字和一些特殊符号(如+-*/) ；</p></li>
+</ul>
 </div>
-<div id="lesson-4-function" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> 函数<a href="lesson-4.html#lesson-4-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>刚刚我们使用了R-bind函数将三个对象合并成一个，这涉及到函数的概念，我们在前面已经讲过。数学中的函数实际上就是一种方法，只不过是用代码来实现。数学函数可以表示为y=f(x)，或者其他形式，其中括号内是我们输入的变量，它会返回一个结果。在R语言中，函数也基本上是这个意思，就是有一个特定的名称，比如在这里就叫做rbind，然后有一个括号，你在这个括号内输入内容之后，它就会返回一个结果。</p>
-<p>函数是用于执行特定任务或计算的代码块，它接受输入参数，执行特定的操作，然后返回结果。函数来源有很多，安装R时，我们一般会安装R-base，这是R开发团队放在R基础包中的所有东西。这个base中已经包含了很多用于统计分析的函数。另外还有R的包，就是我们自己额外安装的包，比如Tidyverse、GGPlot、Nymer、Lmer、Lme4等。还有其他的R源，比如Cray、Microsoft、Stand等。除了这些，还可以在GitHub上直接安装一些包。虽然函数可以自己编写，但这比较复杂，我们会在后面再讲解。</p>
-<p>我们经常需要重复执行某个任务，这时可以将其封装成一个函数，以后只需要调用这个函数即可，无需重复编写所有操作。函数是一个重要的知识点，可以用非常简单的两三行代码实现。但是有时候，当我们使用别人提供的函数时，可能不知道它的作用、输入规则和选项。在RStudio中，我们可以通过在函数名前加一个英文问号来查看它的用法。例如，在使用here包时，我们可以在RStudio的右下角看到帮助文件。</p>
+<div id="数据类型" class="section level2 hasAnchor" number="14.5">
+<h2><span class="header-section-number">14.5</span> 数据类型<a href="lesson-4.html#数据类型" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在读取数据后，我们需要知道数据中的具体内容有哪些，但这里就需要了解一些与数据类型相关的知识。在 SPSS 中的变量视图中，不同的变量可能会有不同的数据类型，如名义、标度、有序等，Excel 中对于单元格也可以去选择常规、数值、货币、日期等类型，R 语言也是一样。</p>
+<p>可以观察一下我们导入的 pengui_data 数据，可以发现对于每个单元格来说，大概可以分为两类，一种是数字，一种是文字；而数字也有整数和小数之分。凭直觉来说，数字是可以进行加减乘除等运算的，而文字（如‘Oxyford’）不能（实际上也确实如此）。</p>
 <div class="float">
-<img src="1004-lesson4/qiuzhu2.png" alt="qiuzhu2" />
-<div class="figcaption">qiuzhu2</div>
+<img src="pic_new/chp4/imp3.png" alt="imp3" />
+<div class="figcaption">imp3</div>
 </div>
-<p>但是有些帮助文件可能并不是很有用，因为开发者有时会有所谓的“知识诅咒”，认为别人都和他一样有基本知识和内容。这时，我们可以在搜索引擎中搜索关键词和R包名，以便找到我们需要的信息。在调用已有的函数 时，我们需要先使用library加载包，然后直接使用函数名和小括号。如果没有加载包，我们可以直接使用R包名和两个冒号加上函数名来调用。个人偏好是将包名加上，因为R的生态系统非常复杂，有很多包都有类似的功能，这样可以避免混淆。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="lesson-4.html#cb10-1" tabindex="-1"></a><span class="co">#给出R包的调用：</span></span>
-<span id="cb10-2"><a href="lesson-4.html#cb10-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;here&quot;</span>)<span class="co">#加载here包，install的R包需要library后使用</span></span></code></pre></div>
-<pre><code>## Warning: package &#39;here&#39; was built under R version 4.2.3</code></pre>
-<pre><code>## here() starts at C:/GitHub/R4PsyBook/bookdown_files/Books/Book</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="lesson-4.html#cb13-1" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>()<span class="co">#这里第一个here是R包，第二个here是调用这个包里here函数</span></span></code></pre></div>
-<pre><code>## [1] &quot;C:/GitHub/R4PsyBook/bookdown_files/Books/Book&quot;</code></pre>
-</div>
-<div id="lesson-4-functions" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> 常用函数<a href="lesson-4.html#lesson-4-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>我们刚才使用了R中非常常用的函数R bind。现在我们先停一会儿，让大家完成刚才的操作，即通过Match Data完成数据的读取和合并。这个操作在真实的数据中非常常用，当你有不同数据文件或不同数据来源时，你肯定要对它们进行合并。现在我们练习读取三个不同base的数据，将它们合并成为一个数据，并体验一下R bind函数的使用。然后我们再讲下一个知识点。如果大家按照压缩包来打开，应该会很快。我刚才有一个有趣的问题，就是现在Windows系统比较发达，它可以直接读取zip文件，没有解压的过程。但是这个时候你发现，打开R以后，里面的文件是不完整的。所以一定要把那个zip文件右击然后提取成为一个完整的文件夹，这样我才能看到全部的内容。</p>
-<div id="unique" class="section level3 hasAnchor" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> unique()<a href="lesson-4.html#unique" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>我们想看一下这个数据有没有问题。首先，我们想查看这个数据里面的实验条件是不是完整的。如果我们直接看，我们可以点开右边的Match all，然后查看Label这个实验条件。我们想看这个实验条件是不是只有几个独特的值。如果我们的实验条件就是6种条件 的话，那么它就只应该有6个值。这种情况下，我们不可能一个一个地去数。在R语言中，我们可以使用一些简单的函数来查看某一列的唯一数值有多少个。首先，我们可以使用head函数来查看数字的前几行长什么样。然后，我们可以使用unique函数来查看这个列中有多少个唯一的数值。我们可以使用美元符号和列名来选择完整的列。如果我们想要查看一个很大的数据框中的某一列，我们可以使用美元符号和列名来选择每一栏。在这个示例中，我们可以直接输入美元符号和列名来输出这个列的内容。如果我们想要查看这个列中有多少个唯一的数值，我们可以使用unique函数。在这个例子中，我们可以看到这个列中有五个唯一的数值。</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="lesson-4.html#cb15-1" tabindex="-1"></a><span class="co">#使用$符号定位某一列</span></span>
-<span id="cb15-2"><a href="lesson-4.html#cb15-2" tabindex="-1"></a><span class="fu">head</span>(match.data.all<span class="sc">$</span>Label,<span class="dv">10</span>)</span></code></pre></div>
-<pre><code>##  [1] &quot;immoralSelf&quot;  &quot;moralSelf&quot;    &quot;moralOther&quot;   &quot;immoralOther&quot; &quot;moralSelf&quot;   
-##  [6] &quot;moralSelf&quot;    &quot;moralSelf&quot;    &quot;immoralOther&quot; &quot;moralSelf&quot;    &quot;immoralOther&quot;</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="lesson-4.html#cb17-1" tabindex="-1"></a><span class="co">#使用unique查看这一列有多少种独特的情况</span></span>
-<span id="cb17-2"><a href="lesson-4.html#cb17-2" tabindex="-1"></a><span class="fu">unique</span>(match.data.all<span class="sc">$</span>Label)</span></code></pre></div>
-<pre><code>## [1] &quot;immoralSelf&quot;  &quot;moralSelf&quot;    &quot;moralOther&quot;   &quot;immoralOther&quot; &quot;Label&quot;</code></pre>
-<div id="filter" class="section level4 hasAnchor" number="5.3.1.1">
-<h4><span class="header-section-number">5.3.1.1</span> filter()<a href="lesson-4.html#filter" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>因我们需要使用 filter 功能来筛选我们需要的数据。在本次实验中，我们采用了一个例子，以帮助大家更好地理解数据分析中的 filter 形式及使用方式。</p>
-<p>最简单的方法是根据我们所拥有的变量来进行筛选，我们已知其中一个变量可以带来非常明显的效益，即匹配和不匹配的情况。在三个被试中，我们需要进行基本的查看，以确认其匹配和不匹配条件是否相同。为了进行这种分析，我们需要将原始数据分成两部分，即匹配和不匹配。</p>
-<p>对于这个 data，我们可以使用 Dplyr 中的 filter 功能，以实现对数据的筛选。filter 的第一个参数是需要操作的数据集，而第二个参数是所需的筛选条件。对于本次实验来说，我们需要使用 filter 函数来提取匹配和不匹配条件相同的数据，即我们需要从 match 数据中提取所有 non-match 或 mismatch 数据。为了保证我们选择的数据正确，我们可以使用 unique 命令来进行检查，如果我们成功完成了筛选，则 unique 命令会返回一个值（即 mismatch）。</p>
-<p>R中有一些用于比较的运算符，例如大于、小于、大于等于、小于等于。这些都是在做基础知识时非常重要的东西，我们可以在这里稍微细致地介绍一下。</p>
-<p>在R语言中，我们还有一个特殊的运算符，就是!。我们在命名变量时，不能使用这个!，因为它表示的是不等于。例如a不等于b，实际上是先有一个等于符号，然后再用一个感叹号表示否定，这样它们就不相等了。我们这里使用的是两个等于号，表示完全相等的两个元素。</p>
-<div class="float">
-<img src="1004-lesson4/bijiao.png" alt="bijiao" />
-<div class="figcaption">bijiao</div>
-</div>
-<p>有人会问，大于小于只能用于数字吗？实际上并不是这样。我们可以使用字符进行比较运算，但是要特别小心。因为有的时候你以为它在做数字运算，但它实际上是基于字符运算的。因此，我们需要在使用时格外注意。</p>
-<p>在R语言中，还有一个非常有用的操作符，就是in。它是一个函数，用这个符号代表。它的作用是判断a是否是b中的一个元素。这也是我们在上一节课上讲到的概念，“向量”，它是一个一串的数字，我们需要找到其中的某个值。这时使用in操作符就可以帮助我们查找所有满足条件的值的位置。in操作符在R语言中非常受欢迎，因为它能够快速帮助我们找到一些特定的值。</p>
-<p>在比较运算的时候，我们涉及到了“vector”。我们之前讲过，它就是一些数据的类型。但是对于“vector”而言，它有一个特点：里面的所有元素必须是同一个类型的。我们提到的有逻辑型、整型、双精度，字符型等类型。如果要把一些元素放在一起，那么它们应该都属于同一个类型。如果不是同一种类型，我们就可能需要使用其他类型的数据来存放它们。</p>
-<p>回到刚才的代码，当我们使用“filter”操作数据时，我们是通过比较数据中的“match”这一列和“mismatch”这个字符串来得到的结果。因为我们需要把它与每一个对象进行比较，所以每个对象都会有一个输出。因此，我们得到了一个逻辑型的“vector”。我们可以把它们连成一个向量。在这个“match”中，我们可以使用“class”函数来查看某一列的数据类型。比如，我们查看一下刚刚的“match”是什么类型的，我们可以发现，它是字符类型的，它的输出结果是“correct”。对于其他类型，我们也可以做类似的查看。当然，字符类型除了“=”操作符外，还有其他方式可以用来确定它是否精确匹配。</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="lesson-4.html#cb19-1" tabindex="-1"></a><span class="co">#筛选出match.data.all的Match列中所有mismatch的数据</span></span>
-<span id="cb19-2"><a href="lesson-4.html#cb19-2" tabindex="-1"></a>mismatch <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(match.data.all, match.data.all<span class="sc">$</span>Match <span class="sc">==</span> <span class="st">&quot;mismatch&quot;</span>)</span>
-<span id="cb19-3"><a href="lesson-4.html#cb19-3" tabindex="-1"></a><span class="co">#查看是否成功</span></span>
-<span id="cb19-4"><a href="lesson-4.html#cb19-4" tabindex="-1"></a><span class="fu">unique</span>(mismatch<span class="sc">$</span>Match)</span></code></pre></div>
-<pre><code>## [1] &quot;mismatch&quot;</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="lesson-4.html#cb21-1" tabindex="-1"></a><span class="fu">class</span>(match.data.all<span class="sc">$</span>Match)</span></code></pre></div>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<p>新的DataFrame是根据条件筛选出的子集。在处理DataFrame时，我们可以按步骤来处理。如果没有现成的函数能够直接解决问题，我们可以通过自己的思考，将筛选过程拆成一个个小的步骤，逐步解决问题。首先，我们要提取出一个column，然后将column中的每个元素与条件进行比较。比较结果可以得到一个新的vector。接着，我们可以通过vector中的rowid提取出符合条件的ID，再从原始数据集中提取出对应的子集。如此，我们就完成了整个筛选的过程。再刚刚的过程中机器会自动将我们的需求划分成小的步骤来处理。</p>
-<p>除了字符之外，我们也可以对数字进行筛选。首先需要将字符串类型的“acc”转换为数值型的变量。我们可以查看变量类型，如果是字符型，我们可以使用“as.numerical”的函数将其转换为数值型。通过match data.all这个命令，我们可以获取到一个字符型的vector”acc”，将其转换成数值型后，我们将其赋值给另一个名为”acc”的变量。这样，我们就将”acc”变为数值型了。通过查看unique命令，我们可以发现”acc”共有”-1,0,1,2”这几个值。我们可以将大于0的值作为筛选条件，这样筛选过的变量中只保留了0,1,2这几个值，从而完成了数字的筛选过程。</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="lesson-4.html#cb23-1" tabindex="-1"></a><span class="fu">class</span>(match.data.all<span class="sc">$</span>ACC)<span class="co">#发现类型是character而不是numeric，我们需要先转换。</span></span></code></pre></div>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="lesson-4.html#cb25-1" tabindex="-1"></a><span class="co">#通过as.numeric()将其他类型转化为数值型向量</span></span>
-<span id="cb25-2"><a href="lesson-4.html#cb25-2" tabindex="-1"></a>match.data.all<span class="sc">$</span>ACC <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(match.data.all<span class="sc">$</span>ACC)</span>
-<span id="cb25-3"><a href="lesson-4.html#cb25-3" tabindex="-1"></a><span class="fu">class</span>(match.data.all<span class="sc">$</span>ACC)</span></code></pre></div>
+<p>在R语言中，数据类型可以简单分为三类：</p>
+<div id="数值型numeric" class="section level4 hasAnchor" number="14.5.0.1">
+<h4><span class="header-section-number">14.5.0.1</span> 数值型(numeric)<a href="lesson-4.html#数值型numeric" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>包括浮点型(double,即小数)、整型(int)等，可以进行数学运算；</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="lesson-4.html#cb100-1" tabindex="-1"></a><span class="co"># 简单做个加法</span></span>
+<span id="cb100-2"><a href="lesson-4.html#cb100-2" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="lesson-4.html#cb102-1" tabindex="-1"></a><span class="do">## 直接输入pi会返回圆周率</span></span>
+<span id="cb102-2"><a href="lesson-4.html#cb102-2" tabindex="-1"></a>pi</span></code></pre></div>
+<pre><code>## [1] 3.141593</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="lesson-4.html#cb104-1" tabindex="-1"></a><span class="do">## 幂运算</span></span>
+<span id="cb104-2"><a href="lesson-4.html#cb104-2" tabindex="-1"></a><span class="dv">10</span><span class="sc">^</span><span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 1000</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="lesson-4.html#cb106-1" tabindex="-1"></a><span class="do">## 取对数</span></span>
+<span id="cb106-2"><a href="lesson-4.html#cb106-2" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p>使用<code>class()</code>函数（即类）可以查看具体是什么数据类型，比如：</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="lesson-4.html#cb108-1" tabindex="-1"></a><span class="fu">class</span>(pi)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<p>在看这篇文章时，我们会发现我们需要筛选出0和1的结果，因为-1表示没有按键，2表示按错键。只有0表示错了而1表示做对了。因此，我们需要把结果筛选为0和1。有两种方法可以做到这一点。第一种方法是对结果进行两次筛选，首先做一个大于等于0的筛选，然后再做一个小于2的筛选。第二种方法是使用逻辑运算符adn和all，通过ACC大于等于0和ACC小于2的结果来筛选出0和1。这些逻辑运算符通常是将不同的逻辑连接在一起的常见做法。</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="lesson-4.html#cb27-1" tabindex="-1"></a><span class="co">#筛选出match.data.all的ACC列中所有大于等于0的数据</span></span>
-<span id="cb27-2"><a href="lesson-4.html#cb27-2" tabindex="-1"></a>mismatch <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(match.data.all, match.data.all<span class="sc">$</span>ACC <span class="sc">&gt;=</span><span class="dv">0</span>)</span>
-<span id="cb27-3"><a href="lesson-4.html#cb27-3" tabindex="-1"></a><span class="co">#查看是否成功</span></span>
-<span id="cb27-4"><a href="lesson-4.html#cb27-4" tabindex="-1"></a><span class="fu">unique</span>(mismatch<span class="sc">$</span>ACC)</span></code></pre></div>
-<pre><code>## [1] 0 1 2</code></pre>
-<p>在这个示例中，我们使用了ACC。首先将ACC与0进行比较，使其大于等于0。然后再将ACC与2进行比较，使其小于2。最后得到的两个结果可以使用逻辑运算符AND连接起来。如果前面的结果是True，同时后面的结果也是True，那么它们的AND结果就是True。如果其中一个结果为False，那么AND结果就是False。</p>
-<p>或者，我们也可以使用逻辑运算符OR。使用OR时，当前面和后面的结果中至少有一个是True时，它们的OR结果就是True。如果前面和后面的结果都是False，那么它们的OR结果也是False。</p>
-<p>总之，我们可以通过使用适当的逻辑符号来筛选结果，使其变得更清晰，更易读。</p>
+</div>
+<div id="字符串character-1" class="section level4 hasAnchor" number="14.5.0.2">
+<h4><span class="header-section-number">14.5.0.2</span> 字符串(character)<a href="lesson-4.html#字符串character-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>即文字内容，但需要注意的是，字符串的前后需要被英文的引号所包裹，单引号双引号都行。无论内容是什么，只要前后存在引号，R语言都会将其识别为字符，哪怕其中是乱码：</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="lesson-4.html#cb110-1" tabindex="-1"></a><span class="fu">class</span>(<span class="st">&#39;1 + 1&#39;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="lesson-4.html#cb112-1" tabindex="-1"></a><span class="fu">class</span>(<span class="st">&quot;ㄤ娇鐢ㄦ鏂囦欢锛&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="lesson-4.html#cb114-1" tabindex="-1"></a><span class="do">##  之前提到的路径，其实也是字符串，所以需要加引号</span></span>
+<span id="cb114-2"><a href="lesson-4.html#cb114-2" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">getwd</span>())</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+</div>
+<div id="逻辑值logical" class="section level4 hasAnchor" number="14.5.0.3">
+<h4><span class="header-section-number">14.5.0.3</span> 逻辑值(logical)<a href="lesson-4.html#逻辑值logical" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>即布尔值。大家肯定都听说过计算机使用二进制 0 和 1来表示“关”和“开”或“假”和“真”；逻辑值与此类似，即True 为真（对），False 为假（错），分别可以简写为 T 和 F。逻辑值通常是比较运算的结果：</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="lesson-4.html#cb116-1" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&gt;</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="lesson-4.html#cb118-1" tabindex="-1"></a>T <span class="sc">==</span> <span class="cn">TRUE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="lesson-4.html#cb120-1" tabindex="-1"></a>T <span class="sc">&gt;</span> F</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="lesson-4.html#cb122-1" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">2</span> <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<p>常见的比较运算符如下图：
+<img src="pic_new/chp5/bijiao.png" alt="bijiao" /></p>
+</div>
+</div>
+<div id="数据结构" class="section level2 hasAnchor" number="14.6">
+<h2><span class="header-section-number">14.6</span> 数据结构<a href="lesson-4.html#数据结构" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>之前的内容介绍了三种数据类型（相当于数据中的某一个单元格），数据类型之间可以相互组合，进而形成了丰富的数据结构：
+<img src="https://devopedia.org/images/article/46/9213.1526125966.png" alt="data structure" /></p>
+<div id="向量vector-1" class="section level3 hasAnchor" number="14.6.1">
+<h3><span class="header-section-number">14.6.1</span> 向量(vector)<a href="lesson-4.html#向量vector-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>数值、字符串、逻辑值都可以各自组合在一起，可以分别组成数值向量、字符串向量、逻辑向量。可以使用<code>c()</code>来建立向量（c可以理解为 combine），但需要注意的是，向量里的类型必须相同，因此使用 class()来查询向量类型时，会返回向量中具体的元素类型，而不是 vector。</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="lesson-4.html#cb124-1" tabindex="-1"></a><span class="do">## 数值型向量</span></span>
+<span id="cb124-2"><a href="lesson-4.html#cb124-2" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb124-3"><a href="lesson-4.html#cb124-3" tabindex="-1"></a><span class="co"># 对于连续数字可以使用冒号简写，即从1到(:)5</span></span>
+<span id="cb124-4"><a href="lesson-4.html#cb124-4" tabindex="-1"></a><span class="co"># 在连续数字或单个元素时可以省略c()</span></span>
+<span id="cb124-5"><a href="lesson-4.html#cb124-5" tabindex="-1"></a>v1 <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb124-6"><a href="lesson-4.html#cb124-6" tabindex="-1"></a></span>
+<span id="cb124-7"><a href="lesson-4.html#cb124-7" tabindex="-1"></a><span class="do">## 字符型向量</span></span>
+<span id="cb124-8"><a href="lesson-4.html#cb124-8" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;apple&#39;</span>,<span class="st">&#39;pear&#39;</span>,<span class="st">&#39;banana&#39;</span>,<span class="st">&#39;strawberry&#39;</span>,<span class="st">&#39;lemon&#39;</span>)</span>
+<span id="cb124-9"><a href="lesson-4.html#cb124-9" tabindex="-1"></a><span class="co"># 每个元素都要写一遍引号非常麻烦</span></span>
+<span id="cb124-10"><a href="lesson-4.html#cb124-10" tabindex="-1"></a><span class="co"># 因此可以使用 bruceR 包中的 cc()函数，开头结尾有引号即可</span></span>
+<span id="cb124-11"><a href="lesson-4.html#cb124-11" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">cc</span>(<span class="st">&#39;apple,pear,banana,strawberry,lemon&#39;</span>)</span>
+<span id="cb124-12"><a href="lesson-4.html#cb124-12" tabindex="-1"></a></span>
+<span id="cb124-13"><a href="lesson-4.html#cb124-13" tabindex="-1"></a><span class="do">## 逻辑型向量</span></span>
+<span id="cb124-14"><a href="lesson-4.html#cb124-14" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(T,F,F,T,T)</span>
+<span id="cb124-15"><a href="lesson-4.html#cb124-15" tabindex="-1"></a></span>
+<span id="cb124-16"><a href="lesson-4.html#cb124-16" tabindex="-1"></a><span class="do">## 使用 class查看，并不会返回vector</span></span>
+<span id="cb124-17"><a href="lesson-4.html#cb124-17" tabindex="-1"></a><span class="fu">class</span>(v1)</span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div id="类型转换" class="section level4 hasAnchor" number="14.6.1.1">
+<h4><span class="header-section-number">14.6.1.1</span> 类型转换<a href="lesson-4.html#类型转换" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>那么可能会有人有疑问，如果在一个向量里面同时包含不同类型的数据会出现什么结果：</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="lesson-4.html#cb126-1" tabindex="-1"></a><span class="do">## 数值和逻辑</span></span>
+<span id="cb126-2"><a href="lesson-4.html#cb126-2" tabindex="-1"></a>x1 <span class="ot">=</span> <span class="fu">c</span>(T,<span class="dv">2</span>)</span>
+<span id="cb126-3"><a href="lesson-4.html#cb126-3" tabindex="-1"></a><span class="fu">class</span>(x1)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="lesson-4.html#cb128-1" tabindex="-1"></a><span class="do">## 数值和字符串</span></span>
+<span id="cb128-2"><a href="lesson-4.html#cb128-2" tabindex="-1"></a>x2 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="st">&#39;a&#39;</span>)</span>
+<span id="cb128-3"><a href="lesson-4.html#cb128-3" tabindex="-1"></a><span class="fu">class</span>(x2)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="lesson-4.html#cb130-1" tabindex="-1"></a><span class="do">## 逻辑值和字符串</span></span>
+<span id="cb130-2"><a href="lesson-4.html#cb130-2" tabindex="-1"></a>x3 <span class="ot">=</span> <span class="fu">c</span>(T,<span class="st">&#39;a&#39;</span>)</span>
+<span id="cb130-3"><a href="lesson-4.html#cb130-3" tabindex="-1"></a><span class="fu">class</span>(x3)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="lesson-4.html#cb132-1" tabindex="-1"></a><span class="do">## 数值型、逻辑型和字符串</span></span>
+<span id="cb132-2"><a href="lesson-4.html#cb132-2" tabindex="-1"></a>x4 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,T,<span class="st">&#39;a&#39;</span>)</span>
+<span id="cb132-3"><a href="lesson-4.html#cb132-3" tabindex="-1"></a><span class="fu">class</span>(x4)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>可以发现，如果数值型和逻辑值同时出现，则会被强制转换为数值型向量；如果数值型或逻辑型与字符串同时出现，则会强制转换为字符串向量，这就是 R语言中数据类型的强制转换机制。当然这也提醒我们，不同类型之间的数据是可以相互转换的，而在 R 语言中也存在以 as.开头的函数执行转换操作：</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="lesson-4.html#cb134-1" tabindex="-1"></a><span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot;</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="lesson-4.html#cb136-1" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="st">&#39;1&#39;</span>,<span class="st">&#39;2&#39;</span>,<span class="st">&#39;a&#39;</span>)) </span></code></pre></div>
+<pre><code>## Warning: NAs introduced by coercion</code></pre>
+<pre><code>## [1]  1  2 NA</code></pre>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="lesson-4.html#cb139-1" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(T,F))</span></code></pre></div>
+<pre><code>## [1] 1 0</code></pre>
+<p>在上面例子中，需要注意第二个例子。字母本身并不能转换成数字，因而使用 NA 进行替换；而 NA(Not Available) 指数据中的缺失值。</p>
+<p>和 as.系列函数相类似的还有is.系列函数，用于判断数据是否是某个数据类型，比如</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="lesson-4.html#cb141-1" tabindex="-1"></a><span class="fu">is.character</span>(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="lesson-4.html#cb143-1" tabindex="-1"></a><span class="fu">is.na</span>(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="lesson-4.html#cb145-1" tabindex="-1"></a><span class="fu">is.numeric</span>(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="向量化操作" class="section level4 hasAnchor" number="14.6.1.2">
+<h4><span class="header-section-number">14.6.1.2</span> 向量化操作<a href="lesson-4.html#向量化操作" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>在 R语言中，向量有着独特的运算方式：</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="lesson-4.html#cb147-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>  </span>
+<span id="cb147-2"><a href="lesson-4.html#cb147-2" tabindex="-1"></a>x <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## [1] 2 3 4 5 6 7</code></pre>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="lesson-4.html#cb149-1" tabindex="-1"></a>x <span class="sc">*</span> x</span></code></pre></div>
+<pre><code>## [1]  1  4  9 16 25 36</code></pre>
+<p>可以发现，对 x 向量进行加一的运算会返回对x 中每一个元素进行加一运算；而向量之间的相乘会返回每个元素乘积所形成的向量，这种操作称为向量循环。</p>
+</div>
+<div id="向量的索引" class="section level4 hasAnchor" number="14.6.1.3">
+<h4><span class="header-section-number">14.6.1.3</span> 向量的索引<a href="lesson-4.html#向量的索引" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>如果想要提取向量中的某个值，可以在中括号中输入数字向量进行索引：</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="lesson-4.html#cb151-1" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;apple&#39;</span>,<span class="st">&#39;pear&#39;</span>,<span class="st">&#39;banana&#39;</span>,<span class="st">&#39;strawberry&#39;</span>,<span class="st">&#39;lemon&#39;</span>)</span>
+<span id="cb151-2"><a href="lesson-4.html#cb151-2" tabindex="-1"></a><span class="do">## 查找第 1 个元素</span></span>
+<span id="cb151-3"><a href="lesson-4.html#cb151-3" tabindex="-1"></a>v2[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;apple&quot;</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="lesson-4.html#cb153-1" tabindex="-1"></a><span class="do">## 查找第 2 和第 4 个元素</span></span>
+<span id="cb153-2"><a href="lesson-4.html#cb153-2" tabindex="-1"></a>v2[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)]</span></code></pre></div>
+<pre><code>## [1] &quot;pear&quot;       &quot;strawberry&quot;</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="lesson-4.html#cb155-1" tabindex="-1"></a><span class="do">## 查找第 1 个到第 4 个元素</span></span>
+<span id="cb155-2"><a href="lesson-4.html#cb155-2" tabindex="-1"></a>v2[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]  </span></code></pre></div>
+<pre><code>## [1] &quot;apple&quot;      &quot;pear&quot;       &quot;banana&quot;     &quot;strawberry&quot;</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="lesson-4.html#cb157-1" tabindex="-1"></a><span class="do">## 负索引（ = 删除元素）</span></span>
+<span id="cb157-2"><a href="lesson-4.html#cb157-2" tabindex="-1"></a><span class="do">## 删除前两个元素</span></span>
+<span id="cb157-3"><a href="lesson-4.html#cb157-3" tabindex="-1"></a>v2[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)]</span></code></pre></div>
+<pre><code>## [1] &quot;banana&quot;     &quot;strawberry&quot; &quot;lemon&quot;</code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="lesson-4.html#cb159-1" tabindex="-1"></a><span class="do">## 也可以利用索引对元素进行更改</span></span>
+<span id="cb159-2"><a href="lesson-4.html#cb159-2" tabindex="-1"></a>v2[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">=</span> bruceR<span class="sc">::</span><span class="fu">cc</span>(<span class="st">&#39;APPLE,PEAR&#39;</span>)</span>
+<span id="cb159-3"><a href="lesson-4.html#cb159-3" tabindex="-1"></a>v2</span></code></pre></div>
+<pre><code>## [1] &quot;APPLE&quot;      &quot;PEAR&quot;       &quot;banana&quot;     &quot;strawberry&quot; &quot;lemon&quot;</code></pre>
+</div>
+<div id="因子factor" class="section level4 hasAnchor" number="14.6.1.4">
+<h4><span class="header-section-number">14.6.1.4</span> 因子(factor)<a href="lesson-4.html#因子factor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>对于心理学专业的同学来说，因子这个词应该非常熟悉了，因子分析是对于问卷数据来说是常用的方法之一，但这里的因子与因子分析中的因子概念并不相同。<br />
+在统计中，我们将数据分为称名数据、顺序数据、等距数据、等比数据四种类型，而因子这一数据结构（容器），专门用来存放称名数据和顺序数据。</p>
+<p>相较于字符串，直接用字符向量也可以表示分类变量，但它只有字母顺序，不能规定想要的顺序，也不能表达有序分类变量。</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="lesson-4.html#cb161-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;good&#39;</span>,<span class="st">&#39;better&#39;</span>,<span class="st">&#39;best&#39;</span>,<span class="st">&#39;bad&#39;</span>,<span class="st">&#39;worse&#39;</span>,<span class="st">&#39;worst&#39;</span>)</span>
+<span id="cb161-2"><a href="lesson-4.html#cb161-2" tabindex="-1"></a><span class="co"># 使用sort函数进行排序，结果只会按照字母顺序排序</span></span>
+<span id="cb161-3"><a href="lesson-4.html#cb161-3" tabindex="-1"></a><span class="fu">sort</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;bad&quot;    &quot;best&quot;   &quot;better&quot; &quot;good&quot;   &quot;worse&quot;  &quot;worst&quot;</code></pre>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="lesson-4.html#cb163-1" tabindex="-1"></a><span class="do">## 可以使用 factor 来创建因子，并使用 levels 参数来规定具体的顺序</span></span>
+<span id="cb163-2"><a href="lesson-4.html#cb163-2" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">factor</span>(x,<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&#39;best&#39;</span>,<span class="st">&#39;better&#39;</span>,<span class="st">&#39;good&#39;</span>,<span class="st">&#39;bad&#39;</span>,<span class="st">&#39;worse&#39;</span>,<span class="st">&#39;worst&#39;</span>))</span>
+<span id="cb163-3"><a href="lesson-4.html#cb163-3" tabindex="-1"></a><span class="fu">sort</span>(x1)<span class="co">#排序</span></span></code></pre></div>
+<pre><code>## [1] best   better good   bad    worse  worst 
+## Levels: best better good bad worse worst</code></pre>
+<p>因子通常用于表示有限集合中的元素，但输入的类型可以是整型，也可以是字符串。</p>
+</div>
+</div>
+<div id="数据框" class="section level3 hasAnchor" number="14.6.2">
+<h3><span class="header-section-number">14.6.2</span> 数据框<a href="lesson-4.html#数据框" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>如果将向量视为一列，不同列拼接在一起就形成了我们常用的数据(比如 penguin_data)，我们称之为数据框(dataframe)，显然，数据框要求形状必须是方形，即每一列的长度必须相等。我们可以尝试手动定义一个数据框：</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="lesson-4.html#cb165-1" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb165-2"><a href="lesson-4.html#cb165-2" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;apple&#39;</span>,<span class="st">&#39;pear&#39;</span>,<span class="st">&#39;banana&#39;</span>,<span class="st">&#39;strawberry&#39;</span>,<span class="st">&#39;lemon&#39;</span>)</span>
+<span id="cb165-3"><a href="lesson-4.html#cb165-3" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(T,F,F,T,T)</span>
+<span id="cb165-4"><a href="lesson-4.html#cb165-4" tabindex="-1"></a>df1 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">col1 =</span> v1,<span class="at">col2 =</span> v2,<span class="at">col3 =</span> v3)</span>
+<span id="cb165-5"><a href="lesson-4.html#cb165-5" tabindex="-1"></a><span class="fu">class</span>(df1)</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="lesson-4.html#cb167-1" tabindex="-1"></a>df1</span></code></pre></div>
+<pre><code>##   col1       col2  col3
+## 1    1      apple  TRUE
+## 2    2       pear FALSE
+## 3    3     banana FALSE
+## 4    4 strawberry  TRUE
+## 5    5      lemon  TRUE</code></pre>
+<p>上面例子中，我们首先建立了三个等长但类型不同的向量，之后使用<code>data.frame()</code>函数将三个向量“打包”成一个数据框并赋值给df1，其中，col1、col2、col3 分别为 v1、v2、v3 的列名，当然列名也可以其对应的向量的名称重合，尝试一下将列名修改成与向量名一致：</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="lesson-4.html#cb169-1" tabindex="-1"></a><span class="do">## colnames()可以查看数据框列名</span></span>
+<span id="cb169-2"><a href="lesson-4.html#cb169-2" tabindex="-1"></a><span class="fu">colnames</span>(df1)</span></code></pre></div>
+<pre><code>## [1] &quot;col1&quot; &quot;col2&quot; &quot;col3&quot;</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="lesson-4.html#cb171-1" tabindex="-1"></a><span class="do">## 对 colnames 进行赋值可以修改列名</span></span>
+<span id="cb171-2"><a href="lesson-4.html#cb171-2" tabindex="-1"></a><span class="do">## 但在之前，介绍一个字符串的拼接函数</span></span>
+<span id="cb171-3"><a href="lesson-4.html#cb171-3" tabindex="-1"></a><span class="do">## 将&#39;v&#39;与向量 1:3分别拼接，输出字符串向量</span></span>
+<span id="cb171-4"><a href="lesson-4.html#cb171-4" tabindex="-1"></a>newname <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;v&#39;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb171-5"><a href="lesson-4.html#cb171-5" tabindex="-1"></a>newname</span></code></pre></div>
+<pre><code>## [1] &quot;v1&quot; &quot;v2&quot; &quot;v3&quot;</code></pre>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="lesson-4.html#cb173-1" tabindex="-1"></a><span class="fu">colnames</span>(df1) <span class="ot">=</span> newname</span>
+<span id="cb173-2"><a href="lesson-4.html#cb173-2" tabindex="-1"></a>df1</span></code></pre></div>
+<pre><code>##   v1         v2    v3
+## 1  1      apple  TRUE
+## 2  2       pear FALSE
+## 3  3     banana FALSE
+## 4  4 strawberry  TRUE
+## 5  5      lemon  TRUE</code></pre>
+<div id="数据框的索引" class="section level4 hasAnchor" number="14.6.2.1">
+<h4><span class="header-section-number">14.6.2.1</span> 数据框的索引<a href="lesson-4.html#数据框的索引" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="数字索引" class="section level5 hasAnchor" number="14.6.2.1.1">
+<h5><span class="header-section-number">14.6.2.1.1</span> 数字索引<a href="lesson-4.html#数字索引" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>数据框的索引与向量的索引非常相似，但不同的是，我们需要在行和列两个维度上进行索引，在中括号中，第一个数字对行索引，第二个数字对列索引，中间需要使用英文逗号进行分隔。以 penguin_data为例：</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="lesson-4.html#cb175-1" tabindex="-1"></a><span class="co"># 选取第一行、第二列；</span></span>
+<span id="cb175-2"><a href="lesson-4.html#cb175-2" tabindex="-1"></a>penguin_data[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 1922</code></pre>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="lesson-4.html#cb177-1" tabindex="-1"></a><span class="co"># 如果想全部选取行或列，可以使用空索引</span></span>
+<span id="cb177-2"><a href="lesson-4.html#cb177-2" tabindex="-1"></a><span class="co"># 比如，选取第一列的所有行，不写行的索引就行</span></span>
+<span id="cb177-3"><a href="lesson-4.html#cb177-3" tabindex="-1"></a><span class="co"># 查看前五行</span></span>
+<span id="cb177-4"><a href="lesson-4.html#cb177-4" tabindex="-1"></a><span class="fu">head</span>(penguin_data[,<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## [1] &quot;Tsinghua&quot; &quot;Oxford&quot;   &quot;Oxford&quot;   &quot;Oxford&quot;   &quot;Chile&quot;    &quot;Bamberg&quot;</code></pre>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="lesson-4.html#cb179-1" tabindex="-1"></a><span class="co"># 如果要使用非连续的数字进行索引，要带上c()</span></span>
+<span id="cb179-2"><a href="lesson-4.html#cb179-2" tabindex="-1"></a><span class="fu">colnames</span>(penguin_data[ ,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)])</span></code></pre></div>
+<pre><code>## [1] &quot;Site&quot;     &quot;sex&quot;      &quot;romantic&quot;</code></pre>
+</div>
+<div id="名称索引" class="section level5 hasAnchor" number="14.6.2.1.2">
+<h5><span class="header-section-number">14.6.2.1.2</span> 名称索引<a href="lesson-4.html#名称索引" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>在行或列的位置输入列的名称即可，比如查看出生日期和地址：</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="lesson-4.html#cb181-1" tabindex="-1"></a><span class="fu">head</span>(penguin_data[,<span class="fu">cc</span>(<span class="st">&#39;age,Site&#39;</span>)])</span></code></pre></div>
+<pre><code>##    age     Site
+## 1 1922 Tsinghua
+## 2 1940   Oxford
+## 3 1945   Oxford
+## 4 1948   Oxford
+## 5 1948    Chile
+## 6 1951  Bamberg</code></pre>
+<p>当然上面的例子使用的是列名，对于数据框来说，也有行名(使用<code>rownames()</code>添加名称)，默认使用的是行数的字符串形式当做列名，只是大部分时候，我们不会使用行名进行索引。</p>
+</div>
+<div id="美元符" class="section level5 hasAnchor" number="14.6.2.1.3">
+<h5><span class="header-section-number">14.6.2.1.3</span> 美元符<a href="lesson-4.html#美元符" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>美元符<code>$</code>是对列索引的一种方式，在 Rstudio 中，数据框后如果紧接<code>$</code>，就会自动弹出可视化窗口显示这个数据有哪些列名，也会提示列的类型和具体数据内容，非常方便；但局限在于，美元符一次只能提取一个列。</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="lesson-4.html#cb183-1" tabindex="-1"></a><span class="do">## 使用美元符来提取出生日期</span></span>
+<span id="cb183-2"><a href="lesson-4.html#cb183-2" tabindex="-1"></a><span class="fu">head</span>(penguin_data<span class="sc">$</span>age)</span></code></pre></div>
+<pre><code>## [1] 1922 1940 1945 1948 1948 1951</code></pre>
+<p><strong>小练习</strong>
+<font size = 5>
+尝试把以下表格中的内容创建为数据框，并把第一列改为因子
+<img src="pic_new/chp5/dataframe.png" alt="dataframe" /></p>
+</div>
+</div>
+</div>
+<div id="矩阵与数组" class="section level3 hasAnchor" number="14.6.3">
+<h3><span class="header-section-number">14.6.3</span> 矩阵与数组<a href="lesson-4.html#矩阵与数组" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>矩阵和数据框类似，都是二维的数据；但不同点在于，数据框允许不同列的类型不一样，而矩阵中所有单元格的数据类型必须相同：</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="lesson-4.html#cb185-1" tabindex="-1"></a><span class="co">#创建矩阵</span></span>
+<span id="cb185-2"><a href="lesson-4.html#cb185-2" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>),<span class="at">nrow=</span><span class="dv">3</span>)</span>
+<span id="cb185-3"><a href="lesson-4.html#cb185-3" tabindex="-1"></a>m1</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<p>相同维度的矩阵可以继续组合，形成数组：</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="lesson-4.html#cb187-1" tabindex="-1"></a><span class="co">#创建三维数组</span></span>
+<span id="cb187-2"><a href="lesson-4.html#cb187-2" tabindex="-1"></a>a1 <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">24</span>,<span class="at">dim=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>))</span>
+<span id="cb187-3"><a href="lesson-4.html#cb187-3" tabindex="-1"></a>a1</span></code></pre></div>
+<pre><code>## , , 1
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]   13   16   19   22
+## [2,]   14   17   20   23
+## [3,]   15   18   21   24</code></pre>
+</div>
+<div id="列表" class="section level3 hasAnchor" number="14.6.4">
+<h3><span class="header-section-number">14.6.4</span> 列表<a href="lesson-4.html#列表" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>多个相同元素可以组合成向量，多个向量可以组合成矩阵或数据框，而不同元素、向量、矩阵或数据框仍然可以继续组合，进而形成了列表：</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="lesson-4.html#cb189-1" tabindex="-1"></a><span class="co"># 使用list 来创建列表</span></span>
+<span id="cb189-2"><a href="lesson-4.html#cb189-2" tabindex="-1"></a>l1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,</span>
+<span id="cb189-3"><a href="lesson-4.html#cb189-3" tabindex="-1"></a>           <span class="fu">c</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>),</span>
+<span id="cb189-4"><a href="lesson-4.html#cb189-4" tabindex="-1"></a>           <span class="fu">c</span>(T,F))</span>
+<span id="cb189-5"><a href="lesson-4.html#cb189-5" tabindex="-1"></a>l1</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] &quot;a&quot; &quot;b&quot;
+## 
+## [[3]]
+## [1]  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="lesson-4.html#cb191-1" tabindex="-1"></a><span class="co"># 列表里面也可以容纳列表</span></span>
+<span id="cb191-2"><a href="lesson-4.html#cb191-2" tabindex="-1"></a><span class="co"># 将l1与 penguin_data合并成一个列表</span></span>
+<span id="cb191-3"><a href="lesson-4.html#cb191-3" tabindex="-1"></a>l2 <span class="ot">=</span> <span class="fu">list</span>(l1, penguin_data)</span></code></pre></div>
+<p>列表的索引与向量类似，但需要注意的是，使用中括号对列表进行索引，输出结果的类型仍然是列表；如果希望将数据还原成其原本的形式，就需要使用双中括号（<code>[[]]</code>）：</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="lesson-4.html#cb192-1" tabindex="-1"></a><span class="co"># 索引第一个元素并查看类型</span></span>
+<span id="cb192-2"><a href="lesson-4.html#cb192-2" tabindex="-1"></a>l1[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 1</code></pre>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="lesson-4.html#cb194-1" tabindex="-1"></a><span class="fu">class</span>(l1[<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="lesson-4.html#cb196-1" tabindex="-1"></a><span class="co"># 使用双中括号</span></span>
+<span id="cb196-2"><a href="lesson-4.html#cb196-2" tabindex="-1"></a><span class="fu">class</span>(l1[[<span class="dv">1</span>]])</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>对于列表中还套着列表就需要多次索引，比如通过索引来找到l2中的l1的第一个元素1（数值型），就需要两次索引，其中第一次索引返回l1列表，第二次索引从l1列表中找到第一个元素。</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="lesson-4.html#cb198-1" tabindex="-1"></a>l2[[<span class="dv">1</span>]][[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="lesson-4.html#cb200-1" tabindex="-1"></a><span class="fu">class</span>(l2[[<span class="dv">1</span>]][[<span class="dv">1</span>]])</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="lesson-4.html#cb202-1" tabindex="-1"></a><span class="co"># 如果使用一个中括号进行索引，返回数据类型仍然是列表</span></span>
+<span id="cb202-2"><a href="lesson-4.html#cb202-2" tabindex="-1"></a><span class="fu">class</span>(l2[[<span class="dv">1</span>]][<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+</div>
+</div>
+<div id="函数" class="section level2 hasAnchor" number="14.7">
+<h2><span class="header-section-number">14.7</span> 函数<a href="lesson-4.html#函数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在导入数据的时候，我们使用了<code>import()</code>函数，在设置路径时，使用了<code>here(),getwd(),setwd()</code>等函数。在R中，函数是一种用于执行特定任务或计算的代码块。函数接受输入参数，执行特定的操作，并返回结果。如果我们不知道一个函数是什么，有什么用处。在R中，我们可以在Console中使用“?函数名”来打开帮助文档，以<code>import()</code>函数为例：
+<img src="pic_new/chp5/help2.png" alt="help" /></p>
+<p>函数一般都需要输入参数，比如<code>import()</code>函数中接受的参数为：
+<img src="pic_new/chp5/help4.png" alt="help" /></p>
+<p>但很容易注意到，file 参数后面没有’=‘，其余所有参数后面都有’=’且设定有具体的值，比如 给encoding 参数赋值为<code>NULL</code>，这种方式是为了给参数设定一个默认值：在导入 penguin_data的例子中，我们仅仅输入了路径，别的参数如 encoding并没有被说明，这种操作之所以可行的原因就在于当我们没有给出某个参数的具体输入时，函数就会直接使用默认值，默认值的设置为函数的使用带来极大的便利。</p>
+<p>但在导入 penguin_data的例子中，还有个问题是，我们输入路径时，也并没有声明一定是输入给 file 参数，为什么函数“知道”我们想输入给谁呢？这是因为，在函数中，如果有多个参数的话，函数会默认按照输入的参数的顺序进行匹配，我们只输入了一个参数，因而会与 file 参数进行匹配。</p>
+<p>在我们的讨论中，似乎出现了两种参数：一种是函数内设定的参数名称，如 file、encoding 等，一种是我们实际输入的内容，如具体的路径。前者称为形式参数(file)，后者称为实际参数(输入的具体路径)。在不输入形参的情况下，函数默认会按照输入实参的顺序与形参进行匹配；如果我们声明形参的实参时，就可以按照我们想要的顺序来输入实参，比如：</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="lesson-4.html#cb204-1" tabindex="-1"></a><span class="do">## 没有声明形参</span></span>
+<span id="cb204-2"><a href="lesson-4.html#cb204-2" tabindex="-1"></a>penguin_data <span class="ot">=</span> </span>
+<span id="cb204-3"><a href="lesson-4.html#cb204-3" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">import</span>(</span>
+<span id="cb204-4"><a href="lesson-4.html#cb204-4" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>),  <span class="do">### file</span></span>
+<span id="cb204-5"><a href="lesson-4.html#cb204-5" tabindex="-1"></a>  <span class="cn">NULL</span> <span class="do">### encoding</span></span>
+<span id="cb204-6"><a href="lesson-4.html#cb204-6" tabindex="-1"></a>  )</span>
+<span id="cb204-7"><a href="lesson-4.html#cb204-7" tabindex="-1"></a><span class="do">## 如果声明形参，顺序可以调换</span></span>
+<span id="cb204-8"><a href="lesson-4.html#cb204-8" tabindex="-1"></a>penguin_data <span class="ot">=</span> </span>
+<span id="cb204-9"><a href="lesson-4.html#cb204-9" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">import</span>(</span>
+<span id="cb204-10"><a href="lesson-4.html#cb204-10" tabindex="-1"></a>    <span class="at">encoding =</span> <span class="cn">NULL</span>,</span>
+<span id="cb204-11"><a href="lesson-4.html#cb204-11" tabindex="-1"></a>    <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>)</span>
+<span id="cb204-12"><a href="lesson-4.html#cb204-12" tabindex="-1"></a>  )</span>
+<span id="cb204-13"><a href="lesson-4.html#cb204-13" tabindex="-1"></a><span class="do">## 当然，如果按照这个顺序不输入形参的话会报错，大家可自行尝试</span></span></code></pre></div>
+<div id="函数的调用" class="section level3 hasAnchor" number="14.7.1">
+<h3><span class="header-section-number">14.7.1</span> 函数的调用<a href="lesson-4.html#函数的调用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>如果在已经加载包的情况下，可以直接使用某个包里的函数；如果没有调用某个包，还想使用其中的函数，就需要使用<code>::</code>来调用（比如<code>bruceR::import()</code>）</p>
+</div>
+<div id="自定义函数" class="section level3 hasAnchor" number="14.7.2">
+<h3><span class="header-section-number">14.7.2</span> 自定义函数<a href="lesson-4.html#自定义函数" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们使用的函数有不同的来源，一种是来自 R 语言内置的 base 包的函数，一种是从 CRAN 中安装的第三方包中的函数，大部分时候上面的函数都可以满足我们的需求，我们要做的只是调用即可，但也会出现这些函数不能完全满足我们的需求情况，比如计算平均数和标准差通过内置函数<code>mean()</code>和<code>sd()</code>能实现，但我们希望在文章中输出为<span class="math inline">\(Mean±SD\)</span>的形式，这时候我们就需要在已有函数的基础上稍作改动，即自定义函数。</p>
+<div id="函数的组成" class="section level4 hasAnchor" number="14.7.2.1">
+<h4><span class="header-section-number">14.7.2.1</span> 函数的组成<a href="lesson-4.html#函数的组成" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>函数定义通常由以下几个部分组成：
+- 函数名: 为函数指定一个唯一的名称，以便在调用时使用；
+- 参数: 定义函数接受的输入值。参数是可选的，可以有多个；
+- 函数体: 包含实际执行的代码块，用大括号 {} 括起来
+- 返回值: 指定函数的输出结果，使用关键字return。</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="lesson-4.html#cb205-1" tabindex="-1"></a><span class="co">#定义一个函数：输入x和y，返回3倍x和5倍y的和</span></span>
+<span id="cb205-2"><a href="lesson-4.html#cb205-2" tabindex="-1"></a>mysum <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y){</span>
+<span id="cb205-3"><a href="lesson-4.html#cb205-3" tabindex="-1"></a>  result <span class="ot">=</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y</span>
+<span id="cb205-4"><a href="lesson-4.html#cb205-4" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb205-5"><a href="lesson-4.html#cb205-5" tabindex="-1"></a>}</span>
+<span id="cb205-6"><a href="lesson-4.html#cb205-6" tabindex="-1"></a><span class="co">#mysum:自定义的函数名</span></span>
+<span id="cb205-7"><a href="lesson-4.html#cb205-7" tabindex="-1"></a><span class="co">#x,y:形式参数</span></span>
+<span id="cb205-8"><a href="lesson-4.html#cb205-8" tabindex="-1"></a><span class="co">#result = 3*x+5*y:函数体</span></span>
+<span id="cb205-9"><a href="lesson-4.html#cb205-9" tabindex="-1"></a><span class="co">#return(result):返回值</span></span>
+<span id="cb205-10"><a href="lesson-4.html#cb205-10" tabindex="-1"></a></span>
+<span id="cb205-11"><a href="lesson-4.html#cb205-11" tabindex="-1"></a><span class="co">#调用函数,x=1,y=2，省略形参</span></span>
+<span id="cb205-12"><a href="lesson-4.html#cb205-12" tabindex="-1"></a><span class="fu">mysum</span>(<span class="dv">1</span>,<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 13</code></pre>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="lesson-4.html#cb207-1" tabindex="-1"></a><span class="co"># 当然也可以声明形参</span></span>
+<span id="cb207-2"><a href="lesson-4.html#cb207-2" tabindex="-1"></a><span class="fu">mysum</span>(<span class="at">y=</span><span class="dv">1</span>,<span class="at">x=</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 11</code></pre>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="lesson-4.html#cb209-1" tabindex="-1"></a><span class="do">###  尝试为函数设定默认值</span></span>
+<span id="cb209-2"><a href="lesson-4.html#cb209-2" tabindex="-1"></a>mysum2 <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">x =</span> <span class="dv">6</span>,<span class="at">y =</span> <span class="dv">7</span>){</span>
+<span id="cb209-3"><a href="lesson-4.html#cb209-3" tabindex="-1"></a>  result <span class="ot">=</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y</span>
+<span id="cb209-4"><a href="lesson-4.html#cb209-4" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb209-5"><a href="lesson-4.html#cb209-5" tabindex="-1"></a>}</span>
+<span id="cb209-6"><a href="lesson-4.html#cb209-6" tabindex="-1"></a><span class="do">### 省略参数</span></span>
+<span id="cb209-7"><a href="lesson-4.html#cb209-7" tabindex="-1"></a><span class="fu">mysum2</span>()</span></code></pre></div>
+<pre><code>## [1] 53</code></pre>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="lesson-4.html#cb211-1" tabindex="-1"></a><span class="do">### 如果只输入一个参数会怎么样</span></span>
+<span id="cb211-2"><a href="lesson-4.html#cb211-2" tabindex="-1"></a><span class="fu">mysum2</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] 50</code></pre>
+<p>小练习：定义一个函数,输入值a,b,c,返回(a+b)/c;并计算abc分别为123时得到的值<br></p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="lesson-4.html#cb213-1" tabindex="-1"></a><span class="co">#myabc &lt;- function(***){</span></span>
+<span id="cb213-2"><a href="lesson-4.html#cb213-2" tabindex="-1"></a><span class="co">#  result = ***</span></span>
+<span id="cb213-3"><a href="lesson-4.html#cb213-3" tabindex="-1"></a><span class="co">#  return(***)</span></span>
+<span id="cb213-4"><a href="lesson-4.html#cb213-4" tabindex="-1"></a><span class="co">#}</span></span>
+<span id="cb213-5"><a href="lesson-4.html#cb213-5" tabindex="-1"></a></span>
+<span id="cb213-6"><a href="lesson-4.html#cb213-6" tabindex="-1"></a><span class="co">#用合理的代码替换以上“***”,删除每行前的“#”,即可运行</span></span></code></pre></div>
+</div>
+<div id="函数的简写" class="section level4 hasAnchor" number="14.7.2.2">
+<h4><span class="header-section-number">14.7.2.2</span> 函数的简写<a href="lesson-4.html#函数的简写" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>上面所介绍的函数是完整的写法，但也可以使用一些方法去简化函数的书写：</p>
+<ul>
+<li><code>return()</code>的省略：
+在一些非常简单的函数中，如果省略<code>return()</code>，函数则会返回最后一个计算出的表达式的值：</li>
+</ul>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="lesson-4.html#cb214-1" tabindex="-1"></a>mysum_simpli1 <span class="ot">=</span> <span class="cf">function</span>(x,y){</span>
+<span id="cb214-2"><a href="lesson-4.html#cb214-2" tabindex="-1"></a>    <span class="do">## 由于会默认返回计算数值</span></span>
+<span id="cb214-3"><a href="lesson-4.html#cb214-3" tabindex="-1"></a>  <span class="do">## 因此这里也没必有赋值给 result的操作了</span></span>
+<span id="cb214-4"><a href="lesson-4.html#cb214-4" tabindex="-1"></a>  <span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y  </span>
+<span id="cb214-5"><a href="lesson-4.html#cb214-5" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>函数体的简写：
+<code>function(x)</code>可以简写为<code>\(x)</code>，以<code>mysum</code>函数为例：</li>
+</ul>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="lesson-4.html#cb215-1" tabindex="-1"></a>mysum_simpli2 <span class="ot">=</span> \(x,y) {<span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y}</span>
+<span id="cb215-2"><a href="lesson-4.html#cb215-2" tabindex="-1"></a></span>
+<span id="cb215-3"><a href="lesson-4.html#cb215-3" tabindex="-1"></a><span class="co"># 如果只有一行的话，为了书写简洁大括号甚至都可以省略</span></span>
+<span id="cb215-4"><a href="lesson-4.html#cb215-4" tabindex="-1"></a>mysum_simpli3 <span class="ot">=</span> \(x,y) <span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="if-条件语句" class="section level2 hasAnchor" number="14.8">
+<h2><span class="header-section-number">14.8</span> if 条件语句<a href="lesson-4.html#if-条件语句" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>当函数被调用时，如果输入的参数不符合预期，函数可能会抛出一个错误。这些错误信息对于程序员来说是非常重要的，因为它们指明了输入参数的问题所在。因此，当编写函数时，我们应该尽可能提供清晰的错误信息，以便用户能够理解并纠正错误。</p>
+<p>比如，在学习数据类型时，我们提到字符型不能进行加减乘除等数学运算，比如在mysum函数中如果输入的内容为字符串，就会出现报错：non-numeric argument to binary operator。而在我们自定义的函数中，同样可以按照我们自己的想法来输出报错，但这需要对输出的结果进行判断：如果输出没有问题，就返回输出结果；如果出现错误，就需要给出为什么出现错误。这种判断其实是一种逻辑判断，即if-else条件语句：</p>
+<div class="float">
+<img src="pic_new/chp5/if-else.png" alt="if-else" />
+<div class="figcaption">if-else</div>
+</div>
+<p>上面的语句含义为：如果(if)满足某个条件(condition，为逻辑运算)，就执行 Expr1，否则(else)，就执行Expr2。</p>
+<p>举个例子，对于 mysum3 函数我们可以进行一下改进：在运算之前首先对输入的数据类型进行判断，如果输入为数值型，则进行运算并返回结果，否则就在屏幕上显示，x和 y 必须要为数字。</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="lesson-4.html#cb216-1" tabindex="-1"></a>mysum3 <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">x =</span> <span class="dv">6</span>,<span class="at">y =</span> <span class="dv">7</span>){</span>
+<span id="cb216-2"><a href="lesson-4.html#cb216-2" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.numeric</span>(x) <span class="sc">==</span> T <span class="sc">&amp;</span> <span class="fu">is.numeric</span>(y) <span class="sc">==</span> T){</span>
+<span id="cb216-3"><a href="lesson-4.html#cb216-3" tabindex="-1"></a>    result <span class="ot">=</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y</span>
+<span id="cb216-4"><a href="lesson-4.html#cb216-4" tabindex="-1"></a>    <span class="fu">return</span>(result)}</span>
+<span id="cb216-5"><a href="lesson-4.html#cb216-5" tabindex="-1"></a>  <span class="cf">else</span>{<span class="fu">print</span>(<span class="st">&quot;x and y must be number&quot;</span>)}</span>
+<span id="cb216-6"><a href="lesson-4.html#cb216-6" tabindex="-1"></a>}</span>
+<span id="cb216-7"><a href="lesson-4.html#cb216-7" tabindex="-1"></a><span class="co">#print：输出指定的内容</span></span>
+<span id="cb216-8"><a href="lesson-4.html#cb216-8" tabindex="-1"></a><span class="co">#is.numeric:判断是否为数值型。是则返回T，否则返回F</span></span>
+<span id="cb216-9"><a href="lesson-4.html#cb216-9" tabindex="-1"></a><span class="co"># &amp; : 表示“且”</span></span>
+<span id="cb216-10"><a href="lesson-4.html#cb216-10" tabindex="-1"></a><span class="fu">mysum3</span>(<span class="dv">5</span>,<span class="dv">6</span>)</span></code></pre></div>
+<pre><code>## [1] 45</code></pre>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="lesson-4.html#cb218-1" tabindex="-1"></a><span class="fu">mysum3</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;x and y must be number&quot;</code></pre>
 
-</div>
-</div>
+<p>editor_options:
+markdown:
+wrap: 72</p>
 </div>
 </div>
             </section>
@@ -397,8 +1068,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="lesson-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lesson-5.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="回顾与问题.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="以下是课堂语音转文字-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -440,7 +1111,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["CBook.pdf"],
+"download": ["R4PsyBook.pdf"],
 "search": {
 "engine": "fuse",
 "options": null
