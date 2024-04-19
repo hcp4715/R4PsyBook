@@ -97,8 +97,8 @@ df.pg.corr <- df.pg.raw %>%
 使用head查看一下前五行
 
 ```{=html}
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ecd177a32fbdf79366db" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-ecd177a32fbdf79366db">{"x":{"filter":"none","vertical":false,"fillContainer":true,"data":[["1","2","3","4","5"],[1,1,1,2,1],[2.938461538461539,2.964102564102564,3.425641025641025,3.123076923076924,3.502564102564103],[3,2.384615384615385,2.384615384615385,3.461538461538462,2.461538461538462]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>sex<\/th>\n      <th>stress_mean<\/th>\n      <th>scontrol_mean<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-345c5df54c05bf5c067c" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-345c5df54c05bf5c067c">{"x":{"filter":"none","vertical":false,"fillContainer":true,"data":[["1","2","3","4","5"],[1,1,1,2,1],[2.938461538461539,2.964102564102564,3.425641025641025,3.123076923076924,3.502564102564103],[3,2.384615384615385,2.384615384615385,3.461538461538462,2.461538461538462]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>sex<\/th>\n      <th>stress_mean<\/th>\n      <th>scontrol_mean<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 ```
 
 

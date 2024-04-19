@@ -1,7 +1,8 @@
 ---
-editor_options: 
-  markdown: 
+editor_options:
+  markdown:
     wrap: 72
+output: pdf_document
 ---
 
 # 第七讲：如何进行基本的数据分析: *t*-test和ANOVA{#lesson-7}
