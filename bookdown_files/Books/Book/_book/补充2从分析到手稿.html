@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lesson-8.html"/>
-<link rel="next" href="lesson-13.html"/>
+<link rel="prev" href="补充1如何进行基本的数据分析-相关与回归.html"/>
+<link rel="next" href="补充3效应量和元分析.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,6 +51,14 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.32/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -290,17 +298,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#问卷数据"><i class="fa fa-check"></i><b>7.2</b> 问卷数据</a>
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#研究问题数据情况"><i class="fa fa-check"></i><b>7.2.1</b> 研究问题&amp;数据情况</a></li>
+<li class="chapter" data-level="7.2.2" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#操作步骤完整的管道操作"><i class="fa fa-check"></i><b>7.2.2</b> 操作步骤|完整的管道操作</a></li>
+<li class="chapter" data-level="7.2.3" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#小结"><i class="fa fa-check"></i><b>7.2.3</b> 小结</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#warning程辑包tidyverse是用r版本4.3.3来建造的"><i class="fa fa-check"></i><b>7.3</b> Warning:程辑包’tidyverse’是用R版本4.3.3来建造的</a>
+<li class="chapter" data-level="7.3" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#反应时数据"><i class="fa fa-check"></i><b>7.3</b> 反应时数据</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#操作步骤完整的管道操作"><i class="fa fa-check"></i><b>7.3.1</b> 操作步骤|完整的管道操作</a></li>
-<li class="chapter" data-level="7.3.2" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#小结"><i class="fa fa-check"></i><b>7.3.2</b> 小结</a></li>
-</ul></li>
-<li class="chapter" data-level="7.4" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#反应时数据"><i class="fa fa-check"></i><b>7.4</b> 反应时数据</a>
-<ul>
-<li class="chapter" data-level="7.4.1" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#研究问题-数据情况"><i class="fa fa-check"></i><b>7.4.1</b> 研究问题 &amp; 数据情况</a></li>
-<li class="chapter" data-level="7.4.2" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#操作步骤"><i class="fa fa-check"></i><b>7.4.2</b> 操作步骤</a></li>
-<li class="chapter" data-level="7.4.3" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#小结-1"><i class="fa fa-check"></i><b>7.4.3</b> 小结</a></li>
+<li class="chapter" data-level="7.3.1" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#研究问题-数据情况"><i class="fa fa-check"></i><b>7.3.1</b> 研究问题 &amp; 数据情况</a></li>
+<li class="chapter" data-level="7.3.2" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#操作步骤"><i class="fa fa-check"></i><b>7.3.2</b> 操作步骤</a></li>
+<li class="chapter" data-level="7.3.3" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#小结-1"><i class="fa fa-check"></i><b>7.3.3</b> 小结</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html"><i class="fa fa-check"></i><b>8</b> 第七讲：描述性统计与数据可视化基础</a>
@@ -324,9 +329,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#常用图形"><i class="fa fa-check"></i><b>8.4</b> 常用图形</a>
 <ul>
 <li class="chapter" data-level="8.4.1" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#直方图"><i class="fa fa-check"></i><b>8.4.1</b> 直方图</a></li>
-<li class="chapter" data-level="8.4.2" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#密度图"><i class="fa fa-check"></i><b>8.4.2</b> 密度图</a></li>
-<li class="chapter" data-level="8.4.3" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#直方图密度图"><i class="fa fa-check"></i><b>8.4.3</b> 直方图+密度图</a></li>
-<li class="chapter" data-level="8.4.4" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#箱线图"><i class="fa fa-check"></i><b>8.4.4</b> 箱线图</a></li>
+<li class="chapter" data-level="8.4.2" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#直方图密度图"><i class="fa fa-check"></i><b>8.4.2</b> 直方图+密度图</a></li>
+<li class="chapter" data-level="8.4.3" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#箱线图"><i class="fa fa-check"></i><b>8.4.3</b> 箱线图</a></li>
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#data-explorer"><i class="fa fa-check"></i><b>8.5</b> Data Explorer</a>
 <ul>
@@ -384,30 +388,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.2" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#元分析的实施"><i class="fa fa-check"></i><b>11.2</b> 元分析的实施</a></li>
 <li class="chapter" data-level="11.3" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#回顾与总结"><i class="fa fa-check"></i><b>11.3</b> 回顾与总结</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="lesson-8.html"><a href="lesson-8.html"><i class="fa fa-check"></i><b>12</b> 补充1：如何进行基本的数据分析: 相关与回归</a>
+<li class="chapter" data-level="12" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html"><i class="fa fa-check"></i><b>12</b> 补充1：如何进行基本的数据分析: 相关与回归</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="lesson-8.html"><a href="lesson-8.html#什么是相关"><i class="fa fa-check"></i><b>12.1</b> 什么是相关</a></li>
-<li class="chapter" data-level="12.2" data-path="lesson-8.html"><a href="lesson-8.html#相关-代码实现"><i class="fa fa-check"></i><b>12.2</b> 相关-代码实现</a></li>
-<li class="chapter" data-level="12.3" data-path="lesson-8.html"><a href="lesson-8.html#什么是回归"><i class="fa fa-check"></i><b>12.3</b> 什么是回归</a></li>
-<li class="chapter" data-level="12.4" data-path="lesson-8.html"><a href="lesson-8.html#回归-代码实现"><i class="fa fa-check"></i><b>12.4</b> 回归-代码实现</a></li>
+<li class="chapter" data-level="12.1" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是相关"><i class="fa fa-check"></i><b>12.1</b> 什么是相关</a></li>
+<li class="chapter" data-level="12.2" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#相关-代码实现"><i class="fa fa-check"></i><b>12.2</b> 相关-代码实现</a></li>
+<li class="chapter" data-level="12.3" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是回归"><i class="fa fa-check"></i><b>12.3</b> 什么是回归</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="lesson-12.html"><a href="lesson-12.html"><i class="fa fa-check"></i><b>13</b> 补充2：从分析到手稿</a>
+<li class="chapter" data-level="13" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html"><i class="fa fa-check"></i><b>13</b> 补充2：从分析到手稿</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="lesson-12.html"><a href="lesson-12.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>13.1</b> <strong>通过Papaja撰写论文</strong></a>
+<li class="chapter" data-level="13.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>13.1</b> <strong>通过Papaja撰写论文</strong></a>
 <ul>
-<li class="chapter" data-level="13.1.1" data-path="lesson-12.html"><a href="lesson-12.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>13.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
-<li class="chapter" data-level="13.1.2" data-path="lesson-12.html"><a href="lesson-12.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>13.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
-<li class="chapter" data-level="13.1.3" data-path="lesson-12.html"><a href="lesson-12.html#part3-正文的撰写"><i class="fa fa-check"></i><b>13.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
-<li class="chapter" data-level="13.1.4" data-path="lesson-12.html"><a href="lesson-12.html#总结"><i class="fa fa-check"></i><b>13.1.4</b> 总结</a></li>
+<li class="chapter" data-level="13.1.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>13.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
+<li class="chapter" data-level="13.1.2" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>13.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
+<li class="chapter" data-level="13.1.3" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part3-正文的撰写"><i class="fa fa-check"></i><b>13.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
+<li class="chapter" data-level="13.1.4" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#总结"><i class="fa fa-check"></i><b>13.1.4</b> 总结</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="lesson-13.html"><a href="lesson-13.html"><i class="fa fa-check"></i><b>14</b> 补充3：效应量和元分析</a>
+<li class="chapter" data-level="14" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html"><i class="fa fa-check"></i><b>14</b> 补充3：效应量和元分析</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="lesson-13.html"><a href="lesson-13.html#效应量简介"><i class="fa fa-check"></i><b>14.1</b> 效应量简介</a></li>
-<li class="chapter" data-level="14.2" data-path="lesson-13.html"><a href="lesson-13.html#算法实现"><i class="fa fa-check"></i><b>14.2</b> 算法实现</a></li>
-<li class="chapter" data-level="14.3" data-path="lesson-13.html"><a href="lesson-13.html#小练习"><i class="fa fa-check"></i><b>14.3</b> 小练习</a></li>
-<li class="chapter" data-level="14.4" data-path="lesson-13.html"><a href="lesson-13.html#元分析简介"><i class="fa fa-check"></i><b>14.4</b> 元分析简介</a></li>
-<li class="chapter" data-level="14.5" data-path="lesson-13.html"><a href="lesson-13.html#元分析实现"><i class="fa fa-check"></i><b>14.5</b> 元分析实现</a></li>
+<li class="chapter" data-level="14.1" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#效应量简介"><i class="fa fa-check"></i><b>14.1</b> 效应量简介</a></li>
+<li class="chapter" data-level="14.2" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#算法实现"><i class="fa fa-check"></i><b>14.2</b> 算法实现</a></li>
+<li class="chapter" data-level="14.3" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#小练习"><i class="fa fa-check"></i><b>14.3</b> 小练习</a></li>
+<li class="chapter" data-level="14.4" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析简介"><i class="fa fa-check"></i><b>14.4</b> 元分析简介</a></li>
+<li class="chapter" data-level="14.5" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析实现"><i class="fa fa-check"></i><b>14.5</b> 元分析实现</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -430,13 +433,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lesson-12" class="section level1 hasAnchor" number="13">
-<h1><span class="header-section-number">Chapter 13</span> 补充2：从分析到手稿<a href="lesson-12.html#lesson-12" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="补充2从分析到手稿" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Chapter 13</span> 补充2：从分析到手稿<a href="补充2从分析到手稿.html#补充2从分析到手稿" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="通过papaja撰写论文" class="section level2 hasAnchor" number="13.1">
-<h2><span class="header-section-number">13.1</span> <strong>通过Papaja撰写论文</strong><a href="lesson-12.html#通过papaja撰写论文" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">13.1</span> <strong>通过Papaja撰写论文</strong><a href="补充2从分析到手稿.html#通过papaja撰写论文" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>经过之前的学习，同学们熟悉了<code>Rmarkdown</code>格式的书写和使用，并了解其保存形式为.rmd文件。<code>Rmarkdown</code>文件包含文字、代码以及对代码的编译，能够方便地记录丰富的内容，并且可以输出为html等多种格式。于是，就有人想到一站式的解决方案：直接将<code>Rmarkdown</code>输出为pdf文档或word文档，并通过在<code>Rmarkdown</code>文件中的代码对文字图片进行排版以符合出版要求。本节课即将讲到的<em>Papaja</em>包适用于心理学手稿的准备，符合APA第6版的版式标准。</p>
 <div id="part1-papaja包的安装" class="section level3 hasAnchor" number="13.1.1">
-<h3><span class="header-section-number">13.1.1</span> <strong>Part1: Papaja包的安装</strong><a href="lesson-12.html#part1-papaja包的安装" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">13.1.1</span> <strong>Part1: Papaja包的安装</strong><a href="补充2从分析到手稿.html#part1-papaja包的安装" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>我们为本堂课准备了一个<a href="https://github.com/hcp4715/R4Psy/blob/main/chapter_12.Rmd">.rmd文件</a>，如果<code>papaja</code>包安装成功后，打开该文件并点击<strong>knit</strong>按钮，在相同工作目录下将生成一个与.rmd相同文件名的pdf文件，该文件即为APA论文格式的例子。</p>
 <p>注意的是，在安装<code>papaja</code>时可能会存在的几个问题：
 （1）安装速度过慢。
@@ -448,7 +451,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>安装完成后我们进入<code>papaja</code>语法的学习。</p>
 </div>
 <div id="part2-papaja语法格式" class="section level3 hasAnchor" number="13.1.2">
-<h3><span class="header-section-number">13.1.2</span> <strong>Part2: Papaja语法格式</strong><a href="lesson-12.html#part2-papaja语法格式" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">13.1.2</span> <strong>Part2: Papaja语法格式</strong><a href="补充2从分析到手稿.html#part2-papaja语法格式" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>（1）YAML头文件
 在所有RMarkdown文件中的头部都会有一个YAML头模块，利用—分隔开，包含标题、作者、摘要等各种信息，同时该部分支持markdown语法进行编写。
 在<code>papaja</code>的模板中，通讯作者默认数量为一个。<strong>affiliation</strong>在作者栏中编号，在下方统一存放。<strong>authornote</strong>为APA格式风格内容，用于展示该论文之前的故事（如参与哪些报告、是否为毕业论文等）。</p>
@@ -531,28 +534,28 @@ output            : papaja::apa6_pdf
 <img src="1012-lesson12/bib2.png" /></p>
 </div>
 <div id="part3-正文的撰写" class="section level3 hasAnchor" number="13.1.3">
-<h3><span class="header-section-number">13.1.3</span> <strong>Part3: 正文的撰写</strong><a href="lesson-12.html#part3-正文的撰写" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">13.1.3</span> <strong>Part3: 正文的撰写</strong><a href="补充2从分析到手稿.html#part3-正文的撰写" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>了解并添加了YAML头文件和参考文献后，就开始撰写正文。</p>
 <p>（1）数据的处理：
 在markdown中创建chunks来存放数据处理代码
 推荐命令，用于清理环境变量</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="lesson-12.html#cb2-1" tabindex="-1"></a><span class="co"># empty the global env</span></span>
-<span id="cb2-2"><a href="lesson-12.html#cb2-2" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb2-3"><a href="lesson-12.html#cb2-3" tabindex="-1"></a>df.m.basic <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;./1012-lesson12/data.csv&#39;</span>,</span>
-<span id="cb2-4"><a href="lesson-12.html#cb2-4" tabindex="-1"></a>                       <span class="at">header =</span> T, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="补充2从分析到手稿.html#cb397-1" tabindex="-1"></a><span class="co"># empty the global env</span></span>
+<span id="cb397-2"><a href="补充2从分析到手稿.html#cb397-2" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb397-3"><a href="补充2从分析到手稿.html#cb397-3" tabindex="-1"></a>df.m.basic <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;./1012-lesson12/data.csv&#39;</span>,</span>
+<span id="cb397-4"><a href="补充2从分析到手稿.html#cb397-4" tabindex="-1"></a>                       <span class="at">header =</span> T, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>数据处理结束后，在撰写文章时就可以通过**`<code>**来引用数据，例如，** \</code> r df.m.basic<span class="math inline">\(Age_mean \` **就会索引df.m.basic中的Age： 引用公式的方式也非常方便，在两个\$中间键入符号即公式就可，如输入`\)</span><code>\pm</code><span class="math inline">\(`就会得到\)</span>$。
 引用R包：通过如下语句` r cite_r(“chapter_12-r-references.bib”, pkgs = c(“afex”, “emmeans”, “ggplot2”, “dplyr”, “tidyr”, “patchwork”, “r-base”), withhold=FALSE) ` 即可引用，withhold=FALSE表示选中的包为白名单。上文中的七个包为最经常使用的包，可根据数据的分析代码进行修改引用。</p>
 <p>(2)斜体书写：在绘图中将图题部分设置斜体，可用如下代码：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="lesson-12.html#cb3-1" tabindex="-1"></a>title <span class="ot">&lt;-</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">&quot;Senesitivity (&quot;</span>, <span class="fu">italic</span>(<span class="st">&quot;d&#39;&quot;</span>), <span class="st">&quot;)&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="补充2从分析到手稿.html#cb398-1" tabindex="-1"></a>title <span class="ot">&lt;-</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">&quot;Senesitivity (&quot;</span>, <span class="fu">italic</span>(<span class="st">&quot;d&#39;&quot;</span>), <span class="st">&quot;)&quot;</span>))</span></code></pre></div>
 <p>此时将输出Sensitivity(<em>d</em>)。</p>
 <p>(3)拼图操作：将画好的多图进行拼接，可以使用<strong>patchwork</strong>包</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="lesson-12.html#cb4-1" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb4-2"><a href="lesson-12.html#cb4-2" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./1012-lesson12/p1_rt.rdata&quot;</span>)</span>
-<span id="cb4-3"><a href="lesson-12.html#cb4-3" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./1012-lesson12/p1_dp.rdata&quot;</span>)</span>
-<span id="cb4-4"><a href="lesson-12.html#cb4-4" tabindex="-1"></a>p1_dp <span class="sc">+</span> p1_rt <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">&#39;A&#39;</span>)  <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">guides =</span> <span class="st">&#39;collect&#39;</span>)</span>
-<span id="cb4-5"><a href="lesson-12.html#cb4-5" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="lesson-12.html#cb4-6" tabindex="-1"></a><span class="co">#plot_annotation属性：设置图片序号为A，B，C...或1，2，3...</span></span>
-<span id="cb4-7"><a href="lesson-12.html#cb4-7" tabindex="-1"></a><span class="co">#plot_layout属性：图片怎么排布；guides——图例是否统一放置</span></span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="补充2从分析到手稿.html#cb399-1" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb399-2"><a href="补充2从分析到手稿.html#cb399-2" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./1012-lesson12/p1_rt.rdata&quot;</span>)</span>
+<span id="cb399-3"><a href="补充2从分析到手稿.html#cb399-3" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./1012-lesson12/p1_dp.rdata&quot;</span>)</span>
+<span id="cb399-4"><a href="补充2从分析到手稿.html#cb399-4" tabindex="-1"></a>p1_dp <span class="sc">+</span> p1_rt <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">&#39;A&#39;</span>)  <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">guides =</span> <span class="st">&#39;collect&#39;</span>)</span>
+<span id="cb399-5"><a href="补充2从分析到手稿.html#cb399-5" tabindex="-1"></a></span>
+<span id="cb399-6"><a href="补充2从分析到手稿.html#cb399-6" tabindex="-1"></a><span class="co">#plot_annotation属性：设置图片序号为A，B，C...或1，2，3...</span></span>
+<span id="cb399-7"><a href="补充2从分析到手稿.html#cb399-7" tabindex="-1"></a><span class="co">#plot_layout属性：图片怎么排布；guides——图例是否统一放置</span></span></code></pre></div>
 <p><strong>图片引用</strong> 使用如下格式<code>\@</code>ref(fig:plot1) 即可得到<a href="#fig:plot1"><strong>??</strong></a></p>
 <ol start="4" style="list-style-type: decimal">
 <li>数据分析：
@@ -560,10 +563,10 @@ output            : papaja::apa6_pdf
 </ol>
 </div>
 <div id="总结" class="section level3 hasAnchor" number="13.1.4">
-<h3><span class="header-section-number">13.1.4</span> 总结<a href="lesson-12.html#总结" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">13.1.4</span> 总结<a href="补充2从分析到手稿.html#总结" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>papaja</code>的好处是，数据、分析、格式、参考文献等都储存在同一个工作项目中，能够更整齐更方便的撰写文章。</p>
 <div id="小作业" class="section level4 hasAnchor" number="13.1.4.1">
-<h4><span class="header-section-number">13.1.4.1</span> 小作业<a href="lesson-12.html#小作业" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">13.1.4.1</span> 小作业<a href="补充2从分析到手稿.html#小作业" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>请大家fork我们的bookdown文件 <a href="https://github.com/hcp4715/R4PsyBook" class="uri">https://github.com/hcp4715/R4PsyBook</a> 做一个小的更改，并pull request。</p>
 
 </div>
@@ -575,8 +578,8 @@ output            : papaja::apa6_pdf
           </div>
         </div>
       </div>
-<a href="lesson-8.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lesson-13.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="补充1如何进行基本的数据分析-相关与回归.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="补充3效应量和元分析.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -607,7 +610,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/1016-lesson16.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/1016-lesson16_2023.Rmd",
 "text": "Edit"
 },
 "history": {
