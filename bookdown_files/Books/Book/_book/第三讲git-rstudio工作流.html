@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 第三讲：Git &amp; RStudio工作流 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</title>
+  <meta name="description" content="课程bookdown" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 第三讲：Git &amp; RStudio工作流 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="课程bookdown" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 第三讲：Git &amp; RStudio工作流 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
+  
+  <meta name="twitter:description" content="课程bookdown" />
+  
+
+<meta name="author" content="胡传鹏" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="第二讲如何开始使用r.html"/>
+<link rel="next" href="第四讲如何导入数据.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.32/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 教学内容与课时</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#目录"><i class="fa fa-check"></i><b>1.1</b> 目录</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>2</b> 第一讲：为什么要学习R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lesson-1.html"><a href="lesson-1.html#r在心理科学及社会科学中的运用"><i class="fa fa-check"></i><b>2.1</b> R在心理科学及社会科学中的运用</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="lesson-1.html"><a href="lesson-1.html#id_1-data-science"><i class="fa fa-check"></i><b>2.1.1</b> 数据科学</a></li>
+<li class="chapter" data-level="2.1.2" data-path="lesson-1.html"><a href="lesson-1.html#id_1-data-science-born"><i class="fa fa-check"></i><b>2.1.2</b> 数据科学的诞生——数字化时代</a></li>
+<li class="chapter" data-level="2.1.3" data-path="lesson-1.html"><a href="lesson-1.html#为什么要学习r语言1-why-learn-r"><i class="fa fa-check"></i><b>2.1.3</b> 为什么要学习R语言？{1-why-learn-R}</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="lesson-1.html"><a href="lesson-1.html#r语言使用的示例展示"><i class="fa fa-check"></i><b>2.2</b> R语言使用的示例展示</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="lesson-1.html"><a href="lesson-1.html#数据清洗"><i class="fa fa-check"></i><b>2.2.1</b> 数据清洗</a></li>
+<li class="chapter" data-level="2.2.2" data-path="lesson-1.html"><a href="lesson-1.html#ggplot2画图"><i class="fa fa-check"></i><b>2.2.2</b> ggplot2画图</a></li>
+<li class="chapter" data-level="2.2.3" data-path="lesson-1.html"><a href="lesson-1.html#心理学数据分析与结果汇报"><i class="fa fa-check"></i><b>2.2.3</b> 心理学数据分析与结果汇报</a></li>
+<li class="chapter" data-level="2.2.4" data-path="lesson-1.html"><a href="lesson-1.html#regression"><i class="fa fa-check"></i><b>2.2.4</b> Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="lesson-1.html"><a href="lesson-1.html#现场运行代码"><i class="fa fa-check"></i><b>2.3</b> 现场运行代码</a></li>
+<li class="chapter" data-level="2.4" data-path="lesson-1.html"><a href="lesson-1.html#课程安排"><i class="fa fa-check"></i><b>2.4</b> 课程安排</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="lesson-1.html"><a href="lesson-1.html#课程大纲"><i class="fa fa-check"></i><b>2.4.1</b> 课程大纲</a></li>
+<li class="chapter" data-level="2.4.2" data-path="lesson-1.html"><a href="lesson-1.html#成绩分配"><i class="fa fa-check"></i><b>2.4.2</b> 成绩分配</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="lesson-1.html"><a href="lesson-1.html#如何学好这门课"><i class="fa fa-check"></i><b>2.5</b> 如何学好这门课</a></li>
+<li class="chapter" data-level="2.6" data-path="lesson-1.html"><a href="lesson-1.html#课程总结与期望"><i class="fa fa-check"></i><b>2.6</b> 课程总结与期望</a></li>
+<li class="chapter" data-level="2.7" data-path="lesson-1.html"><a href="lesson-1.html#推荐"><i class="fa fa-check"></i><b>2.7</b> 推荐</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html"><i class="fa fa-check"></i><b>3</b> 第二讲：如何开始使用R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#数据分析的出发点问题"><i class="fa fa-check"></i><b>3.1</b> 数据分析的出发点——问题</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#问题一-人类企鹅计划问卷数据"><i class="fa fa-check"></i><b>3.1.1</b> 问题一: 人类企鹅计划（问卷数据）</a></li>
+<li class="chapter" data-level="3.1.2" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#问题二认知决策任务反应时和反应选择数据"><i class="fa fa-check"></i><b>3.1.2</b> 问题二：认知决策任务（反应时和反应选择数据）</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#如何安装r"><i class="fa fa-check"></i><b>3.2</b> 如何安装R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#r的下载与安装"><i class="fa fa-check"></i><b>3.2.1</b> R的下载与安装</a></li>
+<li class="chapter" data-level="3.2.2" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#r-console控制台"><i class="fa fa-check"></i><b>3.2.2</b> R console（控制台）</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#如何安装rstudio"><i class="fa fa-check"></i><b>3.3</b> 如何安装Rstudio</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#rstuio的下载与安装"><i class="fa fa-check"></i><b>3.3.1</b> Rstuio的下载与安装</a></li>
+<li class="chapter" data-level="3.3.2" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#测试rstudio"><i class="fa fa-check"></i><b>3.3.2</b> 测试Rstudio</a></li>
+<li class="chapter" data-level="3.3.3" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#创建新项目"><i class="fa fa-check"></i><b>3.3.3</b> 创建新项目</a></li>
+<li class="chapter" data-level="3.3.4" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#包packages的介绍与调用"><i class="fa fa-check"></i><b>3.3.4</b> 包(packages)的介绍与调用</a></li>
+<li class="chapter" data-level="3.3.5" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#镜像的选择"><i class="fa fa-check"></i><b>3.3.5</b> 镜像的选择</a></li>
+<li class="chapter" data-level="3.3.6" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#安装rtoolswindows"><i class="fa fa-check"></i><b>3.3.6</b> 安装Rtools（windows）</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#如何通过和鲸model-whale使用r"><i class="fa fa-check"></i><b>3.4</b> 如何通过和鲸（Model Whale）使用R</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html"><i class="fa fa-check"></i><b>4</b> 第三讲：Git &amp; RStudio工作流</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#files-and-folders-system"><i class="fa fa-check"></i><b>4.1</b> Files and Folders System</a></li>
+<li class="chapter" data-level="4.2" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#git-and-git-hub"><i class="fa fa-check"></i><b>4.2</b> Git and Git Hub</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#git"><i class="fa fa-check"></i><b>4.2.1</b> Git</a></li>
+<li class="chapter" data-level="4.2.2" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#git-hub"><i class="fa fa-check"></i><b>4.2.2</b> Git Hub</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#local-version-control"><i class="fa fa-check"></i><b>4.3</b> Local Version Control</a></li>
+<li class="chapter" data-level="4.4" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#remote-version-control"><i class="fa fa-check"></i><b>4.4</b> Remote Version Control</a></li>
+<li class="chapter" data-level="4.5" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#作业"><i class="fa fa-check"></i><b>4.5</b> 作业</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html"><i class="fa fa-check"></i><b>5</b> 第四讲：如何导入数据</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#正式开始前的tips"><i class="fa fa-check"></i><b>5.1</b> 正式开始前的Tips</a></li>
+<li class="chapter" data-level="5.2" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#回顾与问题"><i class="fa fa-check"></i><b>5.2</b> 回顾与问题</a></li>
+<li class="chapter" data-level="5.3" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据导入"><i class="fa fa-check"></i><b>5.3</b> 数据导入</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据的住址路径-以mac系统为例"><i class="fa fa-check"></i><b>5.3.1</b> 数据的“住址”——路径 (以Mac系统为例)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#绝对路径相对路径"><i class="fa fa-check"></i><b>5.3.2</b> 绝对路径/相对路径</a></li>
+<li class="chapter" data-level="5.3.3" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#设定工作目录-手动挡与自动挡"><i class="fa fa-check"></i><b>5.3.3</b> 设定工作目录 – 手动挡与自动挡</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#读取数据"><i class="fa fa-check"></i><b>5.4</b> 读取数据</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#读取数据手动档"><i class="fa fa-check"></i><b>5.4.1</b> 读取数据——手动档</a></li>
+<li class="chapter" data-level="5.4.2" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#读取数据自动挡gui点击操作"><i class="fa fa-check"></i><b>5.4.2</b> 读取数据——自动挡(GUI点击操作)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据类型"><i class="fa fa-check"></i><b>5.5</b> 数据类型</a></li>
+<li class="chapter" data-level="5.6" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据结构"><i class="fa fa-check"></i><b>5.6</b> 数据结构</a></li>
+<li class="chapter" data-level="5.7" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据索引"><i class="fa fa-check"></i><b>5.7</b> 数据索引</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据索引中括号"><i class="fa fa-check"></i><b>5.7.1</b> 数据索引(中括号)</a></li>
+<li class="chapter" data-level="5.7.2" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据索引-1"><i class="fa fa-check"></i><b>5.7.2</b> 数据索引($)</a></li>
+<li class="chapter" data-level="5.7.3" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据索引逻辑值"><i class="fa fa-check"></i><b>5.7.3</b> 数据索引(逻辑值)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#对象object"><i class="fa fa-check"></i><b>5.8</b> 对象（object）</a></li>
+<li class="chapter" data-level="5.9" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#其它注意事项"><i class="fa fa-check"></i><b>5.9</b> 其它注意事项</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#变量命名"><i class="fa fa-check"></i><b>5.9.1</b> 变量命名</a></li>
+<li class="chapter" data-level="5.9.2" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#缺失值na-空值null"><i class="fa fa-check"></i><b>5.9.2</b> 缺失值（NA） 空值（NULL）</a></li>
+<li class="chapter" data-level="5.9.3" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据类型的转换"><i class="fa fa-check"></i><b>5.9.3</b> 数据类型的转换</a></li>
+<li class="chapter" data-level="5.9.4" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#目录和文件管理函数"><i class="fa fa-check"></i><b>5.9.4</b> 目录和文件管理函数:</a></li>
+<li class="chapter" data-level="5.9.5" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#对象与变量名"><i class="fa fa-check"></i><b>5.9.5</b> 对象与变量名</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#final-project期末作业"><i class="fa fa-check"></i><b>5.10</b> final project（期末作业）</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#requirements"><i class="fa fa-check"></i><b>5.10.1</b> Requirements</a></li>
+<li class="chapter" data-level="5.10.2" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#评分标准"><i class="fa fa-check"></i><b>5.10.2</b> 评分标准</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lesson-5.html"><a href="lesson-5.html"><i class="fa fa-check"></i><b>6</b> 第五讲：R语言中的对象2: 函数</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="lesson-5.html"><a href="lesson-5.html#加载数据"><i class="fa fa-check"></i><b>6.1</b> 加载数据</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="lesson-5.html"><a href="lesson-5.html#数据的地址路径"><i class="fa fa-check"></i><b>6.1.1</b> 数据的“地址”——路径</a></li>
+<li class="chapter" data-level="6.1.2" data-path="lesson-5.html"><a href="lesson-5.html#绝对路径与相对路径"><i class="fa fa-check"></i><b>6.1.2</b> 绝对路径与相对路径</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="lesson-5.html"><a href="lesson-5.html#读取数据-1"><i class="fa fa-check"></i><b>6.2</b> 读取数据</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="lesson-5.html"><a href="lesson-5.html#手动导入"><i class="fa fa-check"></i><b>6.2.1</b> 手动导入</a></li>
+<li class="chapter" data-level="6.2.2" data-path="lesson-5.html"><a href="lesson-5.html#代码导入"><i class="fa fa-check"></i><b>6.2.2</b> 代码导入</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="lesson-5.html"><a href="lesson-5.html#赋值"><i class="fa fa-check"></i><b>6.3</b> 赋值</a></li>
+<li class="chapter" data-level="6.4" data-path="lesson-5.html"><a href="lesson-5.html#数据类型-1"><i class="fa fa-check"></i><b>6.4</b> 数据类型</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="lesson-5.html"><a href="lesson-5.html#单个元素"><i class="fa fa-check"></i><b>6.4.1</b> 单个元素</a></li>
+<li class="chapter" data-level="6.4.2" data-path="lesson-5.html"><a href="lesson-5.html#数值型numeric"><i class="fa fa-check"></i><b>6.4.2</b> 数值型(numeric)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="lesson-5.html"><a href="lesson-5.html#字符串character"><i class="fa fa-check"></i><b>6.4.3</b> 字符串(character)</a></li>
+<li class="chapter" data-level="6.4.4" data-path="lesson-5.html"><a href="lesson-5.html#逻辑值logical"><i class="fa fa-check"></i><b>6.4.4</b> 逻辑值(logical)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="lesson-5.html"><a href="lesson-5.html#数据结构-1"><i class="fa fa-check"></i><b>6.5</b> 数据结构</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="lesson-5.html"><a href="lesson-5.html#向量vector"><i class="fa fa-check"></i><b>6.5.1</b> 向量(vector)</a></li>
+<li class="chapter" data-level="6.5.2" data-path="lesson-5.html"><a href="lesson-5.html#类型转换"><i class="fa fa-check"></i><b>6.5.2</b> 类型转换</a></li>
+<li class="chapter" data-level="6.5.3" data-path="lesson-5.html"><a href="lesson-5.html#向量循环"><i class="fa fa-check"></i><b>6.5.3</b> 向量循环</a></li>
+<li class="chapter" data-level="6.5.4" data-path="lesson-5.html"><a href="lesson-5.html#向量的索引"><i class="fa fa-check"></i><b>6.5.4</b> 向量的索引</a></li>
+<li class="chapter" data-level="6.5.5" data-path="lesson-5.html"><a href="lesson-5.html#因子factor"><i class="fa fa-check"></i><b>6.5.5</b> 因子(factor)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="lesson-5.html"><a href="lesson-5.html#数据框"><i class="fa fa-check"></i><b>6.6</b> 数据框</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="lesson-5.html"><a href="lesson-5.html#数据框的索引"><i class="fa fa-check"></i><b>6.6.1</b> 数据框的索引</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="lesson-5.html"><a href="lesson-5.html#矩阵与数组"><i class="fa fa-check"></i><b>6.7</b> 矩阵与数组</a></li>
+<li class="chapter" data-level="6.8" data-path="lesson-5.html"><a href="lesson-5.html#列表"><i class="fa fa-check"></i><b>6.8</b> 列表</a></li>
+<li class="chapter" data-level="6.9" data-path="lesson-5.html"><a href="lesson-5.html#函数"><i class="fa fa-check"></i><b>6.9</b> 函数</a>
+<ul>
+<li class="chapter" data-level="6.9.1" data-path="lesson-5.html"><a href="lesson-5.html#函数的调用"><i class="fa fa-check"></i><b>6.9.1</b> 函数的调用</a></li>
+<li class="chapter" data-level="6.9.2" data-path="lesson-5.html"><a href="lesson-5.html#自定义函数"><i class="fa fa-check"></i><b>6.9.2</b> 自定义函数</a></li>
+<li class="chapter" data-level="6.9.3" data-path="lesson-5.html"><a href="lesson-5.html#函数的组成"><i class="fa fa-check"></i><b>6.9.3</b> 函数的组成</a></li>
+<li class="chapter" data-level="6.9.4" data-path="lesson-5.html"><a href="lesson-5.html#函数的简写"><i class="fa fa-check"></i><b>6.9.4</b> 函数的简写</a></li>
+<li class="chapter" data-level="6.9.5" data-path="lesson-5.html"><a href="lesson-5.html#if-条件语句"><i class="fa fa-check"></i><b>6.9.5</b> if 条件语句</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html"><i class="fa fa-check"></i><b>7</b> 第六讲：数据预处理</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#tidyverse"><i class="fa fa-check"></i><b>7.1</b> <strong>Tidyverse</strong></a></li>
+<li class="chapter" data-level="7.2" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#问卷数据"><i class="fa fa-check"></i><b>7.2</b> 问卷数据</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#研究问题数据情况"><i class="fa fa-check"></i><b>7.2.1</b> 研究问题&amp;数据情况</a></li>
+<li class="chapter" data-level="7.2.2" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#操作步骤完整的管道操作"><i class="fa fa-check"></i><b>7.2.2</b> 操作步骤|完整的管道操作</a></li>
+<li class="chapter" data-level="7.2.3" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#小结"><i class="fa fa-check"></i><b>7.2.3</b> 小结</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#反应时数据"><i class="fa fa-check"></i><b>7.3</b> 反应时数据</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#研究问题-数据情况"><i class="fa fa-check"></i><b>7.3.1</b> 研究问题 &amp; 数据情况</a></li>
+<li class="chapter" data-level="7.3.2" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#操作步骤"><i class="fa fa-check"></i><b>7.3.2</b> 操作步骤</a></li>
+<li class="chapter" data-level="7.3.3" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#小结-1"><i class="fa fa-check"></i><b>7.3.3</b> 小结</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html"><i class="fa fa-check"></i><b>8</b> 第七讲：描述性统计与数据可视化基础</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#回顾"><i class="fa fa-check"></i><b>8.1</b> 回顾</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#批量导入数据"><i class="fa fa-check"></i><b>8.1.1</b> 批量导入数据</a></li>
+<li class="chapter" data-level="8.1.2" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#代码书写规范"><i class="fa fa-check"></i><b>8.1.2</b> 代码书写规范</a></li>
+<li class="chapter" data-level="8.1.3" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#数据清洗-1"><i class="fa fa-check"></i><b>8.1.3</b> 数据清洗</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#探索性数据分析"><i class="fa fa-check"></i><b>8.2</b> 探索性数据分析</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#常用函数介绍"><i class="fa fa-check"></i><b>8.2.1</b> 常用函数介绍</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#数据可视化"><i class="fa fa-check"></i><b>8.3</b> 数据可视化</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#可视化的重要性"><i class="fa fa-check"></i><b>8.3.1</b> 可视化的重要性</a></li>
+<li class="chapter" data-level="8.3.2" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#可视化的逻辑"><i class="fa fa-check"></i><b>8.3.2</b> 可视化的逻辑</a></li>
+<li class="chapter" data-level="8.3.3" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#单个图片的组成"><i class="fa fa-check"></i><b>8.3.3</b> 单个图片的组成</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#常用图形"><i class="fa fa-check"></i><b>8.4</b> 常用图形</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#直方图"><i class="fa fa-check"></i><b>8.4.1</b> 直方图</a></li>
+<li class="chapter" data-level="8.4.2" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#直方图密度图"><i class="fa fa-check"></i><b>8.4.2</b> 直方图+密度图</a></li>
+<li class="chapter" data-level="8.4.3" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#箱线图"><i class="fa fa-check"></i><b>8.4.3</b> 箱线图</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#data-explorer"><i class="fa fa-check"></i><b>8.5</b> Data Explorer</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#data-explorer-1"><i class="fa fa-check"></i><b>8.5.1</b> Data Explorer</a></li>
+<li class="chapter" data-level="8.5.2" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#使用ggpairs"><i class="fa fa-check"></i><b>8.5.2</b> 使用ggpairs</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#练习"><i class="fa fa-check"></i><b>8.6</b> 练习</a></li>
+<li class="chapter" data-level="8.7" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#参考阅读"><i class="fa fa-check"></i><b>8.7</b> 参考阅读</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html"><i class="fa fa-check"></i><b>9</b> 第十讲：回归模型(三)：广义线性模型</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#前章回顾和本章数据预处理"><i class="fa fa-check"></i><b>9.1</b> 前章回顾和本章数据预处理</a></li>
+<li class="chapter" data-level="9.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#广义线性模型"><i class="fa fa-check"></i><b>9.2</b> 广义线性模型</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#回归方程和普通线性模型"><i class="fa fa-check"></i><b>9.2.1</b> 回归方程和普通线性模型</a></li>
+<li class="chapter" data-level="9.2.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#连接函数和广义线性模型"><i class="fa fa-check"></i><b>9.2.2</b> 连接函数和广义线性模型</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#二项分布"><i class="fa fa-check"></i><b>9.3</b> 二项分布</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#伯努利实验"><i class="fa fa-check"></i><b>9.3.1</b> 伯努利实验</a></li>
+<li class="chapter" data-level="9.3.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#glm代码实操"><i class="fa fa-check"></i><b>9.3.2</b> GLM代码实操</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同方法比较"><i class="fa fa-check"></i><b>9.4</b> 不同方法比较</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同的建模方法"><i class="fa fa-check"></i><b>9.4.1</b> 不同的建模方法</a></li>
+<li class="chapter" data-level="9.4.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同的模型比较方法"><i class="fa fa-check"></i><b>9.4.2</b> 不同的模型比较方法</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#其他分布"><i class="fa fa-check"></i><b>9.5</b> 其他分布</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html"><i class="fa fa-check"></i><b>10</b> 第十二讲：数据可视化进阶</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图的必要性和作图数据处理"><i class="fa fa-check"></i><b>10.1</b> 作图的必要性和作图数据处理</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#为什么要作图以及作图的原则"><i class="fa fa-check"></i><b>10.1.1</b> 为什么要作图以及作图的原则</a></li>
+<li class="chapter" data-level="10.1.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图数据准备"><i class="fa fa-check"></i><b>10.1.2</b> 作图数据准备</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#基础作图"><i class="fa fa-check"></i><b>10.2</b> 基础作图</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#ggplot2基础回顾"><i class="fa fa-check"></i><b>10.2.1</b> ggplot2基础回顾</a></li>
+<li class="chapter" data-level="10.2.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#主要图层"><i class="fa fa-check"></i><b>10.2.2</b> 主要图层</a></li>
+<li class="chapter" data-level="10.2.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可选图层"><i class="fa fa-check"></i><b>10.2.3</b> 可选图层</a></li>
+<li class="chapter" data-level="10.2.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#同时呈现多张图片"><i class="fa fa-check"></i><b>10.2.4</b> 同时呈现多张图片</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#进阶作图"><i class="fa fa-check"></i><b>10.3</b> 进阶作图</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#整体和个体效应共存的图"><i class="fa fa-check"></i><b>10.3.1</b> 整体和个体效应共存的图</a></li>
+<li class="chapter" data-level="10.3.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可视化层级模型的random-effect"><i class="fa fa-check"></i><b>10.3.2</b> 可视化层级模型的random effect</a></li>
+<li class="chapter" data-level="10.3.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#雨云图rain-cloud-plot"><i class="fa fa-check"></i><b>10.3.3</b> 雨云图（rain cloud plot）</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#高级图片处理magick"><i class="fa fa-check"></i><b>10.4</b> 高级图片处理–magick</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html"><i class="fa fa-check"></i><b>11</b> 第十四讲：心理学元分析入门</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#什么是元分析"><i class="fa fa-check"></i><b>11.1</b> 什么是元分析</a></li>
+<li class="chapter" data-level="11.2" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#元分析的实施"><i class="fa fa-check"></i><b>11.2</b> 元分析的实施</a></li>
+<li class="chapter" data-level="11.3" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#回顾与总结"><i class="fa fa-check"></i><b>11.3</b> 回顾与总结</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html"><i class="fa fa-check"></i><b>12</b> 补充1：如何进行基本的数据分析: 相关与回归</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是相关"><i class="fa fa-check"></i><b>12.1</b> 什么是相关</a></li>
+<li class="chapter" data-level="12.2" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#相关-代码实现"><i class="fa fa-check"></i><b>12.2</b> 相关-代码实现</a></li>
+<li class="chapter" data-level="12.3" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是回归"><i class="fa fa-check"></i><b>12.3</b> 什么是回归</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html"><i class="fa fa-check"></i><b>13</b> 补充2：从分析到手稿</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>13.1</b> <strong>通过Papaja撰写论文</strong></a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>13.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
+<li class="chapter" data-level="13.1.2" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>13.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
+<li class="chapter" data-level="13.1.3" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part3-正文的撰写"><i class="fa fa-check"></i><b>13.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
+<li class="chapter" data-level="13.1.4" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#总结"><i class="fa fa-check"></i><b>13.1.4</b> 总结</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html"><i class="fa fa-check"></i><b>14</b> 补充3：效应量和元分析</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#效应量简介"><i class="fa fa-check"></i><b>14.1</b> 效应量简介</a></li>
+<li class="chapter" data-level="14.2" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#算法实现"><i class="fa fa-check"></i><b>14.2</b> 算法实现</a></li>
+<li class="chapter" data-level="14.3" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#小练习"><i class="fa fa-check"></i><b>14.3</b> 小练习</a></li>
+<li class="chapter" data-level="14.4" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析简介"><i class="fa fa-check"></i><b>14.4</b> 元分析简介</a></li>
+<li class="chapter" data-level="14.5" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析实现"><i class="fa fa-check"></i><b>14.5</b> 元分析实现</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="第三讲git-rstudio工作流" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> 第三讲：Git &amp; RStudio工作流<a href="第三讲git-rstudio工作流.html#第三讲git-rstudio工作流" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="files-and-folders-system" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Files and Folders System<a href="第三讲git-rstudio工作流.html#files-and-folders-system" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>第三节课将继续入门R语言的学习。本课程的核心目标是帮助大家开始使用R，即便是已经接触过R的同学，也可以通过这节课对R进行更系统的学习。去年我们的R课程中，Git的学习是在课程后期进行的，那时同学们已经接触了一定量的代码，意识到代码管理的重要性。但今年，我们选择提前介绍Git，因为我们的所有PPT和课件更新都将通过Git
+Hub进行。如果不熟悉Git
+Hub操作，同学们在获取最新课件时可能会面临反复下载和删除的问题，这不仅耗时，也不利于大家的学习。因此，我们决定将Git和Git
+Hub的学习放在课程的前面，让大家尽早掌握这些必要的技能。</p>
+<p>本次课的内容主要分为四个方面：首先是数据分析中如何更好地管理数据文件；其次是Git
+Hub的基本介绍和主要特点；接着是Git的基本功能和版本控制原理；最后是Git的远程文件版本控制和如何在远程代码托管平台或云平台上进行交互。这些技能对于团队合作和项目管理非常重要，尤其是在大型项目中。</p>
+<p>我们的目标有两个：一是提高大家的项目管理和版本控制技能，以增强学习效率、研究能力和团队协作能力；二是即便短期内不需要频繁编写代码的同学，也应该学会如何下载更新课件和完成第一次小作业。这些技能对于保持项目最新性和协作顺畅性至关重要。</p>
+<p>在日常工作中，我们经常看到不规范的数据管理做法，如所有类型的文档和数据被随意放置在一个根目录下，没有分类。这种做法虽然能找到所需的数据和图表，但查找过程繁琐，效率低下。</p>
+<p><img src="pic/chp3/messy%20files.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>为了解决这个问题，建议对文件夹进行分类管理，并根据数据和文件的不同目的和使用方式，将它们分成不同的类别。此外，添加一个README文件，描述每个文件夹的功能和内容，以便未来的自己或其他研究者理解。</p>
+<p><img src="pic/chp3/files%20contrast.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>我们的课题组采用了两种文件管理模式：针对实证研究的文件管理和针对元分析或元研究的文件管理。这些模式在我们的Git
+Hub仓库中有详细的模板，其他研究者可以参考。通过特定的网站，我们发现借鉴规范的文件夹结构模式对研究者有益，也可以向导师推荐。网址是：<a href="https://psych-transparency-guide.uni-koeln.de/folder-structure.html" class="uri">https://psych-transparency-guide.uni-koeln.de/folder-structure.html</a></p>
+<p>在文件管理方面，我们发现一个常见问题是文件夹结构看起来整洁，但打开后发现文件组织混乱，包括文件命名问题。例如，对于毕业论文，应该在文件名中加上作者的名字，以便导师清楚地知道哪个文件是需要修改的。在数据分析过程中，版本控制非常重要，它可以帮助我们管理文件的各个版本，避免丢失重要的修改。</p>
+</div>
+<div id="git-and-git-hub" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Git and Git Hub<a href="第三讲git-rstudio工作流.html#git-and-git-hub" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>版本控制是一种强大的文件管理工具，它让我们能够记录每次文件更改的详细信息，只更新变化的部分，并清晰地标记出哪些内容发生了变化，哪些保持不变。这在管理大量文件，尤其是每次修改内容较小时，显得尤为重要。版本控制工具帮助我们追踪文件修改的历史，保留各个版本，即使是一些看似不重要的更改。</p>
+<p>现代版本控制工具，如Git，提供了更多功能。它们使我们能在本地电脑上管理文件的所有更改，并同步这些更改到远程服务器，如Git
+Hub。这样，我们既能跟踪项目在个人电脑上的所有变化，也能与他人协作，共同管理项目的发展。</p>
+<p>版本控制系统让我们能轻松地回退到之前的版本，比较不同版本间的差异，甚至恢复已删除的文件。这些操作既可以在本地电脑上完成，也可以通过网络连接到远程服务器或云端。当我们提到“本地”时，我们指的是电脑内部的硬盘；而“远程”或“云端”则指的是连接到个人电脑之外的存储系统，如Git
+Hub这样的代码托管平台。</p>
+<p>通过这些远程平台，我们可以创建所谓的“仓库”（repository），这是一个集中存放代码和文件的地方，方便他人与我们一起合作，共同开发项目。这种协作方式大大提高了工作效率和团队协作的便捷性。</p>
+<p>版本控制系统的另一个重要特点是它支持多人同时对同一项目进行修改，这在团队协作中尤为重要。例如，团队成员A和团队成员B都可以在同一文件上进行修改，只要他们的修改不冲突，系统就可以自动合并这些更改。如果出现冲突，系统会提示两位团队成员在哪些具体部分出现了冲突，然后他们可以决定如何处理这些冲突，是保留A的更改、保留B的更改，还是尝试合并两者的工作。</p>
+<p>这种机制允许不同的团队成员在不同时间和地点工作，同时维护同一个项目的最新状态。这对于国际团队合作尤为重要，因为团队成员可能分布在不同的时区，比如中国的团队成员在白天工作，而北美的团队成员在晚上工作。即便如此，他们也可以无缝地共享工作进展，并在适当的时候合并他们的更改。通过版本控制系统，团队成员可以清楚地看到项目的演变过程，了解彼此的更改和思考，从而更好地协同工作。这种协作方式不仅提高了工作效率，还促进了团队成员之间的沟通和协作。</p>
+<p><img src="pic/chp3/version%20control.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<div id="git" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Git<a href="第三讲git-rstudio工作流.html#git" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>目前，Git是最广泛使用的版本控制系统，而Git
+Hub是基于Git的开源代码托管平台，提供了丰富的功能和界面，使得版本控制更加直观和易于使用。在Git
+Hub上，用户可以创建项目并从中创建分支来尝试新想法或进行修改。分支的作用在于，它允许你在不影响主线（或主分支）的情况下，独立地开发新功能或进行实验性修改。这样，你可以自由地探索新的思路，而不必担心这些未经验证的更改会破坏主项目的稳定性。一旦你完成实验或确认了新的修改是有效的，你可以将这些更改合并回主分支，从而推动项目向前发展。Git
+Hub提供了分支管理的图形界面，使得创建、合并和切换分支变得非常简单。此外，Git
+Hub还支持协作特性，如Pull
+Request，它允许贡献者提交他们所做的更改，供项目维护者审查和合并。</p>
+<p>在团队协作中，每个成员都可以从主分支创建自己的分支，进行工作，然后将更改合并回主分支。这种工作模式促进了代码的迭代和团队之间的协作，同时也确保了项目的稳定性和可维护性。在教学或学习环境中，Git的下载和安装可能需要科学上网，Git网址是：<a href="https://Git-scm.com/downloads" class="uri">https://Git-scm.com/downloads</a>。</p>
+<p><img src="pic/chp3/Git.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>Git
+Hub既是一个平台，也是一个软件工具，它提供了版本管理的功能，同时支持通过终端（命令行）和图形界面两种方式进行操作。终端提供了强大的功能，允许用户通过输入命令来执行各种操作，比如创建仓库、分支、提交更改、合并请求等。终端的使用需要一定的命令行知识，但对于熟练的使用者来说，它提供了更高的灵活性和控制力。</p>
+<p>Git
+Hub的终端在不同的操作系统中表现不同。在Linux和macOS系统中，用户可以使用内置的终端，如bash或zsh；在Windows系统中，用户可以使用命令提示符（Command
+Prompt）、Windows
+PowerShell或终端模拟器。此外，许多开发环境，如RStudio，也提供了内置的终端，允许用户直接在环境中使用Git命令。</p>
+<p>图形界面则提供了更加直观的操作方式，适合不熟悉命令行的用户。Git Hub
+Desktop是Git
+Hub提供的桌面应用程序，它提供了一个简单的界面，允许用户通过点击来完成诸如克隆仓库、提交更改、创建分支和合并请求等操作。此外，还有一些第三方软件在Git
+Hub的基础上增加了图形界面，提供了更多的集成和自动化功能。</p>
+<p>在教学环境中，通常会主要介绍通过RStudio中的Git面板来使用Git
+Hub，因为这种方式可以在RStudio环境中直接完成所有需要的Git功能，无需切换到其他终端或应用程序。这使得版本控制的教学和操作更加方便和集成。</p>
+</div>
+<div id="git-hub" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Git Hub<a href="第三讲git-rstudio工作流.html#git-hub" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Git
+Hub确实是一个全球性的开源代码托管平台，它允许用户存储和管理自己的项目，并通过Git来进行版本控制。Git
+Hub提供了丰富的特性，如分支管理、合并请求（Pull
+Requests）、代码审查、以及issue跟踪等，这些都有助于促进项目的发展和团队合作。在2018年之前，Git
+Hub是完全开源的，由社区运营，并且是非盈利的。然而，2018年微软收购了Git
+Hub，这引发了一些关于开源和商业利益的关系的讨论。微软收购Git
+Hub后，有些人担心这可能会影响Git
+Hub的开放性和中立性，因为微软是一个盈利性企业。</p>
+<p>关于微软使用Git
+Hub上的开源代码来训练AI助手Copilot的问题，这是一个敏感话题。Copilot是一个基于Git
+Hub上大量开源代码训练出来的AI工具，它可以帮助开发者编写代码。尽管Copilot提供了便利，但它的存在确实引发了一些争议。一些开发者担心，使用开源代码来训练商业产品可能违反了开源许可的精神，特别是当开源许可明确禁止将代码用于商业目的时。这些争议触及了知识产权、开源许可和商业伦理等领域。开源社区和开发者们对于如何正确使用和尊重开源代码的知识产权有着不同的观点和讨论。重要的是，使用开源代码时，用户应该遵守相应的开源许可协议，尊重原作者的意图和权利。</p>
+<p>OpenAI
+是一家总部位于美国的人工智能研究公司，它致力于推动人工智能的发展和应用。OpenAI
+的某些做法确实引发了公众和媒体的讨论，特别是关于如何处理开源代码和知识产权的问题。OpenAI
+使用大量开源代码和数据来训练其AI模型，而这些资源和数据的合法性和道德性有时会受到质疑。确实，OpenAI
+和其他一些公司利用开源社区的贡献来开发商业产品和服务，这可能会与开源许可的精神产生冲突。开源许可通常要求用户在修改和重新分发代码时遵守特定的条件，有些许可明确规定了禁止将代码用于商业目的。尽管
+OpenAI
+声称其部分模型是开源的，但其核心技术和模型往往是不公开的，这引发了关于透明度和公平性的讨论。在商业实践方面，OpenAI
+的行为有时也会受到批评。例如，出版商与其就使用版权材料进行训练的做法发生法律纠纷。这些纠纷反映了人工智能发展中的一些法律和伦理问题，包括如何平衡版权保护与技术发展之间的关系。</p>
+<p>此外，一些Git Hub平替平台，如 Gitee 和 GitLab，也是值得关注的。Gitee
+是中国的一个代码托管平台，它提供了一些与 Git Hub
+类似的功能，但更加符合中国的互联网环境和文化。GitLab
+则是一个企业级的代码管理平台，它提供了更丰富的功能，特别是针对企业的协作和安全管理需求。GitLab
+在处理商业和政治敏感问题时采取了一些立场，例如在俄乌冲突期间，它停止了对俄罗斯的科学家和程序员的代码托管服务。Bitbucket
+是由 Atlassian
+公司开发的一个代码托管平台，它也提供了Git和Subversion的存储服务。Bitbucket
+同样支持开源项目，并且提供了一些针对团队协作和企业使用的功能。与 Git Hub
+类似，Bitbucket 允许用户创建自己的仓库，管理分支，以及通过 pull requests
+进行代码审查。对于大多数开发者来说，Git Hub
+是最受欢迎的选择之一，原因包括其庞大的用户社区、丰富的功能集、以及广泛的开源项目托管。Git
+Hub 的用户界面友好，功能直观，适合个人和团队项目。</p>
+<p>然而，Git Hub
+可能会遇到稳定性问题，这可能会影响开发者的体验。在某些情况下，Git Hub
+的服务可能会出现中断或性能问题。因此，作为开发者，了解如何使用命令行操作
+Git，即使在图形界面不可用或遇到问题时，也是一个有用的技能。开发者应该根据自己的需求和偏好来选择代码托管平台。如果是在中国地区，可能会考虑到网络连接的稳定性，选择如
+Gitee 这样的国内平台。如果是在国际环境中，Git Hub
+通常是一个不错的选择，因为它拥有更广泛的社区支持和丰富的生态系统。大家可以先注册一个Git
+Hub账号( <a href="https://Git" class="uri">https://Git</a> Hub.com )。</p>
+<p><img src="pic/chp3/github.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>接下来，我们将展示Git Hub的界面。假设你已经注册了一个Git
+Hub账号，接下来你会创建自己的repository，也就是仓库。在Git
+Hub上，你可以按照项目来管理你的代码，为每个项目创建一个独立的仓库。这样的好处是，每个仓库都可以针对特定的目的进行管理。例如，我们为这门课程创建了一个名为R4psy的仓库，另外还有一个R4psyBook仓库，这里面包含了我们将课程讲稿转换成文字的内容。</p>
+<p><img src="pic/chp3/new%20repo1.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>在Git
+Hub上创建仓库时，你可以给仓库命名，只要这个名字在你名下还未使用过。你可以选择仓库是公开的还是私密的。如果选择私密，只有你授权的人才能访问代码。你可以邀请合作者，这样你和合作者都可以访问仓库。创建仓库时，你可能需要添加一个readme文件，以便他人更快地了解仓库内容。你还可以选择添加一个<code>.Git</code>ignore文件，这将我们在后面讲解。此外，你可以选择一个license来规定你的代码的许可方式。尽管创建的license可能不会被每个人都遵守，但如果不创建，则默认没有人会遵守。例如，如果你希望研究中被广泛使用，你可以选择一个宽松的许可，允许他人修改和分发代码。如果你不希望代码被用于商业目的，你可以选择一个禁止商业用途的许可。对于心理学的同学或大部分研究者来说，选择一个常用的Creative
+Commons（CC）许可通常是较为合适的选择。</p>
+<p><img src="pic/chp3/new%20repo2.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>关于readme文件，它实际上是一个文本文件，但在Git
+Hub上，它可以被识别并展示为Markdown格式。Markdown是一种轻量级标记语言，允许使用简单的符号来格式化文本。例如，在Markdown中，你可以使用井号来创建一级标题，使用两个井号来创建二级标题，使用星号来加粗文本，使用一个星号来创建斜体文本。此外，Markdown还支持水平分割线、代码格式化（包括单行代码和多行代码）等。随着我们开始使用Markdown，大家会逐渐熟悉这些语法规则。至于我们课程的PPT，我们现在展示的内容实际上是在网页上展示的。这个PPT是通过一个名为xaringan的包生成的，这个包可能与动漫有关，它的名字听起来像是一个与动漫相关的词汇。这个xaringan包生成的PPT实际上是rmarkdown格式的。</p>
+<p><img src="pic/chp3/readme.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>当你第一次创建一个仓库并在其中添加了一个readme文件时，这个readme文件通常是空的。一旦你添加了内容或者对仓库进行了任何更改，Git
+Hub会提示你记录这些更改。这个过程通常被称为“提交”（commit）。你可以将这次更改命名为“first
+commit”，然后将其提交到Git
+Hub上。在这个过程中，你可以想象你的仓库就像是一个文件夹，而在文件夹中有一个名为readme的文件。当你第一次创建仓库时，readme文件是空的，但当你添加内容后，它就不再是空的了。你将这些更改记录下来，并将其提交到版本控制系统中。提交更改后，你的所有更改都会保存在远程仓库中。在Git
+Hub上，你可以看到你已经做了几次更改，以及每次更改的详细信息。这样，你就可以跟踪你的项目进度，并与他人协作时保持代码的历史记录。</p>
+<p><img src="pic/chp3/first%20commit.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>在Git
+Hub中，你可以查看仓库中文件的完整历史记录。这意味着你可以追踪文件从创建之初到当前状态所经历的所有更改。每次更改都会被记录下来，包括更改的内容和日期。这就是版本控制系统的作用，它使我们能够有效地管理代码的变化，确保每次更改都可以被追踪和回溯。进行版本控制是我们维护代码库时非常重要的一部分，它帮助我们在开发过程中保持代码的整洁和可管理性。</p>
+<p><img src="pic/chp3/history.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>在Git
+Hub上，不仅可以方便地查看代码的历史记录，而且还可以轻松地与他人合作。有了版本控制系统，合作变得格外简单。在Git
+Hub上，你可以直接fork他人的代码，这是一个非常直观的操作，特别是对于公开的repository。当你登录Git
+Hub并打开一个公开仓库时，你会看到一个fork按钮，它象征着将代码复制到你的个人账户中，形成一个新的仓库。
+Fork操作就像是将一个代码仓库复制一份，创建到你自己的Git
+Hub账户下。这样，你就可以在这个复制过来的仓库中进行修改，而不会影响到原仓库的内容。这是一个理想的协作方式，因为它允许你在不影响他人工作的情况下，对代码进行个性化的修改或实验。
+例如，如果你看到一个课件仓库，并希望对其进行个性化修改以适应自己的学习需求，你可以fork这个仓库到自己的账户中，然后在forked仓库中进行更改。这样，你的更改只会影响你的仓库，而不会影响到原始仓库的内容。这为开源项目的贡献者提供了一个安全的环境，让他们可以自由地创新和实验。</p>
+<p><img src="pic/chp3/fork.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>在Git
+Hub上，当你对forked仓库进行了更改，并希望将这些更改合并回原仓库时，你可以通过发起一个pull
+request来实现。pull
+request是一个请求，邀请原仓库的管理员或贡献者审查你的更改，并决定是否将这些更改合并（merge）到主分支。通过pull
+request，你可以通知原仓库的维护者你的更改，并提供详细的描述和原因。维护者可以审查你的代码，提出建议或直接合并你的更改。如果维护者认为你的更改不合适，他们可以拒绝合并请求。如果更改被接受，你将成为原仓库的贡献者之一，并在仓库的贡献者列表中看到你的头像和名字。</p>
+<p><img src="pic/chp3/pull%20request1.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>到目前为止，我们讨论的都是基于Git
+Hub的在线操作，包括注册账户、创建项目、fork项目以及通过pull
+request贡献代码。但实际开发过程中，我们还需要在本地进行代码的编写和版本控制。本地版本控制是开发者经常遇到的场景，它允许你在本地文件夹中进行操作，然后将更改推送到云端，与其他人分享和同步代码。
+本地版本控制通常涉及到使用Git命令行工具或图形界面工具，如Git Hub
+Desktop，来克隆仓库、提交更改、创建分支、合并分支等。这样，你可以在本地测试和修改代码，确保一切按预期进行，然后再将更改推送到Git
+Hub上，与他人共享你的工作成果。</p>
+</div>
+</div>
+<div id="local-version-control" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Local Version Control<a href="第三讲git-rstudio工作流.html#local-version-control" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>我们将讨论本地的版本控制，特别是当你使用Git进行管理时。当你将文件夹转变为Git仓库，并在Git
+Hub上托管项目时，你可能会想知道每次更改是如何被记录的。实际上，在你的工作目录中，有一个隐藏的<code>.Git</code>文件夹，它包含了Git仓库的所有信息。这个文件夹通常是不可见的，除非你在文件资源管理器中启用了隐藏文件的显示。</p>
+<p>在这个<code>.Git</code>文件夹中，有一个叫做暂存区（index）的区域，它用于记录你对文件的更改。当你在工作目录中修改文件后，你需要使用<code>Git add</code>命令来标记这些更改，以便它们被纳入下一次提交的范围内。如果你只是添加了一个新的文件，如一个readme文件，你会使用<code>Git add</code>来通知Git这个新文件的存在。一旦你标记了更改，你可以使用<code>Git commit</code>命令来提交这些更改。这个命令会为你提供的更改创建一个唯一的ID（通常是一个很长的数字哈希），并将它们保存到本地的Git仓库中。这样，每次提交都会有一个唯一的标识符，以及你为该次更改提供的注释。如果你想查看更改的历史，你可以使用<code>Git log</code>命令来查看所有提交的记录。这让你可以看到每次更改的内容，以及它们对应的标识符。</p>
+<p>总结一下，本地版本控制的关键在于明确地告诉Git你做了哪些更改，无论是通过<code>Git add</code>还是<code>Git commit</code>命令。如果你没有记录这些更改，版本控制系统就不会知道你已经做了修改。因此，使用这些命令是确保你的更改被跟踪和保存的关键。</p>
+<p><img src="pic/chp3/local.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>在我们本地的环境中，如果你想要完成版本控制的流程，你其实不需要编写代码，如果你不喜欢写代码的话。你可以完全使用RStudio来完成这个流程。在RStudio中，你只需要点击“文件”菜单，然后选择“新建文件”里的“新建项目”，也就是创建一个新的项目。在这个新的项目里面，你可以选择全新的在一个新的文件夹中进行实验，也可以在一个已经存在的文件夹中进行操作，将其转换为一个R项目。不管你选择哪个选项，最终都会打开一个名为“新建项目”的窗口。在这个窗口中，有一个高亮的勾选选项，询问你是否要将项目同时设置为Git仓库。如果你勾选了这个选项，RStudio会帮助你初始化一个新的Git仓库。当然，这要求你的计算机上已经安装了Git。如果你还没有安装Git，那么这个选项可能不会出现。一旦你安装了Git，RStudio内部会发生变化，开始兼容一些与Git相关的选项。在这种情况下，当你创建项目时，你的文件夹中就会有一个隐藏的<code>.Git</code>文件夹，它开始对你文件进行版本控制。这样，你就可以利用RStudio的图形界面来进行版本控制，而无需直接编写代码。</p>
+<p><img src="pic/chp3/new%20project1.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>当你在RStudio中创建了一个新的Git仓库时，默认情况下，RStudio会创建一个隐藏的<code>.Git</code>文件夹来管理版本控制数据。在这个时候，你的RStudio界面上方，右上角，会有一个关于环境变量、历史记录、连接信息以及其他相关内容的菜单。其中，
+Git相关的窗口和标签会出现在界面上，允许你查看和管理Git仓库的信息。</p>
+<p>一旦你安装了Git并且开始了版本控制，你可以在Git标签下看到你有哪些未提交的更改。RStudio会自动识别出这些新的更改，并允许你选择是否将它们暂存（stage）并提交（commit）。当你点击“提交”按钮时，RStudio会弹出一个窗口，让你输入提交信息并确认提交更改。</p>
+<p><img src="pic/chp3/add%20files1.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>当你准备对代码进行提交时，你需要确定要 commit
+的具体内容。比如，我们现在决定将这两个更改纳入
+commit，这样做之后，它们将被提交到本地的 Git
+仓库，并且被记录下来。这意味着，当你新建一个文件夹并决定将其作为一个 Git
+项目来管理时，你可以通过创建一个新的 Git 仓库来将其变为一个 Git 项目。</p>
+<p>在我们刚刚讨论的提交（commit）过程中，每次提交都会自动分配一个唯一的编号，也就是提交哈希（commit
+hash）。然而，仅仅分配一个编号是不够的，你还必须为这次更改附上一个描述性的信息，比如更改的主要内容或者目的。如果你不提供信息，Git
+会报错，要求你必须留下一些备注。这是 Git
+的一项基本要求，无论你是通过命令行操作还是使用图形界面，都需要提供这次提交的信息。</p>
+<p><img src="pic/chp3/add%20files2.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p><img src="pic/chp3/add%20files3.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>信息填写完成后，Git
+会开始处理提交，可能会显示一些状态信息。这一切都是在本地进行的，你的更改还没有推送到远程仓库。</p>
+<p><img src="pic/chp3/add%20files4.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>例如，我们可以在项目文件夹中新建一个名为 “read me”
+的文件。这个文件可以是文本文件（TXT）或者 R Markdown
+文件（RMD），取决于你想要记录的内容类型。在创建了这个新的 “read me”
+文件之后，我们可以在这个文件中添加一些描述性的内容或者说明。</p>
+<p>与 Git 刚才记录的文件夹状态相比，我们现在新增了一个 TXT 文件。Git
+会有所察觉，并通知你新增了一个文件。此时，你可以将这个新的文件暂存（stage），这意味着你标记了它以便于下一次提交。然后，你可以再次执行提交（commit）命令，重复我们刚才的过程，这样新的
+“read me” 文件就会被添加到 Git
+仓库的历史记录中。这个过程不仅记录了文件的更改，也记录了文件的新增。</p>
+<p><img src="pic/chp3/add%20files5.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>在你进行提交（commit）时，Git
+会在提交界面的底部显示一个对比窗口，这里会比较你上一次提交和本次提交之间的差异。例如，如果你首先创建了一个测试仓库，并提交了初始状态，然后你修改了
+“read me” 文件的内容，Git
+会高亮显示删除的内容为红色，表示这些内容在本次更改中被移除了。同时，新增的内容会被高亮显示为绿色，这样你就能清楚地看到本次修改具体做了哪些改变。</p>
+<p><img src="pic/chp3/add%20files6.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>完成修改后，你可以再次执行提交（commit）操作。通过这样的步骤，每次提交都会被记录下来，并且每个提交都会有一个独特的编号，这个编号通常是一个由字母和数字组成的
+SHA-1
+哈希值。这个哈希值不仅标识了提交的唯一性，而且还可以用来检索提交历史记录中的特定提交。
+正如所演示的，从创建文件到第一次提交，再到添加和更新 “read me”
+文件，每一次的修改都会被 Git
+记录下来，并且每个文件的变化都会有一个清晰的记录。这样，你可以追踪项目的每一次变化，以及每一次变化的具体内容。</p>
+<p><img src="pic/chp3/add%20files7.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>在我们上课的微信群中，有同学提问了一个问题：如果我已经在本地有一些 R
+代码，但之前没有使用 Git 来管理这些代码，现在想要开始用 Git
+来管理，应该怎么办？
+答案其实很简单。首先，你需要将你的代码文件夹转换为一个 Git
+仓库。我现在就直接在我的 RStudio 中进行操作。在 RStudio
+中，我们点击“文件”（File）菜单，然后选择“新建项目”（New
+Project）。在这里，我们有几个选项： 1.创建一个新的目录（New
+Directory）：这将创建一个新的项目和一个新的文件夹。
+2.关联现有目录（Existing
+Directory）：如果你已经有了一个正在编写代码的文件夹，你可以选择这个选项来关联现有的文件夹。
+3.创建目录并启用版本控制（Create Project from Existing
+Code）：这个选项实际上是让我们创建一个新的 Git
+仓库，并将现有的代码文件夹作为 Git 仓库来使用。
+由于我们已经有了一些代码，我们应该选择第二个选项——关联现有目录。选择后，RStudio
+会提示你选择具体的文件夹。你可以浏览到你的代码文件夹，并选择它。一旦你选择了现有目录，你需要将所有现有的文件添加到
+Git 仓库中。对于 Git
+来说，它并不知道你之前的工作，所以你需要手动将这些文件添加进去。这相当于你第一次将这些文件加入
+Git 版本控制。</p>
+<p>在我们刚才的讨论中，我们深入探讨了一个对科研人员非常重要的概念：<code>.gitignore</code>文件。这个文件的主要作用是指导
+Git
+版本控制系统，忽略掉不需要进行版本控制的文件和目录。这对于协作项目和数据管理来说非常关键。例如，在使用
+R 语言进行数据分析时，RStudio 开发环境会自动生成一些临时文件，比如
+<code>.Rproj</code> 文件、<code>.RData</code> 文件和 <code>.history</code>
+文件等。这些文件属于临时性质，每次打开 RStudio 或者运行 R
+命令时都可能会发生变化。将这些文件纳入版本控制是没有必要的，因为它们并不能反映你的实际代码或数据变化。</p>
+<p>此外，科研人员在进行研究时可能会涉及到一些含有敏感信息的原始数据，这类数据是不宜公开的。在这种情况下，通过在
+<code>.gitignore</code>文件中明确指出要忽略的文件，科研人员可以避免这些敏感数据被上传到
+Git Hub
+等公开平台上。如果不幸地，某些敏感信息已经被上传到了版本控制系统中，那么需要立即采取措施，确保这些信息从所有历史提交中彻底删除。由于
+Git
+保留了每次提交的所有文件，因此这一步骤非常关键，以确保敏感信息不会被外部获取。</p>
+<p>总的来说，<code>.gitignore</code>文件是一个强大的工具，可以帮助科研人员管理 Git
+仓库，避免不必要的信息上传，并保护敏感数据。值得注意的是，一旦
+<code>.gitignore</code>文件设定好后，Git
+会自动忽略其中的文件，科研人员无需再手动排除这些文件。如果某些文件需要分享，但不宜通过
+Git Hub 进行，可以选择其他方式，如直接分享文件或使用额外的共享服务。</p>
+<p><img src="pic/chp3/Gitignore1.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>关于 Git 的
+<code>.gitignore</code>文件，它有自己的匹配规则，这些规则支持简单的模式匹配，功能类似于通配符，而不完全是传统的正则表达式。你可以指定哪些文件或目录应该被
+Git
+忽略，以确保不必要的文件不会被添加到版本控制中。例如，如果你想忽略所有扩展名为<code>.TXT</code>的文件，你可以在<code>.gitignore</code>文件中添加规则<code>*.TXT</code>。如果你只想忽略特定文件夹<code>TXT3</code>中的<code>secret.TXT</code>文件，你可以写成<code>TXT3/secret.TXT</code>。</p>
+<p>这样的规则尤其有用当处理敏感数据。例如，在心理学研究中，可能需要保护包含被试个人信息的原始数据不被公开。在这种情况下，指定这些文件在<code>.gitignore</code>文件中可以防止它们被上传到Git
+Hub。需要注意的是，如果敏感信息已经被上传，仅仅更新<code>.gitignore</code>是不够的，因为这些信息仍然存在于历史提交中。在这种情况下，应采取措施从仓库的历史中彻底删除这些信息，例如使用<code>git filter-branch</code>或BFG
+Repo-Cleaner。</p>
+<p>总之，<code>.gitignore</code>文件是管理 Git
+仓库中不应跟踪的文件的重要工具。它不仅帮助保持仓库的整洁，还可以避免敏感信息的不必要泄露。设置好<code>.gitignore</code>文件后，Git
+将自动忽略这些文件，减少了手动管理的需要。如果你需要共享某些文件但不通过Git
+Hub，考虑使用其他直接的文件分享方法或额外的共享服务。</p>
+<p><img src="pic/chp3/Gitignore2.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>关于<code>.gitignore</code>文件中的原则，其实它的语法相对简单。基本上，你需要合理使用通配符，并注意忽略特定的文件后缀。例如，如果你想在<code>example</code>文件夹中忽略所有<code>.txt</code>文件，但保留<code>special.txt</code>，你可以在<code>.gitignore</code>文件中这样写：</p>
+<pre><code>example/*.txt
+!example/special.txt</code></pre>
+<p>这里，<code>*</code>表示匹配任何字符，<code>*.txt</code>表示匹配任何以<code>.txt</code>结尾的文件。使用<code>!</code>前缀可以指定不忽略的文件。此外，<code>.gitignore</code>文件支持添加注释，你可以使用井号<code>#</code>来开始一行，从而添加说明或备注，例如：</p>
+<pre><code># 这是一个注释行</code></pre>
+<p>在指定要忽略的目录或文件时，可以加上斜杠<code>/</code>来精确匹配路径的开始部分，确保只有指定路径下的文件或目录被忽略。<code>.gitignore</code>文件的管理相对直观，主要依靠通配符的使用和对特定文件的排除。有许多在线资源和工具可帮助你理解和生成这类文件，因此，你不需要特别记忆所有这些规则。</p>
+<p><img src="pic/chp3/Gitignore3.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>例如，根据我们之前的讨论，你们可以在自己的项目文件夹中创建三个特定的文件夹，在这些文件夹中，你们应该分别放置相应的文件。完成这些步骤后，你们可以测试<code>.gitignore</code>文件是否按照预期工作。换句话说，你们应该检查<code>.gitignore</code>文件是否正确地忽略了你们希望忽略的文件，同时确保它没有错误地忽略掉任何不应该被忽略的文件。这样，你们就可以验证<code>.gitignore</code>文件是否实现了你们想要的效果。</p>
+<p><img src="pic/chp3/Gitignore4.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>一旦你成功创建了<code>.gitignore</code>文件，并且其中的语法是正确的，你想要忽略的文件在
+Git 仓库的界面上就不会再出现了。这是因为 Git
+只会显示那些被追踪（即没有被忽略）并且有更改的文件。当你将文件添加到<code>.gitignore</code>文件中时，你实际上是在告诉
+Git：“忽略这些文件的所有变化，不要将它们纳入版本控制。”
+因此，这些文件的变化不会被 Git 记录，也就不会出现在 Git
+仓库的列表中。这意味着，即使这些文件发生了变化，它们也不会影响你的提交历史。</p>
+<p><img src="pic/chp3/Gitignore5.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>有时候，你可能会发现你想忽略的文件并没有被成功忽略，这可能会让你感到困惑。在这种情况下，你可能需要仔细检查
+<code>.gitignore</code>文件的语法和内容。这就像是编程时遇到的问题，当我们开始使用 R
+语言分析数据时，我们可能会不断遇到各种小错误。我们写了一行代码，期望它能产生特定的结果，但最终却没有得到预期的结果。在这种情况下，需要保持冷静，因为我们在编写代码时经常会遇到这样的问题，比如看到代码中出现一连串红色错误或警告。首先，要保持冷静，认真查看错误信息，仔细检查
+<code>.gitignore</code>文件中的每一项内容。同时，也要检查自己的文件，例如，如果你期望创建的是一个
+<code>.txt</code> 文件，要确保没有拼写错误或其他小错误。</p>
+<p>此外，你还可以查看 Git 的缓存（cache）来了解更多信息。在你注意到 Git
+似乎已经识别出文件时，这意味着还没有使用 <code>Git add</code>
+将其纳入暂存区，或者使用 <code>Git commit</code>
+将其永久记录到版本管理系统中。但即使如此，Git
+已经识别出了这个文件，这表明它没有被忽略。你可以查看缓存区，了解 Git
+记录了哪些内容，以及这些内容与你想忽略的内容之间是否存在差异。有可能是这些小的差异导致了问题。你还可以使用
+<code>Git check-ignore</code> 命令来检查 <code>.gitignore</code>文件是否被 Git
+正确识别。通过这些步骤，你可以逐步定位并解决问题。</p>
+<p>总的来说，当你发现
+<code>.gitignore</code>文件没有按预期工作时，应该耐心地检查文件语法、检查文件内容和扩展名是否有误，以及查看
+Git 的缓存和日志信息。这些步骤可以帮助你识别并解决忽略文件的问题。</p>
+<p><img src="pic/chp3/bug.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>让我们回顾一下在 RStudio 中建立本地 Git
+仓库的过程。首先，我们创建了一个工作目录，并通过创建一个新的 R
+项目将其转变为一个由 Git 进行版本控制的文件夹。在这个过程中，Git
+创建了一个缓存区域，以及一个 Git 仓库的内在结构。我们通过 RStudio
+中的右上角 Git
+窗口来记录我们的更改，并为每一次更改添加一个描述性的名字，以便将其加入到版本控制系统里面。非常重要的一点是，我们需要确保
+<code>.gitignore</code>文件被正确编写。我们需要清楚地定义哪些文件和文件夹应该被忽略，以免它们被错误地记录到版本控制系统中。这个文件对于保持仓库的整洁和避免不必要的文件被追踪至关重要。</p>
+<p>我们还讲述了两个相关的概念：在 Git Hub
+上创建一个项目，以及在本地进行版本控制管理。版本控制管理允许我们在本地文件夹中进行更改，并确保这些更改能够同步到远程的项目库中，如
+Git Hub。</p>
+<p>由于 Git
+是一个分布式版本控制系统，它允许你在本地上拥有完整的项目历史和版本控制能力。每次你进行更改时，这些更改首先会被记录到你的本地仓库中。只要你执行了
+<code>Git add</code> 和 <code>Git commit</code>
+命令，这些更改就会被添加到你的本地提交历史中。然后，你可以通过
+<code>Git push</code> 命令将这些更改推送到远程仓库中，如 Git
+Hub。这样，你的远程项目就会保持与本地仓库同步。当你需要在另一台电脑上工作，你可以使用
+<code>Git clone</code>
+命令从远程仓库克隆出一份本地副本。这样，你就可以继续工作，并且所有的更改都会被记录下来，就像你在原始电脑上一样。这样，无论你在哪里，你都可以访问你的项目并进行工作。</p>
+<p>总结来说，通过在 RStudio 中使用
+Git，我们可以轻松地管理我们的代码和项目历史。通过正确的使用
+<code>.gitignore</code>文件，我们可以保持仓库的清洁，并避免不必要的信息被追踪。同时，通过
+Git Hub 的远程同步，我们可以确保我们的工作在任何地方都能无缝继续。</p>
+</div>
+<div id="remote-version-control" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Remote Version Control<a href="第三讲git-rstudio工作流.html#remote-version-control" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在我们了解了如何在本地使用 Git
+记录更改之后，我们将这些更改推送到云端仓库的过程实际上相当简单。我们最常使用的两个命令是
+<code>Git push</code> 和 <code>Git pull</code>。</p>
+<p>首先，当你将本地的文件夹与 Git Hub
+上的仓库关联后，如果你在本地进行了更改并记录在了 Git
+仓库中，你想要将这些更改同步到 Git Hub 上的云端仓库时，只需执行
+<code>Git push</code>
+命令。这个命令会将本地的更改推送到远程仓库中，更新云端的数据。另一方面，如果你与他人合作的一个项目中，你在一段时间内没有进行更改，但你的合作者做了更改，并且你想将这些更改下载到你的本地计算机上，你可以执行
+<code>Git pull</code> 命令。这个命令会将远程仓库的最新更改拉取到你的本地仓库中。</p>
+<p>当你第一次想要将一个项目变成你自己的项目时，你需要执行 <code>fork</code>
+操作。这意味着你在 Git Hub
+上创建了一个项目的新副本。之后，如果你的合作者进行了更改，你不需要再次
+<code>fork</code>，而是可以使用 Git Hub 提供的 <code>sync fork</code>
+功能，它会自动将合作者的更改同步到你的已 <code>fork</code>
+的仓库中。然后，你可以将其拉取到你的本地计算机上。如果你的仓库是个人使用的，或者是一个私人的仓库，你没有与他人合作，只是为了在
+Git Hub 上备份以防止本地硬盘出现问题，那么你只需要使用 <code>Git push</code> 和
+<code>Git pull</code> 这两个命令。在这种情况下，不存在与别人合作的问题。</p>
+<p><img src="pic/chp3/remote.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>连接本地仓库到远程仓库的过程涉及几个步骤。这里有两种常见的方法来建立这种连接：</p>
+<p>一是从远程创建并克隆到本地：这种方法是先在远程仓库（如 Git
+Hub）上创建一个新的项目仓库，然后直接从远程克隆这个仓库到你的本地机器。这样，你的本地仓库就会包含所有的
+Git 版本控制信息。具体步骤如下：首先，在远程仓库（例如 Git
+Hub）上创建一个新的项目仓库。然后，使用 <code>Git clone</code>
+命令将远程仓库克隆到你的本地机器。克隆完成后，你的本地仓库就会自动与远程仓库连接起来。</p>
+<p>二是将本地仓库连接到远程仓库：如果你已经有了一个本地的 Git
+仓库，并且想要将它连接到一个远程仓库（如 Git
+Hub），你可以使用以下步骤：首先，在远程仓库（例如 Git
+Hub）上创建一个新的空仓库。然后，在本地仓库中，打开终端或命令提示符，并使用
+<code>Git remote add</code>
+命令来添加一个新的远程仓库。例如：<code>Git remote add origin &lt;远程仓库的URL&gt;</code>。这里的
+<code>origin</code>
+是你为远程仓库指定的一个名字，你可以根据自己的喜好选择其他名字。最后，使用
+<code>Git push</code>
+命令将本地的更改推送到远程仓库。例如：<code>Git push -u origin master</code>。这里的
+<code>master</code>
+是你本地仓库的默认分支名，如果你的本地仓库使用的是其他分支，请相应地替换它。</p>
+<p>在第二种方法中，你需要将远程仓库的地址添加到本地的 Git
+配置文件中。这个配置文件是一个隐藏的文件，通常位于你的用户目录下的
+<code>.gitconfig</code>文件中。你可以手动编辑这个文件来添加远程仓库的地址，或者使用
+<code>Git remote add</code> 命令来自动添加。</p>
+<p>无论使用哪种方法，一旦你的本地仓库与远程仓库建立了连接，你就可以使用
+<code>Git push</code> 和 <code>Git pull</code> 命令来同步本地和远程仓库之间的更改了。</p>
+<p><img src="pic/chp3/link.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>创建一个新的 Git Hub 仓库并将其与你的本地 Git
+仓库连接起来是一个相对简单的过程。以下是使用第三种方法（直接在 Git Hub
+上创建仓库并将其连接到本地仓库）的步骤：</p>
+<p><strong>1.在 Git Hub 上创建一个新的仓库：</strong></p>
+<p>访问 Git Hub 网站。点击右上角的 “+” 图标，选择 “New
+repository”。为仓库命名，并选择是否使其成为公共仓库。选择 “Initialize
+this repository with code” 选项，如果你想要一个空的仓库，可以选择 “This
+is a brand new repository”（这是一个全新的仓库）。点击 “Create
+repository” 按钮。</p>
+<p><img src="pic/chp3/new%20repo3.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p><strong>2.在本地仓库中添加远程仓库：</strong></p>
+<p>打开你的本地 Git 仓库所在的目录。在终端或命令提示符中，使用
+<code>Git remote add</code>
+命令来添加一个新的远程仓库。例如：<code>Git remote add origin &lt;远程仓库的URL&gt;</code>。这里的
+<code>origin</code> 是你为远程仓库指定的名字，你可以根据自己的喜好选择其他名字。</p>
+<p><img src="pic/chp3/new%20project2.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p><strong>3.将本地更改推送到远程仓库：</strong></p>
+<p>确保你的本地更改已经添加到暂存区，并提交到本地仓库。使用 <code>Git push</code>
+命令将本地的更改推送到远程仓库。例如：<code>Git push -u origin master</code>。这里的
+<code>master</code>
+是你本地仓库的默认分支名，如果你的本地仓库使用的是其他分支，请相应地替换它。
+在创建新的 Git Hub 仓库时，Git Hub 会提供一个新的 SSH 密钥或 HTTPS
+URL，你需要在本地仓库中使用这些信息来建立连接。如果你在创建仓库时选择了
+“Initialize this repository with code”，Git Hub 会自动为你创建一个
+README 文件，你可以随时添加其他文件或目录。
+一旦你完成了这些步骤，你的本地仓库就会与 Git Hub
+上的远程仓库连接起来，你就可以使用 <code>Git push</code> 和 <code>Git pull</code>
+命令来管理本地和远程仓库之间的更改了。</p>
+<p>当你在 Git Hub 上创建一个新的仓库并且选择了一个空仓库（“Initialize this
+repository with code”）时，Git Hub
+会自动提供一个初始化的仓库地址。这个地址通常是一个 HTTPS
+URL，它看起来像这样：</p>
+<pre><code>https://Git Hub.com/username/repository.git</code></pre>
+<p>这个 URL 就是你在本地 Git
+仓库中添加远程仓库时需要使用的。你可以在创建仓库后的 Git Hub
+页面中找到这个 URL，通常在仓库的设置或者仓库的 README 文件中的 “Code”
+部分。</p>
+<p><img src="pic/chp3/new%20repo4.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>通过这个过程，你就可以将你的本地 Git 仓库与 Git Hub
+上的远程仓库连接起来，并且可以开始进行代码的推送和拉取操作。</p>
+<p><img src="pic/chp3/new%20project3.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>当然，你需要确保了解本地仓库的路径，因为这将决定你在本地创建的文件夹位置，以便与之对应的远程仓库能够正确地与之连接。一旦你确定了本地仓库的路径，你就可以轻松地将它与远程仓库连接起来。在创建远程仓库之后，你可能会发现本地仓库已经包含了一些文件，而
+Git Hub 上的远程仓库却是空的。这种情况下，你需要将本地的更改记录到本地的
+Git
+系统中，并将其推送到远程仓库，以实现两者的同步。虽然这个过程听起来可能有些抽象，但实际上，只需要执行两行代码就可以完成操作。</p>
+<p>那么，我们现在来详细讲解最关键的一点。实际上，核心要求就是希望各位同学能够执行一个操作：即将我们课程的课件fork到你个人的repository中。对于选修本课程的同学来说，有两个重要时刻会用到这一操作：首先，在完成第一次小作业时，你需要对课件进行修改并上传至你的仓库；其次，在提交大作业时，也必须将其提交至Git
+Hub仓库。此外，在课程进行期间，你需要不断地更新你的仓库。</p>
+<p><img src="pic/chp3/fork.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>关于课程的具体操作，我们已将网址发送给各位，你在登录个人的Git
+Hub账号后，可打开该网址，并会发现有一个“fork”的标志，点击即可完成操作。当你需要提交小作业时，你需要对Git
+Hub仓库进行一些更改，并将修改后的文件保存在你的远程Git
+Hub仓库中。具体来说，你需要在本地进行修改，并将更改push到远程仓库，随后再回到我们课程的中心仓库。例如，在浏览我们的仓库时，你可以获得该仓库的地址，并在页面上看到你的仓库来源。点击“code”，你会看到对应的地址，复制该地址后，在RStudio中粘贴，并使用此地址而不是新建文件的地址，同时为其命名并指定位置。此时，RStudio会帮助你将文件克隆到本地。</p>
+<p><img src="pic/chp3/new%20repo5.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p><img src="pic/chp3/new%20project4.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>那么，当你完成了一定的内容并准备提交作业时，你需要在本地进行提交。打开Git界面后，它会提示你进行一些提交（commit）的操作。完成提交后，你需要进行推送（push）操作。如果一切顺利，你会看到类似这样的提示，表明你的更改已经被成功地推送到了远程仓库。</p>
+<p><img src="pic/chp3/Git%20push.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p><img src="pic/chp3/Git%20push%20success.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>那么，如果你已经在线上了，也就是说在下一节课之前，我们作为更新助教团了下节课的课件，那么在你自己的repository中，你会看到一个提示，表明你的repository与中央repository之间存在差异。这是因为我们维护的中央仓库是官方的，当我们更新了课件，你的forked仓库与中央仓库之间就会产生分歧。</p>
+<p>这种差异的出现是因为我们更新了下一节课的课件，而你还没有将这些更改合并到你的仓库中。为了解决这个问题，你只需执行一个同步操作，即点击“Sync
+fork-Update branch”按钮，Git
+Hub会自动帮你下载最新的更改。更新完成后，你可以使用“pull”命令将更新从你的forked仓库中拉取下来，这样你的本地仓库就会与中央仓库保持一致了。</p>
+<p><img src="pic/chp3/Git%20pull.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>当你在个人仓库中进行了更改，比如提交了一个作业，中央仓库中并不会自动显示出这些更改。这是因为中央仓库的官方版本并未包含你所做的修改。如果你希望将你的作业整合到中央仓库中，你需要发起一个pull
+request。具体操作是，你在Git
+Hub上找到你想要贡献代码的中央仓库，然后点击“New pull request”或者“Create
+pull request”按钮。在这个 pull request
+中，你可以选择你的分支，并描述你的更改内容以及目的。提交后，其他贡献者或维护者可以审查你的代码，并决定是否将其合并到中央仓库中。这个过程是开放的，允许社区成员进行讨论和反馈。</p>
+<p><img src="pic/chp3/pull%20request1.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>如果助教在中央仓库中对第三章进行了更改，并创建了一个pull
+request，那么这些更改会被提交给你或其他相应的管理员进行审查。在Git
+Hub上，管理员会看到一个pull
+request的请求，他可以查看助教所做的更改，包括更改的细节、差异以及可能的影响。如果认为助教的更改是合适的，并且没有问题，就可以进行合并(merge)操作。</p>
+<p><img src="pic/chp3/pull%20request2.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+<p>接下来我们给大家演示一下如何操作。由于我使用的这台电脑主要是用于教学，所以我通常是现场安装软件。因此，大家可以看到它处于一个非常原始的状态。在我们安装Git时，通常会一路点击“Next”按钮，无需进行其他设置。当然，安装过程中会有一些可选功能，比如将Git添加到Windows
+Timer，但这对于我们来说并没有太大用处，因此我们选择忽略这些选项。</p>
+<p>安装完成后，我们可以关闭RStudio，然后重新打开它。大家可以看到，在我们刚才打开RStudio时，并没有看到Git相关的窗口，但现在已经有了。这个小的标签页显示了Git
+Hub的信息，这意味着Git
+Hub已经正确地被识别并配置好了。如果在不同的电脑上出现不同的表现，这可能是因为安装Git后没有正确地识别。为了解决这个问题，你可以在安装Git后退出R和RStudio，然后重新打开，看看是否能够解决问题。</p>
+<p>现在，假设我们要fork一个Git
+Hub仓库，我们可以使用助教的账号登录，并尝试fork一个仓库。即使已经fork过，我们仍然可以看到“Fork”按钮是可以点击的。但是，如果你直接点击“Fork”，系统会要求你选择一个用户来作为该仓库的拥有者。如果你尝试选择自己的Git
+Hub账号，会发现无法选择，因为已经存在一个fork。在这种情况下，我们可以采取另一种方式进行演示，比如使用R4psyBook，这是我们课程的文字稿。在这种情况下，我们可以点击“Fork”按钮，通过这样的步骤，我们可以顺利完成fork操作，并继续进行版本控制的相关工作。</p>
+<p>大家可以看到，在Git
+Hub上，我们有这个选项“o”，也就是我们自己的账号。即使我们使用与助教账号完全相同的名称，也不会遇到任何问题。此时，页面提示我们“Copy
+the main branch
+only”，这意味着我们只需复制主分支。由于我们的仓库不存在多个分支，因此选择这个选项并不会造成影响。</p>
+<p>很快，fork操作就完成了。现在，我们需要将这个仓库的内容克隆到本地的文件夹中。对于一个新的项目，你可以按照以下步骤操作：
+首先，由于我的电脑有些老旧，可能性能会有所影响，操作看起来不太正常。这里显得有些慢，我们可以尝试关闭并重新打开，以检查是否会有所改善。接下来，我们选择“Version
+Control”选项，然后从已有的仓库中复制。此时，我们可以看到，在我们复制后的仓库中，这里会有一个绿色的“Code”标签。点击“Code”，我们可以看到有几种克隆方式，包括HTTP、SSH，以及Git
+Hub。由于我们目前使用的是网络版RStudio，通常只需要使用网页版Git
+Hub即可。</p>
+<p>大家可以看到，后面有一个复制的图标。点击复制后，我们将链接粘贴到本地仓库的位置。例如，在这里，我可以选择将新的文件夹创建在“文档”文件夹下，这样就完成了新仓库的创建。通过这样的步骤，我们可以顺利地将Git
+Hub上的仓库克隆到本地，并在RStudio中进行后续的操作。</p>
+<p>首先，我要提醒大家，由于我使用的这台电脑主要用于教学，所以我们会现场安装软件。请大家看到这里很原始的状态。在安装Git时，我们通常会一路点击“Next”按钮，无需进行其他设置。当然，安装过程中会有一些可选功能，比如将Git添加到Windows
+Timer，但这对于我们来说并没有太大用处，因此我们选择忽略这些选项。</p>
+<p>安装完成后，我们可以关闭RStudio，然后重新打开它。大家可以看到，在我们刚才打开RStudio时，并没有看到Git相关的窗口，但现在已经有了。这个小的标签页显示了Git
+Hub的信息，这意味着Git Hub已经正确地被识别并配置好了。</p>
+<p>现在，假设我们要fork一个Git
+Hub仓库，我们可以使用助教的账号登录，并尝试fork一个仓库。即使已经fork过，我们仍然可以看到“Fork”按钮是可以点击的。但是，如果你直接点击“Fork”，系统会要求你选择一个用户来作为该仓库的拥有者。如果你尝试选择自己的Git
+Hub账号，会发现无法选择，因为已经存在一个fork。</p>
+<p>在这种情况下，我们可以采取另一种方式进行演示，比如使用AlphaSealBook，这是我们课程的文字稿。在这种情况下，我们可以点击“Fork”按钮。接下来，我们需要将这个仓库的内容克隆到本地的文件夹中。对于一个新的项目，你可以按照以下步骤操作：选择“Version
+Control”选项→从已有的仓库中复制→复制链接后，粘贴到本地仓库的位置→在本地创建一个名为“homework”的文件夹→“homework”文件夹中，新建一个以学号最后三位和姓的拼音首字母命名的txt文件。
+完成这些步骤后，你已经对本地文件夹进行了更改。在这个过程中，你可能会遇到一些问题，比如网络连接不稳定或者安全通道问题。对于这些问题，Git
+Hub提供了详细的文档和中文介绍，指导你如何在本地的文件夹和Git
+Hub之间建立一个安全的连接。</p>
+<p>最后，如果你在提交作业时遇到任何问题，可以将错误信息截图发到群里，以便其他人帮助你解决问题。</p>
+</div>
+<div id="作业" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> 作业<a href="第三讲git-rstudio工作流.html#作业" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="pic/chp3/homework.png" width="100%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="第二讲如何开始使用r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="第四讲如何导入数据.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/1003-lesson3_2024.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
