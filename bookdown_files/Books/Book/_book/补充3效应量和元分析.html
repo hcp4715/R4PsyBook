@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 14 补充3：效应量和元分析 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</title>
+  <title>Chapter 15 补充3：效应量和元分析 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</title>
   <meta name="description" content="课程bookdown" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 14 补充3：效应量和元分析 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
+  <meta property="og:title" content="Chapter 15 补充3：效应量和元分析 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="课程bookdown" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 14 补充3：效应量和元分析 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
+  <meta name="twitter:title" content="Chapter 15 补充3：效应量和元分析 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
   
   <meta name="twitter:description" content="课程bookdown" />
   
@@ -51,9 +51,10 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.32/datatables.js"></script>
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
 <link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
@@ -63,7 +64,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -73,7 +74,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -340,77 +341,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#练习"><i class="fa fa-check"></i><b>8.6</b> 练习</a></li>
 <li class="chapter" data-level="8.7" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#参考阅读"><i class="fa fa-check"></i><b>8.7</b> 参考阅读</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html"><i class="fa fa-check"></i><b>9</b> 第十讲：回归模型(三)：广义线性模型</a>
+<li class="chapter" data-level="9" data-path="lesson-7.html"><a href="lesson-7.html"><i class="fa fa-check"></i><b>9</b> 第七讲：如何进行基本的数据分析: <em>t</em>-test和ANOVA</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#前章回顾和本章数据预处理"><i class="fa fa-check"></i><b>9.1</b> 前章回顾和本章数据预处理</a></li>
-<li class="chapter" data-level="9.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#广义线性模型"><i class="fa fa-check"></i><b>9.2</b> 广义线性模型</a>
-<ul>
-<li class="chapter" data-level="9.2.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#回归方程和普通线性模型"><i class="fa fa-check"></i><b>9.2.1</b> 回归方程和普通线性模型</a></li>
-<li class="chapter" data-level="9.2.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#连接函数和广义线性模型"><i class="fa fa-check"></i><b>9.2.2</b> 连接函数和广义线性模型</a></li>
+<li class="chapter" data-level="9.0.1" data-path="lesson-7.html"><a href="lesson-7.html#t检验"><i class="fa fa-check"></i><b>9.0.1</b> <em>t</em>检验</a></li>
+<li class="chapter" data-level="9.0.2" data-path="lesson-7.html"><a href="lesson-7.html#方差分析"><i class="fa fa-check"></i><b>9.0.2</b> 方差分析</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#二项分布"><i class="fa fa-check"></i><b>9.3</b> 二项分布</a>
+<li class="chapter" data-level="10" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html"><i class="fa fa-check"></i><b>10</b> 第十讲：回归模型(三)：广义线性模型</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#伯努利实验"><i class="fa fa-check"></i><b>9.3.1</b> 伯努利实验</a></li>
-<li class="chapter" data-level="9.3.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#glm代码实操"><i class="fa fa-check"></i><b>9.3.2</b> GLM代码实操</a></li>
-</ul></li>
-<li class="chapter" data-level="9.4" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同方法比较"><i class="fa fa-check"></i><b>9.4</b> 不同方法比较</a>
+<li class="chapter" data-level="10.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#前章回顾和本章数据预处理"><i class="fa fa-check"></i><b>10.1</b> 前章回顾和本章数据预处理</a></li>
+<li class="chapter" data-level="10.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#广义线性模型"><i class="fa fa-check"></i><b>10.2</b> 广义线性模型</a>
 <ul>
-<li class="chapter" data-level="9.4.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同的建模方法"><i class="fa fa-check"></i><b>9.4.1</b> 不同的建模方法</a></li>
-<li class="chapter" data-level="9.4.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同的模型比较方法"><i class="fa fa-check"></i><b>9.4.2</b> 不同的模型比较方法</a></li>
+<li class="chapter" data-level="10.2.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#回归方程和普通线性模型"><i class="fa fa-check"></i><b>10.2.1</b> 回归方程和普通线性模型</a></li>
+<li class="chapter" data-level="10.2.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#连接函数和广义线性模型"><i class="fa fa-check"></i><b>10.2.2</b> 连接函数和广义线性模型</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#其他分布"><i class="fa fa-check"></i><b>9.5</b> 其他分布</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html"><i class="fa fa-check"></i><b>10</b> 第十二讲：数据可视化进阶</a>
+<li class="chapter" data-level="10.3" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#二项分布"><i class="fa fa-check"></i><b>10.3</b> 二项分布</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图的必要性和作图数据处理"><i class="fa fa-check"></i><b>10.1</b> 作图的必要性和作图数据处理</a>
-<ul>
-<li class="chapter" data-level="10.1.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#为什么要作图以及作图的原则"><i class="fa fa-check"></i><b>10.1.1</b> 为什么要作图以及作图的原则</a></li>
-<li class="chapter" data-level="10.1.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图数据准备"><i class="fa fa-check"></i><b>10.1.2</b> 作图数据准备</a></li>
+<li class="chapter" data-level="10.3.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#伯努利实验"><i class="fa fa-check"></i><b>10.3.1</b> 伯努利实验</a></li>
+<li class="chapter" data-level="10.3.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#glm代码实操"><i class="fa fa-check"></i><b>10.3.2</b> GLM代码实操</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#基础作图"><i class="fa fa-check"></i><b>10.2</b> 基础作图</a>
+<li class="chapter" data-level="10.4" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同方法比较"><i class="fa fa-check"></i><b>10.4</b> 不同方法比较</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#ggplot2基础回顾"><i class="fa fa-check"></i><b>10.2.1</b> ggplot2基础回顾</a></li>
-<li class="chapter" data-level="10.2.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#主要图层"><i class="fa fa-check"></i><b>10.2.2</b> 主要图层</a></li>
-<li class="chapter" data-level="10.2.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可选图层"><i class="fa fa-check"></i><b>10.2.3</b> 可选图层</a></li>
-<li class="chapter" data-level="10.2.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#同时呈现多张图片"><i class="fa fa-check"></i><b>10.2.4</b> 同时呈现多张图片</a></li>
+<li class="chapter" data-level="10.4.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同的建模方法"><i class="fa fa-check"></i><b>10.4.1</b> 不同的建模方法</a></li>
+<li class="chapter" data-level="10.4.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同的模型比较方法"><i class="fa fa-check"></i><b>10.4.2</b> 不同的模型比较方法</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#进阶作图"><i class="fa fa-check"></i><b>10.3</b> 进阶作图</a>
+<li class="chapter" data-level="10.5" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#其他分布"><i class="fa fa-check"></i><b>10.5</b> 其他分布</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html"><i class="fa fa-check"></i><b>11</b> 第十二讲：数据可视化进阶</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#整体和个体效应共存的图"><i class="fa fa-check"></i><b>10.3.1</b> 整体和个体效应共存的图</a></li>
-<li class="chapter" data-level="10.3.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可视化层级模型的random-effect"><i class="fa fa-check"></i><b>10.3.2</b> 可视化层级模型的random effect</a></li>
-<li class="chapter" data-level="10.3.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#雨云图rain-cloud-plot"><i class="fa fa-check"></i><b>10.3.3</b> 雨云图（rain cloud plot）</a></li>
-</ul></li>
-<li class="chapter" data-level="10.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#高级图片处理magick"><i class="fa fa-check"></i><b>10.4</b> 高级图片处理–magick</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html"><i class="fa fa-check"></i><b>11</b> 第十四讲：心理学元分析入门</a>
+<li class="chapter" data-level="11.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图的必要性和作图数据处理"><i class="fa fa-check"></i><b>11.1</b> 作图的必要性和作图数据处理</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#什么是元分析"><i class="fa fa-check"></i><b>11.1</b> 什么是元分析</a></li>
-<li class="chapter" data-level="11.2" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#元分析的实施"><i class="fa fa-check"></i><b>11.2</b> 元分析的实施</a></li>
-<li class="chapter" data-level="11.3" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#回顾与总结"><i class="fa fa-check"></i><b>11.3</b> 回顾与总结</a></li>
+<li class="chapter" data-level="11.1.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#为什么要作图以及作图的原则"><i class="fa fa-check"></i><b>11.1.1</b> 为什么要作图以及作图的原则</a></li>
+<li class="chapter" data-level="11.1.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图数据准备"><i class="fa fa-check"></i><b>11.1.2</b> 作图数据准备</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html"><i class="fa fa-check"></i><b>12</b> 补充1：如何进行基本的数据分析: 相关与回归</a>
+<li class="chapter" data-level="11.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#基础作图"><i class="fa fa-check"></i><b>11.2</b> 基础作图</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是相关"><i class="fa fa-check"></i><b>12.1</b> 什么是相关</a></li>
-<li class="chapter" data-level="12.2" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#相关-代码实现"><i class="fa fa-check"></i><b>12.2</b> 相关-代码实现</a></li>
-<li class="chapter" data-level="12.3" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是回归"><i class="fa fa-check"></i><b>12.3</b> 什么是回归</a></li>
+<li class="chapter" data-level="11.2.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#ggplot2基础回顾"><i class="fa fa-check"></i><b>11.2.1</b> ggplot2基础回顾</a></li>
+<li class="chapter" data-level="11.2.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#主要图层"><i class="fa fa-check"></i><b>11.2.2</b> 主要图层</a></li>
+<li class="chapter" data-level="11.2.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可选图层"><i class="fa fa-check"></i><b>11.2.3</b> 可选图层</a></li>
+<li class="chapter" data-level="11.2.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#同时呈现多张图片"><i class="fa fa-check"></i><b>11.2.4</b> 同时呈现多张图片</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html"><i class="fa fa-check"></i><b>13</b> 补充2：从分析到手稿</a>
+<li class="chapter" data-level="11.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#进阶作图"><i class="fa fa-check"></i><b>11.3</b> 进阶作图</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>13.1</b> <strong>通过Papaja撰写论文</strong></a>
+<li class="chapter" data-level="11.3.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#整体和个体效应共存的图"><i class="fa fa-check"></i><b>11.3.1</b> 整体和个体效应共存的图</a></li>
+<li class="chapter" data-level="11.3.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可视化层级模型的random-effect"><i class="fa fa-check"></i><b>11.3.2</b> 可视化层级模型的random effect</a></li>
+<li class="chapter" data-level="11.3.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#雨云图rain-cloud-plot"><i class="fa fa-check"></i><b>11.3.3</b> 雨云图（rain cloud plot）</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#高级图片处理magick"><i class="fa fa-check"></i><b>11.4</b> 高级图片处理–magick</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html"><i class="fa fa-check"></i><b>12</b> 第十四讲：心理学元分析入门</a>
 <ul>
-<li class="chapter" data-level="13.1.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>13.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
-<li class="chapter" data-level="13.1.2" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>13.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
-<li class="chapter" data-level="13.1.3" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part3-正文的撰写"><i class="fa fa-check"></i><b>13.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
-<li class="chapter" data-level="13.1.4" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#总结"><i class="fa fa-check"></i><b>13.1.4</b> 总结</a></li>
+<li class="chapter" data-level="12.1" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#什么是元分析"><i class="fa fa-check"></i><b>12.1</b> 什么是元分析</a></li>
+<li class="chapter" data-level="12.2" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#元分析的实施"><i class="fa fa-check"></i><b>12.2</b> 元分析的实施</a></li>
+<li class="chapter" data-level="12.3" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#回顾与总结"><i class="fa fa-check"></i><b>12.3</b> 回顾与总结</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html"><i class="fa fa-check"></i><b>13</b> 补充1：如何进行基本的数据分析: 相关与回归</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是相关"><i class="fa fa-check"></i><b>13.1</b> 什么是相关</a></li>
+<li class="chapter" data-level="13.2" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#相关-代码实现"><i class="fa fa-check"></i><b>13.2</b> 相关-代码实现</a></li>
+<li class="chapter" data-level="13.3" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是回归"><i class="fa fa-check"></i><b>13.3</b> 什么是回归</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html"><i class="fa fa-check"></i><b>14</b> 补充2：从分析到手稿</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>14.1</b> <strong>通过Papaja撰写论文</strong></a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>14.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
+<li class="chapter" data-level="14.1.2" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>14.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
+<li class="chapter" data-level="14.1.3" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part3-正文的撰写"><i class="fa fa-check"></i><b>14.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
+<li class="chapter" data-level="14.1.4" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#总结"><i class="fa fa-check"></i><b>14.1.4</b> 总结</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html"><i class="fa fa-check"></i><b>14</b> 补充3：效应量和元分析</a>
+<li class="chapter" data-level="15" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html"><i class="fa fa-check"></i><b>15</b> 补充3：效应量和元分析</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#效应量简介"><i class="fa fa-check"></i><b>14.1</b> 效应量简介</a></li>
-<li class="chapter" data-level="14.2" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#算法实现"><i class="fa fa-check"></i><b>14.2</b> 算法实现</a></li>
-<li class="chapter" data-level="14.3" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#小练习"><i class="fa fa-check"></i><b>14.3</b> 小练习</a></li>
-<li class="chapter" data-level="14.4" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析简介"><i class="fa fa-check"></i><b>14.4</b> 元分析简介</a></li>
-<li class="chapter" data-level="14.5" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析实现"><i class="fa fa-check"></i><b>14.5</b> 元分析实现</a></li>
+<li class="chapter" data-level="15.1" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#效应量简介"><i class="fa fa-check"></i><b>15.1</b> 效应量简介</a></li>
+<li class="chapter" data-level="15.2" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#算法实现"><i class="fa fa-check"></i><b>15.2</b> 算法实现</a></li>
+<li class="chapter" data-level="15.3" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#小练习"><i class="fa fa-check"></i><b>15.3</b> 小练习</a></li>
+<li class="chapter" data-level="15.4" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析简介"><i class="fa fa-check"></i><b>15.4</b> 元分析简介</a></li>
+<li class="chapter" data-level="15.5" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析实现"><i class="fa fa-check"></i><b>15.5</b> 元分析实现</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -433,10 +439,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="补充3效应量和元分析" class="section level1 hasAnchor" number="14">
-<h1><span class="header-section-number">Chapter 14</span> 补充3：效应量和元分析<a href="补充3效应量和元分析.html#补充3效应量和元分析" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="效应量简介" class="section level2 hasAnchor" number="14.1">
-<h2><span class="header-section-number">14.1</span> 效应量简介<a href="补充3效应量和元分析.html#效应量简介" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="补充3效应量和元分析" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Chapter 15</span> 补充3：效应量和元分析<a href="补充3效应量和元分析.html#补充3效应量和元分析" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="效应量简介" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> 效应量简介<a href="补充3效应量和元分析.html#效应量简介" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>我们今天讲的内容，是在本科心理统计学没有讲的一个很重要的统计学概念——效应量。<br />
 今天的这个课程是给大家打一些基础，关于效应量和元分析的一些基础知识。并不是说上完这门课之后，大家就会有一个分析或者说能够熟练的去计算各种各样的效应量。因为大家后面会看到效应量的软件分析，其实很依赖整个研究问题和context。所以如何去解读效应不是一个技术的问题，这既需要懂得统计的方法，也需要你对研究领域很熟悉。提到效应量大家一定会想到Cohen’s
 <em>d</em>，实际上对效应量的定义是，研究者感兴趣的任何的效应量，只要研究者对它感兴趣，觉得它有意义，就可以认为它是研究中得效应量。所以效应量本质上就是效应的量（effects）。<br />
@@ -470,8 +476,8 @@ interval和meta-analysis这三个统计指标。它们都有一个共同特点�
 based，即专门基于估计。<br />
 与传统的基于P值二分法相比，基于估计的指标不仅可以看到效应量是否显著，也能看到效应量的具体大小，是把心理学研究和现实的因素关联的很重要的点。例如某个效应很显著，但是其效应量非常微弱，它在社会层面便没有任何意义。有时一个非常小的效应，没有任何坏处且成本很低，当它被实施，会改变一部分人的命运，这个时候或许可以考虑把这个方法应用到现实世界。在解读效应量的时候，注意避免简单的使用所谓的small，medium和large等effect size对Cohen’s <em>d</em>评价，不管它的效应、样本量、研究背景等等。</p>
 </div>
-<div id="算法实现" class="section level2 hasAnchor" number="14.2">
-<h2><span class="header-section-number">14.2</span> 算法实现<a href="补充3效应量和元分析.html#算法实现" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="算法实现" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> 算法实现<a href="补充3效应量和元分析.html#算法实现" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>如何去计算单个研究中或单个样本中的效应量、置信区间以及如何将它们综合起来。下面先给出公式：
 独立样本<em>t</em>-test：<br>
 <span class="math display">\[Cohen&#39;s \  d_s = \frac{X_1 - X_2}{\sqrt{SD_{pool}}} = \frac{X_1 - X_2}{\sqrt{\frac{(n_1 -1)SD_1^2 + (n_2-1)SD_2^2)}{n_1+n2-2}}}\]</span>
@@ -482,30 +488,30 @@ based，即专门基于估计。<br />
 <p>接下来尝试计算Cohen’s <em>d</em>，以match数据为例 选定感兴趣的效应量:
 <code>Match</code>条件下<code>好我</code>与<code>好人</code>的平均反应时间差异，即自我在好的情况下,它的优势效应
 首先还是导入数据：</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="补充3效应量和元分析.html#cb400-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb400-2"><a href="补充3效应量和元分析.html#cb400-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;pacman&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb400-3"><a href="补充3效应量和元分析.html#cb400-3" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>) }   <span class="co"># # 检查是否已安装 pacman, 如果未安装，则安装包</span></span>
-<span id="cb400-4"><a href="补充3效应量和元分析.html#cb400-4" tabindex="-1"></a></span>
-<span id="cb400-5"><a href="补充3效应量和元分析.html#cb400-5" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;easystats&quot;</span>) <span class="co"># 使用p_load来载入需要的包</span></span>
-<span id="cb400-6"><a href="补充3效应量和元分析.html#cb400-6" tabindex="-1"></a></span>
-<span id="cb400-7"><a href="补充3效应量和元分析.html#cb400-7" tabindex="-1"></a>df.mt.raw <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&#39;./data/match/match_raw.csv&#39;</span>, <span class="co"># load data:</span></span>
-<span id="cb400-8"><a href="补充3效应量和元分析.html#cb400-8" tabindex="-1"></a>                       <span class="at">header =</span> T, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="补充3效应量和元分析.html#cb440-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb440-2"><a href="补充3效应量和元分析.html#cb440-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;pacman&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb440-3"><a href="补充3效应量和元分析.html#cb440-3" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>) }   <span class="co"># # 检查是否已安装 pacman, 如果未安装，则安装包</span></span>
+<span id="cb440-4"><a href="补充3效应量和元分析.html#cb440-4" tabindex="-1"></a></span>
+<span id="cb440-5"><a href="补充3效应量和元分析.html#cb440-5" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;easystats&quot;</span>) <span class="co"># 使用p_load来载入需要的包</span></span>
+<span id="cb440-6"><a href="补充3效应量和元分析.html#cb440-6" tabindex="-1"></a></span>
+<span id="cb440-7"><a href="补充3效应量和元分析.html#cb440-7" tabindex="-1"></a>df.mt.raw <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&#39;./data/match/match_raw.csv&#39;</span>, <span class="co"># load data:</span></span>
+<span id="cb440-8"><a href="补充3效应量和元分析.html#cb440-8" tabindex="-1"></a>                       <span class="at">header =</span> T, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>应用11章的预处理数据：</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="补充3效应量和元分析.html#cb401-1" tabindex="-1"></a><span class="co"># from chapter 11, Chunk 3</span></span>
-<span id="cb401-2"><a href="补充3效应量和元分析.html#cb401-2" tabindex="-1"></a>df.mt.rt.subj <span class="ot">&lt;-</span> df.mt.raw <span class="sc">%&gt;%</span></span>
-<span id="cb401-3"><a href="补充3效应量和元分析.html#cb401-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(ACC <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> RT <span class="sc">&gt;</span> <span class="fl">0.2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb401-4"><a href="补充3效应量和元分析.html#cb401-4" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">extract</span>(Shape, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;Valence&quot;</span>, <span class="st">&quot;Identity&quot;</span>),</span>
-<span id="cb401-5"><a href="补充3效应量和元分析.html#cb401-5" tabindex="-1"></a>                        <span class="at">regex =</span> <span class="st">&quot;(moral|immoral)(Self|Other)&quot;</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb401-6"><a href="补充3效应量和元分析.html#cb401-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Valence =</span> <span class="fu">case_when</span>(Valence <span class="sc">==</span> <span class="st">&quot;moral&quot;</span> <span class="sc">~</span> <span class="st">&quot;Good&quot;</span>,</span>
-<span id="cb401-7"><a href="补充3效应量和元分析.html#cb401-7" tabindex="-1"></a>                                    Valence <span class="sc">==</span> <span class="st">&quot;immoral&quot;</span> <span class="sc">~</span> <span class="st">&quot;Bad&quot;</span>),</span>
-<span id="cb401-8"><a href="补充3效应量和元分析.html#cb401-8" tabindex="-1"></a>                <span class="at">RT_ms =</span> RT <span class="sc">*</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb401-9"><a href="补充3效应量和元分析.html#cb401-9" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Valence =</span> <span class="fu">factor</span>(Valence, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Good&quot;</span>, <span class="st">&quot;Bad&quot;</span>)),</span>
-<span id="cb401-10"><a href="补充3效应量和元分析.html#cb401-10" tabindex="-1"></a>                <span class="at">Identity =</span> <span class="fu">factor</span>(Identity, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Self&quot;</span>, <span class="st">&quot;Other&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb401-11"><a href="补充3效应量和元分析.html#cb401-11" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Sub, Match, Identity, Valence) <span class="sc">%&gt;%</span></span>
-<span id="cb401-12"><a href="补充3效应量和元分析.html#cb401-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">RT_mean =</span> <span class="fu">mean</span>(RT_ms)) <span class="sc">%&gt;%</span></span>
-<span id="cb401-13"><a href="补充3效应量和元分析.html#cb401-13" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>()</span>
-<span id="cb401-14"><a href="补充3效应量和元分析.html#cb401-14" tabindex="-1"></a></span>
-<span id="cb401-15"><a href="补充3效应量和元分析.html#cb401-15" tabindex="-1"></a><span class="fu">head</span>(df.mt.rt.subj, <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="补充3效应量和元分析.html#cb441-1" tabindex="-1"></a><span class="co"># from chapter 11, Chunk 3</span></span>
+<span id="cb441-2"><a href="补充3效应量和元分析.html#cb441-2" tabindex="-1"></a>df.mt.rt.subj <span class="ot">&lt;-</span> df.mt.raw <span class="sc">%&gt;%</span></span>
+<span id="cb441-3"><a href="补充3效应量和元分析.html#cb441-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(ACC <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> RT <span class="sc">&gt;</span> <span class="fl">0.2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb441-4"><a href="补充3效应量和元分析.html#cb441-4" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">extract</span>(Shape, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;Valence&quot;</span>, <span class="st">&quot;Identity&quot;</span>),</span>
+<span id="cb441-5"><a href="补充3效应量和元分析.html#cb441-5" tabindex="-1"></a>                        <span class="at">regex =</span> <span class="st">&quot;(moral|immoral)(Self|Other)&quot;</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb441-6"><a href="补充3效应量和元分析.html#cb441-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Valence =</span> <span class="fu">case_when</span>(Valence <span class="sc">==</span> <span class="st">&quot;moral&quot;</span> <span class="sc">~</span> <span class="st">&quot;Good&quot;</span>,</span>
+<span id="cb441-7"><a href="补充3效应量和元分析.html#cb441-7" tabindex="-1"></a>                                    Valence <span class="sc">==</span> <span class="st">&quot;immoral&quot;</span> <span class="sc">~</span> <span class="st">&quot;Bad&quot;</span>),</span>
+<span id="cb441-8"><a href="补充3效应量和元分析.html#cb441-8" tabindex="-1"></a>                <span class="at">RT_ms =</span> RT <span class="sc">*</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb441-9"><a href="补充3效应量和元分析.html#cb441-9" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Valence =</span> <span class="fu">factor</span>(Valence, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Good&quot;</span>, <span class="st">&quot;Bad&quot;</span>)),</span>
+<span id="cb441-10"><a href="补充3效应量和元分析.html#cb441-10" tabindex="-1"></a>                <span class="at">Identity =</span> <span class="fu">factor</span>(Identity, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Self&quot;</span>, <span class="st">&quot;Other&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb441-11"><a href="补充3效应量和元分析.html#cb441-11" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Sub, Match, Identity, Valence) <span class="sc">%&gt;%</span></span>
+<span id="cb441-12"><a href="补充3效应量和元分析.html#cb441-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">RT_mean =</span> <span class="fu">mean</span>(RT_ms)) <span class="sc">%&gt;%</span></span>
+<span id="cb441-13"><a href="补充3效应量和元分析.html#cb441-13" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>()</span>
+<span id="cb441-14"><a href="补充3效应量和元分析.html#cb441-14" tabindex="-1"></a></span>
+<span id="cb441-15"><a href="补充3效应量和元分析.html#cb441-15" tabindex="-1"></a><span class="fu">head</span>(df.mt.rt.subj, <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 5
 ##     Sub Match    Identity Valence RT_mean
 ##   &lt;int&gt; &lt;chr&gt;    &lt;fct&gt;    &lt;fct&gt;     &lt;dbl&gt;
@@ -515,121 +521,122 @@ based，即专门基于估计。<br />
 ## 4  7302 match    Other    Bad        666.
 ## 5  7302 mismatch Self     Good       755.</code></pre>
 <p>对于我们感兴趣的效应量，计算需要知道五个变量：条件1的主水平RT、条件2主水平RT、条件1的主水平SD、条件2的主水平SD以及相关系数（可以用每个被试在两个条件之间的反应时间做一个相关）。</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="补充3效应量和元分析.html#cb403-1" tabindex="-1"></a><span class="co"># from chapter 11, Chunk 3</span></span>
-<span id="cb403-2"><a href="补充3效应量和元分析.html#cb403-2" tabindex="-1"></a>df.mt.rt.subj.effect <span class="ot">&lt;-</span> df.mt.rt.subj <span class="sc">%&gt;%</span></span>
-<span id="cb403-3"><a href="补充3效应量和元分析.html#cb403-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> Valence <span class="sc">==</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb403-4"><a href="补充3效应量和元分析.html#cb403-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Identity) <span class="sc">%&gt;%</span></span>
-<span id="cb403-5"><a href="补充3效应量和元分析.html#cb403-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(RT_mean),</span>
-<span id="cb403-6"><a href="补充3效应量和元分析.html#cb403-6" tabindex="-1"></a>                   <span class="at">sd =</span> <span class="fu">sd</span>(RT_mean))</span>
-<span id="cb403-7"><a href="补充3效应量和元分析.html#cb403-7" tabindex="-1"></a></span>
-<span id="cb403-8"><a href="补充3效应量和元分析.html#cb403-8" tabindex="-1"></a>df.mt.rt.subj.effect.wide <span class="ot">&lt;-</span> df.mt.rt.subj <span class="sc">%&gt;%</span></span>
-<span id="cb403-9"><a href="补充3效应量和元分析.html#cb403-9" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> Valence <span class="sc">==</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb403-10"><a href="补充3效应量和元分析.html#cb403-10" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;Identity&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;RT_mean&quot;</span>)</span>
-<span id="cb403-11"><a href="补充3效应量和元分析.html#cb403-11" tabindex="-1"></a></span>
-<span id="cb403-12"><a href="补充3效应量和元分析.html#cb403-12" tabindex="-1"></a>corr_est <span class="ot">&lt;-</span> <span class="fu">cor</span>(df.mt.rt.subj.effect.wide<span class="sc">$</span>Self, df.mt.rt.subj.effect.wide<span class="sc">$</span>Other)</span></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="补充3效应量和元分析.html#cb443-1" tabindex="-1"></a><span class="co"># from chapter 11, Chunk 3</span></span>
+<span id="cb443-2"><a href="补充3效应量和元分析.html#cb443-2" tabindex="-1"></a>df.mt.rt.subj.effect <span class="ot">&lt;-</span> df.mt.rt.subj <span class="sc">%&gt;%</span></span>
+<span id="cb443-3"><a href="补充3效应量和元分析.html#cb443-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> Valence <span class="sc">==</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb443-4"><a href="补充3效应量和元分析.html#cb443-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Identity) <span class="sc">%&gt;%</span></span>
+<span id="cb443-5"><a href="补充3效应量和元分析.html#cb443-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(RT_mean),</span>
+<span id="cb443-6"><a href="补充3效应量和元分析.html#cb443-6" tabindex="-1"></a>                   <span class="at">sd =</span> <span class="fu">sd</span>(RT_mean))</span>
+<span id="cb443-7"><a href="补充3效应量和元分析.html#cb443-7" tabindex="-1"></a></span>
+<span id="cb443-8"><a href="补充3效应量和元分析.html#cb443-8" tabindex="-1"></a>df.mt.rt.subj.effect.wide <span class="ot">&lt;-</span> df.mt.rt.subj <span class="sc">%&gt;%</span></span>
+<span id="cb443-9"><a href="补充3效应量和元分析.html#cb443-9" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> Valence <span class="sc">==</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb443-10"><a href="补充3效应量和元分析.html#cb443-10" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;Identity&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;RT_mean&quot;</span>)</span>
+<span id="cb443-11"><a href="补充3效应量和元分析.html#cb443-11" tabindex="-1"></a></span>
+<span id="cb443-12"><a href="补充3效应量和元分析.html#cb443-12" tabindex="-1"></a>corr_est <span class="ot">&lt;-</span> <span class="fu">cor</span>(df.mt.rt.subj.effect.wide<span class="sc">$</span>Self, df.mt.rt.subj.effect.wide<span class="sc">$</span>Other)</span></code></pre></div>
 <p>得到变量后，将Cohen’s <em>d</em><sub>rm</sub>公式转化为代码：</p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="补充3效应量和元分析.html#cb404-1" tabindex="-1"></a>Cohens_d_manu <span class="ot">&lt;-</span> ((df.mt.rt.subj.effect<span class="sc">$</span>mean[<span class="dv">1</span>] <span class="sc">-</span> df.mt.rt.subj.effect<span class="sc">$</span>mean[<span class="dv">2</span>])<span class="sc">/</span><span class="fu">sqrt</span>(df.mt.rt.subj.effect<span class="sc">$</span>sd[<span class="dv">1</span>]<span class="sc">**</span><span class="dv">2</span> <span class="sc">+</span> df.mt.rt.subj.effect<span class="sc">$</span>sd[<span class="dv">2</span>]<span class="sc">**</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>corr_est<span class="sc">*</span>df.mt.rt.subj.effect<span class="sc">$</span>sd[<span class="dv">1</span>]<span class="sc">*</span>df.mt.rt.subj.effect<span class="sc">$</span>sd[<span class="dv">2</span>]))<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>corr_est))</span>
-<span id="cb404-2"><a href="补充3效应量和元分析.html#cb404-2" tabindex="-1"></a>Cohens_d_manu</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="补充3效应量和元分析.html#cb444-1" tabindex="-1"></a>Cohens_d_manu <span class="ot">&lt;-</span> ((df.mt.rt.subj.effect<span class="sc">$</span>mean[<span class="dv">1</span>] <span class="sc">-</span> df.mt.rt.subj.effect<span class="sc">$</span>mean[<span class="dv">2</span>])<span class="sc">/</span><span class="fu">sqrt</span>(df.mt.rt.subj.effect<span class="sc">$</span>sd[<span class="dv">1</span>]<span class="sc">**</span><span class="dv">2</span> <span class="sc">+</span> df.mt.rt.subj.effect<span class="sc">$</span>sd[<span class="dv">2</span>]<span class="sc">**</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>corr_est<span class="sc">*</span>df.mt.rt.subj.effect<span class="sc">$</span>sd[<span class="dv">1</span>]<span class="sc">*</span>df.mt.rt.subj.effect<span class="sc">$</span>sd[<span class="dv">2</span>]))<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>corr_est))</span>
+<span id="cb444-2"><a href="补充3效应量和元分析.html#cb444-2" tabindex="-1"></a>Cohens_d_manu</span></code></pre></div>
 <pre><code>## [1] -0.56768</code></pre>
 <p>也可以使用其他方法计算，发现得到不同的效应量，原因是公式并不一致。</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="补充3效应量和元分析.html#cb406-1" tabindex="-1"></a>SelfOther_diff <span class="ot">&lt;-</span> <span class="fu">t.test</span>(df.mt.rt.subj.effect.wide<span class="sc">$</span>Self, df.mt.rt.subj.effect.wide<span class="sc">$</span>Other, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb406-2"><a href="补充3效应量和元分析.html#cb406-2" tabindex="-1"></a></span>
-<span id="cb406-3"><a href="补充3效应量和元分析.html#cb406-3" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">effectsize</span>(SelfOther_diff, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## d     |         95% CI
-## ----------------------
-## -0.48 | [-0.80, -0.17]</code></pre>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="补充3效应量和元分析.html#cb446-1" tabindex="-1"></a>SelfOther_diff <span class="ot">&lt;-</span> <span class="fu">t.test</span>(df.mt.rt.subj.effect.wide<span class="sc">$</span>Self, df.mt.rt.subj.effect.wide<span class="sc">$</span>Other, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb446-2"><a href="补充3效应量和元分析.html#cb446-2" tabindex="-1"></a></span>
+<span id="cb446-3"><a href="补充3效应量和元分析.html#cb446-3" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">effectsize</span>(SelfOther_diff, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## For paired samples, &#39;repeated_measures_d()&#39; provides more options.</code></pre>
+<pre><code>## Cohen&#39;s d |         95% CI
+## --------------------------
+## -0.48     | [-0.79, -0.16]</code></pre>
 <p>所以在调用R包时一定要注意查看其内部公式！</p>
 </div>
-<div id="小练习" class="section level2 hasAnchor" number="14.3">
-<h2><span class="header-section-number">14.3</span> 小练习<a href="补充3效应量和元分析.html#小练习" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="小练习" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> 小练习<a href="补充3效应量和元分析.html#小练习" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>在match数据中，尝试计算自我条件下好与坏的Cohen’s <em>d</em>。分别使用三种方法，（1）手动；（2）effectsize工具包；（3）bruceR工具包-T test</p>
 </div>
-<div id="元分析简介" class="section level2 hasAnchor" number="14.4">
-<h2><span class="header-section-number">14.4</span> 元分析简介<a href="补充3效应量和元分析.html#元分析简介" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="元分析简介" class="section level2 hasAnchor" number="15.4">
+<h2><span class="header-section-number">15.4</span> 元分析简介<a href="补充3效应量和元分析.html#元分析简介" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>想象你自己做了一个治疗研究，在平均主义这个框架之下,我们会通常认为真实的世界中存在对于该研究特定的效应量。假如这个研究被一万次重复，就会得到一万个效应，且这一万个效应会趋向于一个真实的情况,你的治疗方法是不是比没有治疗过程或选用其他的旧的治疗方法更有效率。 虽然说这个假定可能不合理,但是平均主义就是这样的假定。<br />
 假如说有很多人同时在不同地方做类似实验,把这些效应拿过来,对它们进行综合。本质上,某种程度这些实验关注着同一个效应,综合之后应该能够得到一个对真实的更好的估计，在统计过程当中是这样。所以就有了一个对效应量的综合方法——元分析。
 元分析是一个统计方法，从这个角度来讲，是对已经存在的多个效应量,通过统计的方法把它进行综合。综合时需要效应量，相关系数R或者是Cohen’s <em>d</em>， 同时我们也需要效应量的估计误差作为权重。接下来都是技术的问题。<br />
 怎么去算这个权重呢? 在不同的方法里面或者不同的模型里面,会有自己的具体计算公式。很多时候,如果大家不想了解细节的话,可以不用去管它。如果想了解细节的话,可以去看权重到底是如何确定的。一般来说传统的元分析模型,是通过效应量变异大小的导数对它进行加权。例如对标准差的平方求导数，然后进行加权。当然还会有其他的方法,这里就不细致的展开。<br />
 元分析也是一种文章类型，例如之前提到的psychological bulletin，具有很高的影响因子。但也存在问题，有的时候元分析不被认为是实证的研究,因为其没有太多的创新性。</p>
 </div>
-<div id="元分析实现" class="section level2 hasAnchor" number="14.5">
-<h2><span class="header-section-number">14.5</span> 元分析实现<a href="补充3效应量和元分析.html#元分析实现" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="元分析实现" class="section level2 hasAnchor" number="15.5">
+<h2><span class="header-section-number">15.5</span> 元分析实现<a href="补充3效应量和元分析.html#元分析实现" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>下面展示一下如何在自己已有的数据中，用R来做一个简单元分析：<br />
 把数据分成两部分, 一部分21名被试，一部分23名被试。</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="补充3效应量和元分析.html#cb408-1" tabindex="-1"></a>subjs <span class="ot">&lt;-</span> <span class="fu">unique</span>(df.mt.rt.subj<span class="sc">$</span>Sub)</span>
-<span id="cb408-2"><a href="补充3效应量和元分析.html#cb408-2" tabindex="-1"></a></span>
-<span id="cb408-3"><a href="补充3效应量和元分析.html#cb408-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb408-4"><a href="补充3效应量和元分析.html#cb408-4" tabindex="-1"></a></span>
-<span id="cb408-5"><a href="补充3效应量和元分析.html#cb408-5" tabindex="-1"></a>subj_ls1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(subjs, <span class="dv">21</span>)</span>
-<span id="cb408-6"><a href="补充3效应量和元分析.html#cb408-6" tabindex="-1"></a></span>
-<span id="cb408-7"><a href="补充3效应量和元分析.html#cb408-7" tabindex="-1"></a>df.mt.rt.subj.ls1 <span class="ot">&lt;-</span> df.mt.rt.subj <span class="sc">%&gt;%</span></span>
-<span id="cb408-8"><a href="补充3效应量和元分析.html#cb408-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Sub <span class="sc">%in%</span> subj_ls1) </span>
-<span id="cb408-9"><a href="补充3效应量和元分析.html#cb408-9" tabindex="-1"></a></span>
-<span id="cb408-10"><a href="补充3效应量和元分析.html#cb408-10" tabindex="-1"></a>df.mt.rt.subj.ls2 <span class="ot">&lt;-</span> df.mt.rt.subj <span class="sc">%&gt;%</span></span>
-<span id="cb408-11"><a href="补充3效应量和元分析.html#cb408-11" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span>(Sub <span class="sc">%in%</span> subj_ls1))</span></code></pre></div>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="补充3效应量和元分析.html#cb449-1" tabindex="-1"></a>subjs <span class="ot">&lt;-</span> <span class="fu">unique</span>(df.mt.rt.subj<span class="sc">$</span>Sub)</span>
+<span id="cb449-2"><a href="补充3效应量和元分析.html#cb449-2" tabindex="-1"></a></span>
+<span id="cb449-3"><a href="补充3效应量和元分析.html#cb449-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb449-4"><a href="补充3效应量和元分析.html#cb449-4" tabindex="-1"></a></span>
+<span id="cb449-5"><a href="补充3效应量和元分析.html#cb449-5" tabindex="-1"></a>subj_ls1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(subjs, <span class="dv">21</span>)</span>
+<span id="cb449-6"><a href="补充3效应量和元分析.html#cb449-6" tabindex="-1"></a></span>
+<span id="cb449-7"><a href="补充3效应量和元分析.html#cb449-7" tabindex="-1"></a>df.mt.rt.subj.ls1 <span class="ot">&lt;-</span> df.mt.rt.subj <span class="sc">%&gt;%</span></span>
+<span id="cb449-8"><a href="补充3效应量和元分析.html#cb449-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Sub <span class="sc">%in%</span> subj_ls1) </span>
+<span id="cb449-9"><a href="补充3效应量和元分析.html#cb449-9" tabindex="-1"></a></span>
+<span id="cb449-10"><a href="补充3效应量和元分析.html#cb449-10" tabindex="-1"></a>df.mt.rt.subj.ls2 <span class="ot">&lt;-</span> df.mt.rt.subj <span class="sc">%&gt;%</span></span>
+<span id="cb449-11"><a href="补充3效应量和元分析.html#cb449-11" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span>(Sub <span class="sc">%in%</span> subj_ls1))</span></code></pre></div>
 <p>假定两组数据分别为实验1a与实验1b，并计算两个实验同样条件下的效应量。
 与上文中计算效应量的方式一致，首先计算均值等所需变量：</p>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="补充3效应量和元分析.html#cb409-1" tabindex="-1"></a><span class="do">## effect size of group 1</span></span>
-<span id="cb409-2"><a href="补充3效应量和元分析.html#cb409-2" tabindex="-1"></a>df.mt.rt.subj.effect.ls1 <span class="ot">&lt;-</span> df.mt.rt.subj.ls1 <span class="sc">%&gt;%</span></span>
-<span id="cb409-3"><a href="补充3效应量和元分析.html#cb409-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> Valence <span class="sc">==</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb409-4"><a href="补充3效应量和元分析.html#cb409-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Identity) <span class="sc">%&gt;%</span></span>
-<span id="cb409-5"><a href="补充3效应量和元分析.html#cb409-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(RT_mean),</span>
-<span id="cb409-6"><a href="补充3效应量和元分析.html#cb409-6" tabindex="-1"></a>                   <span class="at">sd =</span> <span class="fu">sd</span>(RT_mean)) <span class="sc">%&gt;%</span></span>
-<span id="cb409-7"><a href="补充3效应量和元分析.html#cb409-7" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb409-8"><a href="补充3效应量和元分析.html#cb409-8" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Identity,</span>
-<span id="cb409-9"><a href="补充3效应量和元分析.html#cb409-9" tabindex="-1"></a>                     <span class="at">values_from =</span> <span class="fu">c</span>(mean, sd))</span>
-<span id="cb409-10"><a href="补充3效应量和元分析.html#cb409-10" tabindex="-1"></a></span>
-<span id="cb409-11"><a href="补充3效应量和元分析.html#cb409-11" tabindex="-1"></a></span>
-<span id="cb409-12"><a href="补充3效应量和元分析.html#cb409-12" tabindex="-1"></a><span class="fu">colnames</span>(df.mt.rt.subj.effect.ls1) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Self_RT_M_mean&quot;</span>,<span class="st">&quot;Other_RT_M_mean&quot;</span>,</span>
-<span id="cb409-13"><a href="补充3效应量和元分析.html#cb409-13" tabindex="-1"></a>                                        <span class="st">&quot;Self_RT_M_sd&quot;</span>, <span class="st">&quot;Other_RT_M_sd&quot;</span>)</span>
-<span id="cb409-14"><a href="补充3效应量和元分析.html#cb409-14" tabindex="-1"></a>df.mt.rt.subj.effect.ls1.wide <span class="ot">&lt;-</span> df.mt.rt.subj.ls1  <span class="sc">%&gt;%</span></span>
-<span id="cb409-15"><a href="补充3效应量和元分析.html#cb409-15" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> Valence <span class="sc">==</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb409-16"><a href="补充3效应量和元分析.html#cb409-16" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;Identity&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;RT_mean&quot;</span>)</span>
-<span id="cb409-17"><a href="补充3效应量和元分析.html#cb409-17" tabindex="-1"></a></span>
-<span id="cb409-18"><a href="补充3效应量和元分析.html#cb409-18" tabindex="-1"></a>corr_est.ls1 <span class="ot">&lt;-</span> <span class="fu">cor</span>(df.mt.rt.subj.effect.ls1.wide<span class="sc">$</span>Self, df.mt.rt.subj.effect.ls1.wide<span class="sc">$</span>Other)</span>
-<span id="cb409-19"><a href="补充3效应量和元分析.html#cb409-19" tabindex="-1"></a></span>
-<span id="cb409-20"><a href="补充3效应量和元分析.html#cb409-20" tabindex="-1"></a>df.mt.rt.subj.effect.ls1<span class="sc">$</span>Sample_size <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(df.mt.rt.subj.ls1<span class="sc">$</span>Sub))</span>
-<span id="cb409-21"><a href="补充3效应量和元分析.html#cb409-21" tabindex="-1"></a>df.mt.rt.subj.effect.ls1<span class="sc">$</span>ri <span class="ot">&lt;-</span> corr_est.ls1</span></code></pre></div>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="补充3效应量和元分析.html#cb410-1" tabindex="-1"></a><span class="do">## effect size of group 2</span></span>
-<span id="cb410-2"><a href="补充3效应量和元分析.html#cb410-2" tabindex="-1"></a>df.mt.rt.subj.effect.ls2 <span class="ot">&lt;-</span> df.mt.rt.subj.ls2 <span class="sc">%&gt;%</span></span>
-<span id="cb410-3"><a href="补充3效应量和元分析.html#cb410-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> Valence <span class="sc">==</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb410-4"><a href="补充3效应量和元分析.html#cb410-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Identity) <span class="sc">%&gt;%</span></span>
-<span id="cb410-5"><a href="补充3效应量和元分析.html#cb410-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(RT_mean),</span>
-<span id="cb410-6"><a href="补充3效应量和元分析.html#cb410-6" tabindex="-1"></a>                   <span class="at">sd =</span> <span class="fu">sd</span>(RT_mean)) <span class="sc">%&gt;%</span></span>
-<span id="cb410-7"><a href="补充3效应量和元分析.html#cb410-7" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb410-8"><a href="补充3效应量和元分析.html#cb410-8" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Identity,</span>
-<span id="cb410-9"><a href="补充3效应量和元分析.html#cb410-9" tabindex="-1"></a>                     <span class="at">values_from =</span> <span class="fu">c</span>(mean, sd))</span>
-<span id="cb410-10"><a href="补充3效应量和元分析.html#cb410-10" tabindex="-1"></a></span>
-<span id="cb410-11"><a href="补充3效应量和元分析.html#cb410-11" tabindex="-1"></a><span class="fu">colnames</span>(df.mt.rt.subj.effect.ls2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Self_RT_M_mean&quot;</span>,<span class="st">&quot;Other_RT_M_mean&quot;</span>,</span>
-<span id="cb410-12"><a href="补充3效应量和元分析.html#cb410-12" tabindex="-1"></a>                                        <span class="st">&quot;Self_RT_M_sd&quot;</span>, <span class="st">&quot;Other_RT_M_sd&quot;</span>)</span>
-<span id="cb410-13"><a href="补充3效应量和元分析.html#cb410-13" tabindex="-1"></a></span>
-<span id="cb410-14"><a href="补充3效应量和元分析.html#cb410-14" tabindex="-1"></a>df.mt.rt.subj.effect.ls2.wide <span class="ot">&lt;-</span> df.mt.rt.subj.ls2  <span class="sc">%&gt;%</span></span>
-<span id="cb410-15"><a href="补充3效应量和元分析.html#cb410-15" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> Valence <span class="sc">==</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb410-16"><a href="补充3效应量和元分析.html#cb410-16" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;Identity&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;RT_mean&quot;</span>)</span>
-<span id="cb410-17"><a href="补充3效应量和元分析.html#cb410-17" tabindex="-1"></a></span>
-<span id="cb410-18"><a href="补充3效应量和元分析.html#cb410-18" tabindex="-1"></a>corr_est.ls2 <span class="ot">&lt;-</span> <span class="fu">cor</span>(df.mt.rt.subj.effect.ls2.wide<span class="sc">$</span>Self, df.mt.rt.subj.effect.ls2.wide<span class="sc">$</span>Other)</span>
-<span id="cb410-19"><a href="补充3效应量和元分析.html#cb410-19" tabindex="-1"></a>df.mt.rt.subj.effect.ls2<span class="sc">$</span>Sample_size <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(df.mt.rt.subj.ls2<span class="sc">$</span>Sub))</span>
-<span id="cb410-20"><a href="补充3效应量和元分析.html#cb410-20" tabindex="-1"></a>df.mt.rt.subj.effect.ls2<span class="sc">$</span>ri <span class="ot">&lt;-</span> corr_est.ls2</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="补充3效应量和元分析.html#cb450-1" tabindex="-1"></a><span class="do">## effect size of group 1</span></span>
+<span id="cb450-2"><a href="补充3效应量和元分析.html#cb450-2" tabindex="-1"></a>df.mt.rt.subj.effect.ls1 <span class="ot">&lt;-</span> df.mt.rt.subj.ls1 <span class="sc">%&gt;%</span></span>
+<span id="cb450-3"><a href="补充3效应量和元分析.html#cb450-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> Valence <span class="sc">==</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb450-4"><a href="补充3效应量和元分析.html#cb450-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Identity) <span class="sc">%&gt;%</span></span>
+<span id="cb450-5"><a href="补充3效应量和元分析.html#cb450-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(RT_mean),</span>
+<span id="cb450-6"><a href="补充3效应量和元分析.html#cb450-6" tabindex="-1"></a>                   <span class="at">sd =</span> <span class="fu">sd</span>(RT_mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb450-7"><a href="补充3效应量和元分析.html#cb450-7" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb450-8"><a href="补充3效应量和元分析.html#cb450-8" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Identity,</span>
+<span id="cb450-9"><a href="补充3效应量和元分析.html#cb450-9" tabindex="-1"></a>                     <span class="at">values_from =</span> <span class="fu">c</span>(mean, sd))</span>
+<span id="cb450-10"><a href="补充3效应量和元分析.html#cb450-10" tabindex="-1"></a></span>
+<span id="cb450-11"><a href="补充3效应量和元分析.html#cb450-11" tabindex="-1"></a></span>
+<span id="cb450-12"><a href="补充3效应量和元分析.html#cb450-12" tabindex="-1"></a><span class="fu">colnames</span>(df.mt.rt.subj.effect.ls1) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Self_RT_M_mean&quot;</span>,<span class="st">&quot;Other_RT_M_mean&quot;</span>,</span>
+<span id="cb450-13"><a href="补充3效应量和元分析.html#cb450-13" tabindex="-1"></a>                                        <span class="st">&quot;Self_RT_M_sd&quot;</span>, <span class="st">&quot;Other_RT_M_sd&quot;</span>)</span>
+<span id="cb450-14"><a href="补充3效应量和元分析.html#cb450-14" tabindex="-1"></a>df.mt.rt.subj.effect.ls1.wide <span class="ot">&lt;-</span> df.mt.rt.subj.ls1  <span class="sc">%&gt;%</span></span>
+<span id="cb450-15"><a href="补充3效应量和元分析.html#cb450-15" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> Valence <span class="sc">==</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb450-16"><a href="补充3效应量和元分析.html#cb450-16" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;Identity&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;RT_mean&quot;</span>)</span>
+<span id="cb450-17"><a href="补充3效应量和元分析.html#cb450-17" tabindex="-1"></a></span>
+<span id="cb450-18"><a href="补充3效应量和元分析.html#cb450-18" tabindex="-1"></a>corr_est.ls1 <span class="ot">&lt;-</span> <span class="fu">cor</span>(df.mt.rt.subj.effect.ls1.wide<span class="sc">$</span>Self, df.mt.rt.subj.effect.ls1.wide<span class="sc">$</span>Other)</span>
+<span id="cb450-19"><a href="补充3效应量和元分析.html#cb450-19" tabindex="-1"></a></span>
+<span id="cb450-20"><a href="补充3效应量和元分析.html#cb450-20" tabindex="-1"></a>df.mt.rt.subj.effect.ls1<span class="sc">$</span>Sample_size <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(df.mt.rt.subj.ls1<span class="sc">$</span>Sub))</span>
+<span id="cb450-21"><a href="补充3效应量和元分析.html#cb450-21" tabindex="-1"></a>df.mt.rt.subj.effect.ls1<span class="sc">$</span>ri <span class="ot">&lt;-</span> corr_est.ls1</span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="补充3效应量和元分析.html#cb451-1" tabindex="-1"></a><span class="do">## effect size of group 2</span></span>
+<span id="cb451-2"><a href="补充3效应量和元分析.html#cb451-2" tabindex="-1"></a>df.mt.rt.subj.effect.ls2 <span class="ot">&lt;-</span> df.mt.rt.subj.ls2 <span class="sc">%&gt;%</span></span>
+<span id="cb451-3"><a href="补充3效应量和元分析.html#cb451-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> Valence <span class="sc">==</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb451-4"><a href="补充3效应量和元分析.html#cb451-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Identity) <span class="sc">%&gt;%</span></span>
+<span id="cb451-5"><a href="补充3效应量和元分析.html#cb451-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(RT_mean),</span>
+<span id="cb451-6"><a href="补充3效应量和元分析.html#cb451-6" tabindex="-1"></a>                   <span class="at">sd =</span> <span class="fu">sd</span>(RT_mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb451-7"><a href="补充3效应量和元分析.html#cb451-7" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb451-8"><a href="补充3效应量和元分析.html#cb451-8" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Identity,</span>
+<span id="cb451-9"><a href="补充3效应量和元分析.html#cb451-9" tabindex="-1"></a>                     <span class="at">values_from =</span> <span class="fu">c</span>(mean, sd))</span>
+<span id="cb451-10"><a href="补充3效应量和元分析.html#cb451-10" tabindex="-1"></a></span>
+<span id="cb451-11"><a href="补充3效应量和元分析.html#cb451-11" tabindex="-1"></a><span class="fu">colnames</span>(df.mt.rt.subj.effect.ls2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Self_RT_M_mean&quot;</span>,<span class="st">&quot;Other_RT_M_mean&quot;</span>,</span>
+<span id="cb451-12"><a href="补充3效应量和元分析.html#cb451-12" tabindex="-1"></a>                                        <span class="st">&quot;Self_RT_M_sd&quot;</span>, <span class="st">&quot;Other_RT_M_sd&quot;</span>)</span>
+<span id="cb451-13"><a href="补充3效应量和元分析.html#cb451-13" tabindex="-1"></a></span>
+<span id="cb451-14"><a href="补充3效应量和元分析.html#cb451-14" tabindex="-1"></a>df.mt.rt.subj.effect.ls2.wide <span class="ot">&lt;-</span> df.mt.rt.subj.ls2  <span class="sc">%&gt;%</span></span>
+<span id="cb451-15"><a href="补充3效应量和元分析.html#cb451-15" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> Valence <span class="sc">==</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb451-16"><a href="补充3效应量和元分析.html#cb451-16" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;Identity&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;RT_mean&quot;</span>)</span>
+<span id="cb451-17"><a href="补充3效应量和元分析.html#cb451-17" tabindex="-1"></a></span>
+<span id="cb451-18"><a href="补充3效应量和元分析.html#cb451-18" tabindex="-1"></a>corr_est.ls2 <span class="ot">&lt;-</span> <span class="fu">cor</span>(df.mt.rt.subj.effect.ls2.wide<span class="sc">$</span>Self, df.mt.rt.subj.effect.ls2.wide<span class="sc">$</span>Other)</span>
+<span id="cb451-19"><a href="补充3效应量和元分析.html#cb451-19" tabindex="-1"></a>df.mt.rt.subj.effect.ls2<span class="sc">$</span>Sample_size <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(df.mt.rt.subj.ls2<span class="sc">$</span>Sub))</span>
+<span id="cb451-20"><a href="补充3效应量和元分析.html#cb451-20" tabindex="-1"></a>df.mt.rt.subj.effect.ls2<span class="sc">$</span>ri <span class="ot">&lt;-</span> corr_est.ls2</span></code></pre></div>
 <p>合并数据，计算效应量和效应量的误差，调用R包<strong>metafor</strong>：</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="补充3效应量和元分析.html#cb411-1" tabindex="-1"></a><span class="co"># and nrow with 1</span></span>
-<span id="cb411-2"><a href="补充3效应量和元分析.html#cb411-2" tabindex="-1"></a>df.mt.meta <span class="ot">&lt;-</span> <span class="fu">rbind</span>(df.mt.rt.subj.effect.ls1, df.mt.rt.subj.effect.ls2)</span>
-<span id="cb411-3"><a href="补充3效应量和元分析.html#cb411-3" tabindex="-1"></a></span>
-<span id="cb411-4"><a href="补充3效应量和元分析.html#cb411-4" tabindex="-1"></a>df.es <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">escalc</span>(</span>
-<span id="cb411-5"><a href="补充3效应量和元分析.html#cb411-5" tabindex="-1"></a>  <span class="at">measure =</span> <span class="st">&quot;SMCRH&quot;</span>,</span>
-<span id="cb411-6"><a href="补充3效应量和元分析.html#cb411-6" tabindex="-1"></a>  <span class="co">#standardized mean change using raw score standardization with heteroscedastic population variances at the two measurement occasions (Bonett, 2008)</span></span>
-<span id="cb411-7"><a href="补充3效应量和元分析.html#cb411-7" tabindex="-1"></a>  <span class="at">m1i =</span> Self_RT_M_mean,</span>
-<span id="cb411-8"><a href="补充3效应量和元分析.html#cb411-8" tabindex="-1"></a>  <span class="at">m2i =</span> Other_RT_M_mean,</span>
-<span id="cb411-9"><a href="补充3效应量和元分析.html#cb411-9" tabindex="-1"></a>  <span class="at">sd1i =</span> Self_RT_M_sd,</span>
-<span id="cb411-10"><a href="补充3效应量和元分析.html#cb411-10" tabindex="-1"></a>  <span class="at">sd2i =</span> Other_RT_M_sd,</span>
-<span id="cb411-11"><a href="补充3效应量和元分析.html#cb411-11" tabindex="-1"></a>  <span class="at">ni =</span> Sample_size,</span>
-<span id="cb411-12"><a href="补充3效应量和元分析.html#cb411-12" tabindex="-1"></a>  <span class="at">ri =</span> ri,</span>
-<span id="cb411-13"><a href="补充3效应量和元分析.html#cb411-13" tabindex="-1"></a>  <span class="at">data =</span> df.mt.meta</span>
-<span id="cb411-14"><a href="补充3效应量和元分析.html#cb411-14" tabindex="-1"></a>  )  <span class="sc">%&gt;%</span></span>
-<span id="cb411-15"><a href="补充3效应量和元分析.html#cb411-15" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">unique_ID =</span> <span class="fu">c</span>(<span class="st">&quot;study1a&quot;</span>, <span class="st">&quot;study1b&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="补充3效应量和元分析.html#cb452-1" tabindex="-1"></a><span class="co"># and nrow with 1</span></span>
+<span id="cb452-2"><a href="补充3效应量和元分析.html#cb452-2" tabindex="-1"></a>df.mt.meta <span class="ot">&lt;-</span> <span class="fu">rbind</span>(df.mt.rt.subj.effect.ls1, df.mt.rt.subj.effect.ls2)</span>
+<span id="cb452-3"><a href="补充3效应量和元分析.html#cb452-3" tabindex="-1"></a></span>
+<span id="cb452-4"><a href="补充3效应量和元分析.html#cb452-4" tabindex="-1"></a>df.es <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">escalc</span>(</span>
+<span id="cb452-5"><a href="补充3效应量和元分析.html#cb452-5" tabindex="-1"></a>  <span class="at">measure =</span> <span class="st">&quot;SMCRH&quot;</span>,</span>
+<span id="cb452-6"><a href="补充3效应量和元分析.html#cb452-6" tabindex="-1"></a>  <span class="co">#standardized mean change using raw score standardization with heteroscedastic population variances at the two measurement occasions (Bonett, 2008)</span></span>
+<span id="cb452-7"><a href="补充3效应量和元分析.html#cb452-7" tabindex="-1"></a>  <span class="at">m1i =</span> Self_RT_M_mean,</span>
+<span id="cb452-8"><a href="补充3效应量和元分析.html#cb452-8" tabindex="-1"></a>  <span class="at">m2i =</span> Other_RT_M_mean,</span>
+<span id="cb452-9"><a href="补充3效应量和元分析.html#cb452-9" tabindex="-1"></a>  <span class="at">sd1i =</span> Self_RT_M_sd,</span>
+<span id="cb452-10"><a href="补充3效应量和元分析.html#cb452-10" tabindex="-1"></a>  <span class="at">sd2i =</span> Other_RT_M_sd,</span>
+<span id="cb452-11"><a href="补充3效应量和元分析.html#cb452-11" tabindex="-1"></a>  <span class="at">ni =</span> Sample_size,</span>
+<span id="cb452-12"><a href="补充3效应量和元分析.html#cb452-12" tabindex="-1"></a>  <span class="at">ri =</span> ri,</span>
+<span id="cb452-13"><a href="补充3效应量和元分析.html#cb452-13" tabindex="-1"></a>  <span class="at">data =</span> df.mt.meta</span>
+<span id="cb452-14"><a href="补充3效应量和元分析.html#cb452-14" tabindex="-1"></a>  )  <span class="sc">%&gt;%</span></span>
+<span id="cb452-15"><a href="补充3效应量和元分析.html#cb452-15" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">unique_ID =</span> <span class="fu">c</span>(<span class="st">&quot;study1a&quot;</span>, <span class="st">&quot;study1b&quot;</span>))</span></code></pre></div>
 <p>我们此时得到了两组数据的效应量以及其误差(Y1:-0.42712,Y2:-0.91145,V1:0.08473,V2:0.12716)<br />
 接着建立随机效应模型：</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="补充3效应量和元分析.html#cb412-1" tabindex="-1"></a><span class="co"># 随机效果模型</span></span>
-<span id="cb412-2"><a href="补充3效应量和元分析.html#cb412-2" tabindex="-1"></a>rma1 <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma</span>(yi, vi, <span class="at">data =</span> df.es)</span></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="补充3效应量和元分析.html#cb453-1" tabindex="-1"></a><span class="co"># 随机效果模型</span></span>
+<span id="cb453-2"><a href="补充3效应量和元分析.html#cb453-2" tabindex="-1"></a>rma1 <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma</span>(yi, vi, <span class="at">data =</span> df.es)</span></code></pre></div>
 <p><em>此处应该添加chapter-13meta结果与forest plot</em>
 这是最简单的可视化，在发表时还应考虑将图表绘制的更加直观与美观。<br />
 其中有许多细节，例如2<em>2的实验中，效应量数量为C<sup>8</sup><sub>2</sub>=28，在报告时需要选择合适的效应；选择的计算方法（效应量公式）也值得考虑，是手动输入还是函数中自带的公式；在一些报告中只会提供均值与标准差，而不提供相关系数，那么就只能依赖于作者报告的数据选择。<br />
