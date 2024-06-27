@@ -10,6 +10,15 @@ Joint Tests of "A_":
 Note. Simple effects of repeated measures with 3 or more levels
 are different from the results obtained with SPSS MANOVA syntax.
 
+Multivariate Tests of "A_":
+─────────────────────────────────────────────────────────────────
+             Pillai’s trace Hypoth. df Error df Exact F     p    
+─────────────────────────────────────────────────────────────────
+Other: "A_"           0.061      1.000   43.000   2.801  .101    
+ Self: "A_"           0.570      1.000   43.000  56.904 <.001 ***
+─────────────────────────────────────────────────────────────────
+Note. Identical to the results obtained with SPSS GLM EMMEANS syntax.
+
 Estimated Marginal Means of "A_":
 ─────────────────────────────────────────────
      "A_"  "B_" Mean [95% CI of Mean]    S.E.
