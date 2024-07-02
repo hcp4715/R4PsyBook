@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 第十四讲：心理学元分析入门 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</title>
+  <title>Chapter 13 第十四讲：心理学元分析入门 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</title>
   <meta name="description" content="课程bookdown" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 第十四讲：心理学元分析入门 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
+  <meta property="og:title" content="Chapter 13 第十四讲：心理学元分析入门 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="课程bookdown" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 第十四讲：心理学元分析入门 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
+  <meta name="twitter:title" content="Chapter 13 第十四讲：心理学元分析入门 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
   
   <meta name="twitter:description" content="课程bookdown" />
   
@@ -59,6 +59,8 @@
 <script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+<script src="libs/panelset-0.2.6/panelset.js"></script>
 
 
 <style type="text/css">
@@ -340,107 +342,116 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#练习"><i class="fa fa-check"></i><b>8.6</b> 练习</a></li>
 <li class="chapter" data-level="8.7" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#参考阅读"><i class="fa fa-check"></i><b>8.7</b> 参考阅读</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html"><i class="fa fa-check"></i><b>9</b> 第十讲：回归模型(三)：广义线性模型</a>
+<li class="chapter" data-level="9" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html"><i class="fa fa-check"></i><b>9</b> 第九讲：回归模型(二)：分层线性模型</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#前章回顾和本章数据预处理"><i class="fa fa-check"></i><b>9.1</b> 前章回顾和本章数据预处理</a></li>
-<li class="chapter" data-level="9.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#广义线性模型"><i class="fa fa-check"></i><b>9.2</b> 广义线性模型</a>
-<ul>
-<li class="chapter" data-level="9.2.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#回归方程和普通线性模型"><i class="fa fa-check"></i><b>9.2.1</b> 回归方程和普通线性模型</a></li>
-<li class="chapter" data-level="9.2.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#连接函数和广义线性模型"><i class="fa fa-check"></i><b>9.2.2</b> 连接函数和广义线性模型</a></li>
+<li class="chapter" data-level="9.1" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#回顾-1"><i class="fa fa-check"></i><b>9.1</b> 回顾</a></li>
+<li class="chapter" data-level="9.2" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#重复测量方差分析"><i class="fa fa-check"></i><b>9.2</b> 重复测量方差分析</a></li>
+<li class="chapter" data-level="9.3" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#分层线性模型多层线性模型hlm"><i class="fa fa-check"></i><b>9.3</b> 分层线性模型/多层线性模型(HLM):</a></li>
+<li class="chapter" data-level="9.4" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#多层线性模型的应用"><i class="fa fa-check"></i><b>9.4</b> 多层线性模型的应用</a></li>
+<li class="chapter" data-level="9.5" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#hlm的应用"><i class="fa fa-check"></i><b>9.5</b> HLM的应用</a></li>
+<li class="chapter" data-level="9.6" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#思考"><i class="fa fa-check"></i><b>9.6</b> 思考</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#二项分布"><i class="fa fa-check"></i><b>9.3</b> 二项分布</a>
+<li class="chapter" data-level="10" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html"><i class="fa fa-check"></i><b>10</b> 第十讲：回归模型(三)：广义线性模型</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#伯努利实验"><i class="fa fa-check"></i><b>9.3.1</b> 伯努利实验</a></li>
-<li class="chapter" data-level="9.3.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#glm代码实操"><i class="fa fa-check"></i><b>9.3.2</b> GLM代码实操</a></li>
-</ul></li>
-<li class="chapter" data-level="9.4" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同方法比较"><i class="fa fa-check"></i><b>9.4</b> 不同方法比较</a>
+<li class="chapter" data-level="10.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#前章回顾和本章数据预处理"><i class="fa fa-check"></i><b>10.1</b> 前章回顾和本章数据预处理</a></li>
+<li class="chapter" data-level="10.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#广义线性模型"><i class="fa fa-check"></i><b>10.2</b> 广义线性模型</a>
 <ul>
-<li class="chapter" data-level="9.4.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同的建模方法"><i class="fa fa-check"></i><b>9.4.1</b> 不同的建模方法</a></li>
-<li class="chapter" data-level="9.4.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同的模型比较方法"><i class="fa fa-check"></i><b>9.4.2</b> 不同的模型比较方法</a></li>
+<li class="chapter" data-level="10.2.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#回归方程和普通线性模型"><i class="fa fa-check"></i><b>10.2.1</b> 回归方程和普通线性模型</a></li>
+<li class="chapter" data-level="10.2.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#连接函数和广义线性模型"><i class="fa fa-check"></i><b>10.2.2</b> 连接函数和广义线性模型</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#其他分布"><i class="fa fa-check"></i><b>9.5</b> 其他分布</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html"><i class="fa fa-check"></i><b>10</b> 第十二讲：数据可视化进阶</a>
+<li class="chapter" data-level="10.3" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#二项分布"><i class="fa fa-check"></i><b>10.3</b> 二项分布</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图的必要性和作图数据处理"><i class="fa fa-check"></i><b>10.1</b> 作图的必要性和作图数据处理</a>
-<ul>
-<li class="chapter" data-level="10.1.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#为什么要作图以及作图的原则"><i class="fa fa-check"></i><b>10.1.1</b> 为什么要作图以及作图的原则</a></li>
-<li class="chapter" data-level="10.1.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图数据准备"><i class="fa fa-check"></i><b>10.1.2</b> 作图数据准备</a></li>
+<li class="chapter" data-level="10.3.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#伯努利实验"><i class="fa fa-check"></i><b>10.3.1</b> 伯努利实验</a></li>
+<li class="chapter" data-level="10.3.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#glm代码实操"><i class="fa fa-check"></i><b>10.3.2</b> GLM代码实操</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#基础作图"><i class="fa fa-check"></i><b>10.2</b> 基础作图</a>
+<li class="chapter" data-level="10.4" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同方法比较"><i class="fa fa-check"></i><b>10.4</b> 不同方法比较</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#ggplot2基础回顾"><i class="fa fa-check"></i><b>10.2.1</b> ggplot2基础回顾</a></li>
-<li class="chapter" data-level="10.2.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#主要图层"><i class="fa fa-check"></i><b>10.2.2</b> 主要图层</a></li>
-<li class="chapter" data-level="10.2.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可选图层"><i class="fa fa-check"></i><b>10.2.3</b> 可选图层</a></li>
-<li class="chapter" data-level="10.2.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#同时呈现多张图片"><i class="fa fa-check"></i><b>10.2.4</b> 同时呈现多张图片</a></li>
+<li class="chapter" data-level="10.4.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同的建模方法"><i class="fa fa-check"></i><b>10.4.1</b> 不同的建模方法</a></li>
+<li class="chapter" data-level="10.4.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同的模型比较方法"><i class="fa fa-check"></i><b>10.4.2</b> 不同的模型比较方法</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#进阶作图"><i class="fa fa-check"></i><b>10.3</b> 进阶作图</a>
+<li class="chapter" data-level="10.5" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#其他分布"><i class="fa fa-check"></i><b>10.5</b> 其他分布</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html"><i class="fa fa-check"></i><b>11</b> 第十二讲：数据可视化进阶</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#整体和个体效应共存的图"><i class="fa fa-check"></i><b>10.3.1</b> 整体和个体效应共存的图</a></li>
-<li class="chapter" data-level="10.3.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可视化层级模型的random-effect"><i class="fa fa-check"></i><b>10.3.2</b> 可视化层级模型的random effect</a></li>
-<li class="chapter" data-level="10.3.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#雨云图rain-cloud-plot"><i class="fa fa-check"></i><b>10.3.3</b> 雨云图（rain cloud plot）</a></li>
-</ul></li>
-<li class="chapter" data-level="10.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#高级图片处理magick"><i class="fa fa-check"></i><b>10.4</b> 高级图片处理–magick</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html"><i class="fa fa-check"></i><b>11</b> 第十三讲：基于网络模型的心理学研究</a>
+<li class="chapter" data-level="11.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图的必要性和作图数据处理"><i class="fa fa-check"></i><b>11.1</b> 作图的必要性和作图数据处理</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#基于潜变量的心理学研究"><i class="fa fa-check"></i><b>11.1</b> 基于潜变量的心理学研究</a></li>
-<li class="chapter" data-level="11.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#潜变量模型在心理学的困境"><i class="fa fa-check"></i><b>11.2</b> 潜变量模型在心理学的困境</a></li>
-<li class="chapter" data-level="11.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#基于网络的心理学视角"><i class="fa fa-check"></i><b>11.3</b> 基于网络的心理学视角</a></li>
-<li class="chapter" data-level="11.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#如果寻找可观测特征的因果关系"><i class="fa fa-check"></i><b>11.4</b> 如果寻找可观测特征的因果关系</a>
-<ul>
-<li class="chapter" data-level="11.4.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#d-separation"><i class="fa fa-check"></i><b>11.4.1</b> d-separation</a></li>
+<li class="chapter" data-level="11.1.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#为什么要作图以及作图的原则"><i class="fa fa-check"></i><b>11.1.1</b> 为什么要作图以及作图的原则</a></li>
+<li class="chapter" data-level="11.1.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图数据准备"><i class="fa fa-check"></i><b>11.1.2</b> 作图数据准备</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#dag贝叶斯网络"><i class="fa fa-check"></i><b>11.5</b> DAG（贝叶斯网络）</a></li>
-<li class="chapter" data-level="11.6" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#高斯图模型ggm"><i class="fa fa-check"></i><b>11.6</b> 高斯图模型（GGM）</a></li>
-<li class="chapter" data-level="11.7" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#易辛模型ising-model"><i class="fa fa-check"></i><b>11.7</b> 易辛模型Ising model</a></li>
-<li class="chapter" data-level="11.8" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#心理网络的估计"><i class="fa fa-check"></i><b>11.8</b> 心理网络的估计</a>
+<li class="chapter" data-level="11.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#基础作图"><i class="fa fa-check"></i><b>11.2</b> 基础作图</a>
 <ul>
-<li class="chapter" data-level="11.8.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#高斯图模型"><i class="fa fa-check"></i><b>11.8.1</b> 高斯图模型</a></li>
-<li class="chapter" data-level="11.8.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#多元估计"><i class="fa fa-check"></i><b>11.8.2</b> 多元估计</a></li>
-<li class="chapter" data-level="11.8.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#一元估计"><i class="fa fa-check"></i><b>11.8.3</b> 一元估计</a></li>
-<li class="chapter" data-level="11.8.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现"><i class="fa fa-check"></i><b>11.8.4</b> 代码实现</a></li>
+<li class="chapter" data-level="11.2.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#ggplot2基础回顾"><i class="fa fa-check"></i><b>11.2.1</b> ggplot2基础回顾</a></li>
+<li class="chapter" data-level="11.2.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#主要图层"><i class="fa fa-check"></i><b>11.2.2</b> 主要图层</a></li>
+<li class="chapter" data-level="11.2.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可选图层"><i class="fa fa-check"></i><b>11.2.3</b> 可选图层</a></li>
+<li class="chapter" data-level="11.2.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#同时呈现多张图片"><i class="fa fa-check"></i><b>11.2.4</b> 同时呈现多张图片</a></li>
 </ul></li>
-<li class="chapter" data-level="11.9" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#模型选择"><i class="fa fa-check"></i><b>11.9</b> 模型选择</a>
+<li class="chapter" data-level="11.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#进阶作图"><i class="fa fa-check"></i><b>11.3</b> 进阶作图</a>
 <ul>
-<li class="chapter" data-level="11.9.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#模型选择的方式"><i class="fa fa-check"></i><b>11.9.1</b> 模型选择的方式</a></li>
-<li class="chapter" data-level="11.9.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-1"><i class="fa fa-check"></i><b>11.9.2</b> 代码实现</a></li>
-<li class="chapter" data-level="11.9.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-2"><i class="fa fa-check"></i><b>11.9.3</b> 代码实现</a></li>
-<li class="chapter" data-level="11.9.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-3"><i class="fa fa-check"></i><b>11.9.4</b> 代码实现</a></li>
-<li class="chapter" data-level="11.9.5" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#总结"><i class="fa fa-check"></i><b>11.9.5</b> 总结</a></li>
+<li class="chapter" data-level="11.3.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#整体和个体效应共存的图"><i class="fa fa-check"></i><b>11.3.1</b> 整体和个体效应共存的图</a></li>
+<li class="chapter" data-level="11.3.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可视化层级模型的random-effect"><i class="fa fa-check"></i><b>11.3.2</b> 可视化层级模型的random effect</a></li>
+<li class="chapter" data-level="11.3.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#雨云图rain-cloud-plot"><i class="fa fa-check"></i><b>11.3.3</b> 雨云图（rain cloud plot）</a></li>
 </ul></li>
-<li class="chapter" data-level="11.10" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#心理网络的挑战"><i class="fa fa-check"></i><b>11.10</b> 心理网络的挑战</a></li>
-<li class="chapter" data-level="11.11" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#我们是否还需要潜变量模型"><i class="fa fa-check"></i><b>11.11</b> 我们是否还需要潜变量模型</a></li>
+<li class="chapter" data-level="11.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#高级图片处理magick"><i class="fa fa-check"></i><b>11.4</b> 高级图片处理–magick</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html"><i class="fa fa-check"></i><b>12</b> 第十四讲：心理学元分析入门</a>
+<li class="chapter" data-level="12" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html"><i class="fa fa-check"></i><b>12</b> 第十三讲：基于网络模型的心理学研究</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#什么是元分析"><i class="fa fa-check"></i><b>12.1</b> 什么是元分析</a></li>
-<li class="chapter" data-level="12.2" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#元分析的实施"><i class="fa fa-check"></i><b>12.2</b> 元分析的实施</a></li>
-<li class="chapter" data-level="12.3" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#回顾与总结"><i class="fa fa-check"></i><b>12.3</b> 回顾与总结</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html"><i class="fa fa-check"></i><b>13</b> 补充1：如何进行基本的数据分析: 相关与回归</a>
+<li class="chapter" data-level="12.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#基于潜变量的心理学研究"><i class="fa fa-check"></i><b>12.1</b> 基于潜变量的心理学研究</a></li>
+<li class="chapter" data-level="12.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#潜变量模型在心理学的困境"><i class="fa fa-check"></i><b>12.2</b> 潜变量模型在心理学的困境</a></li>
+<li class="chapter" data-level="12.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#基于网络的心理学视角"><i class="fa fa-check"></i><b>12.3</b> 基于网络的心理学视角</a></li>
+<li class="chapter" data-level="12.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#如果寻找可观测特征的因果关系"><i class="fa fa-check"></i><b>12.4</b> 如果寻找可观测特征的因果关系</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是相关"><i class="fa fa-check"></i><b>13.1</b> 什么是相关</a></li>
-<li class="chapter" data-level="13.2" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#相关-代码实现"><i class="fa fa-check"></i><b>13.2</b> 相关-代码实现</a></li>
-<li class="chapter" data-level="13.3" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是回归"><i class="fa fa-check"></i><b>13.3</b> 什么是回归</a></li>
+<li class="chapter" data-level="12.4.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#d-separation"><i class="fa fa-check"></i><b>12.4.1</b> d-separation</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html"><i class="fa fa-check"></i><b>14</b> 补充2：从分析到手稿</a>
+<li class="chapter" data-level="12.5" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#dag贝叶斯网络"><i class="fa fa-check"></i><b>12.5</b> DAG（贝叶斯网络）</a></li>
+<li class="chapter" data-level="12.6" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#高斯图模型ggm"><i class="fa fa-check"></i><b>12.6</b> 高斯图模型（GGM）</a></li>
+<li class="chapter" data-level="12.7" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#易辛模型ising-model"><i class="fa fa-check"></i><b>12.7</b> 易辛模型Ising model</a></li>
+<li class="chapter" data-level="12.8" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#心理网络的估计"><i class="fa fa-check"></i><b>12.8</b> 心理网络的估计</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>14.1</b> <strong>通过Papaja撰写论文</strong></a>
+<li class="chapter" data-level="12.8.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#高斯图模型"><i class="fa fa-check"></i><b>12.8.1</b> 高斯图模型</a></li>
+<li class="chapter" data-level="12.8.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#多元估计"><i class="fa fa-check"></i><b>12.8.2</b> 多元估计</a></li>
+<li class="chapter" data-level="12.8.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#一元估计"><i class="fa fa-check"></i><b>12.8.3</b> 一元估计</a></li>
+<li class="chapter" data-level="12.8.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现"><i class="fa fa-check"></i><b>12.8.4</b> 代码实现</a></li>
+</ul></li>
+<li class="chapter" data-level="12.9" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#模型选择"><i class="fa fa-check"></i><b>12.9</b> 模型选择</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>14.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
-<li class="chapter" data-level="14.1.2" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>14.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
-<li class="chapter" data-level="14.1.3" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part3-正文的撰写"><i class="fa fa-check"></i><b>14.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
-<li class="chapter" data-level="14.1.4" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#总结-1"><i class="fa fa-check"></i><b>14.1.4</b> 总结</a></li>
+<li class="chapter" data-level="12.9.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#模型选择的方式"><i class="fa fa-check"></i><b>12.9.1</b> 模型选择的方式</a></li>
+<li class="chapter" data-level="12.9.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-1"><i class="fa fa-check"></i><b>12.9.2</b> 代码实现</a></li>
+<li class="chapter" data-level="12.9.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-2"><i class="fa fa-check"></i><b>12.9.3</b> 代码实现</a></li>
+<li class="chapter" data-level="12.9.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-3"><i class="fa fa-check"></i><b>12.9.4</b> 代码实现</a></li>
+<li class="chapter" data-level="12.9.5" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#总结"><i class="fa fa-check"></i><b>12.9.5</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#心理网络的挑战"><i class="fa fa-check"></i><b>12.10</b> 心理网络的挑战</a></li>
+<li class="chapter" data-level="12.11" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#我们是否还需要潜变量模型"><i class="fa fa-check"></i><b>12.11</b> 我们是否还需要潜变量模型</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html"><i class="fa fa-check"></i><b>13</b> 第十四讲：心理学元分析入门</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#什么是元分析"><i class="fa fa-check"></i><b>13.1</b> 什么是元分析</a></li>
+<li class="chapter" data-level="13.2" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#元分析的实施"><i class="fa fa-check"></i><b>13.2</b> 元分析的实施</a></li>
+<li class="chapter" data-level="13.3" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#回顾与总结"><i class="fa fa-check"></i><b>13.3</b> 回顾与总结</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html"><i class="fa fa-check"></i><b>14</b> 补充1：如何进行基本的数据分析: 相关与回归</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是相关"><i class="fa fa-check"></i><b>14.1</b> 什么是相关</a></li>
+<li class="chapter" data-level="14.2" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#相关-代码实现"><i class="fa fa-check"></i><b>14.2</b> 相关-代码实现</a></li>
+<li class="chapter" data-level="14.3" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是回归"><i class="fa fa-check"></i><b>14.3</b> 什么是回归</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html"><i class="fa fa-check"></i><b>15</b> 补充2：从分析到手稿</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>15.1</b> <strong>通过Papaja撰写论文</strong></a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>15.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
+<li class="chapter" data-level="15.1.2" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>15.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
+<li class="chapter" data-level="15.1.3" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part3-正文的撰写"><i class="fa fa-check"></i><b>15.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
+<li class="chapter" data-level="15.1.4" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#总结-1"><i class="fa fa-check"></i><b>15.1.4</b> 总结</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html"><i class="fa fa-check"></i><b>15</b> 补充3：效应量和元分析</a>
+<li class="chapter" data-level="16" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html"><i class="fa fa-check"></i><b>16</b> 补充3：效应量和元分析</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#效应量简介"><i class="fa fa-check"></i><b>15.1</b> 效应量简介</a></li>
-<li class="chapter" data-level="15.2" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#算法实现"><i class="fa fa-check"></i><b>15.2</b> 算法实现</a></li>
-<li class="chapter" data-level="15.3" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#小练习"><i class="fa fa-check"></i><b>15.3</b> 小练习</a></li>
-<li class="chapter" data-level="15.4" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析简介"><i class="fa fa-check"></i><b>15.4</b> 元分析简介</a></li>
-<li class="chapter" data-level="15.5" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析实现"><i class="fa fa-check"></i><b>15.5</b> 元分析实现</a></li>
+<li class="chapter" data-level="16.1" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#效应量简介"><i class="fa fa-check"></i><b>16.1</b> 效应量简介</a></li>
+<li class="chapter" data-level="16.2" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#算法实现"><i class="fa fa-check"></i><b>16.2</b> 算法实现</a></li>
+<li class="chapter" data-level="16.3" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#小练习"><i class="fa fa-check"></i><b>16.3</b> 小练习</a></li>
+<li class="chapter" data-level="16.4" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析简介"><i class="fa fa-check"></i><b>16.4</b> 元分析简介</a></li>
+<li class="chapter" data-level="16.5" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析实现"><i class="fa fa-check"></i><b>16.5</b> 元分析实现</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -463,15 +474,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="第十四讲心理学元分析入门" class="section level1 hasAnchor" number="12">
-<h1><span class="header-section-number">Chapter 12</span> 第十四讲：心理学元分析入门<a href="第十四讲心理学元分析入门.html#第十四讲心理学元分析入门" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="第十四讲心理学元分析入门" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Chapter 13</span> 第十四讲：心理学元分析入门<a href="第十四讲心理学元分析入门.html#第十四讲心理学元分析入门" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><img src="pic/chp14/1.png" />
 大家好，我是刘铮。很高兴受到传鹏的邀请，有机会在这里与大家分享一些心理学元分析的知识。虽然我不是这方面的专家，但很乐意借此机会和大家交流，共同学习。
 目前我正在香港中文大学深圳校区攻读应用心理学博士学位。今天我想和大家探讨的主题是“心理学元分析的入门及其应用、设计与实施”。
 正如传鹏所说，进行元分析时，对我来说，理论知识固然重要，但实际操作更能加深理解。实际上，元分析的代码编写并不复杂，其背后的理论、框架和流程更为关键。因此，这节课对R语言代码的要求不会像之前那么高，相对结构方程模型等，代码会更加简单。
 课程的前半部分，大家可能不需要使用R语言，主要是听我讲解。到了后半部分，我们会一起使用数据，在R语言环境中逐步操作，体验整个元分析的过程。希望通过这节课，大家能够对进行元分析充满信心，这是我的教学目标。OK，让我们开始吧。</p>
-<div id="什么是元分析" class="section level2 hasAnchor" number="12.1">
-<h2><span class="header-section-number">12.1</span> 什么是元分析<a href="第十四讲心理学元分析入门.html#什么是元分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="什么是元分析" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> 什么是元分析<a href="第十四讲心理学元分析入门.html#什么是元分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><img src="pic/chp14/3.png" /></p>
 <p>好的，让我们开始今天的课程。首先，我想对元分析做一个简单的介绍。尽管我知道心理学背景的学生可能对元分析有一定的了解，毕竟在许多期刊上我们都看到过元分析的研究发表。不过，我还是想再次强调一下元分析的定义。
 元分析是一种统计方法，它通过定量手段综合多个研究的结果，将众多研究的效应量合并为一个单一的数字，并提供其他统计量来衡量整体效应。这种方法能够帮助我们更准确地理解某一研究领域的问题。
@@ -494,8 +505,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 第三块则是如何对收集到的数据进行统计分析，以及如何撰写结果报告。
 通过掌握这三大块的步骤，你将能够熟练地进行元分析，并从中得出有意义的结论。现在，让我们开始详细讨论这十步流程。</p>
 </div>
-<div id="元分析的实施" class="section level2 hasAnchor" number="12.2">
-<h2><span class="header-section-number">12.2</span> 元分析的实施<a href="第十四讲心理学元分析入门.html#元分析的实施" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="元分析的实施" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> 元分析的实施<a href="第十四讲心理学元分析入门.html#元分析的实施" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><img src="pic/chp14/8.png" />
 实施元分析时，选题是至关重要的第一步。首先，你需要明确你的研究问题，例如探讨a对b的关系。这个问题应该具有一定的争议性，在你的研究领域内，关于a对b的关系可能存在不同的观点和结论。这样的争议性话题更适合使用元分析的方法来探讨。同时，这个问题应该是大家普遍关注的，具有探讨的价值。
 第二步是明确研究问题的具体性。你需要清晰地定义a和b的概念，避免多元的定义。如果这个阶段没有考虑清楚，后续的文献检索将会遇到困难。
@@ -571,12 +582,12 @@ alpha）或者结果相似性（百分比相似）。在实际应用中，α系�
 <p><img src="pic/chp14/21.png" /></p>
 <p>我们首先需要加载所需的R包。然后，我们进入到元分析中比较复杂的步骤，我个人认为这是最麻烦的一个步骤。之后的步骤实际上都很简单，通常只需要一行代码就可以完成。
 # 加载所需R包</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="第十四讲心理学元分析入门.html#cb389-1" tabindex="-1"></a><span class="co"># Packages</span></span>
-<span id="cb389-2"><a href="第十四讲心理学元分析入门.html#cb389-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&#39;pacman&#39;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb389-3"><a href="第十四讲心理学元分析入门.html#cb389-3" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&#39;pacman&#39;</span>)</span>
-<span id="cb389-4"><a href="第十四讲心理学元分析入门.html#cb389-4" tabindex="-1"></a>}</span>
-<span id="cb389-5"><a href="第十四讲心理学元分析入门.html#cb389-5" tabindex="-1"></a> </span>
-<span id="cb389-6"><a href="第十四讲心理学元分析入门.html#cb389-6" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, esc, metafor, meta)</span></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="第十四讲心理学元分析入门.html#cb437-1" tabindex="-1"></a><span class="co"># Packages</span></span>
+<span id="cb437-2"><a href="第十四讲心理学元分析入门.html#cb437-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&#39;pacman&#39;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb437-3"><a href="第十四讲心理学元分析入门.html#cb437-3" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&#39;pacman&#39;</span>)</span>
+<span id="cb437-4"><a href="第十四讲心理学元分析入门.html#cb437-4" tabindex="-1"></a>}</span>
+<span id="cb437-5"><a href="第十四讲心理学元分析入门.html#cb437-5" tabindex="-1"></a> </span>
+<span id="cb437-6"><a href="第十四讲心理学元分析入门.html#cb437-6" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, esc, metafor, meta)</span></code></pre></div>
 <p>这个复杂的步骤是对单个研究进行效应量的转化。首先，我们回顾一下什么是效应量。效应量是衡量实验强度的一个指标，它不受样本容量大小的影响，因此在不同的研究之间具有可比性。这也是为什么在进行各种测试时，我们通常被要求报告效应量的原因，便于进行元分析的人能够汇总这些研究的效应。</p>
 <p>效应量的种类有很多，我引用了一篇郑昊敏老师的文章，其中将效应量分为三类：</p>
 <p>1.差异类的效应量：这类效应量常用于实验研究，衡量两个或多个组之间的差异。
@@ -592,10 +603,10 @@ alpha）或者结果相似性（百分比相似）。在实际应用中，α系�
 group）的均值是87.1，标准差是7.6，而实验组的均值是87，标准差是7.3。从这些数据可以看出，效应量可能不会特别大。</p>
 <p>在R中，我们可以使用esc包中的means_d函数来计算Cohen’s
 d效应量。这个函数的使用非常直接，你只需要提供对照组和实验组的均值、标准差以及两组的被试数量，函数就会计算出效应量。下面是一个简单的R代码示例：</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="第十四讲心理学元分析入门.html#cb390-1" tabindex="-1"></a><span class="fu">esc_mean_sd</span>(</span>
-<span id="cb390-2"><a href="第十四讲心理学元分析入门.html#cb390-2" tabindex="-1"></a>  <span class="at">grp1m =</span> <span class="dv">87</span>, <span class="at">grp1sd =</span> <span class="fl">7.3</span>, <span class="at">grp1n =</span> <span class="dv">29</span>, <span class="co">#第一组（干预组）的Mean,SD和人数</span></span>
-<span id="cb390-3"><a href="第十四讲心理学元分析入门.html#cb390-3" tabindex="-1"></a>  <span class="at">grp2m =</span> <span class="fl">87.1</span>, <span class="at">grp2sd =</span> <span class="fl">7.6</span>, <span class="at">grp2n =</span> <span class="dv">30</span>, <span class="co">#第二组（控制组）的Mean,SD和人数</span></span>
-<span id="cb390-4"><a href="第十四讲心理学元分析入门.html#cb390-4" tabindex="-1"></a>  <span class="at">es.type=</span><span class="st">&quot;g&quot;</span>)<span class="co">#效应量的种类</span></span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="第十四讲心理学元分析入门.html#cb438-1" tabindex="-1"></a><span class="fu">esc_mean_sd</span>(</span>
+<span id="cb438-2"><a href="第十四讲心理学元分析入门.html#cb438-2" tabindex="-1"></a>  <span class="at">grp1m =</span> <span class="dv">87</span>, <span class="at">grp1sd =</span> <span class="fl">7.3</span>, <span class="at">grp1n =</span> <span class="dv">29</span>, <span class="co">#第一组（干预组）的Mean,SD和人数</span></span>
+<span id="cb438-3"><a href="第十四讲心理学元分析入门.html#cb438-3" tabindex="-1"></a>  <span class="at">grp2m =</span> <span class="fl">87.1</span>, <span class="at">grp2sd =</span> <span class="fl">7.6</span>, <span class="at">grp2n =</span> <span class="dv">30</span>, <span class="co">#第二组（控制组）的Mean,SD和人数</span></span>
+<span id="cb438-4"><a href="第十四讲心理学元分析入门.html#cb438-4" tabindex="-1"></a>  <span class="at">es.type=</span><span class="st">&quot;g&quot;</span>)<span class="co">#效应量的种类</span></span></code></pre></div>
 <pre><code>## 
 ## Effect Size Calculation for Meta Analysis
 ## 
@@ -617,11 +628,11 @@ g。
 对于后续的元分析，meta和metafor包对数据的要求略有不同。meta包需要方差（variance），而metafor包需要标准误（standard
 error），它们之间只是差一个平方。通常，我们会选择记录方差。
 在实际研究中，除了均值和标准差，我们还可能会遇到标准误（se）。有时候，人们可能会将标准误误认为是标准差，如果你错误地将标准误当作标准差来计算效应量，结果可能会有很大的不同。因此，在处理数据时，需要特别注意区分标准差和标准误。</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="第十四讲心理学元分析入门.html#cb392-1" tabindex="-1"></a><span class="co">#例：假如Dutke et al. (2016)的研究报告的SD其实是SE</span></span>
-<span id="cb392-2"><a href="第十四讲心理学元分析入门.html#cb392-2" tabindex="-1"></a><span class="fu">esc_mean_se</span>( <span class="co">#摘录时看清楚SD和SE非常重要！</span></span>
-<span id="cb392-3"><a href="第十四讲心理学元分析入门.html#cb392-3" tabindex="-1"></a>  <span class="at">grp1m =</span> <span class="dv">87</span>, <span class="at">grp1se =</span> <span class="fl">7.3</span>, <span class="at">grp1n =</span> <span class="dv">29</span>,</span>
-<span id="cb392-4"><a href="第十四讲心理学元分析入门.html#cb392-4" tabindex="-1"></a>  <span class="at">grp2m =</span> <span class="fl">87.1</span>, <span class="at">grp2se =</span> <span class="fl">7.6</span>, <span class="at">grp2n =</span> <span class="dv">30</span>,</span>
-<span id="cb392-5"><a href="第十四讲心理学元分析入门.html#cb392-5" tabindex="-1"></a>  <span class="at">es.type=</span><span class="st">&quot;g&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="第十四讲心理学元分析入门.html#cb440-1" tabindex="-1"></a><span class="co">#例：假如Dutke et al. (2016)的研究报告的SD其实是SE</span></span>
+<span id="cb440-2"><a href="第十四讲心理学元分析入门.html#cb440-2" tabindex="-1"></a><span class="fu">esc_mean_se</span>( <span class="co">#摘录时看清楚SD和SE非常重要！</span></span>
+<span id="cb440-3"><a href="第十四讲心理学元分析入门.html#cb440-3" tabindex="-1"></a>  <span class="at">grp1m =</span> <span class="dv">87</span>, <span class="at">grp1se =</span> <span class="fl">7.3</span>, <span class="at">grp1n =</span> <span class="dv">29</span>,</span>
+<span id="cb440-4"><a href="第十四讲心理学元分析入门.html#cb440-4" tabindex="-1"></a>  <span class="at">grp2m =</span> <span class="fl">87.1</span>, <span class="at">grp2se =</span> <span class="fl">7.6</span>, <span class="at">grp2n =</span> <span class="dv">30</span>,</span>
+<span id="cb440-5"><a href="第十四讲心理学元分析入门.html#cb440-5" tabindex="-1"></a>  <span class="at">es.type=</span><span class="st">&quot;g&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Effect Size Calculation for Meta Analysis
 ## 
@@ -638,10 +649,10 @@ error），它们之间只是差一个平方。通常，我们会选择记录方
 <p><img src="pic/chp14/26.png" /></p>
 <p>在研究中，能够获取原始数据是最理想的情况，但实际上，很多研究报告并不会提供这些原始数据。相反，它们通常会报告统计分析的结果，如t检验的统计量和效应量等。在这篇文章中，研究结果显示，实验组在成绩上显著高于控制组，并报告了t检验的统计值和效应量。</p>
 <p>虽然研究报告提供了这些信息，但我们通常对这些报告持谨慎态度，不会完全依赖于这些数据。为了验证报告中的效应量是否准确，我们可以使用esc软件包中的T检验函数来进行一些计算。这个函数会要求我们输入t值、总样本量以及效应量的类型。通过运行这个函数，我们可以得到一个效应量值。</p>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="第十四讲心理学元分析入门.html#cb394-1" tabindex="-1"></a>esc<span class="sc">::</span><span class="fu">esc_t</span>(</span>
-<span id="cb394-2"><a href="第十四讲心理学元分析入门.html#cb394-2" tabindex="-1"></a>  <span class="at">t =</span> <span class="fl">2.98</span>, <span class="co">#t值</span></span>
-<span id="cb394-3"><a href="第十四讲心理学元分析入门.html#cb394-3" tabindex="-1"></a>  <span class="at">totaln =</span> <span class="dv">40</span>, <span class="co">#总被试数</span></span>
-<span id="cb394-4"><a href="第十四讲心理学元分析入门.html#cb394-4" tabindex="-1"></a>  <span class="at">es.type=</span><span class="st">&quot;g&quot;</span>) <span class="co">#效应量的种类</span></span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="第十四讲心理学元分析入门.html#cb442-1" tabindex="-1"></a>esc<span class="sc">::</span><span class="fu">esc_t</span>(</span>
+<span id="cb442-2"><a href="第十四讲心理学元分析入门.html#cb442-2" tabindex="-1"></a>  <span class="at">t =</span> <span class="fl">2.98</span>, <span class="co">#t值</span></span>
+<span id="cb442-3"><a href="第十四讲心理学元分析入门.html#cb442-3" tabindex="-1"></a>  <span class="at">totaln =</span> <span class="dv">40</span>, <span class="co">#总被试数</span></span>
+<span id="cb442-4"><a href="第十四讲心理学元分析入门.html#cb442-4" tabindex="-1"></a>  <span class="at">es.type=</span><span class="st">&quot;g&quot;</span>) <span class="co">#效应量的种类</span></span></code></pre></div>
 <pre><code>## 
 ## Effect Size Calculation for Meta Analysis
 ## 
@@ -656,13 +667,13 @@ error），它们之间只是差一个平方。通常，我们会选择记录方
 size和variance，以备后续的元分析。</p>
 <p><img src="pic/chp14/27.png" /></p>
 <p>如果我们遇到的是相关研究，这类研究通常会报告相关系数或其他类型的回归系数。虽然我们的研究可能没有涉及问卷类数据，也不会进行相关效应量的转换，但如果我们遇到需要处理这类数据的情况，我们可以使用esc软件包来进行效应量的转换。</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="第十四讲心理学元分析入门.html#cb396-1" tabindex="-1"></a><span class="do">## 研究报告非标准化回归系数b</span></span>
-<span id="cb396-2"><a href="第十四讲心理学元分析入门.html#cb396-2" tabindex="-1"></a>esc<span class="sc">::</span><span class="fu">esc_B</span>(</span>
-<span id="cb396-3"><a href="第十四讲心理学元分析入门.html#cb396-3" tabindex="-1"></a>  <span class="at">b=</span><span class="fl">3.3</span>, <span class="co">#非标准化回归系数</span></span>
-<span id="cb396-4"><a href="第十四讲心理学元分析入门.html#cb396-4" tabindex="-1"></a>  <span class="at">sdy=</span><span class="dv">5</span>, <span class="co">#因变量的SD</span></span>
-<span id="cb396-5"><a href="第十四讲心理学元分析入门.html#cb396-5" tabindex="-1"></a>  <span class="at">grp1n =</span> <span class="dv">100</span>, <span class="co">#第一组的人数</span></span>
-<span id="cb396-6"><a href="第十四讲心理学元分析入门.html#cb396-6" tabindex="-1"></a>  <span class="at">grp2n =</span> <span class="dv">150</span>, <span class="co">#第二组的人数</span></span>
-<span id="cb396-7"><a href="第十四讲心理学元分析入门.html#cb396-7" tabindex="-1"></a>  <span class="at">es.type =</span> <span class="st">&quot;g&quot;</span>) <span class="co">#效应量的种类</span></span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="第十四讲心理学元分析入门.html#cb444-1" tabindex="-1"></a><span class="do">## 研究报告非标准化回归系数b</span></span>
+<span id="cb444-2"><a href="第十四讲心理学元分析入门.html#cb444-2" tabindex="-1"></a>esc<span class="sc">::</span><span class="fu">esc_B</span>(</span>
+<span id="cb444-3"><a href="第十四讲心理学元分析入门.html#cb444-3" tabindex="-1"></a>  <span class="at">b=</span><span class="fl">3.3</span>, <span class="co">#非标准化回归系数</span></span>
+<span id="cb444-4"><a href="第十四讲心理学元分析入门.html#cb444-4" tabindex="-1"></a>  <span class="at">sdy=</span><span class="dv">5</span>, <span class="co">#因变量的SD</span></span>
+<span id="cb444-5"><a href="第十四讲心理学元分析入门.html#cb444-5" tabindex="-1"></a>  <span class="at">grp1n =</span> <span class="dv">100</span>, <span class="co">#第一组的人数</span></span>
+<span id="cb444-6"><a href="第十四讲心理学元分析入门.html#cb444-6" tabindex="-1"></a>  <span class="at">grp2n =</span> <span class="dv">150</span>, <span class="co">#第二组的人数</span></span>
+<span id="cb444-7"><a href="第十四讲心理学元分析入门.html#cb444-7" tabindex="-1"></a>  <span class="at">es.type =</span> <span class="st">&quot;g&quot;</span>) <span class="co">#效应量的种类</span></span></code></pre></div>
 <pre><code>## 
 ## Effect Size Calculation for Meta Analysis
 ## 
@@ -674,13 +685,13 @@ size和variance，以备后续的元分析。</p>
 ##        Upper CI:   0.9544
 ##          Weight:  56.7018</code></pre>
 <p>例如，如果我们有一个研究报告了一个非标准化的回归系数，假设这个系数是3.3，我们还需要知道因变量的标准差（SD），以及两组的样本量。我们需要将这些信息输入到esc软件包中，并指定效应量的类型。通过运行相应的代码，我们可以计算出效应量。</p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="第十四讲心理学元分析入门.html#cb398-1" tabindex="-1"></a><span class="do">## 研究报告标准化回归系数beta</span></span>
-<span id="cb398-2"><a href="第十四讲心理学元分析入门.html#cb398-2" tabindex="-1"></a><span class="fu">esc_beta</span>(</span>
-<span id="cb398-3"><a href="第十四讲心理学元分析入门.html#cb398-3" tabindex="-1"></a>  <span class="at">beta=</span><span class="fl">0.7</span>, <span class="co">#标准化回归系数</span></span>
-<span id="cb398-4"><a href="第十四讲心理学元分析入门.html#cb398-4" tabindex="-1"></a>  <span class="at">sdy=</span><span class="dv">3</span>, <span class="co">#因变量的SD</span></span>
-<span id="cb398-5"><a href="第十四讲心理学元分析入门.html#cb398-5" tabindex="-1"></a>  <span class="at">grp1n=</span><span class="dv">100</span>, <span class="co">#第一组的人数</span></span>
-<span id="cb398-6"><a href="第十四讲心理学元分析入门.html#cb398-6" tabindex="-1"></a>  <span class="at">grp2n=</span><span class="dv">150</span>, <span class="co">#第二组的人数</span></span>
-<span id="cb398-7"><a href="第十四讲心理学元分析入门.html#cb398-7" tabindex="-1"></a>  <span class="at">es.type =</span> <span class="st">&quot;g&quot;</span>) <span class="co">#效应量的种类</span></span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="第十四讲心理学元分析入门.html#cb446-1" tabindex="-1"></a><span class="do">## 研究报告标准化回归系数beta</span></span>
+<span id="cb446-2"><a href="第十四讲心理学元分析入门.html#cb446-2" tabindex="-1"></a><span class="fu">esc_beta</span>(</span>
+<span id="cb446-3"><a href="第十四讲心理学元分析入门.html#cb446-3" tabindex="-1"></a>  <span class="at">beta=</span><span class="fl">0.7</span>, <span class="co">#标准化回归系数</span></span>
+<span id="cb446-4"><a href="第十四讲心理学元分析入门.html#cb446-4" tabindex="-1"></a>  <span class="at">sdy=</span><span class="dv">3</span>, <span class="co">#因变量的SD</span></span>
+<span id="cb446-5"><a href="第十四讲心理学元分析入门.html#cb446-5" tabindex="-1"></a>  <span class="at">grp1n=</span><span class="dv">100</span>, <span class="co">#第一组的人数</span></span>
+<span id="cb446-6"><a href="第十四讲心理学元分析入门.html#cb446-6" tabindex="-1"></a>  <span class="at">grp2n=</span><span class="dv">150</span>, <span class="co">#第二组的人数</span></span>
+<span id="cb446-7"><a href="第十四讲心理学元分析入门.html#cb446-7" tabindex="-1"></a>  <span class="at">es.type =</span> <span class="st">&quot;g&quot;</span>) <span class="co">#效应量的种类</span></span></code></pre></div>
 <pre><code>## 
 ## Effect Size Calculation for Meta Analysis
 ## 
@@ -709,26 +720,26 @@ size和variance，以备后续的元分析。</p>
 计算得到的效应量及其变异性：这是进行元分析的核心数据。 5.
 调节变量：如果有的话，这些变量可能对效应量有影响，也需要纳入分析。
 一旦我们选择了这些变量，我们就可以运行R代码来处理数据，并查看初步的结果。这个过程可能包括数据的导入、清洗和格式化，确保所有数据都是准确无误的。完成这些步骤后，我们就可以进行效应量的合并和元分析了。</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="第十四讲心理学元分析入门.html#cb400-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb400-2"><a href="第十四讲心理学元分析入门.html#cb400-2" tabindex="-1"></a><span class="co">#set working directory</span></span>
-<span id="cb400-3"><a href="第十四讲心理学元分析入门.html#cb400-3" tabindex="-1"></a>cur <span class="ot">&lt;-</span> <span class="fu">getwd</span>()</span>
-<span id="cb400-4"><a href="第十四讲心理学元分析入门.html#cb400-4" tabindex="-1"></a><span class="fu">setwd</span>(cur)</span>
-<span id="cb400-5"><a href="第十四讲心理学元分析入门.html#cb400-5" tabindex="-1"></a></span>
-<span id="cb400-6"><a href="第十四讲心理学元分析入门.html#cb400-6" tabindex="-1"></a><span class="co">#import </span></span>
-<span id="cb400-7"><a href="第十四讲心理学元分析入门.html#cb400-7" tabindex="-1"></a>effect_size <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/effect_size.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb400-8"><a href="第十四讲心理学元分析入门.html#cb400-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
-<span id="cb400-9"><a href="第十四讲心理学元分析入门.html#cb400-9" tabindex="-1"></a>    id, <span class="co">#独立研究编号</span></span>
-<span id="cb400-10"><a href="第十四讲心理学元分析入门.html#cb400-10" tabindex="-1"></a>    Information, <span class="co">#作者信息</span></span>
-<span id="cb400-11"><a href="第十四讲心理学元分析入门.html#cb400-11" tabindex="-1"></a>    N, <span class="co">#被试数</span></span>
-<span id="cb400-12"><a href="第十四讲心理学元分析入门.html#cb400-12" tabindex="-1"></a>    ES, <span class="co">#刚刚计算的每个研究的效应量</span></span>
-<span id="cb400-13"><a href="第十四讲心理学元分析入门.html#cb400-13" tabindex="-1"></a>    VI, <span class="co">#刚刚计算的，效应量的variance</span></span>
-<span id="cb400-14"><a href="第十四讲心理学元分析入门.html#cb400-14" tabindex="-1"></a>    <span class="st">&quot;Cohort&quot;</span>   <span class="ot">=</span> subgroup1,</span>
-<span id="cb400-15"><a href="第十四讲心理学元分析入门.html#cb400-15" tabindex="-1"></a>    <span class="st">&quot;Context&quot;</span>   <span class="ot">=</span> subgroup2,</span>
-<span id="cb400-16"><a href="第十四讲心理学元分析入门.html#cb400-16" tabindex="-1"></a>    <span class="st">&quot;Materials&quot;</span>  <span class="ot">=</span> subgroup3,</span>
-<span id="cb400-17"><a href="第十四讲心理学元分析入门.html#cb400-17" tabindex="-1"></a>    <span class="st">&quot;Valence&quot;</span> <span class="ot">=</span> subgroup4</span>
-<span id="cb400-18"><a href="第十四讲心理学元分析入门.html#cb400-18" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb400-19"><a href="第十四讲心理学元分析入门.html#cb400-19" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)) </span>
-<span id="cb400-20"><a href="第十四讲心理学元分析入门.html#cb400-20" tabindex="-1"></a><span class="fu">head</span>(effect_size)</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="第十四讲心理学元分析入门.html#cb448-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb448-2"><a href="第十四讲心理学元分析入门.html#cb448-2" tabindex="-1"></a><span class="co">#set working directory</span></span>
+<span id="cb448-3"><a href="第十四讲心理学元分析入门.html#cb448-3" tabindex="-1"></a>cur <span class="ot">&lt;-</span> <span class="fu">getwd</span>()</span>
+<span id="cb448-4"><a href="第十四讲心理学元分析入门.html#cb448-4" tabindex="-1"></a><span class="fu">setwd</span>(cur)</span>
+<span id="cb448-5"><a href="第十四讲心理学元分析入门.html#cb448-5" tabindex="-1"></a></span>
+<span id="cb448-6"><a href="第十四讲心理学元分析入门.html#cb448-6" tabindex="-1"></a><span class="co">#import </span></span>
+<span id="cb448-7"><a href="第十四讲心理学元分析入门.html#cb448-7" tabindex="-1"></a>effect_size <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/effect_size.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb448-8"><a href="第十四讲心理学元分析入门.html#cb448-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb448-9"><a href="第十四讲心理学元分析入门.html#cb448-9" tabindex="-1"></a>    id, <span class="co">#独立研究编号</span></span>
+<span id="cb448-10"><a href="第十四讲心理学元分析入门.html#cb448-10" tabindex="-1"></a>    Information, <span class="co">#作者信息</span></span>
+<span id="cb448-11"><a href="第十四讲心理学元分析入门.html#cb448-11" tabindex="-1"></a>    N, <span class="co">#被试数</span></span>
+<span id="cb448-12"><a href="第十四讲心理学元分析入门.html#cb448-12" tabindex="-1"></a>    ES, <span class="co">#刚刚计算的每个研究的效应量</span></span>
+<span id="cb448-13"><a href="第十四讲心理学元分析入门.html#cb448-13" tabindex="-1"></a>    VI, <span class="co">#刚刚计算的，效应量的variance</span></span>
+<span id="cb448-14"><a href="第十四讲心理学元分析入门.html#cb448-14" tabindex="-1"></a>    <span class="st">&quot;Cohort&quot;</span>   <span class="ot">=</span> subgroup1,</span>
+<span id="cb448-15"><a href="第十四讲心理学元分析入门.html#cb448-15" tabindex="-1"></a>    <span class="st">&quot;Context&quot;</span>   <span class="ot">=</span> subgroup2,</span>
+<span id="cb448-16"><a href="第十四讲心理学元分析入门.html#cb448-16" tabindex="-1"></a>    <span class="st">&quot;Materials&quot;</span>  <span class="ot">=</span> subgroup3,</span>
+<span id="cb448-17"><a href="第十四讲心理学元分析入门.html#cb448-17" tabindex="-1"></a>    <span class="st">&quot;Valence&quot;</span> <span class="ot">=</span> subgroup4</span>
+<span id="cb448-18"><a href="第十四讲心理学元分析入门.html#cb448-18" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb448-19"><a href="第十四讲心理学元分析入门.html#cb448-19" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)) </span>
+<span id="cb448-20"><a href="第十四讲心理学元分析入门.html#cb448-20" tabindex="-1"></a><span class="fu">head</span>(effect_size)</span></code></pre></div>
 <pre><code>##   id                  Information   N     ES     VI Cohort Context Materials Valence
 ## 1  1       Axelsson et al. (2018)  23 0.4351 0.0489      1       1         1       1
 ## 2  2 Cunningham et al. (2018), S1  30 1.3587 0.0827      1       1                 1
@@ -740,17 +751,17 @@ size和variance，以备后续的元分析。</p>
 <p>在转换数据时，需要指定计算的是哪种类型的效应量。例如，如果计算的是两组之间的标准化平均差异（standardized
 mean
 difference），应该在escalc函数中指定这一点。同时，还需要提供数据集的名称，以及效应量（yi）和效应量变异性（VI）对应的变量名。转换完成后，如果想要绘制森林图并且希望图中的数据按照效应量大小排序，可以使用order函数对数据进行排序。这样，数据就会按照效应量从小到大的顺序排列，便于后续的分析和绘图。</p>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="第十四讲心理学元分析入门.html#cb402-1" tabindex="-1"></a><span class="co">#数据预处理</span></span>
-<span id="cb402-2"><a href="第十四讲心理学元分析入门.html#cb402-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">escalc</span>( <span class="co">#转换成escalc的格式</span></span>
-<span id="cb402-3"><a href="第十四讲心理学元分析入门.html#cb402-3" tabindex="-1"></a>  <span class="at">measure=</span><span class="st">&quot;SMD&quot;</span>,  </span>
-<span id="cb402-4"><a href="第十四讲心理学元分析入门.html#cb402-4" tabindex="-1"></a>  <span class="at">data =</span> effect_size,</span>
-<span id="cb402-5"><a href="第十四讲心理学元分析入门.html#cb402-5" tabindex="-1"></a>  <span class="at">yi=</span> ES, <span class="co">#指定每个研究的效应量是哪列</span></span>
-<span id="cb402-6"><a href="第十四讲心理学元分析入门.html#cb402-6" tabindex="-1"></a>  <span class="at">vi =</span> VI,  <span class="co">#指定每个研究的效应量的variance是哪列</span></span>
-<span id="cb402-7"><a href="第十四讲心理学元分析入门.html#cb402-7" tabindex="-1"></a>  <span class="at">slab =</span> <span class="fu">paste</span>(<span class="st">&quot;Study ID:&quot;</span>, id)) <span class="co">#注明研究的label</span></span>
-<span id="cb402-8"><a href="第十四讲心理学元分析入门.html#cb402-8" tabindex="-1"></a></span>
-<span id="cb402-9"><a href="第十四讲心理学元分析入门.html#cb402-9" tabindex="-1"></a><span class="co">#按效应量大小进行排序，方便后续画图展示</span></span>
-<span id="cb402-10"><a href="第十四讲心理学元分析入门.html#cb402-10" tabindex="-1"></a>df <span class="ot">&lt;-</span> df[<span class="fu">order</span>(df<span class="sc">$</span>yi), ]</span>
-<span id="cb402-11"><a href="第十四讲心理学元分析入门.html#cb402-11" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="第十四讲心理学元分析入门.html#cb450-1" tabindex="-1"></a><span class="co">#数据预处理</span></span>
+<span id="cb450-2"><a href="第十四讲心理学元分析入门.html#cb450-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">escalc</span>( <span class="co">#转换成escalc的格式</span></span>
+<span id="cb450-3"><a href="第十四讲心理学元分析入门.html#cb450-3" tabindex="-1"></a>  <span class="at">measure=</span><span class="st">&quot;SMD&quot;</span>,  </span>
+<span id="cb450-4"><a href="第十四讲心理学元分析入门.html#cb450-4" tabindex="-1"></a>  <span class="at">data =</span> effect_size,</span>
+<span id="cb450-5"><a href="第十四讲心理学元分析入门.html#cb450-5" tabindex="-1"></a>  <span class="at">yi=</span> ES, <span class="co">#指定每个研究的效应量是哪列</span></span>
+<span id="cb450-6"><a href="第十四讲心理学元分析入门.html#cb450-6" tabindex="-1"></a>  <span class="at">vi =</span> VI,  <span class="co">#指定每个研究的效应量的variance是哪列</span></span>
+<span id="cb450-7"><a href="第十四讲心理学元分析入门.html#cb450-7" tabindex="-1"></a>  <span class="at">slab =</span> <span class="fu">paste</span>(<span class="st">&quot;Study ID:&quot;</span>, id)) <span class="co">#注明研究的label</span></span>
+<span id="cb450-8"><a href="第十四讲心理学元分析入门.html#cb450-8" tabindex="-1"></a></span>
+<span id="cb450-9"><a href="第十四讲心理学元分析入门.html#cb450-9" tabindex="-1"></a><span class="co">#按效应量大小进行排序，方便后续画图展示</span></span>
+<span id="cb450-10"><a href="第十四讲心理学元分析入门.html#cb450-10" tabindex="-1"></a>df <span class="ot">&lt;-</span> df[<span class="fu">order</span>(df<span class="sc">$</span>yi), ]</span>
+<span id="cb450-11"><a href="第十四讲心理学元分析入门.html#cb450-11" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## 
 ##    id                Information   N      ES     VI Cohort Context Materials Valence      yi     vi 
 ## 12 12 Kühl and Münzer (2021), G2  60 -0.5278 0.0691      3       1         1       2 -0.5278 0.0691 
@@ -760,12 +771,12 @@ difference），应该在escalc函数中指定这一点。同时，还需要提�
 ## 14 14       Li et al. (2021), S2  29  0.0477 0.0276      3       1         1       1  0.0477 0.0276 
 ## 4   4      d&#39;Ailly et al. (1997) 100  0.2108 0.0096      1       1         1       1  0.2108 0.0096</code></pre>
 <p>在元分析中，计算综合效应量是一个关键步骤，这一步骤实际上可以通过一行代码来完成。我们可以使用metafor软件包中的rma函数来计算。在这个函数中，我们需要输入的是每个研究的效应量及其变异性（variance）。此外，我们还需要指定分析使用的方法（method）。通常情况下，我们可以使用函数的默认方法，除非有特定的理由需要更改。</p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="第十四讲心理学元分析入门.html#cb404-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma</span>(</span>
-<span id="cb404-2"><a href="第十四讲心理学元分析入门.html#cb404-2" tabindex="-1"></a>  yi,<span class="co">#每个研究的效应量</span></span>
-<span id="cb404-3"><a href="第十四讲心理学元分析入门.html#cb404-3" tabindex="-1"></a>  vi,<span class="co">#每个研究的效应量的variance</span></span>
-<span id="cb404-4"><a href="第十四讲心理学元分析入门.html#cb404-4" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;REML&quot;</span>, <span class="co">#method=&quot;REML&quot; is the default</span></span>
-<span id="cb404-5"><a href="第十四讲心理学元分析入门.html#cb404-5" tabindex="-1"></a>  <span class="at">data =</span> df)</span>
-<span id="cb404-6"><a href="第十四讲心理学元分析入门.html#cb404-6" tabindex="-1"></a>res</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="第十四讲心理学元分析入门.html#cb452-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma</span>(</span>
+<span id="cb452-2"><a href="第十四讲心理学元分析入门.html#cb452-2" tabindex="-1"></a>  yi,<span class="co">#每个研究的效应量</span></span>
+<span id="cb452-3"><a href="第十四讲心理学元分析入门.html#cb452-3" tabindex="-1"></a>  vi,<span class="co">#每个研究的效应量的variance</span></span>
+<span id="cb452-4"><a href="第十四讲心理学元分析入门.html#cb452-4" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;REML&quot;</span>, <span class="co">#method=&quot;REML&quot; is the default</span></span>
+<span id="cb452-5"><a href="第十四讲心理学元分析入门.html#cb452-5" tabindex="-1"></a>  <span class="at">data =</span> df)</span>
+<span id="cb452-6"><a href="第十四讲心理学元分析入门.html#cb452-6" tabindex="-1"></a>res</span></code></pre></div>
 <pre><code>## 
 ## Random-Effects Model (k = 20; tau^2 estimator: REML)
 ## 
@@ -801,17 +812,17 @@ to moderate effect），这表明自我参照编码在教育教学中是有效�
 <p>在使用meta包时，需要提供每个研究的效应量（yi）和效应量的变异性（VI）。但是，需要注意的是，meta包在计算时使用的是效应量标准误的平方，而不是效应量的变异性。因此，需要将VI的开方作为标准误输入到meta包中。此外，还需要提供研究标签（study
 labels）和数据集，以及指定是使用随机效应模型还是固定效应模型，并且可以选择是否输出置信区间。还需要指定效应量的度量类型，例如标准化均值差异（standardized
 mean difference）。</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="第十四讲心理学元分析入门.html#cb406-1" tabindex="-1"></a><span class="do">## 用meta进行效应量合并</span></span>
-<span id="cb406-2"><a href="第十四讲心理学元分析入门.html#cb406-2" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> meta<span class="sc">::</span><span class="fu">metagen</span>(</span>
-<span id="cb406-3"><a href="第十四讲心理学元分析入门.html#cb406-3" tabindex="-1"></a>  <span class="at">TE =</span> yi,<span class="co">#每个研究的效应量</span></span>
-<span id="cb406-4"><a href="第十四讲心理学元分析入门.html#cb406-4" tabindex="-1"></a>  <span class="at">seTE =</span> <span class="fu">sqrt</span>(vi), <span class="co">#每个研究的效应量的标准误</span></span>
-<span id="cb406-5"><a href="第十四讲心理学元分析入门.html#cb406-5" tabindex="-1"></a>  <span class="at">data =</span> df,</span>
-<span id="cb406-6"><a href="第十四讲心理学元分析入门.html#cb406-6" tabindex="-1"></a>  <span class="at">studlab =</span> df<span class="sc">$</span>id,</span>
-<span id="cb406-7"><a href="第十四讲心理学元分析入门.html#cb406-7" tabindex="-1"></a>  <span class="at">fixed =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb406-8"><a href="第十四讲心理学元分析入门.html#cb406-8" tabindex="-1"></a>  <span class="at">random =</span> <span class="cn">TRUE</span>, <span class="co">#选择随机效应模型</span></span>
-<span id="cb406-9"><a href="第十四讲心理学元分析入门.html#cb406-9" tabindex="-1"></a>  <span class="at">prediction =</span> <span class="cn">TRUE</span>, <span class="co">#是否需要CI</span></span>
-<span id="cb406-10"><a href="第十四讲心理学元分析入门.html#cb406-10" tabindex="-1"></a>  <span class="at">sm =</span> <span class="st">&quot;SMD&quot;</span>)</span>
-<span id="cb406-11"><a href="第十四讲心理学元分析入门.html#cb406-11" tabindex="-1"></a>res1</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="第十四讲心理学元分析入门.html#cb454-1" tabindex="-1"></a><span class="do">## 用meta进行效应量合并</span></span>
+<span id="cb454-2"><a href="第十四讲心理学元分析入门.html#cb454-2" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> meta<span class="sc">::</span><span class="fu">metagen</span>(</span>
+<span id="cb454-3"><a href="第十四讲心理学元分析入门.html#cb454-3" tabindex="-1"></a>  <span class="at">TE =</span> yi,<span class="co">#每个研究的效应量</span></span>
+<span id="cb454-4"><a href="第十四讲心理学元分析入门.html#cb454-4" tabindex="-1"></a>  <span class="at">seTE =</span> <span class="fu">sqrt</span>(vi), <span class="co">#每个研究的效应量的标准误</span></span>
+<span id="cb454-5"><a href="第十四讲心理学元分析入门.html#cb454-5" tabindex="-1"></a>  <span class="at">data =</span> df,</span>
+<span id="cb454-6"><a href="第十四讲心理学元分析入门.html#cb454-6" tabindex="-1"></a>  <span class="at">studlab =</span> df<span class="sc">$</span>id,</span>
+<span id="cb454-7"><a href="第十四讲心理学元分析入门.html#cb454-7" tabindex="-1"></a>  <span class="at">fixed =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb454-8"><a href="第十四讲心理学元分析入门.html#cb454-8" tabindex="-1"></a>  <span class="at">random =</span> <span class="cn">TRUE</span>, <span class="co">#选择随机效应模型</span></span>
+<span id="cb454-9"><a href="第十四讲心理学元分析入门.html#cb454-9" tabindex="-1"></a>  <span class="at">prediction =</span> <span class="cn">TRUE</span>, <span class="co">#是否需要CI</span></span>
+<span id="cb454-10"><a href="第十四讲心理学元分析入门.html#cb454-10" tabindex="-1"></a>  <span class="at">sm =</span> <span class="st">&quot;SMD&quot;</span>)</span>
+<span id="cb454-11"><a href="第十四讲心理学元分析入门.html#cb454-11" tabindex="-1"></a>res1</span></code></pre></div>
 <pre><code>## Number of studies: k = 20
 ## 
 ##                         SMD            95%-CI    z p-value
@@ -840,18 +851,18 @@ plot）是一种常用的图形展示方法，用于展示每个研究的结果�
 每个研究的95%置信区间：这表示每个效应量估计值的可信度范围。
 研究标签：这有助于识别每个研究。
 合并的效应量：这表示所有研究的效应量加权平均，通常位于森林图的底部，用菱形或方形表示。</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="第十四讲心理学元分析入门.html#cb408-1" tabindex="-1"></a><span class="do">## 绘制森林图</span></span>
-<span id="cb408-2"><a href="第十四讲心理学元分析入门.html#cb408-2" tabindex="-1"></a><span class="co">#储存图像的代码</span></span>
-<span id="cb408-3"><a href="第十四讲心理学元分析入门.html#cb408-3" tabindex="-1"></a><span class="co"># tiff(file=&quot;forest_overall.tiff&quot;,</span></span>
-<span id="cb408-4"><a href="第十四讲心理学元分析入门.html#cb408-4" tabindex="-1"></a><span class="co"># res=800,width = 9000,height = 4800)#save tiff</span></span>
-<span id="cb408-5"><a href="第十四讲心理学元分析入门.html#cb408-5" tabindex="-1"></a></span>
-<span id="cb408-6"><a href="第十四讲心理学元分析入门.html#cb408-6" tabindex="-1"></a>metafor<span class="sc">::</span><span class="fu">forest</span>(</span>
-<span id="cb408-7"><a href="第十四讲心理学元分析入门.html#cb408-7" tabindex="-1"></a>  res,</span>
-<span id="cb408-8"><a href="第十四讲心理学元分析入门.html#cb408-8" tabindex="-1"></a>  <span class="at">slab =</span> <span class="fu">paste</span>(df<span class="sc">$</span>Information),</span>
-<span id="cb408-9"><a href="第十四讲心理学元分析入门.html#cb408-9" tabindex="-1"></a>  <span class="at">header=</span><span class="st">&quot;Author(s) and Year&quot;</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="第十四讲心理学元分析入门.html#cb456-1" tabindex="-1"></a><span class="do">## 绘制森林图</span></span>
+<span id="cb456-2"><a href="第十四讲心理学元分析入门.html#cb456-2" tabindex="-1"></a><span class="co">#储存图像的代码</span></span>
+<span id="cb456-3"><a href="第十四讲心理学元分析入门.html#cb456-3" tabindex="-1"></a><span class="co"># tiff(file=&quot;forest_overall.tiff&quot;,</span></span>
+<span id="cb456-4"><a href="第十四讲心理学元分析入门.html#cb456-4" tabindex="-1"></a><span class="co"># res=800,width = 9000,height = 4800)#save tiff</span></span>
+<span id="cb456-5"><a href="第十四讲心理学元分析入门.html#cb456-5" tabindex="-1"></a></span>
+<span id="cb456-6"><a href="第十四讲心理学元分析入门.html#cb456-6" tabindex="-1"></a>metafor<span class="sc">::</span><span class="fu">forest</span>(</span>
+<span id="cb456-7"><a href="第十四讲心理学元分析入门.html#cb456-7" tabindex="-1"></a>  res,</span>
+<span id="cb456-8"><a href="第十四讲心理学元分析入门.html#cb456-8" tabindex="-1"></a>  <span class="at">slab =</span> <span class="fu">paste</span>(df<span class="sc">$</span>Information),</span>
+<span id="cb456-9"><a href="第十四讲心理学元分析入门.html#cb456-9" tabindex="-1"></a>  <span class="at">header=</span><span class="st">&quot;Author(s) and Year&quot;</span> )</span></code></pre></div>
 <p><img src="_main_files/figure-html/forest%20plot-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="第十四讲心理学元分析入门.html#cb409-1" tabindex="-1"></a><span class="co"># dev.off() </span></span>
-<span id="cb409-2"><a href="第十四讲心理学元分析入门.html#cb409-2" tabindex="-1"></a><span class="co">#储存图像的代码 </span></span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="第十四讲心理学元分析入门.html#cb457-1" tabindex="-1"></a><span class="co"># dev.off() </span></span>
+<span id="cb457-2"><a href="第十四讲心理学元分析入门.html#cb457-2" tabindex="-1"></a><span class="co">#储存图像的代码 </span></span></code></pre></div>
 <p>森林图将展示每个研究的效应量估计值和置信区间，以及合并的效应量。通过这个图形，可以直观地看到每个研究的结果，以及它们如何组合在一起形成一个整体的效应量估计。</p>
 <p><img src="pic/chp14/33.png" /></p>
 <p>在进行元分析并绘制了森林图之后，接下来的一步是评估研究间的异质性。异质性指的是研究结果之间的差异性和多样性，反映了研究间的变异程度。评估异质性对于确定使用固定效应模型还是随机效应模型至关重要。</p>
@@ -870,16 +881,16 @@ plot。这个方法提出的是拟合所有研究子集的模型，而不是仅�
 <p><img src="pic/chp14/35.png" /></p>
 <p>在我们这里，我们先介绍去一法，因为它可能是目前大多数研究中仍在使用的方法。对于去一法，metafor包提供了一个直接的函数来进行操作，即leave_one_out()。这个函数可以接收metafor包生成的结果列表作为输入，然后输出每个研究被排除后的效应量估计。</p>
 <p>一旦我们得到了去一法的结果，通常会进行可视化，比如绘制一个新的森林图。对于3D图，我们会告诉函数使用去一法得到的效应量估计值和标准误，并指定标题，以及如何对结果进行排序。这样，我们可以通过代码运行来查看结果。</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="第十四讲心理学元分析入门.html#cb410-1" tabindex="-1"></a><span class="co"># 敏感性分析-去1法</span></span>
-<span id="cb410-2"><a href="第十四讲心理学元分析入门.html#cb410-2" tabindex="-1"></a>l1o <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">leave1out</span>(res)</span>
-<span id="cb410-3"><a href="第十四讲心理学元分析入门.html#cb410-3" tabindex="-1"></a><span class="co">#可视化</span></span>
-<span id="cb410-4"><a href="第十四讲心理学元分析入门.html#cb410-4" tabindex="-1"></a>metafor<span class="sc">::</span><span class="fu">forest</span>(</span>
-<span id="cb410-5"><a href="第十四讲心理学元分析入门.html#cb410-5" tabindex="-1"></a>  l1o<span class="sc">$</span>estimate,</span>
-<span id="cb410-6"><a href="第十四讲心理学元分析入门.html#cb410-6" tabindex="-1"></a>  <span class="at">sei =</span> l1o<span class="sc">$</span>se,</span>
-<span id="cb410-7"><a href="第十四讲心理学元分析入门.html#cb410-7" tabindex="-1"></a>  <span class="at">header =</span> <span class="st">&quot;Ommited Study&quot;</span>,</span>
-<span id="cb410-8"><a href="第十四讲心理学元分析入门.html#cb410-8" tabindex="-1"></a>  <span class="at">slab =</span> <span class="fu">paste</span>(df<span class="sc">$</span>Information),</span>
-<span id="cb410-9"><a href="第十四讲心理学元分析入门.html#cb410-9" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Leave One Out Estimate&quot;</span>,</span>
-<span id="cb410-10"><a href="第十四讲心理学元分析入门.html#cb410-10" tabindex="-1"></a>  <span class="at">refline =</span> <span class="fu">coef</span>(res))</span></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="第十四讲心理学元分析入门.html#cb458-1" tabindex="-1"></a><span class="co"># 敏感性分析-去1法</span></span>
+<span id="cb458-2"><a href="第十四讲心理学元分析入门.html#cb458-2" tabindex="-1"></a>l1o <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">leave1out</span>(res)</span>
+<span id="cb458-3"><a href="第十四讲心理学元分析入门.html#cb458-3" tabindex="-1"></a><span class="co">#可视化</span></span>
+<span id="cb458-4"><a href="第十四讲心理学元分析入门.html#cb458-4" tabindex="-1"></a>metafor<span class="sc">::</span><span class="fu">forest</span>(</span>
+<span id="cb458-5"><a href="第十四讲心理学元分析入门.html#cb458-5" tabindex="-1"></a>  l1o<span class="sc">$</span>estimate,</span>
+<span id="cb458-6"><a href="第十四讲心理学元分析入门.html#cb458-6" tabindex="-1"></a>  <span class="at">sei =</span> l1o<span class="sc">$</span>se,</span>
+<span id="cb458-7"><a href="第十四讲心理学元分析入门.html#cb458-7" tabindex="-1"></a>  <span class="at">header =</span> <span class="st">&quot;Ommited Study&quot;</span>,</span>
+<span id="cb458-8"><a href="第十四讲心理学元分析入门.html#cb458-8" tabindex="-1"></a>  <span class="at">slab =</span> <span class="fu">paste</span>(df<span class="sc">$</span>Information),</span>
+<span id="cb458-9"><a href="第十四讲心理学元分析入门.html#cb458-9" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Leave One Out Estimate&quot;</span>,</span>
+<span id="cb458-10"><a href="第十四讲心理学元分析入门.html#cb458-10" tabindex="-1"></a>  <span class="at">refline =</span> <span class="fu">coef</span>(res))</span></code></pre></div>
 <p><img src="_main_files/figure-html/leave%201%20out%20method-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>在执行去一法敏感性分析并绘制新的森林图后，我们可以观察到效应量估计值的变化，从而评估每个研究对整体效应量估计的贡献。例如，如果去掉第一个研究后，效应量估计值显著增加，这可能表明该研究的结果与整体趋势不同，或者其效应量估计可能存在偏差。
 通过敏感性分析，我们可以识别出那些对整体效应量估计有显著影响的“极端”研究。例如，如果某个研究报告了一个非常大的效应量，而通过去一法分析发现，去掉这个研究后，效应量的估计值并没有发生显著变化，这表明该研究对整体效应量估计的影响并不大，从而增强了研究的稳健性。
@@ -889,14 +900,14 @@ plot。这个方法提出的是拟合所有研究子集的模型，而不是仅�
 <p>好的，我们进入元分析的第九步，也就是亚组分析。这一步的目的是验证第二个研究问题，即是否存在某些边界条件或调节变量，这些变量可能会影响效应量的大小。</p>
 <p>亚组分析的目的是考察不同亚组之间的差异，并确定效应量是否存在显著性。例如，如果我们想探究自我参照效应在学习疾病信息时的应用效果是否与材料附带的情感价值有关，我们可以将学习材料分为情感价值较高的材料和情感价值中性的材料，然后比较这两种材料下的学习效果是否存在差异。</p>
 <p>进行亚组分析的过程相当简单，只需要使用metafor包中的update函数。这个函数需要接收一个已经生成的元分析结果对象，然后指定亚组的变量，并指定使用随机效应模型。</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="第十四讲心理学元分析入门.html#cb411-1" tabindex="-1"></a><span class="co"># 调节效应检验-亚组分析</span></span>
-<span id="cb411-2"><a href="第十四讲心理学元分析入门.html#cb411-2" tabindex="-1"></a><span class="do">### 例子：我们想考察材料附带的情感价值（负性/非负性）是否会影响教学效果。</span></span>
-<span id="cb411-3"><a href="第十四讲心理学元分析入门.html#cb411-3" tabindex="-1"></a>valence_subgroup <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">update</span>(</span>
-<span id="cb411-4"><a href="第十四讲心理学元分析入门.html#cb411-4" tabindex="-1"></a>  res1,  </span>
-<span id="cb411-5"><a href="第十四讲心理学元分析入门.html#cb411-5" tabindex="-1"></a>  <span class="at">subgroup =</span> Valence, <span class="co">#亚组标记 </span></span>
-<span id="cb411-6"><a href="第十四讲心理学元分析入门.html#cb411-6" tabindex="-1"></a>  <span class="at">random =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb411-7"><a href="第十四讲心理学元分析入门.html#cb411-7" tabindex="-1"></a>  <span class="at">fixed =</span> <span class="cn">FALSE</span>) </span>
-<span id="cb411-8"><a href="第十四讲心理学元分析入门.html#cb411-8" tabindex="-1"></a>valence_subgroup</span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="第十四讲心理学元分析入门.html#cb459-1" tabindex="-1"></a><span class="co"># 调节效应检验-亚组分析</span></span>
+<span id="cb459-2"><a href="第十四讲心理学元分析入门.html#cb459-2" tabindex="-1"></a><span class="do">### 例子：我们想考察材料附带的情感价值（负性/非负性）是否会影响教学效果。</span></span>
+<span id="cb459-3"><a href="第十四讲心理学元分析入门.html#cb459-3" tabindex="-1"></a>valence_subgroup <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">update</span>(</span>
+<span id="cb459-4"><a href="第十四讲心理学元分析入门.html#cb459-4" tabindex="-1"></a>  res1,  </span>
+<span id="cb459-5"><a href="第十四讲心理学元分析入门.html#cb459-5" tabindex="-1"></a>  <span class="at">subgroup =</span> Valence, <span class="co">#亚组标记 </span></span>
+<span id="cb459-6"><a href="第十四讲心理学元分析入门.html#cb459-6" tabindex="-1"></a>  <span class="at">random =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb459-7"><a href="第十四讲心理学元分析入门.html#cb459-7" tabindex="-1"></a>  <span class="at">fixed =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb459-8"><a href="第十四讲心理学元分析入门.html#cb459-8" tabindex="-1"></a>valence_subgroup</span></code></pre></div>
 <pre><code>## Number of studies: k = 20
 ## 
 ##                         SMD            95%-CI    z p-value
@@ -934,12 +945,12 @@ plot。这个方法提出的是拟合所有研究子集的模型，而不是仅�
 <p>确实，除了类别型变量，我们也会遇到连续变量，例如年龄、性别比等。对于这些连续变量，我们可以使用元回归来探索它们与效应量之间的潜在关系。元回归是一种统计方法，用于分析一个或多个连续调节变量对元分析中效应量的影响。
 <img src="pic/chp14/38.png" /></p>
 <p>在metafor包中，进行元回归分析的函数是meta_regression()。这个函数接收元分析的结果对象作为输入，然后指定调节变量。通过运行这个函数，我们可以得到元回归分析的结果。</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="第十四讲心理学元分析入门.html#cb413-1" tabindex="-1"></a><span class="co"># 调节效应检验-元回归 </span></span>
-<span id="cb413-2"><a href="第十四讲心理学元分析入门.html#cb413-2" tabindex="-1"></a><span class="do">### 例子：我们想考察被试量(N)是否影响效应量大小。</span></span>
-<span id="cb413-3"><a href="第十四讲心理学元分析入门.html#cb413-3" tabindex="-1"></a>N_metareg <span class="ot">&lt;-</span> meta<span class="sc">::</span><span class="fu">metareg</span>(</span>
-<span id="cb413-4"><a href="第十四讲心理学元分析入门.html#cb413-4" tabindex="-1"></a>  res1,</span>
-<span id="cb413-5"><a href="第十四讲心理学元分析入门.html#cb413-5" tabindex="-1"></a>  N)</span>
-<span id="cb413-6"><a href="第十四讲心理学元分析入门.html#cb413-6" tabindex="-1"></a>N_metareg</span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="第十四讲心理学元分析入门.html#cb461-1" tabindex="-1"></a><span class="co"># 调节效应检验-元回归 </span></span>
+<span id="cb461-2"><a href="第十四讲心理学元分析入门.html#cb461-2" tabindex="-1"></a><span class="do">### 例子：我们想考察被试量(N)是否影响效应量大小。</span></span>
+<span id="cb461-3"><a href="第十四讲心理学元分析入门.html#cb461-3" tabindex="-1"></a>N_metareg <span class="ot">&lt;-</span> meta<span class="sc">::</span><span class="fu">metareg</span>(</span>
+<span id="cb461-4"><a href="第十四讲心理学元分析入门.html#cb461-4" tabindex="-1"></a>  res1,</span>
+<span id="cb461-5"><a href="第十四讲心理学元分析入门.html#cb461-5" tabindex="-1"></a>  N)</span>
+<span id="cb461-6"><a href="第十四讲心理学元分析入门.html#cb461-6" tabindex="-1"></a>N_metareg</span></code></pre></div>
 <pre><code>## 
 ## Mixed-Effects Model (k = 20; tau^2 estimator: REML)
 ## 
@@ -974,11 +985,11 @@ test、Begg’s
 test等。这些方法可以帮助我们了解是否存在发表偏倚，并评估其对元分析结果的影响。</p>
 <p><img src="pic/chp14/40.png" /></p>
 <p>在R语言中，可以使用metafor包中的函数来绘制漏斗图，例如funnel()函数。这个函数可以直接从metafor包生成的结果列表中获取数据，并生成漏斗图。通过这个图，我们可以直观地看到研究结果的分布情况，从而判断是否存在发表偏倚。</p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="第十四讲心理学元分析入门.html#cb415-1" tabindex="-1"></a><span class="co"># 发表偏倚检验</span></span>
-<span id="cb415-2"><a href="第十四讲心理学元分析入门.html#cb415-2" tabindex="-1"></a><span class="do">## 漏斗图</span></span>
-<span id="cb415-3"><a href="第十四讲心理学元分析入门.html#cb415-3" tabindex="-1"></a>metafor<span class="sc">::</span><span class="fu">funnel</span>(</span>
-<span id="cb415-4"><a href="第十四讲心理学元分析入门.html#cb415-4" tabindex="-1"></a>  res,</span>
-<span id="cb415-5"><a href="第十四讲心理学元分析入门.html#cb415-5" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Hedges&#39; g&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="第十四讲心理学元分析入门.html#cb463-1" tabindex="-1"></a><span class="co"># 发表偏倚检验</span></span>
+<span id="cb463-2"><a href="第十四讲心理学元分析入门.html#cb463-2" tabindex="-1"></a><span class="do">## 漏斗图</span></span>
+<span id="cb463-3"><a href="第十四讲心理学元分析入门.html#cb463-3" tabindex="-1"></a>metafor<span class="sc">::</span><span class="fu">funnel</span>(</span>
+<span id="cb463-4"><a href="第十四讲心理学元分析入门.html#cb463-4" tabindex="-1"></a>  res,</span>
+<span id="cb463-5"><a href="第十四讲心理学元分析入门.html#cb463-5" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Hedges&#39; g&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/funnel%20plot-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>生成漏斗图后，可以观察图形来判断是否存在发表偏倚。如果图形对称地分布在两侧，这通常表明没有发表偏倚。然而，如果图形出现不对称，特别是小样本研究集中在漏斗图的一侧，这可能表明存在发表偏倚。</p>
 <p>漏斗图是一种直观的展示方法，但它只是一个辅助工具。如果需要正式报告是否存在发表偏倚，通常还需要进行发表偏倚检验，如Egger’s
@@ -988,8 +999,8 @@ test，并查看检验的p值。如果p值小于常用的显著性水平（如0.
 <p>在元分析中，为了确认是否存在发表偏倚，除了使用漏斗图进行可视化分析之外，还需要进行统计检验。这通常是通过Egger’s
 regression来实现，它可以提供一个统计量来评估漏斗图的对称性。如果Egger’s
 regression的p值不显著，这通常表明漏斗图是对称的，从而暗示没有发表偏倚。</p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="第十四讲心理学元分析入门.html#cb416-1" tabindex="-1"></a><span class="do">## Egger test</span></span>
-<span id="cb416-2"><a href="第十四讲心理学元分析入门.html#cb416-2" tabindex="-1"></a>metafor<span class="sc">::</span><span class="fu">regtest</span>(res, <span class="at">model =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="第十四讲心理学元分析入门.html#cb464-1" tabindex="-1"></a><span class="do">## Egger test</span></span>
+<span id="cb464-2"><a href="第十四讲心理学元分析入门.html#cb464-2" tabindex="-1"></a>metafor<span class="sc">::</span><span class="fu">regtest</span>(res, <span class="at">model =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Regression Test for Funnel Plot Asymmetry
 ## 
@@ -1006,8 +1017,8 @@ regression的结果后，可以查看其统计量，如ttest和pvalue，以判�
 <p><img src="pic/chp14/42.png" /></p>
 <p>其实，一个元分析最基本的步骤也就基本上到这儿就结束了，当然还有就是数据分析阶段和你的结果报告，然后以及你需要去怎么frame你的文章的问题。这就是一个最基本的流程。</p>
 </div>
-<div id="回顾与总结" class="section level2 hasAnchor" number="12.3">
-<h2><span class="header-section-number">12.3</span> 回顾与总结<a href="第十四讲心理学元分析入门.html#回顾与总结" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="回顾与总结" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> 回顾与总结<a href="第十四讲心理学元分析入门.html#回顾与总结" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><img src="pic/chp14/43.png" /></p>
 <p>确实，元分析并不是没有问题的，它仍然存在一些局限性和挑战。随着元分析技术的发展，学者们对元分析的理论和实践进行了深入的反思，并提出了一些新的方法来克服这些局限性。
 传统元分析的一个基本假设是每个效应量之间是相互独立的。然而，在实际研究中，这种独立性往往是不成立的。例如，同一研究中的多个效应量可能来自同一个样本群体，因此它们之间可能存在较高的相关性。忽略这种相关性可能导致元分析结果的不准确。
