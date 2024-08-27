@@ -1,7 +1,7 @@
 ---
 title: "R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)"
 author: "胡传鹏"
-date: "2024年04月16日"
+date: "2024年06月30日"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 description: "课程bookdown"

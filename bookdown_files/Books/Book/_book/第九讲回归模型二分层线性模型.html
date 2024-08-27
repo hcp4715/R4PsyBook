@@ -51,9 +51,10 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.32/datatables.js"></script>
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
 <link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
@@ -61,11 +62,14 @@
 <script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
 <script src="libs/panelset-0.2.6/panelset.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.11/grViz.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -75,7 +79,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -371,87 +375,115 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#其他分布"><i class="fa fa-check"></i><b>10.5</b> 其他分布</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html"><i class="fa fa-check"></i><b>11</b> 第十二讲：数据可视化进阶</a>
+<li class="chapter" data-level="11" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html"><i class="fa fa-check"></i><b>11</b> 第十一讲：回归模型(四)：中介分析</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图的必要性和作图数据处理"><i class="fa fa-check"></i><b>11.1</b> 作图的必要性和作图数据处理</a>
+<li class="chapter" data-level="11.1" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#准备工作"><i class="fa fa-check"></i><b>11.1</b> 准备工作</a></li>
+<li class="chapter" data-level="11.2" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#线性模型回顾"><i class="fa fa-check"></i><b>11.2</b> 线性模型回顾</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#为什么要作图以及作图的原则"><i class="fa fa-check"></i><b>11.1.1</b> 为什么要作图以及作图的原则</a></li>
-<li class="chapter" data-level="11.1.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图数据准备"><i class="fa fa-check"></i><b>11.1.2</b> 作图数据准备</a></li>
+<li class="chapter" data-level="11.2.1" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#线性模型及模型检验"><i class="fa fa-check"></i><b>11.2.1</b> 线性模型及模型检验</a></li>
+<li class="chapter" data-level="11.2.2" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#多元线性模型的局限"><i class="fa fa-check"></i><b>11.2.2</b> 多元线性模型的局限</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#基础作图"><i class="fa fa-check"></i><b>11.2</b> 基础作图</a>
+<li class="chapter" data-level="11.3" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#中介分析"><i class="fa fa-check"></i><b>11.3</b> 中介分析</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#ggplot2基础回顾"><i class="fa fa-check"></i><b>11.2.1</b> ggplot2基础回顾</a></li>
-<li class="chapter" data-level="11.2.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#主要图层"><i class="fa fa-check"></i><b>11.2.2</b> 主要图层</a></li>
-<li class="chapter" data-level="11.2.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可选图层"><i class="fa fa-check"></i><b>11.2.3</b> 可选图层</a></li>
-<li class="chapter" data-level="11.2.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#同时呈现多张图片"><i class="fa fa-check"></i><b>11.2.4</b> 同时呈现多张图片</a></li>
+<li class="chapter" data-level="11.3.1" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#对于机制的表示图"><i class="fa fa-check"></i><b>11.3.1</b> 2.1 对于“机制”的表示——“图”</a></li>
+<li class="chapter" data-level="11.3.2" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#中介分析-1"><i class="fa fa-check"></i><b>11.3.2</b> 中介分析</a></li>
+<li class="chapter" data-level="11.3.3" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#中介效应"><i class="fa fa-check"></i><b>11.3.3</b> 中介效应</a></li>
+<li class="chapter" data-level="11.3.4" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#中介效应的检验"><i class="fa fa-check"></i><b>11.3.4</b> 中介效应的检验</a></li>
+<li class="chapter" data-level="11.3.5" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#问题提出"><i class="fa fa-check"></i><b>11.3.5</b> 问题提出</a></li>
+<li class="chapter" data-level="11.3.6" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#代码实现"><i class="fa fa-check"></i><b>11.3.6</b> 代码实现</a></li>
+<li class="chapter" data-level="11.3.7" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#process-in-brucer"><i class="fa fa-check"></i><b>11.3.7</b> PROCESS in bruceR()</a></li>
+<li class="chapter" data-level="11.3.8" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#反思"><i class="fa fa-check"></i><b>11.3.8</b> 反思</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#进阶作图"><i class="fa fa-check"></i><b>11.3</b> 进阶作图</a>
+<li class="chapter" data-level="11.4" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#因果推断"><i class="fa fa-check"></i><b>11.4</b> 因果推断</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#整体和个体效应共存的图"><i class="fa fa-check"></i><b>11.3.1</b> 整体和个体效应共存的图</a></li>
-<li class="chapter" data-level="11.3.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可视化层级模型的random-effect"><i class="fa fa-check"></i><b>11.3.2</b> 可视化层级模型的random effect</a></li>
-<li class="chapter" data-level="11.3.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#雨云图rain-cloud-plot"><i class="fa fa-check"></i><b>11.3.3</b> 雨云图（rain cloud plot）</a></li>
+<li class="chapter" data-level="11.4.1" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#因果推断casual-inference"><i class="fa fa-check"></i><b>11.4.1</b> 因果推断(Casual Inference)</a></li>
+<li class="chapter" data-level="11.4.2" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#因果推断与概率"><i class="fa fa-check"></i><b>11.4.2</b> 因果推断与概率</a></li>
+<li class="chapter" data-level="11.4.3" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#基于实验的中介"><i class="fa fa-check"></i><b>11.4.3</b> 基于实验的中介</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#高级图片处理magick"><i class="fa fa-check"></i><b>11.4</b> 高级图片处理–magick</a></li>
+<li class="chapter" data-level="11.5" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#参考资料推荐"><i class="fa fa-check"></i><b>11.5</b> 参考资料推荐</a></li>
+<li class="chapter" data-level="11.6" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#总结"><i class="fa fa-check"></i><b>11.6</b> 总结</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html"><i class="fa fa-check"></i><b>12</b> 第十三讲：基于网络模型的心理学研究</a>
+<li class="chapter" data-level="12" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html"><i class="fa fa-check"></i><b>12</b> 第十二讲：数据可视化进阶</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#基于潜变量的心理学研究"><i class="fa fa-check"></i><b>12.1</b> 基于潜变量的心理学研究</a></li>
-<li class="chapter" data-level="12.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#潜变量模型在心理学的困境"><i class="fa fa-check"></i><b>12.2</b> 潜变量模型在心理学的困境</a></li>
-<li class="chapter" data-level="12.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#基于网络的心理学视角"><i class="fa fa-check"></i><b>12.3</b> 基于网络的心理学视角</a></li>
-<li class="chapter" data-level="12.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#如果寻找可观测特征的因果关系"><i class="fa fa-check"></i><b>12.4</b> 如果寻找可观测特征的因果关系</a>
+<li class="chapter" data-level="12.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图的必要性和作图数据处理"><i class="fa fa-check"></i><b>12.1</b> 作图的必要性和作图数据处理</a>
 <ul>
-<li class="chapter" data-level="12.4.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#d-separation"><i class="fa fa-check"></i><b>12.4.1</b> d-separation</a></li>
+<li class="chapter" data-level="12.1.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#为什么要作图以及作图的原则"><i class="fa fa-check"></i><b>12.1.1</b> 为什么要作图以及作图的原则</a></li>
+<li class="chapter" data-level="12.1.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图数据准备"><i class="fa fa-check"></i><b>12.1.2</b> 作图数据准备</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#dag贝叶斯网络"><i class="fa fa-check"></i><b>12.5</b> DAG（贝叶斯网络）</a></li>
-<li class="chapter" data-level="12.6" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#高斯图模型ggm"><i class="fa fa-check"></i><b>12.6</b> 高斯图模型（GGM）</a></li>
-<li class="chapter" data-level="12.7" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#易辛模型ising-model"><i class="fa fa-check"></i><b>12.7</b> 易辛模型Ising model</a></li>
-<li class="chapter" data-level="12.8" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#心理网络的估计"><i class="fa fa-check"></i><b>12.8</b> 心理网络的估计</a>
+<li class="chapter" data-level="12.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#基础作图"><i class="fa fa-check"></i><b>12.2</b> 基础作图</a>
 <ul>
-<li class="chapter" data-level="12.8.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#高斯图模型"><i class="fa fa-check"></i><b>12.8.1</b> 高斯图模型</a></li>
-<li class="chapter" data-level="12.8.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#多元估计"><i class="fa fa-check"></i><b>12.8.2</b> 多元估计</a></li>
-<li class="chapter" data-level="12.8.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#一元估计"><i class="fa fa-check"></i><b>12.8.3</b> 一元估计</a></li>
-<li class="chapter" data-level="12.8.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现"><i class="fa fa-check"></i><b>12.8.4</b> 代码实现</a></li>
+<li class="chapter" data-level="12.2.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#ggplot2基础回顾"><i class="fa fa-check"></i><b>12.2.1</b> ggplot2基础回顾</a></li>
+<li class="chapter" data-level="12.2.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#主要图层"><i class="fa fa-check"></i><b>12.2.2</b> 主要图层</a></li>
+<li class="chapter" data-level="12.2.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可选图层"><i class="fa fa-check"></i><b>12.2.3</b> 可选图层</a></li>
+<li class="chapter" data-level="12.2.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#同时呈现多张图片"><i class="fa fa-check"></i><b>12.2.4</b> 同时呈现多张图片</a></li>
 </ul></li>
-<li class="chapter" data-level="12.9" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#模型选择"><i class="fa fa-check"></i><b>12.9</b> 模型选择</a>
+<li class="chapter" data-level="12.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#进阶作图"><i class="fa fa-check"></i><b>12.3</b> 进阶作图</a>
 <ul>
-<li class="chapter" data-level="12.9.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#模型选择的方式"><i class="fa fa-check"></i><b>12.9.1</b> 模型选择的方式</a></li>
-<li class="chapter" data-level="12.9.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-1"><i class="fa fa-check"></i><b>12.9.2</b> 代码实现</a></li>
-<li class="chapter" data-level="12.9.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-2"><i class="fa fa-check"></i><b>12.9.3</b> 代码实现</a></li>
-<li class="chapter" data-level="12.9.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-3"><i class="fa fa-check"></i><b>12.9.4</b> 代码实现</a></li>
-<li class="chapter" data-level="12.9.5" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#总结"><i class="fa fa-check"></i><b>12.9.5</b> 总结</a></li>
+<li class="chapter" data-level="12.3.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#整体和个体效应共存的图"><i class="fa fa-check"></i><b>12.3.1</b> 整体和个体效应共存的图</a></li>
+<li class="chapter" data-level="12.3.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可视化层级模型的random-effect"><i class="fa fa-check"></i><b>12.3.2</b> 可视化层级模型的random effect</a></li>
+<li class="chapter" data-level="12.3.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#雨云图rain-cloud-plot"><i class="fa fa-check"></i><b>12.3.3</b> 雨云图（rain cloud plot）</a></li>
 </ul></li>
-<li class="chapter" data-level="12.10" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#心理网络的挑战"><i class="fa fa-check"></i><b>12.10</b> 心理网络的挑战</a></li>
-<li class="chapter" data-level="12.11" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#我们是否还需要潜变量模型"><i class="fa fa-check"></i><b>12.11</b> 我们是否还需要潜变量模型</a></li>
+<li class="chapter" data-level="12.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#高级图片处理magick"><i class="fa fa-check"></i><b>12.4</b> 高级图片处理–magick</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html"><i class="fa fa-check"></i><b>13</b> 第十四讲：心理学元分析入门</a>
+<li class="chapter" data-level="13" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html"><i class="fa fa-check"></i><b>13</b> 第十三讲：基于网络模型的心理学研究</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#什么是元分析"><i class="fa fa-check"></i><b>13.1</b> 什么是元分析</a></li>
-<li class="chapter" data-level="13.2" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#元分析的实施"><i class="fa fa-check"></i><b>13.2</b> 元分析的实施</a></li>
-<li class="chapter" data-level="13.3" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#回顾与总结"><i class="fa fa-check"></i><b>13.3</b> 回顾与总结</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html"><i class="fa fa-check"></i><b>14</b> 补充1：如何进行基本的数据分析: 相关与回归</a>
+<li class="chapter" data-level="13.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#基于潜变量的心理学研究"><i class="fa fa-check"></i><b>13.1</b> 基于潜变量的心理学研究</a></li>
+<li class="chapter" data-level="13.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#潜变量模型在心理学的困境"><i class="fa fa-check"></i><b>13.2</b> 潜变量模型在心理学的困境</a></li>
+<li class="chapter" data-level="13.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#基于网络的心理学视角"><i class="fa fa-check"></i><b>13.3</b> 基于网络的心理学视角</a></li>
+<li class="chapter" data-level="13.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#如果寻找可观测特征的因果关系"><i class="fa fa-check"></i><b>13.4</b> 如果寻找可观测特征的因果关系</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是相关"><i class="fa fa-check"></i><b>14.1</b> 什么是相关</a></li>
-<li class="chapter" data-level="14.2" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#相关-代码实现"><i class="fa fa-check"></i><b>14.2</b> 相关-代码实现</a></li>
-<li class="chapter" data-level="14.3" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是回归"><i class="fa fa-check"></i><b>14.3</b> 什么是回归</a></li>
+<li class="chapter" data-level="13.4.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#d-separation"><i class="fa fa-check"></i><b>13.4.1</b> d-separation</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html"><i class="fa fa-check"></i><b>15</b> 补充2：从分析到手稿</a>
+<li class="chapter" data-level="13.5" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#dag贝叶斯网络"><i class="fa fa-check"></i><b>13.5</b> DAG（贝叶斯网络）</a></li>
+<li class="chapter" data-level="13.6" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#高斯图模型ggm"><i class="fa fa-check"></i><b>13.6</b> 高斯图模型（GGM）</a></li>
+<li class="chapter" data-level="13.7" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#易辛模型ising-model"><i class="fa fa-check"></i><b>13.7</b> 易辛模型Ising model</a></li>
+<li class="chapter" data-level="13.8" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#心理网络的估计"><i class="fa fa-check"></i><b>13.8</b> 心理网络的估计</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>15.1</b> <strong>通过Papaja撰写论文</strong></a>
+<li class="chapter" data-level="13.8.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#高斯图模型"><i class="fa fa-check"></i><b>13.8.1</b> 高斯图模型</a></li>
+<li class="chapter" data-level="13.8.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#多元估计"><i class="fa fa-check"></i><b>13.8.2</b> 多元估计</a></li>
+<li class="chapter" data-level="13.8.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#一元估计"><i class="fa fa-check"></i><b>13.8.3</b> 一元估计</a></li>
+<li class="chapter" data-level="13.8.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-1"><i class="fa fa-check"></i><b>13.8.4</b> 代码实现</a></li>
+</ul></li>
+<li class="chapter" data-level="13.9" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#模型选择"><i class="fa fa-check"></i><b>13.9</b> 模型选择</a>
 <ul>
-<li class="chapter" data-level="15.1.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>15.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
-<li class="chapter" data-level="15.1.2" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>15.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
-<li class="chapter" data-level="15.1.3" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part3-正文的撰写"><i class="fa fa-check"></i><b>15.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
-<li class="chapter" data-level="15.1.4" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#总结-1"><i class="fa fa-check"></i><b>15.1.4</b> 总结</a></li>
+<li class="chapter" data-level="13.9.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#模型选择的方式"><i class="fa fa-check"></i><b>13.9.1</b> 模型选择的方式</a></li>
+<li class="chapter" data-level="13.9.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-2"><i class="fa fa-check"></i><b>13.9.2</b> 代码实现</a></li>
+<li class="chapter" data-level="13.9.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-3"><i class="fa fa-check"></i><b>13.9.3</b> 代码实现</a></li>
+<li class="chapter" data-level="13.9.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-4"><i class="fa fa-check"></i><b>13.9.4</b> 代码实现</a></li>
+<li class="chapter" data-level="13.9.5" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#总结-1"><i class="fa fa-check"></i><b>13.9.5</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="13.10" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#心理网络的挑战"><i class="fa fa-check"></i><b>13.10</b> 心理网络的挑战</a></li>
+<li class="chapter" data-level="13.11" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#我们是否还需要潜变量模型"><i class="fa fa-check"></i><b>13.11</b> 我们是否还需要潜变量模型</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html"><i class="fa fa-check"></i><b>14</b> 第十四讲：心理学元分析入门</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#什么是元分析"><i class="fa fa-check"></i><b>14.1</b> 什么是元分析</a></li>
+<li class="chapter" data-level="14.2" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#元分析的实施"><i class="fa fa-check"></i><b>14.2</b> 元分析的实施</a></li>
+<li class="chapter" data-level="14.3" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#回顾与总结"><i class="fa fa-check"></i><b>14.3</b> 回顾与总结</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html"><i class="fa fa-check"></i><b>15</b> 补充1：如何进行基本的数据分析: 相关与回归</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是相关"><i class="fa fa-check"></i><b>15.1</b> 什么是相关</a></li>
+<li class="chapter" data-level="15.2" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#相关-代码实现"><i class="fa fa-check"></i><b>15.2</b> 相关-代码实现</a></li>
+<li class="chapter" data-level="15.3" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是回归"><i class="fa fa-check"></i><b>15.3</b> 什么是回归</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html"><i class="fa fa-check"></i><b>16</b> 补充2：从分析到手稿</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>16.1</b> <strong>通过Papaja撰写论文</strong></a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>16.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
+<li class="chapter" data-level="16.1.2" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>16.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
+<li class="chapter" data-level="16.1.3" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part3-正文的撰写"><i class="fa fa-check"></i><b>16.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
+<li class="chapter" data-level="16.1.4" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#总结-2"><i class="fa fa-check"></i><b>16.1.4</b> 总结</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html"><i class="fa fa-check"></i><b>16</b> 补充3：效应量和元分析</a>
+<li class="chapter" data-level="17" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html"><i class="fa fa-check"></i><b>17</b> 补充3：效应量和元分析</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#效应量简介"><i class="fa fa-check"></i><b>16.1</b> 效应量简介</a></li>
-<li class="chapter" data-level="16.2" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#算法实现"><i class="fa fa-check"></i><b>16.2</b> 算法实现</a></li>
-<li class="chapter" data-level="16.3" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#小练习"><i class="fa fa-check"></i><b>16.3</b> 小练习</a></li>
-<li class="chapter" data-level="16.4" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析简介"><i class="fa fa-check"></i><b>16.4</b> 元分析简介</a></li>
-<li class="chapter" data-level="16.5" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析实现"><i class="fa fa-check"></i><b>16.5</b> 元分析实现</a></li>
+<li class="chapter" data-level="17.1" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#效应量简介"><i class="fa fa-check"></i><b>17.1</b> 效应量简介</a></li>
+<li class="chapter" data-level="17.2" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#算法实现"><i class="fa fa-check"></i><b>17.2</b> 算法实现</a></li>
+<li class="chapter" data-level="17.3" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#小练习"><i class="fa fa-check"></i><b>17.3</b> 小练习</a></li>
+<li class="chapter" data-level="17.4" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析简介"><i class="fa fa-check"></i><b>17.4</b> 元分析简介</a></li>
+<li class="chapter" data-level="17.5" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析实现"><i class="fa fa-check"></i><b>17.5</b> 元分析实现</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -476,18 +508,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="第九讲回归模型二分层线性模型" class="section level1 hasAnchor" number="9">
 <h1><span class="header-section-number">Chapter 9</span> 第九讲：回归模型(二)：分层线性模型<a href="第九讲回归模型二分层线性模型.html#第九讲回归模型二分层线性模型" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="第九讲回归模型二分层线性模型.html#cb274-1" tabindex="-1"></a><span class="co"># Packages</span></span>
-<span id="cb274-2"><a href="第九讲回归模型二分层线性模型.html#cb274-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&#39;pacman&#39;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb274-3"><a href="第九讲回归模型二分层线性模型.html#cb274-3" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&#39;pacman&#39;</span>)</span>
-<span id="cb274-4"><a href="第九讲回归模型二分层线性模型.html#cb274-4" tabindex="-1"></a>}</span>
-<span id="cb274-5"><a href="第九讲回归模型二分层线性模型.html#cb274-5" tabindex="-1"></a></span>
-<span id="cb274-6"><a href="第九讲回归模型二分层线性模型.html#cb274-6" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
-<span id="cb274-7"><a href="第九讲回归模型二分层线性模型.html#cb274-7" tabindex="-1"></a>  <span class="co"># 本节课需要用到的 packages</span></span>
-<span id="cb274-8"><a href="第九讲回归模型二分层线性模型.html#cb274-8" tabindex="-1"></a>  here, tidyverse, </span>
-<span id="cb274-9"><a href="第九讲回归模型二分层线性模型.html#cb274-9" tabindex="-1"></a>  <span class="co"># ANOVA &amp; HLM</span></span>
-<span id="cb274-10"><a href="第九讲回归模型二分层线性模型.html#cb274-10" tabindex="-1"></a>  bruceR, lmerTest, lme4, broom, afex, interactions, knitr)</span>
-<span id="cb274-11"><a href="第九讲回归模型二分层线性模型.html#cb274-11" tabindex="-1"></a></span>
-<span id="cb274-12"><a href="第九讲回归模型二分层线性模型.html#cb274-12" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">99999</span>,<span class="at">digits =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="第九讲回归模型二分层线性模型.html#cb276-1" tabindex="-1"></a><span class="co"># Packages</span></span>
+<span id="cb276-2"><a href="第九讲回归模型二分层线性模型.html#cb276-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&#39;pacman&#39;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb276-3"><a href="第九讲回归模型二分层线性模型.html#cb276-3" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&#39;pacman&#39;</span>)</span>
+<span id="cb276-4"><a href="第九讲回归模型二分层线性模型.html#cb276-4" tabindex="-1"></a>}</span>
+<span id="cb276-5"><a href="第九讲回归模型二分层线性模型.html#cb276-5" tabindex="-1"></a></span>
+<span id="cb276-6"><a href="第九讲回归模型二分层线性模型.html#cb276-6" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
+<span id="cb276-7"><a href="第九讲回归模型二分层线性模型.html#cb276-7" tabindex="-1"></a>  <span class="co"># 本节课需要用到的 packages</span></span>
+<span id="cb276-8"><a href="第九讲回归模型二分层线性模型.html#cb276-8" tabindex="-1"></a>  here, tidyverse, </span>
+<span id="cb276-9"><a href="第九讲回归模型二分层线性模型.html#cb276-9" tabindex="-1"></a>  <span class="co"># ANOVA &amp; HLM</span></span>
+<span id="cb276-10"><a href="第九讲回归模型二分层线性模型.html#cb276-10" tabindex="-1"></a>  bruceR, lmerTest, lme4, broom, afex, interactions, knitr)</span>
+<span id="cb276-11"><a href="第九讲回归模型二分层线性模型.html#cb276-11" tabindex="-1"></a></span>
+<span id="cb276-12"><a href="第九讲回归模型二分层线性模型.html#cb276-12" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">99999</span>,<span class="at">digits =</span> <span class="dv">5</span>)</span></code></pre></div>
 <div id="回顾-1" class="section level2 hasAnchor" number="9.1">
 <h2><span class="header-section-number">9.1</span> 回顾<a href="第九讲回归模型二分层线性模型.html#回顾-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>大家晚上好，我们开始上课，上节课我们介绍了使用r语言分析数据，以我们最常见的或者说我们心理学当中，最常见的两种方法ttest和ANOVA，但是我们给它加了一个标题，叫做回归模型或者线性模型一，然后我们在介绍完如何使用常规的R代码来实现这些功能之后，我们又给大家讲解了一下，为什么ttest和ANOVA实际上是线性模型的特例，那么这个是如果要运行我们Rmarkdown的话一定要提前准备一下这个代码。我们上节课是以这个表结尾的，也就是说我们常见的这个ttest，包括单样本、独立样本和配对样本的ttest以及单因素的方差分析和多因素的方差分析，基本上都可以用R里面的最基本的这个space，就是统计学的这个包里面的LMlinearmodel来实现，而且我们也可以从线性模型的角度对它进行解读。比方说我们发现这个ttest，它可能就是一个自变量是二分变量的一个回归模型然后还有其他的我们在这里都有讲解。</p>
@@ -542,51 +574,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>那么上节课给大家在讲解的时候，我们用的是penguin那个数据，在这里也可能会涉及到对一些离散变量的虚拟编码的问题，对离散变量的这个虚拟编码dummycoding，它其实有很多种方式，在这个space这个包里面，它专门有一个叫做controltreatment这样一个方式来对我们的离散变量怎么进入回归方程进行编码，有各种各样的方式，大家如果感兴趣呢，可以去参考一些相关的资料。</p>
 <p>首先就是大家注意不同的软件或者不同软件包，它的默认的编码方式可能是不一样的，这里面可能会有一些区别，所以有可能比方说由于这个默认的编码方式不一样，最后会导致一个你看到的统计的结果是不一样的。在第八课我们在课后做了一点点小的修改，就是我们不仅仅可以采用，比方说FX那个包来去达到一模一样的一个回归，我们可以采用多种方式来实现跟方差分析一模一样的结果，其中一个方式，就是改变controltreatment改变编码方式。大家如果把我们那个最新的rmarkdown拉下去回顾的话，看一下我们上节课的课件。</p>
 <p>[预处理]</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="第九讲回归模型二分层线性模型.html#cb275-1" tabindex="-1"></a>df.penguin <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb275-2"><a href="第九讲回归模型二分层线性模型.html#cb275-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">subjID =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb275-3"><a href="第九讲回归模型二分层线性模型.html#cb275-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(subjID,Temperature_t1, Temperature_t2, socialdiversity, </span>
-<span id="cb275-4"><a href="第九讲回归模型二分层线性模型.html#cb275-4" tabindex="-1"></a>                Site, DEQ, romantic, ALEX1<span class="sc">:</span>ALEX16) <span class="sc">%&gt;%</span></span>
-<span id="cb275-5"><a href="第九讲回归模型二分层线性模型.html#cb275-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Temperature_t1) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(Temperature_t2) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(DEQ)) <span class="sc">%&gt;%</span></span>
-<span id="cb275-6"><a href="第九讲回归模型二分层线性模型.html#cb275-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">romantic =</span> <span class="fu">factor</span>(romantic, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), </span>
-<span id="cb275-7"><a href="第九讲回归模型二分层线性模型.html#cb275-7" tabindex="-1"></a>                                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;恋爱&quot;</span>, <span class="st">&quot;单身&quot;</span>)),  <span class="co"># 转化为因子</span></span>
-<span id="cb275-8"><a href="第九讲回归模型二分层线性模型.html#cb275-8" tabindex="-1"></a>                <span class="at">Temperature =</span> <span class="fu">rowMeans</span>(<span class="fu">select</span>(., <span class="fu">starts_with</span>(<span class="st">&quot;Temperature&quot;</span>))))</span>
-<span id="cb275-9"><a href="第九讲回归模型二分层线性模型.html#cb275-9" tabindex="-1"></a></span>
-<span id="cb275-10"><a href="第九讲回归模型二分层线性模型.html#cb275-10" tabindex="-1"></a><span class="co"># 设定相应的标签</span></span>
-<span id="cb275-11"><a href="第九讲回归模型二分层线性模型.html#cb275-11" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">35</span>, <span class="dv">50</span>, <span class="fl">66.5</span>)</span>
-<span id="cb275-12"><a href="第九讲回归模型二分层线性模型.html#cb275-12" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;热带&#39;</span>, <span class="st">&#39;温带&#39;</span>, <span class="st">&#39;寒温带&#39;</span>)</span>
-<span id="cb275-13"><a href="第九讲回归模型二分层线性模型.html#cb275-13" tabindex="-1"></a><span class="co"># 创建新的变量</span></span>
-<span id="cb275-14"><a href="第九讲回归模型二分层线性模型.html#cb275-14" tabindex="-1"></a>df.penguin<span class="sc">$</span>climate <span class="ot">&lt;-</span> <span class="fu">cut</span>(df.penguin<span class="sc">$</span>DEQ, </span>
-<span id="cb275-15"><a href="第九讲回归模型二分层线性模型.html#cb275-15" tabindex="-1"></a>                          <span class="at">breaks =</span> breaks, </span>
-<span id="cb275-16"><a href="第九讲回归模型二分层线性模型.html#cb275-16" tabindex="-1"></a>                          <span class="at">labels =</span> labels)</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="第九讲回归模型二分层线性模型.html#cb277-1" tabindex="-1"></a>df.penguin <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb277-2"><a href="第九讲回归模型二分层线性模型.html#cb277-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">subjID =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb277-3"><a href="第九讲回归模型二分层线性模型.html#cb277-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(subjID,Temperature_t1, Temperature_t2, socialdiversity, </span>
+<span id="cb277-4"><a href="第九讲回归模型二分层线性模型.html#cb277-4" tabindex="-1"></a>                Site, DEQ, romantic, ALEX1<span class="sc">:</span>ALEX16) <span class="sc">%&gt;%</span></span>
+<span id="cb277-5"><a href="第九讲回归模型二分层线性模型.html#cb277-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Temperature_t1) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(Temperature_t2) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(DEQ)) <span class="sc">%&gt;%</span></span>
+<span id="cb277-6"><a href="第九讲回归模型二分层线性模型.html#cb277-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">romantic =</span> <span class="fu">factor</span>(romantic, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), </span>
+<span id="cb277-7"><a href="第九讲回归模型二分层线性模型.html#cb277-7" tabindex="-1"></a>                                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;恋爱&quot;</span>, <span class="st">&quot;单身&quot;</span>)),  <span class="co"># 转化为因子</span></span>
+<span id="cb277-8"><a href="第九讲回归模型二分层线性模型.html#cb277-8" tabindex="-1"></a>                <span class="at">Temperature =</span> <span class="fu">rowMeans</span>(<span class="fu">select</span>(., <span class="fu">starts_with</span>(<span class="st">&quot;Temperature&quot;</span>))))</span>
+<span id="cb277-9"><a href="第九讲回归模型二分层线性模型.html#cb277-9" tabindex="-1"></a></span>
+<span id="cb277-10"><a href="第九讲回归模型二分层线性模型.html#cb277-10" tabindex="-1"></a><span class="co"># 设定相应的标签</span></span>
+<span id="cb277-11"><a href="第九讲回归模型二分层线性模型.html#cb277-11" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">35</span>, <span class="dv">50</span>, <span class="fl">66.5</span>)</span>
+<span id="cb277-12"><a href="第九讲回归模型二分层线性模型.html#cb277-12" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;热带&#39;</span>, <span class="st">&#39;温带&#39;</span>, <span class="st">&#39;寒温带&#39;</span>)</span>
+<span id="cb277-13"><a href="第九讲回归模型二分层线性模型.html#cb277-13" tabindex="-1"></a><span class="co"># 创建新的变量</span></span>
+<span id="cb277-14"><a href="第九讲回归模型二分层线性模型.html#cb277-14" tabindex="-1"></a>df.penguin<span class="sc">$</span>climate <span class="ot">&lt;-</span> <span class="fu">cut</span>(df.penguin<span class="sc">$</span>DEQ, </span>
+<span id="cb277-15"><a href="第九讲回归模型二分层线性模型.html#cb277-15" tabindex="-1"></a>                          <span class="at">breaks =</span> breaks, </span>
+<span id="cb277-16"><a href="第九讲回归模型二分层线性模型.html#cb277-16" tabindex="-1"></a>                          <span class="at">labels =</span> labels)</span></code></pre></div>
 <p>在结果上面，这个treatment，我们的现在这种编码方式，实际上就是以其中的一个条件，比方说我们上节课讲到了不同的这个气温带，那么我们实际上就是以热带作为基线，另外的这种回归系数它分别其实表示的是另外两种条件跟它的一个差值，这里我们其实可以从这个这个统计数据上面能够看得出来。</p>
 <p>[虚拟编码]</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="第九讲回归模型二分层线性模型.html#cb276-1" tabindex="-1"></a><span class="co"># 比较不同气候条件下个体的体温是否存在差异：</span></span>
-<span id="cb276-2"><a href="第九讲回归模型二分层线性模型.html#cb276-2" tabindex="-1"></a><span class="do">## 虚拟编码</span></span>
-<span id="cb276-3"><a href="第九讲回归模型二分层线性模型.html#cb276-3" tabindex="-1"></a><span class="fu">contrasts</span>(df.penguin<span class="sc">$</span>climate) <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">contr.treatment</span>(<span class="fu">unique</span>(df.penguin<span class="sc">$</span>climate))</span>
-<span id="cb276-4"><a href="第九讲回归模型二分层线性模型.html#cb276-4" tabindex="-1"></a><span class="do">### contr.treatment本质上创建了一个矩阵</span></span>
-<span id="cb276-5"><a href="第九讲回归模型二分层线性模型.html#cb276-5" tabindex="-1"></a><span class="do">### 由于3个分组，所以矩阵为2列</span></span>
-<span id="cb276-6"><a href="第九讲回归模型二分层线性模型.html#cb276-6" tabindex="-1"></a></span>
-<span id="cb276-7"><a href="第九讲回归模型二分层线性模型.html#cb276-7" tabindex="-1"></a></span>
-<span id="cb276-8"><a href="第九讲回归模型二分层线性模型.html#cb276-8" tabindex="-1"></a><span class="do">## 建立回归模型</span></span>
-<span id="cb276-9"><a href="第九讲回归模型二分层线性模型.html#cb276-9" tabindex="-1"></a>lm_temp <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">lm</span>(Temperature <span class="sc">~</span> climate,<span class="at">data =</span> df.penguin)</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="第九讲回归模型二分层线性模型.html#cb278-1" tabindex="-1"></a><span class="co"># 比较不同气候条件下个体的体温是否存在差异：</span></span>
+<span id="cb278-2"><a href="第九讲回归模型二分层线性模型.html#cb278-2" tabindex="-1"></a><span class="do">## 虚拟编码</span></span>
+<span id="cb278-3"><a href="第九讲回归模型二分层线性模型.html#cb278-3" tabindex="-1"></a><span class="fu">contrasts</span>(df.penguin<span class="sc">$</span>climate) <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">contr.treatment</span>(<span class="fu">unique</span>(df.penguin<span class="sc">$</span>climate))</span>
+<span id="cb278-4"><a href="第九讲回归模型二分层线性模型.html#cb278-4" tabindex="-1"></a><span class="do">### contr.treatment本质上创建了一个矩阵</span></span>
+<span id="cb278-5"><a href="第九讲回归模型二分层线性模型.html#cb278-5" tabindex="-1"></a><span class="do">### 由于3个分组，所以矩阵为2列</span></span>
+<span id="cb278-6"><a href="第九讲回归模型二分层线性模型.html#cb278-6" tabindex="-1"></a></span>
+<span id="cb278-7"><a href="第九讲回归模型二分层线性模型.html#cb278-7" tabindex="-1"></a></span>
+<span id="cb278-8"><a href="第九讲回归模型二分层线性模型.html#cb278-8" tabindex="-1"></a><span class="do">## 建立回归模型</span></span>
+<span id="cb278-9"><a href="第九讲回归模型二分层线性模型.html#cb278-9" tabindex="-1"></a>lm_temp <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">lm</span>(Temperature <span class="sc">~</span> climate,<span class="at">data =</span> df.penguin)</span></code></pre></div>
 <p>[结果]</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="第九讲回归模型二分层线性模型.html#cb277-1" tabindex="-1"></a><span class="do">## 输出回归系数</span></span>
-<span id="cb277-2"><a href="第九讲回归模型二分层线性模型.html#cb277-2" tabindex="-1"></a>lm_temp <span class="sc">%&gt;%</span> </span>
-<span id="cb277-3"><a href="第九讲回归模型二分层线性模型.html#cb277-3" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb277-4"><a href="第九讲回归模型二分层线性模型.html#cb277-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb277-5"><a href="第九讲回归模型二分层线性模型.html#cb277-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric),</span>
-<span id="cb277-6"><a href="第九讲回归模型二分层线性模型.html#cb277-6" tabindex="-1"></a>                <span class="sc">~</span><span class="fu">round</span>(., <span class="dv">3</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="第九讲回归模型二分层线性模型.html#cb279-1" tabindex="-1"></a><span class="do">## 输出回归系数</span></span>
+<span id="cb279-2"><a href="第九讲回归模型二分层线性模型.html#cb279-2" tabindex="-1"></a>lm_temp <span class="sc">%&gt;%</span> </span>
+<span id="cb279-3"><a href="第九讲回归模型二分层线性模型.html#cb279-3" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb279-4"><a href="第九讲回归模型二分层线性模型.html#cb279-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb279-5"><a href="第九讲回归模型二分层线性模型.html#cb279-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric),</span>
+<span id="cb279-6"><a href="第九讲回归模型二分层线性模型.html#cb279-6" tabindex="-1"></a>                <span class="sc">~</span><span class="fu">round</span>(., <span class="dv">3</span>)))</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 3
 ##   term          estimate std.error
 ##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;
 ## 1 (Intercept)     36.6       0.022
 ## 2 climate寒温带   -0.178     0.028
 ## 3 climate温带     -0.299     0.03</code></pre>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="第九讲回归模型二分层线性模型.html#cb279-1" tabindex="-1"></a><span class="do">## 可以看到回归的结果以热带为基准，系数则为均值之差</span></span>
-<span id="cb279-2"><a href="第九讲回归模型二分层线性模型.html#cb279-2" tabindex="-1"></a>df.penguin <span class="sc">%&gt;%</span> </span>
-<span id="cb279-3"><a href="第九讲回归模型二分层线性模型.html#cb279-3" tabindex="-1"></a>  <span class="fu">group_by</span>(climate) <span class="sc">%&gt;%</span> </span>
-<span id="cb279-4"><a href="第九讲回归模型二分层线性模型.html#cb279-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(Temperature)) <span class="sc">%&gt;%</span> </span>
-<span id="cb279-5"><a href="第九讲回归模型二分层线性模型.html#cb279-5" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="第九讲回归模型二分层线性模型.html#cb281-1" tabindex="-1"></a><span class="do">## 可以看到回归的结果以热带为基准，系数则为均值之差</span></span>
+<span id="cb281-2"><a href="第九讲回归模型二分层线性模型.html#cb281-2" tabindex="-1"></a>df.penguin <span class="sc">%&gt;%</span> </span>
+<span id="cb281-3"><a href="第九讲回归模型二分层线性模型.html#cb281-3" tabindex="-1"></a>  <span class="fu">group_by</span>(climate) <span class="sc">%&gt;%</span> </span>
+<span id="cb281-4"><a href="第九讲回归模型二分层线性模型.html#cb281-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(Temperature)) <span class="sc">%&gt;%</span> </span>
+<span id="cb281-5"><a href="第九讲回归模型二分层线性模型.html#cb281-5" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() </span></code></pre></div>
 <pre><code>##   climate   mean
 ## 1    热带 36.555
 ## 2    温带 36.377
@@ -597,13 +629,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.2</span> 重复测量方差分析<a href="第九讲回归模型二分层线性模型.html#重复测量方差分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>那这是我们上节课的一个结果，上节课我们回答了一个问题，对于这种有重复测量的这种情况怎么办？在我们心理学当中另外一个非常常见的一个现象，或者说使用的一个方法，就是用重复测量的方差分析。那比方说我们检验某一种干预，某种心理干预也好，或者是药物干预也好，它有没有效果，一般我们会设计一个干预前进行一次测量，干预之后再进行测量，不仅如此，可能还有实验组和控制组，有组间变量，有组内的变量，它就是前后测，前后测的时候就涉及到了一个重复测量的问题。所以在我们心理学当中，尤其在实验研究当中，我们非常常用的，就是重复测量的方差分析。那么我们上节课既然讲到了ttest和方差分析，组间的方差分析，它是一个线性模型的话，那么重复测量的方差分析，它是不是也是一个线性模型呢？我们这个时候以我们在课堂上经常采用的另外一个例子，就是我们那个实验matching的这个数据为例，这个数据，它是一个典型的认知心理学的实验，采用的是完全的被试内设计，我们有2*2的这个实验设计，也就是说我们有两种自变量，一个是刺激他的身份，另外一个是道德上的效价，是积极的moral还是消极的immoral，那么这两个自变量的话，它就组合成为4个条件，每一个被试在实验当中，都要经历所有的4种条件处理。我们通过之前学到的bruceR，然后用here这个包，在我们的这个课件的所在文件夹内部，可以通过这种方式把它读取进来，读取进来之后的话，我们可以看一下，我们先做了一个处理，在实验设计中，我们有两个自变量，但是在我们的这个数据里面我们当时是用一个变量shape来表示这两个自变量，就是两个自变量的各种组合，我们这里先把它进行了一个拆分，实际上是用的这个tidyr里面的一个函数，这是数据预处理的部分。大家有可能以后也会经常碰到这种字符的处理tidyr里面有一些函数是比较方便的。处理完了之后可以看到它这个数据，每一个被试，有他的年龄性别，还有他的左右利手，然后还有这个实验的信息，原来是一个变量，这个试次他这个形状代表的是什么，拆分之后的，它就拆分成了两个变量，一个叫做Valence，一个叫做Identity。</p>
 <p>[预处理]</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="第九讲回归模型二分层线性模型.html#cb281-1" tabindex="-1"></a>mt_raw <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>,<span class="st">&#39;match&#39;</span>,<span class="st">&#39;match_raw.csv&#39;</span>))</span>
-<span id="cb281-2"><a href="第九讲回归模型二分层线性模型.html#cb281-2" tabindex="-1"></a></span>
-<span id="cb281-3"><a href="第九讲回归模型二分层线性模型.html#cb281-3" tabindex="-1"></a>mt_raw <span class="ot">&lt;-</span> mt_raw <span class="sc">%&gt;%</span> </span>
-<span id="cb281-4"><a href="第九讲回归模型二分层线性模型.html#cb281-4" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">extract</span>(Shape, </span>
-<span id="cb281-5"><a href="第九讲回归模型二分层线性模型.html#cb281-5" tabindex="-1"></a>                 <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;Valence&quot;</span>, <span class="st">&quot;Identity&quot;</span>),</span>
-<span id="cb281-6"><a href="第九讲回归模型二分层线性模型.html#cb281-6" tabindex="-1"></a>                 <span class="at">regex =</span> <span class="st">&quot;(moral|immoral)(Self|Other)&quot;</span>,</span>
-<span id="cb281-7"><a href="第九讲回归模型二分层线性模型.html#cb281-7" tabindex="-1"></a>                 <span class="at">remove =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="第九讲回归模型二分层线性模型.html#cb283-1" tabindex="-1"></a>mt_raw <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>,<span class="st">&#39;match&#39;</span>,<span class="st">&#39;match_raw.csv&#39;</span>))</span>
+<span id="cb283-2"><a href="第九讲回归模型二分层线性模型.html#cb283-2" tabindex="-1"></a></span>
+<span id="cb283-3"><a href="第九讲回归模型二分层线性模型.html#cb283-3" tabindex="-1"></a>mt_raw <span class="ot">&lt;-</span> mt_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb283-4"><a href="第九讲回归模型二分层线性模型.html#cb283-4" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">extract</span>(Shape, </span>
+<span id="cb283-5"><a href="第九讲回归模型二分层线性模型.html#cb283-5" tabindex="-1"></a>                 <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;Valence&quot;</span>, <span class="st">&quot;Identity&quot;</span>),</span>
+<span id="cb283-6"><a href="第九讲回归模型二分层线性模型.html#cb283-6" tabindex="-1"></a>                 <span class="at">regex =</span> <span class="st">&quot;(moral|immoral)(Self|Other)&quot;</span>,</span>
+<span id="cb283-7"><a href="第九讲回归模型二分层线性模型.html#cb283-7" tabindex="-1"></a>                 <span class="at">remove =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>[数据展示]</p>
 <div class="datatables html-widget html-fill-item" id="htmlwidget-41fdaea77ad32f6b8256" style="width:100%;height:auto;"></div>
 <script type="application/json" data-for="htmlwidget-41fdaea77ad32f6b8256">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],[7302,7302,7302,7302,7302],[22,22,22,22,22],["female","female","female","female","female"],["R","R","R","R","R"],[1,1,1,1,1],[1,1,1,1,1],[1,2,3,4,5],["immoralSelf","moralOther","immoralOther","moralSelf","immoralSelf"],["immoral","moral","immoral","moral","immoral"],["Self","Other","Other","Self","Self"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sub<\/th>\n      <th>Age<\/th>\n      <th>Sex<\/th>\n      <th>Hand<\/th>\n      <th>Block<\/th>\n      <th>Bin<\/th>\n      <th>Trial<\/th>\n      <th>Shape<\/th>\n      <th>Valence<\/th>\n      <th>Identity<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,5,6,7]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Sub","targets":1},{"name":"Age","targets":2},{"name":"Sex","targets":3},{"name":"Hand","targets":4},{"name":"Block","targets":5},{"name":"Bin","targets":6},{"name":"Trial","targets":7},{"name":"Shape","targets":8},{"name":"Valence","targets":9},{"name":"Identity","targets":10}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
@@ -612,19 +644,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src=".\chp9\data.png" /></p>
 <p>那我们先按照常规的方式，先进行一个预处理，比方说我们一般看反应时间的时候，我们主要看的就是正确的反应试次的反应时间，我们把没有反应的和这个错误的都剔除掉，那么在这里我们还有一点额外处理，我们先还有一个条件，就是这个图片和这个文字是不是匹配的，我们这个时候只关心这个匹配的，因为我们上课做一个演示，简化一点，那么所以我们筛选出的是匹配的，这个试次的数据，因为我们关心反应时间，所以我们选出了全部为正确试次的一个反应，那么然后我们就通过这个group_by，在数据预处理里面我们提到的这个函数，以被试的ID、identity和valence三个作为分组变量，然后通过summarise去求他们的均值，这都是我们前面学到的内容，然后这样的话我们就得到了非常熟悉的这种数据。但这个时候如果大家想要，把它输到SPSS进行预处理的话，我们还要把它从长型的数据转成宽型的数据，但是在r里面我们其实没有必要转，我们可以直接使用bruceR里面的这个ANOVA，然后把被试的ID放进来，然后DV，dependentvariable等于RT，很方便，这个within就表示是withinsubject，应该是independentvariable，我们这里有两个就是identity和valence那么到这里其实整个r里面就输完了，我们这里只不过是把它的结果，后面这个部分的话是为了显示结果，所以前面的这个部分，就是大家可能会比较关心的。如果你自己在r里面你就选择这段代码运行的话，你会在那个rmarkdown里面直接看到它全部的输出，那么我们看多少里面最重要的输出，或者我们最关心的输出可能就是这个方差分析表，那么这里面我们可以看到identityvalence，它们分别的主效应和它们的交互作用，这时候我们可以看到很明显的，比方说这里有p值、f值这是大家都很喜欢的。</p>
 <p>[ANOVA-bruceR]</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="第九讲回归模型二分层线性模型.html#cb282-1" tabindex="-1"></a>mt_mean <span class="ot">&lt;-</span> mt_raw <span class="sc">%&gt;%</span></span>
-<span id="cb282-2"><a href="第九讲回归模型二分层线性模型.html#cb282-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(RT) <span class="sc">&amp;</span> Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> ACC <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb282-3"><a href="第九讲回归模型二分层线性模型.html#cb282-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Sub,Identity,Valence) <span class="sc">%&gt;%</span></span>
-<span id="cb282-4"><a href="第九讲回归模型二分层线性模型.html#cb282-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">RT =</span> <span class="fu">mean</span>(RT)) <span class="sc">%&gt;%</span></span>
-<span id="cb282-5"><a href="第九讲回归模型二分层线性模型.html#cb282-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>()</span>
-<span id="cb282-6"><a href="第九讲回归模型二分层线性模型.html#cb282-6" tabindex="-1"></a></span>
-<span id="cb282-7"><a href="第九讲回归模型二分层线性模型.html#cb282-7" tabindex="-1"></a><span class="do">##  本例为长数据</span></span>
-<span id="cb282-8"><a href="第九讲回归模型二分层线性模型.html#cb282-8" tabindex="-1"></a><span class="do">##  RUN IN CONSOLE!</span></span>
-<span id="cb282-9"><a href="第九讲回归模型二分层线性模型.html#cb282-9" tabindex="-1"></a><span class="do">##  球形检验输出：</span></span>
-<span id="cb282-10"><a href="第九讲回归模型二分层线性模型.html#cb282-10" tabindex="-1"></a>bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(<span class="at">data =</span> mt_mean,</span>
-<span id="cb282-11"><a href="第九讲回归模型二分层线性模型.html#cb282-11" tabindex="-1"></a>       <span class="at">subID =</span> <span class="st">&#39;Sub&#39;</span>, <span class="co"># 被试编号</span></span>
-<span id="cb282-12"><a href="第九讲回归模型二分层线性模型.html#cb282-12" tabindex="-1"></a>       <span class="at">dv=</span> <span class="st">&#39;RT&#39;</span>, <span class="co"># dependent variable</span></span>
-<span id="cb282-13"><a href="第九讲回归模型二分层线性模型.html#cb282-13" tabindex="-1"></a>       <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&#39;Identity&#39;</span>, <span class="st">&#39;Valence&#39;</span>)) <span class="sc">%&gt;%</span> <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">33</span><span class="sc">:</span><span class="dv">37</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="第九讲回归模型二分层线性模型.html#cb284-1" tabindex="-1"></a>mt_mean <span class="ot">&lt;-</span> mt_raw <span class="sc">%&gt;%</span></span>
+<span id="cb284-2"><a href="第九讲回归模型二分层线性模型.html#cb284-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(RT) <span class="sc">&amp;</span> Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> ACC <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb284-3"><a href="第九讲回归模型二分层线性模型.html#cb284-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Sub,Identity,Valence) <span class="sc">%&gt;%</span></span>
+<span id="cb284-4"><a href="第九讲回归模型二分层线性模型.html#cb284-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">RT =</span> <span class="fu">mean</span>(RT)) <span class="sc">%&gt;%</span></span>
+<span id="cb284-5"><a href="第九讲回归模型二分层线性模型.html#cb284-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>()</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;Sub&#39;, &#39;Identity&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="第九讲回归模型二分层线性模型.html#cb286-1" tabindex="-1"></a><span class="do">##  本例为长数据</span></span>
+<span id="cb286-2"><a href="第九讲回归模型二分层线性模型.html#cb286-2" tabindex="-1"></a><span class="do">##  RUN IN CONSOLE!</span></span>
+<span id="cb286-3"><a href="第九讲回归模型二分层线性模型.html#cb286-3" tabindex="-1"></a><span class="do">##  球形检验输出：</span></span>
+<span id="cb286-4"><a href="第九讲回归模型二分层线性模型.html#cb286-4" tabindex="-1"></a>bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(<span class="at">data =</span> mt_mean,</span>
+<span id="cb286-5"><a href="第九讲回归模型二分层线性模型.html#cb286-5" tabindex="-1"></a>       <span class="at">subID =</span> <span class="st">&#39;Sub&#39;</span>, <span class="co"># 被试编号</span></span>
+<span id="cb286-6"><a href="第九讲回归模型二分层线性模型.html#cb286-6" tabindex="-1"></a>       <span class="at">dv=</span> <span class="st">&#39;RT&#39;</span>, <span class="co"># dependent variable</span></span>
+<span id="cb286-7"><a href="第九讲回归模型二分层线性模型.html#cb286-7" tabindex="-1"></a>       <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&#39;Identity&#39;</span>, <span class="st">&#39;Valence&#39;</span>)) <span class="sc">%&gt;%</span> <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">33</span><span class="sc">:</span><span class="dv">37</span>)]</span></code></pre></div>
 <pre><code>## 
 ##     * Data are aggregated to mean (across items/trials)
 ##     if there are &gt;=2 observations per subject and cell.
@@ -637,11 +670,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [5] &quot;The repeated measures have only two levels. The assumption of sphericity is always met.&quot;</code></pre>
 <p>然后还有大家可能没有那么常用的、现在越来越推荐报告的，比方说这个eta-square，叫伊塔方，反映的是效应量的一个指标。那么bruceR里面有一个好处，就是它会输出多个效应量的指标，包括partialeta-squared，偏伊塔方，包括generalizedeta-squared，这是一个更加推荐的效应量的指标还有cohen’sf²，这也是以前会有一些元分析的时候，大家会用到的一些指标。那么从这里顺便可以稍微多讲一句，就是当实验设计是ANOVA的时候，大家有的时候可能会想，我如何用它来规划样本量，把什么作为一个效应量，输入到gpower里面而这里要有一个非常值得注意的问题，就是大家如果是完全被试内实验设计，千万不要说我用gpower做了这个样本量的规划或者poweranalysis，因为gpower做不了这个事情，如果你审稿的稿件里写这么一句的话，审稿人如果有经验的话，就一下看到你可能就是表演了一下poweranalysis。</p>
 <p>[ANOVA-bruceR(输出)]</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="第九讲回归模型二分层线性模型.html#cb285-1" tabindex="-1"></a>bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(<span class="at">data =</span> mt_mean,</span>
-<span id="cb285-2"><a href="第九讲回归模型二分层线性模型.html#cb285-2" tabindex="-1"></a>               <span class="at">subID =</span> <span class="st">&#39;Sub&#39;</span>,</span>
-<span id="cb285-3"><a href="第九讲回归模型二分层线性模型.html#cb285-3" tabindex="-1"></a>               <span class="at">dv =</span> <span class="st">&#39;RT&#39;</span>,</span>
-<span id="cb285-4"><a href="第九讲回归模型二分层线性模型.html#cb285-4" tabindex="-1"></a>               <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&#39;Identity&#39;</span>, <span class="st">&#39;Valence&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb285-5"><a href="第九讲回归模型二分层线性模型.html#cb285-5" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">31</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="第九讲回归模型二分层线性模型.html#cb289-1" tabindex="-1"></a>bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(<span class="at">data =</span> mt_mean,</span>
+<span id="cb289-2"><a href="第九讲回归模型二分层线性模型.html#cb289-2" tabindex="-1"></a>               <span class="at">subID =</span> <span class="st">&#39;Sub&#39;</span>,</span>
+<span id="cb289-3"><a href="第九讲回归模型二分层线性模型.html#cb289-3" tabindex="-1"></a>               <span class="at">dv =</span> <span class="st">&#39;RT&#39;</span>,</span>
+<span id="cb289-4"><a href="第九讲回归模型二分层线性模型.html#cb289-4" tabindex="-1"></a>               <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&#39;Identity&#39;</span>, <span class="st">&#39;Valence&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb289-5"><a href="第九讲回归模型二分层线性模型.html#cb289-5" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">31</span>)]</span></code></pre></div>
 <pre><code>## 
 ##     * Data are aggregated to mean (across items/trials)
 ##     if there are &gt;=2 observations per subject and cell.
@@ -666,14 +699,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [17] &quot;Cohen’s f² = η²p / (1 - η²p)&quot;</code></pre>
 <p>然后这是bruceR里面的输出，我们可以看到bruceR，实际上是对另外一个很方便的包，进行了一个封装，就是afex，我们其实之前也见过这个包，那么在afex里面我们可以得到同样的结果，这里我们就不再展示了，那么通常如果说我们做这个方差分析，到这里我们看到交互作用，接下来就进行简单效应分析，就像我们上节课结尾的时候，上节课我们用Email去查看不同条件下，比方说在不同的identity条件下面不同valence的效应，或者反过来不同的valence下面identity的效应，这里就不展开了，因为跟上节课是一模一样的，大家可以借用上节课的一个代码来做同样的事情。</p>
 <p>[ANOVA-afex]</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="第九讲回归模型二分层线性模型.html#cb288-1" tabindex="-1"></a><span class="do">## bruceR::MANOVA 是对afex的封装</span></span>
-<span id="cb288-2"><a href="第九讲回归模型二分层线性模型.html#cb288-2" tabindex="-1"></a>m_aov <span class="ot">&lt;-</span> afex<span class="sc">::</span><span class="fu">aov_ez</span>(</span>
-<span id="cb288-3"><a href="第九讲回归模型二分层线性模型.html#cb288-3" tabindex="-1"></a>  <span class="at">data =</span> mt_mean,</span>
-<span id="cb288-4"><a href="第九讲回归模型二分层线性模型.html#cb288-4" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&#39;Sub&#39;</span>,</span>
-<span id="cb288-5"><a href="第九讲回归模型二分层线性模型.html#cb288-5" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&#39;RT&#39;</span>,</span>
-<span id="cb288-6"><a href="第九讲回归模型二分层线性模型.html#cb288-6" tabindex="-1"></a>  <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&#39;Identity&#39;</span>, <span class="st">&#39;Valence&#39;</span>))</span>
-<span id="cb288-7"><a href="第九讲回归模型二分层线性模型.html#cb288-7" tabindex="-1"></a></span>
-<span id="cb288-8"><a href="第九讲回归模型二分层线性模型.html#cb288-8" tabindex="-1"></a>m_aov</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="第九讲回归模型二分层线性模型.html#cb292-1" tabindex="-1"></a><span class="do">## bruceR::MANOVA 是对afex的封装</span></span>
+<span id="cb292-2"><a href="第九讲回归模型二分层线性模型.html#cb292-2" tabindex="-1"></a>m_aov <span class="ot">&lt;-</span> afex<span class="sc">::</span><span class="fu">aov_ez</span>(</span>
+<span id="cb292-3"><a href="第九讲回归模型二分层线性模型.html#cb292-3" tabindex="-1"></a>  <span class="at">data =</span> mt_mean,</span>
+<span id="cb292-4"><a href="第九讲回归模型二分层线性模型.html#cb292-4" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&#39;Sub&#39;</span>,</span>
+<span id="cb292-5"><a href="第九讲回归模型二分层线性模型.html#cb292-5" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">&#39;RT&#39;</span>,</span>
+<span id="cb292-6"><a href="第九讲回归模型二分层线性模型.html#cb292-6" tabindex="-1"></a>  <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&#39;Identity&#39;</span>, <span class="st">&#39;Valence&#39;</span>))</span>
+<span id="cb292-7"><a href="第九讲回归模型二分层线性模型.html#cb292-7" tabindex="-1"></a></span>
+<span id="cb292-8"><a href="第九讲回归模型二分层线性模型.html#cb292-8" tabindex="-1"></a>m_aov</span></code></pre></div>
 <pre><code>## Anova Table (Type 3 tests)
 ## 
 ## Response: RT
@@ -782,9 +815,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="多层线性模型的应用" class="section level2 hasAnchor" number="9.4">
 <h2><span class="header-section-number">9.4</span> 多层线性模型的应用<a href="第九讲回归模型二分层线性模型.html#多层线性模型的应用" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>我们使用lme4包对多层线性模型建模，具体语句形式如下：</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="第九讲回归模型二分层线性模型.html#cb294-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(</span>
-<span id="cb294-2"><a href="第九讲回归模型二分层线性模型.html#cb294-2" tabindex="-1"></a>    <span class="at">data =</span>   , </span>
-<span id="cb294-3"><a href="第九讲回归模型二分层线性模型.html#cb294-3" tabindex="-1"></a>    <span class="at">formula =</span> DV <span class="sc">~</span> Fixed_Factor <span class="sc">+</span> (Random_intercept <span class="sc">+</span> Random_Slope <span class="sc">|</span> Random_Factor)) <span class="co">#&lt;&lt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="第九讲回归模型二分层线性模型.html#cb298-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(</span>
+<span id="cb298-2"><a href="第九讲回归模型二分层线性模型.html#cb298-2" tabindex="-1"></a>    <span class="at">data =</span>   , </span>
+<span id="cb298-3"><a href="第九讲回归模型二分层线性模型.html#cb298-3" tabindex="-1"></a>    <span class="at">formula =</span> DV <span class="sc">~</span> Fixed_Factor <span class="sc">+</span> (Random_intercept <span class="sc">+</span> Random_Slope <span class="sc">|</span> Random_Factor)) <span class="co">#&lt;&lt;</span></span></code></pre></div>
 <p>注：</p>
 <ul>
 <li><p>但在建立模型之前，需要考虑好在我们的数据中，随机效应和固定效应分别是什么。一般都会添加随机截距，而随机斜率的加入应当考虑是否有充足理由；</p></li>
@@ -794,9 +827,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 这可能是很多同学第一次接触分层模型，也是第一次接触随机效应和固定效应，所以很难去思考到底应该怎么去加等等等等，这里先跟大家说一下，实际上这个模型的建立，把什么样的变量纳入到随机效应之中，实际上是需要仔细思考的，想一想到底有没有这种可能性，要有充足的理由，一般来说大家都会加随机的截距，随机的斜率的加入目前来说是有争论的，至少我看到的一些文章中是有争论的。另外，随机效应一般是从总体中的一些离散单位，本质上是一个分类的变量。关于刚刚说的争论，比方说应不应该把所有的自变量加到随机斜率里，现在不同的研究者是有不同的看法的，大家目前来说可以暂时不用管它，在对层级模型越来越熟悉之后可以去考虑这些比较细致的知识点。
 刚才说的是在r里面用lme4这个包去建分层模型的一个基本语法结构，在这里我们可以把数据带入进来，数据就是我们刚才说的原始的数据，前面是RT，我们有两个自变量，一个是identity，一个是valence。这里大家可以看到有一个加号，后面加了随机的效应，这个竖线的左边就是你的公式是什么，你要让那些效应有变化，右边是变化的效应是在那些组织间以什么样的标准进行分组，然后进行变化的，这里表示每个被试的截距是不一样的，换成更易懂的话来说，每个被试基本的反应时间是有快有慢的。当我们建了这么一个模型后，它代表我们可能认为，identity和valence这两个效应在主水平上是要进行检验的，但我们并没有检验它在每个个体上的差异，也就是说我们认为identity和valence在每个被试身上的效应和在总体上都是类似的。当然我们也可以认为identity和valence在不同被试间是有变化的，和刚才的相比，我们可以看到公式的变化就是在括号里把identity和valence都加进来了，这个星号一般在r里表示乘号，它实际上表示两个变量间所有可能的组合，比方说identity*valence实际上表示identity的主效应加上valence的主效应，再加上它们之间的交互作用，交互作用是由冒号来表示的，目前这种用一个乘号来表示自变量之间所有可能的写法是很常见的，在r和python中至少我观测到的主流的方法都采用这种方式了。</p>
 <p>[ranI]</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="第九讲回归模型二分层线性模型.html#cb295-1" tabindex="-1"></a><span class="do">## 随机截距 固定斜率</span></span>
-<span id="cb295-2"><a href="第九讲回归模型二分层线性模型.html#cb295-2" tabindex="-1"></a>model <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> mt_raw,</span>
-<span id="cb295-3"><a href="第九讲回归模型二分层线性模型.html#cb295-3" tabindex="-1"></a>                    RT <span class="sc">~</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Sub))</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="第九讲回归模型二分层线性模型.html#cb299-1" tabindex="-1"></a><span class="do">## 随机截距 固定斜率</span></span>
+<span id="cb299-2"><a href="第九讲回归模型二分层线性模型.html#cb299-2" tabindex="-1"></a>model <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> mt_raw,</span>
+<span id="cb299-3"><a href="第九讲回归模型二分层线性模型.html#cb299-3" tabindex="-1"></a>                    RT <span class="sc">~</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Sub))</span></code></pre></div>
 <ul>
 <li><p>Identity*Valence: *表示两变量间所有可能的形式，等同与Identity + Valence + Identity:Valence</p></li>
 <li><p>(1|Sub): 1表示随机截距（0则表示固定截距）； 管道(|)右侧Sub为随机因子</p></li>
@@ -805,29 +838,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 假如我们用现在的这个数据建了两个模型，一个是随机截距、随机斜率，另一个是随机截距、固定斜率，这时候就存在一个问题，这两个模型可能都能跑出来，那么我们到底要看哪个结果？实际上当我们采用层级模型的时候，或者当我们把线性的回归模型当作一种模型来处理的时候，我们会发现它的结果远远比我们在心理统计学中学到的t检验、方差分析以及之后的一系列分析要更复杂，因为它的模型首先有很多个。大家可以看看到这里标注的公式，RT这个是identity*valence，假如我们不变固定效应的这部分，那么对于随机效应的部分我们还可以变换吗？我们这里可能给出了一个很全面的随机效应，大家想一想它还能继续变化吗？我们可不可以拿掉其中一个？比如拿掉valence，随机效应里就变成1+identity，可不可以？也是可以的，至少是可以运行的。或者把identity拿掉只留valence，只认为不同被试在valence这个自变量上面的效应有差异，在identity上认为它是一模一样的，这也是可行的。或者认为它们两个主效应都在，但没有交互作用，这也是可行的。所以我们发现可以建好几个模型，这时候你需要想清楚到底哪个模型是makesense的，是合理的，因为有些模型可以凭经验发现是不合理的，那你就不应该用这个数据去建这个模型。在你把这个模型建起来之后，它在r里跑也可以给你结果，但这个结果对你来说可能是没有意义的，你需要用你的专家经验只是去筛选那些模型是合理的，是值得把它跑出来，去test的。
 当你觉得这几个模型好像都差不多，需要通过数据本身来告诉我哪个模型是更加合适的，在这种情况下，我们可能需要借助一些模型比较的方法，可以直接对这些模型进行比较，哪些模型能够更好地拟合数据，这个模型更能捕捉到数据内部的一些特点，这就涉及到模型比较的问题，模型比较的问题基本上在所有的统计学中都会涉及到，当我们使用层级模型的时候我们可能也会用模型比较的方法去选择模型。在认知计算建模里我们也会用模型比较的方法去选择模型，在SEM，结构方程模型里也有很多模型选择的标准，如果大家仔细去看mplus或者spss或者mos里的输出的话，也是需要对不同模型进行比较的。
 [ranI ranS]</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="第九讲回归模型二分层线性模型.html#cb296-1" tabindex="-1"></a><span class="do">## 随机截距 随机斜率</span></span>
-<span id="cb296-2"><a href="第九讲回归模型二分层线性模型.html#cb296-2" tabindex="-1"></a>model_full <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> mt_raw,</span>
-<span id="cb296-3"><a href="第九讲回归模型二分层线性模型.html#cb296-3" tabindex="-1"></a>                         RT <span class="sc">~</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub)) </span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="第九讲回归模型二分层线性模型.html#cb300-1" tabindex="-1"></a><span class="do">## 随机截距 随机斜率</span></span>
+<span id="cb300-2"><a href="第九讲回归模型二分层线性模型.html#cb300-2" tabindex="-1"></a>model_full <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> mt_raw,</span>
+<span id="cb300-3"><a href="第九讲回归模型二分层线性模型.html#cb300-3" tabindex="-1"></a>                         RT <span class="sc">~</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub)) </span></code></pre></div>
 <p>[模型比较]</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="第九讲回归模型二分层线性模型.html#cb297-1" tabindex="-1"></a><span class="do">## 模型比较</span></span>
-<span id="cb297-2"><a href="第九讲回归模型二分层线性模型.html#cb297-2" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(model, model_full) <span class="sc">%&gt;%</span> <span class="fu">capture.output</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="第九讲回归模型二分层线性模型.html#cb301-1" tabindex="-1"></a><span class="do">## 模型比较</span></span>
+<span id="cb301-2"><a href="第九讲回归模型二分层线性模型.html#cb301-2" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(model, model_full) <span class="sc">%&gt;%</span> <span class="fu">capture.output</span>()</span></code></pre></div>
 <pre><code>## refitting model(s) with ML (instead of REML)</code></pre>
-<pre><code>## [1] &quot;Data: mt_raw&quot;                                                                   &quot;Models:&quot;                                                                       
-## [3] &quot;model: RT ~ Identity * Valence + (1 | Sub)&quot;                                     &quot;model_full: RT ~ Identity * Valence + (1 + Identity * Valence | Sub)&quot;          
-## [5] &quot;           npar    AIC    BIC logLik deviance Chisq Df          Pr(&gt;Chisq)    &quot; &quot;model         6 -29173 -29124  14592   -29185                                 &quot;
-## [7] &quot;model_full   15 -30024 -29902  15027   -30054   869  9 &lt;0.0000000000000002 ***&quot; &quot;---&quot;                                                                           
+<pre><code>## [1] &quot;Data: mt_raw&quot;                                                                  
+## [2] &quot;Models:&quot;                                                                       
+## [3] &quot;model: RT ~ Identity * Valence + (1 | Sub)&quot;                                    
+## [4] &quot;model_full: RT ~ Identity * Valence + (1 + Identity * Valence | Sub)&quot;          
+## [5] &quot;           npar    AIC    BIC logLik deviance Chisq Df          Pr(&gt;Chisq)    &quot;
+## [6] &quot;model         6 -29173 -29124  14592   -29185                                 &quot;
+## [7] &quot;model_full   15 -30024 -29902  15027   -30054   869  9 &lt;0.0000000000000002 ***&quot;
+## [8] &quot;---&quot;                                                                           
 ## [9] &quot;Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1&quot;</code></pre>
 <p>注：模型比较的指标、计算方法及其优劣请参考<a href="https://chinaxiv.org/abs/202308.00658">《认知建模中模型比较的方法》</a></p>
 <p>在我们这个层级模型里，我们这里简单展示用spaceANOVA的函数比较两个模型，我们刚刚建了两个模型，一个是基本的模型，只有一个random intercept，另外一个不仅有randomintercept，还有randomslope，随机的斜率，当然如果你自己在r里面看结果，直接用输前面这部分就可以了，我们这里是把它给打出来了，我们可以看到它会给一个输出。大家可以看到这个地方是它一系列模型比较的指标，这里就有两个模型，一个是model，一个是model_full，这个npar表示它的parameters的数量，我们可以看到简单的模型里面只有6个，full里面有16个参数，这个是AIC——一个模型比较的指标，BIC——一个模型的指标，这个是Loglikelyhood，这个是deviance，还有对模型比较之间用卡方做的一个检验，然后发现两个模型拟合之间是有差异的，，如果按照卡方的标准发现它是显著的，这个时候我们可以推断有随机截距和随机斜率的模型对数据的拟合更好，那么接下来我们就会选择它作为解读的对象。这里有一篇preprent的文章，是两个年轻的博士生跟我一起写的，我是主要是跟他们学习，大家感兴趣可以去看一下。
 在这里我们基本可以说在重复测量方差分析的基础上又做了一个层级模型，并且假定我们做了几个潜在可能的模型，都对它进行了拟合，然后再通过ANOVA进行了选择，选择之后要对模型的输出进行解读，去看感兴趣的自变量的效应在主水平是不是存在，在个体层面是不是有很大的变异，或者这个变异到底有多大，我们应该如何去解释这个变异。所以我们要去对这个结果进行一个解读，那么我们怎么去查看这个结果呢？这里肯定要涉及到模型比较的事项，加入我们要去看一下固定效应是不是显著的，那么我们怎么查看显著呢？我们可以通过刚才ANOVA的模型比较的方式，去对两个模型进行比较，一个模型是没有固定效应的，一个模型是由固定效应的，这两个模型之间的差异就是一个有固定效应一个没有，如果有固定效应的模型比没有固定效应的模型显著地更好，那它可能说明了这些固定的效应就应该放到这些模型里，我们可以认为它是显著的。所以我们需要借没有固定效应的模型作基线，然后把我们刚刚已经跑完的有固定效应也有随机效应的模型，和这个只有随机效应没有固定效应的模型进行比较，比较完发现有固定效应的模型确实更好，这基本上就可以帮助我们判断，我们加入进来的固定效应，就是identity和valence，以及它们之间的交互作用，肯定是有作用的.</p>
 <p>在建立模型后，我们希望知道固定效应大小是否显著，但由于多层线性模型中对于自由度的估计有多种方法，比较复杂，所以lme4::lmer()中没有提供显著性。</p>
 <p>[anova]</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="第九讲回归模型二分层线性模型.html#cb300-1" tabindex="-1"></a><span class="co"># 建立没有固定效应的“空模型”</span></span>
-<span id="cb300-2"><a href="第九讲回归模型二分层线性模型.html#cb300-2" tabindex="-1"></a>model_null <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> mt_raw,</span>
-<span id="cb300-3"><a href="第九讲回归模型二分层线性模型.html#cb300-3" tabindex="-1"></a>                   RT <span class="sc">~</span> (<span class="dv">1</span> <span class="sc">+</span> Identity<span class="sc">*</span>Valence<span class="sc">|</span>Sub))</span>
-<span id="cb300-4"><a href="第九讲回归模型二分层线性模型.html#cb300-4" tabindex="-1"></a></span>
-<span id="cb300-5"><a href="第九讲回归模型二分层线性模型.html#cb300-5" tabindex="-1"></a><span class="do">## 根据似然比进行模型比较</span></span>
-<span id="cb300-6"><a href="第九讲回归模型二分层线性模型.html#cb300-6" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(model_full, model_null)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="第九讲回归模型二分层线性模型.html#cb304-1" tabindex="-1"></a><span class="co"># 建立没有固定效应的“空模型”</span></span>
+<span id="cb304-2"><a href="第九讲回归模型二分层线性模型.html#cb304-2" tabindex="-1"></a>model_null <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> mt_raw,</span>
+<span id="cb304-3"><a href="第九讲回归模型二分层线性模型.html#cb304-3" tabindex="-1"></a>                   RT <span class="sc">~</span> (<span class="dv">1</span> <span class="sc">+</span> Identity<span class="sc">*</span>Valence<span class="sc">|</span>Sub))</span>
+<span id="cb304-4"><a href="第九讲回归模型二分层线性模型.html#cb304-4" tabindex="-1"></a></span>
+<span id="cb304-5"><a href="第九讲回归模型二分层线性模型.html#cb304-5" tabindex="-1"></a><span class="do">## 根据似然比进行模型比较</span></span>
+<span id="cb304-6"><a href="第九讲回归模型二分层线性模型.html#cb304-6" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(model_full, model_null)</span></code></pre></div>
 <pre><code>## refitting model(s) with ML (instead of REML)</code></pre>
 <pre><code>## Data: mt_raw
 ## Models:
@@ -840,9 +877,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>我们也可以用FX，FX这个包我们经常介绍它，我们也可以用它的mix函数来进行检验。我们比方说就直接用他的这个mix把这个数据输入进来，然后大家可以看到这个地方的回归方程和我们刚刚在lme4里看到的是一模一样的，也就是说我们在FX里建了一个多层模型，然后通过它里面LRT这个算法来进行检验，它输出的结果和我们传统的方差分析很像，它会给出主效应和交互作用，如果想查看固定效应，也可以用FX的mix这个函数来查看固定效应。</p>
 <p>在模型非常复杂时（多层嵌套），如果仅仅只想对固定效应进行检验，可以使用afex::mixed()，设置method 参数为 LRT(Likelihood-ratio tests)</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="第九讲回归模型二分层线性模型.html#cb303-1" tabindex="-1"></a>afex<span class="sc">::</span><span class="fu">mixed</span>(<span class="at">data =</span> mt_raw,</span>
-<span id="cb303-2"><a href="第九讲回归模型二分层线性模型.html#cb303-2" tabindex="-1"></a>            RT <span class="sc">~</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity<span class="sc">*</span>Valence<span class="sc">|</span>Sub),</span>
-<span id="cb303-3"><a href="第九讲回归模型二分层线性模型.html#cb303-3" tabindex="-1"></a>            <span class="at">method =</span> <span class="st">&#39;LRT&#39;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="第九讲回归模型二分层线性模型.html#cb307-1" tabindex="-1"></a>afex<span class="sc">::</span><span class="fu">mixed</span>(<span class="at">data =</span> mt_raw,</span>
+<span id="cb307-2"><a href="第九讲回归模型二分层线性模型.html#cb307-2" tabindex="-1"></a>            RT <span class="sc">~</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity<span class="sc">*</span>Valence<span class="sc">|</span>Sub),</span>
+<span id="cb307-3"><a href="第九讲回归模型二分层线性模型.html#cb307-3" tabindex="-1"></a>            <span class="at">method =</span> <span class="st">&#39;LRT&#39;</span>) </span></code></pre></div>
 <pre><code>## Contrasts set to contr.sum for the following variables: Identity, Valence</code></pre>
 <pre><code>## REML argument to lmer() set to FALSE for method = &#39;PB&#39; or &#39;LRT&#39;</code></pre>
 <pre><code>## Fitting 4 (g)lmer() models:
@@ -860,38 +897,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>第三个方法是我们我们可以用叫做lmertest这个包，这个包实际上是跟lme4兼容的一个包，主要就是对混合效应模型，或者说层级模型进行假设检验，这里就包含了lmer这个函数，lmer和我们前面用到的lme4基本上名字都是一样的，就是不同的包，它的一个主要特点就是会报告显著性，它在这里使用它自己的一些算法。我们在用lmer这个函数的时候，这里的语法的输入跟我们在lme4里基本是一模一样的，然后我们可以通过summary来去看它的结果。我们第一个看到的是它随机效应的相关矩阵，这里主要关注不同的随机效应间有没有相关性，但绝大部分的时候我们可能不会太关注这些信息，然后我们可能更多的看的是两个，第一个就是把这个固定效应，就是类似两个自变量有没有主效应和交互效应，另外一个我们有时候也会专门去看变化的随机效应，这里我们可能没有展示。</p>
 <p>lmerTest是一个与lme4包兼容的包，主要用于对混合效应模型进行假设检验；其中也包含了lmerTest::lmer()函数，与lme4::lmer()不同的是，其结果报告了显著性（使用Satterthwaite分母自由）</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="第九讲回归模型二分层线性模型.html#cb308-1" tabindex="-1"></a>lmer_model <span class="ot">&lt;-</span> lmerTest<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> mt_raw,</span>
-<span id="cb308-2"><a href="第九讲回归模型二分层线性模型.html#cb308-2" tabindex="-1"></a>                             RT <span class="sc">~</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub))</span>
-<span id="cb308-3"><a href="第九讲回归模型二分层线性模型.html#cb308-3" tabindex="-1"></a><span class="co"># summary(lmer_model)</span></span>
-<span id="cb308-4"><a href="第九讲回归模型二分层线性模型.html#cb308-4" tabindex="-1"></a></span>
-<span id="cb308-5"><a href="第九讲回归模型二分层线性模型.html#cb308-5" tabindex="-1"></a><span class="co"># 如果使用lmerTest包进行建模，可以使用bruceR::HLM_summary()进行输出</span></span>
-<span id="cb308-6"><a href="第九讲回归模型二分层线性模型.html#cb308-6" tabindex="-1"></a><span class="do">##  RUN IN CONSOLE</span></span>
-<span id="cb308-7"><a href="第九讲回归模型二分层线性模型.html#cb308-7" tabindex="-1"></a><span class="co"># HLM_summary(lmer_model)</span></span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="第九讲回归模型二分层线性模型.html#cb312-1" tabindex="-1"></a>lmer_model <span class="ot">&lt;-</span> lmerTest<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> mt_raw,</span>
+<span id="cb312-2"><a href="第九讲回归模型二分层线性模型.html#cb312-2" tabindex="-1"></a>                             RT <span class="sc">~</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub))</span>
+<span id="cb312-3"><a href="第九讲回归模型二分层线性模型.html#cb312-3" tabindex="-1"></a><span class="co"># summary(lmer_model)</span></span>
+<span id="cb312-4"><a href="第九讲回归模型二分层线性模型.html#cb312-4" tabindex="-1"></a></span>
+<span id="cb312-5"><a href="第九讲回归模型二分层线性模型.html#cb312-5" tabindex="-1"></a><span class="co"># 如果使用lmerTest包进行建模，可以使用bruceR::HLM_summary()进行输出</span></span>
+<span id="cb312-6"><a href="第九讲回归模型二分层线性模型.html#cb312-6" tabindex="-1"></a><span class="do">##  RUN IN CONSOLE</span></span>
+<span id="cb312-7"><a href="第九讲回归模型二分层线性模型.html#cb312-7" tabindex="-1"></a><span class="co"># HLM_summary(lmer_model)</span></span></code></pre></div>
 <p>[随机效应]
 注意：
 - 相关矩阵会体现自变量效应在个体上的差异，尤其是第一列(截距与斜率的相关)，而具体的解释也应考虑对应固定效应系数本身的正负；</p>
 <ul>
 <li>有可能会提供天花板与地板效应的相关信息，如任务过于简单，数据变化较小，有可能出现截距与斜率为负相关。</li>
 </ul>
-<pre><code>## [1] &quot;Random effects:&quot;                                                         &quot; Groups   Name                      Variance Std.Dev. Corr             &quot;
-## [3] &quot; Sub      (Intercept)               0.00425  0.0652                    &quot; &quot;          IdentitySelf              0.00147  0.0383   -0.24            &quot;
-## [5] &quot;          Valencemoral              0.00219  0.0468   -0.22  0.49      &quot; &quot;          IdentitySelf:Valencemoral 0.00510  0.0714   -0.02 -0.53 -0.80&quot;
-## [7] &quot; Residual                           0.01801  0.1342                    &quot; &quot;Number of obs: 25920, groups:  Sub, 44&quot;</code></pre>
+<pre><code>## [1] &quot;Random effects:&quot;                                                        
+## [2] &quot; Groups   Name                      Variance Std.Dev. Corr             &quot;
+## [3] &quot; Sub      (Intercept)               0.00425  0.0652                    &quot;
+## [4] &quot;          IdentitySelf              0.00147  0.0383   -0.24            &quot;
+## [5] &quot;          Valencemoral              0.00219  0.0468   -0.22  0.49      &quot;
+## [6] &quot;          IdentitySelf:Valencemoral 0.00510  0.0714   -0.02 -0.53 -0.80&quot;
+## [7] &quot; Residual                           0.01801  0.1342                    &quot;
+## [8] &quot;Number of obs: 25920, groups:  Sub, 44&quot;</code></pre>
 <p>[固定效应]</p>
-<pre><code>## [1] &quot;Fixed effects:&quot;                                        &quot;                          Estimate Std. Error t value&quot;
-## [3] &quot;(Intercept)                0.72328    0.00997   72.51&quot; &quot;IdentitySelf               0.01329    0.00624    2.13&quot;
-## [5] &quot;Valencemoral              -0.00913    0.00744   -1.23&quot; &quot;IdentitySelf:Valencemoral -0.04150    0.01128   -3.68&quot;</code></pre>
+<pre><code>## [1] &quot;Fixed effects:&quot;                                       
+## [2] &quot;                          Estimate Std. Error t value&quot;
+## [3] &quot;(Intercept)                0.72328    0.00997   72.51&quot;
+## [4] &quot;IdentitySelf               0.01329    0.00624    2.13&quot;
+## [5] &quot;Valencemoral              -0.00913    0.00744   -1.23&quot;
+## [6] &quot;IdentitySelf:Valencemoral -0.04150    0.01128   -3.68&quot;</code></pre>
 <p>比如说在这个模式里面，我们应该是可以把每一个被试在identity上的效应提取出来，看它在被试间是怎样一个变化，以及比方说valence的效应，或者它们之间的交互作用，我们也可以对它进行一个可视化，这个可视化是个非常简陋的可视化，这里全部采用的是默认值，比方说顺序就是他人和自我，道德也是moral和immoral，跟我们之前呈现的顺序不一样，在讲完了这个统计模型之后，我们会专门讲怎么在gPlot里面，对这种最后要呈现的结果进行精细的打磨。那么实际上在现在有很多包，包括像interaction这样的包，它能够帮助我们迅速地把一些我们关注的效应进行可视化，让我们看到它们之间是什么样的情况，比方说这里我们可以看到是一个比较明显的交互作用，在other的条件之下的immoral和moral的差别，肯定是要比在自我条件下的差别是要小的，所以在这里我们可以非常明显的看到交互作用的存在。</p>
 <p>[交互效应的可视化]</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="第九讲回归模型二分层线性模型.html#cb311-1" tabindex="-1"></a><span class="do">## 一种快捷的方法</span></span>
-<span id="cb311-2"><a href="第九讲回归模型二分层线性模型.html#cb311-2" tabindex="-1"></a>interactions<span class="sc">::</span><span class="fu">cat_plot</span>(<span class="at">model =</span> model_full,</span>
-<span id="cb311-3"><a href="第九讲回归模型二分层线性模型.html#cb311-3" tabindex="-1"></a>                       <span class="at">pred =</span> Identity,</span>
-<span id="cb311-4"><a href="第九讲回归模型二分层线性模型.html#cb311-4" tabindex="-1"></a>                       <span class="at">modx =</span> Valence)</span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="第九讲回归模型二分层线性模型.html#cb315-1" tabindex="-1"></a><span class="do">## 一种快捷的方法</span></span>
+<span id="cb315-2"><a href="第九讲回归模型二分层线性模型.html#cb315-2" tabindex="-1"></a>interactions<span class="sc">::</span><span class="fu">cat_plot</span>(<span class="at">model =</span> model_full,</span>
+<span id="cb315-3"><a href="第九讲回归模型二分层线性模型.html#cb315-3" tabindex="-1"></a>                       <span class="at">pred =</span> Identity,</span>
+<span id="cb315-4"><a href="第九讲回归模型二分层线性模型.html#cb315-4" tabindex="-1"></a>                       <span class="at">modx =</span> Valence)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-169-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>我们前面讲不同模型之间是等价的，我们也说从重复测量方差分析是一个特定的混合陷阱模型，那么它们到底能不能做到完全等价，或者说几乎是相同的呢？大家觉得能做到吗？我们可以先看一看。我们这里直接把之前的重复测量方差分析的结果打印出来。
 我们可以仔细看一下它的这个值，对Valence来说，效应是f值是64.37，p值是很小的，另外一个f值是14.36；然后还有identity它的f值是2.55，df都是143，这个跟我们在心理统计学上学到的重复测量方差分析是很像的。</p>
 <p>[anova]</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="第九讲回归模型二分层线性模型.html#cb312-1" tabindex="-1"></a>m_aov</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="第九讲回归模型二分层线性模型.html#cb316-1" tabindex="-1"></a>m_aov</span></code></pre></div>
 <pre><code>## Anova Table (Type 3 tests)
 ## 
 ## Response: RT
@@ -903,8 +947,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>我们可以看一下lme4，我们刚才建了好多个模型，然后我们选出最合适的一个，那么我们看一下最合适这个是不是跟我们的重复测量方式分析是一样的呢？我们直接看的话，用anova这个函数，用fullmodel把它的方差分析表打出来，我们就会看到它的f值，有三个f值，identity是0.74，跟我们的2.55不一样，第二个是45.00，跟我们的64.37也不要太一样，第三个也不太一样，但总体趋势差不多，总体趋势就是identity很小，valence比较大，它们的交互作用也比较大。</p>
 <p>[lme4]</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="第九讲回归模型二分层线性模型.html#cb314-1" tabindex="-1"></a><span class="do">## 使用lme4建立的模型</span></span>
-<span id="cb314-2"><a href="第九讲回归模型二分层线性模型.html#cb314-2" tabindex="-1"></a>model_full <span class="sc">%&gt;%</span> <span class="fu">anova</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="第九讲回归模型二分层线性模型.html#cb318-1" tabindex="-1"></a><span class="do">## 使用lme4建立的模型</span></span>
+<span id="cb318-2"><a href="第九讲回归模型二分层线性模型.html#cb318-2" tabindex="-1"></a>model_full <span class="sc">%&gt;%</span> <span class="fu">anova</span>()</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ##                  npar Sum Sq Mean Sq F value
 ## Identity            1  0.013   0.013    0.74
@@ -912,27 +956,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Identity:Valence    1  0.244   0.244   13.54</code></pre>
 <p>我们再看一下lmertest的fullmodel，因为它是给出显著性的，所以我们可以看看它会不会得到类似结果，可以看到跟lme4得到类似的结果，但是模式也都是一样的，identity比较小，valence比较大，identity和valence的交互作用处于中间，下面两个都是显著的，所以我们发现重复测量的方差分析和常规的层级模型，其实好像不太一样。</p>
 <p>[lmerTest]</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="第九讲回归模型二分层线性模型.html#cb316-1" tabindex="-1"></a><span class="do">## 使用lmerTest建立的模型</span></span>
-<span id="cb316-2"><a href="第九讲回归模型二分层线性模型.html#cb316-2" tabindex="-1"></a>lmer_model <span class="sc">%&gt;%</span> <span class="fu">anova</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="第九讲回归模型二分层线性模型.html#cb320-1" tabindex="-1"></a><span class="do">## 使用lmerTest建立的模型</span></span>
+<span id="cb320-2"><a href="第九讲回归模型二分层线性模型.html#cb320-2" tabindex="-1"></a>lmer_model <span class="sc">%&gt;%</span> <span class="fu">anova</span>()</span></code></pre></div>
 <pre><code>## Type III Analysis of Variance Table with Satterthwaite&#39;s method
 ##                  Sum Sq Mean Sq NumDF DenDF F value      Pr(&gt;F)    
-## Identity          0.031   0.031     1  43.0    1.73     0.19578    
-## Valence           0.765   0.765     1  43.3   42.47 0.000000063 ***
+## Identity          0.031   0.031     1  43.0    1.73     0.19575    
+## Valence           0.765   0.765     1  43.3   42.46 0.000000063 ***
 ## Identity:Valence  0.244   0.244     1  43.0   13.54     0.00065 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>其实这个刚开始我也是比较困惑的，也找了很多解决方案，后来发现它需要以一种很特定的方式来建构层级模型，才能达到跟它很一致的结果。
 因为我们今年一直采用matchingdata的反应时的数据，我们用它来跟前面进行对比，这里大家可以看到我们用的是mt_mean，我们在数据上做到了一样，前面那里还有个问题，就是它们的数据是不太一样的，比如这里的mt_mean，它用的是一个原始的数据应不应该在这里使用？因为我们这个数据量很大，所以有一些没有清理的数据不影响整体的趋势但假如你自己做数据分析，数据预处理这里一定是要再考虑考虑的。当然这里我们也试过了，用一模一样的数据，也是用mt_mean来做层级模型，它得到的结果也也是不一样的，跟这里是同样的一个趋势。那么假如我们采用mt_mean这种方式去去建立这个模型，它最有可能得到跟重复测量方差分析一样的结果了，这个模型是比较特别的，首先它有identity和valence的主效应，然后它有被试间的randomintercept，每一个被试在每一个identity下面会有一个独特的intercept，同样对每一个被试来说，在每一个valence上也有一个独特的randomintercept。在这种情况之下，我们得到的结果是最接近的，是59.89，接近60，这个是15.36，跟64.37和14.36是最接近的，但还是没有达到一模一样，还有个问题大家可以看他的这个df，它的自由度，第一个自由度是一模一样的，所以它这里达到了一样的值，143和2.55，这个地方也是2.55，但后面两个自由度和F值不一样，如果大家有兴趣仔细去扒为什么出现这个问题，实际上是因为使用这两个不同函数的人是有不同的习惯的，或者说有不同的重视的点，对于做传统的重复测量方差分析的人来说，很重视方差的分解，然后如何去求f值，这方面会做的很精细，不同的包之间也是能达到精确的一致性的，对于绝大多数做lmer的人来说，他都是从线性模型的角度，他不会在把这个模型做完之后，再去做一个方差分析，然后看它跟重复测量方差分析是不是一模一样的结果。</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="第九讲回归模型二分层线性模型.html#cb318-1" tabindex="-1"></a><span class="co"># http://www.dwoll.de/rexrepos/posts/anovaMixed.html#two-way-repeated-measures-anova-rbf-pq-design</span></span>
-<span id="cb318-2"><a href="第九讲回归模型二分层线性模型.html#cb318-2" tabindex="-1"></a></span>
-<span id="cb318-3"><a href="第九讲回归模型二分层线性模型.html#cb318-3" tabindex="-1"></a>model_aov <span class="ot">&lt;-</span> mt_mean <span class="sc">%&gt;%</span></span>
-<span id="cb318-4"><a href="第九讲回归模型二分层线性模型.html#cb318-4" tabindex="-1"></a>  <span class="co"># dplyr::filter(!is.na(RT) &amp; Match == &quot;match&quot; &amp; ACC == 1) %&gt;%</span></span>
-<span id="cb318-5"><a href="第九讲回归模型二分层线性模型.html#cb318-5" tabindex="-1"></a>  lmerTest<span class="sc">::</span><span class="fu">lmer</span>(</span>
-<span id="cb318-6"><a href="第九讲回归模型二分层线性模型.html#cb318-6" tabindex="-1"></a>   <span class="at">data =</span> .,</span>
-<span id="cb318-7"><a href="第九讲回归模型二分层线性模型.html#cb318-7" tabindex="-1"></a>   RT <span class="sc">~</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Sub) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Identity<span class="sc">:</span>Sub) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Valence<span class="sc">:</span>Sub)</span>
-<span id="cb318-8"><a href="第九讲回归模型二分层线性模型.html#cb318-8" tabindex="-1"></a> )</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="第九讲回归模型二分层线性模型.html#cb322-1" tabindex="-1"></a><span class="co"># http://www.dwoll.de/rexrepos/posts/anovaMixed.html#two-way-repeated-measures-anova-rbf-pq-design</span></span>
+<span id="cb322-2"><a href="第九讲回归模型二分层线性模型.html#cb322-2" tabindex="-1"></a></span>
+<span id="cb322-3"><a href="第九讲回归模型二分层线性模型.html#cb322-3" tabindex="-1"></a>model_aov <span class="ot">&lt;-</span> mt_mean <span class="sc">%&gt;%</span></span>
+<span id="cb322-4"><a href="第九讲回归模型二分层线性模型.html#cb322-4" tabindex="-1"></a>  <span class="co"># dplyr::filter(!is.na(RT) &amp; Match == &quot;match&quot; &amp; ACC == 1) %&gt;%</span></span>
+<span id="cb322-5"><a href="第九讲回归模型二分层线性模型.html#cb322-5" tabindex="-1"></a>  lmerTest<span class="sc">::</span><span class="fu">lmer</span>(</span>
+<span id="cb322-6"><a href="第九讲回归模型二分层线性模型.html#cb322-6" tabindex="-1"></a>   <span class="at">data =</span> .,</span>
+<span id="cb322-7"><a href="第九讲回归模型二分层线性模型.html#cb322-7" tabindex="-1"></a>   RT <span class="sc">~</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Sub) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Identity<span class="sc">:</span>Sub) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Valence<span class="sc">:</span>Sub)</span>
+<span id="cb322-8"><a href="第九讲回归模型二分层线性模型.html#cb322-8" tabindex="-1"></a> )</span></code></pre></div>
 <pre><code>## boundary (singular) fit: see help(&#39;isSingular&#39;)</code></pre>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="第九讲回归模型二分层线性模型.html#cb320-1" tabindex="-1"></a>model_aov <span class="sc">%&gt;%</span> <span class="fu">anova</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="第九讲回归模型二分层线性模型.html#cb324-1" tabindex="-1"></a>model_aov <span class="sc">%&gt;%</span> <span class="fu">anova</span>()</span></code></pre></div>
 <pre><code>## Type III Analysis of Variance Table with Satterthwaite&#39;s method
 ##                  Sum Sq Mean Sq NumDF DenDF F value         Pr(&gt;F)    
 ## Identity         0.0055  0.0055     1    43    2.55        0.11735    
