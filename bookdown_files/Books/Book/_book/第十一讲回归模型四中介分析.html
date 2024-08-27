@@ -618,8 +618,8 @@ Analysis，去看各个RCT研究中是否有差异。</p>
 <div id="对于机制的表示图" class="section level3 hasAnchor" number="11.3.1">
 <h3><span class="header-section-number">11.3.1</span> 2.1 对于“机制”的表示——“图”<a href="第十一讲回归模型四中介分析.html#对于机制的表示图" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>我们在做路径分析的时候，我们一般使用“图”来表征理论因果关系</p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-ee152228cf82553809b6" style="width:672px;height:100px;"></div>
-<script type="application/json" data-for="htmlwidget-ee152228cf82553809b6">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X1 ->X2\n  X2 -> X3\n  X1 -> X3\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-80be2fafad060b521be5" style="width:672px;height:100px;"></div>
+<script type="application/json" data-for="htmlwidget-80be2fafad060b521be5">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X1 ->X2\n  X2 -> X3\n  X1 -> X3\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <ul>
 <li><p>图包括两部分：节点和边。节点表示具体变量，而箭头表示变量之间的关系；</p></li>
 <li><p>对节点来说，在SEM中，观测变量用矩形表示，潜变量用椭圆表示。</p></li>
@@ -627,12 +627,12 @@ Analysis，去看各个RCT研究中是否有差异。</p>
 </ul>
 <p>我们在做假设模型时，一般都不会假设出现下图这种情况，可以看到，
 从x1到x2，x2到x3，x3又回来到x1了，形成了一个闭环。</p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-95f76c988252b1f4f7d9" style="width:672px;height:100px;"></div>
-<script type="application/json" data-for="htmlwidget-95f76c988252b1f4f7d9">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X1 ->X2\n  X2 -> X3\n  X3 -> X1\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-32fd875295ad522469fa" style="width:672px;height:100px;"></div>
+<script type="application/json" data-for="htmlwidget-32fd875295ad522469fa">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X1 ->X2\n  X2 -> X3\n  X3 -> X1\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>我们一般来说更希望的是不存在循环的关系，如下图，在统计和机械学习领域，称其为<strong>有向无环图(Directed
 Acyclic Graph, DAGs)</strong></p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-d645fb13a8be463c5fb2" style="width:672px;height:100px;"></div>
-<script type="application/json" data-for="htmlwidget-d645fb13a8be463c5fb2">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X1 ->X2\n  X2 -> X3\n  X1 -> X3\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-d99ab2b5641a7d89a515" style="width:672px;height:100px;"></div>
+<script type="application/json" data-for="htmlwidget-d99ab2b5641a7d89a515">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X1 ->X2\n  X2 -> X3\n  X1 -> X3\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="中介分析-1" class="section level3 hasAnchor" number="11.3.2">
 <h3><span class="header-section-number">11.3.2</span> 中介分析<a href="第十一讲回归模型四中介分析.html#中介分析-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -642,8 +642,8 @@ Acyclic Graph, DAGs)</strong></p>
 <p>对于中介过程的量化分析包括路径分析和SEM（同时包含测量模型和结构模型），后面的介绍基于路径分析。</p>
 <p>关注变量间因果关系，自变量如何影响因变量（即机制），如X通过M作用于Y，M为中介变量。中介的存在意味着时间上发生的先后顺序：
 <span class="math inline">\(X \rightarrow M \rightarrow Y\)</span> 。</p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-457ee49acb472f3bc023" style="width:672px;height:100px;"></div>
-<script type="application/json" data-for="htmlwidget-457ee49acb472f3bc023">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X -> M\n  X -> Y\n  M -> Y\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-cae50b40999f1befc220" style="width:672px;height:100px;"></div>
+<script type="application/json" data-for="htmlwidget-cae50b40999f1befc220">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X -> M\n  X -> Y\n  M -> Y\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>这里会有一个问题，我们为什么会关心中介机制呢，或者是中介变量呢？
 中介分析，它对我们现实生活到底有什么真实意义？</p>
 <p>有一种可能的例子，比方说原生家庭是自变量X，心理健康因变量是Y，
@@ -656,20 +656,20 @@ Acyclic Graph, DAGs)</strong></p>
 <span class="math inline">\(e_1\)</span>。这里就是一个简单的线性回归模型。</p>
 <p><strong>总方程:</strong></p>
 <p><span class="math display">\[Y = i_1 + cX + e_1\]</span></p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-769b12887d9d3e739065" style="width:672px;height:200px;"></div>
-<script type="application/json" data-for="htmlwidget-769b12887d9d3e739065">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  \n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.4,weight = 0.3,fontsize = 10]\n  e1[style = NULL,fillcolor = NULL,penwidth = 0,height = 0.02,width = 0.02]\n  \n  # 定义边\n  edge [color = black, arrowhead = vee]\n  {rank = same; e1; Y}\n  X -> Y [label = \"c\"]\n  e1 -> Y\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-e428e841cfe017b85aa3" style="width:672px;height:200px;"></div>
+<script type="application/json" data-for="htmlwidget-e428e841cfe017b85aa3">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  \n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.4,weight = 0.3,fontsize = 10]\n  e1[style = NULL,fillcolor = NULL,penwidth = 0,height = 0.02,width = 0.02]\n  \n  # 定义边\n  edge [color = black, arrowhead = vee]\n  {rank = same; e1; Y}\n  X -> Y [label = \"c\"]\n  e1 -> Y\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p><strong>分解:</strong></p>
 <p><span class="math display">\[M = i_2 + aX + e_2\]</span></p>
 <p><span class="math display">\[Y = i_3 + c&#39;X + bM + e_3\]</span></p>
 <p>当我们加入中介时，我们就假定有这么一个中介变量m，m是可以通过x来预测的：<span class="math inline">\(M = i_2 + aX + e_2\)</span>，且又能够再去预测y：<span class="math inline">\(Y = i_3 + c&#39;X + bM + e_3\)</span>，
 所以它最后形成这样的形式：</p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-d5398554549f4c10c17d" style="width:672px;height:200px;"></div>
-<script type="application/json" data-for="htmlwidget-d5398554549f4c10c17d">{"x":{"diagram":"digraph {\n  graph [layout = dot]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n  e2[style = NULL,fillcolor = NULL,penwidth = 0,\n    height = 0.02,width = 0.02]\n  e3[style = NULL,fillcolor = NULL,penwidth = 0,\n    height = 0.02,width = 0.02]\n    \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n  # {rank = min; X; Med}\n  {rank = same; e2 Med}\n  {rank = same; X Y}\n\n  X -> Med [label = \"a\", len = 1]  \n  Med -> Y [label = \"b\", len = 1]  \n  X -> Y [label = \"c′\", len = 15]  \n  e3 -> Y [len = 1]  \n  e2 -> Med [len = 1] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-97a186d273cf0d4283f6" style="width:672px;height:200px;"></div>
+<script type="application/json" data-for="htmlwidget-97a186d273cf0d4283f6">{"x":{"diagram":"digraph {\n  graph [layout = dot]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n  e2[style = NULL,fillcolor = NULL,penwidth = 0,\n    height = 0.02,width = 0.02]\n  e3[style = NULL,fillcolor = NULL,penwidth = 0,\n    height = 0.02,width = 0.02]\n    \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n  # {rank = min; X; Med}\n  {rank = same; e2 Med}\n  {rank = same; X Y}\n\n  X -> Med [label = \"a\", len = 1]  \n  Med -> Y [label = \"b\", len = 1]  \n  X -> Y [label = \"c′\", len = 15]  \n  e3 -> Y [len = 1]  \n  e2 -> Med [len = 1] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="中介效应" class="section level3 hasAnchor" number="11.3.3">
 <h3><span class="header-section-number">11.3.3</span> 中介效应<a href="第十一讲回归模型四中介分析.html#中介效应" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-05b981b4cf0a3b63a2d9" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-05b981b4cf0a3b63a2d9">{"x":{"diagram":"digraph {\n  graph [layout = dot]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n  e2[style = NULL,fillcolor = NULL,penwidth = 0,\n    height = 0.02,width = 0.02]\n  e3[style = NULL,fillcolor = NULL,penwidth = 0,\n    height = 0.02,width = 0.02]\n    \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n  # {rank = min; X; Med}\n  {rank = same; e2 Med}\n  {rank = same; X Y}\n\n  X -> Med [label = \"a\", len = 1]  \n  Med -> Y [label = \"b\", len = 1]  \n  X -> Y [label = \"c′\", len = 15]  \n  e3 -> Y [len = 1]  \n  e2 -> Med [len = 1] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-03f5b4a9429be1c89818" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-03f5b4a9429be1c89818">{"x":{"diagram":"digraph {\n  graph [layout = dot]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n  e2[style = NULL,fillcolor = NULL,penwidth = 0,\n    height = 0.02,width = 0.02]\n  e3[style = NULL,fillcolor = NULL,penwidth = 0,\n    height = 0.02,width = 0.02]\n    \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n  # {rank = min; X; Med}\n  {rank = same; e2 Med}\n  {rank = same; X Y}\n\n  X -> Med [label = \"a\", len = 1]  \n  Med -> Y [label = \"b\", len = 1]  \n  X -> Y [label = \"c′\", len = 15]  \n  e3 -> Y [len = 1]  \n  e2 -> Med [len = 1] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p><span class="math display">\[ Y = i_1 + cX + e_1\]</span></p>
 <p><span class="math display">\[ M = i_2 + aX + e_2\]</span></p>
 <p><span class="math display">\[Y = i_3 + c&#39;X + bM + e_3\]</span></p>
@@ -742,8 +742,8 @@ Carlo，MCMC）去近似这个参数值 。</p>
 <li><p>DEQ为自变量，CBT为因变量，CSI为中介变量。</p></li>
 <li><p>赤道距离(DEQ)应当正向预测社会复杂度(CSI)，而社会复杂度应当正向预测体温(CBT)，但赤道距离(DEQ)应当负向预测体温(CBT)(即遮掩效应，如下图)</p></li>
 </ul>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-e314a9658508aa12f815" style="width:672px;height:300px;"></div>
-<script type="application/json" data-for="htmlwidget-e314a9658508aa12f815">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  DEQ -> CSI[label = \"+\"]\n  DEQ -> CBT[label = \"-\"]\n  CSI -> CBT[label = \"+\"]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-51021a98d6aa7b955576" style="width:672px;height:300px;"></div>
+<script type="application/json" data-for="htmlwidget-51021a98d6aa7b955576">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  DEQ -> CSI[label = \"+\"]\n  DEQ -> CBT[label = \"-\"]\n  CSI -> CBT[label = \"+\"]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>这里我们不再去做探索分析，进行数据的预处理之后，直接计算各个变量的值，再去做中介分析。如果要从原始数据里面去计算社交网络的复杂度CSI，可以去仔细的去看一看这里面的代码，会涉及到比较多的反复的重新编码。</p>
 <div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="第十一讲回归模型四中介分析.html#cb382-1" tabindex="-1"></a><span class="co"># 数据导入</span></span>
 <span id="cb382-2"><a href="第十一讲回归模型四中介分析.html#cb382-2" tabindex="-1"></a>pg_raw <span class="ot">=</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>,<span class="st">&#39;penguin&#39;</span>,<span class="st">&#39;penguin_rawdata_full.csv&#39;</span>))</span></code></pre></div>
@@ -971,13 +971,13 @@ bruceR包中介分析的用法非常符合我们心理学研究者的习惯，�
 <pre><code>## 
 ## Running 100 simulations...
 ## Indirect Path: &quot;DEQ&quot; (X) ==&gt; &quot;CSI&quot; (M) ==&gt; &quot;CBT&quot; (Y)
-## ───────────────────────────────────────────────────────────────
-##                Effect    S.E.      z     p        [Boot 95% CI]
-## ───────────────────────────────────────────────────────────────
-## Indirect (ab)   0.001 (0.000)  3.884 &lt;.001 *** [ 0.001,  0.002]
-## Direct (c&#39;)    -0.002 (0.001) -1.886  .059 .   [-0.004, -0.000]
-## Total (c)      -0.001 (0.001) -0.647  .518     [-0.003,  0.001]
-## ───────────────────────────────────────────────────────────────
+## ──────────────────────────────────────────────────────────────
+##                Effect    S.E.      z     p       [Boot 95% CI]
+## ──────────────────────────────────────────────────────────────
+## Indirect (ab)   0.001 (0.000)  3.826 &lt;.001 *** [ 0.001, 0.002]
+## Direct (c&#39;)    -0.002 (0.001) -1.783  .075 .   [-0.004, 0.000]
+## Total (c)      -0.001 (0.001) -0.640  .522     [-0.002, 0.001]
+## ──────────────────────────────────────────────────────────────
 ## Percentile Bootstrap Confidence Interval
 ## (SE and CI are estimated based on 100 Bootstrap samples.)
 ## 
@@ -1025,9 +1025,9 @@ bruceR包中介分析的用法非常符合我们心理学研究者的习惯，�
 ##  [9] &quot;──────────────────────────────────────────────────────────────&quot;
 ## [10] &quot;               Effect    S.E.      z     p       [Boot 95% CI]&quot;
 ## [11] &quot;──────────────────────────────────────────────────────────────&quot;
-## [12] &quot;Indirect (ab)   0.001 (0.000)  4.183 &lt;.001 *** [ 0.001, 0.002]&quot;
-## [13] &quot;Direct (c&#39;)    -0.002 (0.001) -1.811  .070 .   [-0.004, 0.000]&quot;
-## [14] &quot;Total (c)      -0.001 (0.001) -0.623  .533     [-0.002, 0.002]&quot;
+## [12] &quot;Indirect (ab)   0.001 (0.000)  4.095 &lt;.001 *** [ 0.001, 0.002]&quot;
+## [13] &quot;Direct (c&#39;)    -0.002 (0.001) -1.753  .080 .   [-0.004, 0.000]&quot;
+## [14] &quot;Total (c)      -0.001 (0.001) -0.653  .514     [-0.003, 0.001]&quot;
 ## [15] &quot;──────────────────────────────────────────────────────────────&quot;</code></pre>
 <p>可以看到，<code>bruceR::PROCESS</code>的结果输出很符合我们在论文中看到的结果呈现方式，
 对我们研究生或者研究者来说，非常友好，而且跑出来的结果还可以输出到Word文档中去。</p>
@@ -1089,8 +1089,8 @@ Pearl等人提出了一种用于进行反事实推理的方法，叫做“do cal
 <h3><span class="header-section-number">11.4.3</span> 基于实验的中介<a href="第十一讲回归模型四中介分析.html#基于实验的中介" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>中介模型的数值本身并不能告诉我们因果关系，而在心理学中，利用中介变量去发现因果关系又是很重要的，尤其是当自变量是一些不可干预的变量时，通过干预中介来达到科学研究的目的是很好的方式。这就会涉及到我们如何去验证带有真正的因果的中介，当然，就如同RCT研究中想要得出因果都需要很复杂的假设，要去验证真正有因果的中介，是一件难上加难的事情。</p>
 <p>这里，我们用一个国内的学者葛枭语老师，发表在JESP上面一篇文章为例子，来探讨如何验证中介中的因果。</p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-ad271cf06cb88fc12557" style="width:672px;height:200px;"></div>
-<script type="application/json" data-for="htmlwidget-ad271cf06cb88fc12557">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X -> M\n  X -> Y\n  M -> Y\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-ea40056fca3ff2d5c1de" style="width:672px;height:200px;"></div>
+<script type="application/json" data-for="htmlwidget-ea40056fca3ff2d5c1de">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X -> M\n  X -> Y\n  M -> Y\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>假设：教材难度(X)通过焦虑(M)来影响努力程度(Y)，可以穷举出在哪些情况下我们不能验证中介中的因果：</p>
 <ul>
 <li><p>教材难度(X)不能影响焦虑(M)</p></li>
@@ -1103,8 +1103,8 @@ Pearl等人提出了一种用于进行反事实推理的方法，叫做“do cal
 <p>• 测量 M</p>
 <p>• 测量 Y</p>
 <p>对X进行操纵（如使用不同难度的教材），可以验证X对M的因果关系，但M与Y之间的因果关系并没有得到验证</p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-9d6a45dd92764ef4558d" style="width:672px;height:200px;"></div>
-<script type="application/json" data-for="htmlwidget-9d6a45dd92764ef4558d">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X -> M\n  X -> Y\n  M -> Y\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-7a71f36117381e466075" style="width:672px;height:200px;"></div>
+<script type="application/json" data-for="htmlwidget-7a71f36117381e466075">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X -> M\n  X -> Y\n  M -> Y\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>但如果我们理论假设错误，测量的是焦虑（A），但实际上实验操纵引发的中介应为恐惧(M,即实际路径应为X -
 M - Y,而我们测量路径为X - A -
 Y)，那么刚才的实验设计可能无法证伪，因此需要对A进行操纵：</p>
@@ -1113,8 +1113,8 @@ Y)，那么刚才的实验设计可能无法证伪，因此需要对A进行操�
 <p>• 测量 Y</p>
 <p>对X(如使用不同难度的教材)和A(控制组 vs
 提供相关辅导以减轻焦虑)进行操纵，如果对A的操纵不能影响Y，则可以证明中介路径不合理</p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-96bb929246c87abbaf7a" style="width:672px;height:200px;"></div>
-<script type="application/json" data-for="htmlwidget-96bb929246c87abbaf7a">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X -> M\n  X -> Y\n  M -> Y\n  X -> A\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-28332236db6497b5ddb3" style="width:672px;height:200px;"></div>
+<script type="application/json" data-for="htmlwidget-28332236db6497b5ddb3">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X -> M\n  X -> Y\n  M -> Y\n  X -> A\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>所以这里意味着我们要去进行带有因果性质的中介分析时，我们要做很多科学的思考，
 在实验设计上，尽量去控制混淆变量，这样的话才能够去真正的把因果关系搞清楚。</p>
 <p>如果去看其他的一些领域的文章，
