@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="第六讲数据预处理.html"/>
-<link rel="next" href="第九讲回归模型二分层线性模型.html"/>
+<link rel="next" href="第八讲回归模型一.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -346,144 +346,169 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#练习"><i class="fa fa-check"></i><b>8.6</b> 练习</a></li>
 <li class="chapter" data-level="8.7" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#参考阅读"><i class="fa fa-check"></i><b>8.7</b> 参考阅读</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html"><i class="fa fa-check"></i><b>9</b> 第九讲：回归模型(二)：分层线性模型</a>
+<li class="chapter" data-level="9" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html"><i class="fa fa-check"></i><b>9</b> 第八讲：回归模型(一)</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#回顾-1"><i class="fa fa-check"></i><b>9.1</b> 回顾</a></li>
-<li class="chapter" data-level="9.2" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#重复测量方差分析"><i class="fa fa-check"></i><b>9.2</b> 重复测量方差分析</a></li>
-<li class="chapter" data-level="9.3" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#分层线性模型多层线性模型hlm"><i class="fa fa-check"></i><b>9.3</b> 分层线性模型/多层线性模型(HLM):</a></li>
-<li class="chapter" data-level="9.4" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#多层线性模型的应用"><i class="fa fa-check"></i><b>9.4</b> 多层线性模型的应用</a></li>
-<li class="chapter" data-level="9.5" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#hlm的应用"><i class="fa fa-check"></i><b>9.5</b> HLM的应用</a></li>
-<li class="chapter" data-level="9.6" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#思考"><i class="fa fa-check"></i><b>9.6</b> 思考</a></li>
+<li class="chapter" data-level="9.1" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#研究问题"><i class="fa fa-check"></i><b>9.1</b> 研究问题</a></li>
+<li class="chapter" data-level="9.2" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#t-test作为回归模型的特例"><i class="fa fa-check"></i><b>9.2</b> <em>t</em>-test作为回归模型的特例</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#独立样本t检验independent-t-test"><i class="fa fa-check"></i><b>9.2.1</b> 独立样本<em>t</em>检验(independent <em>t</em>-test)</a></li>
+<li class="chapter" data-level="9.2.2" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#线性回归linear-regression"><i class="fa fa-check"></i><b>9.2.2</b> 线性回归(linear regression)</a></li>
+<li class="chapter" data-level="9.2.3" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#单样本t检验one-sample-t-test"><i class="fa fa-check"></i><b>9.2.3</b> 单样本<em>t</em>检验(one sample <em>t</em>-test)</a></li>
+<li class="chapter" data-level="9.2.4" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#配对样本t检验paired-t-test"><i class="fa fa-check"></i><b>9.2.4</b> 配对样本<em>t</em>检验(paired <em>t</em>-test)</a></li>
+<li class="chapter" data-level="9.2.5" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#brucerttest"><i class="fa fa-check"></i><b>9.2.5</b> bruceR::TTEST</a></li>
+<li class="chapter" data-level="9.2.6" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#总结"><i class="fa fa-check"></i><b>9.2.6</b> 总结</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html"><i class="fa fa-check"></i><b>10</b> 第十讲：回归模型(三)：广义线性模型</a>
+<li class="chapter" data-level="9.3" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#anova-linear-regression"><i class="fa fa-check"></i><b>9.3</b> ANOVA &amp; linear regression</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#前章回顾和本章数据预处理"><i class="fa fa-check"></i><b>10.1</b> 前章回顾和本章数据预处理</a></li>
-<li class="chapter" data-level="10.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#广义线性模型"><i class="fa fa-check"></i><b>10.2</b> 广义线性模型</a>
-<ul>
-<li class="chapter" data-level="10.2.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#回归方程和普通线性模型"><i class="fa fa-check"></i><b>10.2.1</b> 回归方程和普通线性模型</a></li>
-<li class="chapter" data-level="10.2.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#连接函数和广义线性模型"><i class="fa fa-check"></i><b>10.2.2</b> 连接函数和广义线性模型</a></li>
+<li class="chapter" data-level="9.3.1" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#研究问题-1"><i class="fa fa-check"></i><b>9.3.1</b> 研究问题</a></li>
+<li class="chapter" data-level="9.3.2" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#代码实操-知识回顾"><i class="fa fa-check"></i><b>9.3.2</b> 代码实操 &amp; 知识回顾</a></li>
+<li class="chapter" data-level="9.3.3" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#anova代码实操数据预处理"><i class="fa fa-check"></i><b>9.3.3</b> ANOVA代码实操|数据预处理</a></li>
+<li class="chapter" data-level="9.3.4" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#代码实操正态性检验"><i class="fa fa-check"></i><b>9.3.4</b> 代码实操|正态性检验</a></li>
+<li class="chapter" data-level="9.3.5" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#代码实操双因素被试间方差分析"><i class="fa fa-check"></i><b>9.3.5</b> 代码实操|双因素被试间方差分析</a></li>
+<li class="chapter" data-level="9.3.6" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#代码实操平方和ss的计算"><i class="fa fa-check"></i><b>9.3.6</b> 代码实操|平方和(SS)的计算</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#二项分布"><i class="fa fa-check"></i><b>10.3</b> 二项分布</a>
-<ul>
-<li class="chapter" data-level="10.3.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#伯努利实验"><i class="fa fa-check"></i><b>10.3.1</b> 伯努利实验</a></li>
-<li class="chapter" data-level="10.3.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#glm代码实操"><i class="fa fa-check"></i><b>10.3.2</b> GLM代码实操</a></li>
+<li class="chapter" data-level="9.4" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#线性回归"><i class="fa fa-check"></i><b>9.4</b> 线性回归</a></li>
+<li class="chapter" data-level="9.5" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#知识延申单因素方差分析示例"><i class="fa fa-check"></i><b>9.5</b> 知识延申|单因素方差分析示例</a></li>
+<li class="chapter" data-level="9.6" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#知识延申总结"><i class="fa fa-check"></i><b>9.6</b> 知识延申|总结</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同方法比较"><i class="fa fa-check"></i><b>10.4</b> 不同方法比较</a>
+<li class="chapter" data-level="10" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html"><i class="fa fa-check"></i><b>10</b> 第九讲：回归模型(二)：分层线性模型</a>
 <ul>
-<li class="chapter" data-level="10.4.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同的建模方法"><i class="fa fa-check"></i><b>10.4.1</b> 不同的建模方法</a></li>
-<li class="chapter" data-level="10.4.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同的模型比较方法"><i class="fa fa-check"></i><b>10.4.2</b> 不同的模型比较方法</a></li>
+<li class="chapter" data-level="10.1" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#回顾-1"><i class="fa fa-check"></i><b>10.1</b> 回顾</a></li>
+<li class="chapter" data-level="10.2" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#重复测量方差分析"><i class="fa fa-check"></i><b>10.2</b> 重复测量方差分析</a></li>
+<li class="chapter" data-level="10.3" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#分层线性模型多层线性模型hlm"><i class="fa fa-check"></i><b>10.3</b> 分层线性模型/多层线性模型(HLM):</a></li>
+<li class="chapter" data-level="10.4" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#多层线性模型的应用"><i class="fa fa-check"></i><b>10.4</b> 多层线性模型的应用</a></li>
+<li class="chapter" data-level="10.5" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#hlm的应用"><i class="fa fa-check"></i><b>10.5</b> HLM的应用</a></li>
+<li class="chapter" data-level="10.6" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#思考"><i class="fa fa-check"></i><b>10.6</b> 思考</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#其他分布"><i class="fa fa-check"></i><b>10.5</b> 其他分布</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html"><i class="fa fa-check"></i><b>11</b> 第十一讲：回归模型(四)：中介分析</a>
+<li class="chapter" data-level="11" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html"><i class="fa fa-check"></i><b>11</b> 第十讲：回归模型(三)：广义线性模型</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#准备工作"><i class="fa fa-check"></i><b>11.1</b> 准备工作</a></li>
-<li class="chapter" data-level="11.2" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#线性模型回顾"><i class="fa fa-check"></i><b>11.2</b> 线性模型回顾</a>
+<li class="chapter" data-level="11.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#前章回顾和本章数据预处理"><i class="fa fa-check"></i><b>11.1</b> 前章回顾和本章数据预处理</a></li>
+<li class="chapter" data-level="11.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#广义线性模型"><i class="fa fa-check"></i><b>11.2</b> 广义线性模型</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#线性模型及模型检验"><i class="fa fa-check"></i><b>11.2.1</b> 线性模型及模型检验</a></li>
-<li class="chapter" data-level="11.2.2" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#多元线性模型的局限"><i class="fa fa-check"></i><b>11.2.2</b> 多元线性模型的局限</a></li>
+<li class="chapter" data-level="11.2.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#回归方程和普通线性模型"><i class="fa fa-check"></i><b>11.2.1</b> 回归方程和普通线性模型</a></li>
+<li class="chapter" data-level="11.2.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#连接函数和广义线性模型"><i class="fa fa-check"></i><b>11.2.2</b> 连接函数和广义线性模型</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#中介分析"><i class="fa fa-check"></i><b>11.3</b> 中介分析</a>
+<li class="chapter" data-level="11.3" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#二项分布"><i class="fa fa-check"></i><b>11.3</b> 二项分布</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#对于机制的表示图"><i class="fa fa-check"></i><b>11.3.1</b> 2.1 对于“机制”的表示——“图”</a></li>
-<li class="chapter" data-level="11.3.2" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#中介分析-1"><i class="fa fa-check"></i><b>11.3.2</b> 中介分析</a></li>
-<li class="chapter" data-level="11.3.3" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#中介效应"><i class="fa fa-check"></i><b>11.3.3</b> 中介效应</a></li>
-<li class="chapter" data-level="11.3.4" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#中介效应的检验"><i class="fa fa-check"></i><b>11.3.4</b> 中介效应的检验</a></li>
-<li class="chapter" data-level="11.3.5" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#问题提出"><i class="fa fa-check"></i><b>11.3.5</b> 问题提出</a></li>
-<li class="chapter" data-level="11.3.6" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#代码实现"><i class="fa fa-check"></i><b>11.3.6</b> 代码实现</a></li>
-<li class="chapter" data-level="11.3.7" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#process-in-brucer"><i class="fa fa-check"></i><b>11.3.7</b> PROCESS in bruceR()</a></li>
-<li class="chapter" data-level="11.3.8" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#反思"><i class="fa fa-check"></i><b>11.3.8</b> 反思</a></li>
+<li class="chapter" data-level="11.3.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#伯努利实验"><i class="fa fa-check"></i><b>11.3.1</b> 伯努利实验</a></li>
+<li class="chapter" data-level="11.3.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#glm代码实操"><i class="fa fa-check"></i><b>11.3.2</b> GLM代码实操</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#因果推断"><i class="fa fa-check"></i><b>11.4</b> 因果推断</a>
+<li class="chapter" data-level="11.4" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同方法比较"><i class="fa fa-check"></i><b>11.4</b> 不同方法比较</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#因果推断casual-inference"><i class="fa fa-check"></i><b>11.4.1</b> 因果推断(Casual Inference)</a></li>
-<li class="chapter" data-level="11.4.2" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#因果推断与概率"><i class="fa fa-check"></i><b>11.4.2</b> 因果推断与概率</a></li>
-<li class="chapter" data-level="11.4.3" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#基于实验的中介"><i class="fa fa-check"></i><b>11.4.3</b> 基于实验的中介</a></li>
+<li class="chapter" data-level="11.4.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同的建模方法"><i class="fa fa-check"></i><b>11.4.1</b> 不同的建模方法</a></li>
+<li class="chapter" data-level="11.4.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同的模型比较方法"><i class="fa fa-check"></i><b>11.4.2</b> 不同的模型比较方法</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#参考资料推荐"><i class="fa fa-check"></i><b>11.5</b> 参考资料推荐</a></li>
-<li class="chapter" data-level="11.6" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#总结"><i class="fa fa-check"></i><b>11.6</b> 总结</a></li>
+<li class="chapter" data-level="11.5" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#其他分布"><i class="fa fa-check"></i><b>11.5</b> 其他分布</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html"><i class="fa fa-check"></i><b>12</b> 第十二讲：数据可视化进阶</a>
+<li class="chapter" data-level="12" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html"><i class="fa fa-check"></i><b>12</b> 第十一讲：回归模型(四)：中介分析</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图的必要性和作图数据处理"><i class="fa fa-check"></i><b>12.1</b> 作图的必要性和作图数据处理</a>
+<li class="chapter" data-level="12.1" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#准备工作"><i class="fa fa-check"></i><b>12.1</b> 准备工作</a></li>
+<li class="chapter" data-level="12.2" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#线性模型回顾"><i class="fa fa-check"></i><b>12.2</b> 线性模型回顾</a>
 <ul>
-<li class="chapter" data-level="12.1.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#为什么要作图以及作图的原则"><i class="fa fa-check"></i><b>12.1.1</b> 为什么要作图以及作图的原则</a></li>
-<li class="chapter" data-level="12.1.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图数据准备"><i class="fa fa-check"></i><b>12.1.2</b> 作图数据准备</a></li>
+<li class="chapter" data-level="12.2.1" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#线性模型及模型检验"><i class="fa fa-check"></i><b>12.2.1</b> 线性模型及模型检验</a></li>
+<li class="chapter" data-level="12.2.2" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#多元线性模型的局限"><i class="fa fa-check"></i><b>12.2.2</b> 多元线性模型的局限</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#基础作图"><i class="fa fa-check"></i><b>12.2</b> 基础作图</a>
+<li class="chapter" data-level="12.3" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#中介分析"><i class="fa fa-check"></i><b>12.3</b> 中介分析</a>
 <ul>
-<li class="chapter" data-level="12.2.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#ggplot2基础回顾"><i class="fa fa-check"></i><b>12.2.1</b> ggplot2基础回顾</a></li>
-<li class="chapter" data-level="12.2.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#主要图层"><i class="fa fa-check"></i><b>12.2.2</b> 主要图层</a></li>
-<li class="chapter" data-level="12.2.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可选图层"><i class="fa fa-check"></i><b>12.2.3</b> 可选图层</a></li>
-<li class="chapter" data-level="12.2.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#同时呈现多张图片"><i class="fa fa-check"></i><b>12.2.4</b> 同时呈现多张图片</a></li>
+<li class="chapter" data-level="12.3.1" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#对于机制的表示图"><i class="fa fa-check"></i><b>12.3.1</b> 2.1 对于“机制”的表示——“图”</a></li>
+<li class="chapter" data-level="12.3.2" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#中介分析-1"><i class="fa fa-check"></i><b>12.3.2</b> 中介分析</a></li>
+<li class="chapter" data-level="12.3.3" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#中介效应"><i class="fa fa-check"></i><b>12.3.3</b> 中介效应</a></li>
+<li class="chapter" data-level="12.3.4" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#中介效应的检验"><i class="fa fa-check"></i><b>12.3.4</b> 中介效应的检验</a></li>
+<li class="chapter" data-level="12.3.5" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#问题提出"><i class="fa fa-check"></i><b>12.3.5</b> 问题提出</a></li>
+<li class="chapter" data-level="12.3.6" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#代码实现"><i class="fa fa-check"></i><b>12.3.6</b> 代码实现</a></li>
+<li class="chapter" data-level="12.3.7" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#process-in-brucer"><i class="fa fa-check"></i><b>12.3.7</b> PROCESS in bruceR()</a></li>
+<li class="chapter" data-level="12.3.8" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#反思"><i class="fa fa-check"></i><b>12.3.8</b> 反思</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#进阶作图"><i class="fa fa-check"></i><b>12.3</b> 进阶作图</a>
+<li class="chapter" data-level="12.4" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#因果推断"><i class="fa fa-check"></i><b>12.4</b> 因果推断</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#整体和个体效应共存的图"><i class="fa fa-check"></i><b>12.3.1</b> 整体和个体效应共存的图</a></li>
-<li class="chapter" data-level="12.3.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可视化层级模型的random-effect"><i class="fa fa-check"></i><b>12.3.2</b> 可视化层级模型的random effect</a></li>
-<li class="chapter" data-level="12.3.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#雨云图rain-cloud-plot"><i class="fa fa-check"></i><b>12.3.3</b> 雨云图（rain cloud plot）</a></li>
+<li class="chapter" data-level="12.4.1" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#因果推断casual-inference"><i class="fa fa-check"></i><b>12.4.1</b> 因果推断(Casual Inference)</a></li>
+<li class="chapter" data-level="12.4.2" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#因果推断与概率"><i class="fa fa-check"></i><b>12.4.2</b> 因果推断与概率</a></li>
+<li class="chapter" data-level="12.4.3" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#基于实验的中介"><i class="fa fa-check"></i><b>12.4.3</b> 基于实验的中介</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#高级图片处理magick"><i class="fa fa-check"></i><b>12.4</b> 高级图片处理–magick</a></li>
+<li class="chapter" data-level="12.5" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#参考资料推荐"><i class="fa fa-check"></i><b>12.5</b> 参考资料推荐</a></li>
+<li class="chapter" data-level="12.6" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#总结-1"><i class="fa fa-check"></i><b>12.6</b> 总结</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html"><i class="fa fa-check"></i><b>13</b> 第十三讲：基于网络模型的心理学研究</a>
+<li class="chapter" data-level="13" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html"><i class="fa fa-check"></i><b>13</b> 第十二讲：数据可视化进阶</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#基于潜变量的心理学研究"><i class="fa fa-check"></i><b>13.1</b> 基于潜变量的心理学研究</a></li>
-<li class="chapter" data-level="13.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#潜变量模型在心理学的困境"><i class="fa fa-check"></i><b>13.2</b> 潜变量模型在心理学的困境</a></li>
-<li class="chapter" data-level="13.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#基于网络的心理学视角"><i class="fa fa-check"></i><b>13.3</b> 基于网络的心理学视角</a></li>
-<li class="chapter" data-level="13.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#如果寻找可观测特征的因果关系"><i class="fa fa-check"></i><b>13.4</b> 如果寻找可观测特征的因果关系</a>
+<li class="chapter" data-level="13.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图的必要性和作图数据处理"><i class="fa fa-check"></i><b>13.1</b> 作图的必要性和作图数据处理</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#d-separation"><i class="fa fa-check"></i><b>13.4.1</b> d-separation</a></li>
+<li class="chapter" data-level="13.1.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#为什么要作图以及作图的原则"><i class="fa fa-check"></i><b>13.1.1</b> 为什么要作图以及作图的原则</a></li>
+<li class="chapter" data-level="13.1.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图数据准备"><i class="fa fa-check"></i><b>13.1.2</b> 作图数据准备</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#dag贝叶斯网络"><i class="fa fa-check"></i><b>13.5</b> DAG（贝叶斯网络）</a></li>
-<li class="chapter" data-level="13.6" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#高斯图模型ggm"><i class="fa fa-check"></i><b>13.6</b> 高斯图模型（GGM）</a></li>
-<li class="chapter" data-level="13.7" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#易辛模型ising-model"><i class="fa fa-check"></i><b>13.7</b> 易辛模型Ising model</a></li>
-<li class="chapter" data-level="13.8" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#心理网络的估计"><i class="fa fa-check"></i><b>13.8</b> 心理网络的估计</a>
+<li class="chapter" data-level="13.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#基础作图"><i class="fa fa-check"></i><b>13.2</b> 基础作图</a>
 <ul>
-<li class="chapter" data-level="13.8.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#高斯图模型"><i class="fa fa-check"></i><b>13.8.1</b> 高斯图模型</a></li>
-<li class="chapter" data-level="13.8.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#多元估计"><i class="fa fa-check"></i><b>13.8.2</b> 多元估计</a></li>
-<li class="chapter" data-level="13.8.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#一元估计"><i class="fa fa-check"></i><b>13.8.3</b> 一元估计</a></li>
-<li class="chapter" data-level="13.8.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-1"><i class="fa fa-check"></i><b>13.8.4</b> 代码实现</a></li>
+<li class="chapter" data-level="13.2.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#ggplot2基础回顾"><i class="fa fa-check"></i><b>13.2.1</b> ggplot2基础回顾</a></li>
+<li class="chapter" data-level="13.2.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#主要图层"><i class="fa fa-check"></i><b>13.2.2</b> 主要图层</a></li>
+<li class="chapter" data-level="13.2.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可选图层"><i class="fa fa-check"></i><b>13.2.3</b> 可选图层</a></li>
+<li class="chapter" data-level="13.2.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#同时呈现多张图片"><i class="fa fa-check"></i><b>13.2.4</b> 同时呈现多张图片</a></li>
 </ul></li>
-<li class="chapter" data-level="13.9" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#模型选择"><i class="fa fa-check"></i><b>13.9</b> 模型选择</a>
+<li class="chapter" data-level="13.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#进阶作图"><i class="fa fa-check"></i><b>13.3</b> 进阶作图</a>
 <ul>
-<li class="chapter" data-level="13.9.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#模型选择的方式"><i class="fa fa-check"></i><b>13.9.1</b> 模型选择的方式</a></li>
-<li class="chapter" data-level="13.9.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-2"><i class="fa fa-check"></i><b>13.9.2</b> 代码实现</a></li>
-<li class="chapter" data-level="13.9.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-3"><i class="fa fa-check"></i><b>13.9.3</b> 代码实现</a></li>
-<li class="chapter" data-level="13.9.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-4"><i class="fa fa-check"></i><b>13.9.4</b> 代码实现</a></li>
-<li class="chapter" data-level="13.9.5" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#总结-1"><i class="fa fa-check"></i><b>13.9.5</b> 总结</a></li>
+<li class="chapter" data-level="13.3.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#整体和个体效应共存的图"><i class="fa fa-check"></i><b>13.3.1</b> 整体和个体效应共存的图</a></li>
+<li class="chapter" data-level="13.3.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可视化层级模型的random-effect"><i class="fa fa-check"></i><b>13.3.2</b> 可视化层级模型的random effect</a></li>
+<li class="chapter" data-level="13.3.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#雨云图rain-cloud-plot"><i class="fa fa-check"></i><b>13.3.3</b> 雨云图（rain cloud plot）</a></li>
 </ul></li>
-<li class="chapter" data-level="13.10" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#心理网络的挑战"><i class="fa fa-check"></i><b>13.10</b> 心理网络的挑战</a></li>
-<li class="chapter" data-level="13.11" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#我们是否还需要潜变量模型"><i class="fa fa-check"></i><b>13.11</b> 我们是否还需要潜变量模型</a></li>
+<li class="chapter" data-level="13.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#高级图片处理magick"><i class="fa fa-check"></i><b>13.4</b> 高级图片处理–magick</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html"><i class="fa fa-check"></i><b>14</b> 第十四讲：心理学元分析入门</a>
+<li class="chapter" data-level="14" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html"><i class="fa fa-check"></i><b>14</b> 第十三讲：基于网络模型的心理学研究</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#什么是元分析"><i class="fa fa-check"></i><b>14.1</b> 什么是元分析</a></li>
-<li class="chapter" data-level="14.2" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#元分析的实施"><i class="fa fa-check"></i><b>14.2</b> 元分析的实施</a></li>
-<li class="chapter" data-level="14.3" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#回顾与总结"><i class="fa fa-check"></i><b>14.3</b> 回顾与总结</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html"><i class="fa fa-check"></i><b>15</b> 补充1：如何进行基本的数据分析: 相关与回归</a>
+<li class="chapter" data-level="14.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#基于潜变量的心理学研究"><i class="fa fa-check"></i><b>14.1</b> 基于潜变量的心理学研究</a></li>
+<li class="chapter" data-level="14.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#潜变量模型在心理学的困境"><i class="fa fa-check"></i><b>14.2</b> 潜变量模型在心理学的困境</a></li>
+<li class="chapter" data-level="14.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#基于网络的心理学视角"><i class="fa fa-check"></i><b>14.3</b> 基于网络的心理学视角</a></li>
+<li class="chapter" data-level="14.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#如果寻找可观测特征的因果关系"><i class="fa fa-check"></i><b>14.4</b> 如果寻找可观测特征的因果关系</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是相关"><i class="fa fa-check"></i><b>15.1</b> 什么是相关</a></li>
-<li class="chapter" data-level="15.2" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#相关-代码实现"><i class="fa fa-check"></i><b>15.2</b> 相关-代码实现</a></li>
-<li class="chapter" data-level="15.3" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是回归"><i class="fa fa-check"></i><b>15.3</b> 什么是回归</a></li>
+<li class="chapter" data-level="14.4.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#d-separation"><i class="fa fa-check"></i><b>14.4.1</b> d-separation</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html"><i class="fa fa-check"></i><b>16</b> 补充2：从分析到手稿</a>
+<li class="chapter" data-level="14.5" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#dag贝叶斯网络"><i class="fa fa-check"></i><b>14.5</b> DAG（贝叶斯网络）</a></li>
+<li class="chapter" data-level="14.6" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#高斯图模型ggm"><i class="fa fa-check"></i><b>14.6</b> 高斯图模型（GGM）</a></li>
+<li class="chapter" data-level="14.7" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#易辛模型ising-model"><i class="fa fa-check"></i><b>14.7</b> 易辛模型Ising model</a></li>
+<li class="chapter" data-level="14.8" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#心理网络的估计"><i class="fa fa-check"></i><b>14.8</b> 心理网络的估计</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>16.1</b> <strong>通过Papaja撰写论文</strong></a>
+<li class="chapter" data-level="14.8.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#高斯图模型"><i class="fa fa-check"></i><b>14.8.1</b> 高斯图模型</a></li>
+<li class="chapter" data-level="14.8.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#多元估计"><i class="fa fa-check"></i><b>14.8.2</b> 多元估计</a></li>
+<li class="chapter" data-level="14.8.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#一元估计"><i class="fa fa-check"></i><b>14.8.3</b> 一元估计</a></li>
+<li class="chapter" data-level="14.8.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-1"><i class="fa fa-check"></i><b>14.8.4</b> 代码实现</a></li>
+</ul></li>
+<li class="chapter" data-level="14.9" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#模型选择"><i class="fa fa-check"></i><b>14.9</b> 模型选择</a>
 <ul>
-<li class="chapter" data-level="16.1.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>16.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
-<li class="chapter" data-level="16.1.2" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>16.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
-<li class="chapter" data-level="16.1.3" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part3-正文的撰写"><i class="fa fa-check"></i><b>16.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
-<li class="chapter" data-level="16.1.4" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#总结-2"><i class="fa fa-check"></i><b>16.1.4</b> 总结</a></li>
+<li class="chapter" data-level="14.9.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#模型选择的方式"><i class="fa fa-check"></i><b>14.9.1</b> 模型选择的方式</a></li>
+<li class="chapter" data-level="14.9.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-2"><i class="fa fa-check"></i><b>14.9.2</b> 代码实现</a></li>
+<li class="chapter" data-level="14.9.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-3"><i class="fa fa-check"></i><b>14.9.3</b> 代码实现</a></li>
+<li class="chapter" data-level="14.9.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-4"><i class="fa fa-check"></i><b>14.9.4</b> 代码实现</a></li>
+<li class="chapter" data-level="14.9.5" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#总结-2"><i class="fa fa-check"></i><b>14.9.5</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="14.10" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#心理网络的挑战"><i class="fa fa-check"></i><b>14.10</b> 心理网络的挑战</a></li>
+<li class="chapter" data-level="14.11" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#我们是否还需要潜变量模型"><i class="fa fa-check"></i><b>14.11</b> 我们是否还需要潜变量模型</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html"><i class="fa fa-check"></i><b>15</b> 第十四讲：心理学元分析入门</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#什么是元分析"><i class="fa fa-check"></i><b>15.1</b> 什么是元分析</a></li>
+<li class="chapter" data-level="15.2" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#元分析的实施"><i class="fa fa-check"></i><b>15.2</b> 元分析的实施</a></li>
+<li class="chapter" data-level="15.3" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#回顾与总结"><i class="fa fa-check"></i><b>15.3</b> 回顾与总结</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html"><i class="fa fa-check"></i><b>16</b> 补充1：如何进行基本的数据分析: 相关与回归</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是相关"><i class="fa fa-check"></i><b>16.1</b> 什么是相关</a></li>
+<li class="chapter" data-level="16.2" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#相关-代码实现"><i class="fa fa-check"></i><b>16.2</b> 相关-代码实现</a></li>
+<li class="chapter" data-level="16.3" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是回归"><i class="fa fa-check"></i><b>16.3</b> 什么是回归</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html"><i class="fa fa-check"></i><b>17</b> 补充2：从分析到手稿</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>17.1</b> <strong>通过Papaja撰写论文</strong></a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>17.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
+<li class="chapter" data-level="17.1.2" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>17.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
+<li class="chapter" data-level="17.1.3" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part3-正文的撰写"><i class="fa fa-check"></i><b>17.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
+<li class="chapter" data-level="17.1.4" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#总结-3"><i class="fa fa-check"></i><b>17.1.4</b> 总结</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html"><i class="fa fa-check"></i><b>17</b> 补充3：效应量和元分析</a>
+<li class="chapter" data-level="18" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html"><i class="fa fa-check"></i><b>18</b> 补充3：效应量和元分析</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#效应量简介"><i class="fa fa-check"></i><b>17.1</b> 效应量简介</a></li>
-<li class="chapter" data-level="17.2" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#算法实现"><i class="fa fa-check"></i><b>17.2</b> 算法实现</a></li>
-<li class="chapter" data-level="17.3" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#小练习"><i class="fa fa-check"></i><b>17.3</b> 小练习</a></li>
-<li class="chapter" data-level="17.4" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析简介"><i class="fa fa-check"></i><b>17.4</b> 元分析简介</a></li>
-<li class="chapter" data-level="17.5" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析实现"><i class="fa fa-check"></i><b>17.5</b> 元分析实现</a></li>
+<li class="chapter" data-level="18.1" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#效应量简介"><i class="fa fa-check"></i><b>18.1</b> 效应量简介</a></li>
+<li class="chapter" data-level="18.2" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#算法实现"><i class="fa fa-check"></i><b>18.2</b> 算法实现</a></li>
+<li class="chapter" data-level="18.3" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#小练习"><i class="fa fa-check"></i><b>18.3</b> 小练习</a></li>
+<li class="chapter" data-level="18.4" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析简介"><i class="fa fa-check"></i><b>18.4</b> 元分析简介</a></li>
+<li class="chapter" data-level="18.5" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析实现"><i class="fa fa-check"></i><b>18.5</b> 元分析实现</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -651,7 +676,7 @@ Analysis,EDA），在传统的心理学中，我们通常会清楚地知道要�
 <p>summary</p>
 <div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="第七讲描述性统计与数据可视化基础.html#cb247-1" tabindex="-1"></a><span class="fu">summary</span>(mt_raw) <span class="sc">%&gt;%</span>    </span>
 <span id="cb247-2"><a href="第七讲描述性统计与数据可视化基础.html#cb247-2" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="co"># 注：kable函数只为了输出 skim函数能够实现数据的快速预览，可以根据每一列的数据类型进行数据预览，会显示字符型数据的分布特点</span></span></code></pre></div>
-<table style="width:100%;">
+<table>
 <colgroup>
 <col width="1%" />
 <col width="6%" />
@@ -668,7 +693,7 @@ Analysis,EDA），在传统的心理学中，我们通常会清楚地知道要�
 <col width="6%" />
 <col width="6%" />
 <col width="6%" />
-<col width="5%" />
+<col width="6%" />
 <col width="5%" />
 </colgroup>
 <thead>
@@ -698,114 +723,114 @@ Analysis,EDA），在传统的心理学中，我们通常会清楚地知道要�
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
 <td align="left">Min. : 7302</td>
-<td align="left">Min. :18.0</td>
+<td align="left">Min. :18.00</td>
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
-<td align="left">Min. :1.00</td>
-<td align="left">Min. :1.00</td>
+<td align="left">Min. :1.000</td>
+<td align="left">Min. :1.000</td>
 <td align="left">Min. : 1.00</td>
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
-<td align="left">Min. :-1.000</td>
-<td align="left">Min. :0.106</td>
+<td align="left">Min. :-1.0000</td>
+<td align="left">Min. :0.1060</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
 <td align="left">1st Qu.: 7313</td>
-<td align="left">1st Qu.:19.0</td>
+<td align="left">1st Qu.:19.00</td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
-<td align="left">1st Qu.:1.00</td>
-<td align="left">1st Qu.:1.00</td>
+<td align="left">1st Qu.:1.000</td>
+<td align="left">1st Qu.:1.000</td>
 <td align="left">1st Qu.: 6.75</td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
-<td align="left">1st Qu.: 1.000</td>
-<td align="left">1st Qu.:0.610</td>
+<td align="left">1st Qu.: 1.0000</td>
+<td align="left">1st Qu.:0.6104</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
 <td align="left">Median : 7324</td>
-<td align="left">Median :20.0</td>
+<td align="left">Median :20.00</td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
-<td align="left">Median :1.00</td>
-<td align="left">Median :2.00</td>
+<td align="left">Median :1.000</td>
+<td align="left">Median :2.000</td>
 <td align="left">Median :12.50</td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
-<td align="left">Median : 1.000</td>
-<td align="left">Median :0.702</td>
+<td align="left">Median : 1.0000</td>
+<td align="left">Median :0.7019</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">Mean : 8853</td>
-<td align="left">Mean :20.8</td>
+<td align="left">Mean :20.83</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">Mean :1.61</td>
-<td align="left">Mean :2.42</td>
+<td align="left">Mean :1.611</td>
+<td align="left">Mean :2.417</td>
 <td align="left">Mean :12.50</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">Mean : 0.796</td>
-<td align="left">Mean :0.715</td>
+<td align="left">Mean : 0.7959</td>
+<td align="left">Mean :0.7150</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">3rd Qu.: 7336</td>
-<td align="left">3rd Qu.:22.0</td>
+<td align="left">3rd Qu.:22.00</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">3rd Qu.:2.00</td>
-<td align="left">3rd Qu.:3.00</td>
+<td align="left">3rd Qu.:2.000</td>
+<td align="left">3rd Qu.:3.000</td>
 <td align="left">3rd Qu.:18.25</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">3rd Qu.: 1.000</td>
-<td align="left">3rd Qu.:0.805</td>
+<td align="left">3rd Qu.: 1.0000</td>
+<td align="left">3rd Qu.:0.8053</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">Max. :73370</td>
-<td align="left">Max. :28.0</td>
+<td align="left">Max. :28.00</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">Max. :3.00</td>
-<td align="left">Max. :5.00</td>
+<td align="left">Max. :3.000</td>
+<td align="left">Max. :5.000</td>
 <td align="left">Max. :24.00</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">Max. : 2.000</td>
-<td align="left">Max. :1.183</td>
+<td align="left">Max. : 2.0000</td>
+<td align="left">Max. :1.1831</td>
 </tr>
 </tbody>
 </table>
@@ -1052,7 +1077,6 @@ ggplot2的优势在于，它简化了绘制复杂图形的过程，通过集成�
 <br>
 <a href="https://ggplot2-book.org/index.html">ggplot2: Elegant Graphics for Data Analysis (3e)</a></p>
 
-
 </div>
 </div>
             </section>
@@ -1061,7 +1085,7 @@ ggplot2的优势在于，它简化了绘制复杂图形的过程，通过集成�
         </div>
       </div>
 <a href="第六讲数据预处理.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="第九讲回归模型二分层线性模型.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="第八讲回归模型一.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
