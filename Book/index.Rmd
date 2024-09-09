@@ -16,7 +16,17 @@ link-citations: yes
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# 引言 {#0-index}
+# 引言 {-}
+
+本电子书通过[`bookdown`](https://bookdown.org/)进行创建，由于文字稿来自于对课堂录音的整理，加之本人时间不多，因此，可能存在如下问题：
+
+-   文字口语化严重
+-   图片或者文献引用不全
+-   错别字等
+
+望读者朋友多多包涵。欢迎有兴趣有能力的朋友多多批评指正。指出问题的方式：在本电子书的GitHub仓库的[issues](https://github.com/hcp4715/R4PsyBook/issues)中开新的issue。
+
+参与贡献方式：见下面《如何帮助完善本书》这一小节。
 
 ## 开放电子书的初衷
 分享知识，向众多开源的电子书作者致敬，为中文心理学领域略尽绵薄之力。
@@ -28,10 +38,45 @@ knitr::opts_chunk$set(echo = TRUE)
 
 第一，创建github账号，然后fork这个项目。\
 第二，将fork后的项目clone到您自己的电脑上。\
-第三，在自己的电脑上使用Rstudio打开这个项目，然后修改您想要修改的内容。\
+第三，在自己的电脑上使用Rstudio打开`Book`这个文件夹中的`Book.Rproj`，完善您觉得需要完善的内容。*\
 第四，将修改后的内容push到您的github上。\
 第五，在github上提交pull request。\
 
+
+\* 本项目的文件夹结构如下，内容修改主要在`Book`这个子文件夹下的`100*-lesson*_2024.rmd`文件。
+
+```
+.
+├── Book
+│   ├── 1001-lesson1_2024.Rmd
+│   ├── 1002-lesson2_2024.Rmd
+│   ├── 1003-lesson3_2024.Rmd
+│   ├── 1004-lesson4_2024.Rmd
+│   ├── 1005-lesson5_2024.Rmd
+│   ├── 1006-lesson6_2024.Rmd
+│   ├── 1007-lesson7_2024.Rmd
+│   ├── 1008-lesson8_2024.Rmd
+│   ├── 1009-lesson9_2024.Rmd
+│   ├── 1010-lesson10_2024.Rmd
+│   ├── 1011-lesson11_2024.Rmd
+│   ├── 1012-lesson12_2024.Rmd
+│   ├── 1013-lesson13_2024.Rmd
+│   ├── 1014-lesson14_2024.Rmd
+│   ├── 1015-lesson15_2023.Rmd
+│   ├── 1016-lesson16_2023.Rmd
+│   ├── 1017-lesson17_2023.Rmd
+|   ├── ...
+|
+│   ├── data
+│   │   ├── Template_Folder_System_Empirical_Chuan-Peng_Lab
+│   │   ├── Template_Folder_System_Meta_Chuan-Peng_Lab
+│   │   ├── match
+│   │   └── penguin
+│
+├── LICENSE.md
+├── R4PsyBook.Rproj
+└── README.md
+```
 ## 使用许可
 
 本电子书使用CC4.0作为使用许可，如果您使用本电子书内容，请规范引用。
