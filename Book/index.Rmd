@@ -1,6 +1,6 @@
 ---
 title: "R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)"
-author: "胡传鹏"
+author: "胡传鹏(等)"
 date: "`r format(Sys.Date(), '%Y年%m月%d日')`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -18,21 +18,24 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 引言 {-}
 
-本电子书通过[`bookdown`](https://bookdown.org/)进行创建，由于文字稿来自于对课堂录音的整理，加之本人时间不多，因此，可能存在如下问题：
+本电子书通过[`bookdown`](https://bookdown.org/)进行创建，相关代码见[这里](https://github.com/hcp4715/R4PsyBook)由于文字稿来自于对课堂录音的整理，完全由本人与志愿者以志愿方式进行整理，因此，可能存在如下问题：
 
 -   文字口语化严重
 -   图片或者文献引用不全
 -   错别字等
+-   代码错误
 
-望读者朋友多多包涵。欢迎有兴趣有能力的朋友多多批评指正。指出问题的方式：在本电子书的GitHub仓库的[issues](https://github.com/hcp4715/R4PsyBook/issues)中开新的issue。
-
+望读者朋友多多包涵。欢迎有兴趣有能力的朋友多多批评指正。\
+指出问题的方式：在本电子书的GitHub仓库的[issues](https://github.com/hcp4715/R4PsyBook/issues)中开新的issue。\
 参与贡献方式：见下面《如何帮助完善本书》这一小节。
 
 ## 开放电子书的初衷
-分享知识，向众多开源的电子书作者致敬，为中文心理学领域略尽绵薄之力。
+分享知识，向众多开源的电子书作者致敬，为中文网络世界中的R语言相关教材略尽绵薄之力。
 
 ## 如何帮助完善本书
-可以参考[这个英文的教程]((https://neuropsychology.github.io/NeuroKit/resources/contributing.html#how-to-use-github-to-contribute))，我们暂时还没有进行中文翻译，你也可以将这部分补充，这也是极大的贡献！
+可以参考[这个英文的教程](https://neuropsychology.github.io/NeuroKit/resources/contributing.html#how-to-use-github-to-contribute)，我们暂时还没有进行中文翻译，您也可以将这部分补充，这也是极大的贡献！
+
+可能需要的前期知识：(1) 如何使用github;(2) 如何使用[bookdown](https://bookdown.org/)。
 
 大致可以分成如下几步：
 
@@ -118,7 +121,7 @@ knitr::opts_chunk$set(echo = TRUE)
 7.2 探索性数据分析(DataExplorer)\
 7.3 ggplot2基础\
 
-第八章：R语言中的统计分析: 线性模型1 (t-test、anova等) \
+第八章：R语言中的统计分析: 线性模型1 (*t*-test、anova等) \
 8.1 语法实现\
 8.2 分析的流程\
 
@@ -141,3 +144,9 @@ knitr::opts_chunk$set(echo = TRUE)
 第十三章：心理学研究中的网络分析 \
 
 第十四章：心理学元分析入门 \
+
+第十五章：补充1:如何进行基本的数据分析：相关与回归 \
+
+第十六章：补充2:从分析到手稿 \
+
+第十七章：补充3:效应量与元分析 \
