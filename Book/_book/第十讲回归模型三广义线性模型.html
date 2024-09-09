@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 第十讲：回归模型(三)：广义线性模型 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</title>
+  <meta name="description" content="课程bookdown" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 11 第十讲：回归模型(三)：广义线性模型 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="课程bookdown" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 11 第十讲：回归模型(三)：广义线性模型 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
+  
+  <meta name="twitter:description" content="课程bookdown" />
+  
+
+<meta name="author" content="胡传鹏" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="第九讲回归模型二分层线性模型.html"/>
+<link rel="next" href="第十一讲回归模型四中介分析.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+<script src="libs/panelset-0.2.6/panelset.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.11/grViz.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R语言在心理学研究中的应用</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 引言</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#开放电子书的初衷"><i class="fa fa-check"></i><b>1.1</b> 开放电子书的初衷</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#如何帮助完善本书"><i class="fa fa-check"></i><b>1.2</b> 如何帮助完善本书</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#使用许可"><i class="fa fa-check"></i><b>1.3</b> 使用许可</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#目录"><i class="fa fa-check"></i><b>1.4</b> 目录</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>2</b> 第一讲：为什么要学习R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lesson-1.html"><a href="lesson-1.html#r在心理科学及社会科学中的运用"><i class="fa fa-check"></i><b>2.1</b> R在心理科学及社会科学中的运用</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="lesson-1.html"><a href="lesson-1.html#id_1-data-science"><i class="fa fa-check"></i><b>2.1.1</b> 数据科学</a></li>
+<li class="chapter" data-level="2.1.2" data-path="lesson-1.html"><a href="lesson-1.html#id_1-data-science-born"><i class="fa fa-check"></i><b>2.1.2</b> 数据科学的诞生——数字化时代</a></li>
+<li class="chapter" data-level="2.1.3" data-path="lesson-1.html"><a href="lesson-1.html#为什么要学习r语言1-why-learn-r"><i class="fa fa-check"></i><b>2.1.3</b> 为什么要学习R语言？{1-why-learn-R}</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="lesson-1.html"><a href="lesson-1.html#r语言使用的示例展示"><i class="fa fa-check"></i><b>2.2</b> R语言使用的示例展示</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="lesson-1.html"><a href="lesson-1.html#数据清洗"><i class="fa fa-check"></i><b>2.2.1</b> 数据清洗</a></li>
+<li class="chapter" data-level="2.2.2" data-path="lesson-1.html"><a href="lesson-1.html#ggplot2画图"><i class="fa fa-check"></i><b>2.2.2</b> ggplot2画图</a></li>
+<li class="chapter" data-level="2.2.3" data-path="lesson-1.html"><a href="lesson-1.html#心理学数据分析与结果汇报"><i class="fa fa-check"></i><b>2.2.3</b> 心理学数据分析与结果汇报</a></li>
+<li class="chapter" data-level="2.2.4" data-path="lesson-1.html"><a href="lesson-1.html#regression"><i class="fa fa-check"></i><b>2.2.4</b> Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="lesson-1.html"><a href="lesson-1.html#现场运行代码"><i class="fa fa-check"></i><b>2.3</b> 现场运行代码</a></li>
+<li class="chapter" data-level="2.4" data-path="lesson-1.html"><a href="lesson-1.html#课程安排"><i class="fa fa-check"></i><b>2.4</b> 课程安排</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="lesson-1.html"><a href="lesson-1.html#课程大纲"><i class="fa fa-check"></i><b>2.4.1</b> 课程大纲</a></li>
+<li class="chapter" data-level="2.4.2" data-path="lesson-1.html"><a href="lesson-1.html#成绩分配"><i class="fa fa-check"></i><b>2.4.2</b> 成绩分配</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="lesson-1.html"><a href="lesson-1.html#如何学好这门课"><i class="fa fa-check"></i><b>2.5</b> 如何学好这门课</a></li>
+<li class="chapter" data-level="2.6" data-path="lesson-1.html"><a href="lesson-1.html#课程总结与期望"><i class="fa fa-check"></i><b>2.6</b> 课程总结与期望</a></li>
+<li class="chapter" data-level="2.7" data-path="lesson-1.html"><a href="lesson-1.html#推荐"><i class="fa fa-check"></i><b>2.7</b> 推荐</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html"><i class="fa fa-check"></i><b>3</b> 第二讲：如何开始使用R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#数据分析的出发点问题"><i class="fa fa-check"></i><b>3.1</b> 数据分析的出发点——问题</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#问题一-人类企鹅计划问卷数据"><i class="fa fa-check"></i><b>3.1.1</b> 问题一: 人类企鹅计划（问卷数据）</a></li>
+<li class="chapter" data-level="3.1.2" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#问题二认知决策任务反应时和反应选择数据"><i class="fa fa-check"></i><b>3.1.2</b> 问题二：认知决策任务（反应时和反应选择数据）</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#如何安装r"><i class="fa fa-check"></i><b>3.2</b> 如何安装R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#r的下载与安装"><i class="fa fa-check"></i><b>3.2.1</b> R的下载与安装</a></li>
+<li class="chapter" data-level="3.2.2" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#r-console控制台"><i class="fa fa-check"></i><b>3.2.2</b> R console（控制台）</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#如何安装rstudio"><i class="fa fa-check"></i><b>3.3</b> 如何安装Rstudio</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#rstuio的下载与安装"><i class="fa fa-check"></i><b>3.3.1</b> Rstuio的下载与安装</a></li>
+<li class="chapter" data-level="3.3.2" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#测试rstudio"><i class="fa fa-check"></i><b>3.3.2</b> 测试Rstudio</a></li>
+<li class="chapter" data-level="3.3.3" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#创建新项目"><i class="fa fa-check"></i><b>3.3.3</b> 创建新项目</a></li>
+<li class="chapter" data-level="3.3.4" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#包packages的介绍与调用"><i class="fa fa-check"></i><b>3.3.4</b> 包(packages)的介绍与调用</a></li>
+<li class="chapter" data-level="3.3.5" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#镜像的选择"><i class="fa fa-check"></i><b>3.3.5</b> 镜像的选择</a></li>
+<li class="chapter" data-level="3.3.6" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#安装rtoolswindows"><i class="fa fa-check"></i><b>3.3.6</b> 安装Rtools（windows）</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="第二讲如何开始使用r.html"><a href="第二讲如何开始使用r.html#如何通过和鲸model-whale使用r"><i class="fa fa-check"></i><b>3.4</b> 如何通过和鲸（Model Whale）使用R</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html"><i class="fa fa-check"></i><b>4</b> 第三讲：Git &amp; RStudio工作流</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#files-and-folders-system"><i class="fa fa-check"></i><b>4.1</b> Files and Folders System</a></li>
+<li class="chapter" data-level="4.2" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#git-and-git-hub"><i class="fa fa-check"></i><b>4.2</b> Git and Git Hub</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#git"><i class="fa fa-check"></i><b>4.2.1</b> Git</a></li>
+<li class="chapter" data-level="4.2.2" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#git-hub"><i class="fa fa-check"></i><b>4.2.2</b> Git Hub</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#local-version-control"><i class="fa fa-check"></i><b>4.3</b> Local Version Control</a></li>
+<li class="chapter" data-level="4.4" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#remote-version-control"><i class="fa fa-check"></i><b>4.4</b> Remote Version Control</a></li>
+<li class="chapter" data-level="4.5" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#作业"><i class="fa fa-check"></i><b>4.5</b> 作业</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html"><i class="fa fa-check"></i><b>5</b> 第四讲：如何导入数据</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#正式开始前的tips"><i class="fa fa-check"></i><b>5.1</b> 正式开始前的Tips</a></li>
+<li class="chapter" data-level="5.2" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#回顾与问题"><i class="fa fa-check"></i><b>5.2</b> 回顾与问题</a></li>
+<li class="chapter" data-level="5.3" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据导入"><i class="fa fa-check"></i><b>5.3</b> 数据导入</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据的住址路径-以mac系统为例"><i class="fa fa-check"></i><b>5.3.1</b> 数据的“住址”——路径 (以Mac系统为例)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#绝对路径相对路径"><i class="fa fa-check"></i><b>5.3.2</b> 绝对路径/相对路径</a></li>
+<li class="chapter" data-level="5.3.3" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#设定工作目录-手动挡与自动挡"><i class="fa fa-check"></i><b>5.3.3</b> 设定工作目录 – 手动挡与自动挡</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#读取数据"><i class="fa fa-check"></i><b>5.4</b> 读取数据</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#读取数据手动档"><i class="fa fa-check"></i><b>5.4.1</b> 读取数据——手动档</a></li>
+<li class="chapter" data-level="5.4.2" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#读取数据自动挡gui点击操作"><i class="fa fa-check"></i><b>5.4.2</b> 读取数据——自动挡(GUI点击操作)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据类型"><i class="fa fa-check"></i><b>5.5</b> 数据类型</a></li>
+<li class="chapter" data-level="5.6" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据结构"><i class="fa fa-check"></i><b>5.6</b> 数据结构</a></li>
+<li class="chapter" data-level="5.7" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据索引"><i class="fa fa-check"></i><b>5.7</b> 数据索引</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据索引中括号"><i class="fa fa-check"></i><b>5.7.1</b> 数据索引(中括号)</a></li>
+<li class="chapter" data-level="5.7.2" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据索引-1"><i class="fa fa-check"></i><b>5.7.2</b> 数据索引($)</a></li>
+<li class="chapter" data-level="5.7.3" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据索引逻辑值"><i class="fa fa-check"></i><b>5.7.3</b> 数据索引(逻辑值)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#对象object"><i class="fa fa-check"></i><b>5.8</b> 对象（object）</a></li>
+<li class="chapter" data-level="5.9" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#其它注意事项"><i class="fa fa-check"></i><b>5.9</b> 其它注意事项</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#变量命名"><i class="fa fa-check"></i><b>5.9.1</b> 变量命名</a></li>
+<li class="chapter" data-level="5.9.2" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#缺失值na-空值null"><i class="fa fa-check"></i><b>5.9.2</b> 缺失值（NA） 空值（NULL）</a></li>
+<li class="chapter" data-level="5.9.3" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#数据类型的转换"><i class="fa fa-check"></i><b>5.9.3</b> 数据类型的转换</a></li>
+<li class="chapter" data-level="5.9.4" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#目录和文件管理函数"><i class="fa fa-check"></i><b>5.9.4</b> 目录和文件管理函数:</a></li>
+<li class="chapter" data-level="5.9.5" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#对象与变量名"><i class="fa fa-check"></i><b>5.9.5</b> 对象与变量名</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#final-project期末作业"><i class="fa fa-check"></i><b>5.10</b> final project（期末作业）</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#requirements"><i class="fa fa-check"></i><b>5.10.1</b> Requirements</a></li>
+<li class="chapter" data-level="5.10.2" data-path="第四讲如何导入数据.html"><a href="第四讲如何导入数据.html#评分标准"><i class="fa fa-check"></i><b>5.10.2</b> 评分标准</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lesson-5.html"><a href="lesson-5.html"><i class="fa fa-check"></i><b>6</b> 第五讲：R语言中的对象2: 函数</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="lesson-5.html"><a href="lesson-5.html#加载数据"><i class="fa fa-check"></i><b>6.1</b> 加载数据</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="lesson-5.html"><a href="lesson-5.html#数据的地址路径"><i class="fa fa-check"></i><b>6.1.1</b> 数据的“地址”——路径</a></li>
+<li class="chapter" data-level="6.1.2" data-path="lesson-5.html"><a href="lesson-5.html#绝对路径与相对路径"><i class="fa fa-check"></i><b>6.1.2</b> 绝对路径与相对路径</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="lesson-5.html"><a href="lesson-5.html#读取数据-1"><i class="fa fa-check"></i><b>6.2</b> 读取数据</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="lesson-5.html"><a href="lesson-5.html#手动导入"><i class="fa fa-check"></i><b>6.2.1</b> 手动导入</a></li>
+<li class="chapter" data-level="6.2.2" data-path="lesson-5.html"><a href="lesson-5.html#代码导入"><i class="fa fa-check"></i><b>6.2.2</b> 代码导入</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="lesson-5.html"><a href="lesson-5.html#赋值"><i class="fa fa-check"></i><b>6.3</b> 赋值</a></li>
+<li class="chapter" data-level="6.4" data-path="lesson-5.html"><a href="lesson-5.html#数据类型-1"><i class="fa fa-check"></i><b>6.4</b> 数据类型</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="lesson-5.html"><a href="lesson-5.html#单个元素"><i class="fa fa-check"></i><b>6.4.1</b> 单个元素</a></li>
+<li class="chapter" data-level="6.4.2" data-path="lesson-5.html"><a href="lesson-5.html#数值型numeric"><i class="fa fa-check"></i><b>6.4.2</b> 数值型(numeric)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="lesson-5.html"><a href="lesson-5.html#字符串character"><i class="fa fa-check"></i><b>6.4.3</b> 字符串(character)</a></li>
+<li class="chapter" data-level="6.4.4" data-path="lesson-5.html"><a href="lesson-5.html#逻辑值logical"><i class="fa fa-check"></i><b>6.4.4</b> 逻辑值(logical)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="lesson-5.html"><a href="lesson-5.html#数据结构-1"><i class="fa fa-check"></i><b>6.5</b> 数据结构</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="lesson-5.html"><a href="lesson-5.html#向量vector"><i class="fa fa-check"></i><b>6.5.1</b> 向量(vector)</a></li>
+<li class="chapter" data-level="6.5.2" data-path="lesson-5.html"><a href="lesson-5.html#类型转换"><i class="fa fa-check"></i><b>6.5.2</b> 类型转换</a></li>
+<li class="chapter" data-level="6.5.3" data-path="lesson-5.html"><a href="lesson-5.html#向量循环"><i class="fa fa-check"></i><b>6.5.3</b> 向量循环</a></li>
+<li class="chapter" data-level="6.5.4" data-path="lesson-5.html"><a href="lesson-5.html#向量的索引"><i class="fa fa-check"></i><b>6.5.4</b> 向量的索引</a></li>
+<li class="chapter" data-level="6.5.5" data-path="lesson-5.html"><a href="lesson-5.html#因子factor"><i class="fa fa-check"></i><b>6.5.5</b> 因子(factor)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="lesson-5.html"><a href="lesson-5.html#数据框"><i class="fa fa-check"></i><b>6.6</b> 数据框</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="lesson-5.html"><a href="lesson-5.html#数据框的索引"><i class="fa fa-check"></i><b>6.6.1</b> 数据框的索引</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="lesson-5.html"><a href="lesson-5.html#矩阵与数组"><i class="fa fa-check"></i><b>6.7</b> 矩阵与数组</a></li>
+<li class="chapter" data-level="6.8" data-path="lesson-5.html"><a href="lesson-5.html#列表"><i class="fa fa-check"></i><b>6.8</b> 列表</a></li>
+<li class="chapter" data-level="6.9" data-path="lesson-5.html"><a href="lesson-5.html#函数"><i class="fa fa-check"></i><b>6.9</b> 函数</a>
+<ul>
+<li class="chapter" data-level="6.9.1" data-path="lesson-5.html"><a href="lesson-5.html#函数的调用"><i class="fa fa-check"></i><b>6.9.1</b> 函数的调用</a></li>
+<li class="chapter" data-level="6.9.2" data-path="lesson-5.html"><a href="lesson-5.html#自定义函数"><i class="fa fa-check"></i><b>6.9.2</b> 自定义函数</a></li>
+<li class="chapter" data-level="6.9.3" data-path="lesson-5.html"><a href="lesson-5.html#函数的组成"><i class="fa fa-check"></i><b>6.9.3</b> 函数的组成</a></li>
+<li class="chapter" data-level="6.9.4" data-path="lesson-5.html"><a href="lesson-5.html#函数的简写"><i class="fa fa-check"></i><b>6.9.4</b> 函数的简写</a></li>
+<li class="chapter" data-level="6.9.5" data-path="lesson-5.html"><a href="lesson-5.html#if-条件语句"><i class="fa fa-check"></i><b>6.9.5</b> if 条件语句</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html"><i class="fa fa-check"></i><b>7</b> 第六讲：数据预处理</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#tidyverse"><i class="fa fa-check"></i><b>7.1</b> <strong>Tidyverse</strong></a></li>
+<li class="chapter" data-level="7.2" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#问卷数据"><i class="fa fa-check"></i><b>7.2</b> 问卷数据</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#研究问题数据情况"><i class="fa fa-check"></i><b>7.2.1</b> 研究问题&amp;数据情况</a></li>
+<li class="chapter" data-level="7.2.2" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#操作步骤完整的管道操作"><i class="fa fa-check"></i><b>7.2.2</b> 操作步骤|完整的管道操作</a></li>
+<li class="chapter" data-level="7.2.3" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#小结"><i class="fa fa-check"></i><b>7.2.3</b> 小结</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#反应时数据"><i class="fa fa-check"></i><b>7.3</b> 反应时数据</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#研究问题-数据情况"><i class="fa fa-check"></i><b>7.3.1</b> 研究问题 &amp; 数据情况</a></li>
+<li class="chapter" data-level="7.3.2" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#操作步骤"><i class="fa fa-check"></i><b>7.3.2</b> 操作步骤</a></li>
+<li class="chapter" data-level="7.3.3" data-path="第六讲数据预处理.html"><a href="第六讲数据预处理.html#小结-1"><i class="fa fa-check"></i><b>7.3.3</b> 小结</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html"><i class="fa fa-check"></i><b>8</b> 第七讲：描述性统计与数据可视化基础</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#回顾"><i class="fa fa-check"></i><b>8.1</b> 回顾</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#批量导入数据"><i class="fa fa-check"></i><b>8.1.1</b> 批量导入数据</a></li>
+<li class="chapter" data-level="8.1.2" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#代码书写规范"><i class="fa fa-check"></i><b>8.1.2</b> 代码书写规范</a></li>
+<li class="chapter" data-level="8.1.3" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#数据清洗-1"><i class="fa fa-check"></i><b>8.1.3</b> 数据清洗</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#探索性数据分析"><i class="fa fa-check"></i><b>8.2</b> 探索性数据分析</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#常用函数介绍"><i class="fa fa-check"></i><b>8.2.1</b> 常用函数介绍</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#数据可视化"><i class="fa fa-check"></i><b>8.3</b> 数据可视化</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#可视化的重要性"><i class="fa fa-check"></i><b>8.3.1</b> 可视化的重要性</a></li>
+<li class="chapter" data-level="8.3.2" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#可视化的逻辑"><i class="fa fa-check"></i><b>8.3.2</b> 可视化的逻辑</a></li>
+<li class="chapter" data-level="8.3.3" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#单个图片的组成"><i class="fa fa-check"></i><b>8.3.3</b> 单个图片的组成</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#常用图形"><i class="fa fa-check"></i><b>8.4</b> 常用图形</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#直方图"><i class="fa fa-check"></i><b>8.4.1</b> 直方图</a></li>
+<li class="chapter" data-level="8.4.2" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#直方图密度图"><i class="fa fa-check"></i><b>8.4.2</b> 直方图+密度图</a></li>
+<li class="chapter" data-level="8.4.3" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#箱线图"><i class="fa fa-check"></i><b>8.4.3</b> 箱线图</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#data-explorer"><i class="fa fa-check"></i><b>8.5</b> Data Explorer</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#data-explorer-1"><i class="fa fa-check"></i><b>8.5.1</b> Data Explorer</a></li>
+<li class="chapter" data-level="8.5.2" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#使用ggpairs"><i class="fa fa-check"></i><b>8.5.2</b> 使用ggpairs</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#练习"><i class="fa fa-check"></i><b>8.6</b> 练习</a></li>
+<li class="chapter" data-level="8.7" data-path="第七讲描述性统计与数据可视化基础.html"><a href="第七讲描述性统计与数据可视化基础.html#参考阅读"><i class="fa fa-check"></i><b>8.7</b> 参考阅读</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html"><i class="fa fa-check"></i><b>9</b> 第八讲：回归模型(一)</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#研究问题"><i class="fa fa-check"></i><b>9.1</b> 研究问题</a></li>
+<li class="chapter" data-level="9.2" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#t-test作为回归模型的特例"><i class="fa fa-check"></i><b>9.2</b> <em>t</em>-test作为回归模型的特例</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#独立样本t检验independent-t-test"><i class="fa fa-check"></i><b>9.2.1</b> 独立样本<em>t</em>检验(independent <em>t</em>-test)</a></li>
+<li class="chapter" data-level="9.2.2" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#线性回归linear-regression"><i class="fa fa-check"></i><b>9.2.2</b> 线性回归(linear regression)</a></li>
+<li class="chapter" data-level="9.2.3" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#单样本t检验one-sample-t-test"><i class="fa fa-check"></i><b>9.2.3</b> 单样本<em>t</em>检验(one sample <em>t</em>-test)</a></li>
+<li class="chapter" data-level="9.2.4" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#配对样本t检验paired-t-test"><i class="fa fa-check"></i><b>9.2.4</b> 配对样本<em>t</em>检验(paired <em>t</em>-test)</a></li>
+<li class="chapter" data-level="9.2.5" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#brucerttest"><i class="fa fa-check"></i><b>9.2.5</b> bruceR::TTEST</a></li>
+<li class="chapter" data-level="9.2.6" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#总结"><i class="fa fa-check"></i><b>9.2.6</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#anova-linear-regression"><i class="fa fa-check"></i><b>9.3</b> ANOVA &amp; linear regression</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#研究问题-1"><i class="fa fa-check"></i><b>9.3.1</b> 研究问题</a></li>
+<li class="chapter" data-level="9.3.2" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#代码实操-知识回顾"><i class="fa fa-check"></i><b>9.3.2</b> 代码实操 &amp; 知识回顾</a></li>
+<li class="chapter" data-level="9.3.3" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#anova代码实操数据预处理"><i class="fa fa-check"></i><b>9.3.3</b> ANOVA代码实操|数据预处理</a></li>
+<li class="chapter" data-level="9.3.4" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#代码实操正态性检验"><i class="fa fa-check"></i><b>9.3.4</b> 代码实操|正态性检验</a></li>
+<li class="chapter" data-level="9.3.5" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#代码实操双因素被试间方差分析"><i class="fa fa-check"></i><b>9.3.5</b> 代码实操|双因素被试间方差分析</a></li>
+<li class="chapter" data-level="9.3.6" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#代码实操平方和ss的计算"><i class="fa fa-check"></i><b>9.3.6</b> 代码实操|平方和(SS)的计算</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#线性回归"><i class="fa fa-check"></i><b>9.4</b> 线性回归</a></li>
+<li class="chapter" data-level="9.5" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#知识延申单因素方差分析示例"><i class="fa fa-check"></i><b>9.5</b> 知识延申|单因素方差分析示例</a></li>
+<li class="chapter" data-level="9.6" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#知识延申总结"><i class="fa fa-check"></i><b>9.6</b> 知识延申|总结</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html"><i class="fa fa-check"></i><b>10</b> 第九讲：回归模型(二)：分层线性模型</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#回顾-1"><i class="fa fa-check"></i><b>10.1</b> 回顾</a></li>
+<li class="chapter" data-level="10.2" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#重复测量方差分析"><i class="fa fa-check"></i><b>10.2</b> 重复测量方差分析</a></li>
+<li class="chapter" data-level="10.3" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#分层线性模型多层线性模型hlm"><i class="fa fa-check"></i><b>10.3</b> 分层线性模型/多层线性模型(HLM):</a></li>
+<li class="chapter" data-level="10.4" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#多层线性模型的应用"><i class="fa fa-check"></i><b>10.4</b> 多层线性模型的应用</a></li>
+<li class="chapter" data-level="10.5" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#hlm的应用"><i class="fa fa-check"></i><b>10.5</b> HLM的应用</a></li>
+<li class="chapter" data-level="10.6" data-path="第九讲回归模型二分层线性模型.html"><a href="第九讲回归模型二分层线性模型.html#思考"><i class="fa fa-check"></i><b>10.6</b> 思考</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html"><i class="fa fa-check"></i><b>11</b> 第十讲：回归模型(三)：广义线性模型</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#前章回顾和本章数据预处理"><i class="fa fa-check"></i><b>11.1</b> 前章回顾和本章数据预处理</a></li>
+<li class="chapter" data-level="11.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#广义线性模型"><i class="fa fa-check"></i><b>11.2</b> 广义线性模型</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#回归方程和普通线性模型"><i class="fa fa-check"></i><b>11.2.1</b> 回归方程和普通线性模型</a></li>
+<li class="chapter" data-level="11.2.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#连接函数和广义线性模型"><i class="fa fa-check"></i><b>11.2.2</b> 连接函数和广义线性模型</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#二项分布"><i class="fa fa-check"></i><b>11.3</b> 二项分布</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#伯努利实验"><i class="fa fa-check"></i><b>11.3.1</b> 伯努利实验</a></li>
+<li class="chapter" data-level="11.3.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#glm代码实操"><i class="fa fa-check"></i><b>11.3.2</b> GLM代码实操</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同方法比较"><i class="fa fa-check"></i><b>11.4</b> 不同方法比较</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同的建模方法"><i class="fa fa-check"></i><b>11.4.1</b> 不同的建模方法</a></li>
+<li class="chapter" data-level="11.4.2" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#不同的模型比较方法"><i class="fa fa-check"></i><b>11.4.2</b> 不同的模型比较方法</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="第十讲回归模型三广义线性模型.html"><a href="第十讲回归模型三广义线性模型.html#其他分布"><i class="fa fa-check"></i><b>11.5</b> 其他分布</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html"><i class="fa fa-check"></i><b>12</b> 第十一讲：回归模型(四)：中介分析</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#准备工作"><i class="fa fa-check"></i><b>12.1</b> 准备工作</a></li>
+<li class="chapter" data-level="12.2" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#线性模型回顾"><i class="fa fa-check"></i><b>12.2</b> 线性模型回顾</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#线性模型及模型检验"><i class="fa fa-check"></i><b>12.2.1</b> 线性模型及模型检验</a></li>
+<li class="chapter" data-level="12.2.2" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#多元线性模型的局限"><i class="fa fa-check"></i><b>12.2.2</b> 多元线性模型的局限</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#中介分析"><i class="fa fa-check"></i><b>12.3</b> 中介分析</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#对于机制的表示图"><i class="fa fa-check"></i><b>12.3.1</b> 2.1 对于“机制”的表示——“图”</a></li>
+<li class="chapter" data-level="12.3.2" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#中介分析-1"><i class="fa fa-check"></i><b>12.3.2</b> 中介分析</a></li>
+<li class="chapter" data-level="12.3.3" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#中介效应"><i class="fa fa-check"></i><b>12.3.3</b> 中介效应</a></li>
+<li class="chapter" data-level="12.3.4" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#中介效应的检验"><i class="fa fa-check"></i><b>12.3.4</b> 中介效应的检验</a></li>
+<li class="chapter" data-level="12.3.5" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#问题提出"><i class="fa fa-check"></i><b>12.3.5</b> 问题提出</a></li>
+<li class="chapter" data-level="12.3.6" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#代码实现"><i class="fa fa-check"></i><b>12.3.6</b> 代码实现</a></li>
+<li class="chapter" data-level="12.3.7" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#process-in-brucer"><i class="fa fa-check"></i><b>12.3.7</b> PROCESS in bruceR()</a></li>
+<li class="chapter" data-level="12.3.8" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#反思"><i class="fa fa-check"></i><b>12.3.8</b> 反思</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#因果推断"><i class="fa fa-check"></i><b>12.4</b> 因果推断</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#因果推断casual-inference"><i class="fa fa-check"></i><b>12.4.1</b> 因果推断(Casual Inference)</a></li>
+<li class="chapter" data-level="12.4.2" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#因果推断与概率"><i class="fa fa-check"></i><b>12.4.2</b> 因果推断与概率</a></li>
+<li class="chapter" data-level="12.4.3" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#基于实验的中介"><i class="fa fa-check"></i><b>12.4.3</b> 基于实验的中介</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#参考资料推荐"><i class="fa fa-check"></i><b>12.5</b> 参考资料推荐</a></li>
+<li class="chapter" data-level="12.6" data-path="第十一讲回归模型四中介分析.html"><a href="第十一讲回归模型四中介分析.html#总结-1"><i class="fa fa-check"></i><b>12.6</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html"><i class="fa fa-check"></i><b>13</b> 第十二讲：数据可视化进阶</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图的必要性和作图数据处理"><i class="fa fa-check"></i><b>13.1</b> 作图的必要性和作图数据处理</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#为什么要作图以及作图的原则"><i class="fa fa-check"></i><b>13.1.1</b> 为什么要作图以及作图的原则</a></li>
+<li class="chapter" data-level="13.1.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#作图数据准备"><i class="fa fa-check"></i><b>13.1.2</b> 作图数据准备</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#基础作图"><i class="fa fa-check"></i><b>13.2</b> 基础作图</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#ggplot2基础回顾"><i class="fa fa-check"></i><b>13.2.1</b> ggplot2基础回顾</a></li>
+<li class="chapter" data-level="13.2.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#主要图层"><i class="fa fa-check"></i><b>13.2.2</b> 主要图层</a></li>
+<li class="chapter" data-level="13.2.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可选图层"><i class="fa fa-check"></i><b>13.2.3</b> 可选图层</a></li>
+<li class="chapter" data-level="13.2.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#同时呈现多张图片"><i class="fa fa-check"></i><b>13.2.4</b> 同时呈现多张图片</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#进阶作图"><i class="fa fa-check"></i><b>13.3</b> 进阶作图</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#整体和个体效应共存的图"><i class="fa fa-check"></i><b>13.3.1</b> 整体和个体效应共存的图</a></li>
+<li class="chapter" data-level="13.3.2" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#可视化层级模型的random-effect"><i class="fa fa-check"></i><b>13.3.2</b> 可视化层级模型的random effect</a></li>
+<li class="chapter" data-level="13.3.3" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#雨云图rain-cloud-plot"><i class="fa fa-check"></i><b>13.3.3</b> 雨云图（rain cloud plot）</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="第十二讲数据可视化进阶.html"><a href="第十二讲数据可视化进阶.html#高级图片处理magick"><i class="fa fa-check"></i><b>13.4</b> 高级图片处理–magick</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html"><i class="fa fa-check"></i><b>14</b> 第十三讲：基于网络模型的心理学研究</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#基于潜变量的心理学研究"><i class="fa fa-check"></i><b>14.1</b> 基于潜变量的心理学研究</a></li>
+<li class="chapter" data-level="14.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#潜变量模型在心理学的困境"><i class="fa fa-check"></i><b>14.2</b> 潜变量模型在心理学的困境</a></li>
+<li class="chapter" data-level="14.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#基于网络的心理学视角"><i class="fa fa-check"></i><b>14.3</b> 基于网络的心理学视角</a></li>
+<li class="chapter" data-level="14.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#如果寻找可观测特征的因果关系"><i class="fa fa-check"></i><b>14.4</b> 如果寻找可观测特征的因果关系</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#d-separation"><i class="fa fa-check"></i><b>14.4.1</b> d-separation</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#dag贝叶斯网络"><i class="fa fa-check"></i><b>14.5</b> DAG（贝叶斯网络）</a></li>
+<li class="chapter" data-level="14.6" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#高斯图模型ggm"><i class="fa fa-check"></i><b>14.6</b> 高斯图模型（GGM）</a></li>
+<li class="chapter" data-level="14.7" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#易辛模型ising-model"><i class="fa fa-check"></i><b>14.7</b> 易辛模型Ising model</a></li>
+<li class="chapter" data-level="14.8" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#心理网络的估计"><i class="fa fa-check"></i><b>14.8</b> 心理网络的估计</a>
+<ul>
+<li class="chapter" data-level="14.8.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#高斯图模型"><i class="fa fa-check"></i><b>14.8.1</b> 高斯图模型</a></li>
+<li class="chapter" data-level="14.8.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#多元估计"><i class="fa fa-check"></i><b>14.8.2</b> 多元估计</a></li>
+<li class="chapter" data-level="14.8.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#一元估计"><i class="fa fa-check"></i><b>14.8.3</b> 一元估计</a></li>
+<li class="chapter" data-level="14.8.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-1"><i class="fa fa-check"></i><b>14.8.4</b> 代码实现</a></li>
+</ul></li>
+<li class="chapter" data-level="14.9" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#模型选择"><i class="fa fa-check"></i><b>14.9</b> 模型选择</a>
+<ul>
+<li class="chapter" data-level="14.9.1" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#模型选择的方式"><i class="fa fa-check"></i><b>14.9.1</b> 模型选择的方式</a></li>
+<li class="chapter" data-level="14.9.2" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-2"><i class="fa fa-check"></i><b>14.9.2</b> 代码实现</a></li>
+<li class="chapter" data-level="14.9.3" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-3"><i class="fa fa-check"></i><b>14.9.3</b> 代码实现</a></li>
+<li class="chapter" data-level="14.9.4" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#代码实现-4"><i class="fa fa-check"></i><b>14.9.4</b> 代码实现</a></li>
+<li class="chapter" data-level="14.9.5" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#总结-2"><i class="fa fa-check"></i><b>14.9.5</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="14.10" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#心理网络的挑战"><i class="fa fa-check"></i><b>14.10</b> 心理网络的挑战</a></li>
+<li class="chapter" data-level="14.11" data-path="第十三讲基于网络模型的心理学研究.html"><a href="第十三讲基于网络模型的心理学研究.html#我们是否还需要潜变量模型"><i class="fa fa-check"></i><b>14.11</b> 我们是否还需要潜变量模型</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html"><i class="fa fa-check"></i><b>15</b> 第十四讲：心理学元分析入门</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#什么是元分析"><i class="fa fa-check"></i><b>15.1</b> 什么是元分析</a></li>
+<li class="chapter" data-level="15.2" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#元分析的实施"><i class="fa fa-check"></i><b>15.2</b> 元分析的实施</a></li>
+<li class="chapter" data-level="15.3" data-path="第十四讲心理学元分析入门.html"><a href="第十四讲心理学元分析入门.html#回顾与总结"><i class="fa fa-check"></i><b>15.3</b> 回顾与总结</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html"><i class="fa fa-check"></i><b>16</b> 补充1：如何进行基本的数据分析: 相关与回归</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是相关"><i class="fa fa-check"></i><b>16.1</b> 什么是相关</a></li>
+<li class="chapter" data-level="16.2" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#相关-代码实现"><i class="fa fa-check"></i><b>16.2</b> 相关-代码实现</a></li>
+<li class="chapter" data-level="16.3" data-path="补充1如何进行基本的数据分析-相关与回归.html"><a href="补充1如何进行基本的数据分析-相关与回归.html#什么是回归"><i class="fa fa-check"></i><b>16.3</b> 什么是回归</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html"><i class="fa fa-check"></i><b>17</b> 补充2：从分析到手稿</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#通过papaja撰写论文"><i class="fa fa-check"></i><b>17.1</b> <strong>通过Papaja撰写论文</strong></a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part1-papaja包的安装"><i class="fa fa-check"></i><b>17.1.1</b> <strong>Part1: Papaja包的安装</strong></a></li>
+<li class="chapter" data-level="17.1.2" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part2-papaja语法格式"><i class="fa fa-check"></i><b>17.1.2</b> <strong>Part2: Papaja语法格式</strong></a></li>
+<li class="chapter" data-level="17.1.3" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#part3-正文的撰写"><i class="fa fa-check"></i><b>17.1.3</b> <strong>Part3: 正文的撰写</strong></a></li>
+<li class="chapter" data-level="17.1.4" data-path="补充2从分析到手稿.html"><a href="补充2从分析到手稿.html#总结-3"><i class="fa fa-check"></i><b>17.1.4</b> 总结</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html"><i class="fa fa-check"></i><b>18</b> 补充3：效应量和元分析</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#效应量简介"><i class="fa fa-check"></i><b>18.1</b> 效应量简介</a></li>
+<li class="chapter" data-level="18.2" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#算法实现"><i class="fa fa-check"></i><b>18.2</b> 算法实现</a></li>
+<li class="chapter" data-level="18.3" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#小练习"><i class="fa fa-check"></i><b>18.3</b> 小练习</a></li>
+<li class="chapter" data-level="18.4" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析简介"><i class="fa fa-check"></i><b>18.4</b> 元分析简介</a></li>
+<li class="chapter" data-level="18.5" data-path="补充3效应量和元分析.html"><a href="补充3效应量和元分析.html#元分析实现"><i class="fa fa-check"></i><b>18.5</b> 元分析实现</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="第十讲回归模型三广义线性模型" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> 第十讲：回归模型(三)：广义线性模型<a href="第十讲回归模型三广义线性模型.html#第十讲回归模型三广义线性模型" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="前章回顾和本章数据预处理" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> 前章回顾和本章数据预处理<a href="第十讲回归模型三广义线性模型.html#前章回顾和本章数据预处理" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>上节课我们讲解了如何把T检验和方差分析用回归模型的方式来进行解读。接着我们从认知心理学最常见的反应时数据出发，从层级模型的角度将数据分解为整体的水平(group
+level)，以及每个被试个体试次的水平(trial
+level)，层级模型可以提高统计检验力并且为研究者提供十分丰富的信息，因此也是学界越来越推荐的一种统计方法。</p>
+<p>让我们先对本章数据进行预处理，这里用到的还是之前的认知实验的数据，我们先对正确率进行预处理。</p>
+<p>这里需要注意一下我们对于正确率ACC的处理，实际上我们的认知实验数据当中包含了其他两种反应，这里我们直接删除了另外两种情况，只保留了正确和错误的反应，即0和1，当然也有一些实验会将1之外的所有反应归到0中做处理。另外我们筛选去除了反应在1500ms以上和200ms以下的反应时，因为这在经验上是不符合人类的反应速度的。</p>
+<pre><code>## `summarise()` has grouped output by &#39;Sub&#39;, &#39;Valence&#39;. You can override using the `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="第十讲回归模型三广义线性模型.html#cb381-1" tabindex="-1"></a>df.match.aov <span class="sc">%&gt;%</span></span>
+<span id="cb381-2"><a href="第十讲回归模型三广义线性模型.html#cb381-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb381-3"><a href="第十讲回归模型三广义线性模型.html#cb381-3" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb381-4"><a href="第十讲回归模型三广义线性模型.html#cb381-4" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>()</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-76e2a470ee5b89748678" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-76e2a470ee5b89748678">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],[7304,7304,7304,7304,7305],["moral","moral","immoral","immoral","moral"],["Self","Other","Self","Other","Self"],[0.9866666666666667,0.8333333333333334,0.821917808219178,0.7183098591549296,0.9324324324324325]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sub<\/th>\n      <th>Valence<\/th>\n      <th>Identity<\/th>\n      <th>mean_ACC<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Sub","targets":1},{"name":"Valence","targets":2},{"name":"Identity","targets":3},{"name":"mean_ACC","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>上面是我们通常所做的操作：将不同条件下的反应正确率做一个平均，然后进行方差分析。</p>
+<p>(知识补充：easystats系统包是过去五六年快速发展起来的一个包系列，适用于统计分析，特别是心理学相关背景的统计分析，具体使用可以参考我们在B站上传的视频（链接如下）。<a href="https://www.bilibili.com/video/BV1rz421D7iJ/?spm_id_from=333.337.search-card.all.click" class="uri">https://www.bilibili.com/video/BV1rz421D7iJ/?spm_id_from=333.337.search-card.all.click</a>)</p>
+<p>让我们再来看一下正确率的原始数据。</p>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="第十讲回归模型三广义线性模型.html#cb382-1" tabindex="-1"></a><span class="fu">head</span>(df.match[<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">11</span><span class="sc">:</span><span class="dv">17</span>)],<span class="dv">5</span>) <span class="sc">%&gt;%</span> DT<span class="sc">::</span><span class="fu">datatable</span>()</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-e3ee0fec56c9ddb18adf" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-e3ee0fec56c9ddb18adf">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],[7304,7304,7304,7304,7304],["moral","immoral","moral","immoral","moral"],["Other","Other","Self","Other","Self"],["moralOther","immoralOther","moralSelf","immoralOther","moralSelf"],["match","match","match","match","match"],["n","n","n","n","n"],["n","m","n","m","n"],[1,0,1,0,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sub<\/th>\n      <th>Valence<\/th>\n      <th>Identity<\/th>\n      <th>Label<\/th>\n      <th>Match<\/th>\n      <th>CorrResp<\/th>\n      <th>Resp<\/th>\n      <th>ACC<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,8]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Sub","targets":1},{"name":"Valence","targets":2},{"name":"Identity","targets":3},{"name":"Label","targets":4},{"name":"Match","targets":5},{"name":"CorrResp","targets":6},{"name":"Resp","targets":7},{"name":"ACC","targets":8}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>可以发现其只存在0和1两种取值，这种分布显然不服从正态分布，因此我们不能简单地用前一章提到的一般线性模型进行处理。在传统的方差分析中，我们对正确率数据的处理是求出每个条件下的平均正确率再进行统计分析。这个平均正确率的取值作为一个连续数据，可以被放在坐标轴上形成一个分布，其与以0为原点，向两端无限延伸的标准正态分布也存在差异。因此我们需要对一般线性模型进行拓展，这也就是我们这一章所要讲的广义线性模型（Generalized
+Linear Model, GLM）。</p>
+</div>
+<div id="广义线性模型" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> 广义线性模型<a href="第十讲回归模型三广义线性模型.html#广义线性模型" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="回归方程和普通线性模型" class="section level3 hasAnchor" number="11.2.1">
+<h3><span class="header-section-number">11.2.1</span> 回归方程和普通线性模型<a href="第十讲回归模型三广义线性模型.html#回归方程和普通线性模型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>下面是线性模型的一个基本的形式：首先可以看到一个截距b0；假设我们有p个自变量，每一个自变量都会有一个它的斜率b；最后的残差<span class="math inline">\(\epsilon\)</span>是无法被这个回归解释的一个部分。</p>
+<p><span class="math display">\[Y = b_0 + b_{1}X_{1} + b_{2}X_{2} +... + b_{p}X_{p} + \epsilon\]</span> -<span class="math inline">\(Y\)</span>:
+因变量，Dependent variable - <span class="math inline">\(X_i\)</span> : 自变量，Independent (explanatory)
+variable - <span class="math inline">\(b_0\)</span> : 截距，Intercept - <span class="math inline">\(b_i\)</span> : 斜率，Slope - <span class="math inline">\(\epsilon\)</span> :
+残差，Residual (error)</p>
+<p>当然我们也可以用更加一般化的方法来书写上面的线性回归方程，以下这个方程包含了依然一个截距，并且我们将所有自变量用求和符号相加，以及最后相应残差项。方程右边除去残差项的内容，就是该方程的预测项，左边的y则是对应的观测项。</p>
+<p><img src="pic/chp10/formula.png" /></p>
+<p>当我们在x轴上选择一个具体取值的时候，y轴上对应的是一系列可能的y值，这些y值组成了每一个x值下对应的y的正态分布，这个正态分布的中心就是对应x的观测值。</p>
+<p><img src="pic/chp10/plot.png" /></p>
+<p>另外还有一些其他的回归方程写法，贴在下方供读者参考。</p>
+<p>-简单线性回归： <span class="math display">\[Y = b_0+b_1 X_1+ b_2 X_2+…+b_p X_p + \epsilon\]</span>
+-线性代数表达：<span class="math display">\[y_i = b_0 + b_1 X_{i1} + b_2 X_{i2} + … + b_p X_{ip} + \epsilon\]</span>
+-矩阵表达： <span class="math display">\[Y= X\beta + \epsilon\]</span>
+-代码表达(r)：<span class="math display">\[Y \sim X_1 + X_2 + ... + X_n\]</span></p>
+<p>我们也可以用一种更为简单的形式来写回归公式，因为我们观测到的y实际上是一个分布，所以我们用”~“来表示分布的含义。分布y中包含了预测项<span class="math inline">\(\mu\)</span>和误差项<span class="math inline">\(\epsilon\)</span>这两个参数。因此如果从数据分布的角度来看，线性回归实际上是在根据预测项推导出相应的分布，这也是为什么我们在进行线性回归的时候要假定数据呈正态分布，因为只有这样观测项才等于这个分布中数据的均值。</p>
+<ul>
+<li>回归模型形式：观测项 = 预测项 + 误差项</li>
+<li>假定观测项是正态分布，上述公式可以重新表达为：
+<span class="math display">\[y \sim N(\mu, \epsilon)\]</span>
+<ul>
+<li>其中，<span class="math inline">\(\mu\)</span>为预测值，即 <span class="math display">\[μ = \beta_0 + \beta_1 x\]</span></li>
+</ul></li>
+<li>观测值服从以预测项为均值的<strong>正态分布</strong>，观测值与预测值之间的差值就是残差。</li>
+</ul>
+</div>
+<div id="连接函数和广义线性模型" class="section level3 hasAnchor" number="11.2.2">
+<h3><span class="header-section-number">11.2.2</span> 连接函数和广义线性模型<a href="第十讲回归模型三广义线性模型.html#连接函数和广义线性模型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>那么如果因变量不服从正态分布，如何构建回归模型？</p>
+<p>当x无法直接去预测y的时候，我们就要通过一个连接函数，将x对应的线性组合值z，映射到q上，然后再将q作为一个预测值去预测y的分布。</p>
+<p><img src="pic/chp10/function1.png" /></p>
+<p>具体而言，连接函数的作用就是将原本不能用于预测y的z转换为可以预测的值q。</p>
+<p><img src="pic/chp10/function.png" /></p>
+<p><img src="pic/chp10/function2.png" /></p>
+<p>这里我们就可以看到之前所讲的简单线性模型的非常特殊的点：简单线性模型可视为GLM的特殊形式，预测项的连接函数等于它本身（即不需要使用连接函数进行转换，写代码是有时候会写的”identity”就是不需要转换的意思），观测项为正态分布。</p>
+<p>而在广义线性模型中：观测项不一定是正态分布（残差不一定是正态分布），连接函数不等于其自身，这也使得广义线性模型能够对非正态分布的因变量进行建模。</p>
+<p><img src="pic/chp10/lm.png" /></p>
+</div>
+</div>
+<div id="二项分布" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> 二项分布<a href="第十讲回归模型三广义线性模型.html#二项分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="伯努利实验" class="section level3 hasAnchor" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> 伯努利实验<a href="第十讲回归模型三广义线性模型.html#伯努利实验" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们前面提到了正确率这种数据，其可能存在的取值只有0和1。事实上我们在抛硬币的游戏中也经常也涉及到类似的情况，也就是抛硬币只存在正面或者反面朝上两种情况。用统计学上的书面话语来讲，就叫”伯努利实验”。伯努利实验是一种在同样的条件下重复地、相互独立地进行的随机试验；该随机试验只有两种可能结果：发生或者不发生。假设该项试验独立重复地进行了n次，那么就称这一系列重复独立的随机试验为n重伯努利试验(n-fold
+bernoulli trials)。</p>
+<p>而n次独立重复的伯努利试验的概率分布服从二项分布(Binomial
+Distribution)，二项分布的公式如下。</p>
+<p><span class="math display">\[P(X=k )=𝐶_𝑛^𝑘 𝑝^𝑘 𝑞^{𝑛−𝑘}= 𝐶_𝑛^𝑘 𝑝^𝑘 (1−𝑝)^{𝑛−𝑘}\]</span>
+<span class="math display">\[𝐶_𝑛^𝑘= 𝑛!/𝑘!(𝑛−𝑘)! \]</span></p>
+<p>其中，p表示每次试验中事件A发生的概率；X表示n重伯努利试验中事件A发生的次数，X的可能取值为0，1，…，n；对每一个k（0
+≤ k ≤ n）,事件{X = k} 指”n次试验中事件A恰好发生k次”；随机变量X服从以n,
+p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)</span>，<span class="math inline">\(p \in [0,1]\)</span>，<span class="math inline">\(n \in N\)</span></p>
+<p>还是以抛硬币来举例，假如我们抛十次硬币，十次全部正面朝上的概率就是二分之一的十次方，我们用到的两个参数就是正面朝上的概率以及抛的次数，如果我们只知道抛了几次，或者只知道正面朝上的概率，都不足以算出具体的概率。因此对于二项分布，我们要知道的两个参数分别为实验次数n，以及事件发生的概率p。</p>
+<p>我们可以在R中来模拟一下抛硬币的实验。首先我们先写一个模拟抛硬币的函数。</p>
+<p>我们让若干人每人抛若干次硬币，首先让5个人每人抛10次硬币。理论上来说，对于一枚公平的硬币，正面朝上次数为5的应该是最多的。</p>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="第十讲回归模型三广义线性模型.html#cb383-1" tabindex="-1"></a><span class="fu">simulate_coin_toss</span>(<span class="at">prob_head =</span> <span class="fl">0.5</span>,<span class="at">num_people =</span> <span class="dv">5</span>, <span class="at">num_tosses =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-214-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>但是事实上我们模拟出来发现小于5的反而更多一点，这好像在暗示我们这是一枚不公平的硬币。但是如果我们把人数n增多呢？以下模拟的是10人每人抛10次。</p>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="第十讲回归模型三广义线性模型.html#cb384-1" tabindex="-1"></a><span class="fu">simulate_coin_toss</span>(<span class="at">prob_head =</span> <span class="fl">0.5</span>,<span class="at">num_people =</span> <span class="dv">10</span>, <span class="at">num_tosses =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-215-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>emmmm，似乎还是一枚不太公平的硬币。我们再将人数n增加到1000人。</p>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="第十讲回归模型三广义线性模型.html#cb385-1" tabindex="-1"></a><span class="fu">simulate_coin_toss</span>(<span class="at">prob_head =</span> <span class="fl">0.5</span>,<span class="at">num_people =</span> <span class="dv">1000</span>, <span class="at">num_tosses =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-216-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>这时候我们就可以看到数据呈现一个非常好的正态分布，此时正面朝上次数为5次的确实是最多的。</p>
+<p>这里主要想让大家直观了解一下参数n对于事件发生次数分布的影响。让我们总结一下，已知一次试验中的每次尝试中事件A发生的概率<span class="math inline">\(p\)</span>，共进行<span class="math inline">\(n\)</span>次独立重复的伯努利试验，假如事件A在一次试验中出现k次，事件A在n次试验中出现次数的平均数为：
+<span class="math display">\[（𝑘_1+𝑘_2+𝑘_3+...+𝑘_𝑛/𝑛)\]</span> 当n → ∞，<span class="math inline">\(p\)</span> ≠ <span class="math inline">\(q\)</span>，<span class="math inline">\(np\)</span> ≥ 5且<span class="math inline">\(nq\)</span> ≥
+5，事件A在<span class="math inline">\(n\)</span>次试验中出现次数的平均数为： <span class="math display">\[\mu = np\]</span>
+事件A出现次数所属分布的标准差： <span class="math display">\[ \sigma = \sqrt{𝑛𝑝𝑞}\]</span>
+也就是说，当n趋于无穷的时候，事件发生次数的分布就会慢慢地逼近正态分布，它会存在均值np，我们也可以算出它相应的标准差。</p>
+<p>假如我们想用大五人格分数来预测正确率，我们会先将分数标准化为<span class="math inline">\(z\)</span>，那么如何将<span class="math inline">\(z\)</span>与正确率这一二分变量进行连接呢？我们需要先将<span class="math inline">\(z\)</span>映射到(0,1)之间再作为预测项，例如使用如下转换函数：
+<span class="math display">\[\frac{1}{1+exp(-z)}\]</span>
+接着我们需要找到一个分布，能根据(0,1)之间的值转成二分变量，例如伯努利分布。</p>
+<p><img src="pic/chp10/func.png" /></p>
+<p><img src="pic/chp10/bernoulli.png" /></p>
+<p>我们再次回到开头讲的线性模型的三部分，第一部分是将自变量通过线性组合得到z值，第二部分我们使用连接函数将连续的数值z映射到p的空间内，第三部分就是用p所属的一个分布去预测因变量。</p>
+<p><img src="pic/chp10/func2.png" /></p>
+<p>这里会涉及到参数求解的问题，对于logit回归，我们可以使用极大似然估计对其进行求解，该求解过程比较复杂，一般由计算机自动完成，我们绝大部分都不需要了解。</p>
+<p><img src="pic/chp10/logit.png" /></p>
+</div>
+<div id="glm代码实操" class="section level3 hasAnchor" number="11.3.2">
+<h3><span class="header-section-number">11.3.2</span> GLM代码实操<a href="第十讲回归模型三广义线性模型.html#glm代码实操" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>虽然我们前面提到了非常复杂和抽象的数学运算，但是在R中我们可以用非常简单的几行代码来实现广义线性模型。在公式部分和前一章是一致的，1是截距，后面放上实验的两个自变量，因变量是正确率ACC。我们所做的改动主要是在前面将函数改成了glm，并且加上了family这个参数，让其等于binomial。</p>
+<p>这里我们可以明显地看到当我们使用广义线性模型之后，相较于传统的方差分析，我们可以对单个被试进行数据分析，这也意味着我们依然可以像前一章那样建立层级模型。以下是对单个被试进行glm建模的代码。</p>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="第十讲回归模型三广义线性模型.html#cb386-1" tabindex="-1"></a>df.match<span class="fl">.7304</span> <span class="ot">&lt;-</span> df.match <span class="sc">%&gt;%</span></span>
+<span id="cb386-2"><a href="第十讲回归模型三广义线性模型.html#cb386-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Sub <span class="sc">==</span> <span class="dv">7304</span>) <span class="co">#选择被试7304</span></span>
+<span id="cb386-3"><a href="第十讲回归模型三广义线性模型.html#cb386-3" tabindex="-1"></a>mod_7304_full <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">glm</span>(<span class="at">data =</span> df.match<span class="fl">.7304</span>, <span class="co">#数据</span></span>
+<span id="cb386-4"><a href="第十讲回归模型三广义线性模型.html#cb386-4" tabindex="-1"></a>                          <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence, <span class="co">#模型</span></span>
+<span id="cb386-5"><a href="第十讲回归模型三广义线性模型.html#cb386-5" tabindex="-1"></a>                          <span class="at">family =</span> binomial) <span class="co">#因变量为二项分布</span></span>
+<span id="cb386-6"><a href="第十讲回归模型三广义线性模型.html#cb386-6" tabindex="-1"></a><span class="fu">summary</span>(mod_7304_full) <span class="sc">%&gt;%</span> <span class="co">#查看模型信息</span></span>
+<span id="cb386-7"><a href="第十讲回归模型三广义线性模型.html#cb386-7" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">11</span>,<span class="dv">15</span><span class="sc">:</span><span class="dv">19</span>)] <span class="co">#课堂展示重要结果</span></span></code></pre></div>
+<pre><code>##  [1] &quot;Coefficients:&quot;                                                        
+##  [2] &quot;                             Estimate Std. Error z value Pr(&gt;|z|)    &quot;
+##  [3] &quot;(Intercept)                      4.30       1.01    4.28 0.000019 ***&quot;
+##  [4] &quot;IdentityOther                   -2.69       1.05   -2.56   0.0106 *  &quot;
+##  [5] &quot;Valenceimmoral                  -2.77       1.05   -2.64   0.0083 ** &quot;
+##  [6] &quot;IdentityOther:Valenceimmoral     2.10       1.13    1.86   0.0628 .  &quot;
+##  [7] &quot;(Dispersion parameter for binomial family taken to be 1)&quot;             
+##  [8] &quot;&quot;                                                                     
+##  [9] &quot;    Null deviance: 254.02  on 290  degrees of freedom&quot;                
+## [10] &quot;Residual deviance: 228.32  on 287  degrees of freedom&quot;                
+## [11] &quot;AIC: 236.3&quot;</code></pre>
+<p>建立层级模型意味着我们需要对总体和单个被试的效应都进行比较，通常我们会建立多个模型，然后对不同的模型进行比较。首先我们建立一个只有被试随机效应而没有群体固定效应的模型。</p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="第十讲回归模型三广义线性模型.html#cb388-1" tabindex="-1"></a><span class="co">#无固定效应</span></span>
+<span id="cb388-2"><a href="第十讲回归模型三广义线性模型.html#cb388-2" tabindex="-1"></a>mod_null <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> df.match, <span class="co">#数据</span></span>
+<span id="cb388-3"><a href="第十讲回归模型三广义线性模型.html#cb388-3" tabindex="-1"></a>                   <span class="at">formula =</span> ACC <span class="sc">~</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub), <span class="co">#模型</span></span>
+<span id="cb388-4"><a href="第十讲回归模型三广义线性模型.html#cb388-4" tabindex="-1"></a>                   <span class="at">family =</span> binomial) <span class="co">#因变量二项分布</span></span>
+<span id="cb388-5"><a href="第十讲回归模型三广义线性模型.html#cb388-5" tabindex="-1"></a><span class="co">#performance::model_performance(mod_null)</span></span>
+<span id="cb388-6"><a href="第十讲回归模型三广义线性模型.html#cb388-6" tabindex="-1"></a><span class="fu">summary</span>(mod_null) <span class="sc">%&gt;%</span></span>
+<span id="cb388-7"><a href="第十讲回归模型三广义线性模型.html#cb388-7" tabindex="-1"></a>  <span class="fu">capture.output</span>()<span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">14</span><span class="sc">:</span><span class="dv">24</span>)]</span></code></pre></div>
+<pre><code>##  [1] &quot;  9378.8   9460.2  -4678.4   9356.8    11999 &quot;                           
+##  [2] &quot;&quot;                                                                        
+##  [3] &quot; Groups Name                         Variance Std.Dev. Corr             &quot;
+##  [4] &quot; Sub    (Intercept)                  1.53     1.24                      &quot;
+##  [5] &quot;        IdentityOther                2.52     1.59     -0.86            &quot;
+##  [6] &quot;        Valenceimmoral               2.40     1.55     -0.85  0.83      &quot;
+##  [7] &quot;        IdentityOther:Valenceimmoral 3.33     1.83      0.69 -0.87 -0.82&quot;
+##  [8] &quot;Number of obs: 12010, groups:  Sub, 41&quot;                                  
+##  [9] &quot;&quot;                                                                        
+## [10] &quot;Fixed effects:&quot;                                                          
+## [11] &quot;            Estimate Std. Error z value            Pr(&gt;|z|)    &quot;         
+## [12] &quot;(Intercept)    2.014      0.114    17.7 &lt;0.0000000000000002 ***&quot;         
+## [13] &quot;---&quot;</code></pre>
+<p>接着我们建立一个随机效应只包含截距的模型。</p>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="第十讲回归模型三广义线性模型.html#cb390-1" tabindex="-1"></a><span class="co">#随机截距，固定斜率</span></span>
+<span id="cb390-2"><a href="第十讲回归模型三广义线性模型.html#cb390-2" tabindex="-1"></a>mod <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> df.match, <span class="co">#数据</span></span>
+<span id="cb390-3"><a href="第十讲回归模型三广义线性模型.html#cb390-3" tabindex="-1"></a>                     <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Sub), <span class="co">#模型</span></span>
+<span id="cb390-4"><a href="第十讲回归模型三广义线性模型.html#cb390-4" tabindex="-1"></a>                     <span class="at">family =</span> binomial) <span class="co">#因变量二项分布</span></span>
+<span id="cb390-5"><a href="第十讲回归模型三广义线性模型.html#cb390-5" tabindex="-1"></a><span class="co">#performance::model_performance(mod)</span></span>
+<span id="cb390-6"><a href="第十讲回归模型三广义线性模型.html#cb390-6" tabindex="-1"></a><span class="fu">summary</span>(mod) <span class="sc">%&gt;%</span></span>
+<span id="cb390-7"><a href="第十讲回归模型三广义线性模型.html#cb390-7" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">14</span><span class="sc">:</span><span class="dv">24</span>,<span class="dv">28</span><span class="sc">:</span><span class="dv">32</span>)]</span></code></pre></div>
+<pre><code>##  [1] &quot;  9639.0   9675.9  -4814.5   9629.0    12005 &quot;                                    
+##  [2] &quot;&quot;                                                                                 
+##  [3] &quot; Groups Name        Variance Std.Dev.&quot;                                            
+##  [4] &quot; Sub    (Intercept) 0.237    0.487   &quot;                                            
+##  [5] &quot;Number of obs: 12010, groups:  Sub, 41&quot;                                           
+##  [6] &quot;&quot;                                                                                 
+##  [7] &quot;Fixed effects:&quot;                                                                   
+##  [8] &quot;                             Estimate Std. Error z value             Pr(&gt;|z|)    &quot;
+##  [9] &quot;(Intercept)                    2.4964     0.1015   24.60 &lt; 0.0000000000000002 ***&quot;
+## [10] &quot;IdentityOther                 -0.7160     0.0839   -8.53 &lt; 0.0000000000000002 ***&quot;
+## [11] &quot;Valenceimmoral                -0.9474     0.0818  -11.58 &lt; 0.0000000000000002 ***&quot;
+## [12] &quot;IdentityOther:Valenceimmoral   0.8230     0.1086    7.58    0.000000000000034 ***&quot;
+## [13] &quot;---&quot;                                                                              
+## [14] &quot;            (Intr) IdnttO Vlncmm&quot;                                                 
+## [15] &quot;IdenttyOthr -0.519              &quot;                                                 
+## [16] &quot;Valencemmrl -0.533  0.641       &quot;                                                 
+## [17] &quot;IdnttyOth:V  0.401 -0.773 -0.754&quot;                                                 
+## [18] NA</code></pre>
+<p>最后我们建立一个包含了所有固定效应和随机效应的全模型。</p>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="第十讲回归模型三广义线性模型.html#cb392-1" tabindex="-1"></a><span class="co">#随机截距，随机斜率</span></span>
+<span id="cb392-2"><a href="第十讲回归模型三广义线性模型.html#cb392-2" tabindex="-1"></a>mod_full <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> df.match, <span class="co">#数据</span></span>
+<span id="cb392-3"><a href="第十讲回归模型三广义线性模型.html#cb392-3" tabindex="-1"></a>                          <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub), <span class="co">#模型</span></span>
+<span id="cb392-4"><a href="第十讲回归模型三广义线性模型.html#cb392-4" tabindex="-1"></a>                          <span class="at">family =</span> binomial) <span class="co">#因变量二项分布</span></span>
+<span id="cb392-5"><a href="第十讲回归模型三广义线性模型.html#cb392-5" tabindex="-1"></a><span class="do">##performance::model_performance(mod_full)</span></span>
+<span id="cb392-6"><a href="第十讲回归模型三广义线性模型.html#cb392-6" tabindex="-1"></a><span class="fu">summary</span>(mod_full) <span class="sc">%&gt;%</span></span>
+<span id="cb392-7"><a href="第十讲回归模型三广义线性模型.html#cb392-7" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">13</span><span class="sc">:</span><span class="dv">18</span>,<span class="dv">21</span><span class="sc">:</span><span class="dv">26</span>,<span class="dv">30</span><span class="sc">:</span><span class="dv">34</span>)]</span></code></pre></div>
+<pre><code>##  [1] &quot;     AIC      BIC   logLik deviance df.resid &quot;                                    
+##  [2] &quot;  9355.9   9459.4  -4664.0   9327.9    11996 &quot;                                    
+##  [3] &quot;&quot;                                                                                 
+##  [4] &quot;Random effects:&quot;                                                                  
+##  [5] &quot; Groups Name                         Variance Std.Dev. Corr             &quot;         
+##  [6] &quot; Sub    (Intercept)                  0.972    0.986                     &quot;         
+##  [7] &quot;        IdentityOther                1.771    1.331    -0.79            &quot;         
+##  [8] &quot;        Valenceimmoral               1.028    1.014    -0.75  0.75      &quot;         
+##  [9] &quot;        IdentityOther:Valenceimmoral 2.306    1.518     0.54 -0.82 -0.74&quot;         
+## [10] &quot;Fixed effects:&quot;                                                                   
+## [11] &quot;                             Estimate Std. Error z value             Pr(&gt;|z|)    &quot;
+## [12] &quot;(Intercept)                     2.772      0.178   15.53 &lt; 0.0000000000000002 ***&quot;
+## [13] &quot;IdentityOther                  -0.870      0.235   -3.71              0.00021 ***&quot;
+## [14] &quot;Valenceimmoral                 -1.150      0.190   -6.06         0.0000000013 ***&quot;
+## [15] &quot;IdentityOther:Valenceimmoral    0.988      0.272    3.63              0.00028 ***&quot;
+## [16] &quot;Correlation of Fixed Effects:&quot;                                                    
+## [17] &quot;            (Intr) IdnttO Vlncmm&quot;                                                 
+## [18] &quot;IdenttyOthr -0.801              &quot;                                                 
+## [19] &quot;Valencemmrl -0.783  0.741       &quot;                                                 
+## [20] &quot;IdnttyOth:V  0.573 -0.821 -0.747&quot;</code></pre>
+<p>我们在运行全模型的时候可以明显感受到运行时间相较于之前变长了。当我们的模型内参数越多，模型越复杂的时候，计算机就需要花更多时间去拟合模型，也会有些时候因为找不到合适的参数而导致模型无法拟合。习惯了SPSS的读者可能会难以忍受，但实际上我们在后面处理一些大数据或者跑机器学习的时候，等待会是一件很常见的事情。这就提示我们合理分配时间，把要运行的代码提前运行起来，然后去做别的工作。</p>
+<p>在这里，我们也可以根据结果来判断R语言对我们自变量的编码方式，可以看到结果中除了截距外的第一项为”Identityother”，由此我们可以判断R将”Identityself”编码为了基线，并据此来计算相应的回归系数和估计值，下面的其他结果也类似。</p>
+<p>接下来我们对上述三个模型进行比较。</p>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="第十讲回归模型三广义线性模型.html#cb394-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(mod_null, mod, mod_full) <span class="co">#比较三个模型</span></span></code></pre></div>
+<pre><code>## Data: df.match
+## Models:
+## mod: ACC ~ 1 + Identity * Valence + (1 | Sub)
+## mod_null: ACC ~ (1 + Identity * Valence | Sub)
+## mod_full: ACC ~ 1 + Identity * Valence + (1 + Identity * Valence | Sub)
+##          npar  AIC  BIC logLik deviance Chisq Df           Pr(&gt;Chisq)    
+## mod         5 9639 9676  -4814     9629                                  
+## mod_null   11 9379 9460  -4678     9357 272.1  6 &lt; 0.0000000000000002 ***
+## mod_full   14 9356 9459  -4664     9328  28.9  3            0.0000023 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>可以发现全模型(mod_full)的效果是最好的，但当我们更换一种模型比较方法的时候，可能会得到不一样的结论，如下。</p>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="第十讲回归模型三广义线性模型.html#cb396-1" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">compare_performance</span>(mod_null, mod, mod_full, <span class="at">rank =</span> <span class="cn">TRUE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## Some of the nested models seem to be identical and probably only vary in their random
+##   effects.</code></pre>
+<p><img src="pic/chp10/performance1.png" /></p>
+<p>让我们输出全模型的结果，尝试进行解读。</p>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="第十讲回归模型三广义线性模型.html#cb398-1" tabindex="-1"></a><span class="fu">summary</span>(mod_full) <span class="sc">%&gt;%</span> <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">21</span><span class="sc">:</span><span class="dv">27</span>)]</span></code></pre></div>
+<pre><code>## [1] &quot;Fixed effects:&quot;                                                                   
+## [2] &quot;                             Estimate Std. Error z value             Pr(&gt;|z|)    &quot;
+## [3] &quot;(Intercept)                     2.772      0.178   15.53 &lt; 0.0000000000000002 ***&quot;
+## [4] &quot;IdentityOther                  -0.870      0.235   -3.71              0.00021 ***&quot;
+## [5] &quot;Valenceimmoral                 -1.150      0.190   -6.06         0.0000000013 ***&quot;
+## [6] &quot;IdentityOther:Valenceimmoral    0.988      0.272    3.63              0.00028 ***&quot;
+## [7] &quot;---&quot;</code></pre>
+<p>在结果里面显示的估计值，并不直接等于p值，我们要根据前面转换函数的逆运算来讲其转换为p值，转换公式如下。</p>
+<p><img src="pic/chp10/logit2.png" /></p>
+<p>代入之后我们便可以求出不同实验条件下各自的p值。</p>
+<p>MoralSelf: <span class="math inline">\(P=\frac{e^{2.73}}{1+e^{2.73}} = 0.939\)</span></p>
+<p>ImmoralSelf: <span class="math inline">\(P=\frac{e^{2.73-1.10 }}{1+e^{2.73-1.10}} = 0.836\)</span></p>
+<p>MoralOther: <span class="math inline">\(P=\frac{e^{2.73-0.76 }}{1+e^{2.73-0.76 }} = 0.878\)</span></p>
+<p>ImmoralOther:
+<span class="math inline">\(P=\frac{e^{2.73-0.76-1.10+0.89}}{1+e^{2.73-0.76-1.10+0.89}} = 0.853\)</span></p>
+<p>我们可以使用cat_plot()函数将模型预测的结果快速地展示出来。</p>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="第十讲回归模型三广义线性模型.html#cb400-1" tabindex="-1"></a><span class="co">#交互作用</span></span>
+<span id="cb400-2"><a href="第十讲回归模型三广义线性模型.html#cb400-2" tabindex="-1"></a>interactions<span class="sc">::</span><span class="fu">cat_plot</span>(<span class="at">model =</span> mod_full,</span>
+<span id="cb400-3"><a href="第十讲回归模型三广义线性模型.html#cb400-3" tabindex="-1"></a>                       <span class="at">pred =</span> Identity,</span>
+<span id="cb400-4"><a href="第十讲回归模型三广义线性模型.html#cb400-4" tabindex="-1"></a>                       <span class="at">modx =</span> Valence)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-224-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>这里可以看到很明显的交互作用，也就是当我们把不同颜色的柱子连线就会发现二者的交叉。</p>
+</div>
+</div>
+<div id="不同方法比较" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> 不同方法比较<a href="第十讲回归模型三广义线性模型.html#不同方法比较" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="不同的建模方法" class="section level3 hasAnchor" number="11.4.1">
+<h3><span class="header-section-number">11.4.1</span> 不同的建模方法<a href="第十讲回归模型三广义线性模型.html#不同的建模方法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>接下来我们对正确率不同的分析方法做一个比较。首先是传统的方差分析，方差分析实际上就是一个线性模型。以下是对正确率进行方差分析的代码。</p>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="第十讲回归模型三广义线性模型.html#cb401-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(<span class="at">data =</span> df.match.aov, <span class="co">#数据</span></span>
+<span id="cb401-2"><a href="第十讲回归模型三广义线性模型.html#cb401-2" tabindex="-1"></a>       <span class="at">subID =</span> <span class="st">&#39;Sub&#39;</span>, <span class="co"># 被试编号</span></span>
+<span id="cb401-3"><a href="第十讲回归模型三广义线性模型.html#cb401-3" tabindex="-1"></a>       <span class="at">dv=</span> <span class="st">&#39;mean_ACC&#39;</span>, <span class="co"># 因变量</span></span>
+<span id="cb401-4"><a href="第十讲回归模型三广义线性模型.html#cb401-4" tabindex="-1"></a>       <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&#39;Identity&#39;</span>, <span class="st">&#39;Valence&#39;</span>)) <span class="co">#自变量（被试内）</span></span></code></pre></div>
+<pre><code>## 
+##     * Data are aggregated to mean (across items/trials)
+##     if there are &gt;=2 observations per subject and cell.
+##     You may use Linear Mixed Model to analyze the data,
+##     e.g., with subjects and items as level-2 clusters.</code></pre>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="第十讲回归模型三广义线性模型.html#cb403-1" tabindex="-1"></a><span class="fu">capture.output</span>(res) <span class="sc">%&gt;%</span> .[<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;Response: mean_ACC&quot;                                  
+## [2] &quot;            Effect    df  MSE         F  ges p.value&quot;
+## [3] &quot;1         Identity 1, 40 0.01    3.08 + .017    .087&quot;
+## [4] &quot;2          Valence 1, 40 0.01 16.26 *** .068   &lt;.001&quot;
+## [5] &quot;3 Identity:Valence 1, 40 0.01   8.52 ** .038    .006&quot;
+## [6] &quot;---&quot;</code></pre>
+<p>我们可以得到一个f值，并且因为研究的被试量比较大，我们可以发现这里呈现的主效应以及交互作用，和后面用glm或者层级模型做出来的结果有一样的趋势。我们可以用EMMAMNS()函数来查看模型的一些具体值。</p>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="第十讲回归模型三广义线性模型.html#cb405-1" tabindex="-1"></a>res <span class="sc">%&gt;%</span></span>
+<span id="cb405-2"><a href="第十讲回归模型三广义线性模型.html#cb405-2" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">EMMEANS</span>(<span class="at">effect =</span> <span class="st">&#39;Valence&#39;</span>, <span class="at">by =</span> <span class="st">&#39;Identity&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb405-3"><a href="第十讲回归模型三广义线性模型.html#cb405-3" tabindex="-1"></a>  <span class="fu">capture.output</span>()</span></code></pre></div>
+<pre><code>##  [1] &quot;------ EMMEANS (effect = \&quot;Valence\&quot;) ------&quot;                                              
+##  [2] &quot;&quot;                                                                                          
+##  [3] &quot;Joint Tests of \&quot;Valence\&quot;:&quot;                                                               
+##  [4] &quot;────────────────────────────────────────────────────────────────&quot;                          
+##  [5] &quot;  Effect \&quot;Identity\&quot; df1 df2      F     p     η²p [90% CI of η²p]&quot;                        
+##  [6] &quot;────────────────────────────────────────────────────────────────&quot;                          
+##  [7] &quot; Valence      Self    1  40 35.614 &lt;.001 ***   .471 [.282, .610]&quot;                          
+##  [8] &quot; Valence      Other   1  40  0.412  .525       .010 [.000, .114]&quot;                          
+##  [9] &quot;────────────────────────────────────────────────────────────────&quot;                          
+## [10] &quot;Note. Simple effects of repeated measures with 3 or more levels&quot;                           
+## [11] &quot;are different from the results obtained with SPSS MANOVA syntax.&quot;                          
+## [12] &quot;&quot;                                                                                          
+## [13] &quot;Estimated Marginal Means of \&quot;Valence\&quot;:&quot;                                                  
+## [14] &quot;───────────────────────────────────────────────────&quot;                                       
+## [15] &quot; \&quot;Valence\&quot; \&quot;Identity\&quot; Mean [95% CI of Mean]    S.E.&quot;                                   
+## [16] &quot;───────────────────────────────────────────────────&quot;                                       
+## [17] &quot;   moral        Self   0.916 [0.885, 0.947] (0.015)&quot;                                       
+## [18] &quot;   immoral      Self   0.814 [0.776, 0.852] (0.019)&quot;                                       
+## [19] &quot;   moral        Other  0.844 [0.809, 0.879] (0.017)&quot;                                       
+## [20] &quot;   immoral      Other  0.829 [0.794, 0.864] (0.017)&quot;                                       
+## [21] &quot;───────────────────────────────────────────────────&quot;                                       
+## [22] &quot;&quot;                                                                                          
+## [23] &quot;Pairwise Comparisons of \&quot;Valence\&quot;:&quot;                                                      
+## [24] &quot;────────────────────────────────────────────────────────────────────────────────────────&quot;  
+## [25] &quot;        Contrast \&quot;Identity\&quot; Estimate    S.E. df      t     p     Cohen’s d [95% CI of d]&quot;
+## [26] &quot;────────────────────────────────────────────────────────────────────────────────────────&quot;  
+## [27] &quot; immoral - moral      Self    -0.102 (0.017) 40 -5.968 &lt;.001 *** -0.736 [-0.985, -0.487]&quot;  
+## [28] &quot; immoral - moral      Other   -0.015 (0.024) 40 -0.642  .525     -0.111 [-0.459,  0.238]&quot;  
+## [29] &quot;────────────────────────────────────────────────────────────────────────────────────────&quot;  
+## [30] &quot;Pooled SD for computing Cohen’s d: 0.139&quot;                                                  
+## [31] &quot;No need to adjust p values.&quot;                                                               
+## [32] &quot;&quot;                                                                                          
+## [33] &quot;Disclaimer:&quot;                                                                               
+## [34] &quot;By default, pooled SD is Root Mean Square Error (RMSE).&quot;                                   
+## [35] &quot;There is much disagreement on how to compute Cohen’s d.&quot;                                   
+## [36] &quot;You are completely responsible for setting `sd.pooled`.&quot;                                   
+## [37] &quot;You might also use `effectsize::t_to_d()` to compute d.&quot;                                   
+## [38] &quot;&quot;</code></pre>
+<p>接下来是包括所有固定效应和随机效应的全模型的结果。</p>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="第十讲回归模型三广义线性模型.html#cb407-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(mod_full)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+##                  npar Sum Sq Mean Sq F value
+## Identity            1    0.2     0.2     0.2
+## Valence             1   26.8    26.8    26.8
+## Identity:Valence    1   13.6    13.6    13.6</code></pre>
+<p>下面我们在求出每个被试的正确率之后，将其当作层级模型来进行处理的结果，和上面其他模型得到的也比较类似。</p>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="第十讲回归模型三广义线性模型.html#cb409-1" tabindex="-1"></a>mod_anova <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> df.match,</span>
+<span id="cb409-2"><a href="第十讲回归模型三广义线性模型.html#cb409-2" tabindex="-1"></a>                        <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub))</span>
+<span id="cb409-3"><a href="第十讲回归模型三广义线性模型.html#cb409-3" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(mod_anova)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+##                  npar Sum Sq Mean Sq F value
+## Identity            1   0.42    0.42    3.71
+## Valence             1   3.17    3.17   27.69
+## Identity:Valence    1   0.98    0.98    8.54</code></pre>
+<p>我们还可以用线性模型来做出类似于方差分析的结果，但由于二者算法并不完全相同，因此结果也存在一些细微的差异。</p>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="第十讲回归模型三广义线性模型.html#cb411-1" tabindex="-1"></a>mod_mean <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> df.match.aov,</span>
+<span id="cb411-2"><a href="第十讲回归模型三广义线性模型.html#cb411-2" tabindex="-1"></a>                          <span class="at">formula =</span> mean_ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Sub) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Identity<span class="sc">:</span>Sub) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Valence<span class="sc">:</span>Sub))</span>
+<span id="cb411-3"><a href="第十讲回归模型三广义线性模型.html#cb411-3" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(mod_mean)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+##                  npar Sum Sq Mean Sq F value
+## Identity            1 0.0272  0.0272    3.08
+## Valence             1 0.1410  0.1410   15.93
+## Identity:Valence    1 0.0769  0.0769    8.69</code></pre>
+</div>
+<div id="不同的模型比较方法" class="section level3 hasAnchor" number="11.4.2">
+<h3><span class="header-section-number">11.4.2</span> 不同的模型比较方法<a href="第十讲回归模型三广义线性模型.html#不同的模型比较方法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在建立了上述所有模型之后，我们想要知道的是，层级模型是否就是一个最好的模型呢？我们可以用默认的模型比较方法对上述模型进行比较。</p>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="第十讲回归模型三广义线性模型.html#cb413-1" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">compare_performance</span>(mod_full, mod_anova, <span class="at">rank =</span> <span class="cn">TRUE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="pic/chp10/performance2.png" /></p>
+<p>performance()结果会把比较好的模型排在上面，总体而言anova模型更好。不过我们可以看到一些参数，R2表示模型解释的变异，ICC反映的是个体变异的内容，这两个参数都是层级模型更优。我们再用anova()对模型做一次比较。</p>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="第十讲回归模型三广义线性模型.html#cb414-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(mod_full, mod_anova)</span></code></pre></div>
+<pre><code>## refitting model(s) with ML (instead of REML)</code></pre>
+<pre><code>## Data: df.match
+## Models:
+## mod_full: ACC ~ 1 + Identity * Valence + (1 + Identity * Valence | Sub)
+## mod_anova: ACC ~ 1 + Identity * Valence + (1 + Identity * Valence | Sub)
+##           npar  AIC  BIC logLik deviance Chisq Df          Pr(&gt;Chisq)    
+## mod_full    14 9356 9459  -4664     9328                                 
+## mod_anova   15 8396 8507  -4183     8366   962  1 &lt;0.0000000000000002 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>在结果的参数中，AIC的值一般是越小越好，我们会发现anova的模型反而是更好的。总体而言，两种方法似乎都提示我们传统的方差分析是更优的。</p>
+<p>接着我们还用机器学习的方法对层级模型和方差分析模型进行了比较，70%的数据作为训练集，剩余的30%作为测试集，以此比较二者的模型预测效果。</p>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="第十讲回归模型三广义线性模型.html#cb417-1" tabindex="-1"></a><span class="co"># 设置种子以确保结果的可重复性</span></span>
+<span id="cb417-2"><a href="第十讲回归模型三广义线性模型.html#cb417-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">456</span>)</span>
+<span id="cb417-3"><a href="第十讲回归模型三广义线性模型.html#cb417-3" tabindex="-1"></a></span>
+<span id="cb417-4"><a href="第十讲回归模型三广义线性模型.html#cb417-4" tabindex="-1"></a><span class="co"># 随机选择70%的数据作为训练集，剩余的30%作为测试集</span></span>
+<span id="cb417-5"><a href="第十讲回归模型三广义线性模型.html#cb417-5" tabindex="-1"></a>train_index <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">createDataPartition</span>(df.match<span class="sc">$</span>Sub, <span class="at">p =</span> <span class="fl">0.7</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb417-6"><a href="第十讲回归模型三广义线性模型.html#cb417-6" tabindex="-1"></a>train_data <span class="ot">&lt;-</span> df.match[train_index, ]</span>
+<span id="cb417-7"><a href="第十讲回归模型三广义线性模型.html#cb417-7" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> df.match[<span class="sc">-</span>train_index, ]</span>
+<span id="cb417-8"><a href="第十讲回归模型三广义线性模型.html#cb417-8" tabindex="-1"></a></span>
+<span id="cb417-9"><a href="第十讲回归模型三广义线性模型.html#cb417-9" tabindex="-1"></a><span class="co"># 根据训练集生成模型</span></span>
+<span id="cb417-10"><a href="第十讲回归模型三广义线性模型.html#cb417-10" tabindex="-1"></a>model_full <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> train_data,</span>
+<span id="cb417-11"><a href="第十讲回归模型三广义线性模型.html#cb417-11" tabindex="-1"></a>                          <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub), </span>
+<span id="cb417-12"><a href="第十讲回归模型三广义线性模型.html#cb417-12" tabindex="-1"></a>                          <span class="at">family =</span> binomial)</span>
+<span id="cb417-13"><a href="第十讲回归模型三广义线性模型.html#cb417-13" tabindex="-1"></a>model_anova <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> train_data,</span>
+<span id="cb417-14"><a href="第十讲回归模型三广义线性模型.html#cb417-14" tabindex="-1"></a>                          <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub))</span>
+<span id="cb417-15"><a href="第十讲回归模型三广义线性模型.html#cb417-15" tabindex="-1"></a></span>
+<span id="cb417-16"><a href="第十讲回归模型三广义线性模型.html#cb417-16" tabindex="-1"></a><span class="co"># 使用模型进行预测</span></span>
+<span id="cb417-17"><a href="第十讲回归模型三广义线性模型.html#cb417-17" tabindex="-1"></a>pre_mod_full <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">predict</span>(model_full, <span class="at">newdata =</span> test_data, <span class="at">type =</span> <span class="st">&#39;response&#39;</span>)</span>
+<span id="cb417-18"><a href="第十讲回归模型三广义线性模型.html#cb417-18" tabindex="-1"></a>pre_mod_anova <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">predict</span>(model_anova, <span class="at">newdata =</span> test_data)</span></code></pre></div>
+<p>我们对二者的预测性能进行比较。</p>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="第十讲回归模型三广义线性模型.html#cb418-1" tabindex="-1"></a><span class="co"># 计算模型的性能指标</span></span>
+<span id="cb418-2"><a href="第十讲回归模型三广义线性模型.html#cb418-2" tabindex="-1"></a>performance_mod_full <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">RMSE =</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((test_data<span class="sc">$</span>ACC <span class="sc">-</span> pre_mod_full)<span class="sc">^</span><span class="dv">2</span>)),</span>
+<span id="cb418-3"><a href="第十讲回归模型三广义线性模型.html#cb418-3" tabindex="-1"></a>                <span class="at">R2 =</span> <span class="fu">cor</span>(test_data<span class="sc">$</span>ACC, pre_mod_full)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb418-4"><a href="第十讲回归模型三广义线性模型.html#cb418-4" tabindex="-1"></a><span class="co"># 打印性能指标</span></span>
+<span id="cb418-5"><a href="第十讲回归模型三广义线性模型.html#cb418-5" tabindex="-1"></a><span class="fu">print</span>(performance_mod_full)</span></code></pre></div>
+<pre><code>##     RMSE       R2 
+## 0.342402 0.074984</code></pre>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="第十讲回归模型三广义线性模型.html#cb420-1" tabindex="-1"></a><span class="co"># 计算模型的性能指标</span></span>
+<span id="cb420-2"><a href="第十讲回归模型三广义线性模型.html#cb420-2" tabindex="-1"></a>performance_mod_anova <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">RMSE =</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((test_data<span class="sc">$</span>ACC <span class="sc">-</span> pre_mod_anova)<span class="sc">^</span><span class="dv">2</span>)),</span>
+<span id="cb420-3"><a href="第十讲回归模型三广义线性模型.html#cb420-3" tabindex="-1"></a>                <span class="at">R2 =</span> <span class="fu">cor</span>(test_data<span class="sc">$</span>ACC, pre_mod_anova)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb420-4"><a href="第十讲回归模型三广义线性模型.html#cb420-4" tabindex="-1"></a></span>
+<span id="cb420-5"><a href="第十讲回归模型三广义线性模型.html#cb420-5" tabindex="-1"></a><span class="co"># 打印性能指标</span></span>
+<span id="cb420-6"><a href="第十讲回归模型三广义线性模型.html#cb420-6" tabindex="-1"></a><span class="fu">print</span>(performance_mod_anova)</span></code></pre></div>
+<pre><code>##     RMSE       R2 
+## 0.342263 0.075676</code></pre>
+<p>RSME表示的是模型预测值和实际值之间的差异，可以发现二者的区别并不是很大。我们接下来还使用了混淆矩阵和ROC曲线的方法对模型性能进行比较，具体的代码和结果可以参考如下内容。</p>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="第十讲回归模型三广义线性模型.html#cb422-1" tabindex="-1"></a><span class="co"># 将预测概率转换为分类结果</span></span>
+<span id="cb422-2"><a href="第十讲回归模型三广义线性模型.html#cb422-2" tabindex="-1"></a>predicted_classes <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(pre_mod_full <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb422-3"><a href="第十讲回归模型三广义线性模型.html#cb422-3" tabindex="-1"></a><span class="co"># 计算混淆矩阵</span></span>
+<span id="cb422-4"><a href="第十讲回归模型三广义线性模型.html#cb422-4" tabindex="-1"></a>confusion_matrix <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">confusionMatrix</span>(<span class="fu">as.factor</span>(predicted_classes), <span class="fu">as.factor</span>(test_data<span class="sc">$</span>ACC))</span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="第十讲回归模型三广义线性模型.html#cb423-1" tabindex="-1"></a><span class="co"># 打印混淆矩阵和性能指标</span></span>
+<span id="cb423-2"><a href="第十讲回归模型三广义线性模型.html#cb423-2" tabindex="-1"></a><span class="fu">print</span>(confusion_matrix)</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction    0    1
+##          0   37   27
+##          1  499 3037
+##                                              
+##                Accuracy : 0.854              
+##                  95% CI : (0.842, 0.865)     
+##     No Information Rate : 0.851              
+##     P-Value [Acc &gt; NIR] : 0.33               
+##                                              
+##                   Kappa : 0.095              
+##                                              
+##  Mcnemar&#39;s Test P-Value : &lt;0.0000000000000002
+##                                              
+##             Sensitivity : 0.0690             
+##             Specificity : 0.9912             
+##          Pos Pred Value : 0.5781             
+##          Neg Pred Value : 0.8589             
+##              Prevalence : 0.1489             
+##          Detection Rate : 0.0103             
+##    Detection Prevalence : 0.0178             
+##       Balanced Accuracy : 0.5301             
+##                                              
+##        &#39;Positive&#39; Class : 0                  
+## </code></pre>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="第十讲回归模型三广义线性模型.html#cb425-1" tabindex="-1"></a><span class="co"># 计算ROC曲线和AUC</span></span>
+<span id="cb425-2"><a href="第十讲回归模型三广义线性模型.html#cb425-2" tabindex="-1"></a>roc_result <span class="ot">&lt;-</span> pROC<span class="sc">::</span><span class="fu">roc</span>(test_data<span class="sc">$</span>ACC, pre_mod_full)</span></code></pre></div>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="第十讲回归模型三广义线性模型.html#cb428-1" tabindex="-1"></a><span class="fu">print</span>(roc_result)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## roc.default(response = test_data$ACC, predictor = pre_mod_full)
+## 
+## Data: pre_mod_full in 536 controls (test_data$ACC 0) &lt; 3064 cases (test_data$ACC 1).
+## Area under the curve: 0.699</code></pre>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="第十讲回归模型三广义线性模型.html#cb430-1" tabindex="-1"></a><span class="co"># 绘制ROC曲线</span></span>
+<span id="cb430-2"><a href="第十讲回归模型三广义线性模型.html#cb430-2" tabindex="-1"></a><span class="fu">plot</span>(roc_result, <span class="at">main =</span> <span class="st">&quot;ROC Curve&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb430-3"><a href="第十讲回归模型三广义线性模型.html#cb430-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>) <span class="co"># 添加对角线</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-238-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>ROC的结果会返回一个指标”area under the
+curve”（AUC，曲线下面积），这个值一般越大说明模型越好。可以发现anova的曲线下面积值低于glm，也就是说glm优于anova。</p>
+<p>在进行了上述的模型比较之后，我们发现不同的方法得到的结果是不一致的。我们一般认为当模型越符合数据特征的时候，模型的表现应该会更好，这是我们的直觉。glm使用二项分布去捕捉正确率这一因变量的数据，这是更符合数据特征的，但是这种更符合数据特征的模型效果居然更差，这和我们的直觉冲突。</p>
+<p>这是因为有一些模型比较的方法是只适合于线性模型的，对于广义线性模型进行比较的时候就会出现问题，所以我们用一些传统的模型比较指标会发现anova更优或者二者没有差异。但我们用glm去预测不同被试在不同条件下被试的反应的时候，我们通常会发现glm的效果比anova更好。</p>
+<p>不管怎样，这也提示我们建立完模型之后，对于如何比较不同的模型，选择什么样的比较指标和方法也要去花费一定的心思，而不能拿来就用。</p>
+<p>本章至此一直在介绍如何对正确率这种分类的变量进行层级模型的建模分析，那么我们为什么不使用传统的方差分析呢？
+2008年的一篇文章(jager,
+2008)提到，我们对正确率进行anova时，会产生难以解释的结果：假设在10个回答中，正确回答8次，错误回答2次，此时95%CI为[0.52,1.08]
+( = 0.8 ± 0.275)，我们发现方差不齐，不满足方差分析基本假设。
+<span class="math display">\[\mu = np\]</span> <span class="math display">\[𝜎 = √(𝑛𝑝𝑞 )\]</span> <span class="math display">\[𝜎_p^2 = \frac{p(1-p)}{n}\]</span> Jaeger, T. F.
+(2008). Categorical data analysis: Away from ANOVAs (transformation or
+not) and towards logit mixed models. <em>Journal of Memory and Language,
+59</em>(4), 434-446. <a href="doi:http://dx.doi.org/10.1016/j.jml.2007.11.007" class="uri">doi:http://dx.doi.org/10.1016/j.jml.2007.11.007</a></p>
+<p>《Journal of Memory and
+Language》看上去好像是关于记忆和语言的期刊，但实际上上面有很多方法学，包括混合线性模型方法的介绍，读者可以关注该期刊。</p>
+</div>
+</div>
+<div id="其他分布" class="section level2 hasAnchor" number="11.5">
+<h2><span class="header-section-number">11.5</span> 其他分布<a href="第十讲回归模型三广义线性模型.html#其他分布" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>参照本章之前的思路，只要y和x之间可以通过线性转换和连接函数建立关系，就可以去对各式各样的数据类型进行建模分析。例如泊松分布(Poisson
+distribution)，这是一种在医学或者流行病学领域研究中常见的数据分布类型。泊松分布是指在固定时间间隔或空间区域内发生某种事件的次数的概率，它适用于事件以恒定平均速率独立发生的情况，例如电话呼叫、网站访问、机器故障等。
+<span class="math display">\[P(X = k) = \frac{e^{-\lambda} \lambda^k}{k!}\]</span> -
+λ:事件在给定时间或空间内的平均发生率（或平均数量）。 -
+k:可能的事件发生次数，可以是0, 1, 2, …</p>
+<p>下面我们用代码来模拟一下泊松分布。</p>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="第十讲回归模型三广义线性模型.html#cb431-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># 设置随机种子以获得可重复的结果</span></span>
+<span id="cb431-2"><a href="第十讲回归模型三广义线性模型.html#cb431-2" tabindex="-1"></a>random_samples <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">1000</span>, <span class="at">lambda =</span> <span class="dv">5</span>)</span>
+<span id="cb431-3"><a href="第十讲回归模型三广义线性模型.html#cb431-3" tabindex="-1"></a><span class="fu">hist</span>(random_samples,<span class="at">col =</span> <span class="st">&#39;white&#39;</span>, <span class="at">border =</span> <span class="st">&#39;black&#39;</span>,)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-239-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>同样我们可以通过连接函数对其进行广义线性模型的建模。
+<img src="pic/chp10/poission.png" /> 另外一些常见的分布还包括伽马分布（Gamma
+Distribution），这是统计学的一种连续概率函数，是概率统计中一种非常重要的分布。“指数分布”和”卡方分布”都是伽马分布的特例。
+<span class="math display">\[f(x | \alpha, \beta) = \frac{\beta^\alpha x^{\alpha-1} e^{-\beta x}}{\Gamma(\alpha)}\]</span> -
+α:形状参数（shape
+parameter），决定了分布的曲线形态，尤其是峰值的位置和曲线的尖峭程度。 -
+β:尺度参数（scale
+parameter），影响分布的宽度；当尺度参数增大时，分布会变得更宽且矮平；尺度参数减小时，分布会变得更窄且高耸。</p>
+<p>下面是伽马分布的示意图。</p>
+<p><img src="pic/chp10/gamma.webp" /></p>
+<p>总体而言，本章介绍的广义线性模型可以将我们能够处理的数据拓展到正态分布以外，给我们提供了一个更好的工具。另外，请读者朋友们可以思考一下，信号检测论是否可以用广义线性模型分析？大家可以思考后在网上搜到相关的资料，这里不再赘述。</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="第九讲回归模型二分层线性模型.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="第十一讲回归模型四中介分析.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/hcp4715/R4PsyBook/1010-lesson10_2024.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
