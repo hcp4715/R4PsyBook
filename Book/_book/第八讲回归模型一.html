@@ -363,7 +363,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2.2" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#线性回归linear-regression"><i class="fa fa-check"></i><b>8.2.2</b> 线性回归(linear regression)</a></li>
 <li class="chapter" data-level="8.2.3" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#单样本t检验one-sample-t-test"><i class="fa fa-check"></i><b>8.2.3</b> 单样本<em>t</em>检验(one sample <em>t</em>-test)</a></li>
 <li class="chapter" data-level="8.2.4" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#配对样本t检验paired-t-test"><i class="fa fa-check"></i><b>8.2.4</b> 配对样本<em>t</em>检验(paired <em>t</em>-test)</a></li>
-<li class="chapter" data-level="8.2.5" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#brucerttest"><i class="fa fa-check"></i><b>8.2.5</b> bruceR::TTEST</a></li>
+<li class="chapter" data-level="8.2.5" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#brucerttest"><i class="fa fa-check"></i><b>8.2.5</b> <code>bruceR::TTEST()</code></a></li>
 <li class="chapter" data-level="8.2.6" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#总结"><i class="fa fa-check"></i><b>8.2.6</b> 总结</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="第八讲回归模型一.html"><a href="第八讲回归模型一.html#anova-linear-regression"><i class="fa fa-check"></i><b>8.3</b> ANOVA &amp; linear regression</a>
@@ -548,8 +548,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">8.1</span> 研究问题<a href="第八讲回归模型一.html#研究问题" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>我们从研究问题开始，先来回顾一下人类企鹅计划的关键变量。其中一个是恋爱状态，另一个是核心温度，还有一个是社交复杂程度，以及赤道距离。在刚开始进行数据分析时，我们可能没有特别明确的假设，但我们想要了解社会关系，尤其是亲密关系，是否会影响我们的体温，是否能帮助我们调节核心温度。</p>
 <p>我们可以使用我们知道的统计方法进行一些探索性分析，比如检验恋爱状态和赤道距离之间是否存在交互作用。大家还记得中介模型吗？其中一个变量是社交复杂程度，另一个是核心温度，中间有一个变量是赤道距离。研究发现，在不同的情侣关系群体中，这三个变量之间的关系是不一样的。</p>
-<p>在接下来的课程中，我们将回顾一些关键概念，并进行一些常用的统计检验，包括t检验和方差分析。我们还将介绍为什么t检验和方差分析实际上是线性回归的特例。关于第一个研究问题，我们主要关注恋爱状态是否会影响核心体温。我们会比较两组不同的人，看他们的核心体温是否有差异。</p>
-<p>基于恋爱状态，我们可以将数据分为两组：一组是处于恋爱或亲密关系中的人，另一组是没有处于亲密关系的人。我们想要比较这两组之间是否存在差异，通常会采用独立样本t检验。这是我们在学习过程中接触过的统计方法，大家应该都不陌生。</p>
+<p>在接下来的课程中，我们将回顾一些关键概念，并进行一些常用的统计检验，包括<em>t</em>检验和方差分析。我们还将介绍为什么<em>t</em>检验和方差分析实际上是线性回归的特例。关于第一个研究问题，我们主要关注恋爱状态是否会影响核心体温。我们会比较两组不同的人，看他们的核心体温是否有差异。</p>
+<p>基于恋爱状态，我们可以将数据分为两组：一组是处于恋爱或亲密关系中的人，另一组是没有处于亲密关系的人。我们想要比较这两组之间是否存在差异，通常会采用独立样本<em>t</em>检验。这是我们在学习过程中接触过的统计方法，大家应该都不陌生。</p>
 <p><img src="pic/chp8/IJzerman2018fig.png" width="864" style="display: block; margin: auto;" />
 (引自<a href="https://doi.org/10.1525/collabra.165">IJzerman et al., 2018</a>)</p>
 </div>
@@ -557,14 +557,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">8.2</span> <em>t</em>-test作为回归模型的特例<a href="第八讲回归模型一.html#t-test作为回归模型的特例" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="独立样本t检验independent-t-test" class="section level3 hasAnchor" number="8.2.1">
 <h3><span class="header-section-number">8.2.1</span> 独立样本<em>t</em>检验(independent <em>t</em>-test)<a href="第八讲回归模型一.html#独立样本t检验independent-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>当然，我们需要了解一些基础知识，比如独立样本t检验。第一，我们需要满足正态性假设，即两个样本都来自正态总体。我们也知道，如果样本量足够大，即使不严格服从正态分布，使用t检验也是没有问题的。第二，我们还需要满足方差同质性假设，即两个样本的方差应该是类似的。第三，两个样本应该是独立的。</p>
-<p>在进行独立样本t检验时，我们的零假设是这两个独立样本在某个变量上的均值没有差异，即μ1等于μ2。而我们的备择假设则是它们的总体均值是有差异的，即μ1不等于μ2。接下来，我们需要计算t值，这是进行t检验时通常需要用到的一个公式。</p>
+<p>当然，我们需要了解一些基础知识，比如独立样本<em>t</em>检验。第一，我们需要满足正态性假设，即两个样本都来自正态总体。我们也知道，如果样本量足够大，即使不严格服从正态分布，使用<em>t</em>检验也是没有问题的。第二，我们还需要满足方差同质性假设，即两个样本的方差应该是类似的。第三，两个样本应该是独立的。</p>
+<p>在进行独立样本<em>t</em>检验时，我们的零假设是这两个独立样本在某个变量上的均值没有差异，即μ1等于μ2。而我们的备择假设则是它们的总体均值是有差异的，即μ1不等于μ2。接下来，我们需要计算t值，这是进行<em>t</em>检验时通常需要用到的一个公式。</p>
 <p><span class="math display">\[t = \frac{\bar{X}_1 - \bar{X}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\]</span></p>
-<p>在R语言中，如果我们要进行t检验，首先我们需要进行数据预处理。这包括清洗数据，处理缺失值，选择我们感兴趣的变量，以及生成新的变量等。</p>
+<p>在R语言中，如果我们要进行<em>t</em>检验，首先我们需要进行数据预处理。这包括清洗数据，处理缺失值，选择我们感兴趣的变量，以及生成新的变量等。</p>
 <p>首先，我们可能需要为数据集生成一些新的变量，比如在原始数据中可能没有被试编号，我们可以随机生成。然后，我们选择自己在分析中关心的问题，使用dplyr函数选择我们感兴趣的变量。</p>
 <p>在处理数据时，我们需要注意缺失值。在初步分析时，我们一般选择忽略缺失值，直接将其剔除，以便快速查看结果。此外，还需要将一些变量转换为因子，比如将是否处于亲密关系的变量转换为因子，并赋予两个水平：恋爱和单身。</p>
 <p>接下来，我们关注的因变量是被试的体温，我们想知道在两组之间是否有差异。在原始数据中，有两次测量体温的数据，我们可以选择将两次测量的平均值作为新的变量，这可以通过R语言中的行函数实现。具体来说，我们可以创建一个新的变量，这个变量是以temperature字符串开头的列的平均值。</p>
-<p>这些步骤都是数据预处理的一部分，是进行t检验之前必要的步骤。</p>
+<p>这些步骤都是数据预处理的一部分，是进行<em>t</em>检验之前必要的步骤。</p>
 <div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="第八讲回归模型一.html#cb277-1" tabindex="-1"></a>df.penguin <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb277-2"><a href="第八讲回归模型一.html#cb277-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">subjID =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
 <span id="cb277-3"><a href="第八讲回归模型一.html#cb277-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(subjID,Temperature_t1, Temperature_t2, socialdiversity, </span>
@@ -577,9 +577,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb277-10"><a href="第八讲回归模型一.html#cb277-10" tabindex="-1"></a>                <span class="at">ALEX14 =</span> <span class="fu">case_when</span>(<span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX14),</span>
 <span id="cb277-11"><a href="第八讲回归模型一.html#cb277-11" tabindex="-1"></a>                <span class="at">ALEX16 =</span> <span class="fu">case_when</span>(<span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX16),</span>
 <span id="cb277-12"><a href="第八讲回归模型一.html#cb277-12" tabindex="-1"></a>                <span class="at">ALEX   =</span> <span class="fu">rowSums</span>(<span class="fu">select</span>(., <span class="fu">starts_with</span>(<span class="st">&quot;ALEX&quot;</span>)))) <span class="co"># 反向计分后计算总分</span></span></code></pre></div>
-<div class="datatables html-widget html-fill-item" id="htmlwidget-c868f989faea891925a5" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-c868f989faea891925a5">{"x":{"filter":"none","vertical":false,"fillContainer":true,"data":[["1","2","3","4","5","6"],[1,2,3,4,5,6],[36.8,34.2,35,36.1,35.72222222,35.3],[36.7,36.6,35.2,35.8,36.44444444,35.9],[8,6,5,7,5,7],["Tsinghua","Oxford","Oxford","Oxford","Chile","Bamberg"],[26.88780212,51.75,51.75,51.75,42.07719421,51.65660095],["单身","恋爱","恋爱","恋爱","恋爱","恋爱"],[2,1,2,3,1,1],[2,1,2,4,1,2],[2,1,4,1,1,1],[4,5,4,4,5,4],[2,1,2,4,1,1],[2,1,2,2,1,3],[2,1,2,3,2,4],[2,1,2,4,1,2],[2,1,2,2,2,4],[1,1,1,1,1,2],[2,1,2,2,1,2],[4,4,3,4,4,2],[2,3,2,2,2,4],[4,4,4,4,4,5],[2,3,2,4,1,1],[4,4,4,4,2,5],[36.75,35.40000000000001,35.1,35.95,36.08333333,35.59999999999999],[31,23,34,40,24,35]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>subjID<\/th>\n      <th>Temperature_t1<\/th>\n      <th>Temperature_t2<\/th>\n      <th>socialdiversity<\/th>\n      <th>Site<\/th>\n      <th>DEQ<\/th>\n      <th>romantic<\/th>\n      <th>ALEX1<\/th>\n      <th>ALEX2<\/th>\n      <th>ALEX3<\/th>\n      <th>ALEX4<\/th>\n      <th>ALEX5<\/th>\n      <th>ALEX6<\/th>\n      <th>ALEX7<\/th>\n      <th>ALEX8<\/th>\n      <th>ALEX9<\/th>\n      <th>ALEX10<\/th>\n      <th>ALEX11<\/th>\n      <th>ALEX12<\/th>\n      <th>ALEX13<\/th>\n      <th>ALEX14<\/th>\n      <th>ALEX15<\/th>\n      <th>ALEX16<\/th>\n      <th>Temperature<\/th>\n      <th>ALEX<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,6,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"subjID","targets":1},{"name":"Temperature_t1","targets":2},{"name":"Temperature_t2","targets":3},{"name":"socialdiversity","targets":4},{"name":"Site","targets":5},{"name":"DEQ","targets":6},{"name":"romantic","targets":7},{"name":"ALEX1","targets":8},{"name":"ALEX2","targets":9},{"name":"ALEX3","targets":10},{"name":"ALEX4","targets":11},{"name":"ALEX5","targets":12},{"name":"ALEX6","targets":13},{"name":"ALEX7","targets":14},{"name":"ALEX8","targets":15},{"name":"ALEX9","targets":16},{"name":"ALEX10","targets":17},{"name":"ALEX11","targets":18},{"name":"ALEX12","targets":19},{"name":"ALEX13","targets":20},{"name":"ALEX14","targets":21},{"name":"ALEX15","targets":22},{"name":"ALEX16","targets":23},{"name":"Temperature","targets":24},{"name":"ALEX","targets":25}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
-<p>要在R语言中进行t检验，我们可以使用自带的stats包中的t.test函数。这是一个非常常用的t检验函数。在使用t.test函数时，我们需要输入一些参数。第一个参数是经过筛选的数据框，第二个参数是我们感兴趣的自变量（如temp），第三个参数是分组变量（如romantic）。此外，我们还可以假定两组的方差是相等的。运行t.test函数后，我们可以得到结果，包括t值、自由度（df）和p值。在这个例子中，t值为0.34664，自由度为1425，而p值较大，表示在恋爱组和非恋爱组之间的体温差异不显著。从结果来看，恋爱状态对体温的影响似乎并不大。</p>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-9522d37a44152ee329c1" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9522d37a44152ee329c1">{"x":{"filter":"none","vertical":false,"fillContainer":true,"data":[["1","2","3","4","5","6"],[1,2,3,4,5,6],[36.8,34.2,35,36.1,35.72222222,35.3],[36.7,36.6,35.2,35.8,36.44444444,35.9],[8,6,5,7,5,7],["Tsinghua","Oxford","Oxford","Oxford","Chile","Bamberg"],[26.88780212,51.75,51.75,51.75,42.07719421,51.65660095],["单身","恋爱","恋爱","恋爱","恋爱","恋爱"],[2,1,2,3,1,1],[2,1,2,4,1,2],[2,1,4,1,1,1],[4,5,4,4,5,4],[2,1,2,4,1,1],[2,1,2,2,1,3],[2,1,2,3,2,4],[2,1,2,4,1,2],[2,1,2,2,2,4],[1,1,1,1,1,2],[2,1,2,2,1,2],[4,4,3,4,4,2],[2,3,2,2,2,4],[4,4,4,4,4,5],[2,3,2,4,1,1],[4,4,4,4,2,5],[36.75,35.40000000000001,35.1,35.95,36.08333333,35.59999999999999],[31,23,34,40,24,35]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>subjID<\/th>\n      <th>Temperature_t1<\/th>\n      <th>Temperature_t2<\/th>\n      <th>socialdiversity<\/th>\n      <th>Site<\/th>\n      <th>DEQ<\/th>\n      <th>romantic<\/th>\n      <th>ALEX1<\/th>\n      <th>ALEX2<\/th>\n      <th>ALEX3<\/th>\n      <th>ALEX4<\/th>\n      <th>ALEX5<\/th>\n      <th>ALEX6<\/th>\n      <th>ALEX7<\/th>\n      <th>ALEX8<\/th>\n      <th>ALEX9<\/th>\n      <th>ALEX10<\/th>\n      <th>ALEX11<\/th>\n      <th>ALEX12<\/th>\n      <th>ALEX13<\/th>\n      <th>ALEX14<\/th>\n      <th>ALEX15<\/th>\n      <th>ALEX16<\/th>\n      <th>Temperature<\/th>\n      <th>ALEX<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,6,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"subjID","targets":1},{"name":"Temperature_t1","targets":2},{"name":"Temperature_t2","targets":3},{"name":"socialdiversity","targets":4},{"name":"Site","targets":5},{"name":"DEQ","targets":6},{"name":"romantic","targets":7},{"name":"ALEX1","targets":8},{"name":"ALEX2","targets":9},{"name":"ALEX3","targets":10},{"name":"ALEX4","targets":11},{"name":"ALEX5","targets":12},{"name":"ALEX6","targets":13},{"name":"ALEX7","targets":14},{"name":"ALEX8","targets":15},{"name":"ALEX9","targets":16},{"name":"ALEX10","targets":17},{"name":"ALEX11","targets":18},{"name":"ALEX12","targets":19},{"name":"ALEX13","targets":20},{"name":"ALEX14","targets":21},{"name":"ALEX15","targets":22},{"name":"ALEX16","targets":23},{"name":"Temperature","targets":24},{"name":"ALEX","targets":25}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p>要在R语言中进行<em>t</em>检验，我们可以使用自带的stats包中的<code>t.test()</code>函数。这是一个非常常用的<em>t</em>检验函数。在使用<code>t.test()</code>函数时，我们需要输入一些参数。第一个参数是经过筛选的数据框，第二个参数是我们感兴趣的自变量（如temp），第三个参数是分组变量（如romantic）。此外，我们还可以假定两组的方差是相等的。运行<code>t.test()</code>函数后，我们可以得到结果，包括t值、自由度（df）和p值。在这个例子中，t值为0.34664，自由度为1425，而p值较大，表示在恋爱组和非恋爱组之间的体温差异不显著。从结果来看，恋爱状态对体温的影响似乎并不大。</p>
 <div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="第八讲回归模型一.html#cb278-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">t.test</span>(<span class="at">data =</span> df.penguin,      <span class="co"># 数据框</span></span>
 <span id="cb278-2"><a href="第八讲回归模型一.html#cb278-2" tabindex="-1"></a>              Temperature <span class="sc">~</span> romantic, <span class="co"># 因变量~自变量</span></span>
 <span id="cb278-3"><a href="第八讲回归模型一.html#cb278-3" tabindex="-1"></a>              <span class="at">var.equal =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
@@ -588,39 +588,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  [2] &quot;\tTwo Sample t-test&quot;                                                                                 
 ##  [3] &quot;&quot;                                                                                                    
 ##  [4] &quot;data:  Temperature by romantic&quot;                                                                      
-##  [5] &quot;t = -0.347, df = 1425, p-value = 0.73&quot;                                                               
+##  [5] &quot;t = -0.34664, df = 1425, p-value = 0.7289&quot;                                                           
 ##  [6] &quot;alternative hypothesis: true difference in means between group 恋爱 and group 单身 is not equal to 0&quot;
 ##  [7] &quot;95 percent confidence interval:&quot;                                                                     
-##  [8] &quot; -0.055595  0.038897&quot;                                                                                
+##  [8] &quot; -0.0555949  0.0388971&quot;                                                                              
 ##  [9] &quot;sample estimates:&quot;                                                                                   
 ## [10] &quot;mean in group 恋爱 mean in group 单身 &quot;                                                              
-## [11] &quot;            36.385             36.393 &quot;                                                              
+## [11] &quot;          36.38498           36.39333 &quot;                                                              
 ## [12] &quot;&quot;</code></pre>
-<p>当然，除了t.test函数，还有其他方法可以进行类似的分析。不过，在这个简单的示例中，t.test已经足够满足我们的需求。</p>
-<p>我们说t检验是一个特殊的线性回归模型，这是因为在R语言中，它们的编写方式非常相似。在回归模型中，我们将自变量放在前面，因变量放在后面。为了理解这个概念，我们需要简要回顾一下线性回归模型。</p>
+<p>当然，除了<code>t.test()</code>函数，还有其他方法可以进行类似的分析。不过，在这个简单的示例中，<code>t.test()</code>已经足够满足我们的需求。</p>
+<p>我们说<em>t</em>检验是一个特殊的线性回归模型，这是因为在R语言中，它们的编写方式非常相似。在回归模型中，我们将自变量放在前面，因变量放在后面。为了理解这个概念，我们需要简要回顾一下线性回归模型。</p>
 <p>线性回归模型是一种统计方法，用于研究一个或多个变量能否预测或解释另一个变量。我们将用来预测的变量称为预测变量或自变量，而被预测的变量称为因变量或响应变量。线性回归的核心是通过拟合一条直线来表示两个变量之间的关系，使得直线与每个数据点之间的距离最小。这样，我们便可以利用这条直线来进行预测。</p>
 <p>我们通常会用一个方程或等式来表示线性回归模型，如y = β0 + β1x1 + β2x2 + … + ε。其中y是我们关心的因变量，x1、x2等是自变量，β0、β1、β2等是回归系数，而ε是误差项。</p>
 <p><span class="math display">\[y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_p + \epsilon\]</span></p>
-<p>在学习线性回归时，我们通常关注连续变量之间的关系。这意味着x和y都是连续变量。而在t检验中，我们关注的是分组变量，这似乎与线性回归有所不同。然而，在特定情况下，我们可以将t检验视为线性回归的一个特例。当我们分析的自变量是一个二分类变量时，线性回归模型实际上等同于独立样本t检验。所以，虽然它们在某些方面有所不同，但t检验确实可以看作是线性回归的一个特殊情况。</p>
+<p>在学习线性回归时，我们通常关注连续变量之间的关系。这意味着x和y都是连续变量。而在<em>t</em>检验中，我们关注的是分组变量，这似乎与线性回归有所不同。然而，在特定情况下，我们可以将<em>t</em>检验视为线性回归的一个特例。当我们分析的自变量是一个二分类变量时，线性回归模型实际上等同于独立样本<em>t</em>检验。所以，虽然它们在某些方面有所不同，但<em>t</em>检验确实可以看作是线性回归的一个特殊情况。</p>
 </div>
 <div id="线性回归linear-regression" class="section level3 hasAnchor" number="8.2.2">
 <h3><span class="header-section-number">8.2.2</span> 线性回归(linear regression)<a href="第八讲回归模型一.html#线性回归linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>在t检验中，我们的因变量，比如体温，是连续的，而自变量，比如是否处于亲密关系，是二分类的。这似乎与我们通常的线性回归模型有所不同，因为在线性回归中，我们通常关注的是连续变量之间的关系。然而，实际上，当我们的自变量是二分类变量时，我们也可以将其视为线性回归模型的一个特例。</p>
+<p>在<em>t</em>检验中，我们的因变量，比如体温，是连续的，而自变量，比如是否处于亲密关系，是二分类的。这似乎与我们通常的线性回归模型有所不同，因为在线性回归中，我们通常关注的是连续变量之间的关系。然而，实际上，当我们的自变量是二分类变量时，我们也可以将其视为线性回归模型的一个特例。</p>
 <p>想象一下，我们在图上有两堆数据点，一堆是处于亲密关系的人的体温，另一堆是非恋爱状态的人的体温。在这两堆数据点之间，我们可以拟合出一条回归线，这条线可以帮助我们进行预测。当x=1（处于亲密关系）时，我们预测的y值（体温）是多少？当x=2（非恋爱状态）时，我们预测的y值是多少？</p>
-<p>在常规的线性回归中，x可以有很多值，y也可以有很多值。然而，在t检验中，x只有两个值，一个是1，一个是2（或者0和1）。我们要做的预测也是，当x=1时，y是多少？当x=2时，y是多少？这就是为什么我们说独立样本t检验是线性回归模型的一个特例，特别是当我们的自变量是二分变量时。</p>
-<p>在R语言中，我们可以通过代码来验证这个观点。无论我们是使用t.test函数进行t检验，还是使用lm函数进行线性回归，我们得到的结果应该是一样的。这是因为在这种特殊情况下，这两种方法本质上是在做同样的事情。</p>
+<p>在常规的线性回归中，x可以有很多值，y也可以有很多值。然而，在<em>t</em>检验中，x只有两个值，一个是1，一个是2（或者0和1）。我们要做的预测也是，当x=1时，y是多少？当x=2时，y是多少？这就是为什么我们说独立样本<em>t</em>检验是线性回归模型的一个特例，特别是当我们的自变量是二分变量时。</p>
+<p>在R语言中，我们可以通过代码来验证这个观点。无论我们是使用<code>t.test()</code>函数进行<em>t</em>检验，还是使用lm函数进行线性回归，我们得到的结果应该是一样的。这是因为在这种特殊情况下，这两种方法本质上是在做同样的事情。</p>
 <p><img src="pic/chp8/indet-lm.png" width="55%"></p>
 <p>实际上，在进行线性回归时，我们可以采用不同的编码方法来表示分类变量。比如，对于二分类变量，我们可以将其编码为0和1。当我们采用这种编码方式时，线性回归方程为y = β0 + β1x1。其中，x1只有两个可能的取值：0和1。当x1 = 0时，y = β0。当x1 = 1时，y = β0 + β1。这样，我们可以看到，β1实际上表示了两组之间的差异。当然，这只是一种方便我们理解的编码方式。在实际应用中，我们可能会遇到更复杂的编码方法，比如虚拟变量编码、效应编码等。这些编码方法在处理多分类变量时尤为有用。</p>
-<p>总之，独立样本t检验实际上可以看作是线性回归模型的一个特例，特别是当我们的自变量是二分变量时。无论我们是使用t.test函数进行t检验，还是使用lm函数进行线性回归，我们得到的结果应该是一样的。这是因为在这种特殊情况下，这两种方法本质上是在做同样的事情。</p>
-<p>首先，我们进行预处理数据。这个过程相对简单，大家应该都能理解。接下来，我们来看一下t检验。假设我们不对结果进行整理，而是直接查看原始输出，那么我们会看到以下内容：t值是多少，df值是多少，以及p值是多少。我们之前提到过，t检验实际上是一种特殊的回归。</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="第八讲回归模型一.html#cb280-1" tabindex="-1"></a><span class="co"># t检验</span></span>
+<p>总之，独立样本<em>t</em>检验实际上可以看作是线性回归模型的一个特例，特别是当我们的自变量是二分变量时。无论我们是使用<code>t.test()</code>函数进行<em>t</em>检验，还是使用lm函数进行线性回归，我们得到的结果应该是一样的。这是因为在这种特殊情况下，这两种方法本质上是在做同样的事情。</p>
+<p>首先，我们进行预处理数据。这个过程相对简单，大家应该都能理解。接下来，我们来看一下<em>t</em>检验。假设我们不对结果进行整理，而是直接查看原始输出，那么我们会看到以下内容：t值是多少，df值是多少，以及p值是多少。我们之前提到过，<em>t</em>检验实际上是一种特殊的回归。</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="第八讲回归模型一.html#cb280-1" tabindex="-1"></a><span class="co"># *t*检验</span></span>
 <span id="cb280-2"><a href="第八讲回归模型一.html#cb280-2" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">t.test</span>(</span>
 <span id="cb280-3"><a href="第八讲回归模型一.html#cb280-3" tabindex="-1"></a>  <span class="at">data =</span> df.penguin,</span>
 <span id="cb280-4"><a href="第八讲回归模型一.html#cb280-4" tabindex="-1"></a>  Temperature <span class="sc">~</span> romantic,</span>
 <span id="cb280-5"><a href="第八讲回归模型一.html#cb280-5" tabindex="-1"></a>  <span class="at">var.equal =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb280-6"><a href="第八讲回归模型一.html#cb280-6" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="co"># 将输出变整齐</span></span></code></pre></div>
 <p><img src="pic/chp8/compare1.1.png" width="100%"></p>
-<p>我们继续讨论回归模型。在R语言中，线性回归模型的常用函数是lm。我们可以通过比较t检验和线性回归模型得到的t值、df值和p值来判断它们是否相同。</p>
+<p>我们继续讨论回归模型。在R语言中，线性回归模型的常用函数是lm。我们可以通过比较<em>t</em>检验和线性回归模型得到的t值、df值和p值来判断它们是否相同。</p>
 <p>在这个地方，大家可以看到我们使用的是stats包的lm代码，这个代码代表线性回归模型。我们在这里还是采用同样的数据，然后使用回归模型的公式。在这个公式中，temp是我们的因变量y，而romantics是我们的自变量x。这个x是一个因子，我们需要将其转换为因子。在编写这个公式时，我们只需在因变量前加上一个波浪号，然后加上自变量。接下来，lm函数会自动帮助我们处理因子变量在回归分析中的一些后续处理。最后，它会给我们一个结果。</p>
 <div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="第八讲回归模型一.html#cb281-1" tabindex="-1"></a><span class="co"># 线性回归</span></span>
 <span id="cb281-2"><a href="第八讲回归模型一.html#cb281-2" tabindex="-1"></a>model.inde <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">lm</span>(</span>
@@ -629,15 +629,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb281-5"><a href="第八讲回归模型一.html#cb281-5" tabindex="-1"></a>  )</span>
 <span id="cb281-6"><a href="第八讲回归模型一.html#cb281-6" tabindex="-1"></a><span class="fu">summary</span>(model.inde)</span></code></pre></div>
 <p><img src="pic/chp8/compare1.2.png" width="100%"></p>
-<p>我们可以看到，这里的t值、p值与我们之前的结果基本相同（t值为0.347，p值为0.729）。这是因为我们主要关注的是单身对结果的影响。因此，我们可以得出这样的结论：两组之间的差异在t检验和回归模型中表现得相当一致。在回归模型中，可能还会有一个intercept，但我们通常不会关注它。斜率slope代表的含义是当x从一个单位变化到另一个单位时，我们的因变量y会发生多少变化。而对于我们这种只有二分变量的自变量的情况，就代表两组之间的差异。</p>
-<p>因此，我们可以说，二分变量的t检验与回归模型之间存在密切关系。我们关注的是回归系数，它的统计检验值与t检验中的值完全相同。这就是我们希望展示的结果。所以，在心理学中常用的t检验实际上是线性回归的一种特殊情况。</p>
+<p>我们可以看到，这里的t值、p值与我们之前的结果基本相同（t值为0.347，p值为0.729）。这是因为我们主要关注的是单身对结果的影响。因此，我们可以得出这样的结论：两组之间的差异在<em>t</em>检验和回归模型中表现得相当一致。在回归模型中，可能还会有一个intercept，但我们通常不会关注它。斜率slope代表的含义是当x从一个单位变化到另一个单位时，我们的因变量y会发生多少变化。而对于我们这种只有二分变量的自变量的情况，就代表两组之间的差异。</p>
+<p>因此，我们可以说，二分变量的<em>t</em>检验与回归模型之间存在密切关系。我们关注的是回归系数，它的统计检验值与<em>t</em>检验中的值完全相同。这就是我们希望展示的结果。所以，在心理学中常用的<em>t</em>检验实际上是线性回归的一种特殊情况。</p>
 <p>那当然，这里涉及到一个知识点，我们没有详细展开讲，但大家以后感兴趣的话可以去了解。这个知识点就是编码方法。因为我们的数据有两个水平，可能有多种编码方法。例如，我们可以把一个水平编码为0，另一个水平编码为1。那么我们的公式可以表示为：y = β0 + β1 * x1。在这个情况下，x1只有两种取值：0和1。当x=0时，y等于β0；当x=1时，y等于β0 + β1。所以这个时候我们可以看出β1就是两组之间的区别。</p>
 <p>当然，这只是一种方便我们理解的方法。另外一种常用的编码方法是将x1编码为-0.5和0.5。在这种情况下，对β的解读就不一样了。大家可以将这种编码带入公式后，自己去观察一下。我们在这里就不展开详细讲解了，因为我们主要想向大家介绍这个概念。大家可以在R语言中多探索一下这个知识点，以便更好地理解和应用。</p>
 </div>
 <div id="单样本t检验one-sample-t-test" class="section level3 hasAnchor" number="8.2.3">
 <h3><span class="header-section-number">8.2.3</span> 单样本<em>t</em>检验(one sample <em>t</em>-test)<a href="第八讲回归模型一.html#单样本t检验one-sample-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>那么同理，一系列的t检验其实都可以认为是回归模型的特例。例如，我们来看单样本t检验。虽然我们平时很少使用单样本t检验，但在某些情况下，它还是有用的。比如，我们想要判断某个班级的成绩是否属于全校成绩的总体。在这种情况下，我们实际上是在比较这个班级的成绩均值和全校的总体均值。</p>
-<p>在单样本t检验中，我们关心的是一个样本的均值是否等于某个特定值。例如，在“在penguin数据中，全体被试的核心体温(Temperature)是否等于36.6？”这个例子中，我们关心的是全体被试的核心温度是否等于正常人的温度。单样本t检验的计算公式可以不用深究，关键是理解其背后的逻辑。</p>
+<p>那么同理，一系列的<em>t</em>检验其实都可以认为是回归模型的特例。例如，我们来看单样本<em>t</em>检验。虽然我们平时很少使用单样本<em>t</em>检验，但在某些情况下，它还是有用的。比如，我们想要判断某个班级的成绩是否属于全校成绩的总体。在这种情况下，我们实际上是在比较这个班级的成绩均值和全校的总体均值。</p>
+<p>在单样本<em>t</em>检验中，我们关心的是一个样本的均值是否等于某个特定值。例如，在“在penguin数据中，全体被试的核心体温(Temperature)是否等于36.6？”这个例子中，我们关心的是全体被试的核心温度是否等于正常人的温度。单样本<em>t</em>检验的计算公式可以不用深究，关键是理解其背后的逻辑。</p>
 <p><span class="math display">\[t = \frac{\bar{X} - \mu}{s / \sqrt{n}}\]</span></p>
 <p><span class="math display">\[y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_p + \epsilon\]</span></p>
 <p>单样本<em>t</em>检验中，仅截距不为0。此时公式为：</p>
@@ -645,12 +645,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="math display">\[H_0: \beta_0 = 0\]</span>
 如图所示，这里有一群点，我们想要比较的是这些点的均值（例如用菱形表示）与某条线（特定值）之间是否存在显著性差异，或者说这些点的均值与这条线是否来自同一个总体。在这种情况下，我们可以构建一个只包含截距项β0的回归模型，即y = β0。我们也可以使用回归模型进行统计检验。</p>
 <p><img src="pic/chp8/singlet-lm.png" width="75%"></p>
-<p>当我们进行单样本t检验时，我们需要稍微调整公式。我们将因变量（temperature）减去我们想要比较的特定值（例如30），然后考虑减去特定值后的因变量均值是否属于一个以0为均值的正态分布。在这个回归模型中，我们加入一个截距项，用于进行t检验。</p>
+<p>当我们进行单样本<em>t</em>检验时，我们需要稍微调整公式。我们将因变量（temperature）减去我们想要比较的特定值（例如30），然后考虑减去特定值后的因变量均值是否属于一个以0为均值的正态分布。在这个回归模型中，我们加入一个截距项，用于进行<em>t</em>检验。</p>
 <div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="第八讲回归模型一.html#cb282-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">t.test</span>(</span>
 <span id="cb282-2"><a href="第八讲回归模型一.html#cb282-2" tabindex="-1"></a>  <span class="at">x =</span> df.penguin<span class="sc">$</span>Temperature, <span class="co"># 核心体温均值</span></span>
 <span id="cb282-3"><a href="第八讲回归模型一.html#cb282-3" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fl">36.6</span>) </span></code></pre></div>
 <p><img src="pic/chp8/compare2.1.png" width="100%"></p>
-<p>当然，在实际应用中，我们可以直接使用单样本t检验，将观测值x与某个特定值进行比较。这样，我们就可以判断样本数据的均值是否与特定值之间存在显著性差异，从而得出结论。总之，无论是单样本t检验还是回归模型，它们都可以帮助我们解决实际问题。在具体分析过程中，我们可以根据需要选择合适的方法。</p>
+<p>当然，在实际应用中，我们可以直接使用单样本<em>t</em>检验，将观测值x与某个特定值进行比较。这样，我们就可以判断样本数据的均值是否与特定值之间存在显著性差异，从而得出结论。总之，无论是单样本<em>t</em>检验还是回归模型，它们都可以帮助我们解决实际问题。在具体分析过程中，我们可以根据需要选择合适的方法。</p>
 <div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="第八讲回归模型一.html#cb283-1" tabindex="-1"></a>model.single <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
 <span id="cb283-2"><a href="第八讲回归模型一.html#cb283-2" tabindex="-1"></a>  <span class="at">data =</span> df.penguin,</span>
 <span id="cb283-3"><a href="第八讲回归模型一.html#cb283-3" tabindex="-1"></a>  <span class="at">formula =</span> Temperature <span class="sc">-</span> <span class="fl">36.6</span> <span class="sc">~</span> <span class="dv">1</span></span>
@@ -660,21 +660,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="配对样本t检验paired-t-test" class="section level3 hasAnchor" number="8.2.4">
 <h3><span class="header-section-number">8.2.4</span> 配对样本<em>t</em>检验(paired <em>t</em>-test)<a href="第八讲回归模型一.html#配对样本t检验paired-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>那么，对于配对样本t检验，我们其实可以把它看作是单样本t检验。因为配对样本t检验中的数据是一一对应的，我们可以通过一个简单的操作，即将两列配对数据相减，得到一列新的数据。然后，我们可以将这列新数据进行单样本t检验。</p>
+<p>那么，对于配对样本<em>t</em>检验，我们其实可以把它看作是单样本<em>t</em>检验。因为配对样本<em>t</em>检验中的数据是一一对应的，我们可以通过一个简单的操作，即将两列配对数据相减，得到一列新的数据。然后，我们可以将这列新数据进行单样本<em>t</em>检验。</p>
 <p><span class="math display">\[t = \frac{\bar{X} - \mu}{s / \sqrt{n}}\]</span>
-这里的前提条件我们就不详细讲了。简单来说，对于配对样本t检验，我们可以先将两个值相减，得到他们的差值。然后，我们检验这个差值是否显著地不同于零。如果差值的分布明显不同于零，那么我们就可以认为两者之间存在显著的差异。
+这里的前提条件我们就不详细讲了。简单来说，对于配对样本<em>t</em>检验，我们可以先将两个值相减，得到他们的差值。然后，我们检验这个差值是否显著地不同于零。如果差值的分布明显不同于零，那么我们就可以认为两者之间存在显著的差异。
 <span class="math display">\[y_1 - y_2 = \beta_0 \]</span>
 <span class="math display">\[H_0: \beta_0 = 0 \]</span>
-我们之所以能这样做，是因为在配对样本t检验中，每个被试都有两个数据点，这两个数据点是一一对应的。但是，对于独立样本t检验，由于数据点之间没有形成配对关系，我们不能直接相减。</p>
+我们之所以能这样做，是因为在配对样本<em>t</em>检验中，每个被试都有两个数据点，这两个数据点是一一对应的。但是，对于独立样本<em>t</em>检验，由于数据点之间没有形成配对关系，我们不能直接相减。</p>
 <p><img src="pic/chp8/pairt-lm.png" width="70%"></p>
-<p>同样，对于配对样本t检验，我们也可以使用回归方法进行检验。方法类似于独立样本t检验，我们只需将两个值相减，然后检验这个差值的均值是否等于零。在R语言中，我们可以使用t.test函数来进行配对样本t检验。我们只需将两列数据分别作为x和y输入，然后设置参数paired为TRUE，表示这两列数据是配对的，就可以进行配对样本t检验了。</p>
+<p>同样，对于配对样本<em>t</em>检验，我们也可以使用回归方法进行检验。方法类似于独立样本<em>t</em>检验，我们只需将两个值相减，然后检验这个差值的均值是否等于零。在R语言中，我们可以使用<code>t.test()</code>函数来进行配对样本<em>t</em>检验。我们只需将两列数据分别作为x和y输入，然后设置参数paired为TRUE，表示这两列数据是配对的，就可以进行配对样本<em>t</em>检验了。</p>
 <div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="第八讲回归模型一.html#cb284-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">t.test</span>(</span>
 <span id="cb284-2"><a href="第八讲回归模型一.html#cb284-2" tabindex="-1"></a>  <span class="at">x =</span> df.penguin<span class="sc">$</span>Temperature_t1, </span>
 <span id="cb284-3"><a href="第八讲回归模型一.html#cb284-3" tabindex="-1"></a>  <span class="at">y =</span> df.penguin<span class="sc">$</span>Temperature_t2, </span>
 <span id="cb284-4"><a href="第八讲回归模型一.html#cb284-4" tabindex="-1"></a>  <span class="at">paired =</span> <span class="cn">TRUE</span></span>
 <span id="cb284-5"><a href="第八讲回归模型一.html#cb284-5" tabindex="-1"></a>  )</span></code></pre></div>
 <p><img src="pic/chp8/compare3.1.png" width="100%"></p>
-<p>在前面我们讲了关于亲密关系和非亲密关系的两组人在体温上是否有区别的问题。我们可以使用配对样本t检验来进行检验，而配对样本t检验实际上是一个特殊的回归模型。同样地，对于所有其他类型的t检验，它们也都可以看作是特定的回归模型。因此，t检验与线性模型的本质是相同的。</p>
+<p>在前面我们讲了关于亲密关系和非亲密关系的两组人在体温上是否有区别的问题。我们可以使用配对样本<em>t</em>检验来进行检验，而配对样本<em>t</em>检验实际上是一个特殊的回归模型。同样地，对于所有其他类型的<em>t</em>检验，它们也都可以看作是特定的回归模型。因此，<em>t</em>检验与线性模型的本质是相同的。</p>
 <div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="第八讲回归模型一.html#cb285-1" tabindex="-1"></a>model.paired <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
 <span id="cb285-2"><a href="第八讲回归模型一.html#cb285-2" tabindex="-1"></a>  Temperature_t1 <span class="sc">-</span> Temperature_t2 <span class="sc">~</span> <span class="dv">1</span>,</span>
 <span id="cb285-3"><a href="第八讲回归模型一.html#cb285-3" tabindex="-1"></a>  <span class="at">data =</span> df.penguin</span>
@@ -683,8 +683,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="pic/chp8/compare3.2.png" width="100%"></p>
 </div>
 <div id="brucerttest" class="section level3 hasAnchor" number="8.2.5">
-<h3><span class="header-section-number">8.2.5</span> bruceR::TTEST<a href="第八讲回归模型一.html#brucerttest" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>这里，我们可以介绍一下bruceR包中的t检验功能，它涵盖了我们前面提到的各种t检验，并且输出结果非常方便。如果大家下载了我们的课件，可以看到关于bruceR包中t检验各种参数的介绍。bruceR包基本上涵盖了所有类型的t检验，包括独立样本t检验、配对样本t检验和单样本t检验。它的输出结果通常是一个三线表，方便大家查看和理解。</p>
+<h3><span class="header-section-number">8.2.5</span> <code>bruceR::TTEST()</code><a href="第八讲回归模型一.html#brucerttest" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>这里，我们可以介绍一下<code>bruceR</code>包中的<em>t</em>检验功能，它涵盖了我们前面提到的各种<em>t</em>检验，并且输出结果非常方便。如果大家下载了我们的课件，可以看到关于<code>bruceR</code>包中<em>t</em>检验各种参数的介绍。<code>bruceR</code>包基本上涵盖了所有类型的<em>t</em>检验，包括独立样本<em>t</em>检验、配对样本<em>t</em>检验和单样本<em>t</em>检验。它的输出结果通常是一个三线表，方便大家查看和理解。</p>
 <p><img src="pic/chp8/TTEST.png" width="70%"></p>
 <div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="第八讲回归模型一.html#cb286-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">t.test</span>(</span>
 <span id="cb286-2"><a href="第八讲回归模型一.html#cb286-2" tabindex="-1"></a>  <span class="at">data =</span> df.penguin, </span>
@@ -698,7 +698,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb287-4"><a href="第八讲回归模型一.html#cb287-4" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&quot;romantic&quot;</span>     <span class="co"># 自变量</span></span>
 <span id="cb287-5"><a href="第八讲回归模型一.html#cb287-5" tabindex="-1"></a>) </span></code></pre></div>
 <p><img src="pic/chp8/leven.png" width="100%"></p>
-<p>[单样本t检验]</p>
+<p>[单样本<em>t</em>检验]</p>
 <div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="第八讲回归模型一.html#cb288-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">t.test</span>(</span>
 <span id="cb288-2"><a href="第八讲回归模型一.html#cb288-2" tabindex="-1"></a>  <span class="at">x =</span> df.penguin<span class="sc">$</span>Temperature, </span>
 <span id="cb288-3"><a href="第八讲回归模型一.html#cb288-3" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fl">36.6</span></span>
@@ -710,7 +710,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb289-4"><a href="第八讲回归模型一.html#cb289-4" tabindex="-1"></a>  <span class="at">test.value =</span> <span class="fl">36.6</span>, <span class="co"># 固定值</span></span>
 <span id="cb289-5"><a href="第八讲回归模型一.html#cb289-5" tabindex="-1"></a>  <span class="at">test.sided =</span> <span class="st">&quot;=&quot;</span>)  <span class="co"># 假设的方向</span></span></code></pre></div>
 <p><img src="pic/chp8/sample.png" width="100%"></p>
-<p>[配对样本t检验]</p>
+<p>[配对样本<em>t</em>检验]</p>
 <div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="第八讲回归模型一.html#cb290-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">t.test</span>(</span>
 <span id="cb290-2"><a href="第八讲回归模型一.html#cb290-2" tabindex="-1"></a>  <span class="at">x =</span> df.penguin<span class="sc">$</span>Temperature_t1, <span class="co">#第1次</span></span>
 <span id="cb290-3"><a href="第八讲回归模型一.html#cb290-3" tabindex="-1"></a>  <span class="at">y =</span> df.penguin<span class="sc">$</span>Temperature_t2, <span class="co">#第2次</span></span>
@@ -722,12 +722,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb291-4"><a href="第八讲回归模型一.html#cb291-4" tabindex="-1"></a>        <span class="st">&quot;Temperature_t2&quot;</span>), <span class="co"># 变量为两次核心体温</span></span>
 <span id="cb291-5"><a href="第八讲回归模型一.html#cb291-5" tabindex="-1"></a>  <span class="at">paired =</span> T)  <span class="co"># 配对数据，默认是FALSE</span></span></code></pre></div>
 <p><img src="pic/chp8/pair.png" width="100%"></p>
-<p>无论是使用bruceR包中的t检验功能，还是R语言自带的t检验功能，我们都可以发现它们得到的结果与线性回归模型的结果是一模一样的。这再次证实了t检验与线性回归模型之间的密切关系。在实际研究中，我们可以根据问题的具体情况选择合适的方法，无论是t检验还是线性回归模型。同时，理解它们之间的关系有助于我们更好地掌握统计分析的原理和技巧。</p>
+<p>无论是使用bruceR包中的<em>t</em>检验功能，还是R语言自带的<em>t</em>检验功能，我们都可以发现它们得到的结果与线性回归模型的结果是一模一样的。这再次证实了<em>t</em>检验与线性回归模型之间的密切关系。在实际研究中，我们可以根据问题的具体情况选择合适的方法，无论是<em>t</em>检验还是线性回归模型。同时，理解它们之间的关系有助于我们更好地掌握统计分析的原理和技巧。</p>
 </div>
 <div id="总结" class="section level3 hasAnchor" number="8.2.6">
 <h3><span class="header-section-number">8.2.6</span> 总结<a href="第八讲回归模型一.html#总结" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>我们来做一个简单的总结。对于t检验，我们可以使用R自带的t.test函数。虽然语法上略有不同，但实际上，线性模型和t检验在本质上是一致的。单样本t检验可以看作是一个仅有截距的线性模型；独立样本t检验是一个仅有截距和一个斜率的线性模型；而配对样本t检验则是一个基于差值的仅有截距的线性模型。</p>
-<p>独立样本t检验也可以看作是一个自变量为二分变量的线性回归模型。要理解为什么仅有截距的回归模型与t检验相关，我们可能需要回顾正态分布、抽样分布等概念，以及为什么我们使用t值这个分布来进行检验。然而，我们在这里没有足够的时间来展开这个话题。如果大家对此感兴趣，可以自行深入学习，也很推荐大家关注包寒吴霜老师的专栏。</p>
+<p>我们来做一个简单的总结。对于<em>t</em>检验，我们可以使用R自带的<code>t.test</code>函数。虽然语法上略有不同，但实际上，线性模型和<em>t</em>检验在本质上是一致的。单样本<em>t</em>检验可以看作是一个仅有截距的线性模型；独立样本<em>t</em>检验是一个仅有截距和一个斜率的线性模型；而配对样本<em>t</em>检验则是一个基于差值的仅有截距的线性模型。</p>
+<p>独立样本<em>t</em>检验也可以看作是一个自变量为二分变量的线性回归模型。要理解为什么仅有截距的回归模型与<em>t</em>检验相关，我们可能需要回顾正态分布、抽样分布等概念，以及为什么我们使用t值这个分布来进行检验。然而，我们在这里没有足够的时间来展开这个话题。如果大家对此感兴趣，可以自行深入学习，也很推荐大家关注包寒吴霜老师的专栏。</p>
 </div>
 </div>
 <div id="anova-linear-regression" class="section level2 hasAnchor" number="8.3">
@@ -750,7 +750,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 [vars]</p>
 <div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="第八讲回归模型一.html#cb292-1" tabindex="-1"></a><span class="fu">summary</span>(df.penguin<span class="sc">$</span>DEQ)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    1.29   34.43   39.91   39.84   51.32   60.39</code></pre>
+##   1.293  34.433  39.912  39.842  51.317  60.391</code></pre>
 <div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="第八讲回归模型一.html#cb294-1" tabindex="-1"></a><span class="co"># 设定分割点</span></span>
 <span id="cb294-2"><a href="第八讲回归模型一.html#cb294-2" tabindex="-1"></a><span class="co"># [0-23.5 热带， 23.5-35 亚热带]， [35-40 暖温带， 40-50 中温带]， [50-66.5 寒温带]</span></span>
 <span id="cb294-3"><a href="第八讲回归模型一.html#cb294-3" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">35</span>, <span class="dv">50</span>, <span class="fl">66.5</span>)</span>
@@ -768,8 +768,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>[tidy data]</p>
 <div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="第八讲回归模型一.html#cb296-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> df.penguin <span class="sc">%&gt;%</span> </span>
 <span id="cb296-2"><a href="第八讲回归模型一.html#cb296-2" tabindex="-1"></a>  <span class="fu">select</span>(subjID, climate, romantic, Temperature) </span></code></pre></div>
-<div class="datatables html-widget html-fill-item" id="htmlwidget-a1fe84c0bdbea1fac304" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-a1fe84c0bdbea1fac304">{"x":{"filter":"none","vertical":false,"fillContainer":true,"data":[["1","2","3","4","5","6"],[1,2,3,4,5,6],["热带","寒温带","寒温带","寒温带","温带","寒温带"],["单身","恋爱","恋爱","恋爱","恋爱","恋爱"],[36.75,35.40000000000001,35.1,35.95,36.08333333,35.59999999999999]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>subjID<\/th>\n      <th>climate<\/th>\n      <th>romantic<\/th>\n      <th>Temperature<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"subjID","targets":1},{"name":"climate","targets":2},{"name":"romantic","targets":3},{"name":"Temperature","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-5a7a2a960e171383483a" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-5a7a2a960e171383483a">{"x":{"filter":"none","vertical":false,"fillContainer":true,"data":[["1","2","3","4","5","6"],[1,2,3,4,5,6],["热带","寒温带","寒温带","寒温带","温带","寒温带"],["单身","恋爱","恋爱","恋爱","恋爱","恋爱"],[36.75,35.40000000000001,35.1,35.95,36.08333333,35.59999999999999]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>subjID<\/th>\n      <th>climate<\/th>\n      <th>romantic<\/th>\n      <th>Temperature<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"subjID","targets":1},{"name":"climate","targets":2},{"name":"romantic","targets":3},{"name":"Temperature","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="代码实操正态性检验" class="section level3 hasAnchor" number="8.3.4">
 <h3><span class="header-section-number">8.3.4</span> 代码实操|正态性检验<a href="第八讲回归模型一.html#代码实操正态性检验" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -781,7 +781,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Asymptotic one-sample Kolmogorov-Smirnov test
 ## 
 ## data:  df$Temperature
-## D = 1, p-value &lt;0.0000000000000002
+## D = 1, p-value &lt; 0.00000000000000022
 ## alternative hypothesis: two-sided</code></pre>
 <div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="第八讲回归模型一.html#cb299-1" tabindex="-1"></a><span class="co"># 进行数据转换，转换后仍非正态分布</span></span>
 <span id="cb299-2"><a href="第八讲回归模型一.html#cb299-2" tabindex="-1"></a>df<span class="sc">$</span>Temperature_log <span class="ot">&lt;-</span> <span class="fu">log</span>(df<span class="sc">$</span>Temperature)</span>
@@ -790,7 +790,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Asymptotic one-sample Kolmogorov-Smirnov test
 ## 
 ## data:  df$Temperature_log
-## D = 1, p-value &lt;0.0000000000000002
+## D = 0.99981, p-value &lt; 0.00000000000000022
 ## alternative hypothesis: two-sided</code></pre>
 <p>[qq图]</p>
 <div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="第八讲回归模型一.html#cb301-1" tabindex="-1"></a><span class="co"># 正态性检验-qq图</span></span>
@@ -805,17 +805,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="代码实操双因素被试间方差分析" class="section level3 hasAnchor" number="8.3.5">
 <h3><span class="header-section-number">8.3.5</span> 代码实操|双因素被试间方差分析<a href="第八讲回归模型一.html#代码实操双因素被试间方差分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>在R中实现方差分析，我们通常会用到aov函数，这是R自带的一个函数。实际上，这个函数来自于stats包，同样的，t.test函数和lm函数也是来源于这个包。在进行方差分析时，我们采用的语法与t检验非常相似，仍然是线性回归的写法。我们将因变量放在前面，自变量放在后面，中间用一个波浪号连接。然后，我们指定使用的数据。</p>
+<p>在R中实现方差分析，我们通常会用到<code>aov()</code>函数，这是R自带的一个函数。实际上，这个函数来自于stats包，同样的，<code>t.test()</code>函数和<code>lm()</code>函数也是来源于这个包。在进行方差分析时，我们采用的语法与<em>t</em>检验非常相似，仍然是线性回归的写法。我们将因变量放在前面，自变量放在后面，中间用一个波浪号连接。然后，我们指定使用的数据。</p>
 <p>在方差分析的语法中，我们使用乘号 * 来表示主效应及其交互作用。例如，我们可以写成climate * romantic，这表示考虑climate和romantic的主效应以及它们之间的交互作用。在R中，这样的写法非常常见，前面的波浪号表示因变量与自变量之间的关系，而乘号表示考虑主效应及交互作用。</p>
-<p>实际上，这种线性方程有多种写法。例如，在t检验中，我们只关注romantic；而在方差分析中，我们加入了climate的主效应以及它们之间的交互作用。在R中最基础的包里，当我们进行方差分析时，实际上沿用了线性模型的语法。通过这种语法，我们可以得到方差分析的一些统计值，如F值、P值以及我们熟悉的平方和（SS，Sum of Squares）。</p>
+<p>实际上，这种线性方程有多种写法。例如，在<em>t</em>检验中，我们只关注romantic；而在方差分析中，我们加入了climate的主效应以及它们之间的交互作用。在R中最基础的包里，当我们进行方差分析时，实际上沿用了线性模型的语法。通过这种语法，我们可以得到方差分析的一些统计值，如F值、P值以及我们熟悉的平方和（SS，Sum of Squares）。</p>
 <p>如果我们对方差分析的结果使用summary函数进行查看，我们会看到熟悉的方差分析表。在这个表中，我们可以看到两个主效应（romantic和climate）以及它们之间的交互作用。同时，表格中还包含了残差（Residuals）信息。这些信息有助于我们了解各个因素对因变量的影响程度和显著性。</p>
 <div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="第八讲回归模型一.html#cb303-1" tabindex="-1"></a>aov1 <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">aov</span>(Temperature <span class="sc">~</span> climate <span class="sc">*</span> romantic, <span class="at">data =</span> df)</span>
 <span id="cb303-2"><a href="第八讲回归模型一.html#cb303-2" tabindex="-1"></a><span class="fu">summary</span>(aov1)</span></code></pre></div>
-<pre><code>##                    Df Sum Sq Mean Sq F value              Pr(&gt;F)    
-## climate             2   18.8    9.41   49.39 &lt;0.0000000000000002 ***
-## romantic            1    0.2    0.24    1.28              0.2581    
-## climate:romantic    2    1.9    0.95    5.01              0.0068 ** 
-## Residuals        1421  270.7    0.19                                
+<pre><code>##                    Df Sum Sq Mean Sq F value               Pr(&gt;F)    
+## climate             2  18.82   9.408  49.392 &lt; 0.0000000000000002 ***
+## romantic            1   0.24   0.244   1.280              0.25807    
+## climate:romantic    2   1.91   0.955   5.014              0.00676 ** 
+## Residuals        1421 270.65   0.190                                 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>在进行方差分析时，有时我们会发现，在R中进行的分析结果与在SPSS中进行的结果不完全一样。例如，climate的F值在R中为49.39，而在SPSS中为50.88。这种情况下，我们可能会感到困惑，不知道是否可以信任R的结果，甚至可能会认为R的分析方法不靠谱。</p>
@@ -836,11 +836,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Anova Table (Type II tests)
 ## 
 ## Response: Temperature
-##                  Sum Sq   Df F value              Pr(&gt;F)    
-## climate            19.0    2   49.97 &lt;0.0000000000000002 ***
-## romantic            0.2    1    1.28              0.2581    
-## climate:romantic    1.9    2    5.01              0.0068 ** 
-## Residuals         270.7 1421                                
+##                   Sum Sq   Df F value                Pr(&gt;F)    
+## climate           19.034    2 49.9680 &lt; 0.00000000000000022 ***
+## romantic           0.244    1  1.2801              0.258072    
+## climate:romantic   1.910    2  5.0136              0.006765 ** 
+## Residuals        270.654 1421                                  
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>我们是否能得到完全相同的结果呢？实际上，这是完全可能的。例如，我们可以使用afex这个包，这是在2017或2018年后出现的一个包。afex是为了满足实验心理学家进行方差分析的需求而设计的，其中包含了各种方差分析的功能。如果我们按照这样的写法，即将被试的identity写在这里，然后将类型设置为三，我们就能得到完全相同的结果。我们也可以在其他地方使用同样的方法，同样能得到一模一样的结果。</p>
@@ -868,10 +868,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb313-9"><a href="第八讲回归模型一.html#cb313-9" tabindex="-1"></a><span class="co"># 可能的原因：除了关心每个水平对应的效果，同时也关心水平与水平之间的效果</span></span>
 <span id="cb313-10"><a href="第八讲回归模型一.html#cb313-10" tabindex="-1"></a>my.simple <span class="ot">&lt;-</span> c1<span class="sc">-</span>my.coding</span>
 <span id="cb313-11"><a href="第八讲回归模型一.html#cb313-11" tabindex="-1"></a>my.simple</span></code></pre></div>
-<pre><code>##          2        3
-## 1 -0.33333 -0.33333
-## 2  0.66667 -0.33333
-## 3 -0.33333  0.66667</code></pre>
+<pre><code>##            2          3
+## 1 -0.3333333 -0.3333333
+## 2  0.6666667 -0.3333333
+## 3 -0.3333333  0.6666667</code></pre>
 <div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="第八讲回归模型一.html#cb315-1" tabindex="-1"></a><span class="co"># 更改climate的对比</span></span>
 <span id="cb315-2"><a href="第八讲回归模型一.html#cb315-2" tabindex="-1"></a><span class="fu">contrasts</span>(df<span class="sc">$</span>climate) <span class="ot">&lt;-</span> my.simple</span>
 <span id="cb315-3"><a href="第八讲回归模型一.html#cb315-3" tabindex="-1"></a></span>
@@ -885,12 +885,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Anova Table (Type III tests)
 ## 
 ## Response: Temperature
-##                   Sum Sq   Df    F value              Pr(&gt;F)    
-## (Intercept)      1768309    1 9284069.65 &lt;0.0000000000000002 ***
-## climate               19    2      50.88 &lt;0.0000000000000002 ***
-## romantic               0    1       1.00              0.3173    
-## climate:romantic       2    2       5.01              0.0068 ** 
-## Residuals            271 1421                                   
+##                   Sum Sq   Df      F value                Pr(&gt;F)    
+## (Intercept)      1768309    1 9284069.6498 &lt; 0.00000000000000022 ***
+## climate               19    2      50.8832 &lt; 0.00000000000000022 ***
+## romantic               0    1       1.0006              0.317336    
+## climate:romantic       2    2       5.0136              0.006765 ** 
+## Residuals            271 1421                                       
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>[afex::aov_ez()]</p>
@@ -919,7 +919,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="线性回归" class="section level2 hasAnchor" number="8.4">
 <h2><span class="header-section-number">8.4</span> 线性回归<a href="第八讲回归模型一.html#线性回归" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>我们刚刚讨论的是t检验，它是一种特定的回归模型。而对于ANOVA（方差分析），从它的表示方法来看，我们可以很明显地看出它实际上也是一个回归模型。因为它的方程表示形式与线性模型非常相似，包括一些自变量以及它们之间是否存在交互作用。在实际应用中，我们经常会遇到单因素方差分析和多因素方差分析。</p>
+<p>我们刚刚讨论的是<em>t</em>检验，它是一种特定的回归模型。而对于ANOVA（方差分析），从它的表示方法来看，我们可以很明显地看出它实际上也是一个回归模型。因为它的方程表示形式与线性模型非常相似，包括一些自变量以及它们之间是否存在交互作用。在实际应用中，我们经常会遇到单因素方差分析和多因素方差分析。</p>
 <p>在这种情况下，两因素方差分析也是一个特殊的回归模型。它的特殊之处在于我们的自变量是分类变量，也可以称为离散变量。因此，在进行方差分析时，我们需要注意处理这些分类变量或离散变量。</p>
 <p>假设我们这里有一个2×2的设计，也就是有四个条件，这四个条件可以视为四组。每一组被试在某一因变量上都会有自己的取值。我们需要检验的是这四组被试的均值是否完全相同，即它们是否有偏离总体均值的情况。这就是我们进行方差分析的一个核心目标。在线性模型上，我们也在检验同样的问题。</p>
 <p>比如说，我们可以通过某种方式对自变量进行编码，然后观察各组的均值与其他组之间的差异是否达到显著水平。举个例子，这里我们展示的是一种非常简单的编码方式，我们以某一条件下的值作为零点，比如第一组，然后其他所有的系数都是其他组的均值与这个零点的差异，也就是我们斜率的比较对象。</p>
@@ -927,13 +927,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>在这里，我们可以看到如果有一个组合为0和0，那么在我们的回归模型中，这个部分就变成了β0。在这种编码方式下，β0代表的就是某个条件下的均值。通过这种方式，我们可以看到β1可能代表的是某种条件下的值，比如当某个变量取值为1或0时的情况。同样，β2可能代表的是另一个变量在取值为1、0或者两个变量都为1时的情况。</p>
 <p>所有这些回归系数都可以被理解为组间的差异值。我们的回归模型的目标就是去检验这些差异是否显著。在做回归模型时，我们检验显著性的方式可能有所不同。在这种最简化的情况下，我们可以看到，我们的2×2的两因素方差分析完全可以对应成为一个离散变量的回归模型。</p>
 <p><img src="pic/chp8/aovLM.png" width="662" style="display: block; margin: auto;" /></p>
-<p>如果我们采用ANOVA或者线性模型，并且我们的设定是一样的，那么得到的结果将会是完全一样的。可能我讲得有点快，大家可能需要回顾一下自己学的线性回归的知识。因为我不确定其他的统计老师在讲线性回归的时候是否已经将其与ANOVA或t检验进行了关联。但大家可以这样理解，它们本质上都是一样的。如果大家理解了，ANOVA其实就是线性回归的一个特定模式，那么你们就已经把握了其要点。</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="第八讲回归模型一.html#cb324-1" tabindex="-1"></a>aov1 <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">Anova</span>(</span>
-<span id="cb324-2"><a href="第八讲回归模型一.html#cb324-2" tabindex="-1"></a>  <span class="fu">aov</span>(Temperature <span class="sc">~</span> climate <span class="sc">*</span> romantic, </span>
-<span id="cb324-3"><a href="第八讲回归模型一.html#cb324-3" tabindex="-1"></a>      <span class="at">data =</span> df), </span>
-<span id="cb324-4"><a href="第八讲回归模型一.html#cb324-4" tabindex="-1"></a>  <span class="at">type =</span> <span class="dv">3</span></span>
-<span id="cb324-5"><a href="第八讲回归模型一.html#cb324-5" tabindex="-1"></a>  )</span>
-<span id="cb324-6"><a href="第八讲回归模型一.html#cb324-6" tabindex="-1"></a>aov1</span></code></pre></div>
+<p>如果我们采用ANOVA或者线性模型，并且我们的设定是一样的，那么得到的结果将会是完全一样的。可能我讲得有点快，大家可能需要回顾一下自己学的线性回归的知识。因为我不确定其他的统计老师在讲线性回归的时候是否已经将其与ANOVA或<em>t</em>检验进行了关联。但大家可以这样理解，它们本质上都是一样的。如果大家理解了，ANOVA其实就是线性回归的一个特定模式，那么你们就已经把握了其要点。</p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="第八讲回归模型一.html#cb324-1" tabindex="-1"></a>aov1 <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">Anova</span>(<span class="fu">aov</span>(Temperature <span class="sc">~</span> climate <span class="sc">*</span> romantic, </span>
+<span id="cb324-2"><a href="第八讲回归模型一.html#cb324-2" tabindex="-1"></a>                       <span class="at">data =</span> df), </span>
+<span id="cb324-3"><a href="第八讲回归模型一.html#cb324-3" tabindex="-1"></a>                   <span class="at">type =</span> <span class="dv">3</span></span>
+<span id="cb324-4"><a href="第八讲回归模型一.html#cb324-4" tabindex="-1"></a>                   )</span>
+<span id="cb324-5"><a href="第八讲回归模型一.html#cb324-5" tabindex="-1"></a>aov1</span></code></pre></div>
 <p><img src="pic/chp8/compare8231.png" /></p>
 <div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="第八讲回归模型一.html#cb325-1" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">Anova</span>(</span>
 <span id="cb325-2"><a href="第八讲回归模型一.html#cb325-2" tabindex="-1"></a>  <span class="fu">lm</span>(Temperature <span class="sc">~</span> climate <span class="sc">*</span> romantic, </span>
@@ -942,12 +941,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb325-5"><a href="第八讲回归模型一.html#cb325-5" tabindex="-1"></a>  )</span>
 <span id="cb325-6"><a href="第八讲回归模型一.html#cb325-6" tabindex="-1"></a>lm1</span></code></pre></div>
 <p><img src="pic/chp8/compare8232.png" /></p>
-<p>在实际研究中，即使我们知道ANOVA与线性回归有相似之处，但我们仍然需要报告传统的方差分析结果。在这种情况下，我们推荐使用bruceR包的<code>mANOVA</code>函数，它是一个非常强大的函数，基本上涵盖了我们在心理学中常用的所有ANOVA类型。使用<code>mANOVA</code>函数可以大大简化心理学研究者使用这个方法的门槛。</p>
+<p>在实际研究中，即使我们知道ANOVA与线性回归有相似之处，但我们仍然需要报告传统的方差分析结果。在这种情况下，我们推荐使用<code>bruceR</code>包的<code>MANOVA</code>函数，它是一个非常强大的函数，基本上涵盖了我们在心理学中常用的所有ANOVA类型。使用<code>MANOVA</code>函数可以大大简化心理学研究者使用这个方法的门槛。</p>
 <p><img src="pic/chp8/ANOVA%20data.png" width="65%"></p>
-<p>关于<code>mANOVA</code>函数的主要参数，我们不再详细讲解，大家可以查阅相关资料。该函数非常全面，而且有一个非常好的特点，就是它可以直接将结果保存为三线表格，方便我们将结果粘贴到Word文档中进行报告。</p>
+<p>关于<code>MANOVA</code>函数的主要参数，我们不再详细讲解，大家可以查阅相关资料。该函数非常全面，而且有一个非常好的特点，就是它可以直接将结果保存为三线表格，方便我们将结果粘贴到Word文档中进行报告。</p>
 <p><img src="pic/chp8/MANOVA.png" width="70%"></p>
-<p>以我们刚才讲解的例子为例，我们要对climate和romantic进行方差分析，我们可以调用<code>mANOVA</code>函数，设置dependent variable为temperature，参数设为between表示主间变量。这里有两个主间变量。大家可以看到，得到的结果与SPSS是完全相同的，如50.88。</p>
-<p>与SPSS不同之处在于<code>mANOVA</code>函数会输出Generalized Eta Squared（广义η²），这是方差分析的一个效应量指标，有助于我们更好地理解结果。关于效应量的指标，对于传统心理学来说，我们通常只关注p值。但实际上，最近的趋势是大家会更加关注效应量有多大，而不仅仅是p值是否显著。换句话说，我们不仅关心结果是否显著，还关心效应量是否足够大。</p>
+<p>以我们刚才讲解的例子为例，我们要对climate和romantic进行方差分析，我们可以调用<code>MANOVA</code>函数，设置dependent variable为temperature，参数设为between表示主间变量。这里有两个主间变量。大家可以看到，得到的结果与SPSS是完全相同的，如50.88。</p>
+<p>与SPSS不同之处在于<code>MANOVA</code>函数会输出Generalized Eta Squared（广义η²），这是方差分析的一个效应量指标，有助于我们更好地理解结果。关于效应量的指标，对于传统心理学来说，我们通常只关注p值。但实际上，最近的趋势是大家会更加关注效应量有多大，而不仅仅是p值是否显著。换句话说，我们不仅关心结果是否显著，还关心效应量是否足够大。</p>
 <p>在方差分析中，我们经常会进行进一步的简单效应分析和事后多重比较。这里的操作比较灵活。例如，如果你使用的是纯粹的重复测量设计，那么在没有交互作用的情况下，我们可能会进行多重比较，也就是比较某一条件下不同水平之间是否存在差异。然而，如果存在交互作用，我们可能需要重新检查在某一自变量的水平下，另一个自变量是否具有效应。这种情况下，我们称之为简单效应。简单效应分析可以帮助我们深入了解在某一特定条件下，不同水平之间的差异，以便更好地解释和理解我们的研究结果。</p>
 <div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="第八讲回归模型一.html#cb326-1" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(<span class="at">data =</span> df, </span>
 <span id="cb326-2"><a href="第八讲回归模型一.html#cb326-2" tabindex="-1"></a>                       <span class="at">dv =</span> <span class="st">&quot;Temperature&quot;</span>, </span>
@@ -962,14 +961,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [8] &quot;---&quot;                                                           
 ## [9] &quot;Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1&quot;</code></pre>
 <p>在这个例子中，我们可以看到，我们对climate和romantic进行了方差分析，试图查看在不同的romantic条件下（即单身或非单身），climate是否有影响。这就是简单效应分析。</p>
-<p>在R中，我们可以看到mANOVA函数的输出结果。首先，它会输出描述性统计结果，包括climate和romantic的各个水平的均值、标准差和样本量。然后，它会给出方差分析表，包括climate的主效应、romantic的主效应和它们的交互作用的效应。我们可以看到，climate的主效应是显著的，这与我们的预期一致。即在不同气候带的人们体温存在差异，其p值非常小，F值也比较大。此外，我们也发现climate和romantic的交互作用是显著的，这也与我们的预期相符。</p>
-<p>原先，我们试图通过t检验来查看不同romantic状态下的人们体温是否有区别，但我们并没有发现显著差异。然后，我们怀疑这可能是因为人的体温受到climate的影响，这个效应可能掩盖了romantic的影响。因此，我们引入了climate这个因素，然后再次检验romantic和climate的交互作用。结果显示，这个交互作用是显著的，这也就验证了我们的猜想。</p>
-<p>在mANOVA中，它会输出各种效应量指标，如η²和广义η²（Generalized Eta Squared）。通常情况下，在做方差分析时，我们会报告广义η²。实际上，关于方差分析的效应量指标是一个重要且不容易掌握的知识点。在mANOVA中，它还会输出其他效应量指标，如Cohen’s f和方差同质性检验结果。这些输出结果非常符合心理学研究者的使用习惯。</p>
+<p>在R中，我们可以看到<code>MANOVA</code>函数的输出结果。首先，它会输出描述性统计结果，包括climate和romantic的各个水平的均值、标准差和样本量。然后，它会给出方差分析表，包括climate的主效应、romantic的主效应和它们的交互作用的效应。我们可以看到，climate的主效应是显著的，这与我们的预期一致。即在不同气候带的人们体温存在差异，其p值非常小，F值也比较大。此外，我们也发现climate和romantic的交互作用是显著的，这也与我们的预期相符。</p>
+<p>原先，我们试图通过<em>t</em>检验来查看不同romantic状态下的人们体温是否有区别，但我们并没有发现显著差异。然后，我们怀疑这可能是因为人的体温受到climate的影响，这个效应可能掩盖了romantic的影响。因此，我们引入了climate这个因素，然后再次检验romantic和climate的交互作用。结果显示，这个交互作用是显著的，这也就验证了我们的猜想。</p>
+<p>在<code>MANOVA</code>中，它会输出各种效应量指标，如η²和广义η²（Generalized Eta Squared）。通常情况下，在做方差分析时，我们会报告广义η²。实际上，关于方差分析的效应量指标是一个重要且不容易掌握的知识点。<code>MANOVA</code>，它还会输出其他效应量指标，如Cohen’s f和方差同质性检验结果。这些输出结果非常符合心理学研究者的使用习惯。</p>
 <p><img src="pic/chp8/EMMEANS.png" width="70%"></p>
 <p>当我们发现交互作用时，我们通常需要进一步了解这个交互作用代表什么。在这种情况下，我们可以使用<code>emmeans</code>（estimated marginal means）函数来查看不同条件下的结果。这个函数可以帮助我们查看在不同条件下，climate和romantic之间的简单效应。通过<code>emmeans</code>函数，我们可以得到一个三线表，展示了在不同romantic条件下，climate的简单效应。在这个表格中，我们可以看到，在不同的romantic条件下，climate都具有显著效应。这些信息有助于我们更深入地了解交互作用背后的实际情况。</p>
-<p>在这个分析过程中，我们首先在恋爱和单身的条件下分别看了climate的影响，并发现climate在两种情况下都有显著影响，虽然效应量可能会有所不同。然后，我们进一步进行了post-hoc比较，比较了恋爱和单身状态下，不同climate的体温差异，结果显示基本上所有的差异都是显著的。</p>
+<p>在这个分析过程中，我们首先在恋爱和单身的条件下分别看了climate的影响，并发现climate在两种情况下都有显著影响，虽然效应量可能会有所不同。然后，我们进一步进行了事后(post-hoc)比较，比较了恋爱和单身状态下，不同climate的体温差异，结果显示基本上所有的差异都是显著的。</p>
 <p>然后，我们通过改变分组条件，看了在不同climate下，恋爱关系是否有影响。结果显示，在热带和温带，恋爱关系没有显著影响，但在寒带，恋爱关系则有显著影响。这个结果与我们的预期相符，表明在较冷的气候下，恋爱关系对体温有调节作用。</p>
-<p>此外，我们还进行了F检验，实际上是在热带、温带和寒带三种条件下进行了单因素方差分析。由于只有两个水平（恋爱和单身），所以这个F检验的结果与后面的t检验结果基本一致。这是因为在只有两个水平的情况下，F检验和t检验的结果是一样的。如果你对这个有兴趣，你可以进一步查看t值和F值之间的关系。</p>
+<p>此外，我们还进行了<em>F</em>检验，实际上是在热带、温带和寒带三种条件下进行了单因素方差分析。由于只有两个水平（恋爱和单身），所以这个<em>F</em>检验的结果与后面的<em>t</em>检验结果基本一致。这是因为在只有两个水平的情况下，<em>F</em>检验和<em>t</em>检验的结果是一样的。如果你对这个有兴趣，你可以进一步查看t值和F值之间的关系。</p>
 <div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="第八讲回归模型一.html#cb328-1" tabindex="-1"></a>sim_eff <span class="ot">&lt;-</span> res1 <span class="sc">%&gt;%</span> </span>
 <span id="cb328-2"><a href="第八讲回归模型一.html#cb328-2" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">EMMEANS</span>(<span class="st">&quot;climate&quot;</span>, <span class="at">by =</span> <span class="st">&quot;romantic&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb328-3"><a href="第八讲回归模型一.html#cb328-3" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">EMMEANS</span>(<span class="st">&quot;romantic&quot;</span>, <span class="at">by =</span> <span class="st">&quot;climate&quot;</span>)</span></code></pre></div>
@@ -1096,7 +1095,7 @@ You might also use <code>effectsize::t_to_d()</code> to compute d.</p>
 </div>
 <div id="知识延申总结" class="section level2 hasAnchor" number="8.6">
 <h2><span class="header-section-number">8.6</span> 知识延申|总结<a href="第八讲回归模型一.html#知识延申总结" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>此外，我们还讨论了线性模型与t检验之间的关系。可能有些同学在理解这部分内容时会感到困惑，这时候建议大家回顾一下本科阶段的教材，加深对回归模型和t检验之间关系的理解。学习代码和应用是很重要的，但要正确地使用它们，还需要掌握背后的统计知识。</p>
+<p>此外，我们还讨论了线性模型与<em>t</em>检验之间的关系。可能有些同学在理解这部分内容时会感到困惑，这时候建议大家回顾一下本科阶段的教材，加深对回归模型和<em>t</em>检验之间关系的理解。学习代码和应用是很重要的，但要正确地使用它们，还需要掌握背后的统计知识。</p>
 <p>总之，通过学习本节课的内容，我们可以更好地理解方差分析的原理和应用，并能够在R中使用相应的函数进行实际分析。同时，我们也要意识到，在学习和使用R进行统计分析时，理解和掌握背后的统计知识是非常重要的。</p>
 <p>课堂总结</p>
 <p><img src="pic/chp8/route.png" /></p>

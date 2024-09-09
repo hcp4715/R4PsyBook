@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 引言 {-}
 
-本电子书通过[`bookdown`](https://bookdown.org/)进行创建，相关代码见[这里](https://github.com/hcp4715/R4PsyBook)由于文字稿来自于对课堂录音的整理，完全由本人与志愿者以志愿方式进行整理，因此，可能存在如下问题：
+本电子书通过[`bookdown`](https://bookdown.org/)进行创建，相关代码见[这里](https://github.com/hcp4715/R4PsyBook)。由于文字稿来自于对课堂录音的整理，完全由本人与志愿者以志愿方式进行整理，因此，可能存在如下问题：
 
 -   文字口语化严重
 -   图片或者文献引用不全
