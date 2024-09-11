@@ -543,78 +543,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 7</span> 第七讲：描述性统计与数据可视化基础<a href="第七讲描述性统计与数据可视化基础.html#第七讲描述性统计与数据可视化基础" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>本节课将引入一个新的知识点：描述性统计和数据可视化。根据课程大纲，数据可视化将分为两课，今天我们将初步了解并实践数据可视化，而后续课程会进一步讲如何对可视化结果进行精细调整，以达到可出版的标准。
 本次课程增加了一些新的工具包。如果是第一次运行这些代码，可能需要执行一些安装命令，以确保所有相关的工具包都能正确安装。安装命令代码：</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="第七讲描述性统计与数据可视化基础.html#cb234-1" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&#39;pacman&#39;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) { <span class="fu">install.packages</span>(<span class="st">&#39;pacman&#39;</span>)}</span>
-<span id="cb234-2"><a href="第七讲描述性统计与数据可视化基础.html#cb234-2" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(here,skimr,quartets,GGally,showtext,bruceR,tidyverse,DataExplorer)</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="第七讲描述性统计与数据可视化基础.html#cb240-1" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&#39;pacman&#39;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) { <span class="fu">install.packages</span>(<span class="st">&#39;pacman&#39;</span>)}</span>
+<span id="cb240-2"><a href="第七讲描述性统计与数据可视化基础.html#cb240-2" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(here,skimr,quartets,GGally,showtext,bruceR,tidyverse,DataExplorer)</span></code></pre></div>
 <div id="回顾" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> 回顾<a href="第七讲描述性统计与数据可视化基础.html#回顾" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>上节课我们介绍了数据预处理、如何批量读取数据、如何获取一个文件夹中特定类型文件的名字、如何定义函数进行转换数据类型以确保每一列数据的类型都是我们期望的、如何通过for循环来批量读取数据、介绍了for循环和if语句在R语言数据处理中的重要性并演示了如何使用for循环读取数据、合并数据，并将数据保存为CSV格式，这样可以避免每次都重新进行批量读取，节省时间。</p>
 <div id="批量导入数据" class="section level3 hasAnchor" number="7.1.1">
 <h3><span class="header-section-number">7.1.1</span> 批量导入数据<a href="第七讲描述性统计与数据可视化基础.html#批量导入数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>获取地址</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="第七讲描述性统计与数据可视化基础.html#cb235-1" tabindex="-1"></a><span class="co"># 所有数据路径</span></span>
-<span id="cb235-2"><a href="第七讲描述性统计与数据可视化基础.html#cb235-2" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(</span>
-<span id="cb235-3"><a href="第七讲描述性统计与数据可视化基础.html#cb235-3" tabindex="-1"></a>  <span class="do">## &lt;- &amp; =</span></span>
-<span id="cb235-4"><a href="第七讲描述性统计与数据可视化基础.html#cb235-4" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;match&quot;</span>), </span>
-<span id="cb235-5"><a href="第七讲描述性统计与数据可视化基础.html#cb235-5" tabindex="-1"></a>  <span class="at">pattern =</span> <span class="st">&quot;data_exp7_rep_match_.*.out$&quot;</span>, </span>
-<span id="cb235-6"><a href="第七讲描述性统计与数据可视化基础.html#cb235-6" tabindex="-1"></a>  <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="第七讲描述性统计与数据可视化基础.html#cb241-1" tabindex="-1"></a><span class="co"># 所有数据路径</span></span>
+<span id="cb241-2"><a href="第七讲描述性统计与数据可视化基础.html#cb241-2" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(</span>
+<span id="cb241-3"><a href="第七讲描述性统计与数据可视化基础.html#cb241-3" tabindex="-1"></a>  <span class="do">## &lt;- &amp; =</span></span>
+<span id="cb241-4"><a href="第七讲描述性统计与数据可视化基础.html#cb241-4" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;match&quot;</span>), </span>
+<span id="cb241-5"><a href="第七讲描述性统计与数据可视化基础.html#cb241-5" tabindex="-1"></a>  <span class="at">pattern =</span> <span class="st">&quot;data_exp7_rep_match_.*.out$&quot;</span>, </span>
+<span id="cb241-6"><a href="第七讲描述性统计与数据可视化基础.html#cb241-6" tabindex="-1"></a>  <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>数据类型转换</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="第七讲描述性统计与数据可视化基础.html#cb236-1" tabindex="-1"></a>convert_data_types <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
-<span id="cb236-2"><a href="第七讲描述性统计与数据可视化基础.html#cb236-2" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb236-3"><a href="第七讲描述性统计与数据可视化基础.html#cb236-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">as.character</span>(Date),<span class="at">Prac =</span> <span class="fu">as.character</span>(Prac),</span>
-<span id="cb236-4"><a href="第七讲描述性统计与数据可视化基础.html#cb236-4" tabindex="-1"></a>                  <span class="at">Sub =</span> <span class="fu">as.numeric</span>(Sub),<span class="at">Age =</span> <span class="fu">as.numeric</span>(Age),</span>
-<span id="cb236-5"><a href="第七讲描述性统计与数据可视化基础.html#cb236-5" tabindex="-1"></a>                  <span class="at">Sex =</span> <span class="fu">as.character</span>(Sex),<span class="at">Hand =</span> <span class="fu">as.character</span>(Hand),</span>
-<span id="cb236-6"><a href="第七讲描述性统计与数据可视化基础.html#cb236-6" tabindex="-1"></a>                  <span class="at">Block =</span> <span class="fu">as.numeric</span>(Block),<span class="at">Bin =</span> <span class="fu">as.numeric</span>(Bin),</span>
-<span id="cb236-7"><a href="第七讲描述性统计与数据可视化基础.html#cb236-7" tabindex="-1"></a>                  <span class="at">Trial =</span> <span class="fu">as.numeric</span>(Trial),<span class="at">Shape =</span> <span class="fu">as.character</span>(Shape),</span>
-<span id="cb236-8"><a href="第七讲描述性统计与数据可视化基础.html#cb236-8" tabindex="-1"></a>                  <span class="at">Label =</span> <span class="fu">as.character</span>(Label),<span class="at">Match =</span> <span class="fu">as.character</span>(Match),</span>
-<span id="cb236-9"><a href="第七讲描述性统计与数据可视化基础.html#cb236-9" tabindex="-1"></a>                  <span class="at">CorrResp =</span> <span class="fu">as.character</span>(CorrResp),<span class="at">Resp =</span> <span class="fu">as.character</span>(Resp),</span>
-<span id="cb236-10"><a href="第七讲描述性统计与数据可视化基础.html#cb236-10" tabindex="-1"></a>                  <span class="at">ACC =</span> <span class="fu">as.numeric</span>(ACC),<span class="at">RT =</span> <span class="fu">as.numeric</span>(RT))</span>
-<span id="cb236-11"><a href="第七讲描述性统计与数据可视化基础.html#cb236-11" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
-<span id="cb236-12"><a href="第七讲描述性统计与数据可视化基础.html#cb236-12" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="第七讲描述性统计与数据可视化基础.html#cb242-1" tabindex="-1"></a>convert_data_types <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb242-2"><a href="第七讲描述性统计与数据可视化基础.html#cb242-2" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb242-3"><a href="第七讲描述性统计与数据可视化基础.html#cb242-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">as.character</span>(Date),<span class="at">Prac =</span> <span class="fu">as.character</span>(Prac),</span>
+<span id="cb242-4"><a href="第七讲描述性统计与数据可视化基础.html#cb242-4" tabindex="-1"></a>                  <span class="at">Sub =</span> <span class="fu">as.numeric</span>(Sub),<span class="at">Age =</span> <span class="fu">as.numeric</span>(Age),</span>
+<span id="cb242-5"><a href="第七讲描述性统计与数据可视化基础.html#cb242-5" tabindex="-1"></a>                  <span class="at">Sex =</span> <span class="fu">as.character</span>(Sex),<span class="at">Hand =</span> <span class="fu">as.character</span>(Hand),</span>
+<span id="cb242-6"><a href="第七讲描述性统计与数据可视化基础.html#cb242-6" tabindex="-1"></a>                  <span class="at">Block =</span> <span class="fu">as.numeric</span>(Block),<span class="at">Bin =</span> <span class="fu">as.numeric</span>(Bin),</span>
+<span id="cb242-7"><a href="第七讲描述性统计与数据可视化基础.html#cb242-7" tabindex="-1"></a>                  <span class="at">Trial =</span> <span class="fu">as.numeric</span>(Trial),<span class="at">Shape =</span> <span class="fu">as.character</span>(Shape),</span>
+<span id="cb242-8"><a href="第七讲描述性统计与数据可视化基础.html#cb242-8" tabindex="-1"></a>                  <span class="at">Label =</span> <span class="fu">as.character</span>(Label),<span class="at">Match =</span> <span class="fu">as.character</span>(Match),</span>
+<span id="cb242-9"><a href="第七讲描述性统计与数据可视化基础.html#cb242-9" tabindex="-1"></a>                  <span class="at">CorrResp =</span> <span class="fu">as.character</span>(CorrResp),<span class="at">Resp =</span> <span class="fu">as.character</span>(Resp),</span>
+<span id="cb242-10"><a href="第七讲描述性统计与数据可视化基础.html#cb242-10" tabindex="-1"></a>                  <span class="at">ACC =</span> <span class="fu">as.numeric</span>(ACC),<span class="at">RT =</span> <span class="fu">as.numeric</span>(RT))</span>
+<span id="cb242-11"><a href="第七讲描述性统计与数据可视化基础.html#cb242-11" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
+<span id="cb242-12"><a href="第七讲描述性统计与数据可视化基础.html#cb242-12" tabindex="-1"></a>}</span></code></pre></div>
 <p>for循环批量读取数据，将数据进行批量合并批量合并</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="第七讲描述性统计与数据可视化基础.html#cb237-1" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>() </span>
-<span id="cb237-2"><a href="第七讲描述性统计与数据可视化基础.html#cb237-2" tabindex="-1"></a></span>
-<span id="cb237-3"><a href="第七讲描述性统计与数据可视化基础.html#cb237-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(files)) {</span>
-<span id="cb237-4"><a href="第七讲描述性统计与数据可视化基础.html#cb237-4" tabindex="-1"></a>  <span class="co"># 读取</span></span>
-<span id="cb237-5"><a href="第七讲描述性统计与数据可视化基础.html#cb237-5" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">read.table</span>(files[i], <span class="at">header =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb237-6"><a href="第七讲描述性统计与数据可视化基础.html#cb237-6" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(Date <span class="sc">!=</span> <span class="st">&quot;Date&quot;</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb237-7"><a href="第七讲描述性统计与数据可视化基础.html#cb237-7" tabindex="-1"></a>    <span class="fu">convert_data_types</span>() </span>
-<span id="cb237-8"><a href="第七讲描述性统计与数据可视化基础.html#cb237-8" tabindex="-1"></a>  <span class="co"># 合并</span></span>
-<span id="cb237-9"><a href="第七讲描述性统计与数据可视化基础.html#cb237-9" tabindex="-1"></a>  df3 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(df3, df) </span>
-<span id="cb237-10"><a href="第七讲描述性统计与数据可视化基础.html#cb237-10" tabindex="-1"></a>}</span>
-<span id="cb237-11"><a href="第七讲描述性统计与数据可视化基础.html#cb237-11" tabindex="-1"></a><span class="co"># 删除临时变量</span></span>
-<span id="cb237-12"><a href="第七讲描述性统计与数据可视化基础.html#cb237-12" tabindex="-1"></a><span class="fu">rm</span>(df, files, i)</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="第七讲描述性统计与数据可视化基础.html#cb243-1" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>() </span>
+<span id="cb243-2"><a href="第七讲描述性统计与数据可视化基础.html#cb243-2" tabindex="-1"></a></span>
+<span id="cb243-3"><a href="第七讲描述性统计与数据可视化基础.html#cb243-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(files)) {</span>
+<span id="cb243-4"><a href="第七讲描述性统计与数据可视化基础.html#cb243-4" tabindex="-1"></a>  <span class="co"># 读取</span></span>
+<span id="cb243-5"><a href="第七讲描述性统计与数据可视化基础.html#cb243-5" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">read.table</span>(files[i], <span class="at">header =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb243-6"><a href="第七讲描述性统计与数据可视化基础.html#cb243-6" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(Date <span class="sc">!=</span> <span class="st">&quot;Date&quot;</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb243-7"><a href="第七讲描述性统计与数据可视化基础.html#cb243-7" tabindex="-1"></a>    <span class="fu">convert_data_types</span>() </span>
+<span id="cb243-8"><a href="第七讲描述性统计与数据可视化基础.html#cb243-8" tabindex="-1"></a>  <span class="co"># 合并</span></span>
+<span id="cb243-9"><a href="第七讲描述性统计与数据可视化基础.html#cb243-9" tabindex="-1"></a>  df3 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(df3, df) </span>
+<span id="cb243-10"><a href="第七讲描述性统计与数据可视化基础.html#cb243-10" tabindex="-1"></a>}</span>
+<span id="cb243-11"><a href="第七讲描述性统计与数据可视化基础.html#cb243-11" tabindex="-1"></a><span class="co"># 删除临时变量</span></span>
+<span id="cb243-12"><a href="第七讲描述性统计与数据可视化基础.html#cb243-12" tabindex="-1"></a><span class="fu">rm</span>(df, files, i)</span></code></pre></div>
 <p>通过export将数据保存为csv 保存数据</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="第七讲描述性统计与数据可视化基础.html#cb238-1" tabindex="-1"></a><span class="do">## NOT RUN</span></span>
-<span id="cb238-2"><a href="第七讲描述性统计与数据可视化基础.html#cb238-2" tabindex="-1"></a><span class="do">## 上节课介绍了write.csv,也可使用bruceR::export</span></span>
-<span id="cb238-3"><a href="第七讲描述性统计与数据可视化基础.html#cb238-3" tabindex="-1"></a>bruceR<span class="sc">::</span><span class="fu">export</span>(</span>
-<span id="cb238-4"><a href="第七讲描述性统计与数据可视化基础.html#cb238-4" tabindex="-1"></a>  df3, </span>
-<span id="cb238-5"><a href="第七讲描述性统计与数据可视化基础.html#cb238-5" tabindex="-1"></a>  <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;match&quot;</span>,<span class="st">&quot;match_raw.csv&quot;</span>))</span>
-<span id="cb238-6"><a href="第七讲描述性统计与数据可视化基础.html#cb238-6" tabindex="-1"></a></span>
-<span id="cb238-7"><a href="第七讲描述性统计与数据可视化基础.html#cb238-7" tabindex="-1"></a><span class="do">## 当然，export 不仅可以保存数据，也可以输出模型结果</span></span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="第七讲描述性统计与数据可视化基础.html#cb244-1" tabindex="-1"></a><span class="do">## NOT RUN</span></span>
+<span id="cb244-2"><a href="第七讲描述性统计与数据可视化基础.html#cb244-2" tabindex="-1"></a><span class="do">## 上节课介绍了write.csv,也可使用bruceR::export</span></span>
+<span id="cb244-3"><a href="第七讲描述性统计与数据可视化基础.html#cb244-3" tabindex="-1"></a>bruceR<span class="sc">::</span><span class="fu">export</span>(</span>
+<span id="cb244-4"><a href="第七讲描述性统计与数据可视化基础.html#cb244-4" tabindex="-1"></a>  df3, </span>
+<span id="cb244-5"><a href="第七讲描述性统计与数据可视化基础.html#cb244-5" tabindex="-1"></a>  <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;match&quot;</span>,<span class="st">&quot;match_raw.csv&quot;</span>))</span>
+<span id="cb244-6"><a href="第七讲描述性统计与数据可视化基础.html#cb244-6" tabindex="-1"></a></span>
+<span id="cb244-7"><a href="第七讲描述性统计与数据可视化基础.html#cb244-7" tabindex="-1"></a><span class="do">## 当然，export 不仅可以保存数据，也可以输出模型结果</span></span></code></pre></div>
 <p>当出现列名和变量名不同，可以通过rename将列名进行修改 修改列名-rename</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="第七讲描述性统计与数据可视化基础.html#cb239-1" tabindex="-1"></a><span class="do">## 修改第一列列名 Date 为小写 date</span></span>
-<span id="cb239-2"><a href="第七讲描述性统计与数据可视化基础.html#cb239-2" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">rename</span>(  <span class="do">## new_name = old_name</span></span>
-<span id="cb239-3"><a href="第七讲描述性统计与数据可视化基础.html#cb239-3" tabindex="-1"></a>  <span class="at">date =</span> Date</span>
-<span id="cb239-4"><a href="第七讲描述性统计与数据可视化基础.html#cb239-4" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">colnames</span>()  </span></code></pre></div>
-<pre><code>##  [1] &quot;date&quot;     &quot;Prac&quot;     &quot;Sub&quot;      &quot;Age&quot;      &quot;Sex&quot;      &quot;Hand&quot;     &quot;Block&quot;    &quot;Bin&quot;     
-##  [9] &quot;Trial&quot;    &quot;Shape&quot;    &quot;Label&quot;    &quot;Match&quot;    &quot;CorrResp&quot; &quot;Resp&quot;     &quot;ACC&quot;      &quot;RT&quot;</code></pre>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="第七讲描述性统计与数据可视化基础.html#cb241-1" tabindex="-1"></a><span class="do">## 将全部列名都变成小写</span></span>
-<span id="cb241-2"><a href="第七讲描述性统计与数据可视化基础.html#cb241-2" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">rename_with</span>(</span>
-<span id="cb241-3"><a href="第七讲描述性统计与数据可视化基础.html#cb241-3" tabindex="-1"></a>  <span class="do">## 将字符向量全部变成小写； ~ 声明这是一个函数，.代表前面的数据(df3)传到.所在的位置</span></span>
-<span id="cb241-4"><a href="第七讲描述性统计与数据可视化基础.html#cb241-4" tabindex="-1"></a>  <span class="sc">~</span><span class="fu">tolower</span>(.)   <span class="co">#&lt;&lt;</span></span>
-<span id="cb241-5"><a href="第七讲描述性统计与数据可视化基础.html#cb241-5" tabindex="-1"></a>  <span class="do">## 即使用 tolower()对所有列名进行批量处理</span></span>
-<span id="cb241-6"><a href="第七讲描述性统计与数据可视化基础.html#cb241-6" tabindex="-1"></a>  <span class="do">##</span></span>
-<span id="cb241-7"><a href="第七讲描述性统计与数据可视化基础.html#cb241-7" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">colnames</span>()</span></code></pre></div>
-<pre><code>##  [1] &quot;date&quot;     &quot;prac&quot;     &quot;sub&quot;      &quot;age&quot;      &quot;sex&quot;      &quot;hand&quot;     &quot;block&quot;    &quot;bin&quot;     
-##  [9] &quot;trial&quot;    &quot;shape&quot;    &quot;label&quot;    &quot;match&quot;    &quot;corrresp&quot; &quot;resp&quot;     &quot;acc&quot;      &quot;rt&quot;</code></pre>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="第七讲描述性统计与数据可视化基础.html#cb245-1" tabindex="-1"></a><span class="do">## 修改第一列列名 Date 为小写 date</span></span>
+<span id="cb245-2"><a href="第七讲描述性统计与数据可视化基础.html#cb245-2" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">rename</span>(  <span class="do">## new_name = old_name</span></span>
+<span id="cb245-3"><a href="第七讲描述性统计与数据可视化基础.html#cb245-3" tabindex="-1"></a>  <span class="at">date =</span> Date</span>
+<span id="cb245-4"><a href="第七讲描述性统计与数据可视化基础.html#cb245-4" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">colnames</span>()  </span></code></pre></div>
+<pre><code>##  [1] &quot;date&quot;     &quot;Prac&quot;     &quot;Sub&quot;      &quot;Age&quot;      &quot;Sex&quot;      &quot;Hand&quot;     &quot;Block&quot;   
+##  [8] &quot;Bin&quot;      &quot;Trial&quot;    &quot;Shape&quot;    &quot;Label&quot;    &quot;Match&quot;    &quot;CorrResp&quot; &quot;Resp&quot;    
+## [15] &quot;ACC&quot;      &quot;RT&quot;</code></pre>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="第七讲描述性统计与数据可视化基础.html#cb247-1" tabindex="-1"></a><span class="do">## 将全部列名都变成小写</span></span>
+<span id="cb247-2"><a href="第七讲描述性统计与数据可视化基础.html#cb247-2" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">rename_with</span>(</span>
+<span id="cb247-3"><a href="第七讲描述性统计与数据可视化基础.html#cb247-3" tabindex="-1"></a>  <span class="do">## 将字符向量全部变成小写； ~ 声明这是一个函数，.代表前面的数据(df3)传到.所在的位置</span></span>
+<span id="cb247-4"><a href="第七讲描述性统计与数据可视化基础.html#cb247-4" tabindex="-1"></a>  <span class="sc">~</span><span class="fu">tolower</span>(.)   <span class="co">#&lt;&lt;</span></span>
+<span id="cb247-5"><a href="第七讲描述性统计与数据可视化基础.html#cb247-5" tabindex="-1"></a>  <span class="do">## 即使用 tolower()对所有列名进行批量处理</span></span>
+<span id="cb247-6"><a href="第七讲描述性统计与数据可视化基础.html#cb247-6" tabindex="-1"></a>  <span class="do">##</span></span>
+<span id="cb247-7"><a href="第七讲描述性统计与数据可视化基础.html#cb247-7" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">colnames</span>()</span></code></pre></div>
+<pre><code>##  [1] &quot;date&quot;     &quot;prac&quot;     &quot;sub&quot;      &quot;age&quot;      &quot;sex&quot;      &quot;hand&quot;     &quot;block&quot;   
+##  [8] &quot;bin&quot;      &quot;trial&quot;    &quot;shape&quot;    &quot;label&quot;    &quot;match&quot;    &quot;corrresp&quot; &quot;resp&quot;    
+## [15] &quot;acc&quot;      &quot;rt&quot;</code></pre>
 </div>
 <div id="代码书写规范" class="section level3 hasAnchor" number="7.1.2">
 <h3><span class="header-section-number">7.1.2</span> 代码书写规范<a href="第七讲描述性统计与数据可视化基础.html#代码书写规范" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>为了使代码看起来更整洁，我们建议每个预处理步骤占用一行，并在管道符后换行，这样每一步的操作都清晰可见。</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="第七讲描述性统计与数据可视化基础.html#cb243-1" tabindex="-1"></a><span class="do">## 以下代码看起来如何？ </span></span>
-<span id="cb243-2"><a href="第七讲描述性统计与数据可视化基础.html#cb243-2" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
-<span id="cb243-3"><a href="第七讲描述性统计与数据可视化基础.html#cb243-3" tabindex="-1"></a><span class="fu">summarize_all</span>(mean) <span class="sc">%&gt;%</span> ungroup <span class="sc">%&gt;%</span> <span class="fu">gather</span>(measure, value, <span class="sc">-</span>Species)<span class="sc">%&gt;%</span> </span>
-<span id="cb243-4"><a href="第七讲描述性统计与数据可视化基础.html#cb243-4" tabindex="-1"></a><span class="fu">arrange</span>(value) </span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="第七讲描述性统计与数据可视化基础.html#cb249-1" tabindex="-1"></a><span class="do">## 以下代码看起来如何？ </span></span>
+<span id="cb249-2"><a href="第七讲描述性统计与数据可视化基础.html#cb249-2" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
+<span id="cb249-3"><a href="第七讲描述性统计与数据可视化基础.html#cb249-3" tabindex="-1"></a><span class="fu">summarize_all</span>(mean) <span class="sc">%&gt;%</span> ungroup <span class="sc">%&gt;%</span> <span class="fu">gather</span>(measure, value, <span class="sc">-</span>Species)<span class="sc">%&gt;%</span> </span>
+<span id="cb249-4"><a href="第七讲描述性统计与数据可视化基础.html#cb249-4" tabindex="-1"></a><span class="fu">arrange</span>(value) </span></code></pre></div>
 <pre><code>## # A tibble: 12 × 3
 ##    Species    measure      value
 ##    &lt;fct&gt;      &lt;chr&gt;        &lt;dbl&gt;
@@ -630,13 +632,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 virginica  Petal.Length 5.55 
 ## 11 versicolor Sepal.Length 5.94 
 ## 12 virginica  Sepal.Length 6.59</code></pre>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="第七讲描述性统计与数据可视化基础.html#cb245-1" tabindex="-1"></a><span class="do">### 管道操作的代码看上去更加清晰，整洁 </span></span>
-<span id="cb245-2"><a href="第七讲描述性统计与数据可视化基础.html#cb245-2" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
-<span id="cb245-3"><a href="第七讲描述性统计与数据可视化基础.html#cb245-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
-<span id="cb245-4"><a href="第七讲描述性统计与数据可视化基础.html#cb245-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize_if</span>(is.numeric, mean) <span class="sc">%&gt;%</span></span>
-<span id="cb245-5"><a href="第七讲描述性统计与数据可视化基础.html#cb245-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb245-6"><a href="第七讲描述性统计与数据可视化基础.html#cb245-6" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">gather</span>(measure, value, <span class="sc">-</span>Species) <span class="sc">%&gt;%</span></span>
-<span id="cb245-7"><a href="第七讲描述性统计与数据可视化基础.html#cb245-7" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(value)</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="第七讲描述性统计与数据可视化基础.html#cb251-1" tabindex="-1"></a><span class="do">### 管道操作的代码看上去更加清晰，整洁 </span></span>
+<span id="cb251-2"><a href="第七讲描述性统计与数据可视化基础.html#cb251-2" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb251-3"><a href="第七讲描述性统计与数据可视化基础.html#cb251-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
+<span id="cb251-4"><a href="第七讲描述性统计与数据可视化基础.html#cb251-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize_if</span>(is.numeric, mean) <span class="sc">%&gt;%</span></span>
+<span id="cb251-5"><a href="第七讲描述性统计与数据可视化基础.html#cb251-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb251-6"><a href="第七讲描述性统计与数据可视化基础.html#cb251-6" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">gather</span>(measure, value, <span class="sc">-</span>Species) <span class="sc">%&gt;%</span></span>
+<span id="cb251-7"><a href="第七讲描述性统计与数据可视化基础.html#cb251-7" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(value)</span></code></pre></div>
 <pre><code>## # A tibble: 12 × 3
 ##    Species    measure      value
 ##    &lt;fct&gt;      &lt;chr&gt;        &lt;dbl&gt;
@@ -673,18 +675,18 @@ Data
 Analysis,EDA），在传统的心理学中，我们通常会清楚地知道要进行什么样的分析，但是在数据科学中，可能面临的是一个未知的数据集，我们不知道其中的规律和数据的结构。因此，探索性数据分析非常重要。
 探索性分析通常通过可视化的方式总结数据特征，在大数据时代被广泛推崇。
 进行EDA是为了更加了解自己的数据，从而做出基本的判断，但每一次探索背后都对应着特定的问题，进行EDA时，需要了解数据的基本信息，比如有哪些变量？变量的类型？变量的分布？变量之间的关系？</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="第七讲描述性统计与数据可视化基础.html#cb247-1" tabindex="-1"></a><span class="co"># 读取数据</span></span>
-<span id="cb247-2"><a href="第七讲描述性统计与数据可视化基础.html#cb247-2" tabindex="-1"></a>pg_raw <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(</span>
-<span id="cb247-3"><a href="第七讲描述性统计与数据可视化基础.html#cb247-3" tabindex="-1"></a>  <span class="st">&quot;data&quot;</span>, <span class="st">&quot;penguin&quot;</span>,<span class="st">&quot;penguin_rawdata.csv&quot;</span>))</span>
-<span id="cb247-4"><a href="第七讲描述性统计与数据可视化基础.html#cb247-4" tabindex="-1"></a></span>
-<span id="cb247-5"><a href="第七讲描述性统计与数据可视化基础.html#cb247-5" tabindex="-1"></a>mt_raw <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(</span>
-<span id="cb247-6"><a href="第七讲描述性统计与数据可视化基础.html#cb247-6" tabindex="-1"></a>  <span class="st">&quot;data&quot;</span>, <span class="st">&quot;match&quot;</span>,<span class="st">&quot;match_raw.csv&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="第七讲描述性统计与数据可视化基础.html#cb253-1" tabindex="-1"></a><span class="co"># 读取数据</span></span>
+<span id="cb253-2"><a href="第七讲描述性统计与数据可视化基础.html#cb253-2" tabindex="-1"></a>pg_raw <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(</span>
+<span id="cb253-3"><a href="第七讲描述性统计与数据可视化基础.html#cb253-3" tabindex="-1"></a>  <span class="st">&quot;data&quot;</span>, <span class="st">&quot;penguin&quot;</span>,<span class="st">&quot;penguin_rawdata.csv&quot;</span>))</span>
+<span id="cb253-4"><a href="第七讲描述性统计与数据可视化基础.html#cb253-4" tabindex="-1"></a></span>
+<span id="cb253-5"><a href="第七讲描述性统计与数据可视化基础.html#cb253-5" tabindex="-1"></a>mt_raw <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(</span>
+<span id="cb253-6"><a href="第七讲描述性统计与数据可视化基础.html#cb253-6" tabindex="-1"></a>  <span class="st">&quot;data&quot;</span>, <span class="st">&quot;match&quot;</span>,<span class="st">&quot;match_raw.csv&quot;</span>)) </span></code></pre></div>
 <div id="常用函数介绍" class="section level3 hasAnchor" number="7.2.1">
 <h3><span class="header-section-number">7.2.1</span> 常用函数介绍<a href="第七讲描述性统计与数据可视化基础.html#常用函数介绍" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>summary</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="第七讲描述性统计与数据可视化基础.html#cb248-1" tabindex="-1"></a><span class="fu">summary</span>(mt_raw) <span class="sc">%&gt;%</span>    </span>
-<span id="cb248-2"><a href="第七讲描述性统计与数据可视化基础.html#cb248-2" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="co"># 注：kable函数只为了输出 skim函数能够实现数据的快速预览，可以根据每一列的数据类型进行数据预览，会显示字符型数据的分布特点</span></span></code></pre></div>
-<table>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="第七讲描述性统计与数据可视化基础.html#cb254-1" tabindex="-1"></a><span class="fu">summary</span>(mt_raw) <span class="sc">%&gt;%</span>    </span>
+<span id="cb254-2"><a href="第七讲描述性统计与数据可视化基础.html#cb254-2" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="co"># 注：kable函数只为了输出 skim函数能够实现数据的快速预览，可以根据每一列的数据类型进行数据预览，会显示字符型数据的分布特点</span></span></code></pre></div>
+<table style="width:100%;">
 <colgroup>
 <col width="1%" />
 <col width="6%" />
@@ -701,7 +703,7 @@ Analysis,EDA），在传统的心理学中，我们通常会清楚地知道要�
 <col width="6%" />
 <col width="6%" />
 <col width="6%" />
-<col width="6%" />
+<col width="5%" />
 <col width="5%" />
 </colgroup>
 <thead>
@@ -731,121 +733,121 @@ Analysis,EDA），在传统的心理学中，我们通常会清楚地知道要�
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
 <td align="left">Min. : 7302</td>
-<td align="left">Min. :18.00</td>
+<td align="left">Min. :18.0</td>
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
-<td align="left">Min. :1.000</td>
-<td align="left">Min. :1.000</td>
+<td align="left">Min. :1.00</td>
+<td align="left">Min. :1.00</td>
 <td align="left">Min. : 1.00</td>
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
-<td align="left">Min. :-1.0000</td>
-<td align="left">Min. :0.1060</td>
+<td align="left">Min. :-1.000</td>
+<td align="left">Min. :0.106</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
 <td align="left">1st Qu.: 7313</td>
-<td align="left">1st Qu.:19.00</td>
+<td align="left">1st Qu.:19.0</td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
-<td align="left">1st Qu.:1.000</td>
-<td align="left">1st Qu.:1.000</td>
+<td align="left">1st Qu.:1.00</td>
+<td align="left">1st Qu.:1.00</td>
 <td align="left">1st Qu.: 6.75</td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
-<td align="left">1st Qu.: 1.0000</td>
-<td align="left">1st Qu.:0.6104</td>
+<td align="left">1st Qu.: 1.000</td>
+<td align="left">1st Qu.:0.610</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
 <td align="left">Median : 7324</td>
-<td align="left">Median :20.00</td>
+<td align="left">Median :20.0</td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
-<td align="left">Median :1.000</td>
-<td align="left">Median :2.000</td>
+<td align="left">Median :1.00</td>
+<td align="left">Median :2.00</td>
 <td align="left">Median :12.50</td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
-<td align="left">Median : 1.0000</td>
-<td align="left">Median :0.7019</td>
+<td align="left">Median : 1.000</td>
+<td align="left">Median :0.702</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">Mean : 8853</td>
-<td align="left">Mean :20.83</td>
+<td align="left">Mean :20.8</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">Mean :1.611</td>
-<td align="left">Mean :2.417</td>
+<td align="left">Mean :1.61</td>
+<td align="left">Mean :2.42</td>
 <td align="left">Mean :12.50</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">Mean : 0.7959</td>
-<td align="left">Mean :0.7150</td>
+<td align="left">Mean : 0.796</td>
+<td align="left">Mean :0.715</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">3rd Qu.: 7336</td>
-<td align="left">3rd Qu.:22.00</td>
+<td align="left">3rd Qu.:22.0</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">3rd Qu.:2.000</td>
-<td align="left">3rd Qu.:3.000</td>
+<td align="left">3rd Qu.:2.00</td>
+<td align="left">3rd Qu.:3.00</td>
 <td align="left">3rd Qu.:18.25</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">3rd Qu.: 1.0000</td>
-<td align="left">3rd Qu.:0.8053</td>
+<td align="left">3rd Qu.: 1.000</td>
+<td align="left">3rd Qu.:0.805</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">Max. :73370</td>
-<td align="left">Max. :28.00</td>
+<td align="left">Max. :28.0</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">Max. :3.000</td>
-<td align="left">Max. :5.000</td>
+<td align="left">Max. :3.00</td>
+<td align="left">Max. :5.00</td>
 <td align="left">Max. :24.00</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">Max. : 2.0000</td>
-<td align="left">Max. :1.1831</td>
+<td align="left">Max. : 2.000</td>
+<td align="left">Max. :1.183</td>
 </tr>
 </tbody>
 </table>
 <p>skimr::skim()–1</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="第七讲描述性统计与数据可视化基础.html#cb249-1" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(mt_raw) <span class="sc">%&gt;%</span> </span>
-<span id="cb249-2"><a href="第七讲描述性统计与数据可视化基础.html#cb249-2" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb249-3"><a href="第七讲描述性统计与数据可视化基础.html#cb249-3" tabindex="-1"></a>  .[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="第七讲描述性统计与数据可视化基础.html#cb255-1" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(mt_raw) <span class="sc">%&gt;%</span> </span>
+<span id="cb255-2"><a href="第七讲描述性统计与数据可视化基础.html#cb255-2" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb255-3"><a href="第七讲描述性统计与数据可视化基础.html#cb255-3" tabindex="-1"></a>  .[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>]</span></code></pre></div>
 <pre><code>##  [1] &quot;── Data Summary ────────────────────────&quot; &quot;                           Values&quot;       
 ##  [3] &quot;Name                       mt_raw&quot;        &quot;Number of rows             25920 &quot;       
 ##  [5] &quot;Number of columns          16    &quot;        &quot;_______________________          &quot;       
@@ -853,46 +855,46 @@ Analysis,EDA），在传统的心理学中，我们通常会清楚地知道要�
 ##  [9] &quot;  numeric                  7     &quot;        &quot;________________________         &quot;       
 ## [11] &quot;Group variables            None  &quot;        &quot;&quot;</code></pre>
 <p>skimr::skim()–2</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="第七讲描述性统计与数据可视化基础.html#cb251-1" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(mt_raw) <span class="sc">%&gt;%</span> </span>
-<span id="cb251-2"><a href="第七讲描述性统计与数据可视化基础.html#cb251-2" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb251-3"><a href="第七讲描述性统计与数据可视化基础.html#cb251-3" tabindex="-1"></a>  .[<span class="dv">13</span><span class="sc">:</span><span class="dv">24</span>]</span></code></pre></div>
-<pre><code>##  [1] &quot;── Variable type: character ──────────────────────────────────────────────────────────────────────────&quot;
-##  [2] &quot;  skim_variable n_missing complete_rate min max empty n_unique whitespace&quot;                             
-##  [3] &quot;1 Date                  0         1      20  20     0    24362          0&quot;                             
-##  [4] &quot;2 Prac                  0         1       3   3     0        1          0&quot;                             
-##  [5] &quot;3 Sex                   0         1       1   6     0        4          0&quot;                             
-##  [6] &quot;4 Hand                  0         1       1   1     0        2          0&quot;                             
-##  [7] &quot;5 Shape                 0         1       9  12     0        4          0&quot;                             
-##  [8] &quot;6 Label                 0         1       9  12     0        4          0&quot;                             
-##  [9] &quot;7 Match                 0         1       5   8     0        2          0&quot;                             
-## [10] &quot;8 CorrResp              0         1       1   1     0        2          0&quot;                             
-## [11] &quot;9 Resp                658         0.975   1   5     0        9          0&quot;                             
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="第七讲描述性统计与数据可视化基础.html#cb257-1" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(mt_raw) <span class="sc">%&gt;%</span> </span>
+<span id="cb257-2"><a href="第七讲描述性统计与数据可视化基础.html#cb257-2" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb257-3"><a href="第七讲描述性统计与数据可视化基础.html#cb257-3" tabindex="-1"></a>  .[<span class="dv">13</span><span class="sc">:</span><span class="dv">24</span>]</span></code></pre></div>
+<pre><code>##  [1] &quot;── Variable type: character ──────────────────────────────────────────────────────────────&quot;
+##  [2] &quot;  skim_variable n_missing complete_rate min max empty n_unique whitespace&quot;                 
+##  [3] &quot;1 Date                  0         1      20  20     0    24362          0&quot;                 
+##  [4] &quot;2 Prac                  0         1       3   3     0        1          0&quot;                 
+##  [5] &quot;3 Sex                   0         1       1   6     0        4          0&quot;                 
+##  [6] &quot;4 Hand                  0         1       1   1     0        2          0&quot;                 
+##  [7] &quot;5 Shape                 0         1       9  12     0        4          0&quot;                 
+##  [8] &quot;6 Label                 0         1       9  12     0        4          0&quot;                 
+##  [9] &quot;7 Match                 0         1       5   8     0        2          0&quot;                 
+## [10] &quot;8 CorrResp              0         1       1   1     0        2          0&quot;                 
+## [11] &quot;9 Resp                658         0.975   1   5     0        9          0&quot;                 
 ## [12] &quot;&quot;</code></pre>
 <p>skimr::skim()–3</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="第七讲描述性统计与数据可视化基础.html#cb253-1" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(mt_raw) <span class="sc">%&gt;%</span> </span>
-<span id="cb253-2"><a href="第七讲描述性统计与数据可视化基础.html#cb253-2" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb253-3"><a href="第七讲描述性统计与数据可视化基础.html#cb253-3" tabindex="-1"></a>  .[<span class="dv">25</span><span class="sc">:</span><span class="dv">41</span>]</span></code></pre></div>
-<pre><code>##  [1] &quot;── Variable type: numeric ────────────────────────────────────────────────────────────────────────────&quot;
-##  [2] &quot;  skim_variable n_missing complete_rate     mean       sd       p0      p25      p50      p75     p100&quot;
-##  [3] &quot;1 Sub                   0             1 8853.    9932.    7302     7313     7324     7336     73370   &quot;
-##  [4] &quot;2 Age                   0             1   20.8      2.48    18       19       20       22        28   &quot;
-##  [5] &quot;3 Block                 0             1    1.61     0.803    1        1        1        2         3   &quot;
-##  [6] &quot;4 Bin                   0             1    2.42     1.36     1        1        2        3         5   &quot;
-##  [7] &quot;5 Trial                 0             1   12.5      6.92     1        6.75    12.5     18.2      24   &quot;
-##  [8] &quot;6 ACC                   0             1    0.796    0.464   -1        1        1        1         2   &quot;
-##  [9] &quot;7 RT                    0             1    0.715    0.151    0.106    0.610    0.702    0.805     1.18&quot;
-## [10] &quot;  hist &quot;                                                                                               
-## [11] &quot;1 ▇▁▁▁▁&quot;                                                                                               
-## [12] &quot;2 ▇▂▁▁▁&quot;                                                                                               
-## [13] &quot;3 ▇▁▃▁▃&quot;                                                                                               
-## [14] &quot;4 ▇▇▃▃▃&quot;                                                                                               
-## [15] &quot;5 ▇▇▆▇▇&quot;                                                                                               
-## [16] &quot;6 ▁▂▁▇▁&quot;                                                                                               
-## [17] &quot;7 ▁▂▇▅▁&quot;</code></pre>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="第七讲描述性统计与数据可视化基础.html#cb259-1" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(mt_raw) <span class="sc">%&gt;%</span> </span>
+<span id="cb259-2"><a href="第七讲描述性统计与数据可视化基础.html#cb259-2" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb259-3"><a href="第七讲描述性统计与数据可视化基础.html#cb259-3" tabindex="-1"></a>  .[<span class="dv">25</span><span class="sc">:</span><span class="dv">41</span>]</span></code></pre></div>
+<pre><code>##  [1] &quot;── Variable type: numeric ────────────────────────────────────────────────────────────────&quot;
+##  [2] &quot;  skim_variable n_missing complete_rate     mean       sd       p0      p25      p50&quot;      
+##  [3] &quot;1 Sub                   0             1 8853.    9932.    7302     7313     7324    &quot;      
+##  [4] &quot;2 Age                   0             1   20.8      2.48    18       19       20    &quot;      
+##  [5] &quot;3 Block                 0             1    1.61     0.803    1        1        1    &quot;      
+##  [6] &quot;4 Bin                   0             1    2.42     1.36     1        1        2    &quot;      
+##  [7] &quot;5 Trial                 0             1   12.5      6.92     1        6.75    12.5  &quot;      
+##  [8] &quot;6 ACC                   0             1    0.796    0.464   -1        1        1    &quot;      
+##  [9] &quot;7 RT                    0             1    0.715    0.151    0.106    0.610    0.702&quot;      
+## [10] &quot;       p75     p100 hist &quot;                                                                 
+## [11] &quot;1 7336     73370    ▇▁▁▁▁&quot;                                                                 
+## [12] &quot;2   22        28    ▇▂▁▁▁&quot;                                                                 
+## [13] &quot;3    2         3    ▇▁▃▁▃&quot;                                                                 
+## [14] &quot;4    3         5    ▇▇▃▃▃&quot;                                                                 
+## [15] &quot;5   18.2      24    ▇▇▆▇▇&quot;                                                                 
+## [16] &quot;6    1         2    ▁▂▁▇▁&quot;                                                                 
+## [17] &quot;7    0.805     1.18 ▁▂▇▅▁&quot;</code></pre>
 <p>bruceR::Describe()</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="第七讲描述性统计与数据可视化基础.html#cb255-1" tabindex="-1"></a>bruceR<span class="sc">::</span><span class="fu">Describe</span>(mt_raw) <span class="sc">%&gt;%</span> </span>
-<span id="cb255-2"><a href="第七讲描述性统计与数据可视化基础.html#cb255-2" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb255-3"><a href="第七讲描述性统计与数据可视化基础.html#cb255-3" tabindex="-1"></a>  .[<span class="dv">2</span><span class="sc">:</span><span class="dv">17</span>] <span class="do">## 可以使用 file参数输出 Word</span></span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="第七讲描述性统计与数据可视化基础.html#cb261-1" tabindex="-1"></a>bruceR<span class="sc">::</span><span class="fu">Describe</span>(mt_raw) <span class="sc">%&gt;%</span> </span>
+<span id="cb261-2"><a href="第七讲描述性统计与数据可视化基础.html#cb261-2" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb261-3"><a href="第七讲描述性统计与数据可视化基础.html#cb261-3" tabindex="-1"></a>  .[<span class="dv">2</span><span class="sc">:</span><span class="dv">17</span>] <span class="do">## 可以使用 file参数输出 Word</span></span></code></pre></div>
 <pre><code>##  [1] &quot;────────────────────────────────────────────────────────────────────────────────────&quot;
 ##  [2] &quot;               N (NA)     Mean      SD |   Median     Min      Max Skewness Kurtosis&quot;
 ##  [3] &quot;────────────────────────────────────────────────────────────────────────────────────&quot;
@@ -929,26 +931,26 @@ Analysis,EDA），在传统的心理学中，我们通常会清楚地知道要�
 <p>ggplot2的一个特点是它提供了很多默认值，使得我们可以用很少的代码生成复杂的图表。例如，默认情况下，点图是以黑色圆点表示的，大小和颜色都是根据默认比例来设置的。但我们也完全可以自定义这些元素，比如用不同颜色表示不同性别的体温数据。此外，我们还可以对图表的各个元素进行精细控制，包括坐标轴和图例。我们可以调整坐标轴的标签、名称，以及图例的内容和样式。这些元素的每一个细节都是可以修改的，以适应我们的具体需求。</p>
 <p>最后，我们可以在图层上应用美学映射（aes），这不仅仅是关于颜色和形状，还包括如何处理数据，比如将性别转换为因子，并据此生成不同的可视化元素。 总结一下，我们首先进行数据映射，然后选择合适的几何对象来表示数据，最后将不同的图层叠加起来，形成一个完整的图表。通过这种方式，我们可以创建出既丰富又易于理解的视觉表示。</p>
 <p>数据映射</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="第七讲描述性统计与数据可视化基础.html#cb257-1" tabindex="-1"></a><span class="co"># 以penguin问卷中前后体温为例 </span></span>
-<span id="cb257-2"><a href="第七讲描述性统计与数据可视化基础.html#cb257-2" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> pg_raw <span class="sc">%&gt;%</span> </span>
-<span id="cb257-3"><a href="第七讲描述性统计与数据可视化基础.html#cb257-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Temperature_t1, <span class="co"># 确定映射到xy轴的变量</span></span>
-<span id="cb257-4"><a href="第七讲描述性统计与数据可视化基础.html#cb257-4" tabindex="-1"></a>             <span class="at">y =</span> Temperature_t2)) </span>
-<span id="cb257-5"><a href="第七讲描述性统计与数据可视化基础.html#cb257-5" tabindex="-1"></a>p1 <span class="do">## 坐标轴名称已对应，虽然图片为空</span></span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="第七讲描述性统计与数据可视化基础.html#cb263-1" tabindex="-1"></a><span class="co"># 以penguin问卷中前后体温为例 </span></span>
+<span id="cb263-2"><a href="第七讲描述性统计与数据可视化基础.html#cb263-2" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> pg_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb263-3"><a href="第七讲描述性统计与数据可视化基础.html#cb263-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Temperature_t1, <span class="co"># 确定映射到xy轴的变量</span></span>
+<span id="cb263-4"><a href="第七讲描述性统计与数据可视化基础.html#cb263-4" tabindex="-1"></a>             <span class="at">y =</span> Temperature_t2)) </span>
+<span id="cb263-5"><a href="第七讲描述性统计与数据可视化基础.html#cb263-5" tabindex="-1"></a>p1 <span class="do">## 坐标轴名称已对应，虽然图片为空</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-113-1.png" width="672" style="display: block; margin: auto;" />
 添加图层-散点</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="第七讲描述性统计与数据可视化基础.html#cb258-1" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="第七讲描述性统计与数据可视化基础.html#cb264-1" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-114-1.png" width="60%" style="display: block; margin: auto;" />
 添加图层-拟合曲线</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="第七讲描述性统计与数据可视化基础.html#cb259-1" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="第七讲描述性统计与数据可视化基础.html#cb265-1" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-115-1.png" width="60%" style="display: block; margin: auto;" />
 改变映射</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="第七讲描述性统计与数据可视化基础.html#cb261-1" tabindex="-1"></a>pg_raw <span class="sc">%&gt;%</span> </span>
-<span id="cb261-2"><a href="第七讲描述性统计与数据可视化基础.html#cb261-2" tabindex="-1"></a>  <span class="fu">drop_na</span>(Temperature_t1,Temperature_t2,sex) <span class="sc">%&gt;%</span> </span>
-<span id="cb261-3"><a href="第七讲描述性统计与数据可视化基础.html#cb261-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Temperature_t1, </span>
-<span id="cb261-4"><a href="第七讲描述性统计与数据可视化基础.html#cb261-4" tabindex="-1"></a>             <span class="at">y =</span> Temperature_t2,</span>
-<span id="cb261-5"><a href="第七讲描述性统计与数据可视化基础.html#cb261-5" tabindex="-1"></a>             <span class="at">color =</span> <span class="fu">factor</span>(sex))) <span class="sc">+</span></span>
-<span id="cb261-6"><a href="第七讲描述性统计与数据可视化基础.html#cb261-6" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>()  </span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="第七讲描述性统计与数据可视化基础.html#cb267-1" tabindex="-1"></a>pg_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb267-2"><a href="第七讲描述性统计与数据可视化基础.html#cb267-2" tabindex="-1"></a>  <span class="fu">drop_na</span>(Temperature_t1,Temperature_t2,sex) <span class="sc">%&gt;%</span> </span>
+<span id="cb267-3"><a href="第七讲描述性统计与数据可视化基础.html#cb267-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Temperature_t1, </span>
+<span id="cb267-4"><a href="第七讲描述性统计与数据可视化基础.html#cb267-4" tabindex="-1"></a>             <span class="at">y =</span> Temperature_t2,</span>
+<span id="cb267-5"><a href="第七讲描述性统计与数据可视化基础.html#cb267-5" tabindex="-1"></a>             <span class="at">color =</span> <span class="fu">factor</span>(sex))) <span class="sc">+</span></span>
+<span id="cb267-6"><a href="第七讲描述性统计与数据可视化基础.html#cb267-6" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>()  </span></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-116-1.png" width="50%" style="display: block; margin: auto;" /></p>
 </div>
@@ -963,43 +965,43 @@ Analysis,EDA），在传统的心理学中，我们通常会清楚地知道要�
 <div id="直方图" class="section level3 hasAnchor" number="7.4.1">
 <h3><span class="header-section-number">7.4.1</span> 直方图<a href="第七讲描述性统计与数据可视化基础.html#直方图" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>对于连续变量，一般通过直方图对它进行可视化。以认知实验中被试的反应时为例，反应时的单位一般到秒，如何对它进行可视化呢？首先，我们需要进行映射，目的是为了对数据进行可视化。我们关注的是数据的频次分布，因此只需映射一个值，即反应时间，代码如下：</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="第七讲描述性统计与数据可视化基础.html#cb263-1" tabindex="-1"></a>pic_his <span class="ot">&lt;-</span> mt_raw <span class="sc">%&gt;%</span> </span>
-<span id="cb263-2"><a href="第七讲描述性统计与数据可视化基础.html#cb263-2" tabindex="-1"></a>  <span class="co"># 确定映射到x轴的变量</span></span>
-<span id="cb263-3"><a href="第七讲描述性统计与数据可视化基础.html#cb263-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> RT)) <span class="sc">+</span> </span>
-<span id="cb263-4"><a href="第七讲描述性统计与数据可视化基础.html#cb263-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>) <span class="sc">+</span></span>
-<span id="cb263-5"><a href="第七讲描述性统计与数据可视化基础.html#cb263-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="第七讲描述性统计与数据可视化基础.html#cb269-1" tabindex="-1"></a>pic_his <span class="ot">&lt;-</span> mt_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb269-2"><a href="第七讲描述性统计与数据可视化基础.html#cb269-2" tabindex="-1"></a>  <span class="co"># 确定映射到x轴的变量</span></span>
+<span id="cb269-3"><a href="第七讲描述性统计与数据可视化基础.html#cb269-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> RT)) <span class="sc">+</span> </span>
+<span id="cb269-4"><a href="第七讲描述性统计与数据可视化基础.html#cb269-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb269-5"><a href="第七讲描述性统计与数据可视化基础.html#cb269-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-118-1.png" width="100%" style="display: block; margin: auto;" />
 在代码中，我们使用了前面提到的管道操作，将数据传入一个函数，并作为其输入。这个函数就是ggplot。ggplot的第一个参数是数据框，我们默认使用前面的数据框作为输入。aes进行数据映射，x是什么？是我们用数据框中的哪一个变量来做x的映射值。映射完成后，我们对映射的数据进行可视化，使用的是以goem开头的函数，它是直方图。如果我们不输入bins，它也会出图，但我们可以选择一个bins的数量，即直方图中的间隔数量。通过这样的处理，我们可以看到图像变得更加干净。而
 theme_classic()会使X轴和Y轴在图中更加清晰，使图的整体风格相比默认模式发生变化。
 ### 密度图
 我们也可以使用密度图来描述反应时的分布情况。在直方图中，我们使用高度来表示数据的多少，而在密度图中，我们使用平滑曲线来表示数据的分布情况。在绘制图形时，我们可以使用“geom”命令来选择几何图形，如条形图或密度图。</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="第七讲描述性统计与数据可视化基础.html#cb264-1" tabindex="-1"></a>pic_dens <span class="ot">&lt;-</span> mt_raw <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb264-2"><a href="第七讲描述性统计与数据可视化基础.html#cb264-2" tabindex="-1"></a>  <span class="co"># 绘制密度曲线</span></span>
-<span id="cb264-3"><a href="第七讲描述性统计与数据可视化基础.html#cb264-3" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x =</span> RT)) <span class="sc">+</span></span>
-<span id="cb264-4"><a href="第七讲描述性统计与数据可视化基础.html#cb264-4" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="第七讲描述性统计与数据可视化基础.html#cb270-1" tabindex="-1"></a>pic_dens <span class="ot">&lt;-</span> mt_raw <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb270-2"><a href="第七讲描述性统计与数据可视化基础.html#cb270-2" tabindex="-1"></a>  <span class="co"># 绘制密度曲线</span></span>
+<span id="cb270-3"><a href="第七讲描述性统计与数据可视化基础.html#cb270-3" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x =</span> RT)) <span class="sc">+</span></span>
+<span id="cb270-4"><a href="第七讲描述性统计与数据可视化基础.html#cb270-4" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-120-1.png" width="100%" style="display: block; margin: auto;" />
 大家可以看到，这里的代码与之前有一点变化。我们同样将整个数据框，包括反应时数据，作为输入，并直接使用ggplot函数。在这里，我们没有添加任何额外的参数。接下来，我们通过叠加图层的方式来增加一个密度曲线。在这个密度曲线的函数中，我们补充了数据映射信息，这与之前的做法是一样的，即只映射x轴。我们将rt（反应时间）映射到x轴上，然后函数就会生成一个曲线图。我们使用了class口的一个功能来实现这一点。大家可以看到，这两个图的信息非常相似：曲线的高度与频次相对应，频次越高的地方，曲线的高度也越高。这里的y轴代表density，即密度。</p>
 </div>
 <div id="直方图密度图" class="section level3 hasAnchor" number="7.4.2">
 <h3><span class="header-section-number">7.4.2</span> 直方图+密度图<a href="第七讲描述性统计与数据可视化基础.html#直方图密度图" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>我们也可以将直方图和密度图尝试叠加在一起</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="第七讲描述性统计与数据可视化基础.html#cb265-1" tabindex="-1"></a><span class="do">## 尝试将两个图层叠加在一起</span></span>
-<span id="cb265-2"><a href="第七讲描述性统计与数据可视化基础.html#cb265-2" tabindex="-1"></a>mt_raw <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> RT))<span class="sc">+</span></span>
-<span id="cb265-3"><a href="第七讲描述性统计与数据可视化基础.html#cb265-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>) <span class="sc">+</span> </span>
-<span id="cb265-4"><a href="第七讲描述性统计与数据可视化基础.html#cb265-4" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
-<span id="cb265-5"><a href="第七讲描述性统计与数据可视化基础.html#cb265-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="第七讲描述性统计与数据可视化基础.html#cb271-1" tabindex="-1"></a><span class="do">## 尝试将两个图层叠加在一起</span></span>
+<span id="cb271-2"><a href="第七讲描述性统计与数据可视化基础.html#cb271-2" tabindex="-1"></a>mt_raw <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> RT))<span class="sc">+</span></span>
+<span id="cb271-3"><a href="第七讲描述性统计与数据可视化基础.html#cb271-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>) <span class="sc">+</span> </span>
+<span id="cb271-4"><a href="第七讲描述性统计与数据可视化基础.html#cb271-4" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb271-5"><a href="第七讲描述性统计与数据可视化基础.html#cb271-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-122-1.png" width="576" style="display: block; margin: auto;" />
 我们想要直接在这个频次图上叠加图层，首先将rt（反应时间）映射到x轴上，并使用histogram函数来绘制直方图。画完直方图后，我们考虑到ggplot2可以直接进行图层的叠加，所以我们可以尝试直接在直方图上叠加一层密度图。我们期望的是，如果图绘制正确，我们应该能看到一条沿着直方图边缘的曲线，因为这两者实际上表示的是同一种信息。
 但是，我们实际上看不到这条曲线，这可能是因为y轴的信息差异，单位没有保持一致，直方图的单位可能是500或1000，而密度图的可能只有1或2，这导致密度图可能已经叠加在上面，但由于其规模较小，我们无法直观地看到。这是因为直方图和密度图在y轴上的单位没有保持一致。
 为了解决这个问题，我们可以将直方图的y轴从计数转换为密度，这样无论是绘制直方图还是密度图，我们都是以密度作为绘图的数据映射，这样，我们就能在直方图上清晰地看到叠加的密度曲线，它们表示的是类似的信息，代码如下：</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="第七讲描述性统计与数据可视化基础.html#cb266-1" tabindex="-1"></a>pic_mix <span class="ot">&lt;-</span> mt_raw <span class="sc">%&gt;%</span> </span>
-<span id="cb266-2"><a href="第七讲描述性统计与数据可视化基础.html#cb266-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> RT,</span>
-<span id="cb266-3"><a href="第七讲描述性统计与数据可视化基础.html#cb266-3" tabindex="-1"></a>  <span class="do">## 直方图的统计结果通过after_stat(density)传递给了密度图</span></span>
-<span id="cb266-4"><a href="第七讲描述性统计与数据可视化基础.html#cb266-4" tabindex="-1"></a>        <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span>  <span class="co">#&lt;&lt;</span></span>
-<span id="cb266-5"><a href="第七讲描述性统计与数据可视化基础.html#cb266-5" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb266-6"><a href="第七讲描述性统计与数据可视化基础.html#cb266-6" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
-<span id="cb266-7"><a href="第七讲描述性统计与数据可视化基础.html#cb266-7" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
-<span id="cb266-8"><a href="第七讲描述性统计与数据可视化基础.html#cb266-8" tabindex="-1"></a><span class="co"># 设定绘图风格</span></span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="第七讲描述性统计与数据可视化基础.html#cb272-1" tabindex="-1"></a>pic_mix <span class="ot">&lt;-</span> mt_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb272-2"><a href="第七讲描述性统计与数据可视化基础.html#cb272-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> RT,</span>
+<span id="cb272-3"><a href="第七讲描述性统计与数据可视化基础.html#cb272-3" tabindex="-1"></a>  <span class="do">## 直方图的统计结果通过after_stat(density)传递给了密度图</span></span>
+<span id="cb272-4"><a href="第七讲描述性统计与数据可视化基础.html#cb272-4" tabindex="-1"></a>        <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span>  <span class="co">#&lt;&lt;</span></span>
+<span id="cb272-5"><a href="第七讲描述性统计与数据可视化基础.html#cb272-5" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb272-6"><a href="第七讲描述性统计与数据可视化基础.html#cb272-6" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb272-7"><a href="第七讲描述性统计与数据可视化基础.html#cb272-7" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb272-8"><a href="第七讲描述性统计与数据可视化基础.html#cb272-8" tabindex="-1"></a><span class="co"># 设定绘图风格</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-124-1.png" width="100%" style="display: block; margin: auto;" />
 在代码中，我们需要做的是将rt映射到x轴上，并显式地指定y轴的处理方式。默认情况下，当只绘制直方图时，y轴会自动设置为计数。但我们可以显式地将y轴设置为对rt进行density处理，这样y轴就会显示rt在不同区间的密度。通过这种方式，无论是使用histogram还是density，它们都将使用一致的y轴范围，从而使得两种信息能够在同一张图上进行呈现。</p>
 </div>
@@ -1007,12 +1009,12 @@ theme_classic()会使X轴和Y轴在图中更加清晰，使图的整体风格相
 <h3><span class="header-section-number">7.4.3</span> 箱线图<a href="第七讲描述性统计与数据可视化基础.html#箱线图" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>箱型图也是我们常用的一种图形，除了将单个变量可视化，我们可以尝试将两个变量的关系可视化，在这种情况下，我们可以考虑使用箱线图（box
 plot）。大家可能还记得，我们的数据根据不同的条件（比如图形的好与坏，自己与他人，以及匹配与不匹配）分成了几种情况。如果我们想查看这四种条件下，无论匹配与否，反应时间是否有显著差异，我们可以通过箱线图进行快速可视化，代码如下：</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="第七讲描述性统计与数据可视化基础.html#cb267-1" tabindex="-1"></a>pic_box <span class="ot">&lt;-</span> mt_raw <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
-<span id="cb267-2"><a href="第七讲描述性统计与数据可视化基础.html#cb267-2" tabindex="-1"></a>  <span class="at">x =</span> Label,</span>
-<span id="cb267-3"><a href="第七讲描述性统计与数据可视化基础.html#cb267-3" tabindex="-1"></a>  <span class="at">y =</span> RT)) <span class="sc">+</span></span>
-<span id="cb267-4"><a href="第七讲描述性统计与数据可视化基础.html#cb267-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">staplewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb267-5"><a href="第七讲描述性统计与数据可视化基础.html#cb267-5" tabindex="-1"></a>  <span class="co"># 绘制箱线图并添加上下边缘线</span></span>
-<span id="cb267-6"><a href="第七讲描述性统计与数据可视化基础.html#cb267-6" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="第七讲描述性统计与数据可视化基础.html#cb273-1" tabindex="-1"></a>pic_box <span class="ot">&lt;-</span> mt_raw <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
+<span id="cb273-2"><a href="第七讲描述性统计与数据可视化基础.html#cb273-2" tabindex="-1"></a>  <span class="at">x =</span> Label,</span>
+<span id="cb273-3"><a href="第七讲描述性统计与数据可视化基础.html#cb273-3" tabindex="-1"></a>  <span class="at">y =</span> RT)) <span class="sc">+</span></span>
+<span id="cb273-4"><a href="第七讲描述性统计与数据可视化基础.html#cb273-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">staplewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb273-5"><a href="第七讲描述性统计与数据可视化基础.html#cb273-5" tabindex="-1"></a>  <span class="co"># 绘制箱线图并添加上下边缘线</span></span>
+<span id="cb273-6"><a href="第七讲描述性统计与数据可视化基础.html#cb273-6" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-126-1.png" width="100%" style="display: block; margin: auto;" />
 在映射数据时，我们将条件（label）映射到x轴，由于这是字符型数据，R语言会将其视为离散数据，并在x轴上表示为四个不同的点，每个点代表一个条件。R语言默认按照字母顺序对字符型数据进行排序。在y轴上，我们映射的是rt（反应时间），这是一个连续型数值。
 完成数据映射后，我们可以选择多种方式来展示结果。对于初步查看不同条件之间是否有区别，我们通常使用均值或中位数来表示数据的整体情况，使用四分位距、全距或标准差来表示数据的离散情况。箱线图能够将这些元素综合展示，让我们能够同时看到数据的集中趋势和离散程度。
@@ -1026,50 +1028,50 @@ ggplot2的优势在于，它简化了绘制复杂图形的过程，通过集成�
 <div id="data-explorer-1" class="section level3 hasAnchor" number="7.5.1">
 <h3><span class="header-section-number">7.5.1</span> Data Explorer<a href="第七讲描述性统计与数据可视化基础.html#data-explorer-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Explorer也是一个很不错的数据探索工具，可以帮助我们快速探索数据。我们可以使用安装工具包来实现可视化，比如plot_string，它可以将DataFrame中的所有列名以可视化的形式表达出来，类似于思维导图中的树形图。</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="第七讲描述性统计与数据可视化基础.html#cb268-1" tabindex="-1"></a> DataExplorer<span class="sc">::</span><span class="fu">plot_str</span>(mt_raw)</span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="第七讲描述性统计与数据可视化基础.html#cb274-1" tabindex="-1"></a> DataExplorer<span class="sc">::</span><span class="fu">plot_str</span>(mt_raw)</span></code></pre></div>
 <p><img src="pic/chp7/plotstr.png" width="65%" style="display: block; margin: auto;" /></p>
 <p>另一个是plot_intro，它可以显示一些信息，比如有多少个离散数据列，有多少个连续数据列等等。我们可以看到，对于我们的匹配数据，离散列占56％，连续列占43％，所有列都是缺失值的占0％。每个数据至少都有一些值，完整的行占97.46％。缺失观测值的数量也可以通过可视化方式快速了解。</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="第七讲描述性统计与数据可视化基础.html#cb269-1" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_intro</span>(mt_raw)</span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="第七讲描述性统计与数据可视化基础.html#cb275-1" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_intro</span>(mt_raw)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-129-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>据探索包的一个独特特点，它可以帮助我们快速可视化数据。关于缺失值，我们可以使用plot_missing命令将具有缺失值的列可视化。大多数列都没有缺失值，只有一个响应列有2.5％的缺失值。</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="第七讲描述性统计与数据可视化基础.html#cb270-1" tabindex="-1"></a> DataExplorer<span class="sc">::</span><span class="fu">plot_missing</span>(mt_raw)</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="第七讲描述性统计与数据可视化基础.html#cb276-1" tabindex="-1"></a> DataExplorer<span class="sc">::</span><span class="fu">plot_missing</span>(mt_raw)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-130-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>我们可以看到，几乎所有数字化变量的计数都可以用条形图表示。例如，性别可以用female，male，2和1表示。我们可以看到，大多数人是右撇子，而匹配和不匹配的比例是一致的。如果我们在匹配条件下看到匹配比不匹配多或不匹配更多，那么可能存在问题，因为我们的实验设计是一致的。同样，我们的实验条件应该是平衡的，因此看起来应该是一模一样的。</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="第七讲描述性统计与数据可视化基础.html#cb271-1" tabindex="-1"></a> DataExplorer<span class="sc">::</span><span class="fu">plot_bar</span>(mt_raw)</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="第七讲描述性统计与数据可视化基础.html#cb277-1" tabindex="-1"></a> DataExplorer<span class="sc">::</span><span class="fu">plot_bar</span>(mt_raw)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-131-1.png" width="70%" style="display: block; margin: auto;" />
 我们可以使用plot_bar将所有变量以bar图的形式呈现出来。我们还可以根据match条件将数据分成matched和mismatched两部分，并用bar图表示每个部分的比例。在大多数情况下，matched和mismatched是平衡的。我们还可以使用histogram来快速绘制所有变量的分布情况，特别是连续变量的分布情况。我们可以使用ggplot来检验数据是否符合正态分布。
 我们还可以通过选择一个特定的列作为分组条件，来绘制不同组别的比例。当然，我们这里选择的比例基本上都是相同的，这是因为我们的条件设置在各部分都是一致的。例如，在练习部分，无论是左利手还是右利手完成，图形的呈现都是一样的。这说明了什么呢？这表明大多数情况下，匹配和未匹配的比例是1:1，这符合我们的实验设计。但是，在反应方面，比例可能不是1:1，这意味着被试的反应可能存在一些差异。</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="第七讲描述性统计与数据可视化基础.html#cb272-1" tabindex="-1"></a> DataExplorer<span class="sc">::</span><span class="fu">plot_bar</span>(mt_raw, <span class="at">by=</span><span class="st">&quot;Match&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="第七讲描述性统计与数据可视化基础.html#cb278-1" tabindex="-1"></a> DataExplorer<span class="sc">::</span><span class="fu">plot_bar</span>(mt_raw, <span class="at">by=</span><span class="st">&quot;Match&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-132-1.png" width="70%" style="display: block; margin: auto;" />
 对于直方图，它能够快速地为数字型数据生成可视化图形。我们之前已经关注了反应时间（rt），如果你有许多这样的数字型数据，多列的频数图可以一下子全部展示出来。这样，我们就可以看到每个列、每个数据列的整体情况。</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="第七讲描述性统计与数据可视化基础.html#cb273-1" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_histogram</span>(mt_raw)</span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="第七讲描述性统计与数据可视化基础.html#cb279-1" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_histogram</span>(mt_raw)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-133-1.png" width="70%" style="display: block; margin: auto;" />
 还可以画qq图来看数据的正态性</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="第七讲描述性统计与数据可视化基础.html#cb274-1" tabindex="-1"></a> DataExplorer<span class="sc">::</span><span class="fu">plot_qq</span>(pg_raw[,<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="第七讲描述性统计与数据可视化基础.html#cb280-1" tabindex="-1"></a> DataExplorer<span class="sc">::</span><span class="fu">plot_qq</span>(pg_raw[,<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>])</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-134-1.png" width="70%" style="display: block; margin: auto;" />
 这个包是为了快速探索数据框中数据的情况而专门开发的。它提供了许多实用且快速的功能，例如相关系数（correlation）分析。如果你进行问卷分析，结构图会非常友好，因为它能让你看到不同条目之间的得分，以及它们是否显示出预期的高相关或低相关。</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="第七讲描述性统计与数据可视化基础.html#cb275-1" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_correlation</span>(<span class="fu">na.omit</span>(pg_raw[, <span class="dv">2</span><span class="sc">:</span><span class="dv">30</span>]))</span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="第七讲描述性统计与数据可视化基础.html#cb281-1" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_correlation</span>(<span class="fu">na.omit</span>(pg_raw[, <span class="dv">2</span><span class="sc">:</span><span class="dv">30</span>]))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-135-1.png" width="70%" style="display: block; margin: auto;" />
 在ggplot2体系中，还开发了一些符合其规范的附加包，比如“ggpairs”。这个包可以在数据组合后直接绘制它们之间的关系图，图中会展示相关系数和每个数字的分布。此外，还有散点图，它能在探索相关性时快速提供原始数据、统计值以及每个数据自身的分布情况。这些功能都帮助我们快速地进行数据探索。</p>
 </div>
 <div id="使用ggpairs" class="section level3 hasAnchor" number="7.5.2">
 <h3><span class="header-section-number">7.5.2</span> 使用ggpairs<a href="第七讲描述性统计与数据可视化基础.html#使用ggpairs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>code</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="第七讲描述性统计与数据可视化基础.html#cb276-1" tabindex="-1"></a><span class="do">## 以 penguin project 数据中 ALEX, stress和 ECR 为例</span></span>
-<span id="cb276-2"><a href="第七讲描述性统计与数据可视化基础.html#cb276-2" tabindex="-1"></a>pg_raw <span class="sc">%&gt;%</span> </span>
-<span id="cb276-3"><a href="第七讲描述性统计与数据可视化基础.html#cb276-3" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb276-4"><a href="第七讲描述性统计与数据可视化基础.html#cb276-4" tabindex="-1"></a>    <span class="co"># 计算均值</span></span>
-<span id="cb276-5"><a href="第七讲描述性统计与数据可视化基础.html#cb276-5" tabindex="-1"></a>    <span class="at">m_ALEX =</span> bruceR<span class="sc">::</span><span class="fu">MEAN</span>(.,</span>
-<span id="cb276-6"><a href="第七讲描述性统计与数据可视化基础.html#cb276-6" tabindex="-1"></a>      <span class="at">var =</span> <span class="st">&#39;ALEX&#39;</span>,<span class="at">items =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>,<span class="at">rev =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>)),</span>
-<span id="cb276-7"><a href="第七讲描述性统计与数据可视化基础.html#cb276-7" tabindex="-1"></a>    <span class="at">m_stress =</span> bruceR<span class="sc">::</span><span class="fu">MEAN</span>(.,</span>
-<span id="cb276-8"><a href="第七讲描述性统计与数据可视化基础.html#cb276-8" tabindex="-1"></a>      <span class="at">var =</span> <span class="st">&#39;stress&#39;</span>,<span class="at">items =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">14</span>,<span class="at">rev =</span> <span class="fu">c</span>(<span class="dv">4</span><span class="sc">:</span><span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">13</span>)</span>
-<span id="cb276-9"><a href="第七讲描述性统计与数据可视化基础.html#cb276-9" tabindex="-1"></a>    ),</span>
-<span id="cb276-10"><a href="第七讲描述性统计与数据可视化基础.html#cb276-10" tabindex="-1"></a>    <span class="at">m_ECR =</span> bruceR<span class="sc">::</span><span class="fu">MEAN</span>(.,</span>
-<span id="cb276-11"><a href="第七讲描述性统计与数据可视化基础.html#cb276-11" tabindex="-1"></a>      <span class="at">var =</span> <span class="st">&#39;ECR&#39;</span>,<span class="at">items =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">36</span></span>
-<span id="cb276-12"><a href="第七讲描述性统计与数据可视化基础.html#cb276-12" tabindex="-1"></a>    )</span>
-<span id="cb276-13"><a href="第七讲描述性统计与数据可视化基础.html#cb276-13" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb276-14"><a href="第七讲描述性统计与数据可视化基础.html#cb276-14" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&#39;m_&#39;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb276-15"><a href="第七讲描述性统计与数据可视化基础.html#cb276-15" tabindex="-1"></a>  GGally<span class="sc">::</span><span class="fu">ggpairs</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="第七讲描述性统计与数据可视化基础.html#cb282-1" tabindex="-1"></a><span class="do">## 以 penguin project 数据中 ALEX, stress和 ECR 为例</span></span>
+<span id="cb282-2"><a href="第七讲描述性统计与数据可视化基础.html#cb282-2" tabindex="-1"></a>pg_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb282-3"><a href="第七讲描述性统计与数据可视化基础.html#cb282-3" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb282-4"><a href="第七讲描述性统计与数据可视化基础.html#cb282-4" tabindex="-1"></a>    <span class="co"># 计算均值</span></span>
+<span id="cb282-5"><a href="第七讲描述性统计与数据可视化基础.html#cb282-5" tabindex="-1"></a>    <span class="at">m_ALEX =</span> bruceR<span class="sc">::</span><span class="fu">MEAN</span>(.,</span>
+<span id="cb282-6"><a href="第七讲描述性统计与数据可视化基础.html#cb282-6" tabindex="-1"></a>      <span class="at">var =</span> <span class="st">&#39;ALEX&#39;</span>,<span class="at">items =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>,<span class="at">rev =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>)),</span>
+<span id="cb282-7"><a href="第七讲描述性统计与数据可视化基础.html#cb282-7" tabindex="-1"></a>    <span class="at">m_stress =</span> bruceR<span class="sc">::</span><span class="fu">MEAN</span>(.,</span>
+<span id="cb282-8"><a href="第七讲描述性统计与数据可视化基础.html#cb282-8" tabindex="-1"></a>      <span class="at">var =</span> <span class="st">&#39;stress&#39;</span>,<span class="at">items =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">14</span>,<span class="at">rev =</span> <span class="fu">c</span>(<span class="dv">4</span><span class="sc">:</span><span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">13</span>)</span>
+<span id="cb282-9"><a href="第七讲描述性统计与数据可视化基础.html#cb282-9" tabindex="-1"></a>    ),</span>
+<span id="cb282-10"><a href="第七讲描述性统计与数据可视化基础.html#cb282-10" tabindex="-1"></a>    <span class="at">m_ECR =</span> bruceR<span class="sc">::</span><span class="fu">MEAN</span>(.,</span>
+<span id="cb282-11"><a href="第七讲描述性统计与数据可视化基础.html#cb282-11" tabindex="-1"></a>      <span class="at">var =</span> <span class="st">&#39;ECR&#39;</span>,<span class="at">items =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">36</span></span>
+<span id="cb282-12"><a href="第七讲描述性统计与数据可视化基础.html#cb282-12" tabindex="-1"></a>    )</span>
+<span id="cb282-13"><a href="第七讲描述性统计与数据可视化基础.html#cb282-13" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb282-14"><a href="第七讲描述性统计与数据可视化基础.html#cb282-14" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&#39;m_&#39;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb282-15"><a href="第七讲描述性统计与数据可视化基础.html#cb282-15" tabindex="-1"></a>  GGally<span class="sc">::</span><span class="fu">ggpairs</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-136-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>本节课重点强调了数据探索的重要性，尤其是通过可视化方式进行探索。我们已经开始使用ggplot2，虽然我只是展示了ggplot2的一些功能，并没有深入讲解每个元素的操控细节。这是因为我们的数据分析课程有一个渐进的流程：从数据导入、清洗，到初步了解数据，接下来自然是进行统计分析。在接下来的几节课中，我们将学习如何使用R进行统计分析。
 这就要求大家通过练习来提高自己操作数据和探索数据的能力，将前面学到的内容整合起来。例如，通过选择数据框中的数据来进行绘图，以及对数据类型进行转换，改变图形中元素的呈现顺序。我建议大家针对不同图形的击中率进行分组绘图，并使用箱线图来展示。</p>

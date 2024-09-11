@@ -542,21 +542,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="lesson-5" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Chapter 5</span> 第五讲：R语言中的对象2: 函数<a href="lesson-5.html#lesson-5" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>今天我们正式开始用r来处理数据。记得去年教授这门课程时，有同学遇到了报错和乱码的问题，无法正常显示，这是因为部分语言设置不正确。为避免此类问题，大家可以将自己的编程语言设置为英文，这样就不会出现乱码了。也就是说，当你遇到报错时，如果系统默认语言是中文，那么在输出时可能会有乱码，无法被识别，这是一个小问题。将界面语言设置成英文的代码如下：</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="lesson-5.html#cb42-1" tabindex="-1"></a><span class="co"># set local encoding to English</span></span>
-<span id="cb42-2"><a href="lesson-5.html#cb42-2" tabindex="-1"></a><span class="cf">if</span> (.Platform<span class="sc">$</span>OS.type <span class="sc">==</span> <span class="st">&#39;windows&#39;</span>) {</span>
-<span id="cb42-3"><a href="lesson-5.html#cb42-3" tabindex="-1"></a>  <span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&#39;LC_ALL&#39;</span>,<span class="st">&#39;English_United States.1250&#39;</span>)</span>
-<span id="cb42-4"><a href="lesson-5.html#cb42-4" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb42-5"><a href="lesson-5.html#cb42-5" tabindex="-1"></a>  <span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&#39;LC_ALL&#39;</span>,<span class="st">&#39;en_US.UTF-8&#39;</span>)</span>
-<span id="cb42-6"><a href="lesson-5.html#cb42-6" tabindex="-1"></a>}</span>
-<span id="cb42-7"><a href="lesson-5.html#cb42-7" tabindex="-1"></a><span class="co"># set the feedback language to English</span></span>
-<span id="cb42-8"><a href="lesson-5.html#cb42-8" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">LANG =</span> <span class="st">&quot;en&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="lesson-5.html#cb48-1" tabindex="-1"></a><span class="co"># set local encoding to English</span></span>
+<span id="cb48-2"><a href="lesson-5.html#cb48-2" tabindex="-1"></a><span class="cf">if</span> (.Platform<span class="sc">$</span>OS.type <span class="sc">==</span> <span class="st">&#39;windows&#39;</span>) {</span>
+<span id="cb48-3"><a href="lesson-5.html#cb48-3" tabindex="-1"></a>  <span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&#39;LC_ALL&#39;</span>,<span class="st">&#39;English_United States.1250&#39;</span>)</span>
+<span id="cb48-4"><a href="lesson-5.html#cb48-4" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb48-5"><a href="lesson-5.html#cb48-5" tabindex="-1"></a>  <span class="fu">Sys.setlocale</span>(<span class="at">category =</span> <span class="st">&#39;LC_ALL&#39;</span>,<span class="st">&#39;en_US.UTF-8&#39;</span>)</span>
+<span id="cb48-6"><a href="lesson-5.html#cb48-6" tabindex="-1"></a>}</span>
+<span id="cb48-7"><a href="lesson-5.html#cb48-7" tabindex="-1"></a><span class="co"># set the feedback language to English</span></span>
+<span id="cb48-8"><a href="lesson-5.html#cb48-8" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">LANG =</span> <span class="st">&quot;en&quot;</span>) </span></code></pre></div>
 <p>在开始分析数据数据之前，我们需要加载分析数据时所需要的包，一般使用<code>library()</code>函数。但更推荐大家使用名为<code>packman</code>（Package
 Management
 ）的包来加载，使用<code>pacman::p_load</code>不仅可以批量加载包，而且遇到没有安装的包时会自动为我们安装。</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="lesson-5.html#cb43-1" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&#39;pacman&#39;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb43-2"><a href="lesson-5.html#cb43-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&#39;pacman&#39;</span>)</span>
-<span id="cb43-3"><a href="lesson-5.html#cb43-3" tabindex="-1"></a>}</span>
-<span id="cb43-4"><a href="lesson-5.html#cb43-4" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(bruceR,here)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="lesson-5.html#cb49-1" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&#39;pacman&#39;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb49-2"><a href="lesson-5.html#cb49-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&#39;pacman&#39;</span>)</span>
+<span id="cb49-3"><a href="lesson-5.html#cb49-3" tabindex="-1"></a>}</span>
+<span id="cb49-4"><a href="lesson-5.html#cb49-4" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(bruceR,here)</span></code></pre></div>
 <div id="加载数据" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> 加载数据<a href="lesson-5.html#加载数据" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>既然我们要开始处理数据，而R作为一种工具，是解决数据分析问题的关键。我们需要将R整合到数据分析流程中，用R来完成整个数据分析过程。数据分析的第一步通常是获取数据。对于心理学专业的同学来说，大多数人获取数据的方式是通过自己进行实验和发放问卷来收集数据，并通过问卷平台或实验数据收集工具将数据汇总。而在其他情况下，获取数据的方式可能会有所不同。例如，你毕业后可能会在其他地方工作，此时你遇到的数据可能不是通过实验收集的，而是需要通过网络或其他途径来获取，或者可能是别人交给你的未经整理的数据。</p>
@@ -603,7 +603,7 @@ Rmarkdown 文件相同路径的文件夹中，如果你将 Rmarkdown
 <p><img src="pic/chp5/abspath.jpg" width="367" style="display: block; margin: auto;" /></p>
 <pre><code>&lt;img src=&quot;pic_abspath.jpg&quot; alt=&quot;abs_path&quot; style=&quot;zoom:50%;&quot;/&gt;</code></pre>
 <p>在R语言中，路径分隔符要求为斜杠（/），注意不能直接从路径栏中直接复制地址。这是一个非常细节的问题，但也有更加方便的方式来解决这个问题，即使用<code>here::here()</code>函数，只需要在这个函数中按顺序依次输出，比如对于上面的相对路径就可以写为：</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="lesson-5.html#cb45-1" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>,<span class="st">&#39;penguin&#39;</span>,<span class="st">&#39;penguin_rawdata.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="lesson-5.html#cb51-1" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>,<span class="st">&#39;penguin&#39;</span>,<span class="st">&#39;penguin_rawdata.csv&#39;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="读取数据-1" class="section level2 hasAnchor" number="5.2">
@@ -617,13 +617,13 @@ Excel 里导入数据的操作类似。</p>
 <div id="代码导入" class="section level3 hasAnchor" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> 代码导入<a href="lesson-5.html#代码导入" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>当然，我们更推荐使用代码的方式来导入数据：</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="lesson-5.html#cb46-1" tabindex="-1"></a>penguin_data <span class="ot">=</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>))</span>
-<span id="cb46-2"><a href="lesson-5.html#cb46-2" tabindex="-1"></a><span class="fu">ncol</span>(penguin_data)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="lesson-5.html#cb52-1" tabindex="-1"></a>penguin_data <span class="ot">=</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>))</span>
+<span id="cb52-2"><a href="lesson-5.html#cb52-2" tabindex="-1"></a><span class="fu">ncol</span>(penguin_data)</span></code></pre></div>
 <pre><code>## [1] 232</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="lesson-5.html#cb48-1" tabindex="-1"></a><span class="fu">nrow</span>(penguin_data)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="lesson-5.html#cb54-1" tabindex="-1"></a><span class="fu">nrow</span>(penguin_data)</span></code></pre></div>
 <pre><code>## [1] 1517</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="lesson-5.html#cb50-1" tabindex="-1"></a><span class="fu">head</span>(penguin_data)</span>
-<span id="cb50-2"><a href="lesson-5.html#cb50-2" tabindex="-1"></a><span class="fu">tail</span>(penguin_data)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="lesson-5.html#cb56-1" tabindex="-1"></a><span class="fu">head</span>(penguin_data)</span>
+<span id="cb56-2"><a href="lesson-5.html#cb56-2" tabindex="-1"></a><span class="fu">tail</span>(penguin_data)</span></code></pre></div>
 <p>在上面的代码中，我们使用了 bruceR 包中的 import 函数来导入
 penguin_rawdata.csv文件，并将数据命名为penguin_data（即等号’=’）；导入成功后，可以在
 Environment 界面中看到这个名称，如果在 console
@@ -642,31 +642,31 @@ csv 类型的数据。</p>
 <div id="赋值" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> 赋值<a href="lesson-5.html#赋值" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>在导入数据时，我们使用了等号进行赋值。而在R中，赋值操作符可以使用“&lt;-”，也可以使用“=”，二者是等价的。</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="lesson-5.html#cb51-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb51-2"><a href="lesson-5.html#cb51-2" tabindex="-1"></a>y <span class="ot">=</span> x <span class="sc">+</span> <span class="dv">5</span></span>
-<span id="cb51-3"><a href="lesson-5.html#cb51-3" tabindex="-1"></a><span class="do">## cat函数将值的内容输出到屏幕上</span></span>
-<span id="cb51-4"><a href="lesson-5.html#cb51-4" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="lesson-5.html#cb57-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb57-2"><a href="lesson-5.html#cb57-2" tabindex="-1"></a>y <span class="ot">=</span> x <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb57-3"><a href="lesson-5.html#cb57-3" tabindex="-1"></a><span class="do">## cat函数将值的内容输出到屏幕上</span></span>
+<span id="cb57-4"><a href="lesson-5.html#cb57-4" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="lesson-5.html#cb53-1" tabindex="-1"></a>y</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="lesson-5.html#cb59-1" tabindex="-1"></a>y</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="lesson-5.html#cb55-1" tabindex="-1"></a><span class="do">## 重新对 x 进行赋值</span></span>
-<span id="cb55-2"><a href="lesson-5.html#cb55-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb55-3"><a href="lesson-5.html#cb55-3" tabindex="-1"></a><span class="do">## x</span></span>
-<span id="cb55-4"><a href="lesson-5.html#cb55-4" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="lesson-5.html#cb61-1" tabindex="-1"></a><span class="do">## 重新对 x 进行赋值</span></span>
+<span id="cb61-2"><a href="lesson-5.html#cb61-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb61-3"><a href="lesson-5.html#cb61-3" tabindex="-1"></a><span class="do">## x</span></span>
+<span id="cb61-4"><a href="lesson-5.html#cb61-4" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1] 1000</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="lesson-5.html#cb57-1" tabindex="-1"></a>y</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="lesson-5.html#cb63-1" tabindex="-1"></a>y</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <p>通过上面的例子可以发现，对 x 进行赋值，并利用 x 进行计算后，更改 x
 的值并不会影响
 y的结果。此外，如果仅仅只是利用数据进行计算而没有复制操作的话，计算结果并不会被保存：</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="lesson-5.html#cb59-1" tabindex="-1"></a>object <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb59-2"><a href="lesson-5.html#cb59-2" tabindex="-1"></a>object</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="lesson-5.html#cb65-1" tabindex="-1"></a>object <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb65-2"><a href="lesson-5.html#cb65-2" tabindex="-1"></a>object</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="lesson-5.html#cb61-1" tabindex="-1"></a><span class="co"># 利用 object 进行计算但不赋值</span></span>
-<span id="cb61-2"><a href="lesson-5.html#cb61-2" tabindex="-1"></a>object <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="lesson-5.html#cb67-1" tabindex="-1"></a><span class="co"># 利用 object 进行计算但不赋值</span></span>
+<span id="cb67-2"><a href="lesson-5.html#cb67-2" tabindex="-1"></a>object <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="lesson-5.html#cb63-1" tabindex="-1"></a><span class="co"># object 数值并没有发生改变</span></span>
-<span id="cb63-2"><a href="lesson-5.html#cb63-2" tabindex="-1"></a>object</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="lesson-5.html#cb69-1" tabindex="-1"></a><span class="co"># object 数值并没有发生改变</span></span>
+<span id="cb69-2"><a href="lesson-5.html#cb69-2" tabindex="-1"></a>object</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <p>此外需要注意的是，R语言中的变量名的命名有一系列的规则：</p>
 <ul>
@@ -692,31 +692,31 @@ SPSS
 <div id="数值型numeric" class="section level3 hasAnchor" number="5.4.2">
 <h3><span class="header-section-number">5.4.2</span> 数值型(numeric)<a href="lesson-5.html#数值型numeric" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>包括浮点型(double,即小数)、整型(int)等，可以进行数学运算；</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="lesson-5.html#cb65-1" tabindex="-1"></a><span class="co"># 简单做个加法</span></span>
-<span id="cb65-2"><a href="lesson-5.html#cb65-2" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="lesson-5.html#cb71-1" tabindex="-1"></a><span class="co"># 简单做个加法</span></span>
+<span id="cb71-2"><a href="lesson-5.html#cb71-2" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="lesson-5.html#cb67-1" tabindex="-1"></a><span class="do">## 直接输入pi会返回圆周率</span></span>
-<span id="cb67-2"><a href="lesson-5.html#cb67-2" tabindex="-1"></a>pi</span></code></pre></div>
-<pre><code>## [1] 3.141593</code></pre>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="lesson-5.html#cb69-1" tabindex="-1"></a><span class="do">## 幂运算</span></span>
-<span id="cb69-2"><a href="lesson-5.html#cb69-2" tabindex="-1"></a><span class="dv">10</span><span class="sc">^</span><span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="lesson-5.html#cb73-1" tabindex="-1"></a><span class="do">## 直接输入pi会返回圆周率</span></span>
+<span id="cb73-2"><a href="lesson-5.html#cb73-2" tabindex="-1"></a>pi</span></code></pre></div>
+<pre><code>## [1] 3.1416</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="lesson-5.html#cb75-1" tabindex="-1"></a><span class="do">## 幂运算</span></span>
+<span id="cb75-2"><a href="lesson-5.html#cb75-2" tabindex="-1"></a><span class="dv">10</span><span class="sc">^</span><span class="dv">3</span></span></code></pre></div>
 <pre><code>## [1] 1000</code></pre>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="lesson-5.html#cb71-1" tabindex="-1"></a><span class="do">## 取对数</span></span>
-<span id="cb71-2"><a href="lesson-5.html#cb71-2" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="lesson-5.html#cb77-1" tabindex="-1"></a><span class="do">## 取对数</span></span>
+<span id="cb77-2"><a href="lesson-5.html#cb77-2" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>使用<code>class()</code>函数（即类）可以查看具体是什么数据类型，比如：</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="lesson-5.html#cb73-1" tabindex="-1"></a><span class="fu">class</span>(pi)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="lesson-5.html#cb79-1" tabindex="-1"></a><span class="fu">class</span>(pi)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 </div>
 <div id="字符串character" class="section level3 hasAnchor" number="5.4.3">
 <h3><span class="header-section-number">5.4.3</span> 字符串(character)<a href="lesson-5.html#字符串character" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>即文字内容，但需要注意的是，字符串的前后需要被英文的引号所包裹，单引号双引号都行。无论内容是什么，只要前后存在引号，R语言都会将其识别为字符，哪怕其中是乱码：</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="lesson-5.html#cb75-1" tabindex="-1"></a><span class="fu">class</span>(<span class="st">&#39;1 + 1&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="lesson-5.html#cb81-1" tabindex="-1"></a><span class="fu">class</span>(<span class="st">&#39;1 + 1&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="lesson-5.html#cb77-1" tabindex="-1"></a><span class="fu">class</span>(<span class="st">&quot;ㄤ娇鐢ㄦ鏂囦欢锛&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="lesson-5.html#cb83-1" tabindex="-1"></a><span class="fu">class</span>(<span class="st">&quot;ㄤ娇鐢ㄦ鏂囦欢锛&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="lesson-5.html#cb79-1" tabindex="-1"></a><span class="do">##  之前提到的路径，其实也是字符串，所以需要加引号</span></span>
-<span id="cb79-2"><a href="lesson-5.html#cb79-2" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">getwd</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="lesson-5.html#cb85-1" tabindex="-1"></a><span class="do">##  之前提到的路径，其实也是字符串，所以需要加引号</span></span>
+<span id="cb85-2"><a href="lesson-5.html#cb85-2" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">getwd</span>())</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 </div>
 <div id="逻辑值logical" class="section level3 hasAnchor" number="5.4.4">
@@ -724,13 +724,13 @@ SPSS
 <p>即布尔值。大家肯定都听说过计算机使用二进制 0 和
 1来表示“关”和“开”或“假”和“真”；逻辑值与此类似，即True 为真（对），False
 为假（错），分别可以简写为 T 和 F。逻辑值通常是比较运算的结果：</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="lesson-5.html#cb81-1" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&gt;</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="lesson-5.html#cb87-1" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&gt;</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="lesson-5.html#cb83-1" tabindex="-1"></a>T <span class="sc">==</span> <span class="cn">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="lesson-5.html#cb89-1" tabindex="-1"></a>T <span class="sc">==</span> <span class="cn">TRUE</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="lesson-5.html#cb85-1" tabindex="-1"></a>T <span class="sc">&gt;</span> F</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="lesson-5.html#cb91-1" tabindex="-1"></a>T <span class="sc">&gt;</span> F</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="lesson-5.html#cb87-1" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">2</span> <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="lesson-5.html#cb93-1" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">2</span> <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
 <p>常见的比较运算符如下图：</p>
 <p><img src="pic/chp5/imp3.png" width="1562" style="display: block; margin: auto;" /></p>
@@ -746,70 +746,70 @@ SPSS
 combine），但需要注意的是，向量里的类型必须相同，否则会按照一定规则进行强制转换。使用
 class()来查询向量类型，由于向量里的数据类型是相同的，因而会返回向量中具体的元素类型，而不是
 vector。</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="lesson-5.html#cb89-1" tabindex="-1"></a><span class="do">## 数值型向量</span></span>
-<span id="cb89-2"><a href="lesson-5.html#cb89-2" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb89-3"><a href="lesson-5.html#cb89-3" tabindex="-1"></a><span class="co"># 对于连续数字可以使用冒号简写，即从1到(:)5</span></span>
-<span id="cb89-4"><a href="lesson-5.html#cb89-4" tabindex="-1"></a><span class="co"># 在连续数字或单个元素时可以省略c()</span></span>
-<span id="cb89-5"><a href="lesson-5.html#cb89-5" tabindex="-1"></a>v1 <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb89-6"><a href="lesson-5.html#cb89-6" tabindex="-1"></a></span>
-<span id="cb89-7"><a href="lesson-5.html#cb89-7" tabindex="-1"></a><span class="do">## 字符型向量</span></span>
-<span id="cb89-8"><a href="lesson-5.html#cb89-8" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;apple&#39;</span>,<span class="st">&#39;pear&#39;</span>,<span class="st">&#39;banana&#39;</span>,<span class="st">&#39;strawberry&#39;</span>,<span class="st">&#39;lemon&#39;</span>)</span>
-<span id="cb89-9"><a href="lesson-5.html#cb89-9" tabindex="-1"></a><span class="co"># 每个元素都要写一遍引号非常麻烦</span></span>
-<span id="cb89-10"><a href="lesson-5.html#cb89-10" tabindex="-1"></a><span class="co"># 因此可以使用 bruceR 包中的 cc()函数，开头结尾有引号即可</span></span>
-<span id="cb89-11"><a href="lesson-5.html#cb89-11" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">cc</span>(<span class="st">&#39;apple,pear,banana,strawberry,lemon&#39;</span>)</span>
-<span id="cb89-12"><a href="lesson-5.html#cb89-12" tabindex="-1"></a></span>
-<span id="cb89-13"><a href="lesson-5.html#cb89-13" tabindex="-1"></a><span class="do">## 逻辑型向量</span></span>
-<span id="cb89-14"><a href="lesson-5.html#cb89-14" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(T,F,F,T,T)</span>
-<span id="cb89-15"><a href="lesson-5.html#cb89-15" tabindex="-1"></a></span>
-<span id="cb89-16"><a href="lesson-5.html#cb89-16" tabindex="-1"></a><span class="do">## 使用 class查看，并不会返回vector</span></span>
-<span id="cb89-17"><a href="lesson-5.html#cb89-17" tabindex="-1"></a><span class="fu">class</span>(v1)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="lesson-5.html#cb95-1" tabindex="-1"></a><span class="do">## 数值型向量</span></span>
+<span id="cb95-2"><a href="lesson-5.html#cb95-2" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb95-3"><a href="lesson-5.html#cb95-3" tabindex="-1"></a><span class="co"># 对于连续数字可以使用冒号简写，即从1到(:)5</span></span>
+<span id="cb95-4"><a href="lesson-5.html#cb95-4" tabindex="-1"></a><span class="co"># 在连续数字或单个元素时可以省略c()</span></span>
+<span id="cb95-5"><a href="lesson-5.html#cb95-5" tabindex="-1"></a>v1 <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb95-6"><a href="lesson-5.html#cb95-6" tabindex="-1"></a></span>
+<span id="cb95-7"><a href="lesson-5.html#cb95-7" tabindex="-1"></a><span class="do">## 字符型向量</span></span>
+<span id="cb95-8"><a href="lesson-5.html#cb95-8" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;apple&#39;</span>,<span class="st">&#39;pear&#39;</span>,<span class="st">&#39;banana&#39;</span>,<span class="st">&#39;strawberry&#39;</span>,<span class="st">&#39;lemon&#39;</span>)</span>
+<span id="cb95-9"><a href="lesson-5.html#cb95-9" tabindex="-1"></a><span class="co"># 每个元素都要写一遍引号非常麻烦</span></span>
+<span id="cb95-10"><a href="lesson-5.html#cb95-10" tabindex="-1"></a><span class="co"># 因此可以使用 bruceR 包中的 cc()函数，开头结尾有引号即可</span></span>
+<span id="cb95-11"><a href="lesson-5.html#cb95-11" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">cc</span>(<span class="st">&#39;apple,pear,banana,strawberry,lemon&#39;</span>)</span>
+<span id="cb95-12"><a href="lesson-5.html#cb95-12" tabindex="-1"></a></span>
+<span id="cb95-13"><a href="lesson-5.html#cb95-13" tabindex="-1"></a><span class="do">## 逻辑型向量</span></span>
+<span id="cb95-14"><a href="lesson-5.html#cb95-14" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(T,F,F,T,T)</span>
+<span id="cb95-15"><a href="lesson-5.html#cb95-15" tabindex="-1"></a></span>
+<span id="cb95-16"><a href="lesson-5.html#cb95-16" tabindex="-1"></a><span class="do">## 使用 class查看，并不会返回vector</span></span>
+<span id="cb95-17"><a href="lesson-5.html#cb95-17" tabindex="-1"></a><span class="fu">class</span>(v1)</span></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
 </div>
 <div id="类型转换" class="section level3 hasAnchor" number="5.5.2">
 <h3><span class="header-section-number">5.5.2</span> 类型转换<a href="lesson-5.html#类型转换" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>刚才提到：向量里的类型必须相同，否则会按照一定规则进行强制转换，那么这些强制转换的规则是什么样的呢？尝试在一个向量中包含不同的数据类型：</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="lesson-5.html#cb91-1" tabindex="-1"></a><span class="do">## 数值和逻辑</span></span>
-<span id="cb91-2"><a href="lesson-5.html#cb91-2" tabindex="-1"></a>x1 <span class="ot">=</span> <span class="fu">c</span>(T,<span class="dv">2</span>)</span>
-<span id="cb91-3"><a href="lesson-5.html#cb91-3" tabindex="-1"></a><span class="fu">class</span>(x1)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="lesson-5.html#cb97-1" tabindex="-1"></a><span class="do">## 数值和逻辑</span></span>
+<span id="cb97-2"><a href="lesson-5.html#cb97-2" tabindex="-1"></a>x1 <span class="ot">=</span> <span class="fu">c</span>(T,<span class="dv">2</span>)</span>
+<span id="cb97-3"><a href="lesson-5.html#cb97-3" tabindex="-1"></a><span class="fu">class</span>(x1)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="lesson-5.html#cb93-1" tabindex="-1"></a><span class="do">## 数值和字符串</span></span>
-<span id="cb93-2"><a href="lesson-5.html#cb93-2" tabindex="-1"></a>x2 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="st">&#39;a&#39;</span>)</span>
-<span id="cb93-3"><a href="lesson-5.html#cb93-3" tabindex="-1"></a><span class="fu">class</span>(x2)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="lesson-5.html#cb99-1" tabindex="-1"></a><span class="do">## 数值和字符串</span></span>
+<span id="cb99-2"><a href="lesson-5.html#cb99-2" tabindex="-1"></a>x2 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="st">&#39;a&#39;</span>)</span>
+<span id="cb99-3"><a href="lesson-5.html#cb99-3" tabindex="-1"></a><span class="fu">class</span>(x2)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="lesson-5.html#cb95-1" tabindex="-1"></a><span class="do">## 逻辑值和字符串</span></span>
-<span id="cb95-2"><a href="lesson-5.html#cb95-2" tabindex="-1"></a>x3 <span class="ot">=</span> <span class="fu">c</span>(T,<span class="st">&#39;a&#39;</span>)</span>
-<span id="cb95-3"><a href="lesson-5.html#cb95-3" tabindex="-1"></a><span class="fu">class</span>(x3)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="lesson-5.html#cb101-1" tabindex="-1"></a><span class="do">## 逻辑值和字符串</span></span>
+<span id="cb101-2"><a href="lesson-5.html#cb101-2" tabindex="-1"></a>x3 <span class="ot">=</span> <span class="fu">c</span>(T,<span class="st">&#39;a&#39;</span>)</span>
+<span id="cb101-3"><a href="lesson-5.html#cb101-3" tabindex="-1"></a><span class="fu">class</span>(x3)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="lesson-5.html#cb97-1" tabindex="-1"></a><span class="do">## 数值型、逻辑型和字符串</span></span>
-<span id="cb97-2"><a href="lesson-5.html#cb97-2" tabindex="-1"></a>x4 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,T,<span class="st">&#39;a&#39;</span>)</span>
-<span id="cb97-3"><a href="lesson-5.html#cb97-3" tabindex="-1"></a><span class="fu">class</span>(x4)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="lesson-5.html#cb103-1" tabindex="-1"></a><span class="do">## 数值型、逻辑型和字符串</span></span>
+<span id="cb103-2"><a href="lesson-5.html#cb103-2" tabindex="-1"></a>x4 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,T,<span class="st">&#39;a&#39;</span>)</span>
+<span id="cb103-3"><a href="lesson-5.html#cb103-3" tabindex="-1"></a><span class="fu">class</span>(x4)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>可以发现，如果数值型和逻辑值同时出现，则会被强制转换为数值型向量；如果数值型或逻辑型与字符串同时出现，则会强制转换为字符串向量，这就是
 R语言中数据类型的强制转换机制。当然这也提醒我们，不同类型之间的数据是可以相互转换的，而在
 R 语言中也存在以 as.开头的函数执行转换操作：</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="lesson-5.html#cb99-1" tabindex="-1"></a><span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="lesson-5.html#cb105-1" tabindex="-1"></a><span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot;</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="lesson-5.html#cb101-1" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="st">&#39;1&#39;</span>,<span class="st">&#39;2&#39;</span>,<span class="st">&#39;a&#39;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="lesson-5.html#cb107-1" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="st">&#39;1&#39;</span>,<span class="st">&#39;2&#39;</span>,<span class="st">&#39;a&#39;</span>)) </span></code></pre></div>
 <pre><code>## [1]  1  2 NA</code></pre>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="lesson-5.html#cb103-1" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(T,F))</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="lesson-5.html#cb109-1" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(T,F))</span></code></pre></div>
 <pre><code>## [1] 1 0</code></pre>
 <p>在上面例子中，需要注意第二个例子。字母本身并不能转换成数字，因而使用 NA
 进行替换；而 NA(Not Available) 指数据中的缺失值。</p>
 <p>和as.系列函数相类似的还有is.系列函数，用于判断数据是否是某个数据类型，比如</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="lesson-5.html#cb105-1" tabindex="-1"></a><span class="fu">is.character</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="lesson-5.html#cb111-1" tabindex="-1"></a><span class="fu">is.character</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="lesson-5.html#cb107-1" tabindex="-1"></a><span class="fu">is.na</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="lesson-5.html#cb113-1" tabindex="-1"></a><span class="fu">is.na</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="lesson-5.html#cb109-1" tabindex="-1"></a><span class="fu">is.numeric</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="lesson-5.html#cb115-1" tabindex="-1"></a><span class="fu">is.numeric</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="向量循环" class="section level3 hasAnchor" number="5.5.3">
 <h3><span class="header-section-number">5.5.3</span> 向量循环<a href="lesson-5.html#向量循环" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>在 R语言中，向量有着独特的运算方式：</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="lesson-5.html#cb111-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>  </span>
-<span id="cb111-2"><a href="lesson-5.html#cb111-2" tabindex="-1"></a>x <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="lesson-5.html#cb117-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>  </span>
+<span id="cb117-2"><a href="lesson-5.html#cb117-2" tabindex="-1"></a>x <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] 2 3 4 5 6 7</code></pre>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="lesson-5.html#cb113-1" tabindex="-1"></a>x <span class="sc">*</span> x</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="lesson-5.html#cb119-1" tabindex="-1"></a>x <span class="sc">*</span> x</span></code></pre></div>
 <pre><code>## [1]  1  4  9 16 25 36</code></pre>
 <p>可以发现，对 x 向量进行加一的运算会返回对x
 中每一个元素进行加一运算；而向量之间的相乘会返回每个元素乘积所形成的向量，这种操作称为向量循环。</p>
@@ -817,23 +817,23 @@ R 语言中也存在以 as.开头的函数执行转换操作：</p>
 <div id="向量的索引" class="section level3 hasAnchor" number="5.5.4">
 <h3><span class="header-section-number">5.5.4</span> 向量的索引<a href="lesson-5.html#向量的索引" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>如果想要提取向量中的某个值，可以在中括号中输入数字向量进行索引：</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="lesson-5.html#cb115-1" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;apple&#39;</span>,<span class="st">&#39;pear&#39;</span>,<span class="st">&#39;banana&#39;</span>,<span class="st">&#39;strawberry&#39;</span>,<span class="st">&#39;lemon&#39;</span>)</span>
-<span id="cb115-2"><a href="lesson-5.html#cb115-2" tabindex="-1"></a><span class="do">## 查找第 1 个元素</span></span>
-<span id="cb115-3"><a href="lesson-5.html#cb115-3" tabindex="-1"></a>v2[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="lesson-5.html#cb121-1" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;apple&#39;</span>,<span class="st">&#39;pear&#39;</span>,<span class="st">&#39;banana&#39;</span>,<span class="st">&#39;strawberry&#39;</span>,<span class="st">&#39;lemon&#39;</span>)</span>
+<span id="cb121-2"><a href="lesson-5.html#cb121-2" tabindex="-1"></a><span class="do">## 查找第 1 个元素</span></span>
+<span id="cb121-3"><a href="lesson-5.html#cb121-3" tabindex="-1"></a>v2[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;apple&quot;</code></pre>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="lesson-5.html#cb117-1" tabindex="-1"></a><span class="do">## 查找第 2 和第 4 个元素</span></span>
-<span id="cb117-2"><a href="lesson-5.html#cb117-2" tabindex="-1"></a>v2[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="lesson-5.html#cb123-1" tabindex="-1"></a><span class="do">## 查找第 2 和第 4 个元素</span></span>
+<span id="cb123-2"><a href="lesson-5.html#cb123-2" tabindex="-1"></a>v2[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)]</span></code></pre></div>
 <pre><code>## [1] &quot;pear&quot;       &quot;strawberry&quot;</code></pre>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="lesson-5.html#cb119-1" tabindex="-1"></a><span class="do">## 查找第 1 个到第 4 个元素</span></span>
-<span id="cb119-2"><a href="lesson-5.html#cb119-2" tabindex="-1"></a>v2[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]  </span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="lesson-5.html#cb125-1" tabindex="-1"></a><span class="do">## 查找第 1 个到第 4 个元素</span></span>
+<span id="cb125-2"><a href="lesson-5.html#cb125-2" tabindex="-1"></a>v2[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]  </span></code></pre></div>
 <pre><code>## [1] &quot;apple&quot;      &quot;pear&quot;       &quot;banana&quot;     &quot;strawberry&quot;</code></pre>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="lesson-5.html#cb121-1" tabindex="-1"></a><span class="do">## 负索引（ = 删除元素）</span></span>
-<span id="cb121-2"><a href="lesson-5.html#cb121-2" tabindex="-1"></a><span class="do">## 删除前两个元素</span></span>
-<span id="cb121-3"><a href="lesson-5.html#cb121-3" tabindex="-1"></a>v2[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="lesson-5.html#cb127-1" tabindex="-1"></a><span class="do">## 负索引（ = 删除元素）</span></span>
+<span id="cb127-2"><a href="lesson-5.html#cb127-2" tabindex="-1"></a><span class="do">## 删除前两个元素</span></span>
+<span id="cb127-3"><a href="lesson-5.html#cb127-3" tabindex="-1"></a>v2[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)]</span></code></pre></div>
 <pre><code>## [1] &quot;banana&quot;     &quot;strawberry&quot; &quot;lemon&quot;</code></pre>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="lesson-5.html#cb123-1" tabindex="-1"></a><span class="do">## 也可以利用索引对元素进行更改</span></span>
-<span id="cb123-2"><a href="lesson-5.html#cb123-2" tabindex="-1"></a>v2[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">=</span> bruceR<span class="sc">::</span><span class="fu">cc</span>(<span class="st">&#39;APPLE,PEAR&#39;</span>)</span>
-<span id="cb123-3"><a href="lesson-5.html#cb123-3" tabindex="-1"></a>v2</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="lesson-5.html#cb129-1" tabindex="-1"></a><span class="do">## 也可以利用索引对元素进行更改</span></span>
+<span id="cb129-2"><a href="lesson-5.html#cb129-2" tabindex="-1"></a>v2[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">=</span> bruceR<span class="sc">::</span><span class="fu">cc</span>(<span class="st">&#39;APPLE,PEAR&#39;</span>)</span>
+<span id="cb129-3"><a href="lesson-5.html#cb129-3" tabindex="-1"></a>v2</span></code></pre></div>
 <pre><code>## [1] &quot;APPLE&quot;      &quot;PEAR&quot;       &quot;banana&quot;     &quot;strawberry&quot; &quot;lemon&quot;</code></pre>
 </div>
 <div id="因子factor" class="section level3 hasAnchor" number="5.5.5">
@@ -841,13 +841,13 @@ R 语言中也存在以 as.开头的函数执行转换操作：</p>
 <p>对于心理学专业的同学来说，因子这个词应该非常熟悉了，因子分析是对于问卷数据来说是常用的方法之一，但这里的因子与因子分析中的因子概念并不相同。<br />
 在统计中，我们将数据分为称名数据、顺序数据、等距数据、等比数据四种类型，而因子这一数据结构（容器），专门用来存放称名数据和顺序数据。</p>
 <p>相较于字符串，直接用字符向量也可以表示分类变量，但它只有字母顺序，不能规定想要的顺序，也不能表达有序分类变量。</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="lesson-5.html#cb125-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;good&#39;</span>,<span class="st">&#39;better&#39;</span>,<span class="st">&#39;best&#39;</span>,<span class="st">&#39;bad&#39;</span>,<span class="st">&#39;worse&#39;</span>,<span class="st">&#39;worst&#39;</span>)</span>
-<span id="cb125-2"><a href="lesson-5.html#cb125-2" tabindex="-1"></a><span class="co"># 使用sort函数进行排序，结果只会按照字母顺序排序</span></span>
-<span id="cb125-3"><a href="lesson-5.html#cb125-3" tabindex="-1"></a><span class="fu">sort</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="lesson-5.html#cb131-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;good&#39;</span>,<span class="st">&#39;better&#39;</span>,<span class="st">&#39;best&#39;</span>,<span class="st">&#39;bad&#39;</span>,<span class="st">&#39;worse&#39;</span>,<span class="st">&#39;worst&#39;</span>)</span>
+<span id="cb131-2"><a href="lesson-5.html#cb131-2" tabindex="-1"></a><span class="co"># 使用sort函数进行排序，结果只会按照字母顺序排序</span></span>
+<span id="cb131-3"><a href="lesson-5.html#cb131-3" tabindex="-1"></a><span class="fu">sort</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;bad&quot;    &quot;best&quot;   &quot;better&quot; &quot;good&quot;   &quot;worse&quot;  &quot;worst&quot;</code></pre>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="lesson-5.html#cb127-1" tabindex="-1"></a><span class="do">## 可以使用 factor 来创建因子，并使用 levels 参数来规定具体的顺序</span></span>
-<span id="cb127-2"><a href="lesson-5.html#cb127-2" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">factor</span>(x,<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&#39;best&#39;</span>,<span class="st">&#39;better&#39;</span>,<span class="st">&#39;good&#39;</span>,<span class="st">&#39;bad&#39;</span>,<span class="st">&#39;worse&#39;</span>,<span class="st">&#39;worst&#39;</span>))</span>
-<span id="cb127-3"><a href="lesson-5.html#cb127-3" tabindex="-1"></a><span class="fu">sort</span>(x1)<span class="co">#排序</span></span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="lesson-5.html#cb133-1" tabindex="-1"></a><span class="do">## 可以使用 factor 来创建因子，并使用 levels 参数来规定具体的顺序</span></span>
+<span id="cb133-2"><a href="lesson-5.html#cb133-2" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">factor</span>(x,<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&#39;best&#39;</span>,<span class="st">&#39;better&#39;</span>,<span class="st">&#39;good&#39;</span>,<span class="st">&#39;bad&#39;</span>,<span class="st">&#39;worse&#39;</span>,<span class="st">&#39;worst&#39;</span>))</span>
+<span id="cb133-3"><a href="lesson-5.html#cb133-3" tabindex="-1"></a><span class="fu">sort</span>(x1)<span class="co">#排序</span></span></code></pre></div>
 <pre><code>## [1] best   better good   bad    worse  worst 
 ## Levels: best better good bad worse worst</code></pre>
 <p>因子通常用于表示有限集合中的元素，但输入的类型可以是整型，也可以是字符串。</p>
@@ -857,16 +857,16 @@ R 语言中也存在以 as.开头的函数执行转换操作：</p>
 <h2><span class="header-section-number">5.6</span> 数据框<a href="lesson-5.html#数据框" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>如果将向量视为一列，不同列拼接在一起就形成了我们常用的数据(比如
 penguin_data)，我们称之为数据框(dataframe)，显然，数据框要求形状必须是方形，即每一列的长度必须相等。我们可以尝试手动定义一个数据框：</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="lesson-5.html#cb129-1" tabindex="-1"></a><span class="do">## 创建三个不同类型的向量</span></span>
-<span id="cb129-2"><a href="lesson-5.html#cb129-2" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb129-3"><a href="lesson-5.html#cb129-3" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;apple&#39;</span>,<span class="st">&#39;pear&#39;</span>,<span class="st">&#39;banana&#39;</span>,<span class="st">&#39;strawberry&#39;</span>,<span class="st">&#39;lemon&#39;</span>)</span>
-<span id="cb129-4"><a href="lesson-5.html#cb129-4" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(T,F,F,T,T)</span>
-<span id="cb129-5"><a href="lesson-5.html#cb129-5" tabindex="-1"></a><span class="do">## 将三个向量打包成一个数据框</span></span>
-<span id="cb129-6"><a href="lesson-5.html#cb129-6" tabindex="-1"></a>df1 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">col1 =</span> v1,<span class="at">col2 =</span> v2,<span class="at">col3 =</span> v3)</span>
-<span id="cb129-7"><a href="lesson-5.html#cb129-7" tabindex="-1"></a><span class="fu">class</span>(df1)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="lesson-5.html#cb135-1" tabindex="-1"></a><span class="do">## 创建三个不同类型的向量</span></span>
+<span id="cb135-2"><a href="lesson-5.html#cb135-2" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb135-3"><a href="lesson-5.html#cb135-3" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;apple&#39;</span>,<span class="st">&#39;pear&#39;</span>,<span class="st">&#39;banana&#39;</span>,<span class="st">&#39;strawberry&#39;</span>,<span class="st">&#39;lemon&#39;</span>)</span>
+<span id="cb135-4"><a href="lesson-5.html#cb135-4" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(T,F,F,T,T)</span>
+<span id="cb135-5"><a href="lesson-5.html#cb135-5" tabindex="-1"></a><span class="do">## 将三个向量打包成一个数据框</span></span>
+<span id="cb135-6"><a href="lesson-5.html#cb135-6" tabindex="-1"></a>df1 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">col1 =</span> v1,<span class="at">col2 =</span> v2,<span class="at">col3 =</span> v3)</span>
+<span id="cb135-7"><a href="lesson-5.html#cb135-7" tabindex="-1"></a><span class="fu">class</span>(df1)</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="lesson-5.html#cb131-1" tabindex="-1"></a><span class="do">## 查看数据框内容</span></span>
-<span id="cb131-2"><a href="lesson-5.html#cb131-2" tabindex="-1"></a>df1</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="lesson-5.html#cb137-1" tabindex="-1"></a><span class="do">## 查看数据框内容</span></span>
+<span id="cb137-2"><a href="lesson-5.html#cb137-2" tabindex="-1"></a>df1</span></code></pre></div>
 <pre><code>##   col1       col2  col3
 ## 1    1      apple  TRUE
 ## 2    2       pear FALSE
@@ -876,17 +876,17 @@ penguin_data)，我们称之为数据框(dataframe)，显然，数据框要求�
 <p>上面例子中，我们首先建立了三个等长但类型不同的向量，之后使用<code>data.frame()</code>函数将三个向量“打包”成一个数据框并赋值给df1，其中，col1、col2、col3
 分别为 v1、v2、v3
 的列名，当然列名也可以其对应的向量的名称重合，尝试一下将列名修改成与向量名一致：</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="lesson-5.html#cb133-1" tabindex="-1"></a><span class="do">## colnames()可以查看数据框列名</span></span>
-<span id="cb133-2"><a href="lesson-5.html#cb133-2" tabindex="-1"></a><span class="fu">colnames</span>(df1)</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="lesson-5.html#cb139-1" tabindex="-1"></a><span class="do">## colnames()可以查看数据框列名</span></span>
+<span id="cb139-2"><a href="lesson-5.html#cb139-2" tabindex="-1"></a><span class="fu">colnames</span>(df1)</span></code></pre></div>
 <pre><code>## [1] &quot;col1&quot; &quot;col2&quot; &quot;col3&quot;</code></pre>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="lesson-5.html#cb135-1" tabindex="-1"></a><span class="do">## 对 colnames 进行赋值可以修改列名</span></span>
-<span id="cb135-2"><a href="lesson-5.html#cb135-2" tabindex="-1"></a><span class="do">## 但在之前，介绍一个字符串的拼接函数</span></span>
-<span id="cb135-3"><a href="lesson-5.html#cb135-3" tabindex="-1"></a><span class="do">## 将&#39;v&#39;与向量 1:3分别拼接，输出字符串向量</span></span>
-<span id="cb135-4"><a href="lesson-5.html#cb135-4" tabindex="-1"></a>newname <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;v&#39;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
-<span id="cb135-5"><a href="lesson-5.html#cb135-5" tabindex="-1"></a>newname</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="lesson-5.html#cb141-1" tabindex="-1"></a><span class="do">## 对 colnames 进行赋值可以修改列名</span></span>
+<span id="cb141-2"><a href="lesson-5.html#cb141-2" tabindex="-1"></a><span class="do">## 但在之前，介绍一个字符串的拼接函数</span></span>
+<span id="cb141-3"><a href="lesson-5.html#cb141-3" tabindex="-1"></a><span class="do">## 将&#39;v&#39;与向量 1:3分别拼接，输出字符串向量</span></span>
+<span id="cb141-4"><a href="lesson-5.html#cb141-4" tabindex="-1"></a>newname <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;v&#39;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb141-5"><a href="lesson-5.html#cb141-5" tabindex="-1"></a>newname</span></code></pre></div>
 <pre><code>## [1] &quot;v1&quot; &quot;v2&quot; &quot;v3&quot;</code></pre>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="lesson-5.html#cb137-1" tabindex="-1"></a><span class="fu">colnames</span>(df1) <span class="ot">=</span> newname</span>
-<span id="cb137-2"><a href="lesson-5.html#cb137-2" tabindex="-1"></a>df1</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="lesson-5.html#cb143-1" tabindex="-1"></a><span class="fu">colnames</span>(df1) <span class="ot">=</span> newname</span>
+<span id="cb143-2"><a href="lesson-5.html#cb143-2" tabindex="-1"></a>df1</span></code></pre></div>
 <pre><code>##   v1         v2    v3
 ## 1  1      apple  TRUE
 ## 2  2       pear FALSE
@@ -900,22 +900,22 @@ penguin_data)，我们称之为数据框(dataframe)，显然，数据框要求�
 <h4><span class="header-section-number">5.6.1.1</span> 数字索引<a href="lesson-5.html#数字索引" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>数据框的索引与向量的索引非常相似，但不同的是，我们需要在行和列两个维度上进行索引，在中括号中，第一个数字对行进行索引，第二个数字对列进行索引，中间需要使用英文逗号进行分隔。以
 penguin_data为例：</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="lesson-5.html#cb139-1" tabindex="-1"></a><span class="co"># 选取第一行、第二列；</span></span>
-<span id="cb139-2"><a href="lesson-5.html#cb139-2" tabindex="-1"></a>penguin_data[<span class="dv">1</span>, <span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="lesson-5.html#cb145-1" tabindex="-1"></a><span class="co"># 选取第一行、第二列；</span></span>
+<span id="cb145-2"><a href="lesson-5.html#cb145-2" tabindex="-1"></a>penguin_data[<span class="dv">1</span>, <span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] 1922</code></pre>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="lesson-5.html#cb141-1" tabindex="-1"></a><span class="co"># 如果想全部选取行或列，可以使用空索引</span></span>
-<span id="cb141-2"><a href="lesson-5.html#cb141-2" tabindex="-1"></a><span class="co"># 比如，选取第一列的所有行，不写行的索引就行</span></span>
-<span id="cb141-3"><a href="lesson-5.html#cb141-3" tabindex="-1"></a><span class="co"># 查看前五行</span></span>
-<span id="cb141-4"><a href="lesson-5.html#cb141-4" tabindex="-1"></a><span class="fu">head</span>(penguin_data[, <span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="lesson-5.html#cb147-1" tabindex="-1"></a><span class="co"># 如果想全部选取行或列，可以使用空索引</span></span>
+<span id="cb147-2"><a href="lesson-5.html#cb147-2" tabindex="-1"></a><span class="co"># 比如，选取第一列的所有行，不写行的索引就行</span></span>
+<span id="cb147-3"><a href="lesson-5.html#cb147-3" tabindex="-1"></a><span class="co"># 查看前五行</span></span>
+<span id="cb147-4"><a href="lesson-5.html#cb147-4" tabindex="-1"></a><span class="fu">head</span>(penguin_data[, <span class="dv">1</span>])</span></code></pre></div>
 <pre><code>## [1] &quot;Tsinghua&quot; &quot;Oxford&quot;   &quot;Oxford&quot;   &quot;Oxford&quot;   &quot;Chile&quot;    &quot;Bamberg&quot;</code></pre>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="lesson-5.html#cb143-1" tabindex="-1"></a><span class="co"># 如果要使用非连续的数字进行索引，要带上c()以表明输入的是个向量</span></span>
-<span id="cb143-2"><a href="lesson-5.html#cb143-2" tabindex="-1"></a><span class="fu">colnames</span>(penguin_data[, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="lesson-5.html#cb149-1" tabindex="-1"></a><span class="co"># 如果要使用非连续的数字进行索引，要带上c()以表明输入的是个向量</span></span>
+<span id="cb149-2"><a href="lesson-5.html#cb149-2" tabindex="-1"></a><span class="fu">colnames</span>(penguin_data[, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)])</span></code></pre></div>
 <pre><code>## [1] &quot;Site&quot;     &quot;sex&quot;      &quot;romantic&quot;</code></pre>
 </div>
 <div id="名称索引" class="section level4 hasAnchor" number="5.6.1.2">
 <h4><span class="header-section-number">5.6.1.2</span> 名称索引<a href="lesson-5.html#名称索引" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>在行或列的位置输入列的名称即可，比如查看出生日期和地址：</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="lesson-5.html#cb145-1" tabindex="-1"></a><span class="fu">head</span>(penguin_data[, <span class="fu">cc</span>(<span class="st">&#39;age,Site&#39;</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="lesson-5.html#cb151-1" tabindex="-1"></a><span class="fu">head</span>(penguin_data[, <span class="fu">cc</span>(<span class="st">&#39;age,Site&#39;</span>)])</span></code></pre></div>
 <pre><code>##    age     Site
 ## 1 1922 Tsinghua
 ## 2 1940   Oxford
@@ -929,8 +929,8 @@ penguin_data为例：</p>
 <h4><span class="header-section-number">5.6.1.3</span> 美元符<a href="lesson-5.html#美元符" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>美元符<code>$</code>是对列索引的一种方式，在 Rstudio
 中，数据框后如果紧接<code>$</code>，就会自动弹出可视化窗口显示这个数据有哪些列名，也会提示列的类型和具体数据内容，非常方便；但局限在于，美元符一次只能提取一个列。</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="lesson-5.html#cb147-1" tabindex="-1"></a><span class="do">## 使用美元符来提取出生日期</span></span>
-<span id="cb147-2"><a href="lesson-5.html#cb147-2" tabindex="-1"></a><span class="fu">head</span>(penguin_data<span class="sc">$</span>age)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="lesson-5.html#cb153-1" tabindex="-1"></a><span class="do">## 使用美元符来提取出生日期</span></span>
+<span id="cb153-2"><a href="lesson-5.html#cb153-2" tabindex="-1"></a><span class="fu">head</span>(penguin_data<span class="sc">$</span>age)</span></code></pre></div>
 <pre><code>## [1] 1922 1940 1945 1948 1948 1951</code></pre>
 <p><strong>小练习</strong></p>
 <p>尝试把以下表格中的内容创建为数据框，并把第一列改为因子
@@ -941,17 +941,17 @@ penguin_data为例：</p>
 <div id="矩阵与数组" class="section level2 hasAnchor" number="5.7">
 <h2><span class="header-section-number">5.7</span> 矩阵与数组<a href="lesson-5.html#矩阵与数组" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>矩阵和数据框类似，都是二维的数据；但不同点在于，数据框允许不同列的类型不一样，而矩阵中所有单元格的数据类型必须相同：</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="lesson-5.html#cb149-1" tabindex="-1"></a><span class="co">#创建矩阵</span></span>
-<span id="cb149-2"><a href="lesson-5.html#cb149-2" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>),<span class="at">nrow=</span><span class="dv">3</span>)</span>
-<span id="cb149-3"><a href="lesson-5.html#cb149-3" tabindex="-1"></a>m1</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="lesson-5.html#cb155-1" tabindex="-1"></a><span class="co">#创建矩阵</span></span>
+<span id="cb155-2"><a href="lesson-5.html#cb155-2" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>),<span class="at">nrow=</span><span class="dv">3</span>)</span>
+<span id="cb155-3"><a href="lesson-5.html#cb155-3" tabindex="-1"></a>m1</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    4    7
 ## [2,]    2    5    8
 ## [3,]    3    6    9</code></pre>
 <p>相同维度的矩阵可以继续组合，形成数组：</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="lesson-5.html#cb151-1" tabindex="-1"></a><span class="co">#创建三维数组</span></span>
-<span id="cb151-2"><a href="lesson-5.html#cb151-2" tabindex="-1"></a>a1 <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">24</span>,<span class="at">dim=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>))</span>
-<span id="cb151-3"><a href="lesson-5.html#cb151-3" tabindex="-1"></a>a1</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="lesson-5.html#cb157-1" tabindex="-1"></a><span class="co">#创建三维数组</span></span>
+<span id="cb157-2"><a href="lesson-5.html#cb157-2" tabindex="-1"></a>a1 <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">24</span>,<span class="at">dim=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>))</span>
+<span id="cb157-3"><a href="lesson-5.html#cb157-3" tabindex="-1"></a>a1</span></code></pre></div>
 <pre><code>## , , 1
 ## 
 ##      [,1] [,2] [,3] [,4]
@@ -969,11 +969,11 @@ penguin_data为例：</p>
 <div id="列表" class="section level2 hasAnchor" number="5.8">
 <h2><span class="header-section-number">5.8</span> 列表<a href="lesson-5.html#列表" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>多个相同元素可以组合成向量，多个向量可以组合成矩阵或数据框，而不同元素、向量、矩阵或数据框仍然可以继续组合，进而形成了列表：</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="lesson-5.html#cb153-1" tabindex="-1"></a><span class="co"># 使用list 来创建列表</span></span>
-<span id="cb153-2"><a href="lesson-5.html#cb153-2" tabindex="-1"></a>l1 <span class="ot">=</span> <span class="fu">list</span>(<span class="dv">1</span>,</span>
-<span id="cb153-3"><a href="lesson-5.html#cb153-3" tabindex="-1"></a>           <span class="fu">c</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>),</span>
-<span id="cb153-4"><a href="lesson-5.html#cb153-4" tabindex="-1"></a>           <span class="fu">c</span>(T,F))</span>
-<span id="cb153-5"><a href="lesson-5.html#cb153-5" tabindex="-1"></a>l1</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="lesson-5.html#cb159-1" tabindex="-1"></a><span class="co"># 使用list 来创建列表</span></span>
+<span id="cb159-2"><a href="lesson-5.html#cb159-2" tabindex="-1"></a>l1 <span class="ot">=</span> <span class="fu">list</span>(<span class="dv">1</span>,</span>
+<span id="cb159-3"><a href="lesson-5.html#cb159-3" tabindex="-1"></a>           <span class="fu">c</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>),</span>
+<span id="cb159-4"><a href="lesson-5.html#cb159-4" tabindex="-1"></a>           <span class="fu">c</span>(T,F))</span>
+<span id="cb159-5"><a href="lesson-5.html#cb159-5" tabindex="-1"></a>l1</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 1
 ## 
@@ -982,26 +982,26 @@ penguin_data为例：</p>
 ## 
 ## [[3]]
 ## [1]  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="lesson-5.html#cb155-1" tabindex="-1"></a><span class="co"># 列表里面也可以容纳列表</span></span>
-<span id="cb155-2"><a href="lesson-5.html#cb155-2" tabindex="-1"></a><span class="co"># 将l1与 penguin_data合并成一个列表</span></span>
-<span id="cb155-3"><a href="lesson-5.html#cb155-3" tabindex="-1"></a>l2 <span class="ot">=</span> <span class="fu">list</span>(l1, penguin_data)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="lesson-5.html#cb161-1" tabindex="-1"></a><span class="co"># 列表里面也可以容纳列表</span></span>
+<span id="cb161-2"><a href="lesson-5.html#cb161-2" tabindex="-1"></a><span class="co"># 将l1与 penguin_data合并成一个列表</span></span>
+<span id="cb161-3"><a href="lesson-5.html#cb161-3" tabindex="-1"></a>l2 <span class="ot">=</span> <span class="fu">list</span>(l1, penguin_data)</span></code></pre></div>
 <p>列表的索引与向量类似，但需要注意的是，使用中括号对列表进行索引，输出结果的类型仍然是列表；如果希望将数据还原成其原本的形式，就需要使用双中括号（<code>[[]]</code>）：</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="lesson-5.html#cb156-1" tabindex="-1"></a><span class="co"># 索引第一个元素并查看类型</span></span>
-<span id="cb156-2"><a href="lesson-5.html#cb156-2" tabindex="-1"></a>l1[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="lesson-5.html#cb162-1" tabindex="-1"></a><span class="co"># 索引第一个元素并查看类型</span></span>
+<span id="cb162-2"><a href="lesson-5.html#cb162-2" tabindex="-1"></a>l1[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 1</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="lesson-5.html#cb158-1" tabindex="-1"></a><span class="fu">class</span>(l1[<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="lesson-5.html#cb164-1" tabindex="-1"></a><span class="fu">class</span>(l1[<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="lesson-5.html#cb160-1" tabindex="-1"></a><span class="co"># 使用双中括号</span></span>
-<span id="cb160-2"><a href="lesson-5.html#cb160-2" tabindex="-1"></a><span class="fu">class</span>(l1[[<span class="dv">1</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="lesson-5.html#cb166-1" tabindex="-1"></a><span class="co"># 使用双中括号</span></span>
+<span id="cb166-2"><a href="lesson-5.html#cb166-2" tabindex="-1"></a><span class="fu">class</span>(l1[[<span class="dv">1</span>]])</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>对于列表中嵌套列表的情况，就需要进行多次索引。比如通过索引来找到l2中的l1的第一个元素1（数值型），就需要两次索引，其中第一次索引返回l1列表，第二次索引从l1列表中找到第一个元素。</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="lesson-5.html#cb162-1" tabindex="-1"></a>l2[[<span class="dv">1</span>]][[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="lesson-5.html#cb168-1" tabindex="-1"></a>l2[[<span class="dv">1</span>]][[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="lesson-5.html#cb164-1" tabindex="-1"></a><span class="fu">class</span>(l2[[<span class="dv">1</span>]][[<span class="dv">1</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="lesson-5.html#cb170-1" tabindex="-1"></a><span class="fu">class</span>(l2[[<span class="dv">1</span>]][[<span class="dv">1</span>]])</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="lesson-5.html#cb166-1" tabindex="-1"></a><span class="co"># 如果使用一个中括号进行索引，返回数据类型仍然是列表</span></span>
-<span id="cb166-2"><a href="lesson-5.html#cb166-2" tabindex="-1"></a><span class="fu">class</span>(l2[[<span class="dv">1</span>]][<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="lesson-5.html#cb172-1" tabindex="-1"></a><span class="co"># 如果使用一个中括号进行索引，返回数据类型仍然是列表</span></span>
+<span id="cb172-2"><a href="lesson-5.html#cb172-2" tabindex="-1"></a><span class="fu">class</span>(l2[[<span class="dv">1</span>]][<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 </div>
 <div id="函数" class="section level2 hasAnchor" number="5.9">
@@ -1023,19 +1023,19 @@ file 参数进行匹配。</p>
 <p>在我们的讨论中，似乎出现了两种参数：一种是函数内设定的参数名称，如
 file、encoding
 等，一种是我们实际输入的内容，如具体的路径。前者称为形式参数(file)，后者称为实际参数(输入的具体路径)。在不输入形参的情况下，函数默认会按照输入实参的顺序与形参进行匹配；如果我们声明形参的实参时，就可以按照我们想要的顺序来输入实参，比如：</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="lesson-5.html#cb168-1" tabindex="-1"></a><span class="do">## 没有声明形参</span></span>
-<span id="cb168-2"><a href="lesson-5.html#cb168-2" tabindex="-1"></a>penguin_data <span class="ot">=</span> </span>
-<span id="cb168-3"><a href="lesson-5.html#cb168-3" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">import</span>(</span>
-<span id="cb168-4"><a href="lesson-5.html#cb168-4" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>),  <span class="do">### file</span></span>
-<span id="cb168-5"><a href="lesson-5.html#cb168-5" tabindex="-1"></a>  <span class="cn">NULL</span> <span class="do">### encoding</span></span>
-<span id="cb168-6"><a href="lesson-5.html#cb168-6" tabindex="-1"></a>  )</span>
-<span id="cb168-7"><a href="lesson-5.html#cb168-7" tabindex="-1"></a><span class="do">## 如果声明形参，顺序可以调换</span></span>
-<span id="cb168-8"><a href="lesson-5.html#cb168-8" tabindex="-1"></a>penguin_data <span class="ot">=</span> </span>
-<span id="cb168-9"><a href="lesson-5.html#cb168-9" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">import</span>(</span>
-<span id="cb168-10"><a href="lesson-5.html#cb168-10" tabindex="-1"></a>    <span class="at">encoding =</span> <span class="cn">NULL</span>,</span>
-<span id="cb168-11"><a href="lesson-5.html#cb168-11" tabindex="-1"></a>    <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>)</span>
-<span id="cb168-12"><a href="lesson-5.html#cb168-12" tabindex="-1"></a>  )</span>
-<span id="cb168-13"><a href="lesson-5.html#cb168-13" tabindex="-1"></a><span class="do">## 当然，如果按照这个顺序不输入形参的话会报错，大家可自行尝试</span></span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="lesson-5.html#cb174-1" tabindex="-1"></a><span class="do">## 没有声明形参</span></span>
+<span id="cb174-2"><a href="lesson-5.html#cb174-2" tabindex="-1"></a>penguin_data <span class="ot">=</span> </span>
+<span id="cb174-3"><a href="lesson-5.html#cb174-3" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">import</span>(</span>
+<span id="cb174-4"><a href="lesson-5.html#cb174-4" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>),  <span class="do">### file</span></span>
+<span id="cb174-5"><a href="lesson-5.html#cb174-5" tabindex="-1"></a>  <span class="cn">NULL</span> <span class="do">### encoding</span></span>
+<span id="cb174-6"><a href="lesson-5.html#cb174-6" tabindex="-1"></a>  )</span>
+<span id="cb174-7"><a href="lesson-5.html#cb174-7" tabindex="-1"></a><span class="do">## 如果声明形参，顺序可以调换</span></span>
+<span id="cb174-8"><a href="lesson-5.html#cb174-8" tabindex="-1"></a>penguin_data <span class="ot">=</span> </span>
+<span id="cb174-9"><a href="lesson-5.html#cb174-9" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">import</span>(</span>
+<span id="cb174-10"><a href="lesson-5.html#cb174-10" tabindex="-1"></a>    <span class="at">encoding =</span> <span class="cn">NULL</span>,</span>
+<span id="cb174-11"><a href="lesson-5.html#cb174-11" tabindex="-1"></a>    <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>)</span>
+<span id="cb174-12"><a href="lesson-5.html#cb174-12" tabindex="-1"></a>  )</span>
+<span id="cb174-13"><a href="lesson-5.html#cb174-13" tabindex="-1"></a><span class="do">## 当然，如果按照这个顺序不输入形参的话会报错，大家可自行尝试</span></span></code></pre></div>
 <div id="函数的调用" class="section level3 hasAnchor" number="5.9.1">
 <h3><span class="header-section-number">5.9.1</span> 函数的调用<a href="lesson-5.html#函数的调用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>如果在已经加载包的情况下，可以直接使用某个包里的函数；如果没有调用某个包，还想使用其中的函数，就需要使用<code>::</code>来调用（比如<code>bruceR::import()</code>）</p>
@@ -1053,40 +1053,40 @@ file、encoding
 定义函数接受的输入值。参数是可选的，可以有多个； - 函数体:
 包含实际执行的代码块，用大括号 {} 括起来 - 返回值:
 指定函数的输出结果，使用关键字return。</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="lesson-5.html#cb169-1" tabindex="-1"></a><span class="co">#定义一个函数：输入x和y，返回3倍x和5倍y的和</span></span>
-<span id="cb169-2"><a href="lesson-5.html#cb169-2" tabindex="-1"></a>mysum <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y){</span>
-<span id="cb169-3"><a href="lesson-5.html#cb169-3" tabindex="-1"></a>  result <span class="ot">=</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y</span>
-<span id="cb169-4"><a href="lesson-5.html#cb169-4" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb169-5"><a href="lesson-5.html#cb169-5" tabindex="-1"></a>}</span>
-<span id="cb169-6"><a href="lesson-5.html#cb169-6" tabindex="-1"></a><span class="co">#mysum:自定义的函数名</span></span>
-<span id="cb169-7"><a href="lesson-5.html#cb169-7" tabindex="-1"></a><span class="co">#x,y:形式参数</span></span>
-<span id="cb169-8"><a href="lesson-5.html#cb169-8" tabindex="-1"></a><span class="co">#result = 3*x+5*y:函数体</span></span>
-<span id="cb169-9"><a href="lesson-5.html#cb169-9" tabindex="-1"></a><span class="co">#return(result):返回值</span></span>
-<span id="cb169-10"><a href="lesson-5.html#cb169-10" tabindex="-1"></a></span>
-<span id="cb169-11"><a href="lesson-5.html#cb169-11" tabindex="-1"></a><span class="co">#调用函数,x=1,y=2，省略形参</span></span>
-<span id="cb169-12"><a href="lesson-5.html#cb169-12" tabindex="-1"></a><span class="fu">mysum</span>(<span class="dv">1</span>,<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="lesson-5.html#cb175-1" tabindex="-1"></a><span class="co">#定义一个函数：输入x和y，返回3倍x和5倍y的和</span></span>
+<span id="cb175-2"><a href="lesson-5.html#cb175-2" tabindex="-1"></a>mysum <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y){</span>
+<span id="cb175-3"><a href="lesson-5.html#cb175-3" tabindex="-1"></a>  result <span class="ot">=</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y</span>
+<span id="cb175-4"><a href="lesson-5.html#cb175-4" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb175-5"><a href="lesson-5.html#cb175-5" tabindex="-1"></a>}</span>
+<span id="cb175-6"><a href="lesson-5.html#cb175-6" tabindex="-1"></a><span class="co">#mysum:自定义的函数名</span></span>
+<span id="cb175-7"><a href="lesson-5.html#cb175-7" tabindex="-1"></a><span class="co">#x,y:形式参数</span></span>
+<span id="cb175-8"><a href="lesson-5.html#cb175-8" tabindex="-1"></a><span class="co">#result = 3*x+5*y:函数体</span></span>
+<span id="cb175-9"><a href="lesson-5.html#cb175-9" tabindex="-1"></a><span class="co">#return(result):返回值</span></span>
+<span id="cb175-10"><a href="lesson-5.html#cb175-10" tabindex="-1"></a></span>
+<span id="cb175-11"><a href="lesson-5.html#cb175-11" tabindex="-1"></a><span class="co">#调用函数,x=1,y=2，省略形参</span></span>
+<span id="cb175-12"><a href="lesson-5.html#cb175-12" tabindex="-1"></a><span class="fu">mysum</span>(<span class="dv">1</span>,<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 13</code></pre>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="lesson-5.html#cb171-1" tabindex="-1"></a><span class="co"># 当然也可以声明形参</span></span>
-<span id="cb171-2"><a href="lesson-5.html#cb171-2" tabindex="-1"></a><span class="fu">mysum</span>(<span class="at">y=</span><span class="dv">1</span>,<span class="at">x=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="lesson-5.html#cb177-1" tabindex="-1"></a><span class="co"># 当然也可以声明形参</span></span>
+<span id="cb177-2"><a href="lesson-5.html#cb177-2" tabindex="-1"></a><span class="fu">mysum</span>(<span class="at">y=</span><span class="dv">1</span>,<span class="at">x=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 11</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="lesson-5.html#cb173-1" tabindex="-1"></a><span class="do">###  尝试为函数设定默认值</span></span>
-<span id="cb173-2"><a href="lesson-5.html#cb173-2" tabindex="-1"></a>mysum2 <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">x =</span> <span class="dv">6</span>,<span class="at">y =</span> <span class="dv">7</span>){</span>
-<span id="cb173-3"><a href="lesson-5.html#cb173-3" tabindex="-1"></a>  result <span class="ot">=</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y</span>
-<span id="cb173-4"><a href="lesson-5.html#cb173-4" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb173-5"><a href="lesson-5.html#cb173-5" tabindex="-1"></a>}</span>
-<span id="cb173-6"><a href="lesson-5.html#cb173-6" tabindex="-1"></a><span class="do">### 省略参数</span></span>
-<span id="cb173-7"><a href="lesson-5.html#cb173-7" tabindex="-1"></a><span class="fu">mysum2</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="lesson-5.html#cb179-1" tabindex="-1"></a><span class="do">###  尝试为函数设定默认值</span></span>
+<span id="cb179-2"><a href="lesson-5.html#cb179-2" tabindex="-1"></a>mysum2 <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">x =</span> <span class="dv">6</span>,<span class="at">y =</span> <span class="dv">7</span>){</span>
+<span id="cb179-3"><a href="lesson-5.html#cb179-3" tabindex="-1"></a>  result <span class="ot">=</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y</span>
+<span id="cb179-4"><a href="lesson-5.html#cb179-4" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb179-5"><a href="lesson-5.html#cb179-5" tabindex="-1"></a>}</span>
+<span id="cb179-6"><a href="lesson-5.html#cb179-6" tabindex="-1"></a><span class="do">### 省略参数</span></span>
+<span id="cb179-7"><a href="lesson-5.html#cb179-7" tabindex="-1"></a><span class="fu">mysum2</span>()</span></code></pre></div>
 <pre><code>## [1] 53</code></pre>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="lesson-5.html#cb175-1" tabindex="-1"></a><span class="do">### 如果只输入一个参数会怎么样</span></span>
-<span id="cb175-2"><a href="lesson-5.html#cb175-2" tabindex="-1"></a><span class="fu">mysum2</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="lesson-5.html#cb181-1" tabindex="-1"></a><span class="do">### 如果只输入一个参数会怎么样</span></span>
+<span id="cb181-2"><a href="lesson-5.html#cb181-2" tabindex="-1"></a><span class="fu">mysum2</span>(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] 50</code></pre>
 <p>小练习：定义一个函数,输入值a,b,c,返回(a+b)/c;并计算abc分别为123时得到的值<br></p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="lesson-5.html#cb177-1" tabindex="-1"></a><span class="co">#myabc &lt;- function(***){</span></span>
-<span id="cb177-2"><a href="lesson-5.html#cb177-2" tabindex="-1"></a><span class="co">#  result = ***</span></span>
-<span id="cb177-3"><a href="lesson-5.html#cb177-3" tabindex="-1"></a><span class="co">#  return(***)</span></span>
-<span id="cb177-4"><a href="lesson-5.html#cb177-4" tabindex="-1"></a><span class="co">#}</span></span>
-<span id="cb177-5"><a href="lesson-5.html#cb177-5" tabindex="-1"></a></span>
-<span id="cb177-6"><a href="lesson-5.html#cb177-6" tabindex="-1"></a><span class="co">#用合理的代码替换以上“***”,删除每行前的“#”,即可运行</span></span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="lesson-5.html#cb183-1" tabindex="-1"></a><span class="co">#myabc &lt;- function(***){</span></span>
+<span id="cb183-2"><a href="lesson-5.html#cb183-2" tabindex="-1"></a><span class="co">#  result = ***</span></span>
+<span id="cb183-3"><a href="lesson-5.html#cb183-3" tabindex="-1"></a><span class="co">#  return(***)</span></span>
+<span id="cb183-4"><a href="lesson-5.html#cb183-4" tabindex="-1"></a><span class="co">#}</span></span>
+<span id="cb183-5"><a href="lesson-5.html#cb183-5" tabindex="-1"></a></span>
+<span id="cb183-6"><a href="lesson-5.html#cb183-6" tabindex="-1"></a><span class="co">#用合理的代码替换以上“***”,删除每行前的“#”,即可运行</span></span></code></pre></div>
 </div>
 <div id="函数的简写" class="section level3 hasAnchor" number="5.9.4">
 <h3><span class="header-section-number">5.9.4</span> 函数的简写<a href="lesson-5.html#函数的简写" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1095,18 +1095,18 @@ file、encoding
 <li><code>return()</code>的省略：
 在一些非常简单的函数中，如果省略<code>return()</code>，函数则会返回最后一个计算出的表达式的值：</li>
 </ul>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="lesson-5.html#cb178-1" tabindex="-1"></a>mysum_simpli1 <span class="ot">=</span> <span class="cf">function</span>(x,y){</span>
-<span id="cb178-2"><a href="lesson-5.html#cb178-2" tabindex="-1"></a>    <span class="do">## 由于会默认返回计算数值</span></span>
-<span id="cb178-3"><a href="lesson-5.html#cb178-3" tabindex="-1"></a>  <span class="do">## 因此这里也没必有赋值给 result的操作了</span></span>
-<span id="cb178-4"><a href="lesson-5.html#cb178-4" tabindex="-1"></a>  <span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y  </span>
-<span id="cb178-5"><a href="lesson-5.html#cb178-5" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="lesson-5.html#cb184-1" tabindex="-1"></a>mysum_simpli1 <span class="ot">=</span> <span class="cf">function</span>(x,y){</span>
+<span id="cb184-2"><a href="lesson-5.html#cb184-2" tabindex="-1"></a>    <span class="do">## 由于会默认返回计算数值</span></span>
+<span id="cb184-3"><a href="lesson-5.html#cb184-3" tabindex="-1"></a>  <span class="do">## 因此这里也没必有赋值给 result的操作了</span></span>
+<span id="cb184-4"><a href="lesson-5.html#cb184-4" tabindex="-1"></a>  <span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y  </span>
+<span id="cb184-5"><a href="lesson-5.html#cb184-5" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li>函数体的简写： <code>function(x)</code>可以简写为<code>\(x)</code>，以<code>mysum</code>函数为例：</li>
 </ul>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="lesson-5.html#cb179-1" tabindex="-1"></a>mysum_simpli2 <span class="ot">=</span> \(x,y) {<span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y}</span>
-<span id="cb179-2"><a href="lesson-5.html#cb179-2" tabindex="-1"></a></span>
-<span id="cb179-3"><a href="lesson-5.html#cb179-3" tabindex="-1"></a><span class="co"># 如果只有一行的话，为了书写简洁大括号甚至都可以省略</span></span>
-<span id="cb179-4"><a href="lesson-5.html#cb179-4" tabindex="-1"></a>mysum_simpli3 <span class="ot">=</span> \(x,y) <span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="lesson-5.html#cb185-1" tabindex="-1"></a>mysum_simpli2 <span class="ot">=</span> \(x,y) {<span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y}</span>
+<span id="cb185-2"><a href="lesson-5.html#cb185-2" tabindex="-1"></a></span>
+<span id="cb185-3"><a href="lesson-5.html#cb185-3" tabindex="-1"></a><span class="co"># 如果只有一行的话，为了书写简洁大括号甚至都可以省略</span></span>
+<span id="cb185-4"><a href="lesson-5.html#cb185-4" tabindex="-1"></a>mysum_simpli3 <span class="ot">=</span> \(x,y) <span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y</span></code></pre></div>
 </div>
 <div id="if-条件语句" class="section level3 hasAnchor" number="5.9.5">
 <h3><span class="header-section-number">5.9.5</span> if 条件语句<a href="lesson-5.html#if-条件语句" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1123,18 +1123,18 @@ Expr1，否则(else)，就执行Expr2。</p>
 <p>举个例子，对于 mysum3
 函数我们可以进行一下改进：在运算之前首先对输入的数据类型进行判断，如果输入为数值型，则进行运算并返回结果，否则就在屏幕上显示，x和
 y 必须要为数字。</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="lesson-5.html#cb180-1" tabindex="-1"></a>mysum3 <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">x =</span> <span class="dv">6</span>,<span class="at">y =</span> <span class="dv">7</span>){</span>
-<span id="cb180-2"><a href="lesson-5.html#cb180-2" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.numeric</span>(x) <span class="sc">==</span> T <span class="sc">&amp;</span> <span class="fu">is.numeric</span>(y) <span class="sc">==</span> T){</span>
-<span id="cb180-3"><a href="lesson-5.html#cb180-3" tabindex="-1"></a>    result <span class="ot">=</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y</span>
-<span id="cb180-4"><a href="lesson-5.html#cb180-4" tabindex="-1"></a>    <span class="fu">return</span>(result)}</span>
-<span id="cb180-5"><a href="lesson-5.html#cb180-5" tabindex="-1"></a>  <span class="cf">else</span>{<span class="fu">print</span>(<span class="st">&quot;x and y must be number&quot;</span>)}</span>
-<span id="cb180-6"><a href="lesson-5.html#cb180-6" tabindex="-1"></a>}</span>
-<span id="cb180-7"><a href="lesson-5.html#cb180-7" tabindex="-1"></a><span class="co">#print：输出指定的内容</span></span>
-<span id="cb180-8"><a href="lesson-5.html#cb180-8" tabindex="-1"></a><span class="co">#is.numeric:判断是否为数值型。是则返回T，否则返回F</span></span>
-<span id="cb180-9"><a href="lesson-5.html#cb180-9" tabindex="-1"></a><span class="co"># &amp; : 表示“且”</span></span>
-<span id="cb180-10"><a href="lesson-5.html#cb180-10" tabindex="-1"></a><span class="fu">mysum3</span>(<span class="dv">5</span>,<span class="dv">6</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="lesson-5.html#cb186-1" tabindex="-1"></a>mysum3 <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">x =</span> <span class="dv">6</span>,<span class="at">y =</span> <span class="dv">7</span>){</span>
+<span id="cb186-2"><a href="lesson-5.html#cb186-2" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.numeric</span>(x) <span class="sc">==</span> T <span class="sc">&amp;</span> <span class="fu">is.numeric</span>(y) <span class="sc">==</span> T){</span>
+<span id="cb186-3"><a href="lesson-5.html#cb186-3" tabindex="-1"></a>    result <span class="ot">=</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>y</span>
+<span id="cb186-4"><a href="lesson-5.html#cb186-4" tabindex="-1"></a>    <span class="fu">return</span>(result)}</span>
+<span id="cb186-5"><a href="lesson-5.html#cb186-5" tabindex="-1"></a>  <span class="cf">else</span>{<span class="fu">print</span>(<span class="st">&quot;x and y must be number&quot;</span>)}</span>
+<span id="cb186-6"><a href="lesson-5.html#cb186-6" tabindex="-1"></a>}</span>
+<span id="cb186-7"><a href="lesson-5.html#cb186-7" tabindex="-1"></a><span class="co">#print：输出指定的内容</span></span>
+<span id="cb186-8"><a href="lesson-5.html#cb186-8" tabindex="-1"></a><span class="co">#is.numeric:判断是否为数值型。是则返回T，否则返回F</span></span>
+<span id="cb186-9"><a href="lesson-5.html#cb186-9" tabindex="-1"></a><span class="co"># &amp; : 表示“且”</span></span>
+<span id="cb186-10"><a href="lesson-5.html#cb186-10" tabindex="-1"></a><span class="fu">mysum3</span>(<span class="dv">5</span>,<span class="dv">6</span>)</span></code></pre></div>
 <pre><code>## [1] 45</code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="lesson-5.html#cb182-1" tabindex="-1"></a><span class="fu">mysum3</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="lesson-5.html#cb188-1" tabindex="-1"></a><span class="fu">mysum3</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;x and y must be number&quot;</code></pre>
 
 </div>

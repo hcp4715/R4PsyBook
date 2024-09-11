@@ -645,24 +645,24 @@ output            : papaja::apa6_pdf
 <p>（1）数据的处理：
 在markdown中创建chunks来存放数据处理代码
 推荐命令，用于清理环境变量</p>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="补充2从分析到手稿.html#cb564-1" tabindex="-1"></a><span class="co"># empty the global env</span></span>
-<span id="cb564-2"><a href="补充2从分析到手稿.html#cb564-2" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb564-3"><a href="补充2从分析到手稿.html#cb564-3" tabindex="-1"></a>df.m.basic <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;./data/chp16_data.csv&#39;</span>,</span>
-<span id="cb564-4"><a href="补充2从分析到手稿.html#cb564-4" tabindex="-1"></a>                       <span class="at">header =</span> T, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="补充2从分析到手稿.html#cb570-1" tabindex="-1"></a><span class="co"># empty the global env</span></span>
+<span id="cb570-2"><a href="补充2从分析到手稿.html#cb570-2" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb570-3"><a href="补充2从分析到手稿.html#cb570-3" tabindex="-1"></a>df.m.basic <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;./data/chp16_data.csv&#39;</span>,</span>
+<span id="cb570-4"><a href="补充2从分析到手稿.html#cb570-4" tabindex="-1"></a>                       <span class="at">header =</span> T, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>数据处理结束后，在撰写文章时就可以通过**`<code>**来引用数据，例如，** \</code> r df.m.basic<span class="math inline">\(Age_mean \` **就会索引df.m.basic中的Age：
 引用公式的方式也非常方便，在两个\$中间键入符号即公式就可，如输入`\)</span><code>\pm</code><span class="math inline">\(`就会得到\)</span>$。
 引用R包：通过如下语句` r cite_r(“chapter_12-r-references.bib”, pkgs = c(“afex”, “emmeans”, “ggplot2”, “dplyr”, “tidyr”, “patchwork”, “r-base”), withhold=FALSE) ` 即可引用，withhold=FALSE表示选中的包为白名单。上文中的七个包为最经常使用的包，可根据数据的分析代码进行修改引用。</p>
 <p>(2)斜体书写：在绘图中将图题部分设置斜体，可用如下代码：</p>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="补充2从分析到手稿.html#cb565-1" tabindex="-1"></a>title <span class="ot">&lt;-</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">&quot;Senesitivity (&quot;</span>, <span class="fu">italic</span>(<span class="st">&quot;d&#39;&quot;</span>), <span class="st">&quot;)&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="补充2从分析到手稿.html#cb571-1" tabindex="-1"></a>title <span class="ot">&lt;-</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">&quot;Senesitivity (&quot;</span>, <span class="fu">italic</span>(<span class="st">&quot;d&#39;&quot;</span>), <span class="st">&quot;)&quot;</span>))</span></code></pre></div>
 <p>此时将输出Sensitivity(<em>d</em>)。</p>
 <p>(3)拼图操作：将画好的多图进行拼接，可以使用<strong>patchwork</strong>包</p>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="补充2从分析到手稿.html#cb566-1" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb566-2"><a href="补充2从分析到手稿.html#cb566-2" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./data/chp16_p1_rt.rdata&quot;</span>)</span>
-<span id="cb566-3"><a href="补充2从分析到手稿.html#cb566-3" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./data/chp16_p1_dp.rdata&quot;</span>)</span>
-<span id="cb566-4"><a href="补充2从分析到手稿.html#cb566-4" tabindex="-1"></a>p1_dp <span class="sc">+</span> p1_rt <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">&#39;A&#39;</span>)  <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">guides =</span> <span class="st">&#39;collect&#39;</span>)</span>
-<span id="cb566-5"><a href="补充2从分析到手稿.html#cb566-5" tabindex="-1"></a></span>
-<span id="cb566-6"><a href="补充2从分析到手稿.html#cb566-6" tabindex="-1"></a><span class="co">#plot_annotation属性：设置图片序号为A，B，C...或1，2，3...</span></span>
-<span id="cb566-7"><a href="补充2从分析到手稿.html#cb566-7" tabindex="-1"></a><span class="co">#plot_layout属性：图片怎么排布；guides——图例是否统一放置</span></span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="补充2从分析到手稿.html#cb572-1" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb572-2"><a href="补充2从分析到手稿.html#cb572-2" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./data/chp16_p1_rt.rdata&quot;</span>)</span>
+<span id="cb572-3"><a href="补充2从分析到手稿.html#cb572-3" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./data/chp16_p1_dp.rdata&quot;</span>)</span>
+<span id="cb572-4"><a href="补充2从分析到手稿.html#cb572-4" tabindex="-1"></a>p1_dp <span class="sc">+</span> p1_rt <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">&#39;A&#39;</span>)  <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">guides =</span> <span class="st">&#39;collect&#39;</span>)</span>
+<span id="cb572-5"><a href="补充2从分析到手稿.html#cb572-5" tabindex="-1"></a></span>
+<span id="cb572-6"><a href="补充2从分析到手稿.html#cb572-6" tabindex="-1"></a><span class="co">#plot_annotation属性：设置图片序号为A，B，C...或1，2，3...</span></span>
+<span id="cb572-7"><a href="补充2从分析到手稿.html#cb572-7" tabindex="-1"></a><span class="co">#plot_layout属性：图片怎么排布；guides——图例是否统一放置</span></span></code></pre></div>
 <p><strong>图片引用</strong> 使用如下格式<code>\@</code>ref(fig:plot1) 即可得到<a href="#fig:plot1"><strong>??</strong></a></p>
 <ol start="4" style="list-style-type: decimal">
 <li>数据分析：

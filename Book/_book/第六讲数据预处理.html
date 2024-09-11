@@ -572,13 +572,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>我们这里举了一个例子：</strong></p>
 <p>比如你需要对一个数据进行筛选，然后再进行排序。一般来说，传统的思路是先有一个中间变量，对数据进行筛选后，将其保存为中间变量，然后再对这个保存的变量进行排序，排序完成后，再保存为另一个新的变量。这样的话，实际上中间就产生了多个中间变量。这样就会占用我们的内存。</p>
 <p>假设需找到data中age大于30的所有行，并排序，代码如下:</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="第六讲数据预处理.html#cb184-1" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(data,age<span class="sc">&gt;</span><span class="dv">30</span>)</span>
-<span id="cb184-2"><a href="第六讲数据预处理.html#cb184-2" tabindex="-1"></a>filtered_sorted_data <span class="ot">&lt;-</span> <span class="fu">arrange</span>(filtered_data,age)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="第六讲数据预处理.html#cb190-1" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(data,age<span class="sc">&gt;</span><span class="dv">30</span>)</span>
+<span id="cb190-2"><a href="第六讲数据预处理.html#cb190-2" tabindex="-1"></a>filtered_sorted_data <span class="ot">&lt;-</span> <span class="fu">arrange</span>(filtered_data,age)</span></code></pre></div>
 <p>如果我们使用管道操作的话，它就是直接以这个<code>data</code>作为输入，经过<code>filter</code>之后，然后再经过<code>arrange</code>排序之后，它会返回到这个<code>filtered_sorted_data</code>。这样的话，我们就省掉了一些中间的步骤。如果你的中间步骤非常长的话，那你省掉的中间变量就非常多。这样的话，你的代码就不会占用过多的内存，也会很整洁。</p>
 <p>使用管道操作符后，代码变为：</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="第六讲数据预处理.html#cb185-1" tabindex="-1"></a>filtered_sorted_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb185-2"><a href="第六讲数据预处理.html#cb185-2" tabindex="-1"></a><span class="fu">filter</span>(age <span class="sc">&gt;</span><span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb185-3"><a href="第六讲数据预处理.html#cb185-3" tabindex="-1"></a><span class="fu">arrange</span>(age)</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="第六讲数据预处理.html#cb191-1" tabindex="-1"></a>filtered_sorted_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb191-2"><a href="第六讲数据预处理.html#cb191-2" tabindex="-1"></a><span class="fu">filter</span>(age <span class="sc">&gt;</span><span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb191-3"><a href="第六讲数据预处理.html#cb191-3" tabindex="-1"></a><span class="fu">arrange</span>(age)</span></code></pre></div>
 <p>以下是查看变量名的结果：</p>
 <p>大家可能现在还没有这个感受，使用过后慢慢会感受到。接下来，我们会在例子中展示给大家看。</p>
 <p><strong>Tidyverse常见的管道符如表所示(依赖于magrittr包):</strong></p>
@@ -624,60 +624,71 @@ temperature。右边则是用身体温度来预测其他变量。我们主要关
 <p>通过data/penguin文件夹下的penguin_full_codebook可以查看详细情况</p>
 <p><img src="pic/chp6/clipboard-1020800845.png" /></p>
 <p>首先，我们需要读取数据。和上节课一样，我们直接使用<code>bruceR::import</code>函数来读取数据，这是目前我们最推荐的读取数据的方法。</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="第六讲数据预处理.html#cb186-1" tabindex="-1"></a><span class="co"># 导入数据</span></span>
-<span id="cb186-2"><a href="第六讲数据预处理.html#cb186-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="第六讲数据预处理.html#cb192-1" tabindex="-1"></a><span class="co"># 导入数据</span></span>
+<span id="cb192-2"><a href="第六讲数据预处理.html#cb192-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>))</span></code></pre></div>
 <p>下面是被读取的数据文件：</p>
 <p><img src="pic/chp6/clipboard-1068861105.png" /></p>
 <p>读取数据之后，我们可以使用<code>View</code>函数查看数据结构，包括站点、年龄等各种变量。我们还可以用<code>colnames</code>查看变量，因为可能需要选择一些我们认为比较重要的变量，比如有一些我们可能不需要的变量，就可以直接将其筛选掉。</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="第六讲数据预处理.html#cb187-1" tabindex="-1"></a><span class="co">#查看变量名（列名）</span></span>
-<span id="cb187-2"><a href="第六讲数据预处理.html#cb187-2" tabindex="-1"></a><span class="fu">colnames</span>(df1) </span></code></pre></div>
-<pre><code>##   [1] &quot;Site&quot;            &quot;age&quot;             &quot;sex&quot;             &quot;monogamous&quot;      &quot;romantic&quot;       
-##   [6] &quot;health&quot;          &quot;exercise&quot;        &quot;eatdrink&quot;        &quot;gluctot&quot;         &quot;artgluctot&quot;     
-##  [11] &quot;smoke&quot;           &quot;cigs&quot;            &quot;avgtemp&quot;         &quot;Temperature_t1&quot;  &quot;Temperature_t2&quot; 
-##  [16] &quot;DEQ&quot;             &quot;AvgHumidity&quot;     &quot;mintemp&quot;         &quot;language&quot;        &quot;langfamily&quot;     
-##  [21] &quot;SNI1&quot;            &quot;SNI2&quot;            &quot;SNI3&quot;            &quot;SNI4&quot;            &quot;SNI5&quot;           
-##  [26] &quot;SNI6&quot;            &quot;SNI7&quot;            &quot;SNI8&quot;            &quot;SNI9&quot;            &quot;SNI10&quot;          
-##  [31] &quot;SNI11&quot;           &quot;SNI12&quot;           &quot;SNI13&quot;           &quot;SNI14&quot;           &quot;SNI15&quot;          
-##  [36] &quot;SNI16&quot;           &quot;SNI17&quot;           &quot;SNI18&quot;           &quot;SNI19&quot;           &quot;SNI20&quot;          
-##  [41] &quot;SNI21&quot;           &quot;SNI22&quot;           &quot;SNI23&quot;           &quot;SNI24&quot;           &quot;SNI25&quot;          
-##  [46] &quot;SNI26&quot;           &quot;SNI27&quot;           &quot;SNI28&quot;           &quot;SNI29&quot;           &quot;SNI30&quot;          
-##  [51] &quot;SNI31&quot;           &quot;SNI32&quot;           &quot;scontrol1&quot;       &quot;scontrol2&quot;       &quot;scontrol3&quot;      
-##  [56] &quot;scontrol4&quot;       &quot;scontrol5&quot;       &quot;scontrol6&quot;       &quot;scontrol7&quot;       &quot;scontrol8&quot;      
-##  [61] &quot;scontrol9&quot;       &quot;scontrol10&quot;      &quot;scontrol11&quot;      &quot;scontrol12&quot;      &quot;scontrol13&quot;     
-##  [66] &quot;stress1&quot;         &quot;stress2&quot;         &quot;stress3&quot;         &quot;stress4&quot;         &quot;stress5&quot;        
-##  [71] &quot;stress6&quot;         &quot;stress7&quot;         &quot;stress8&quot;         &quot;stress9&quot;         &quot;stress10&quot;       
-##  [76] &quot;stress11&quot;        &quot;stress12&quot;        &quot;stress13&quot;        &quot;stress14&quot;        &quot;phone1&quot;         
-##  [81] &quot;phone2&quot;          &quot;phone3&quot;          &quot;phone4&quot;          &quot;phone5&quot;          &quot;phone6&quot;         
-##  [86] &quot;phone7&quot;          &quot;phone8&quot;          &quot;phone9&quot;          &quot;onlineid1&quot;       &quot;onlineid2&quot;      
-##  [91] &quot;onlineid3&quot;       &quot;onlineid4&quot;       &quot;onlineid5&quot;       &quot;onlineid6&quot;       &quot;onlineid7&quot;      
-##  [96] &quot;onlineid8&quot;       &quot;onlineid9&quot;       &quot;onlineid10&quot;      &quot;onlineide11&quot;     &quot;ECR1&quot;           
-## [101] &quot;ECR2&quot;            &quot;ECR3&quot;            &quot;ECR4&quot;            &quot;ECR5&quot;            &quot;ECR6&quot;           
-## [106] &quot;ECR7&quot;            &quot;ECR8&quot;            &quot;ECR9&quot;            &quot;ECR10&quot;           &quot;ECR11&quot;          
-## [111] &quot;ECR12&quot;           &quot;ECR13&quot;           &quot;ECR14&quot;           &quot;ECR15&quot;           &quot;ECR16&quot;          
-## [116] &quot;ECR17&quot;           &quot;ECR18&quot;           &quot;ECR19&quot;           &quot;ECR20&quot;           &quot;ECR21&quot;          
-## [121] &quot;ECR22&quot;           &quot;ECR23&quot;           &quot;ECR24&quot;           &quot;ECR25&quot;           &quot;ECR26&quot;          
-## [126] &quot;ECR27&quot;           &quot;ECR28&quot;           &quot;ECR29&quot;           &quot;ECR30&quot;           &quot;ECR31&quot;          
-## [131] &quot;ECR32&quot;           &quot;ECR33&quot;           &quot;ECR34&quot;           &quot;ECR35&quot;           &quot;ECR36&quot;          
-## [136] &quot;HOME1&quot;           &quot;HOME2&quot;           &quot;HOME3&quot;           &quot;HOME4&quot;           &quot;HOME5&quot;          
-## [141] &quot;HOME6&quot;           &quot;HOME7&quot;           &quot;HOME8&quot;           &quot;HOME9&quot;           &quot;SNS1&quot;           
-## [146] &quot;SNS2&quot;            &quot;SNS3&quot;            &quot;SNS4&quot;            &quot;SNS5&quot;            &quot;SNS6&quot;           
-## [151] &quot;SNS7&quot;            &quot;ALEX1&quot;           &quot;ALEX2&quot;           &quot;ALEX3&quot;           &quot;ALEX4&quot;          
-## [156] &quot;ALEX5&quot;           &quot;ALEX6&quot;           &quot;ALEX7&quot;           &quot;ALEX8&quot;           &quot;ALEX9&quot;          
-## [161] &quot;ALEX10&quot;          &quot;ALEX11&quot;          &quot;ALEX12&quot;          &quot;ALEX13&quot;          &quot;ALEX14&quot;         
-## [166] &quot;ALEX15&quot;          &quot;ALEX16&quot;          &quot;KAMF1&quot;           &quot;KAMF2&quot;           &quot;KAMF3&quot;          
-## [171] &quot;KAMF4&quot;           &quot;KAMF5&quot;           &quot;KAMF6&quot;           &quot;KAMF7&quot;           &quot;STRAQ_1&quot;        
-## [176] &quot;STRAQ_2&quot;         &quot;STRAQ_3&quot;         &quot;STRAQ_4&quot;         &quot;STRAQ_5&quot;         &quot;STRAQ_6&quot;        
-## [181] &quot;STRAQ_7&quot;         &quot;STRAQ_8&quot;         &quot;STRAQ_9&quot;         &quot;STRAQ_10&quot;        &quot;STRAQ_11&quot;       
-## [186] &quot;STRAQ_12&quot;        &quot;STRAQ_13&quot;        &quot;STRAQ_14&quot;        &quot;STRAQ_15&quot;        &quot;STRAQ_16&quot;       
-## [191] &quot;STRAQ_17&quot;        &quot;STRAQ_18&quot;        &quot;STRAQ_19&quot;        &quot;STRAQ_20&quot;        &quot;STRAQ_21&quot;       
-## [196] &quot;STRAQ_22&quot;        &quot;STRAQ_23&quot;        &quot;STRAQ_24&quot;        &quot;STRAQ_25&quot;        &quot;STRAQ_26&quot;       
-## [201] &quot;STRAQ_27&quot;        &quot;STRAQ_28&quot;        &quot;STRAQ_29&quot;        &quot;STRAQ_30&quot;        &quot;STRAQ_31&quot;       
-## [206] &quot;STRAQ_32&quot;        &quot;STRAQ_33&quot;        &quot;STRAQ_34&quot;        &quot;STRAQ_35&quot;        &quot;STRAQ_36&quot;       
-## [211] &quot;STRAQ_37&quot;        &quot;STRAQ_38&quot;        &quot;STRAQ_39&quot;        &quot;STRAQ_40&quot;        &quot;STRAQ_41&quot;       
-## [216] &quot;STRAQ_42&quot;        &quot;STRAQ_43&quot;        &quot;STRAQ_44&quot;        &quot;STRAQ_45&quot;        &quot;STRAQ_46&quot;       
-## [221] &quot;STRAQ_47&quot;        &quot;STRAQ_48&quot;        &quot;STRAQ_49&quot;        &quot;STRAQ_50&quot;        &quot;STRAQ_51&quot;       
-## [226] &quot;STRAQ_52&quot;        &quot;STRAQ_53&quot;        &quot;STRAQ_54&quot;        &quot;STRAQ_55&quot;        &quot;STRAQ_56&quot;       
-## [231] &quot;STRAQ_57&quot;        &quot;socialdiversity&quot;</code></pre>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="第六讲数据预处理.html#cb193-1" tabindex="-1"></a><span class="co">#查看变量名（列名）</span></span>
+<span id="cb193-2"><a href="第六讲数据预处理.html#cb193-2" tabindex="-1"></a><span class="fu">colnames</span>(df1) </span></code></pre></div>
+<pre><code>##   [1] &quot;Site&quot;            &quot;age&quot;             &quot;sex&quot;             &quot;monogamous&quot;     
+##   [5] &quot;romantic&quot;        &quot;health&quot;          &quot;exercise&quot;        &quot;eatdrink&quot;       
+##   [9] &quot;gluctot&quot;         &quot;artgluctot&quot;      &quot;smoke&quot;           &quot;cigs&quot;           
+##  [13] &quot;avgtemp&quot;         &quot;Temperature_t1&quot;  &quot;Temperature_t2&quot;  &quot;DEQ&quot;            
+##  [17] &quot;AvgHumidity&quot;     &quot;mintemp&quot;         &quot;language&quot;        &quot;langfamily&quot;     
+##  [21] &quot;SNI1&quot;            &quot;SNI2&quot;            &quot;SNI3&quot;            &quot;SNI4&quot;           
+##  [25] &quot;SNI5&quot;            &quot;SNI6&quot;            &quot;SNI7&quot;            &quot;SNI8&quot;           
+##  [29] &quot;SNI9&quot;            &quot;SNI10&quot;           &quot;SNI11&quot;           &quot;SNI12&quot;          
+##  [33] &quot;SNI13&quot;           &quot;SNI14&quot;           &quot;SNI15&quot;           &quot;SNI16&quot;          
+##  [37] &quot;SNI17&quot;           &quot;SNI18&quot;           &quot;SNI19&quot;           &quot;SNI20&quot;          
+##  [41] &quot;SNI21&quot;           &quot;SNI22&quot;           &quot;SNI23&quot;           &quot;SNI24&quot;          
+##  [45] &quot;SNI25&quot;           &quot;SNI26&quot;           &quot;SNI27&quot;           &quot;SNI28&quot;          
+##  [49] &quot;SNI29&quot;           &quot;SNI30&quot;           &quot;SNI31&quot;           &quot;SNI32&quot;          
+##  [53] &quot;scontrol1&quot;       &quot;scontrol2&quot;       &quot;scontrol3&quot;       &quot;scontrol4&quot;      
+##  [57] &quot;scontrol5&quot;       &quot;scontrol6&quot;       &quot;scontrol7&quot;       &quot;scontrol8&quot;      
+##  [61] &quot;scontrol9&quot;       &quot;scontrol10&quot;      &quot;scontrol11&quot;      &quot;scontrol12&quot;     
+##  [65] &quot;scontrol13&quot;      &quot;stress1&quot;         &quot;stress2&quot;         &quot;stress3&quot;        
+##  [69] &quot;stress4&quot;         &quot;stress5&quot;         &quot;stress6&quot;         &quot;stress7&quot;        
+##  [73] &quot;stress8&quot;         &quot;stress9&quot;         &quot;stress10&quot;        &quot;stress11&quot;       
+##  [77] &quot;stress12&quot;        &quot;stress13&quot;        &quot;stress14&quot;        &quot;phone1&quot;         
+##  [81] &quot;phone2&quot;          &quot;phone3&quot;          &quot;phone4&quot;          &quot;phone5&quot;         
+##  [85] &quot;phone6&quot;          &quot;phone7&quot;          &quot;phone8&quot;          &quot;phone9&quot;         
+##  [89] &quot;onlineid1&quot;       &quot;onlineid2&quot;       &quot;onlineid3&quot;       &quot;onlineid4&quot;      
+##  [93] &quot;onlineid5&quot;       &quot;onlineid6&quot;       &quot;onlineid7&quot;       &quot;onlineid8&quot;      
+##  [97] &quot;onlineid9&quot;       &quot;onlineid10&quot;      &quot;onlineide11&quot;     &quot;ECR1&quot;           
+## [101] &quot;ECR2&quot;            &quot;ECR3&quot;            &quot;ECR4&quot;            &quot;ECR5&quot;           
+## [105] &quot;ECR6&quot;            &quot;ECR7&quot;            &quot;ECR8&quot;            &quot;ECR9&quot;           
+## [109] &quot;ECR10&quot;           &quot;ECR11&quot;           &quot;ECR12&quot;           &quot;ECR13&quot;          
+## [113] &quot;ECR14&quot;           &quot;ECR15&quot;           &quot;ECR16&quot;           &quot;ECR17&quot;          
+## [117] &quot;ECR18&quot;           &quot;ECR19&quot;           &quot;ECR20&quot;           &quot;ECR21&quot;          
+## [121] &quot;ECR22&quot;           &quot;ECR23&quot;           &quot;ECR24&quot;           &quot;ECR25&quot;          
+## [125] &quot;ECR26&quot;           &quot;ECR27&quot;           &quot;ECR28&quot;           &quot;ECR29&quot;          
+## [129] &quot;ECR30&quot;           &quot;ECR31&quot;           &quot;ECR32&quot;           &quot;ECR33&quot;          
+## [133] &quot;ECR34&quot;           &quot;ECR35&quot;           &quot;ECR36&quot;           &quot;HOME1&quot;          
+## [137] &quot;HOME2&quot;           &quot;HOME3&quot;           &quot;HOME4&quot;           &quot;HOME5&quot;          
+## [141] &quot;HOME6&quot;           &quot;HOME7&quot;           &quot;HOME8&quot;           &quot;HOME9&quot;          
+## [145] &quot;SNS1&quot;            &quot;SNS2&quot;            &quot;SNS3&quot;            &quot;SNS4&quot;           
+## [149] &quot;SNS5&quot;            &quot;SNS6&quot;            &quot;SNS7&quot;            &quot;ALEX1&quot;          
+## [153] &quot;ALEX2&quot;           &quot;ALEX3&quot;           &quot;ALEX4&quot;           &quot;ALEX5&quot;          
+## [157] &quot;ALEX6&quot;           &quot;ALEX7&quot;           &quot;ALEX8&quot;           &quot;ALEX9&quot;          
+## [161] &quot;ALEX10&quot;          &quot;ALEX11&quot;          &quot;ALEX12&quot;          &quot;ALEX13&quot;         
+## [165] &quot;ALEX14&quot;          &quot;ALEX15&quot;          &quot;ALEX16&quot;          &quot;KAMF1&quot;          
+## [169] &quot;KAMF2&quot;           &quot;KAMF3&quot;           &quot;KAMF4&quot;           &quot;KAMF5&quot;          
+## [173] &quot;KAMF6&quot;           &quot;KAMF7&quot;           &quot;STRAQ_1&quot;         &quot;STRAQ_2&quot;        
+## [177] &quot;STRAQ_3&quot;         &quot;STRAQ_4&quot;         &quot;STRAQ_5&quot;         &quot;STRAQ_6&quot;        
+## [181] &quot;STRAQ_7&quot;         &quot;STRAQ_8&quot;         &quot;STRAQ_9&quot;         &quot;STRAQ_10&quot;       
+## [185] &quot;STRAQ_11&quot;        &quot;STRAQ_12&quot;        &quot;STRAQ_13&quot;        &quot;STRAQ_14&quot;       
+## [189] &quot;STRAQ_15&quot;        &quot;STRAQ_16&quot;        &quot;STRAQ_17&quot;        &quot;STRAQ_18&quot;       
+## [193] &quot;STRAQ_19&quot;        &quot;STRAQ_20&quot;        &quot;STRAQ_21&quot;        &quot;STRAQ_22&quot;       
+## [197] &quot;STRAQ_23&quot;        &quot;STRAQ_24&quot;        &quot;STRAQ_25&quot;        &quot;STRAQ_26&quot;       
+## [201] &quot;STRAQ_27&quot;        &quot;STRAQ_28&quot;        &quot;STRAQ_29&quot;        &quot;STRAQ_30&quot;       
+## [205] &quot;STRAQ_31&quot;        &quot;STRAQ_32&quot;        &quot;STRAQ_33&quot;        &quot;STRAQ_34&quot;       
+## [209] &quot;STRAQ_35&quot;        &quot;STRAQ_36&quot;        &quot;STRAQ_37&quot;        &quot;STRAQ_38&quot;       
+## [213] &quot;STRAQ_39&quot;        &quot;STRAQ_40&quot;        &quot;STRAQ_41&quot;        &quot;STRAQ_42&quot;       
+## [217] &quot;STRAQ_43&quot;        &quot;STRAQ_44&quot;        &quot;STRAQ_45&quot;        &quot;STRAQ_46&quot;       
+## [221] &quot;STRAQ_47&quot;        &quot;STRAQ_48&quot;        &quot;STRAQ_49&quot;        &quot;STRAQ_50&quot;       
+## [225] &quot;STRAQ_51&quot;        &quot;STRAQ_52&quot;        &quot;STRAQ_53&quot;        &quot;STRAQ_54&quot;       
+## [229] &quot;STRAQ_55&quot;        &quot;STRAQ_56&quot;        &quot;STRAQ_57&quot;        &quot;socialdiversity&quot;</code></pre>
 <p>另外，当我们需要进行问卷得分的计算时，我们可能需要选择与特定问卷相关的条目，然后对其进行预处理，以得到问卷得分。因此，我们必须要了解数据的当前结构，例如每个列的名称。我们得到的数据是比较干净的，每个名字基本上都可以反映出其大致信息，例如<code>scontrol1</code>、<code>scontrol2</code>等代表自我控制问卷的各个条目。这里的命名本身就是比较规范的。如果数据的列名不是这么清晰，可能还需要进行额外的处理步骤，比如重新命名问卷等。我们就不再一一赘述了。</p>
 <p>那么，我们在这里的主要目标是什么，假设我们选择这几个变量，作为数据预处理的练习，我们把身体温度选出来，然后求一个平均的温度。</p>
 <p><strong>●研究核心变量:</strong></p>
@@ -704,23 +715,23 @@ from equate”。此外，我们还需要记录参与者是否处于恋爱关系
 当然，你可以边思考边尝试，尝试之后如果发现结果不符合预期，那么你就需要回头去修改你的步骤。但最终，你想要做好数据预处理，这些步骤肯定是需要清晰的。</p>
 <p>好的，接下来我们将使用 <code>Tidyverse</code> 来对数据进行处理。首先，我们需要加载
 <code>Tidyverse</code> 包。</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="第六讲数据预处理.html#cb189-1" tabindex="-1"></a><span class="co"># 不要忘记加载包 </span></span>
-<span id="cb189-2"><a href="第六讲数据预处理.html#cb189-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb189-3"><a href="第六讲数据预处理.html#cb189-3" tabindex="-1"></a><span class="do">## Warning:程辑包&#39;tidyverse&#39;是用R版本4.3.3来建造的</span></span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="第六讲数据预处理.html#cb195-1" tabindex="-1"></a><span class="co"># 不要忘记加载包 </span></span>
+<span id="cb195-2"><a href="第六讲数据预处理.html#cb195-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb195-3"><a href="第六讲数据预处理.html#cb195-3" tabindex="-1"></a><span class="do">## Warning:程辑包&#39;tidyverse&#39;是用R版本4.3.3来建造的</span></span></code></pre></div>
 <p>第一步我们已经提到过，就是选择变量。我们只选择与我们感兴趣的变量相关的部分，这里我们选择的是
 Temperature_t1,Temperature_t2（两次测量的温度）、social
 diversity这个变量、site、DQ、romantic，以及ALEX1-16，这些代表述情障碍量表的条目。</p>
 <p>在处理具有相同命名规则的数据或列名时，我们可以使用一个快速的方法，我们不需要把ALX1、ALX2、ALX3…一直到ALX16都写出来，我们只需要使用冒号来选择一个范围内的所有列，例如
 “ALX1:ALX16”，这样 R 语言会自动为我们补全这个范围内的所有列名。</p>
 <p>下面是在R中的代码：</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="第六讲数据预处理.html#cb190-1" tabindex="-1"></a><span class="co"># 加载包后函数前不需要注明包，此处只是为了提示函数属于哪个包 </span></span>
-<span id="cb190-2"><a href="第六讲数据预处理.html#cb190-2" tabindex="-1"></a><span class="co"># 选择我们需要的变量：Temperature_t1, Temperature_t2, SNI28-32, DEQ, romantic, ALEX1-16 </span></span>
-<span id="cb190-3"><a href="第六讲数据预处理.html#cb190-3" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(df1,</span>
-<span id="cb190-4"><a href="第六讲数据预处理.html#cb190-4" tabindex="-1"></a>                     Temperature_t1,Temperature_t2,</span>
-<span id="cb190-5"><a href="第六讲数据预处理.html#cb190-5" tabindex="-1"></a>                     socialdiversity,</span>
-<span id="cb190-6"><a href="第六讲数据预处理.html#cb190-6" tabindex="-1"></a>                     Site, DEQ,</span>
-<span id="cb190-7"><a href="第六讲数据预处理.html#cb190-7" tabindex="-1"></a>                     romantic,</span>
-<span id="cb190-8"><a href="第六讲数据预处理.html#cb190-8" tabindex="-1"></a>                     ALEX1<span class="sc">:</span>ALEX16)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="第六讲数据预处理.html#cb196-1" tabindex="-1"></a><span class="co"># 加载包后函数前不需要注明包，此处只是为了提示函数属于哪个包 </span></span>
+<span id="cb196-2"><a href="第六讲数据预处理.html#cb196-2" tabindex="-1"></a><span class="co"># 选择我们需要的变量：Temperature_t1, Temperature_t2, SNI28-32, DEQ, romantic, ALEX1-16 </span></span>
+<span id="cb196-3"><a href="第六讲数据预处理.html#cb196-3" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(df1,</span>
+<span id="cb196-4"><a href="第六讲数据预处理.html#cb196-4" tabindex="-1"></a>                     Temperature_t1,Temperature_t2,</span>
+<span id="cb196-5"><a href="第六讲数据预处理.html#cb196-5" tabindex="-1"></a>                     socialdiversity,</span>
+<span id="cb196-6"><a href="第六讲数据预处理.html#cb196-6" tabindex="-1"></a>                     Site, DEQ,</span>
+<span id="cb196-7"><a href="第六讲数据预处理.html#cb196-7" tabindex="-1"></a>                     romantic,</span>
+<span id="cb196-8"><a href="第六讲数据预处理.html#cb196-8" tabindex="-1"></a>                     ALEX1<span class="sc">:</span>ALEX16)</span></code></pre></div>
 <ul>
 <li><p><strong>select()函数会按照提供的参数顺序选择列</strong></p>
 <p>在我们使用的函数中，第一个参数通常是数据框(data
@@ -745,10 +756,10 @@ everything() 来选择所有列</strong></p>
 <code>as.numeric</code> 函数，将字符型数据转换为数值型。</p>
 <p>在进行数据类型转换时，我们需要使用另一个在数据处理中常用的函数，即
 <code>mutate</code> 函数。</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="第六讲数据预处理.html#cb191-1" tabindex="-1"></a><span class="co"># 转换数据类型 </span></span>
-<span id="cb191-2"><a href="第六讲数据预处理.html#cb191-2" tabindex="-1"></a><span class="co"># 这里数据类型是正确的，只是示例 </span></span>
-<span id="cb191-3"><a href="第六讲数据预处理.html#cb191-3" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(df1,</span>
-<span id="cb191-4"><a href="第六讲数据预处理.html#cb191-4" tabindex="-1"></a>                     <span class="at">Temperature_t1_new =</span> <span class="fu">as.numeric</span>(Temperature_t1),                                   <span class="at">Temperature_t2 =</span> <span class="fu">as.numeric</span>(Temperature_t2))</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="第六讲数据预处理.html#cb197-1" tabindex="-1"></a><span class="co"># 转换数据类型 </span></span>
+<span id="cb197-2"><a href="第六讲数据预处理.html#cb197-2" tabindex="-1"></a><span class="co"># 这里数据类型是正确的，只是示例 </span></span>
+<span id="cb197-3"><a href="第六讲数据预处理.html#cb197-3" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(df1,</span>
+<span id="cb197-4"><a href="第六讲数据预处理.html#cb197-4" tabindex="-1"></a>                     <span class="at">Temperature_t1_new =</span> <span class="fu">as.numeric</span>(Temperature_t1),                                   <span class="at">Temperature_t2 =</span> <span class="fu">as.numeric</span>(Temperature_t2))</span></code></pre></div>
 <ul>
 <li><p><strong><code>mutate()</code>函数常用于创建新的变量或修改现有变量</strong></p>
 <p>在 <code>mutate</code>
@@ -773,8 +784,8 @@ temperature_t1 变量通过 <code>as.numeric</code>
 我们导入数据之后，这里有一个<code>df1</code>，它有1,517行、232列，这里叫做variables。我们可以查看一下它的情况。</p>
 <p><img src="pic/chp6/clipboard-3359827641.png" /></p>
 <p>我们前面说在studio里面有可能显示不全，在课件里面也可能显示不全。但在这里，它会显示得非常全，我们可以拖着看，它有两页。我们也可以去查看它的列名，在这里我们可以非常全地看到它的列名。<strong>(前面的…需要再确认，每个代码都需要加上)</strong></p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="第六讲数据预处理.html#cb192-1" tabindex="-1"></a><span class="co"># 查看变量名(列名)</span></span>
-<span id="cb192-2"><a href="第六讲数据预处理.html#cb192-2" tabindex="-1"></a><span class="fu">colnames</span>(df1)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="第六讲数据预处理.html#cb198-1" tabindex="-1"></a><span class="co"># 查看变量名(列名)</span></span>
+<span id="cb198-2"><a href="第六讲数据预处理.html#cb198-2" tabindex="-1"></a><span class="fu">colnames</span>(df1)</span></code></pre></div>
 <pre><code>##  [1] &quot;Temperature_t1&quot;     &quot;Temperature_t2&quot;     &quot;socialdiversity&quot;    &quot;Site&quot;              
 ##  [5] &quot;DEQ&quot;                &quot;romantic&quot;           &quot;ALEX1&quot;              &quot;ALEX2&quot;             
 ##  [9] &quot;ALEX3&quot;              &quot;ALEX4&quot;              &quot;ALEX5&quot;              &quot;ALEX6&quot;             
@@ -782,8 +793,8 @@ temperature_t1 变量通过 <code>as.numeric</code>
 ## [17] &quot;ALEX11&quot;             &quot;ALEX12&quot;             &quot;ALEX13&quot;             &quot;ALEX14&quot;            
 ## [21] &quot;ALEX15&quot;             &quot;ALEX16&quot;             &quot;Temperature_t1_new&quot;</code></pre>
 <p>然后加入<code>Tidyverse</code>的包。</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="第六讲数据预处理.html#cb194-1" tabindex="-1"></a><span class="co"># 不要忘记加载包</span></span>
-<span id="cb194-2"><a href="第六讲数据预处理.html#cb194-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="第六讲数据预处理.html#cb200-1" tabindex="-1"></a><span class="co"># 不要忘记加载包</span></span>
+<span id="cb200-2"><a href="第六讲数据预处理.html#cb200-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>好的，这里就是我们第一步。</p>
 <p><img src="pic/chp6/clipboard-3940094129.png" /></p>
 <p>然后我们运行<code>dplyr::select</code>选择需要变量。</p>
@@ -801,9 +812,9 @@ temperature_t1 变量通过 <code>as.numeric</code>
 <p><img src="pic/chp6/clipboard-4135380954.png" /></p>
 <p>在这里，我们添加了一个new，表示我们正在创建一个新的变量。因此，即使我们没有保存中间变量，我们仍然可以生成新的变量。</p>
 <p>对于处理缺失值的问题，例如，有些地方确实存在缺失值。由于有缺失值，我们需要将其删除。</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="第六讲数据预处理.html#cb195-1" tabindex="-1"></a><span class="co"># 按照Temperature, DEQ处理缺失值</span></span>
-<span id="cb195-2"><a href="第六讲数据预处理.html#cb195-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(df1, <span class="sc">!</span><span class="fu">is.na</span>(Temperature_t1)</span>
-<span id="cb195-3"><a href="第六讲数据预处理.html#cb195-3" tabindex="-1"></a>              <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(Temperature_t2) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(DEQ))</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="第六讲数据预处理.html#cb201-1" tabindex="-1"></a><span class="co"># 按照Temperature, DEQ处理缺失值</span></span>
+<span id="cb201-2"><a href="第六讲数据预处理.html#cb201-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(df1, <span class="sc">!</span><span class="fu">is.na</span>(Temperature_t1)</span>
+<span id="cb201-3"><a href="第六讲数据预处理.html#cb201-3" tabindex="-1"></a>              <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(Temperature_t2) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(DEQ))</span></code></pre></div>
 <ul>
 <li><p><code>filter()</code>函数用于从数据框中筛选行（观测值），可以通过逻辑运算符组合多个条件</p>
 <p>在这里，我们可以使用<code>filter</code>函数来进行行过滤。<code>filter</code>函数与<code>select</code>函数不同，<code>select</code>函数是选择列，而<code>filter</code>函数是选择行。在这个函数中，我们是通过逻辑判断来筛选行，例如，对于某个变量，我们只保留那些不是缺失值(NA)的行。
@@ -822,9 +833,9 @@ temperature_t1 变量通过 <code>as.numeric</code>
 <p>大家可以看到，这个时候刚才的是1,517，现在就变成了1,427，也就是它筛掉了一些有缺失值的数据。OK，那么我们就筛选出来了我们想要的数据，而且我们也选择出了我们想要的变量。那么接下来的话，我们就可以进行一些运算了。那么运算的过程中，其实我们就是要生成一个新的一个变量。</p></li>
 </ul>
 <p>例如，如果我们想要计算<code>temperature_t1</code>和<code>temperature_t2</code>的均值，那么这个时候我们实际上是对每个个体的这两列进行均值计算，而不是对<code>temperature_t1</code>的所有个体求均值。这两个操作是不一样的：一个是每个个体有两列数据，我们以”行”为单位进行求均值；另一个是求<code>temperature_t1这</code>列的均值。一般来说，我们的数据框是以”行”为单位的，所以我们需要用某个变量来以”行”为单位进行求均值。</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="第六讲数据预处理.html#cb196-1" tabindex="-1"></a><span class="co"># 计算每个被试两次核心温度的均值，保存为Temperature </span></span>
-<span id="cb196-2"><a href="第六讲数据预处理.html#cb196-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(df1,</span>
-<span id="cb196-3"><a href="第六讲数据预处理.html#cb196-3" tabindex="-1"></a>                     <span class="at">Temperature =</span> <span class="fu">rowMeans</span>(<span class="fu">select</span>(df1, <span class="fu">starts_with</span>(<span class="st">&quot;Temperature&quot;</span>))))</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="第六讲数据预处理.html#cb202-1" tabindex="-1"></a><span class="co"># 计算每个被试两次核心温度的均值，保存为Temperature </span></span>
+<span id="cb202-2"><a href="第六讲数据预处理.html#cb202-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(df1,</span>
+<span id="cb202-3"><a href="第六讲数据预处理.html#cb202-3" tabindex="-1"></a>                     <span class="at">Temperature =</span> <span class="fu">rowMeans</span>(<span class="fu">select</span>(df1, <span class="fu">starts_with</span>(<span class="st">&quot;Temperature&quot;</span>))))</span></code></pre></div>
 <ul>
 <li><code>mean()</code>函数用于计算向量或数组的平均值，<code>colMeans()</code>函数用于计算矩阵或数据框的每一列的平均值，<code>rowMeans()</code>函数用于计算矩阵或数据框的每一行的平均值</li>
 <li>数据类型需为numeric</li>
@@ -833,16 +844,16 @@ temperature_t1 变量通过 <code>as.numeric</code>
 <p>在这个函数中，我们又有一个函数嵌套了一个函数，即select函数。select函数是我们前面讲过的，用于选择哪些列作为输入来求均值。我们通过这个选择，选择出了以temperature开头的这些变量，这里只有两个变量，即<code>temperature_t1</code>和<code>temperature_t2</code>。然后，我们来求<code>rowMeans</code>，即以”行”为单位来求均值。求完了之后，得到了一个向量，我们把这个向量赋值到一个叫做Temperature的新变量里面。然后，这样的话他就得到了一个新的变量。我们可以演示一下。</p>
 <p>这个就是两次temperature的一个均值Temperature，右边也对应地多了一个变量。</p>
 <p><img src="pic/chp6/clipboard-2993817233.png" /></p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="第六讲数据预处理.html#cb197-1" tabindex="-1"></a><span class="co"># 将4, 12, 14, 16题反向计分，计算ALEX，保存为ALEX </span></span>
-<span id="cb197-2"><a href="第六讲数据预处理.html#cb197-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df1,</span>
-<span id="cb197-3"><a href="第六讲数据预处理.html#cb197-3" tabindex="-1"></a>              <span class="at">ALEX4 =</span> <span class="fu">case_when</span>(</span>
-<span id="cb197-4"><a href="第六讲数据预处理.html#cb197-4" tabindex="-1"></a>                <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX4<span class="co"># 反向计分：6减去原始值</span></span>
-<span id="cb197-5"><a href="第六讲数据预处理.html#cb197-5" tabindex="-1"></a>                ),</span>
-<span id="cb197-6"><a href="第六讲数据预处理.html#cb197-6" tabindex="-1"></a>              <span class="at">ALEX12 =</span> <span class="fu">case_when</span>(<span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX12),</span>
-<span id="cb197-7"><a href="第六讲数据预处理.html#cb197-7" tabindex="-1"></a>              <span class="at">ALEX14 =</span> <span class="fu">case_when</span>(<span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX14),</span>
-<span id="cb197-8"><a href="第六讲数据预处理.html#cb197-8" tabindex="-1"></a>              <span class="at">ALEX16 =</span> <span class="fu">case_when</span>(<span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX16)</span>
-<span id="cb197-9"><a href="第六讲数据预处理.html#cb197-9" tabindex="-1"></a>              )</span>
-<span id="cb197-10"><a href="第六讲数据预处理.html#cb197-10" tabindex="-1"></a><span class="co">#也可以写成 case_when(ALEX4 == &#39;1&#39; ~ &#39;5&#39;,ALEX4 == &#39;2&#39; ~ &#39;4&#39;, ALEX4 == &#39;3&#39; ~ &#39;3&#39;, ALEX4 == &#39;4&#39; ~ &#39;2&#39;, ALEX4 == &#39;5&#39; ~ &#39;1&#39;,TRUE ~ as.character(ALEX4))</span></span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="第六讲数据预处理.html#cb203-1" tabindex="-1"></a><span class="co"># 将4, 12, 14, 16题反向计分，计算ALEX，保存为ALEX </span></span>
+<span id="cb203-2"><a href="第六讲数据预处理.html#cb203-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df1,</span>
+<span id="cb203-3"><a href="第六讲数据预处理.html#cb203-3" tabindex="-1"></a>              <span class="at">ALEX4 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb203-4"><a href="第六讲数据预处理.html#cb203-4" tabindex="-1"></a>                <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX4<span class="co"># 反向计分：6减去原始值</span></span>
+<span id="cb203-5"><a href="第六讲数据预处理.html#cb203-5" tabindex="-1"></a>                ),</span>
+<span id="cb203-6"><a href="第六讲数据预处理.html#cb203-6" tabindex="-1"></a>              <span class="at">ALEX12 =</span> <span class="fu">case_when</span>(<span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX12),</span>
+<span id="cb203-7"><a href="第六讲数据预处理.html#cb203-7" tabindex="-1"></a>              <span class="at">ALEX14 =</span> <span class="fu">case_when</span>(<span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX14),</span>
+<span id="cb203-8"><a href="第六讲数据预处理.html#cb203-8" tabindex="-1"></a>              <span class="at">ALEX16 =</span> <span class="fu">case_when</span>(<span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX16)</span>
+<span id="cb203-9"><a href="第六讲数据预处理.html#cb203-9" tabindex="-1"></a>              )</span>
+<span id="cb203-10"><a href="第六讲数据预处理.html#cb203-10" tabindex="-1"></a><span class="co">#也可以写成 case_when(ALEX4 == &#39;1&#39; ~ &#39;5&#39;,ALEX4 == &#39;2&#39; ~ &#39;4&#39;, ALEX4 == &#39;3&#39; ~ &#39;3&#39;, ALEX4 == &#39;4&#39; ~ &#39;2&#39;, ALEX4 == &#39;5&#39; ~ &#39;1&#39;,TRUE ~ as.character(ALEX4))</span></span></code></pre></div>
 <ul>
 <li><code>case_when()</code>函数是一个强大的条件判断函数，通常用于根据不同的条件生成新的变量或对现有变量进行转换</li>
 <li>运算逻辑：逐行评估每个条件，并根据条件的结果来确定新值，若条件为真，则用‘~’后的值替换原始值</li>
@@ -855,39 +866,39 @@ temperature_t1 变量通过 <code>as.numeric</code>
 <p>我们可以看一下转换之后的结果。例如，原来的2分通过反向计分后变成了4分，原来的1分变成了5分。这是心理学中常用的反向计分方法。</p>
 <p><img src="pic/chp6/contrast.png" /></p>
 <p>对于<code>case_when</code>，实际上也可以采用其他条件，比如对年龄进行操作，如果年龄小于18岁，就将其修改为<code>"Child"</code>；如果年龄在18岁到65岁之间，就修改为<code>"Adult"</code>；如果年龄大于65岁，就改为<code>"Senior"</code>。这样也是可以的。</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="第六讲数据预处理.html#cb198-1" tabindex="-1"></a><span class="co"># age为num </span></span>
-<span id="cb198-2"><a href="第六讲数据预处理.html#cb198-2" tabindex="-1"></a><span class="fu">case_when</span>(</span>
-<span id="cb198-3"><a href="第六讲数据预处理.html#cb198-3" tabindex="-1"></a>  age <span class="sc">&lt;</span> <span class="dv">18</span> <span class="sc">~</span> <span class="st">&quot;Child&quot;</span>,</span>
-<span id="cb198-4"><a href="第六讲数据预处理.html#cb198-4" tabindex="-1"></a>  age <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> age <span class="sc">&lt;</span> <span class="dv">65</span> <span class="sc">~</span> <span class="st">&quot;Adult&quot;</span>,</span>
-<span id="cb198-5"><a href="第六讲数据预处理.html#cb198-5" tabindex="-1"></a>  age <span class="sc">&gt;=</span> <span class="dv">65</span> <span class="sc">~</span> <span class="st">&quot;Senior&quot;</span> </span>
-<span id="cb198-6"><a href="第六讲数据预处理.html#cb198-6" tabindex="-1"></a>  )</span>
-<span id="cb198-7"><a href="第六讲数据预处理.html#cb198-7" tabindex="-1"></a><span class="co"># age为chr</span></span>
-<span id="cb198-8"><a href="第六讲数据预处理.html#cb198-8" tabindex="-1"></a><span class="fu">case_when</span>(</span>
-<span id="cb198-9"><a href="第六讲数据预处理.html#cb198-9" tabindex="-1"></a>  age <span class="sc">&lt;</span> <span class="st">&quot;18&quot;</span> <span class="sc">~</span> <span class="st">&quot;Child&quot;</span>,</span>
-<span id="cb198-10"><a href="第六讲数据预处理.html#cb198-10" tabindex="-1"></a>  age <span class="sc">&gt;=</span> <span class="st">&quot;18&quot;</span> <span class="sc">&amp;</span> age <span class="sc">&lt;</span> <span class="st">&quot;65&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult&quot;</span>,</span>
-<span id="cb198-11"><a href="第六讲数据预处理.html#cb198-11" tabindex="-1"></a>  age <span class="sc">&gt;=</span> <span class="st">&quot;65&quot;</span> <span class="sc">~</span> <span class="st">&quot;Senior&quot;</span></span>
-<span id="cb198-12"><a href="第六讲数据预处理.html#cb198-12" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="第六讲数据预处理.html#cb204-1" tabindex="-1"></a><span class="co"># age为num </span></span>
+<span id="cb204-2"><a href="第六讲数据预处理.html#cb204-2" tabindex="-1"></a><span class="fu">case_when</span>(</span>
+<span id="cb204-3"><a href="第六讲数据预处理.html#cb204-3" tabindex="-1"></a>  age <span class="sc">&lt;</span> <span class="dv">18</span> <span class="sc">~</span> <span class="st">&quot;Child&quot;</span>,</span>
+<span id="cb204-4"><a href="第六讲数据预处理.html#cb204-4" tabindex="-1"></a>  age <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> age <span class="sc">&lt;</span> <span class="dv">65</span> <span class="sc">~</span> <span class="st">&quot;Adult&quot;</span>,</span>
+<span id="cb204-5"><a href="第六讲数据预处理.html#cb204-5" tabindex="-1"></a>  age <span class="sc">&gt;=</span> <span class="dv">65</span> <span class="sc">~</span> <span class="st">&quot;Senior&quot;</span> </span>
+<span id="cb204-6"><a href="第六讲数据预处理.html#cb204-6" tabindex="-1"></a>  )</span>
+<span id="cb204-7"><a href="第六讲数据预处理.html#cb204-7" tabindex="-1"></a><span class="co"># age为chr</span></span>
+<span id="cb204-8"><a href="第六讲数据预处理.html#cb204-8" tabindex="-1"></a><span class="fu">case_when</span>(</span>
+<span id="cb204-9"><a href="第六讲数据预处理.html#cb204-9" tabindex="-1"></a>  age <span class="sc">&lt;</span> <span class="st">&quot;18&quot;</span> <span class="sc">~</span> <span class="st">&quot;Child&quot;</span>,</span>
+<span id="cb204-10"><a href="第六讲数据预处理.html#cb204-10" tabindex="-1"></a>  age <span class="sc">&gt;=</span> <span class="st">&quot;18&quot;</span> <span class="sc">&amp;</span> age <span class="sc">&lt;</span> <span class="st">&quot;65&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult&quot;</span>,</span>
+<span id="cb204-11"><a href="第六讲数据预处理.html#cb204-11" tabindex="-1"></a>  age <span class="sc">&gt;=</span> <span class="st">&quot;65&quot;</span> <span class="sc">~</span> <span class="st">&quot;Senior&quot;</span></span>
+<span id="cb204-12"><a href="第六讲数据预处理.html#cb204-12" tabindex="-1"></a>  )</span></code></pre></div>
 <p>大家还记得我们在上节课讲解数据操作时所做的逻辑判断吗？实际上，在很多情况下我们都可以使用这种逻辑判断。因此，我们可以认为<code>case_when()</code>是一个通用的数据操作方式。另外一个通用的方法就是<code>ifelse()</code>。当然，我们在上节课讲到的那个条件判断<code>if (condition) { do_this; } else { do_that; }</code>，在<code>mutate</code>函数里面也有类似的用法，就是将<code>if</code>和<code>else</code>连在一起写。
 在<code>mutate</code>函数中，第一个参数是条件，第二个参数是条件为真时要执行的操作，第三个参数是条件为假时要执行的操作。如果我没有记错的话，它应该是<code>ifelse(condition, do_this, do_that)</code>。这里，第一个和第二个参数是条件，然后第三个参数是当条件为真时要执行的操作，第四个参数是当条件为假时要执行的操作。
 大家可以看到，<code>ifelse()</code>也是一种常用的数据转换方式，用于对符合条件的数据进行转换。但是，如果我们需要判断多个条件，我们就要写很长的一串条件判断语句，就像是一串钥匙。在这种情况下，<code>case_when()</code>就是一个更好的选择，因为它允许我们更清晰地定义多个条件，并针对每个条件指定不同的操作。</p>
 <ul>
 <li>另外，如果我们想要进行反向计分，实际上我们也可以通过这个<code>bruceR</code>来实现。</li>
 </ul>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="第六讲数据预处理.html#cb199-1" tabindex="-1"></a><span class="co"># 创建一个包含需要反向计分的变量的列表</span></span>
-<span id="cb199-2"><a href="第六讲数据预处理.html#cb199-2" tabindex="-1"></a>vars_to_reverse <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ALEX4&quot;</span>, <span class="st">&quot;ALEX12&quot;</span>, <span class="st">&quot;ALEX14&quot;</span>, <span class="st">&quot;ALEX16&quot;</span>)</span>
-<span id="cb199-3"><a href="第六讲数据预处理.html#cb199-3" tabindex="-1"></a><span class="co"># 对列表中的变量进行反向计分 </span></span>
-<span id="cb199-4"><a href="第六讲数据预处理.html#cb199-4" tabindex="-1"></a>df1<span class="sc">$</span>ALEX <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">SUM</span>(df1,</span>
-<span id="cb199-5"><a href="第六讲数据预处理.html#cb199-5" tabindex="-1"></a>                        <span class="at">varrange =</span> <span class="st">&quot;ALEX1:ALEX16&quot;</span>,</span>
-<span id="cb199-6"><a href="第六讲数据预处理.html#cb199-6" tabindex="-1"></a>                        <span class="at">rev =</span> vars_to_reverse,</span>
-<span id="cb199-7"><a href="第六讲数据预处理.html#cb199-7" tabindex="-1"></a>                        <span class="at">likert =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="第六讲数据预处理.html#cb205-1" tabindex="-1"></a><span class="co"># 创建一个包含需要反向计分的变量的列表</span></span>
+<span id="cb205-2"><a href="第六讲数据预处理.html#cb205-2" tabindex="-1"></a>vars_to_reverse <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ALEX4&quot;</span>, <span class="st">&quot;ALEX12&quot;</span>, <span class="st">&quot;ALEX14&quot;</span>, <span class="st">&quot;ALEX16&quot;</span>)</span>
+<span id="cb205-3"><a href="第六讲数据预处理.html#cb205-3" tabindex="-1"></a><span class="co"># 对列表中的变量进行反向计分 </span></span>
+<span id="cb205-4"><a href="第六讲数据预处理.html#cb205-4" tabindex="-1"></a>df1<span class="sc">$</span>ALEX <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">SUM</span>(df1,</span>
+<span id="cb205-5"><a href="第六讲数据预处理.html#cb205-5" tabindex="-1"></a>                        <span class="at">varrange =</span> <span class="st">&quot;ALEX1:ALEX16&quot;</span>,</span>
+<span id="cb205-6"><a href="第六讲数据预处理.html#cb205-6" tabindex="-1"></a>                        <span class="at">rev =</span> vars_to_reverse,</span>
+<span id="cb205-7"><a href="第六讲数据预处理.html#cb205-7" tabindex="-1"></a>                        <span class="at">likert =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code></pre></div>
 <p>因为之前提到过<code>bruceR</code>是专门针对心理学的一个软件包，在<code>bruceR</code>这个软件包中，它实际上有自己的更符合我们思维方式的反向计分方式。所以，如果有哪些需要进行反向计分，我们直接在求问卷总分的时候就可以有一个<code>rev()</code>的操作<code>rev = vars_to_reverse</code>，我们知道我们的变量名是从<code>ALEX1</code>到<code>ALEX16</code>，那么在求总分的时候，我们就可以直接把这些需要反向计分的分数写到这里，同时也可以把这个分数范围记录方式也算上:<code>likert = 1:5</code>，它就可以自己帮你完全操作。也就是说，你甚至不需要先把它反向计分，然后再求和，而是只要告诉<code>broomR</code>，在求总分的时候你需要哪些条目进行反向计分就可以了。这种方式比较符合我们心理学这个思维方式。</p>
 <p>但实际上我们自己要算的就是第一步，就是通过<code>case_when()</code>或者其他的方式，或者以<code>filter()</code>等方式，去把这个条目的分数反过来，然后是1-5分，我们反向基本就是6减去这个原始的分数，然后我们再去求这个总分。那么我们求总分和跟之前实际上是一样的，就是用<code>summarise()</code>。然后再加上选择以<code>ALEX</code>开头的这些所有的行。</p>
 <p><img src="pic/chp6/clipboard-4209095792.png" /></p>
 <p>然后我们最后一个操作，比如我们想要进行这个分组的比较或者是分组的查看，比如我们想看在这个数据里面不同的站点，他们的平均分数是否有所区别，那么我们就可以，比如以站点作为分组的一个条件，首先把数据框分成不同的组，然后在不同的组里面，我们就求这个描述性的数据。</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="第六讲数据预处理.html#cb200-1" tabindex="-1"></a><span class="co"># 按Site计算Temperature的平均值</span></span>
-<span id="cb200-2"><a href="第六讲数据预处理.html#cb200-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">group_by</span>(df1, Site)</span>
-<span id="cb200-3"><a href="第六讲数据预处理.html#cb200-3" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">summarise</span>(df1, <span class="at">mean_Temperature =</span> <span class="fu">mean</span>(Temperature), <span class="at">n =</span> <span class="fu">n</span>())</span>
-<span id="cb200-4"><a href="第六讲数据预处理.html#cb200-4" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">ungroup</span>(df1)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="第六讲数据预处理.html#cb206-1" tabindex="-1"></a><span class="co"># 按Site计算Temperature的平均值</span></span>
+<span id="cb206-2"><a href="第六讲数据预处理.html#cb206-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">group_by</span>(df1, Site)</span>
+<span id="cb206-3"><a href="第六讲数据预处理.html#cb206-3" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">summarise</span>(df1, <span class="at">mean_Temperature =</span> <span class="fu">mean</span>(Temperature), <span class="at">n =</span> <span class="fu">n</span>())</span>
+<span id="cb206-4"><a href="第六讲数据预处理.html#cb206-4" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">ungroup</span>(df1)</span></code></pre></div>
 <ul>
 <li><p><code>group_by()</code>函数将数据框按照指定的分组变量进行分组，然后可以对每个分组进行单独的操作，如汇总、计算统计量等。</p>
 <p>这里会涉及到几个函数，第一个就是分组，我们把这个数据框按照某个变量进行分组，那么也就是说这个站点里面它有几个独特的值，我们就把它分成几个组。然后这个site里面我们应该是有12个还是15个独特的值，比如有一个中国的站点，有一个英国的站点，有一个德国站点。那么我们就会按照这个站点的名字把它分成不同的组。</p></li>
@@ -907,19 +918,19 @@ temperature，还有一个<code>n</code>，就是我们关心的这个样本量�
 <div id="操作步骤完整的管道操作" class="section level3 hasAnchor" number="6.2.2">
 <h3><span class="header-section-number">6.2.2</span> 操作步骤|完整的管道操作<a href="第六讲数据预处理.html#操作步骤完整的管道操作" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>我们之前跟大家说过，实际上我们可以通过Tidyverse的管道操作来进行数据处理。这样的话，没有任何的中间步骤，我们就可以直接从某个数据框的输入开始，最后得到我们整个一系列处理之后的结果。通过管道进行操作，我们就可以直接把它连起来。</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="第六讲数据预处理.html#cb201-1" tabindex="-1"></a><span class="co"># 用管道操作符合并以上代码 </span></span>
-<span id="cb201-2"><a href="第六讲数据预处理.html#cb201-2" tabindex="-1"></a><span class="co"># 使用管道操作符时建议先单独查看变量的数据类型，转换完毕后在进行操作 </span></span>
-<span id="cb201-3"><a href="第六讲数据预处理.html#cb201-3" tabindex="-1"></a><span class="co"># dplyr::glimpse(penguin_data)</span></span>
-<span id="cb201-4"><a href="第六讲数据预处理.html#cb201-4" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> df1 <span class="sc">%&gt;%</span></span>
-<span id="cb201-5"><a href="第六讲数据预处理.html#cb201-5" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(Temperature_t1, Temperature_t2, socialdiversity, Site, DEQ, romantic, ALEX1<span class="sc">:</span>ALEX16) <span class="sc">%&gt;%</span></span>
-<span id="cb201-6"><a href="第六讲数据预处理.html#cb201-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Temperature_t1) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(Temperature_t2) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(DEQ)) <span class="sc">%&gt;%</span>   dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Temperature =</span> <span class="fu">rowMeans</span>(<span class="fu">select</span>(., <span class="fu">starts_with</span>(<span class="st">&quot;Temperature&quot;</span>))),                 <span class="at">ALEX4 =</span> <span class="fu">case_when</span>(<span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX4),                                               <span class="at">ALEX12 =</span> <span class="fu">case_when</span>(<span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX12),</span>
-<span id="cb201-7"><a href="第六讲数据预处理.html#cb201-7" tabindex="-1"></a>            <span class="at">ALEX14 =</span> <span class="fu">case_when</span>(<span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX14),</span>
-<span id="cb201-8"><a href="第六讲数据预处理.html#cb201-8" tabindex="-1"></a>            <span class="at">ALEX16 =</span> <span class="fu">case_when</span>(<span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX16),</span>
-<span id="cb201-9"><a href="第六讲数据预处理.html#cb201-9" tabindex="-1"></a>            <span class="at">ALEX =</span> <span class="fu">rowSums</span>(<span class="fu">select</span>(., <span class="fu">starts_with</span>(<span class="st">&quot;ALEX&quot;</span>)))) <span class="sc">%&gt;%</span></span>
-<span id="cb201-10"><a href="第六讲数据预处理.html#cb201-10" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Site) <span class="sc">%&gt;%</span>   </span>
-<span id="cb201-11"><a href="第六讲数据预处理.html#cb201-11" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mean_Temperature =</span> <span class="fu">mean</span>(Temperature)) <span class="sc">%&gt;%</span></span>
-<span id="cb201-12"><a href="第六讲数据预处理.html#cb201-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>()  </span>
-<span id="cb201-13"><a href="第六讲数据预处理.html#cb201-13" tabindex="-1"></a><span class="co"># 查看数据 df2</span></span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="第六讲数据预处理.html#cb207-1" tabindex="-1"></a><span class="co"># 用管道操作符合并以上代码 </span></span>
+<span id="cb207-2"><a href="第六讲数据预处理.html#cb207-2" tabindex="-1"></a><span class="co"># 使用管道操作符时建议先单独查看变量的数据类型，转换完毕后在进行操作 </span></span>
+<span id="cb207-3"><a href="第六讲数据预处理.html#cb207-3" tabindex="-1"></a><span class="co"># dplyr::glimpse(penguin_data)</span></span>
+<span id="cb207-4"><a href="第六讲数据预处理.html#cb207-4" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> df1 <span class="sc">%&gt;%</span></span>
+<span id="cb207-5"><a href="第六讲数据预处理.html#cb207-5" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(Temperature_t1, Temperature_t2, socialdiversity, Site, DEQ, romantic, ALEX1<span class="sc">:</span>ALEX16) <span class="sc">%&gt;%</span></span>
+<span id="cb207-6"><a href="第六讲数据预处理.html#cb207-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Temperature_t1) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(Temperature_t2) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(DEQ)) <span class="sc">%&gt;%</span>   dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Temperature =</span> <span class="fu">rowMeans</span>(<span class="fu">select</span>(., <span class="fu">starts_with</span>(<span class="st">&quot;Temperature&quot;</span>))),                 <span class="at">ALEX4 =</span> <span class="fu">case_when</span>(<span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX4),                                               <span class="at">ALEX12 =</span> <span class="fu">case_when</span>(<span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX12),</span>
+<span id="cb207-7"><a href="第六讲数据预处理.html#cb207-7" tabindex="-1"></a>            <span class="at">ALEX14 =</span> <span class="fu">case_when</span>(<span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX14),</span>
+<span id="cb207-8"><a href="第六讲数据预处理.html#cb207-8" tabindex="-1"></a>            <span class="at">ALEX16 =</span> <span class="fu">case_when</span>(<span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">-</span> ALEX16),</span>
+<span id="cb207-9"><a href="第六讲数据预处理.html#cb207-9" tabindex="-1"></a>            <span class="at">ALEX =</span> <span class="fu">rowSums</span>(<span class="fu">select</span>(., <span class="fu">starts_with</span>(<span class="st">&quot;ALEX&quot;</span>)))) <span class="sc">%&gt;%</span></span>
+<span id="cb207-10"><a href="第六讲数据预处理.html#cb207-10" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Site) <span class="sc">%&gt;%</span>   </span>
+<span id="cb207-11"><a href="第六讲数据预处理.html#cb207-11" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mean_Temperature =</span> <span class="fu">mean</span>(Temperature)) <span class="sc">%&gt;%</span></span>
+<span id="cb207-12"><a href="第六讲数据预处理.html#cb207-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>()  </span>
+<span id="cb207-13"><a href="第六讲数据预处理.html#cb207-13" tabindex="-1"></a><span class="co"># 查看数据 df2</span></span></code></pre></div>
 <p>大家可以看到，这里有一个值得注意的地方，就是我们原始数据直接通过这个管道输入到后面这个函数周围，作为它的一个输入。那么我们第一个<code>argument</code>就是这个<code>dataframe</code>，就可以省掉了。比如说我们之前做操作的时候，跟<code>select()</code>对吧，第一个参数就是<code>df1</code>，然后后面再连我们要选的这些内容。</p>
 <p>在这个管道里面，我们可以直接把它省略掉，也可以我们用一个点逗号来表示，用一个点来表示是管道输过来的这个变量。一般来说，如果是这样一个管道操作的话，你把它做这个函数的第一个<code>argument</code>的话，就可以省略了。就是我们尽量把前面的完全连起来，最后就直接就变成了我们想要的这个结果了。</p>
 <p>大家可以看到，在管道操作当中的话，看起来整个数据就是比较简洁的。从输入，到整个操作，完了之后就输出。</p>
@@ -1002,8 +1013,8 @@ task，就是我们关注的匹配任务。后面这个编号就是这个被试�
 <p>ACC: 被试的判断是否正确，1 = “正确”, 0 = “错误”, -1,
 2表示未按键或按了两个键的情况，属于无效作答</p>
 <p>RT: 被试做出判断的反应时，[200,1500]的反应时纳入分析</p>
-<div class="datatables html-widget html-fill-item" id="htmlwidget-0c9eb2e575f97bc783ba" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-0c9eb2e575f97bc783ba">{"x":{"filter":"none","vertical":false,"fillContainer":true,"data":[["1","2","3","4","5","6"],["02-May-2018_14:23:06","02-May-2018_14:23:08","02-May-2018_14:23:10","02-May-2018_14:23:13","02-May-2018_14:23:15","02-May-2018_14:23:17"],["Exp","Exp","Exp","Exp","Exp","Exp"],[7302,7302,7302,7302,7302,7302],[22,22,22,22,22,22],["female","female","female","female","female","female"],["R","R","R","R","R","R"],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,2,3,4,5,6],["immoralSelf","moralOther","immoralOther","moralSelf","immoralSelf","immoralSelf"],["immoralOther","moralSelf","moralOther","immoralSelf","immoralSelf","immoralSelf"],["mismatch","mismatch","mismatch","mismatch","match","match"],["n","n","n","n","m","m"],["m","n","n",null,"m","m"],[0,1,1,-1,1,1],[0.7561,0.7043,0.9903,1.042,0.8207,0.7547]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Date<\/th>\n      <th>Prac<\/th>\n      <th>Sub<\/th>\n      <th>Age<\/th>\n      <th>Sex<\/th>\n      <th>Hand<\/th>\n      <th>Block<\/th>\n      <th>Bin<\/th>\n      <th>Trial<\/th>\n      <th>Shape<\/th>\n      <th>Label<\/th>\n      <th>Match<\/th>\n      <th>CorrResp<\/th>\n      <th>Resp<\/th>\n      <th>ACC<\/th>\n      <th>RT<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[3,4,7,8,9,15,16]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Date","targets":1},{"name":"Prac","targets":2},{"name":"Sub","targets":3},{"name":"Age","targets":4},{"name":"Sex","targets":5},{"name":"Hand","targets":6},{"name":"Block","targets":7},{"name":"Bin","targets":8},{"name":"Trial","targets":9},{"name":"Shape","targets":10},{"name":"Label","targets":11},{"name":"Match","targets":12},{"name":"CorrResp","targets":13},{"name":"Resp","targets":14},{"name":"ACC","targets":15},{"name":"RT","targets":16}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-ba09009d27b1cc35561d" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-ba09009d27b1cc35561d">{"x":{"filter":"none","vertical":false,"fillContainer":true,"data":[["1","2","3","4","5","6"],["02-May-2018_14:23:06","02-May-2018_14:23:08","02-May-2018_14:23:10","02-May-2018_14:23:13","02-May-2018_14:23:15","02-May-2018_14:23:17"],["Exp","Exp","Exp","Exp","Exp","Exp"],[7302,7302,7302,7302,7302,7302],[22,22,22,22,22,22],["female","female","female","female","female","female"],["R","R","R","R","R","R"],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,2,3,4,5,6],["immoralSelf","moralOther","immoralOther","moralSelf","immoralSelf","immoralSelf"],["immoralOther","moralSelf","moralOther","immoralSelf","immoralSelf","immoralSelf"],["mismatch","mismatch","mismatch","mismatch","match","match"],["n","n","n","n","m","m"],["m","n","n",null,"m","m"],[0,1,1,-1,1,1],[0.7561,0.7043,0.9903,1.042,0.8207,0.7547]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Date<\/th>\n      <th>Prac<\/th>\n      <th>Sub<\/th>\n      <th>Age<\/th>\n      <th>Sex<\/th>\n      <th>Hand<\/th>\n      <th>Block<\/th>\n      <th>Bin<\/th>\n      <th>Trial<\/th>\n      <th>Shape<\/th>\n      <th>Label<\/th>\n      <th>Match<\/th>\n      <th>CorrResp<\/th>\n      <th>Resp<\/th>\n      <th>ACC<\/th>\n      <th>RT<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[3,4,7,8,9,15,16]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Date","targets":1},{"name":"Prac","targets":2},{"name":"Sub","targets":3},{"name":"Age","targets":4},{"name":"Sex","targets":5},{"name":"Hand","targets":6},{"name":"Block","targets":7},{"name":"Bin","targets":8},{"name":"Trial","targets":9},{"name":"Shape","targets":10},{"name":"Label","targets":11},{"name":"Match","targets":12},{"name":"CorrResp","targets":13},{"name":"Resp","targets":14},{"name":"ACC","targets":15},{"name":"RT","targets":16}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 <p>这些数据看起来是这样的，对吧？如果我们打开这些文件，我们现在需要计算自我优势效应，即在匹配效应下，好的我和好的他人之间的差异。在这种情况下，好的我和好的他人都是好的，但是我的反应速度比他人快，这表明我们对自身的信息有一个优势效应。因此，我们需要批量读取数据，但由于有44个文件，我们不可能手动输入每个文件。我们必须使用代码来提高效率。</p>
 <p>接下来，我们需要拆分变量，了解如何对字符进行拆分，以及如何将长数据转换为宽数据。我们将稍后讨论这些操作。</p>
 </div>
@@ -1028,17 +1039,17 @@ task，就是我们关注的匹配任务。后面这个编号就是这个被试�
 read.table默认为” ”</p></li>
 <li><p>.out文件是以空格或制表符分隔的文本文件</p></li>
 </ul>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="第六讲数据预处理.html#cb202-1" tabindex="-1"></a><span class="co"># 查看单个被试的数据 </span></span>
-<span id="cb202-2"><a href="第六讲数据预处理.html#cb202-2" tabindex="-1"></a><span class="co"># 查看数据时要注意所需变量的数据类型，如果存在问题需要提前转换 </span></span>
-<span id="cb202-3"><a href="第六讲数据预处理.html#cb202-3" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> utils<span class="sc">::</span><span class="fu">read.table</span>(<span class="st">&quot;data/match/data_exp7_rep_match_7302.out&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb202-4"><a href="第六讲数据预处理.html#cb202-4" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> utils<span class="sc">::</span><span class="fu">read.table</span>(<span class="st">&quot;data/match/data_exp7_rep_match_7303.out&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)  </span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="第六讲数据预处理.html#cb208-1" tabindex="-1"></a><span class="co"># 查看单个被试的数据 </span></span>
+<span id="cb208-2"><a href="第六讲数据预处理.html#cb208-2" tabindex="-1"></a><span class="co"># 查看数据时要注意所需变量的数据类型，如果存在问题需要提前转换 </span></span>
+<span id="cb208-3"><a href="第六讲数据预处理.html#cb208-3" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> utils<span class="sc">::</span><span class="fu">read.table</span>(<span class="st">&quot;data/match/data_exp7_rep_match_7302.out&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb208-4"><a href="第六讲数据预处理.html#cb208-4" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> utils<span class="sc">::</span><span class="fu">read.table</span>(<span class="st">&quot;data/match/data_exp7_rep_match_7303.out&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)  </span></code></pre></div>
 <p>首先，我们将批量读取数据。我们刚刚提到有40个被试的数据。我们可以先读取一两个被试的数据，以查看其结构。在这里，我们将读取P1和P2。
 我们使用的是<code>read.table</code>函数。为什么推荐使用这个函数呢？因为它实际上可以读取所有以<code>.txt</code>结尾的文本文件。它还可以设置分隔符，这是相当灵活的。如果我们开始尝试读取CSV文件，发现效果不理想，我们也可以使用<code>read.csv</code>。当然，你也可以使用<code>readxl</code>包，它能够自动识别文件类型。
 当我们读取一个文件后，我们就可以看到它包含了日期、是否是练习或正式实验、被试编号、年龄等信息。</p>
 <p>如果我们读取了两个文件后，我们可能想要将它们合并。通常，我们会通过行合并（<code>rbind</code>）来完成这个操作。当然，我们也可以使用<code>dplyr</code>包中的<code>bind_rows</code>函数。</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="第六讲数据预处理.html#cb203-1" tabindex="-1"></a><span class="co"># 将两个被试的数据合并 </span></span>
-<span id="cb203-2"><a href="第六讲数据预处理.html#cb203-2" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> base<span class="sc">::</span><span class="fu">rbind</span>(p1, p2)  </span>
-<span id="cb203-3"><a href="第六讲数据预处理.html#cb203-3" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(p1, p2)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="第六讲数据预处理.html#cb209-1" tabindex="-1"></a><span class="co"># 将两个被试的数据合并 </span></span>
+<span id="cb209-2"><a href="第六讲数据预处理.html#cb209-2" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> base<span class="sc">::</span><span class="fu">rbind</span>(p1, p2)  </span>
+<span id="cb209-3"><a href="第六讲数据预处理.html#cb209-3" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(p1, p2)</span></code></pre></div>
 <ul>
 <li><code>rbind()</code>函数，用于合并两个或多个数据框、矩阵、数组或列表，并将它们按行连接成一个新的对象，其中的
 “r” 代表 “row”。</li>
@@ -1053,10 +1064,10 @@ read.table默认为” ”</p></li>
 <li><p><code>for loop</code>的基本语法如下：for (variable in sequence) { #
 在这里执行循环体操作 }</p></li>
 </ul>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="第六讲数据预处理.html#cb204-1" tabindex="-1"></a><span class="co"># 单个操作循环，打印i + 1</span></span>
-<span id="cb204-2"><a href="第六讲数据预处理.html#cb204-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {   </span>
-<span id="cb204-3"><a href="第六讲数据预处理.html#cb204-3" tabindex="-1"></a>  <span class="fu">print</span>(i <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb204-4"><a href="第六讲数据预处理.html#cb204-4" tabindex="-1"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="第六讲数据预处理.html#cb210-1" tabindex="-1"></a><span class="co"># 单个操作循环，打印i + 1</span></span>
+<span id="cb210-2"><a href="第六讲数据预处理.html#cb210-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {   </span>
+<span id="cb210-3"><a href="第六讲数据预处理.html#cb210-3" tabindex="-1"></a>  <span class="fu">print</span>(i <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb210-4"><a href="第六讲数据预处理.html#cb210-4" tabindex="-1"></a>  }</span></code></pre></div>
 <pre><code>## [1] 2
 ## [1] 3
 ## [1] 4
@@ -1071,43 +1082,43 @@ read.table默认为” ”</p></li>
 使用<code>for</code>循环，我们可以轻松地读取并合并所有的被试数据，而不需要手动操作或编写冗长的代码。</p>
 <p><img src="pic/chp6/clipboard-3345482414.png" width="464" /></p>
 <p>所以，这就是为什么它被称为循环，因为它在一个特定的序列下进行循环。<code>for</code>循环就这么简单。我们用<code>i &lt;- 1:5</code>，它就会打印出1到5。</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="第六讲数据预处理.html#cb206-1" tabindex="-1"></a><span class="co"># variable in sequence   </span></span>
-<span id="cb206-2"><a href="第六讲数据预处理.html#cb206-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)  </span>
-<span id="cb206-3"><a href="第六讲数据预处理.html#cb206-3" tabindex="-1"></a>{<span class="fu">print</span>(i)}</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="第六讲数据预处理.html#cb212-1" tabindex="-1"></a><span class="co"># variable in sequence   </span></span>
+<span id="cb212-2"><a href="第六讲数据预处理.html#cb212-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)  </span>
+<span id="cb212-3"><a href="第六讲数据预处理.html#cb212-3" tabindex="-1"></a>{<span class="fu">print</span>(i)}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
 ## [1] 4
 ## [1] 5</code></pre>
 <p>还有其他方式，比如<code>i &lt;- seq(1, 5)</code>，它也会打印出1到5。</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="第六讲数据预处理.html#cb208-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>))</span>
-<span id="cb208-2"><a href="第六讲数据预处理.html#cb208-2" tabindex="-1"></a>{<span class="fu">print</span>(i) }</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="第六讲数据预处理.html#cb214-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>))</span>
+<span id="cb214-2"><a href="第六讲数据预处理.html#cb214-2" tabindex="-1"></a>{<span class="fu">print</span>(i) }</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
 ## [1] 4
 ## [1] 5</code></pre>
 <p>例如，如果你使用<code>Vector 12345</code>，它也会打印出来。</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="第六讲数据预处理.html#cb210-1" tabindex="-1"></a>my_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb210-2"><a href="第六讲数据预处理.html#cb210-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> my_vector)</span>
-<span id="cb210-3"><a href="第六讲数据预处理.html#cb210-3" tabindex="-1"></a>{<span class="fu">print</span>(i) }</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="第六讲数据预处理.html#cb216-1" tabindex="-1"></a>my_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb216-2"><a href="第六讲数据预处理.html#cb216-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> my_vector)</span>
+<span id="cb216-3"><a href="第六讲数据预处理.html#cb216-3" tabindex="-1"></a>{<span class="fu">print</span>(i) }</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
 ## [1] 4
 ## [1] 5</code></pre>
 <p>对于list也是如此：</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="第六讲数据预处理.html#cb212-1" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>, <span class="at">c =</span> <span class="dv">3</span>)</span>
-<span id="cb212-2"><a href="第六讲数据预处理.html#cb212-2" tabindex="-1"></a><span class="cf">for</span> (element <span class="cf">in</span> my_list)</span>
-<span id="cb212-3"><a href="第六讲数据预处理.html#cb212-3" tabindex="-1"></a>{<span class="fu">print</span>(element) }</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="第六讲数据预处理.html#cb218-1" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>, <span class="at">c =</span> <span class="dv">3</span>)</span>
+<span id="cb218-2"><a href="第六讲数据预处理.html#cb218-2" tabindex="-1"></a><span class="cf">for</span> (element <span class="cf">in</span> my_list)</span>
+<span id="cb218-3"><a href="第六讲数据预处理.html#cb218-3" tabindex="-1"></a>{<span class="fu">print</span>(element) }</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3</code></pre>
 <p>还有一种方式，比如我们可以对字符串进行循环，打印出字符串中的每一个字母。</p>
 <p>关于string的循环：</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="第六讲数据预处理.html#cb214-1" tabindex="-1"></a>my_string <span class="ot">&lt;-</span> <span class="st">&quot;world&quot;</span> </span>
-<span id="cb214-2"><a href="第六讲数据预处理.html#cb214-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nchar</span>(my_string)) </span>
-<span id="cb214-3"><a href="第六讲数据预处理.html#cb214-3" tabindex="-1"></a>{<span class="fu">print</span>(<span class="fu">substr</span>(my_string, i, i)) }</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="第六讲数据预处理.html#cb220-1" tabindex="-1"></a>my_string <span class="ot">&lt;-</span> <span class="st">&quot;world&quot;</span> </span>
+<span id="cb220-2"><a href="第六讲数据预处理.html#cb220-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nchar</span>(my_string)) </span>
+<span id="cb220-3"><a href="第六讲数据预处理.html#cb220-3" tabindex="-1"></a>{<span class="fu">print</span>(<span class="fu">substr</span>(my_string, i, i)) }</span></code></pre></div>
 <pre><code>## [1] &quot;w&quot;
 ## [1] &quot;o&quot;
 ## [1] &quot;r&quot;
@@ -1116,12 +1127,12 @@ read.table默认为” ”</p></li>
 <p>这里想要展示的就是<code>for</code>循环是一个非常强大的工具，我们可以用在很多循环中，完成我们想要做的事情。
 这意味着什么呢？就是<code>for</code>循环也可以与我们前面讲的条件语句结合。我们前面讲条件语句的时候，就说达到某个条件然后做什么。如果我把这个<code>for</code>循环与条件语句结合起来，这就意味着我可以根据不同条件做不同的事情。在这里，我只对<code>i</code>大于5的时候打印出<code>i + 1</code>。这意味着当<code>i</code>不大于5的时候，什么事情都不做。所以我们可以看到，它打印出来的就是6，因为<code>i</code>大于5的时候就是6、7、8、9、0，它只会打印出后面的这些数字。
 我们也可以将<code>for</code>循环与前面学到的语句，甚至与函数进行各种组合，以达到我们的任务。</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="第六讲数据预处理.html#cb216-1" tabindex="-1"></a><span class="co"># 加简单条件</span></span>
-<span id="cb216-2"><a href="第六讲数据预处理.html#cb216-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb216-3"><a href="第六讲数据预处理.html#cb216-3" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">5</span>) {</span>
-<span id="cb216-4"><a href="第六讲数据预处理.html#cb216-4" tabindex="-1"></a>    <span class="fu">print</span>(i <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb216-5"><a href="第六讲数据预处理.html#cb216-5" tabindex="-1"></a>  }</span>
-<span id="cb216-6"><a href="第六讲数据预处理.html#cb216-6" tabindex="-1"></a>} </span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="第六讲数据预处理.html#cb222-1" tabindex="-1"></a><span class="co"># 加简单条件</span></span>
+<span id="cb222-2"><a href="第六讲数据预处理.html#cb222-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb222-3"><a href="第六讲数据预处理.html#cb222-3" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">5</span>) {</span>
+<span id="cb222-4"><a href="第六讲数据预处理.html#cb222-4" tabindex="-1"></a>    <span class="fu">print</span>(i <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb222-5"><a href="第六讲数据预处理.html#cb222-5" tabindex="-1"></a>  }</span>
+<span id="cb222-6"><a href="第六讲数据预处理.html#cb222-6" tabindex="-1"></a>} </span></code></pre></div>
 <pre><code>## [1] 7
 ## [1] 8
 ## [1] 9
@@ -1132,10 +1143,10 @@ read.table默认为” ”</p></li>
 <ul>
 <li><strong>那么要如何利用for loop批量导入数据呢？</strong></li>
 </ul>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="第六讲数据预处理.html#cb218-1" tabindex="-1"></a><span class="co"># 把所有符合某种标题的文件全部读取到一个list中 </span></span>
-<span id="cb218-2"><a href="第六讲数据预处理.html#cb218-2" tabindex="-1"></a><span class="co"># 使用 full.names 参数获取完整路径的文件列表</span></span>
-<span id="cb218-3"><a href="第六讲数据预处理.html#cb218-3" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;match&quot;</span>), <span class="at">pattern =</span> <span class="st">&quot;data_exp7_rep_match_.*</span><span class="sc">\\</span><span class="st">.out$&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)  </span>
-<span id="cb218-4"><a href="第六讲数据预处理.html#cb218-4" tabindex="-1"></a><span class="fu">head</span>(files, <span class="at">n =</span> <span class="dv">10</span><span class="dt">L</span>)  </span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="第六讲数据预处理.html#cb224-1" tabindex="-1"></a><span class="co"># 把所有符合某种标题的文件全部读取到一个list中 </span></span>
+<span id="cb224-2"><a href="第六讲数据预处理.html#cb224-2" tabindex="-1"></a><span class="co"># 使用 full.names 参数获取完整路径的文件列表</span></span>
+<span id="cb224-3"><a href="第六讲数据预处理.html#cb224-3" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;match&quot;</span>), <span class="at">pattern =</span> <span class="st">&quot;data_exp7_rep_match_.*</span><span class="sc">\\</span><span class="st">.out$&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)  </span>
+<span id="cb224-4"><a href="第六讲数据预处理.html#cb224-4" tabindex="-1"></a><span class="fu">head</span>(files, <span class="at">n =</span> <span class="dv">10</span><span class="dt">L</span>)  </span></code></pre></div>
 <pre><code>##  [1] &quot;/Users/hcp4715/Library/CloudStorage/OneDrive-Personal/Teaching/Grad_R_course/R4PsyBook/Book/data/match/data_exp7_rep_match_7302.out&quot;
 ##  [2] &quot;/Users/hcp4715/Library/CloudStorage/OneDrive-Personal/Teaching/Grad_R_course/R4PsyBook/Book/data/match/data_exp7_rep_match_7303.out&quot;
 ##  [3] &quot;/Users/hcp4715/Library/CloudStorage/OneDrive-Personal/Teaching/Grad_R_course/R4PsyBook/Book/data/match/data_exp7_rep_match_7304.out&quot;
@@ -1146,7 +1157,7 @@ read.table默认为” ”</p></li>
 ##  [8] &quot;/Users/hcp4715/Library/CloudStorage/OneDrive-Personal/Teaching/Grad_R_course/R4PsyBook/Book/data/match/data_exp7_rep_match_7309.out&quot;
 ##  [9] &quot;/Users/hcp4715/Library/CloudStorage/OneDrive-Personal/Teaching/Grad_R_course/R4PsyBook/Book/data/match/data_exp7_rep_match_7310.out&quot;
 ## [10] &quot;/Users/hcp4715/Library/CloudStorage/OneDrive-Personal/Teaching/Grad_R_course/R4PsyBook/Book/data/match/data_exp7_rep_match_7311.out&quot;</code></pre>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="第六讲数据预处理.html#cb220-1" tabindex="-1"></a><span class="fu">str</span>(files)</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="第六讲数据预处理.html#cb226-1" tabindex="-1"></a><span class="fu">str</span>(files)</span></code></pre></div>
 <pre><code>##  chr [1:44] &quot;/Users/hcp4715/Library/CloudStorage/OneDrive-Personal/Teaching/Grad_R_course/R4PsyBook/Book/data/match/data_exp&quot;| __truncated__ ...</code></pre>
 <p><em>P.S.尽管函数叫list.files，但它得到的变量的属性是value，而不是list</em></p>
 <p>所以，这里我们可能需要有一个函数，就是我们要把符合我们条件的这些文件名都列出来。在R语言中，有一个函数叫做<code>list.files()</code>，这个实际上在各个编程语言中都有这样的功能，因为找到一个文件夹里面所有特定符合特定命名规则的文件名基本上是所有编程语言中经常做的事情。在Python中也有，在MATLAB中也有，在SPSS中也有。
@@ -1159,45 +1170,45 @@ read.table默认为” ”</p></li>
 <p>然后我们这里是C:/users/，从R4psy/data/match/开始应该是一样的。
 我们这里就这个花钥匙就得到了一串这个一个项链，里面的每一个元素都是我们对应我们想要的这些文件的名字以及他们的完整路径。我们也可以看一下，它是有44个这个元素，就表示它有44个文件名，那正好跟我们的44个被试是对上的。</p>
 <p>然后，在我们读取数据之前，我们先定义一个小的函数，这个函数就是我们刚才在上面处理这个问题时用到的，就是用各种<code>as</code>什么什么的。</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="第六讲数据预处理.html#cb222-1" tabindex="-1"></a><span class="co"># 定义函数用于数据类型转换 </span></span>
-<span id="cb222-2"><a href="第六讲数据预处理.html#cb222-2" tabindex="-1"></a>convert_data_types <span class="ot">=</span> <span class="cf">function</span>(df) {</span>
-<span id="cb222-3"><a href="第六讲数据预处理.html#cb222-3" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb222-4"><a href="第六讲数据预处理.html#cb222-4" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">as.character</span>(Date),</span>
-<span id="cb222-5"><a href="第六讲数据预处理.html#cb222-5" tabindex="-1"></a>                  <span class="at">Prac =</span> <span class="fu">as.character</span>(Prac),</span>
-<span id="cb222-6"><a href="第六讲数据预处理.html#cb222-6" tabindex="-1"></a>                  <span class="at">Sub =</span> <span class="fu">as.numeric</span>(Sub),</span>
-<span id="cb222-7"><a href="第六讲数据预处理.html#cb222-7" tabindex="-1"></a>                  <span class="at">Age =</span> <span class="fu">as.numeric</span>(Age),</span>
-<span id="cb222-8"><a href="第六讲数据预处理.html#cb222-8" tabindex="-1"></a>                  <span class="at">Sex =</span> <span class="fu">as.character</span>(Sex),</span>
-<span id="cb222-9"><a href="第六讲数据预处理.html#cb222-9" tabindex="-1"></a>                  <span class="at">Hand =</span> <span class="fu">as.character</span>(Hand),</span>
-<span id="cb222-10"><a href="第六讲数据预处理.html#cb222-10" tabindex="-1"></a>                  <span class="at">Block =</span> <span class="fu">as.numeric</span>(Block),</span>
-<span id="cb222-11"><a href="第六讲数据预处理.html#cb222-11" tabindex="-1"></a>                  <span class="at">Bin =</span> <span class="fu">as.numeric</span>(Bin),</span>
-<span id="cb222-12"><a href="第六讲数据预处理.html#cb222-12" tabindex="-1"></a>                  <span class="at">Trial =</span> <span class="fu">as.numeric</span>(Trial),</span>
-<span id="cb222-13"><a href="第六讲数据预处理.html#cb222-13" tabindex="-1"></a>                  <span class="at">Shape =</span> <span class="fu">as.character</span>(Shape),</span>
-<span id="cb222-14"><a href="第六讲数据预处理.html#cb222-14" tabindex="-1"></a>                  <span class="at">Label =</span> <span class="fu">as.character</span>(Label),</span>
-<span id="cb222-15"><a href="第六讲数据预处理.html#cb222-15" tabindex="-1"></a>                  <span class="at">Match =</span> <span class="fu">as.character</span>(Match),</span>
-<span id="cb222-16"><a href="第六讲数据预处理.html#cb222-16" tabindex="-1"></a>                  <span class="at">CorrResp =</span> <span class="fu">as.character</span>(CorrResp),</span>
-<span id="cb222-17"><a href="第六讲数据预处理.html#cb222-17" tabindex="-1"></a>                  <span class="at">Resp =</span> <span class="fu">as.character</span>(Resp),</span>
-<span id="cb222-18"><a href="第六讲数据预处理.html#cb222-18" tabindex="-1"></a>                  <span class="at">ACC =</span> <span class="fu">as.numeric</span>(ACC),</span>
-<span id="cb222-19"><a href="第六讲数据预处理.html#cb222-19" tabindex="-1"></a>                  <span class="at">RT =</span> <span class="fu">as.numeric</span>(RT))</span>
-<span id="cb222-20"><a href="第六讲数据预处理.html#cb222-20" tabindex="-1"></a>  <span class="fu">return</span>(df) </span>
-<span id="cb222-21"><a href="第六讲数据预处理.html#cb222-21" tabindex="-1"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="第六讲数据预处理.html#cb228-1" tabindex="-1"></a><span class="co"># 定义函数用于数据类型转换 </span></span>
+<span id="cb228-2"><a href="第六讲数据预处理.html#cb228-2" tabindex="-1"></a>convert_data_types <span class="ot">=</span> <span class="cf">function</span>(df) {</span>
+<span id="cb228-3"><a href="第六讲数据预处理.html#cb228-3" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb228-4"><a href="第六讲数据预处理.html#cb228-4" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">as.character</span>(Date),</span>
+<span id="cb228-5"><a href="第六讲数据预处理.html#cb228-5" tabindex="-1"></a>                  <span class="at">Prac =</span> <span class="fu">as.character</span>(Prac),</span>
+<span id="cb228-6"><a href="第六讲数据预处理.html#cb228-6" tabindex="-1"></a>                  <span class="at">Sub =</span> <span class="fu">as.numeric</span>(Sub),</span>
+<span id="cb228-7"><a href="第六讲数据预处理.html#cb228-7" tabindex="-1"></a>                  <span class="at">Age =</span> <span class="fu">as.numeric</span>(Age),</span>
+<span id="cb228-8"><a href="第六讲数据预处理.html#cb228-8" tabindex="-1"></a>                  <span class="at">Sex =</span> <span class="fu">as.character</span>(Sex),</span>
+<span id="cb228-9"><a href="第六讲数据预处理.html#cb228-9" tabindex="-1"></a>                  <span class="at">Hand =</span> <span class="fu">as.character</span>(Hand),</span>
+<span id="cb228-10"><a href="第六讲数据预处理.html#cb228-10" tabindex="-1"></a>                  <span class="at">Block =</span> <span class="fu">as.numeric</span>(Block),</span>
+<span id="cb228-11"><a href="第六讲数据预处理.html#cb228-11" tabindex="-1"></a>                  <span class="at">Bin =</span> <span class="fu">as.numeric</span>(Bin),</span>
+<span id="cb228-12"><a href="第六讲数据预处理.html#cb228-12" tabindex="-1"></a>                  <span class="at">Trial =</span> <span class="fu">as.numeric</span>(Trial),</span>
+<span id="cb228-13"><a href="第六讲数据预处理.html#cb228-13" tabindex="-1"></a>                  <span class="at">Shape =</span> <span class="fu">as.character</span>(Shape),</span>
+<span id="cb228-14"><a href="第六讲数据预处理.html#cb228-14" tabindex="-1"></a>                  <span class="at">Label =</span> <span class="fu">as.character</span>(Label),</span>
+<span id="cb228-15"><a href="第六讲数据预处理.html#cb228-15" tabindex="-1"></a>                  <span class="at">Match =</span> <span class="fu">as.character</span>(Match),</span>
+<span id="cb228-16"><a href="第六讲数据预处理.html#cb228-16" tabindex="-1"></a>                  <span class="at">CorrResp =</span> <span class="fu">as.character</span>(CorrResp),</span>
+<span id="cb228-17"><a href="第六讲数据预处理.html#cb228-17" tabindex="-1"></a>                  <span class="at">Resp =</span> <span class="fu">as.character</span>(Resp),</span>
+<span id="cb228-18"><a href="第六讲数据预处理.html#cb228-18" tabindex="-1"></a>                  <span class="at">ACC =</span> <span class="fu">as.numeric</span>(ACC),</span>
+<span id="cb228-19"><a href="第六讲数据预处理.html#cb228-19" tabindex="-1"></a>                  <span class="at">RT =</span> <span class="fu">as.numeric</span>(RT))</span>
+<span id="cb228-20"><a href="第六讲数据预处理.html#cb228-20" tabindex="-1"></a>  <span class="fu">return</span>(df) </span>
+<span id="cb228-21"><a href="第六讲数据预处理.html#cb228-21" tabindex="-1"></a>  }</span></code></pre></div>
 <p>为什么我们要定义这个东西呢？就是要去保证每一个列，它的数据类型就是我们想要的，因为你在数据的这个<code>load</code>或者<code>read</code>的时候，如果你的数据类型不一样的话，它也是合并不了的，也可能会出错，或者会给你强行转换。但是，我们这里就先强制给它进行一个转换。例如，我们把应该是数值型的，像年龄、被试编号转成数值型，<code>RT</code>转成数值型，还有这个<code>ACC</code>转成数值型，然后其它的字符型转成字符型。转换了之后返回的就是第二个。
 这里第一个是为了后面，让我们这个<code>for</code>循环比较简单一点。</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="第六讲数据预处理.html#cb223-1" tabindex="-1"></a><span class="co"># 创建一个空的数据框来存储读取的数据</span></span>
-<span id="cb223-2"><a href="第六讲数据预处理.html#cb223-2" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
-<span id="cb223-3"><a href="第六讲数据预处理.html#cb223-3" tabindex="-1"></a><span class="co"># 循环读取每个文件，处理数据并添加到数据框中</span></span>
-<span id="cb223-4"><a href="第六讲数据预处理.html#cb223-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(files)) { <span class="co"># 重复&quot;读取到的.out个数&quot;的次数   </span></span>
-<span id="cb223-5"><a href="第六讲数据预处理.html#cb223-5" tabindex="-1"></a>  <span class="co"># 读取数据文件</span></span>
-<span id="cb223-6"><a href="第六讲数据预处理.html#cb223-6" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">read.table</span>(files[i], <span class="at">header =</span> <span class="cn">TRUE</span>)       </span>
-<span id="cb223-7"><a href="第六讲数据预处理.html#cb223-7" tabindex="-1"></a>  <span class="co"># 使用 filter 函数过滤掉 Date 列值为 &quot;Date&quot; 的行</span></span>
-<span id="cb223-8"><a href="第六讲数据预处理.html#cb223-8" tabindex="-1"></a>  df <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(df, Date <span class="sc">!=</span> <span class="st">&quot;Date&quot;</span>)</span>
-<span id="cb223-9"><a href="第六讲数据预处理.html#cb223-9" tabindex="-1"></a>  <span class="co"># 调用函数进行数据类型转换   </span></span>
-<span id="cb223-10"><a href="第六讲数据预处理.html#cb223-10" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">convert_data_types</span>(df)      </span>
-<span id="cb223-11"><a href="第六讲数据预处理.html#cb223-11" tabindex="-1"></a>  <span class="co"># 使用 bind_rows() 函数将当前数据框与之前的数据框合并</span></span>
-<span id="cb223-12"><a href="第六讲数据预处理.html#cb223-12" tabindex="-1"></a>  df3 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(df3, df) </span>
-<span id="cb223-13"><a href="第六讲数据预处理.html#cb223-13" tabindex="-1"></a>  }  <span class="co"># rbind合并后是matrics，需要转换</span></span>
-<span id="cb223-14"><a href="第六讲数据预处理.html#cb223-14" tabindex="-1"></a><span class="co"># df3 &lt;- as.data.frame(do.call(rbind, df_list))</span></span>
-<span id="cb223-15"><a href="第六讲数据预处理.html#cb223-15" tabindex="-1"></a><span class="co"># 清除中间变量</span></span>
-<span id="cb223-16"><a href="第六讲数据预处理.html#cb223-16" tabindex="-1"></a><span class="fu">rm</span>(df, files, i)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="第六讲数据预处理.html#cb229-1" tabindex="-1"></a><span class="co"># 创建一个空的数据框来存储读取的数据</span></span>
+<span id="cb229-2"><a href="第六讲数据预处理.html#cb229-2" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb229-3"><a href="第六讲数据预处理.html#cb229-3" tabindex="-1"></a><span class="co"># 循环读取每个文件，处理数据并添加到数据框中</span></span>
+<span id="cb229-4"><a href="第六讲数据预处理.html#cb229-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(files)) { <span class="co"># 重复&quot;读取到的.out个数&quot;的次数   </span></span>
+<span id="cb229-5"><a href="第六讲数据预处理.html#cb229-5" tabindex="-1"></a>  <span class="co"># 读取数据文件</span></span>
+<span id="cb229-6"><a href="第六讲数据预处理.html#cb229-6" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">read.table</span>(files[i], <span class="at">header =</span> <span class="cn">TRUE</span>)       </span>
+<span id="cb229-7"><a href="第六讲数据预处理.html#cb229-7" tabindex="-1"></a>  <span class="co"># 使用 filter 函数过滤掉 Date 列值为 &quot;Date&quot; 的行</span></span>
+<span id="cb229-8"><a href="第六讲数据预处理.html#cb229-8" tabindex="-1"></a>  df <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(df, Date <span class="sc">!=</span> <span class="st">&quot;Date&quot;</span>)</span>
+<span id="cb229-9"><a href="第六讲数据预处理.html#cb229-9" tabindex="-1"></a>  <span class="co"># 调用函数进行数据类型转换   </span></span>
+<span id="cb229-10"><a href="第六讲数据预处理.html#cb229-10" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">convert_data_types</span>(df)      </span>
+<span id="cb229-11"><a href="第六讲数据预处理.html#cb229-11" tabindex="-1"></a>  <span class="co"># 使用 bind_rows() 函数将当前数据框与之前的数据框合并</span></span>
+<span id="cb229-12"><a href="第六讲数据预处理.html#cb229-12" tabindex="-1"></a>  df3 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(df3, df) </span>
+<span id="cb229-13"><a href="第六讲数据预处理.html#cb229-13" tabindex="-1"></a>  }  <span class="co"># rbind合并后是matrics，需要转换</span></span>
+<span id="cb229-14"><a href="第六讲数据预处理.html#cb229-14" tabindex="-1"></a><span class="co"># df3 &lt;- as.data.frame(do.call(rbind, df_list))</span></span>
+<span id="cb229-15"><a href="第六讲数据预处理.html#cb229-15" tabindex="-1"></a><span class="co"># 清除中间变量</span></span>
+<span id="cb229-16"><a href="第六讲数据预处理.html#cb229-16" tabindex="-1"></a><span class="fu">rm</span>(df, files, i)</span></code></pre></div>
 <p>那么我们怎么写这个<code>for</code>循环？首先我们要创建一个新一个空的一个数据框，用来抓我们最终读取的数据，并且把各个被试的数据合并到一起之后的一个总的数据。然后，我们就开始写这个<code>for</code>循环，从1到<code>n</code>，就是沿着这个<code>file</code>变量进行依次往后面迭代。然后大家可以看到<code>df</code>它是一个临时的变量，对吧，它读取这个<code>table</code>，然后读取的这个<code>table</code>的文件名就是我们这个<code>files</code>里面的这个第<code>i</code>个元素，也就是说，它会依次从第一个依次读取到第44个。那么这个<code>i</code>不断的变化，然后读取完了之后，我们可以就是过滤掉它这个数据，呃这个叫什么，第一个就是日期不等于日期的这个名字的，呃这个行，这个就是这里是一个特殊数据，而且跟我们这个数据是特别相关的。</p>
 <p>因为我们这个数据文件进入的时候，有一些特殊的标识，我们需要进行一些过滤。但大家自己的数据可能不需要做这个操作，这是一个额外的操作，是为了我们处理这个数据而进行的特殊操作。然后，我们调用我们刚才定义的函数，对它进行一个数据转换。转换之后，我们可以看到，这里有一个很关键的操作，就是我们把原来的这个定义的<code>df3</code>，把它和我们刚才读取的这个<code>df</code>进行合并。
 大家想想，当<code>i = 2</code>的时候，它会读取第一个被试的文件，读取到<code>df</code>里面，然后对<code>df</code>做了一系列的预处理之后，我们把它和<code>df3</code>进行一个合并。刚开始的时候，第一次操作的时候<code>df3</code>是空的，对吧？因为我们在前面是把它定义成一个空的数据框。所以当我们这个循环刚开始的时候，第一次的<code>df</code>读取第一个被试数据，然后第二次<code>i = 3</code>的时候，<code>df3</code>这个时候是空的，那么它是空的。然后它和第一个被试的数据进行结合之后，它实际上就是变成第一个被试数据了，对吧？然后这个时候循环到了它结束的时候，然后我们看第二次循环<code>i = 2</code>的时候，它就开始读取第二个被试的数据，然后这个时候<code>df</code>就是等于第二个被试数据，对吧？然后也同样进行了一番操作之后，然后到这个时候<code>df3</code>，它刚才已经替换成了第一个被试数据，对不对？所以他又和第二个被试数据进行结合，之后这个时候再复制到<code>df3</code>，也就是我们把<code>df3</code>进行了一次更新。这个时候的<code>df3</code>等于第一个被试和第二个被试进行结合的结果了。
@@ -1207,58 +1218,58 @@ read.table默认为” ”</p></li>
 <ul>
 <li><strong>使用<code>lapply</code>也能完成批量导入与合并。<code>lapply</code>思维难度更高，但代码更简洁。</strong></li>
 </ul>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="第六讲数据预处理.html#cb224-1" tabindex="-1"></a><span class="co"># 获取所有的.out文件名</span></span>
-<span id="cb224-2"><a href="第六讲数据预处理.html#cb224-2" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;match&quot;</span>), <span class="at">pattern =</span> <span class="st">&quot;data_exp7_rep_match_.*</span><span class="sc">\\</span><span class="st">.out$&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)  </span>
-<span id="cb224-3"><a href="第六讲数据预处理.html#cb224-3" tabindex="-1"></a><span class="co"># 读取每个.out文件，并进行数据清洗 </span></span>
-<span id="cb224-4"><a href="第六讲数据预处理.html#cb224-4" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">lapply</span>(files, <span class="cf">function</span>(file) {</span>
-<span id="cb224-5"><a href="第六讲数据预处理.html#cb224-5" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">read.table</span>(file, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb224-6"><a href="第六讲数据预处理.html#cb224-6" tabindex="-1"></a>  df <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(df, Date <span class="sc">!=</span> <span class="st">&quot;Date&quot;</span>) <span class="co"># 过滤掉 Date 列值为 &quot;Date&quot; 的行</span></span>
-<span id="cb224-7"><a href="第六讲数据预处理.html#cb224-7" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df,                 </span>
-<span id="cb224-8"><a href="第六讲数据预处理.html#cb224-8" tabindex="-1"></a>               <span class="fu">convert_data_types</span>(df)               </span>
-<span id="cb224-9"><a href="第六讲数据预处理.html#cb224-9" tabindex="-1"></a>               ) <span class="co"># 进行数据类型转换和数据清洗   </span></span>
-<span id="cb224-10"><a href="第六讲数据预处理.html#cb224-10" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
-<span id="cb224-11"><a href="第六讲数据预处理.html#cb224-11" tabindex="-1"></a>  })  </span>
-<span id="cb224-12"><a href="第六讲数据预处理.html#cb224-12" tabindex="-1"></a><span class="co"># 合并所有数据框 </span></span>
-<span id="cb224-13"><a href="第六讲数据预处理.html#cb224-13" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(df3)</span>
-<span id="cb224-14"><a href="第六讲数据预处理.html#cb224-14" tabindex="-1"></a><span class="co"># 清除中间变量 </span></span>
-<span id="cb224-15"><a href="第六讲数据预处理.html#cb224-15" tabindex="-1"></a><span class="fu">rm</span>(files)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="第六讲数据预处理.html#cb230-1" tabindex="-1"></a><span class="co"># 获取所有的.out文件名</span></span>
+<span id="cb230-2"><a href="第六讲数据预处理.html#cb230-2" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;match&quot;</span>), <span class="at">pattern =</span> <span class="st">&quot;data_exp7_rep_match_.*</span><span class="sc">\\</span><span class="st">.out$&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)  </span>
+<span id="cb230-3"><a href="第六讲数据预处理.html#cb230-3" tabindex="-1"></a><span class="co"># 读取每个.out文件，并进行数据清洗 </span></span>
+<span id="cb230-4"><a href="第六讲数据预处理.html#cb230-4" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">lapply</span>(files, <span class="cf">function</span>(file) {</span>
+<span id="cb230-5"><a href="第六讲数据预处理.html#cb230-5" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">read.table</span>(file, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb230-6"><a href="第六讲数据预处理.html#cb230-6" tabindex="-1"></a>  df <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(df, Date <span class="sc">!=</span> <span class="st">&quot;Date&quot;</span>) <span class="co"># 过滤掉 Date 列值为 &quot;Date&quot; 的行</span></span>
+<span id="cb230-7"><a href="第六讲数据预处理.html#cb230-7" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df,                 </span>
+<span id="cb230-8"><a href="第六讲数据预处理.html#cb230-8" tabindex="-1"></a>               <span class="fu">convert_data_types</span>(df)               </span>
+<span id="cb230-9"><a href="第六讲数据预处理.html#cb230-9" tabindex="-1"></a>               ) <span class="co"># 进行数据类型转换和数据清洗   </span></span>
+<span id="cb230-10"><a href="第六讲数据预处理.html#cb230-10" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
+<span id="cb230-11"><a href="第六讲数据预处理.html#cb230-11" tabindex="-1"></a>  })  </span>
+<span id="cb230-12"><a href="第六讲数据预处理.html#cb230-12" tabindex="-1"></a><span class="co"># 合并所有数据框 </span></span>
+<span id="cb230-13"><a href="第六讲数据预处理.html#cb230-13" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(df3)</span>
+<span id="cb230-14"><a href="第六讲数据预处理.html#cb230-14" tabindex="-1"></a><span class="co"># 清除中间变量 </span></span>
+<span id="cb230-15"><a href="第六讲数据预处理.html#cb230-15" tabindex="-1"></a><span class="fu">rm</span>(files)</span></code></pre></div>
 <p>当然这个就是比较高度压缩的一个代码，然后需要大家去理解自己的这个里面这个逻辑。他先就是把这个函数进行的一个高度的整合。我这里就不展开了吧。如果大家去想要理解的话，可能你先理解的<code>for</code>之后，然后再去再看这个<code>lapply</code>，这样的话会更好一点。</p>
 <p>OK，假定大家都理解了这个<code>forloop</code>，那就我们就能够把这个<code>df3</code>就读取出来，然后得到了一个数据，就是把所有44个被试的数据都合并了。合并了之后我们可以把它保存下来，因为我不想再重复这个工作。或者因为每次搜索的话也会帮助你，数据量很大的时候，你也比较浪费时间。然后你这样的话，就可以直接把它就是存在某一个地方，比方说我们把它存成叫做<code>match_row</code>的一个CSV的文件，然后也是存在刚才一模一样的这个文件夹。</p>
 <ul>
 <li><strong>保存合并的数据文件</strong></li>
 </ul>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="第六讲数据预处理.html#cb225-1" tabindex="-1"></a><span class="co">#for loop 或 lapply的都可以</span></span>
-<span id="cb225-2"><a href="第六讲数据预处理.html#cb225-2" tabindex="-1"></a><span class="fu">write.csv</span>(df3,</span>
-<span id="cb225-3"><a href="第六讲数据预处理.html#cb225-3" tabindex="-1"></a>          <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;match&quot;</span>,<span class="st">&quot;match_raw.csv&quot;</span>),</span>
-<span id="cb225-4"><a href="第六讲数据预处理.html#cb225-4" tabindex="-1"></a>          <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="第六讲数据预处理.html#cb231-1" tabindex="-1"></a><span class="co">#for loop 或 lapply的都可以</span></span>
+<span id="cb231-2"><a href="第六讲数据预处理.html#cb231-2" tabindex="-1"></a><span class="fu">write.csv</span>(df3,</span>
+<span id="cb231-3"><a href="第六讲数据预处理.html#cb231-3" tabindex="-1"></a>          <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;match&quot;</span>,<span class="st">&quot;match_raw.csv&quot;</span>),</span>
+<span id="cb231-4"><a href="第六讲数据预处理.html#cb231-4" tabindex="-1"></a>          <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>这个地方有一个稍微值得注意点，就是这个
 <code>row.names</code>等于<code>FALSE</code>，就是不要保存这个行的名字。你保存的话它会给你增加一行，增加一列就是这个行的名字，123456789…直到所有的这个行数。这个没有对我们来说一般来说没有意义，所以我们把这个一般会写成<code>FALSE</code>。</p>
 <p>其实对于我们数据操作来说，就是一个一个被试的数据，当它是分开的时候，就假如说我们有这个就是有很多被试的分开文件的话。对于我们书写来说，第一步可能就是<code>forloop</code>是最最难的，后面都是我们前面讲过的。</p>
 <ul>
 <li>处理缺失值[<code>drop_na</code>, <code>filter</code>]</li>
 </ul>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="第六讲数据预处理.html#cb226-1" tabindex="-1"></a><span class="co"># 删除缺失值，选择符合标准的被试 </span></span>
-<span id="cb226-2"><a href="第六讲数据预处理.html#cb226-2" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">drop_na</span>(df3) </span>
-<span id="cb226-3"><a href="第六讲数据预处理.html#cb226-3" tabindex="-1"></a><span class="co"># 删除含有缺失值的行 </span></span>
-<span id="cb226-4"><a href="第六讲数据预处理.html#cb226-4" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(df3, Hand <span class="sc">==</span> <span class="st">&quot;R&quot;</span>, <span class="co"># 选择右利手被试</span></span>
-<span id="cb226-5"><a href="第六讲数据预处理.html#cb226-5" tabindex="-1"></a>                     ACC <span class="sc">==</span> <span class="dv">0</span> <span class="sc">|</span> ACC <span class="sc">==</span> <span class="dv">1</span> , <span class="co"># 排除无效应答（ACC = -1 OR 2) </span></span>
-<span id="cb226-6"><a href="第六讲数据预处理.html#cb226-6" tabindex="-1"></a>RT <span class="sc">&gt;=</span> <span class="fl">0.2</span> <span class="sc">&amp;</span> RT <span class="sc">&lt;=</span> <span class="fl">1.5</span>)  <span class="co"># 选择RT属于[200,1500]</span></span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="第六讲数据预处理.html#cb232-1" tabindex="-1"></a><span class="co"># 删除缺失值，选择符合标准的被试 </span></span>
+<span id="cb232-2"><a href="第六讲数据预处理.html#cb232-2" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">drop_na</span>(df3) </span>
+<span id="cb232-3"><a href="第六讲数据预处理.html#cb232-3" tabindex="-1"></a><span class="co"># 删除含有缺失值的行 </span></span>
+<span id="cb232-4"><a href="第六讲数据预处理.html#cb232-4" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(df3, Hand <span class="sc">==</span> <span class="st">&quot;R&quot;</span>, <span class="co"># 选择右利手被试</span></span>
+<span id="cb232-5"><a href="第六讲数据预处理.html#cb232-5" tabindex="-1"></a>                     ACC <span class="sc">==</span> <span class="dv">0</span> <span class="sc">|</span> ACC <span class="sc">==</span> <span class="dv">1</span> , <span class="co"># 排除无效应答（ACC = -1 OR 2) </span></span>
+<span id="cb232-6"><a href="第六讲数据预处理.html#cb232-6" tabindex="-1"></a>RT <span class="sc">&gt;=</span> <span class="fl">0.2</span> <span class="sc">&amp;</span> RT <span class="sc">&lt;=</span> <span class="fl">1.5</span>)  <span class="co"># 选择RT属于[200,1500]</span></span></code></pre></div>
 <p>当然选择变量，然后处理这个缺失值，用<code>filter</code>，然后这里有一个<code>tidyr</code>里面的有一个很好用的一个函数叫做<code>drop_na</code>，用的时候要谨慎一点，因为它是一个比较粗暴的方法，就是把任何一行只要它有缺失值的话就直接给扔掉了。那么有的时候你可能知道，就比方说某一个数据里面，只要他任何一行里面有一个缺失值，那个数据你就完全你知道你不会用了。那你就可以用<code>drop_na</code>，要不然的话这个会丢掉太多的数据。这个好用，但是要谨慎的使用。</p>
 <p>然后你可以进行一些其他的选择，比如你只选择这个右利手的被试，因为大家都是右利手的，然后你选择这个反应时间的范围，比如它小于0.2，那你就不要，因为你觉得这个数据是没有用的，反应过快。还有就是把那些比如说是无效的反应，你可以把它排除掉，它是-1的，或者是2的。这些都是说，我们通过多种方法来进行一个选择。然后分条件描述的话，跟之前是一样的。然后我们这里描述就是<code>ACC</code>。我们可以通过这个条件来进行一个描述。</p>
 <p>这里有一个比较有意思的操作，就是拆分变量。</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="第六讲数据预处理.html#cb227-1" tabindex="-1"></a><span class="co"># 分实验条件计算</span></span>
-<span id="cb227-2"><a href="第六讲数据预处理.html#cb227-2" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">group_by</span>(df4, Sub, Shape, Label, Match)</span>
-<span id="cb227-3"><a href="第六讲数据预处理.html#cb227-3" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">summarise</span>(df4, <span class="at">mean_ACC =</span> <span class="fu">mean</span>(ACC), <span class="at">mean_RT =</span> <span class="fu">mean</span>(RT))</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;Sub&#39;, &#39;Shape&#39;, &#39;Label&#39;. You can override using the `.groups`
-## argument.</code></pre>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="第六讲数据预处理.html#cb229-1" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">ungroup</span>(df4)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="第六讲数据预处理.html#cb233-1" tabindex="-1"></a><span class="co"># 分实验条件计算</span></span>
+<span id="cb233-2"><a href="第六讲数据预处理.html#cb233-2" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">group_by</span>(df4, Sub, Shape, Label, Match)</span>
+<span id="cb233-3"><a href="第六讲数据预处理.html#cb233-3" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">summarise</span>(df4, <span class="at">mean_ACC =</span> <span class="fu">mean</span>(ACC), <span class="at">mean_RT =</span> <span class="fu">mean</span>(RT))</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;Sub&#39;, &#39;Shape&#39;, &#39;Label&#39;. You can override using the
+## `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="第六讲数据预处理.html#cb235-1" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">ungroup</span>(df4)</span></code></pre></div>
 <ul>
 <li><strong>拆分变量[<code>extract</code>, <code>filter</code>]</strong></li>
 </ul>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="第六讲数据预处理.html#cb230-1" tabindex="-1"></a><span class="co"># 将Shape变量拆分</span></span>
-<span id="cb230-2"><a href="第六讲数据预处理.html#cb230-2" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">extract</span>(df4, Shape, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;Valence&quot;</span>, <span class="st">&quot;Identity&quot;</span>),</span>
-<span id="cb230-3"><a href="第六讲数据预处理.html#cb230-3" tabindex="-1"></a>                      <span class="at">regex =</span> <span class="st">&quot;(moral|immoral)(Self|Other)&quot;</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) </span>
-<span id="cb230-4"><a href="第六讲数据预处理.html#cb230-4" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(df4, Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> Valence <span class="sc">==</span> <span class="st">&quot;moral&quot;</span>)  </span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="第六讲数据预处理.html#cb236-1" tabindex="-1"></a><span class="co"># 将Shape变量拆分</span></span>
+<span id="cb236-2"><a href="第六讲数据预处理.html#cb236-2" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">extract</span>(df4, Shape, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;Valence&quot;</span>, <span class="st">&quot;Identity&quot;</span>),</span>
+<span id="cb236-3"><a href="第六讲数据预处理.html#cb236-3" tabindex="-1"></a>                      <span class="at">regex =</span> <span class="st">&quot;(moral|immoral)(Self|Other)&quot;</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb236-4"><a href="第六讲数据预处理.html#cb236-4" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(df4, Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> Valence <span class="sc">==</span> <span class="st">&quot;moral&quot;</span>)  </span></code></pre></div>
 <p>比如我们原来它是这样的，就是它是有一个长格子<code>Shape</code>，就是它的图形是什么，<code>moral-Self、``moral-Other``、immoral-Self</code>,
 <code>immoral-``Other</code>。它实际上表示的是两个自变量，一个是它的这个<code>valence</code>，到底是积极的还是消极的，另外一个就是它的这个<code>identity</code>，到底是自我还是他人。所以我们可以通过这种字符拆分的方法，把它拆分成为把线拆分成为两个变量。
 拆分的方式就是前面的要么是<code>moral</code>，要么是<code>immoral</code>，后面的要么是<code>Self</code>，要么是<code>Other</code>。比如说我们这里<code>extract</code>就是对<code>shift</code>对吧，对<code>shift</code>这个变量把它提取出两个列出来，一个叫做<code>Valence</code>，一个叫做<code>Identity</code>。提取的方式是按照这种方式进行提取。然后最后这个目的就是说，是不是要把原来的这个<code>shape</code>给去掉。我们这里选择没有去掉，对吧。</p>
@@ -1268,9 +1279,9 @@ read.table默认为” ”</p></li>
 <ul>
 <li><strong>将数据长转宽[<code>pivot_wide</code>]</strong></li>
 </ul>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="第六讲数据预处理.html#cb231-1" tabindex="-1"></a><span class="co"># 将长数据转为宽数据 </span></span>
-<span id="cb231-2"><a href="第六讲数据预处理.html#cb231-2" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(df4, Sub, Identity, mean_RT)</span>
-<span id="cb231-3"><a href="第六讲数据预处理.html#cb231-3" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(df4, <span class="at">names_from =</span> <span class="st">&quot;Identity&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;mean_RT&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="第六讲数据预处理.html#cb237-1" tabindex="-1"></a><span class="co"># 将长数据转为宽数据 </span></span>
+<span id="cb237-2"><a href="第六讲数据预处理.html#cb237-2" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(df4, Sub, Identity, mean_RT)</span>
+<span id="cb237-3"><a href="第六讲数据预处理.html#cb237-3" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(df4, <span class="at">names_from =</span> <span class="st">&quot;Identity&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;mean_RT&quot;</span>)</span></code></pre></div>
 <p>什么叫长转宽？就是比方说在我们的SPSS当中，每一个行代表的是什么，一个被试对吧，每一列代表的是一个条件。但是如果我们看前面的这个操作的话，我们发现，比方说，前面那个条件，每个被试它有两列，而且还是我们筛选之后的数据。那么它有<code>Valence</code>和<code>Identity</code>对吧，这个是我们选择过了。但它大概<code>单体里</code>还有两个，就实际上在这个里面是一个<code>column</code>对吧，一列它专门来表示这个变量。然后它在不断的重复，对于每个被试来说，它都有一个<code>other</code>，一个<code>self</code>。那么它就不太像我们常说的那个数据，那个那种数据叫做宽数据，就是说每个被试代表一个行，那么我们用增加列的方式来去表示不同的变量。那么它的这个方式就是说，我们对于每一个变量的不同的水平，我们就把它放在一单独的一列，然后我们这个<code>Identity</code>它有两个水平，我们就重复这两个水平，对每个被试我们都重复两次。</p>
 <p>比方说<code>Valence</code>，如果说我们看原来数据的话，它有两个数据，比方说<code>Moral</code>和<code>Immoral</code>。那么我们也不断的重复它，这样的话其实每个被试就会有有几行,就会有4行的对吧，就是有<code>Moral-self</code>、<code>moral-other</code>、<code>Immoral-self</code>、<code>Immoral-other</code>这样的一个情况。那么像这种每一个被试它有多个行的这种情况，我们叫做长的数据。宽数据就是每个被试只有一行，我们把它转成多个列，不同的列代表不同的数据。那这样的话，这个数据就相比原来数据变宽了对吧，这就是宽数据。我们SPSS传统上面就是用宽的数据的形式。那么我们一般来说，我们可以，我们要进行下一步的运算的时候，进行不同条件之间比较的时候，我们肯定要把它转成宽数据对吧，这样的话，就可以更好的进行一个比较。</p>
 <p>然后我们这里就在数据里面选择<code>Sub</code>, <code>Identity</code>,
@@ -1279,9 +1290,9 @@ read.table默认为” ”</p></li>
 <p>所以大家看到<code>pivot_wider</code>，其实让我们这个长短宽的数据变得更圆扁的。就是你转换之后，你增加了列。那么你增加了这个列的名字从哪来，你增加了列的这个数值从哪来。当然，你可能现在记不住，但是你如果说你就是真的要用长短宽或者宽短长的时候，你最好的方法就是去看这个教程，他会告诉你用可转化的方式告诉你怎么转的。我们照着葫芦画瓢就行了。然后<code>mutate</code>就是转换了之后你检查一下对不对，因为如果要记它们到底是什么意思的话其实非常琐碎，我们也没有必要记。你就到时候有什么需求你就就转对吧。
 比方说，你可能不止有<code>identity</code>一个变量，你可能也有<code>moral</code>这个变量的时候，你有两个<code>列</code>对吧，你要把它一下子转成一个，就是增加到四列的时候怎么转这个。这个教程网上有非常多的。</p>
 <p>这个地方是稍微会有一点点细节的地方。</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="第六讲数据预处理.html#cb232-1" tabindex="-1"></a><span class="co"># 计算SPE</span></span>
-<span id="cb232-2"><a href="第六讲数据预处理.html#cb232-2" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(df4, <span class="at">moral_SPE =</span> Self <span class="sc">-</span> Other)</span>
-<span id="cb232-3"><a href="第六讲数据预处理.html#cb232-3" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(df4, Sub, moral_SPE) </span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="第六讲数据预处理.html#cb238-1" tabindex="-1"></a><span class="co"># 计算SPE</span></span>
+<span id="cb238-2"><a href="第六讲数据预处理.html#cb238-2" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(df4, <span class="at">moral_SPE =</span> Self <span class="sc">-</span> Other)</span>
+<span id="cb238-3"><a href="第六讲数据预处理.html#cb238-3" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(df4, Sub, moral_SPE) </span></code></pre></div>
 <p>那么最后这个操作的话就比较简单对吧，就是我们转完了之后的话，转换之后呢，有<code>subject</code>对吧，有<code>moral_SPE</code>。那么它就是只有这三个列，我们把<code>Self - Other</code>的话，就得到我们感兴趣的自我优势效应。所以我们这里就是直接就要说用<code>mutate</code>，然后生成一个新的我们感兴趣的变量。
 将上面所有的合并的话，那就是可以用长串代码对吧。当我们读取了数据之后，那这个大家可以后面去，基本上这里面每一个我们都讲过了，每一个操作我们都讲过。</p>
 <p>大家可能后面如果对某一个不太懂的话，可能再回过头来再看一下这个视频，或者是问我们的助教。大家要积极主动地向助教提问，这样的话会能够学习的更快一点。</p>
@@ -1309,24 +1320,24 @@ Smith”分成“John”和“Smith”两列</p></li>
 <p>计算不同Shape情况下(immoral-self，moral-self，immoral-other，moral-other)
 基于信号检测论match与mismatch之间的d’(match为信号，mismatch噪音)</p>
 <p>以下是计算信号检测论d’的代码</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="第六讲数据预处理.html#cb233-1" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
-<span id="cb233-2"><a href="第六讲数据预处理.html#cb233-2" tabindex="-1"></a>  <span class="at">hit =</span> <span class="fu">length</span>(ACC[Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> ACC <span class="sc">==</span> <span class="dv">1</span>]),</span>
-<span id="cb233-3"><a href="第六讲数据预处理.html#cb233-3" tabindex="-1"></a>  <span class="at">fa =</span> <span class="fu">length</span>(ACC[Match <span class="sc">==</span> <span class="st">&quot;mismatch&quot;</span> <span class="sc">&amp;</span> ACC <span class="sc">==</span> <span class="dv">0</span>]),</span>
-<span id="cb233-4"><a href="第六讲数据预处理.html#cb233-4" tabindex="-1"></a>  <span class="at">miss =</span> <span class="fu">length</span>(ACC[Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> ACC <span class="sc">==</span> <span class="dv">0</span>]),</span>
-<span id="cb233-5"><a href="第六讲数据预处理.html#cb233-5" tabindex="-1"></a>  <span class="at">cr =</span> <span class="fu">length</span>(ACC[Match <span class="sc">==</span> <span class="st">&quot;mismatch&quot;</span> <span class="sc">&amp;</span> ACC <span class="sc">==</span> <span class="dv">1</span>]),</span>
-<span id="cb233-6"><a href="第六讲数据预处理.html#cb233-6" tabindex="-1"></a>  <span class="at">Dprime =</span> <span class="fu">qnorm</span>(</span>
-<span id="cb233-7"><a href="第六讲数据预处理.html#cb233-7" tabindex="-1"></a>    <span class="fu">ifelse</span>(hit <span class="sc">/</span> (hit <span class="sc">+</span> miss) <span class="sc">&lt;</span> <span class="dv">1</span>,</span>
-<span id="cb233-8"><a href="第六讲数据预处理.html#cb233-8" tabindex="-1"></a>           hit <span class="sc">/</span> (hit <span class="sc">+</span> miss),</span>
-<span id="cb233-9"><a href="第六讲数据预处理.html#cb233-9" tabindex="-1"></a>           <span class="dv">1</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> (hit <span class="sc">+</span> miss))</span>
-<span id="cb233-10"><a href="第六讲数据预处理.html#cb233-10" tabindex="-1"></a>           )</span>
-<span id="cb233-11"><a href="第六讲数据预处理.html#cb233-11" tabindex="-1"></a>    )</span>
-<span id="cb233-12"><a href="第六讲数据预处理.html#cb233-12" tabindex="-1"></a>         <span class="sc">-</span> <span class="fu">qnorm</span>(</span>
-<span id="cb233-13"><a href="第六讲数据预处理.html#cb233-13" tabindex="-1"></a>    <span class="fu">ifelse</span>(fa <span class="sc">/</span> (fa <span class="sc">+</span> cr) <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
-<span id="cb233-14"><a href="第六讲数据预处理.html#cb233-14" tabindex="-1"></a>           fa <span class="sc">/</span> (fa <span class="sc">+</span> cr),</span>
-<span id="cb233-15"><a href="第六讲数据预处理.html#cb233-15" tabindex="-1"></a>           <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> (fa <span class="sc">+</span> cr))</span>
-<span id="cb233-16"><a href="第六讲数据预处理.html#cb233-16" tabindex="-1"></a>           )                     </span>
-<span id="cb233-17"><a href="第六讲数据预处理.html#cb233-17" tabindex="-1"></a>                    )       </span>
-<span id="cb233-18"><a href="第六讲数据预处理.html#cb233-18" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="第六讲数据预处理.html#cb239-1" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb239-2"><a href="第六讲数据预处理.html#cb239-2" tabindex="-1"></a>  <span class="at">hit =</span> <span class="fu">length</span>(ACC[Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> ACC <span class="sc">==</span> <span class="dv">1</span>]),</span>
+<span id="cb239-3"><a href="第六讲数据预处理.html#cb239-3" tabindex="-1"></a>  <span class="at">fa =</span> <span class="fu">length</span>(ACC[Match <span class="sc">==</span> <span class="st">&quot;mismatch&quot;</span> <span class="sc">&amp;</span> ACC <span class="sc">==</span> <span class="dv">0</span>]),</span>
+<span id="cb239-4"><a href="第六讲数据预处理.html#cb239-4" tabindex="-1"></a>  <span class="at">miss =</span> <span class="fu">length</span>(ACC[Match <span class="sc">==</span> <span class="st">&quot;match&quot;</span> <span class="sc">&amp;</span> ACC <span class="sc">==</span> <span class="dv">0</span>]),</span>
+<span id="cb239-5"><a href="第六讲数据预处理.html#cb239-5" tabindex="-1"></a>  <span class="at">cr =</span> <span class="fu">length</span>(ACC[Match <span class="sc">==</span> <span class="st">&quot;mismatch&quot;</span> <span class="sc">&amp;</span> ACC <span class="sc">==</span> <span class="dv">1</span>]),</span>
+<span id="cb239-6"><a href="第六讲数据预处理.html#cb239-6" tabindex="-1"></a>  <span class="at">Dprime =</span> <span class="fu">qnorm</span>(</span>
+<span id="cb239-7"><a href="第六讲数据预处理.html#cb239-7" tabindex="-1"></a>    <span class="fu">ifelse</span>(hit <span class="sc">/</span> (hit <span class="sc">+</span> miss) <span class="sc">&lt;</span> <span class="dv">1</span>,</span>
+<span id="cb239-8"><a href="第六讲数据预处理.html#cb239-8" tabindex="-1"></a>           hit <span class="sc">/</span> (hit <span class="sc">+</span> miss),</span>
+<span id="cb239-9"><a href="第六讲数据预处理.html#cb239-9" tabindex="-1"></a>           <span class="dv">1</span> <span class="sc">-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> (hit <span class="sc">+</span> miss))</span>
+<span id="cb239-10"><a href="第六讲数据预处理.html#cb239-10" tabindex="-1"></a>           )</span>
+<span id="cb239-11"><a href="第六讲数据预处理.html#cb239-11" tabindex="-1"></a>    )</span>
+<span id="cb239-12"><a href="第六讲数据预处理.html#cb239-12" tabindex="-1"></a>         <span class="sc">-</span> <span class="fu">qnorm</span>(</span>
+<span id="cb239-13"><a href="第六讲数据预处理.html#cb239-13" tabindex="-1"></a>    <span class="fu">ifelse</span>(fa <span class="sc">/</span> (fa <span class="sc">+</span> cr) <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb239-14"><a href="第六讲数据预处理.html#cb239-14" tabindex="-1"></a>           fa <span class="sc">/</span> (fa <span class="sc">+</span> cr),</span>
+<span id="cb239-15"><a href="第六讲数据预处理.html#cb239-15" tabindex="-1"></a>           <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> (fa <span class="sc">+</span> cr))</span>
+<span id="cb239-16"><a href="第六讲数据预处理.html#cb239-16" tabindex="-1"></a>           )                     </span>
+<span id="cb239-17"><a href="第六讲数据预处理.html#cb239-17" tabindex="-1"></a>                    )       </span>
+<span id="cb239-18"><a href="第六讲数据预处理.html#cb239-18" tabindex="-1"></a>  )</span></code></pre></div>
 <p>我们在学习里面，突然有一个信号检测论，对吧，我们把一个作为信号，另外一个做一个噪音的话，那么我们就会有这个，比方说hit,
 fa,miss,
 cr。那么根据这四个类型的话，我们可以计算出这个信号检测量的这个敏感度Dprime。那么实际上我们可以用在tidyvers里面，对吧，一行代码就一个一拍plan就可以完成下来，你不需要单独定义函数什么的。那么大家可以考虑一下如何把每个条件下每个被试的<code>Dprime</code>计算出来。</p>
