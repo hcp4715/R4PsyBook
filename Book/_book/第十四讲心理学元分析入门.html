@@ -136,6 +136,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -162,8 +185,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="关于作者.html"><a href="关于作者.html"><i class="fa fa-check"></i>关于作者</a>
 <ul>
-<li class="chapter" data-level="0.5" data-path="关于作者.html"><a href="关于作者.html#v2-版本2024春季学期"><i class="fa fa-check"></i><b>0.5</b> V2 版本(2024春季学期)：</a></li>
-<li class="chapter" data-level="0.6" data-path="关于作者.html"><a href="关于作者.html#v1-版本2023春季学期"><i class="fa fa-check"></i><b>0.6</b> V1 版本(2023春季学期)：</a></li>
+<li class="chapter" data-level="0.5" data-path="关于作者.html"><a href="关于作者.html#春季学期助教及电子书转录志愿者"><i class="fa fa-check"></i><b>0.5</b> 2024春季学期助教及电子书转录志愿者：</a></li>
+<li class="chapter" data-level="0.6" data-path="关于作者.html"><a href="关于作者.html#春季学期助教"><i class="fa fa-check"></i><b>0.6</b> 2023春季学期助教：</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>1</b> 第一讲：为什么要学习R</a>
 <ul>
@@ -215,7 +238,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html"><i class="fa fa-check"></i><b>3</b> 第三讲：Git &amp; RStudio工作流</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#files-and-folders-system"><i class="fa fa-check"></i><b>3.1</b> Files and Folders System</a></li>
+<li class="chapter" data-level="3.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#文件与文件夹结构系统"><i class="fa fa-check"></i><b>3.1</b> 文件与文件夹结构系统</a></li>
 <li class="chapter" data-level="3.2" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#git-and-git-hub"><i class="fa fa-check"></i><b>3.2</b> Git and Git Hub</a>
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#git"><i class="fa fa-check"></i><b>3.2.1</b> Git</a></li>
@@ -828,20 +851,13 @@ difference），应该在escalc函数中指定这一点。同时，还需要提�
 <span id="cb538-10"><a href="第十四讲心理学元分析入门.html#cb538-10" tabindex="-1"></a>df <span class="ot">&lt;-</span> df[<span class="fu">order</span>(df<span class="sc">$</span>yi), ]</span>
 <span id="cb538-11"><a href="第十四讲心理学元分析入门.html#cb538-11" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## 
-##    id                Information   N      ES     VI Cohort Context Materials Valence 
-## 12 12 Kühl and Münzer (2021), G2  60 -0.5278 0.0691      3       1         1       2 
-## 10 10 Kühl and Zander (2017), S2  71 -0.4687 0.0583      3       1         1       2 
-## 9   9 Kühl and Zander (2017), S1  77 -0.0640 0.0530      3       1         1       2 
-## 18 18      Sinatra et al. (2016) 111 -0.0560 0.0541      3       1         1       1 
-## 14 14       Li et al. (2021), S2  29  0.0477 0.0276      3       1         1       1 
-## 4   4      d&#39;Ailly et al. (1997) 100  0.2108 0.0096      1       1         1       1 
-##         yi     vi 
-## 12 -0.5278 0.0691 
-## 10 -0.4687 0.0583 
-## 9  -0.0640 0.0530 
-## 18 -0.0560 0.0541 
-## 14  0.0477 0.0276 
-## 4   0.2108 0.0096</code></pre>
+##    id                Information   N      ES     VI Cohort Context Materials Valence      yi     vi 
+## 12 12 Kühl and Münzer (2021), G2  60 -0.5278 0.0691      3       1         1       2 -0.5278 0.0691 
+## 10 10 Kühl and Zander (2017), S2  71 -0.4687 0.0583      3       1         1       2 -0.4687 0.0583 
+## 9   9 Kühl and Zander (2017), S1  77 -0.0640 0.0530      3       1         1       2 -0.0640 0.0530 
+## 18 18      Sinatra et al. (2016) 111 -0.0560 0.0541      3       1         1       1 -0.0560 0.0541 
+## 14 14       Li et al. (2021), S2  29  0.0477 0.0276      3       1         1       1  0.0477 0.0276 
+## 4   4      d&#39;Ailly et al. (1997) 100  0.2108 0.0096      1       1         1       1  0.2108 0.0096</code></pre>
 <p>在元分析中，计算综合效应量是一个关键步骤，这一步骤实际上可以通过一行代码来完成。我们可以使用metafor软件包中的rma函数来计算。在这个函数中，我们需要输入的是每个研究的效应量及其变异性（variance）。此外，我们还需要指定分析使用的方法（method）。通常情况下，我们可以使用函数的默认方法，除非有特定的理由需要更改。</p>
 <div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="第十四讲心理学元分析入门.html#cb540-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma</span>(</span>
 <span id="cb540-2"><a href="第十四讲心理学元分析入门.html#cb540-2" tabindex="-1"></a>  yi,<span class="co">#每个研究的效应量</span></span>

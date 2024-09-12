@@ -49,3 +49,18 @@ Shield: [![CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgr
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
 [![CC BY 4.0](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
+
+<!--
+
+# change directory:
+setwd("./Book")
+
+# render to gitbook:
+bookdown::render_book(input = "index.Rmd", "bookdown::gitbook")
+
+# render pdf:
+bookdown::render_book(input = "Book", "bookdown::pdf_book")
+
+# upload to bookdown:
+bookdown::publish_book(name = "R4PsyBook", account = NULL, server = NULL,  render = c("none", "local", "server"))
+-->

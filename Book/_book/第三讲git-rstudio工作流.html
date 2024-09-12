@@ -136,6 +136,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -162,8 +185,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="关于作者.html"><a href="关于作者.html"><i class="fa fa-check"></i>关于作者</a>
 <ul>
-<li class="chapter" data-level="0.5" data-path="关于作者.html"><a href="关于作者.html#v2-版本2024春季学期"><i class="fa fa-check"></i><b>0.5</b> V2 版本(2024春季学期)：</a></li>
-<li class="chapter" data-level="0.6" data-path="关于作者.html"><a href="关于作者.html#v1-版本2023春季学期"><i class="fa fa-check"></i><b>0.6</b> V1 版本(2023春季学期)：</a></li>
+<li class="chapter" data-level="0.5" data-path="关于作者.html"><a href="关于作者.html#春季学期助教及电子书转录志愿者"><i class="fa fa-check"></i><b>0.5</b> 2024春季学期助教及电子书转录志愿者：</a></li>
+<li class="chapter" data-level="0.6" data-path="关于作者.html"><a href="关于作者.html#春季学期助教"><i class="fa fa-check"></i><b>0.6</b> 2023春季学期助教：</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>1</b> 第一讲：为什么要学习R</a>
 <ul>
@@ -215,7 +238,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html"><i class="fa fa-check"></i><b>3</b> 第三讲：Git &amp; RStudio工作流</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#files-and-folders-system"><i class="fa fa-check"></i><b>3.1</b> Files and Folders System</a></li>
+<li class="chapter" data-level="3.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#文件与文件夹结构系统"><i class="fa fa-check"></i><b>3.1</b> 文件与文件夹结构系统</a></li>
 <li class="chapter" data-level="3.2" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#git-and-git-hub"><i class="fa fa-check"></i><b>3.2</b> Git and Git Hub</a>
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#git"><i class="fa fa-check"></i><b>3.2.1</b> Git</a></li>
@@ -541,21 +564,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="第三讲git-rstudio工作流" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> 第三讲：Git &amp; RStudio工作流<a href="第三讲git-rstudio工作流.html#第三讲git-rstudio工作流" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="files-and-folders-system" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Files and Folders System<a href="第三讲git-rstudio工作流.html#files-and-folders-system" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>第三节课将继续入门R语言的学习。本课程的核心目标是帮助大家开始使用R，即便是已经接触过R的同学，也可以通过这节课对R进行更系统的学习。去年我们的R课程中，Git的学习是在课程后期进行的，那时同学们已经接触了一定量的代码，意识到代码管理的重要性。但今年，我们选择提前介绍Git，因为我们的所有PPT和课件更新都将通过Git
-Hub进行。如果不熟悉Git
-Hub操作，同学们在获取最新课件时可能会面临反复下载和删除的问题，这不仅耗时，也不利于大家的学习。因此，我们决定将Git和Git
-Hub的学习放在课程的前面，让大家尽早掌握这些必要的技能。</p>
-<p>本次课的内容主要分为四个方面：首先是数据分析中如何更好地管理数据文件；其次是Git
-Hub的基本介绍和主要特点；接着是Git的基本功能和版本控制原理；最后是Git的远程文件版本控制和如何在远程代码托管平台或云平台上进行交互。这些技能对于团队合作和项目管理非常重要，尤其是在大型项目中。</p>
+<div id="文件与文件夹结构系统" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> 文件与文件夹结构系统<a href="第三讲git-rstudio工作流.html#文件与文件夹结构系统" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>第三节课将继续入门R语言的学习。本课程的核心目标是帮助大家开始使用R，即便是已经接触过R的同学，也可以通过这节课对R进行更系统的学习。去年我们的R课程中，在课程后期才开始学习Git。但今年我们选择提前介绍Git，因为所有PPT和课件的更新都会即时放在GitHub上。如果不熟悉GitHub操作，获取最新课件可能会需要反复下载文件的问题。这不仅耗时，也不利于大家的学习。因此，今年提前将Git和GitHub作为基础进行学习，让大家尽早掌握这些必要的技能。</p>
+<p>本讲的内容分为四个方面：首先是数据分析中如何更好地管理数据文件；其次是GitHub的基本介绍和主要特点；接着是Git的基本功能和版本控制原理；最后是Git的远程文件版本控制和如何在远程代码托管平台或云平台上进行交互。这些技能对于团队合作和项目管理非常重要，尤其是在大型项目中。</p>
 <p>我们的目标有两个：一是提高大家的项目管理和版本控制技能，以增强学习效率、研究能力和团队协作能力；二是即便短期内不需要频繁编写代码的同学，也应该学会如何下载更新课件和完成第一次小作业。这些技能对于保持项目最新性和协作顺畅性至关重要。</p>
 <p>在日常工作中，我们经常看到不规范的数据管理做法，如所有类型的文档和数据被随意放置在一个根目录下，没有分类。这种做法虽然能找到所需的数据和图表，但查找过程繁琐，效率低下。</p>
 <p><img src="pic/chp3/messy%20files.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
-<p>为了解决这个问题，建议对文件夹进行分类管理，并根据数据和文件的不同目的和使用方式，将它们分成不同的类别。此外，添加一个README文件，描述每个文件夹的功能和内容，以便未来的自己或其他研究者理解。</p>
+<p>为解决这个问题，我们建议对文件夹进行分类管理，并根据数据和文件的不同目的和使用方式，将它们分成不同的类别。此外，添加一个README文件，描述每个文件夹的功能和内容，以便未来的自己或其他研究者理解。</p>
 <p><img src="pic/chp3/files%20contrast.png" width="70%" style="display: block; margin-left: auto; margin-right: auto;"/></p>
-<p>我们的课题组采用了两种文件管理模式：针对实证研究的文件管理和针对元分析或元研究的文件管理。这些模式在我们的Git
-Hub仓库中有详细的模板，其他研究者可以参考。通过特定的网站，我们发现借鉴规范的文件夹结构模式对研究者有益，也可以向导师推荐。网址是：<a href="https://psych-transparency-guide.uni-koeln.de/folder-structure.html" class="uri">https://psych-transparency-guide.uni-koeln.de/folder-structure.html</a></p>
+<p>我们的课题组采用两种文件管理模式：针对实证研究的文件管理和针对元分析或元研究的文件管理。这些模式在我们的GitHub仓库中有详细的模板，大家可以参考。规范的文件夹结构模式对研究者是大大有益的，欢迎大家向自己课题组推荐。网址是：<a href="https://psych-transparency-guide.uni-koeln.de/folder-structure.html" class="uri">https://psych-transparency-guide.uni-koeln.de/folder-structure.html</a></p>
 <p>在文件管理方面，我们发现一个常见问题是文件夹结构看起来整洁，但打开后发现文件组织混乱，包括文件命名问题。例如，对于毕业论文，应该在文件名中加上作者的名字，以便导师清楚地知道哪个文件是需要修改的。在数据分析过程中，版本控制非常重要，它可以帮助我们管理文件的各个版本，避免丢失重要的修改。</p>
 </div>
 <div id="git-and-git-hub" class="section level2 hasAnchor" number="3.2">

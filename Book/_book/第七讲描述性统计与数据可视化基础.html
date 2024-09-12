@@ -136,6 +136,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -162,8 +185,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="关于作者.html"><a href="关于作者.html"><i class="fa fa-check"></i>关于作者</a>
 <ul>
-<li class="chapter" data-level="0.5" data-path="关于作者.html"><a href="关于作者.html#v2-版本2024春季学期"><i class="fa fa-check"></i><b>0.5</b> V2 版本(2024春季学期)：</a></li>
-<li class="chapter" data-level="0.6" data-path="关于作者.html"><a href="关于作者.html#v1-版本2023春季学期"><i class="fa fa-check"></i><b>0.6</b> V1 版本(2023春季学期)：</a></li>
+<li class="chapter" data-level="0.5" data-path="关于作者.html"><a href="关于作者.html#春季学期助教及电子书转录志愿者"><i class="fa fa-check"></i><b>0.5</b> 2024春季学期助教及电子书转录志愿者：</a></li>
+<li class="chapter" data-level="0.6" data-path="关于作者.html"><a href="关于作者.html#春季学期助教"><i class="fa fa-check"></i><b>0.6</b> 2023春季学期助教：</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>1</b> 第一讲：为什么要学习R</a>
 <ul>
@@ -215,7 +238,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html"><i class="fa fa-check"></i><b>3</b> 第三讲：Git &amp; RStudio工作流</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#files-and-folders-system"><i class="fa fa-check"></i><b>3.1</b> Files and Folders System</a></li>
+<li class="chapter" data-level="3.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#文件与文件夹结构系统"><i class="fa fa-check"></i><b>3.1</b> 文件与文件夹结构系统</a></li>
 <li class="chapter" data-level="3.2" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#git-and-git-hub"><i class="fa fa-check"></i><b>3.2</b> Git and Git Hub</a>
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#git"><i class="fa fa-check"></i><b>3.2.1</b> Git</a></li>
@@ -596,9 +619,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb245-2"><a href="第七讲描述性统计与数据可视化基础.html#cb245-2" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">rename</span>(  <span class="do">## new_name = old_name</span></span>
 <span id="cb245-3"><a href="第七讲描述性统计与数据可视化基础.html#cb245-3" tabindex="-1"></a>  <span class="at">date =</span> Date</span>
 <span id="cb245-4"><a href="第七讲描述性统计与数据可视化基础.html#cb245-4" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">colnames</span>()  </span></code></pre></div>
-<pre><code>##  [1] &quot;date&quot;     &quot;Prac&quot;     &quot;Sub&quot;      &quot;Age&quot;      &quot;Sex&quot;      &quot;Hand&quot;     &quot;Block&quot;   
-##  [8] &quot;Bin&quot;      &quot;Trial&quot;    &quot;Shape&quot;    &quot;Label&quot;    &quot;Match&quot;    &quot;CorrResp&quot; &quot;Resp&quot;    
-## [15] &quot;ACC&quot;      &quot;RT&quot;</code></pre>
+<pre><code>##  [1] &quot;date&quot;     &quot;Prac&quot;     &quot;Sub&quot;      &quot;Age&quot;      &quot;Sex&quot;      &quot;Hand&quot;     &quot;Block&quot;    &quot;Bin&quot;      &quot;Trial&quot;    &quot;Shape&quot;    &quot;Label&quot;   
+## [12] &quot;Match&quot;    &quot;CorrResp&quot; &quot;Resp&quot;     &quot;ACC&quot;      &quot;RT&quot;</code></pre>
 <div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="第七讲描述性统计与数据可视化基础.html#cb247-1" tabindex="-1"></a><span class="do">## 将全部列名都变成小写</span></span>
 <span id="cb247-2"><a href="第七讲描述性统计与数据可视化基础.html#cb247-2" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">rename_with</span>(</span>
 <span id="cb247-3"><a href="第七讲描述性统计与数据可视化基础.html#cb247-3" tabindex="-1"></a>  <span class="do">## 将字符向量全部变成小写； ~ 声明这是一个函数，.代表前面的数据(df3)传到.所在的位置</span></span>
@@ -606,9 +628,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb247-5"><a href="第七讲描述性统计与数据可视化基础.html#cb247-5" tabindex="-1"></a>  <span class="do">## 即使用 tolower()对所有列名进行批量处理</span></span>
 <span id="cb247-6"><a href="第七讲描述性统计与数据可视化基础.html#cb247-6" tabindex="-1"></a>  <span class="do">##</span></span>
 <span id="cb247-7"><a href="第七讲描述性统计与数据可视化基础.html#cb247-7" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">colnames</span>()</span></code></pre></div>
-<pre><code>##  [1] &quot;date&quot;     &quot;prac&quot;     &quot;sub&quot;      &quot;age&quot;      &quot;sex&quot;      &quot;hand&quot;     &quot;block&quot;   
-##  [8] &quot;bin&quot;      &quot;trial&quot;    &quot;shape&quot;    &quot;label&quot;    &quot;match&quot;    &quot;corrresp&quot; &quot;resp&quot;    
-## [15] &quot;acc&quot;      &quot;rt&quot;</code></pre>
+<pre><code>##  [1] &quot;date&quot;     &quot;prac&quot;     &quot;sub&quot;      &quot;age&quot;      &quot;sex&quot;      &quot;hand&quot;     &quot;block&quot;    &quot;bin&quot;      &quot;trial&quot;    &quot;shape&quot;    &quot;label&quot;   
+## [12] &quot;match&quot;    &quot;corrresp&quot; &quot;resp&quot;     &quot;acc&quot;      &quot;rt&quot;</code></pre>
 </div>
 <div id="代码书写规范" class="section level3 hasAnchor" number="7.1.2">
 <h3><span class="header-section-number">7.1.2</span> 代码书写规范<a href="第七讲描述性统计与数据可视化基础.html#代码书写规范" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -848,49 +869,47 @@ Analysis,EDA），在传统的心理学中，我们通常会清楚地知道要�
 <div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="第七讲描述性统计与数据可视化基础.html#cb255-1" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(mt_raw) <span class="sc">%&gt;%</span> </span>
 <span id="cb255-2"><a href="第七讲描述性统计与数据可视化基础.html#cb255-2" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb255-3"><a href="第七讲描述性统计与数据可视化基础.html#cb255-3" tabindex="-1"></a>  .[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>]</span></code></pre></div>
-<pre><code>##  [1] &quot;── Data Summary ────────────────────────&quot; &quot;                           Values&quot;       
-##  [3] &quot;Name                       mt_raw&quot;        &quot;Number of rows             25920 &quot;       
-##  [5] &quot;Number of columns          16    &quot;        &quot;_______________________          &quot;       
-##  [7] &quot;Column type frequency:           &quot;        &quot;  character                9     &quot;       
-##  [9] &quot;  numeric                  7     &quot;        &quot;________________________         &quot;       
-## [11] &quot;Group variables            None  &quot;        &quot;&quot;</code></pre>
+<pre><code>##  [1] &quot;── Data Summary ────────────────────────&quot; &quot;                           Values&quot;        &quot;Name                       mt_raw&quot;       
+##  [4] &quot;Number of rows             25920 &quot;        &quot;Number of columns          16    &quot;        &quot;_______________________          &quot;       
+##  [7] &quot;Column type frequency:           &quot;        &quot;  character                9     &quot;        &quot;  numeric                  7     &quot;       
+## [10] &quot;________________________         &quot;        &quot;Group variables            None  &quot;        &quot;&quot;</code></pre>
 <p>skimr::skim()–2</p>
 <div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="第七讲描述性统计与数据可视化基础.html#cb257-1" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(mt_raw) <span class="sc">%&gt;%</span> </span>
 <span id="cb257-2"><a href="第七讲描述性统计与数据可视化基础.html#cb257-2" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb257-3"><a href="第七讲描述性统计与数据可视化基础.html#cb257-3" tabindex="-1"></a>  .[<span class="dv">13</span><span class="sc">:</span><span class="dv">24</span>]</span></code></pre></div>
-<pre><code>##  [1] &quot;── Variable type: character ──────────────────────────────────────────────────────────────&quot;
-##  [2] &quot;  skim_variable n_missing complete_rate min max empty n_unique whitespace&quot;                 
-##  [3] &quot;1 Date                  0         1      20  20     0    24362          0&quot;                 
-##  [4] &quot;2 Prac                  0         1       3   3     0        1          0&quot;                 
-##  [5] &quot;3 Sex                   0         1       1   6     0        4          0&quot;                 
-##  [6] &quot;4 Hand                  0         1       1   1     0        2          0&quot;                 
-##  [7] &quot;5 Shape                 0         1       9  12     0        4          0&quot;                 
-##  [8] &quot;6 Label                 0         1       9  12     0        4          0&quot;                 
-##  [9] &quot;7 Match                 0         1       5   8     0        2          0&quot;                 
-## [10] &quot;8 CorrResp              0         1       1   1     0        2          0&quot;                 
-## [11] &quot;9 Resp                658         0.975   1   5     0        9          0&quot;                 
+<pre><code>##  [1] &quot;── Variable type: character ─────────────────────────────────────────────────────────────────────────────────────────────────────────&quot;
+##  [2] &quot;  skim_variable n_missing complete_rate min max empty n_unique whitespace&quot;                                                            
+##  [3] &quot;1 Date                  0         1      20  20     0    24362          0&quot;                                                            
+##  [4] &quot;2 Prac                  0         1       3   3     0        1          0&quot;                                                            
+##  [5] &quot;3 Sex                   0         1       1   6     0        4          0&quot;                                                            
+##  [6] &quot;4 Hand                  0         1       1   1     0        2          0&quot;                                                            
+##  [7] &quot;5 Shape                 0         1       9  12     0        4          0&quot;                                                            
+##  [8] &quot;6 Label                 0         1       9  12     0        4          0&quot;                                                            
+##  [9] &quot;7 Match                 0         1       5   8     0        2          0&quot;                                                            
+## [10] &quot;8 CorrResp              0         1       1   1     0        2          0&quot;                                                            
+## [11] &quot;9 Resp                658         0.975   1   5     0        9          0&quot;                                                            
 ## [12] &quot;&quot;</code></pre>
 <p>skimr::skim()–3</p>
 <div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="第七讲描述性统计与数据可视化基础.html#cb259-1" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(mt_raw) <span class="sc">%&gt;%</span> </span>
 <span id="cb259-2"><a href="第七讲描述性统计与数据可视化基础.html#cb259-2" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb259-3"><a href="第七讲描述性统计与数据可视化基础.html#cb259-3" tabindex="-1"></a>  .[<span class="dv">25</span><span class="sc">:</span><span class="dv">41</span>]</span></code></pre></div>
-<pre><code>##  [1] &quot;── Variable type: numeric ────────────────────────────────────────────────────────────────&quot;
-##  [2] &quot;  skim_variable n_missing complete_rate     mean       sd       p0      p25      p50&quot;      
-##  [3] &quot;1 Sub                   0             1 8853.    9932.    7302     7313     7324    &quot;      
-##  [4] &quot;2 Age                   0             1   20.8      2.48    18       19       20    &quot;      
-##  [5] &quot;3 Block                 0             1    1.61     0.803    1        1        1    &quot;      
-##  [6] &quot;4 Bin                   0             1    2.42     1.36     1        1        2    &quot;      
-##  [7] &quot;5 Trial                 0             1   12.5      6.92     1        6.75    12.5  &quot;      
-##  [8] &quot;6 ACC                   0             1    0.796    0.464   -1        1        1    &quot;      
-##  [9] &quot;7 RT                    0             1    0.715    0.151    0.106    0.610    0.702&quot;      
-## [10] &quot;       p75     p100 hist &quot;                                                                 
-## [11] &quot;1 7336     73370    ▇▁▁▁▁&quot;                                                                 
-## [12] &quot;2   22        28    ▇▂▁▁▁&quot;                                                                 
-## [13] &quot;3    2         3    ▇▁▃▁▃&quot;                                                                 
-## [14] &quot;4    3         5    ▇▇▃▃▃&quot;                                                                 
-## [15] &quot;5   18.2      24    ▇▇▆▇▇&quot;                                                                 
-## [16] &quot;6    1         2    ▁▂▁▇▁&quot;                                                                 
-## [17] &quot;7    0.805     1.18 ▁▂▇▅▁&quot;</code></pre>
+<pre><code>##  [1] &quot;── Variable type: numeric ───────────────────────────────────────────────────────────────────────────────────────────────────────────&quot;
+##  [2] &quot;  skim_variable n_missing complete_rate     mean       sd       p0      p25      p50      p75     p100 hist &quot;                         
+##  [3] &quot;1 Sub                   0             1 8853.    9932.    7302     7313     7324     7336     73370    ▇▁▁▁▁&quot;                         
+##  [4] &quot;2 Age                   0             1   20.8      2.48    18       19       20       22        28    ▇▂▁▁▁&quot;                         
+##  [5] &quot;3 Block                 0             1    1.61     0.803    1        1        1        2         3    ▇▁▃▁▃&quot;                         
+##  [6] &quot;4 Bin                   0             1    2.42     1.36     1        1        2        3         5    ▇▇▃▃▃&quot;                         
+##  [7] &quot;5 Trial                 0             1   12.5      6.92     1        6.75    12.5     18.2      24    ▇▇▆▇▇&quot;                         
+##  [8] &quot;6 ACC                   0             1    0.796    0.464   -1        1        1        1         2    ▁▂▁▇▁&quot;                         
+##  [9] &quot;7 RT                    0             1    0.715    0.151    0.106    0.610    0.702    0.805     1.18 ▁▂▇▅▁&quot;                         
+## [10] NA                                                                                                                                     
+## [11] NA                                                                                                                                     
+## [12] NA                                                                                                                                     
+## [13] NA                                                                                                                                     
+## [14] NA                                                                                                                                     
+## [15] NA                                                                                                                                     
+## [16] NA                                                                                                                                     
+## [17] NA</code></pre>
 <p>bruceR::Describe()</p>
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="第七讲描述性统计与数据可视化基础.html#cb261-1" tabindex="-1"></a>bruceR<span class="sc">::</span><span class="fu">Describe</span>(mt_raw) <span class="sc">%&gt;%</span> </span>
 <span id="cb261-2"><a href="第七讲描述性统计与数据可视化基础.html#cb261-2" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> </span>

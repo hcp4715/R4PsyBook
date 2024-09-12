@@ -136,6 +136,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -162,8 +185,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="关于作者.html"><a href="关于作者.html"><i class="fa fa-check"></i>关于作者</a>
 <ul>
-<li class="chapter" data-level="0.5" data-path="关于作者.html"><a href="关于作者.html#v2-版本2024春季学期"><i class="fa fa-check"></i><b>0.5</b> V2 版本(2024春季学期)：</a></li>
-<li class="chapter" data-level="0.6" data-path="关于作者.html"><a href="关于作者.html#v1-版本2023春季学期"><i class="fa fa-check"></i><b>0.6</b> V1 版本(2023春季学期)：</a></li>
+<li class="chapter" data-level="0.5" data-path="关于作者.html"><a href="关于作者.html#春季学期助教及电子书转录志愿者"><i class="fa fa-check"></i><b>0.5</b> 2024春季学期助教及电子书转录志愿者：</a></li>
+<li class="chapter" data-level="0.6" data-path="关于作者.html"><a href="关于作者.html#春季学期助教"><i class="fa fa-check"></i><b>0.6</b> 2023春季学期助教：</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>1</b> 第一讲：为什么要学习R</a>
 <ul>
@@ -215,7 +238,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html"><i class="fa fa-check"></i><b>3</b> 第三讲：Git &amp; RStudio工作流</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#files-and-folders-system"><i class="fa fa-check"></i><b>3.1</b> Files and Folders System</a></li>
+<li class="chapter" data-level="3.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#文件与文件夹结构系统"><i class="fa fa-check"></i><b>3.1</b> 文件与文件夹结构系统</a></li>
 <li class="chapter" data-level="3.2" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#git-and-git-hub"><i class="fa fa-check"></i><b>3.2</b> Git and Git Hub</a>
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#git"><i class="fa fa-check"></i><b>3.2.1</b> Git</a></li>
@@ -631,64 +654,40 @@ temperature。右边则是用身体温度来预测其他变量。我们主要关
 <p>读取数据之后，我们可以使用<code>View</code>函数查看数据结构，包括站点、年龄等各种变量。我们还可以用<code>colnames</code>查看变量，因为可能需要选择一些我们认为比较重要的变量，比如有一些我们可能不需要的变量，就可以直接将其筛选掉。</p>
 <div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="第六讲数据预处理.html#cb193-1" tabindex="-1"></a><span class="co">#查看变量名（列名）</span></span>
 <span id="cb193-2"><a href="第六讲数据预处理.html#cb193-2" tabindex="-1"></a><span class="fu">colnames</span>(df1) </span></code></pre></div>
-<pre><code>##   [1] &quot;Site&quot;            &quot;age&quot;             &quot;sex&quot;             &quot;monogamous&quot;     
-##   [5] &quot;romantic&quot;        &quot;health&quot;          &quot;exercise&quot;        &quot;eatdrink&quot;       
-##   [9] &quot;gluctot&quot;         &quot;artgluctot&quot;      &quot;smoke&quot;           &quot;cigs&quot;           
-##  [13] &quot;avgtemp&quot;         &quot;Temperature_t1&quot;  &quot;Temperature_t2&quot;  &quot;DEQ&quot;            
-##  [17] &quot;AvgHumidity&quot;     &quot;mintemp&quot;         &quot;language&quot;        &quot;langfamily&quot;     
-##  [21] &quot;SNI1&quot;            &quot;SNI2&quot;            &quot;SNI3&quot;            &quot;SNI4&quot;           
-##  [25] &quot;SNI5&quot;            &quot;SNI6&quot;            &quot;SNI7&quot;            &quot;SNI8&quot;           
-##  [29] &quot;SNI9&quot;            &quot;SNI10&quot;           &quot;SNI11&quot;           &quot;SNI12&quot;          
-##  [33] &quot;SNI13&quot;           &quot;SNI14&quot;           &quot;SNI15&quot;           &quot;SNI16&quot;          
-##  [37] &quot;SNI17&quot;           &quot;SNI18&quot;           &quot;SNI19&quot;           &quot;SNI20&quot;          
-##  [41] &quot;SNI21&quot;           &quot;SNI22&quot;           &quot;SNI23&quot;           &quot;SNI24&quot;          
-##  [45] &quot;SNI25&quot;           &quot;SNI26&quot;           &quot;SNI27&quot;           &quot;SNI28&quot;          
-##  [49] &quot;SNI29&quot;           &quot;SNI30&quot;           &quot;SNI31&quot;           &quot;SNI32&quot;          
-##  [53] &quot;scontrol1&quot;       &quot;scontrol2&quot;       &quot;scontrol3&quot;       &quot;scontrol4&quot;      
-##  [57] &quot;scontrol5&quot;       &quot;scontrol6&quot;       &quot;scontrol7&quot;       &quot;scontrol8&quot;      
-##  [61] &quot;scontrol9&quot;       &quot;scontrol10&quot;      &quot;scontrol11&quot;      &quot;scontrol12&quot;     
-##  [65] &quot;scontrol13&quot;      &quot;stress1&quot;         &quot;stress2&quot;         &quot;stress3&quot;        
-##  [69] &quot;stress4&quot;         &quot;stress5&quot;         &quot;stress6&quot;         &quot;stress7&quot;        
-##  [73] &quot;stress8&quot;         &quot;stress9&quot;         &quot;stress10&quot;        &quot;stress11&quot;       
-##  [77] &quot;stress12&quot;        &quot;stress13&quot;        &quot;stress14&quot;        &quot;phone1&quot;         
-##  [81] &quot;phone2&quot;          &quot;phone3&quot;          &quot;phone4&quot;          &quot;phone5&quot;         
-##  [85] &quot;phone6&quot;          &quot;phone7&quot;          &quot;phone8&quot;          &quot;phone9&quot;         
-##  [89] &quot;onlineid1&quot;       &quot;onlineid2&quot;       &quot;onlineid3&quot;       &quot;onlineid4&quot;      
-##  [93] &quot;onlineid5&quot;       &quot;onlineid6&quot;       &quot;onlineid7&quot;       &quot;onlineid8&quot;      
-##  [97] &quot;onlineid9&quot;       &quot;onlineid10&quot;      &quot;onlineide11&quot;     &quot;ECR1&quot;           
-## [101] &quot;ECR2&quot;            &quot;ECR3&quot;            &quot;ECR4&quot;            &quot;ECR5&quot;           
-## [105] &quot;ECR6&quot;            &quot;ECR7&quot;            &quot;ECR8&quot;            &quot;ECR9&quot;           
-## [109] &quot;ECR10&quot;           &quot;ECR11&quot;           &quot;ECR12&quot;           &quot;ECR13&quot;          
-## [113] &quot;ECR14&quot;           &quot;ECR15&quot;           &quot;ECR16&quot;           &quot;ECR17&quot;          
-## [117] &quot;ECR18&quot;           &quot;ECR19&quot;           &quot;ECR20&quot;           &quot;ECR21&quot;          
-## [121] &quot;ECR22&quot;           &quot;ECR23&quot;           &quot;ECR24&quot;           &quot;ECR25&quot;          
-## [125] &quot;ECR26&quot;           &quot;ECR27&quot;           &quot;ECR28&quot;           &quot;ECR29&quot;          
-## [129] &quot;ECR30&quot;           &quot;ECR31&quot;           &quot;ECR32&quot;           &quot;ECR33&quot;          
-## [133] &quot;ECR34&quot;           &quot;ECR35&quot;           &quot;ECR36&quot;           &quot;HOME1&quot;          
-## [137] &quot;HOME2&quot;           &quot;HOME3&quot;           &quot;HOME4&quot;           &quot;HOME5&quot;          
-## [141] &quot;HOME6&quot;           &quot;HOME7&quot;           &quot;HOME8&quot;           &quot;HOME9&quot;          
-## [145] &quot;SNS1&quot;            &quot;SNS2&quot;            &quot;SNS3&quot;            &quot;SNS4&quot;           
-## [149] &quot;SNS5&quot;            &quot;SNS6&quot;            &quot;SNS7&quot;            &quot;ALEX1&quot;          
-## [153] &quot;ALEX2&quot;           &quot;ALEX3&quot;           &quot;ALEX4&quot;           &quot;ALEX5&quot;          
-## [157] &quot;ALEX6&quot;           &quot;ALEX7&quot;           &quot;ALEX8&quot;           &quot;ALEX9&quot;          
-## [161] &quot;ALEX10&quot;          &quot;ALEX11&quot;          &quot;ALEX12&quot;          &quot;ALEX13&quot;         
-## [165] &quot;ALEX14&quot;          &quot;ALEX15&quot;          &quot;ALEX16&quot;          &quot;KAMF1&quot;          
-## [169] &quot;KAMF2&quot;           &quot;KAMF3&quot;           &quot;KAMF4&quot;           &quot;KAMF5&quot;          
-## [173] &quot;KAMF6&quot;           &quot;KAMF7&quot;           &quot;STRAQ_1&quot;         &quot;STRAQ_2&quot;        
-## [177] &quot;STRAQ_3&quot;         &quot;STRAQ_4&quot;         &quot;STRAQ_5&quot;         &quot;STRAQ_6&quot;        
-## [181] &quot;STRAQ_7&quot;         &quot;STRAQ_8&quot;         &quot;STRAQ_9&quot;         &quot;STRAQ_10&quot;       
-## [185] &quot;STRAQ_11&quot;        &quot;STRAQ_12&quot;        &quot;STRAQ_13&quot;        &quot;STRAQ_14&quot;       
-## [189] &quot;STRAQ_15&quot;        &quot;STRAQ_16&quot;        &quot;STRAQ_17&quot;        &quot;STRAQ_18&quot;       
-## [193] &quot;STRAQ_19&quot;        &quot;STRAQ_20&quot;        &quot;STRAQ_21&quot;        &quot;STRAQ_22&quot;       
-## [197] &quot;STRAQ_23&quot;        &quot;STRAQ_24&quot;        &quot;STRAQ_25&quot;        &quot;STRAQ_26&quot;       
-## [201] &quot;STRAQ_27&quot;        &quot;STRAQ_28&quot;        &quot;STRAQ_29&quot;        &quot;STRAQ_30&quot;       
-## [205] &quot;STRAQ_31&quot;        &quot;STRAQ_32&quot;        &quot;STRAQ_33&quot;        &quot;STRAQ_34&quot;       
-## [209] &quot;STRAQ_35&quot;        &quot;STRAQ_36&quot;        &quot;STRAQ_37&quot;        &quot;STRAQ_38&quot;       
-## [213] &quot;STRAQ_39&quot;        &quot;STRAQ_40&quot;        &quot;STRAQ_41&quot;        &quot;STRAQ_42&quot;       
-## [217] &quot;STRAQ_43&quot;        &quot;STRAQ_44&quot;        &quot;STRAQ_45&quot;        &quot;STRAQ_46&quot;       
-## [221] &quot;STRAQ_47&quot;        &quot;STRAQ_48&quot;        &quot;STRAQ_49&quot;        &quot;STRAQ_50&quot;       
-## [225] &quot;STRAQ_51&quot;        &quot;STRAQ_52&quot;        &quot;STRAQ_53&quot;        &quot;STRAQ_54&quot;       
-## [229] &quot;STRAQ_55&quot;        &quot;STRAQ_56&quot;        &quot;STRAQ_57&quot;        &quot;socialdiversity&quot;</code></pre>
+<pre><code>##   [1] &quot;Site&quot;            &quot;age&quot;             &quot;sex&quot;             &quot;monogamous&quot;      &quot;romantic&quot;        &quot;health&quot;          &quot;exercise&quot;       
+##   [8] &quot;eatdrink&quot;        &quot;gluctot&quot;         &quot;artgluctot&quot;      &quot;smoke&quot;           &quot;cigs&quot;            &quot;avgtemp&quot;         &quot;Temperature_t1&quot; 
+##  [15] &quot;Temperature_t2&quot;  &quot;DEQ&quot;             &quot;AvgHumidity&quot;     &quot;mintemp&quot;         &quot;language&quot;        &quot;langfamily&quot;      &quot;SNI1&quot;           
+##  [22] &quot;SNI2&quot;            &quot;SNI3&quot;            &quot;SNI4&quot;            &quot;SNI5&quot;            &quot;SNI6&quot;            &quot;SNI7&quot;            &quot;SNI8&quot;           
+##  [29] &quot;SNI9&quot;            &quot;SNI10&quot;           &quot;SNI11&quot;           &quot;SNI12&quot;           &quot;SNI13&quot;           &quot;SNI14&quot;           &quot;SNI15&quot;          
+##  [36] &quot;SNI16&quot;           &quot;SNI17&quot;           &quot;SNI18&quot;           &quot;SNI19&quot;           &quot;SNI20&quot;           &quot;SNI21&quot;           &quot;SNI22&quot;          
+##  [43] &quot;SNI23&quot;           &quot;SNI24&quot;           &quot;SNI25&quot;           &quot;SNI26&quot;           &quot;SNI27&quot;           &quot;SNI28&quot;           &quot;SNI29&quot;          
+##  [50] &quot;SNI30&quot;           &quot;SNI31&quot;           &quot;SNI32&quot;           &quot;scontrol1&quot;       &quot;scontrol2&quot;       &quot;scontrol3&quot;       &quot;scontrol4&quot;      
+##  [57] &quot;scontrol5&quot;       &quot;scontrol6&quot;       &quot;scontrol7&quot;       &quot;scontrol8&quot;       &quot;scontrol9&quot;       &quot;scontrol10&quot;      &quot;scontrol11&quot;     
+##  [64] &quot;scontrol12&quot;      &quot;scontrol13&quot;      &quot;stress1&quot;         &quot;stress2&quot;         &quot;stress3&quot;         &quot;stress4&quot;         &quot;stress5&quot;        
+##  [71] &quot;stress6&quot;         &quot;stress7&quot;         &quot;stress8&quot;         &quot;stress9&quot;         &quot;stress10&quot;        &quot;stress11&quot;        &quot;stress12&quot;       
+##  [78] &quot;stress13&quot;        &quot;stress14&quot;        &quot;phone1&quot;          &quot;phone2&quot;          &quot;phone3&quot;          &quot;phone4&quot;          &quot;phone5&quot;         
+##  [85] &quot;phone6&quot;          &quot;phone7&quot;          &quot;phone8&quot;          &quot;phone9&quot;          &quot;onlineid1&quot;       &quot;onlineid2&quot;       &quot;onlineid3&quot;      
+##  [92] &quot;onlineid4&quot;       &quot;onlineid5&quot;       &quot;onlineid6&quot;       &quot;onlineid7&quot;       &quot;onlineid8&quot;       &quot;onlineid9&quot;       &quot;onlineid10&quot;     
+##  [99] &quot;onlineide11&quot;     &quot;ECR1&quot;            &quot;ECR2&quot;            &quot;ECR3&quot;            &quot;ECR4&quot;            &quot;ECR5&quot;            &quot;ECR6&quot;           
+## [106] &quot;ECR7&quot;            &quot;ECR8&quot;            &quot;ECR9&quot;            &quot;ECR10&quot;           &quot;ECR11&quot;           &quot;ECR12&quot;           &quot;ECR13&quot;          
+## [113] &quot;ECR14&quot;           &quot;ECR15&quot;           &quot;ECR16&quot;           &quot;ECR17&quot;           &quot;ECR18&quot;           &quot;ECR19&quot;           &quot;ECR20&quot;          
+## [120] &quot;ECR21&quot;           &quot;ECR22&quot;           &quot;ECR23&quot;           &quot;ECR24&quot;           &quot;ECR25&quot;           &quot;ECR26&quot;           &quot;ECR27&quot;          
+## [127] &quot;ECR28&quot;           &quot;ECR29&quot;           &quot;ECR30&quot;           &quot;ECR31&quot;           &quot;ECR32&quot;           &quot;ECR33&quot;           &quot;ECR34&quot;          
+## [134] &quot;ECR35&quot;           &quot;ECR36&quot;           &quot;HOME1&quot;           &quot;HOME2&quot;           &quot;HOME3&quot;           &quot;HOME4&quot;           &quot;HOME5&quot;          
+## [141] &quot;HOME6&quot;           &quot;HOME7&quot;           &quot;HOME8&quot;           &quot;HOME9&quot;           &quot;SNS1&quot;            &quot;SNS2&quot;            &quot;SNS3&quot;           
+## [148] &quot;SNS4&quot;            &quot;SNS5&quot;            &quot;SNS6&quot;            &quot;SNS7&quot;            &quot;ALEX1&quot;           &quot;ALEX2&quot;           &quot;ALEX3&quot;          
+## [155] &quot;ALEX4&quot;           &quot;ALEX5&quot;           &quot;ALEX6&quot;           &quot;ALEX7&quot;           &quot;ALEX8&quot;           &quot;ALEX9&quot;           &quot;ALEX10&quot;         
+## [162] &quot;ALEX11&quot;          &quot;ALEX12&quot;          &quot;ALEX13&quot;          &quot;ALEX14&quot;          &quot;ALEX15&quot;          &quot;ALEX16&quot;          &quot;KAMF1&quot;          
+## [169] &quot;KAMF2&quot;           &quot;KAMF3&quot;           &quot;KAMF4&quot;           &quot;KAMF5&quot;           &quot;KAMF6&quot;           &quot;KAMF7&quot;           &quot;STRAQ_1&quot;        
+## [176] &quot;STRAQ_2&quot;         &quot;STRAQ_3&quot;         &quot;STRAQ_4&quot;         &quot;STRAQ_5&quot;         &quot;STRAQ_6&quot;         &quot;STRAQ_7&quot;         &quot;STRAQ_8&quot;        
+## [183] &quot;STRAQ_9&quot;         &quot;STRAQ_10&quot;        &quot;STRAQ_11&quot;        &quot;STRAQ_12&quot;        &quot;STRAQ_13&quot;        &quot;STRAQ_14&quot;        &quot;STRAQ_15&quot;       
+## [190] &quot;STRAQ_16&quot;        &quot;STRAQ_17&quot;        &quot;STRAQ_18&quot;        &quot;STRAQ_19&quot;        &quot;STRAQ_20&quot;        &quot;STRAQ_21&quot;        &quot;STRAQ_22&quot;       
+## [197] &quot;STRAQ_23&quot;        &quot;STRAQ_24&quot;        &quot;STRAQ_25&quot;        &quot;STRAQ_26&quot;        &quot;STRAQ_27&quot;        &quot;STRAQ_28&quot;        &quot;STRAQ_29&quot;       
+## [204] &quot;STRAQ_30&quot;        &quot;STRAQ_31&quot;        &quot;STRAQ_32&quot;        &quot;STRAQ_33&quot;        &quot;STRAQ_34&quot;        &quot;STRAQ_35&quot;        &quot;STRAQ_36&quot;       
+## [211] &quot;STRAQ_37&quot;        &quot;STRAQ_38&quot;        &quot;STRAQ_39&quot;        &quot;STRAQ_40&quot;        &quot;STRAQ_41&quot;        &quot;STRAQ_42&quot;        &quot;STRAQ_43&quot;       
+## [218] &quot;STRAQ_44&quot;        &quot;STRAQ_45&quot;        &quot;STRAQ_46&quot;        &quot;STRAQ_47&quot;        &quot;STRAQ_48&quot;        &quot;STRAQ_49&quot;        &quot;STRAQ_50&quot;       
+## [225] &quot;STRAQ_51&quot;        &quot;STRAQ_52&quot;        &quot;STRAQ_53&quot;        &quot;STRAQ_54&quot;        &quot;STRAQ_55&quot;        &quot;STRAQ_56&quot;        &quot;STRAQ_57&quot;       
+## [232] &quot;socialdiversity&quot;</code></pre>
 <p>另外，当我们需要进行问卷得分的计算时，我们可能需要选择与特定问卷相关的条目，然后对其进行预处理，以得到问卷得分。因此，我们必须要了解数据的当前结构，例如每个列的名称。我们得到的数据是比较干净的，每个名字基本上都可以反映出其大致信息，例如<code>scontrol1</code>、<code>scontrol2</code>等代表自我控制问卷的各个条目。这里的命名本身就是比较规范的。如果数据的列名不是这么清晰，可能还需要进行额外的处理步骤，比如重新命名问卷等。我们就不再一一赘述了。</p>
 <p>那么，我们在这里的主要目标是什么，假设我们选择这几个变量，作为数据预处理的练习，我们把身体温度选出来，然后求一个平均的温度。</p>
 <p><strong>●研究核心变量:</strong></p>
@@ -786,12 +785,10 @@ temperature_t1 变量通过 <code>as.numeric</code>
 <p>我们前面说在studio里面有可能显示不全，在课件里面也可能显示不全。但在这里，它会显示得非常全，我们可以拖着看，它有两页。我们也可以去查看它的列名，在这里我们可以非常全地看到它的列名。<strong>(前面的…需要再确认，每个代码都需要加上)</strong></p>
 <div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="第六讲数据预处理.html#cb198-1" tabindex="-1"></a><span class="co"># 查看变量名(列名)</span></span>
 <span id="cb198-2"><a href="第六讲数据预处理.html#cb198-2" tabindex="-1"></a><span class="fu">colnames</span>(df1)</span></code></pre></div>
-<pre><code>##  [1] &quot;Temperature_t1&quot;     &quot;Temperature_t2&quot;     &quot;socialdiversity&quot;    &quot;Site&quot;              
-##  [5] &quot;DEQ&quot;                &quot;romantic&quot;           &quot;ALEX1&quot;              &quot;ALEX2&quot;             
-##  [9] &quot;ALEX3&quot;              &quot;ALEX4&quot;              &quot;ALEX5&quot;              &quot;ALEX6&quot;             
-## [13] &quot;ALEX7&quot;              &quot;ALEX8&quot;              &quot;ALEX9&quot;              &quot;ALEX10&quot;            
-## [17] &quot;ALEX11&quot;             &quot;ALEX12&quot;             &quot;ALEX13&quot;             &quot;ALEX14&quot;            
-## [21] &quot;ALEX15&quot;             &quot;ALEX16&quot;             &quot;Temperature_t1_new&quot;</code></pre>
+<pre><code>##  [1] &quot;Temperature_t1&quot;     &quot;Temperature_t2&quot;     &quot;socialdiversity&quot;    &quot;Site&quot;               &quot;DEQ&quot;                &quot;romantic&quot;          
+##  [7] &quot;ALEX1&quot;              &quot;ALEX2&quot;              &quot;ALEX3&quot;              &quot;ALEX4&quot;              &quot;ALEX5&quot;              &quot;ALEX6&quot;             
+## [13] &quot;ALEX7&quot;              &quot;ALEX8&quot;              &quot;ALEX9&quot;              &quot;ALEX10&quot;             &quot;ALEX11&quot;             &quot;ALEX12&quot;            
+## [19] &quot;ALEX13&quot;             &quot;ALEX14&quot;             &quot;ALEX15&quot;             &quot;ALEX16&quot;             &quot;Temperature_t1_new&quot;</code></pre>
 <p>然后加入<code>Tidyverse</code>的包。</p>
 <div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="第六讲数据预处理.html#cb200-1" tabindex="-1"></a><span class="co"># 不要忘记加载包</span></span>
 <span id="cb200-2"><a href="第六讲数据预处理.html#cb200-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
@@ -1013,8 +1010,8 @@ task，就是我们关注的匹配任务。后面这个编号就是这个被试�
 <p>ACC: 被试的判断是否正确，1 = “正确”, 0 = “错误”, -1,
 2表示未按键或按了两个键的情况，属于无效作答</p>
 <p>RT: 被试做出判断的反应时，[200,1500]的反应时纳入分析</p>
-<div class="datatables html-widget html-fill-item" id="htmlwidget-ba09009d27b1cc35561d" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-ba09009d27b1cc35561d">{"x":{"filter":"none","vertical":false,"fillContainer":true,"data":[["1","2","3","4","5","6"],["02-May-2018_14:23:06","02-May-2018_14:23:08","02-May-2018_14:23:10","02-May-2018_14:23:13","02-May-2018_14:23:15","02-May-2018_14:23:17"],["Exp","Exp","Exp","Exp","Exp","Exp"],[7302,7302,7302,7302,7302,7302],[22,22,22,22,22,22],["female","female","female","female","female","female"],["R","R","R","R","R","R"],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,2,3,4,5,6],["immoralSelf","moralOther","immoralOther","moralSelf","immoralSelf","immoralSelf"],["immoralOther","moralSelf","moralOther","immoralSelf","immoralSelf","immoralSelf"],["mismatch","mismatch","mismatch","mismatch","match","match"],["n","n","n","n","m","m"],["m","n","n",null,"m","m"],[0,1,1,-1,1,1],[0.7561,0.7043,0.9903,1.042,0.8207,0.7547]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Date<\/th>\n      <th>Prac<\/th>\n      <th>Sub<\/th>\n      <th>Age<\/th>\n      <th>Sex<\/th>\n      <th>Hand<\/th>\n      <th>Block<\/th>\n      <th>Bin<\/th>\n      <th>Trial<\/th>\n      <th>Shape<\/th>\n      <th>Label<\/th>\n      <th>Match<\/th>\n      <th>CorrResp<\/th>\n      <th>Resp<\/th>\n      <th>ACC<\/th>\n      <th>RT<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[3,4,7,8,9,15,16]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Date","targets":1},{"name":"Prac","targets":2},{"name":"Sub","targets":3},{"name":"Age","targets":4},{"name":"Sex","targets":5},{"name":"Hand","targets":6},{"name":"Block","targets":7},{"name":"Bin","targets":8},{"name":"Trial","targets":9},{"name":"Shape","targets":10},{"name":"Label","targets":11},{"name":"Match","targets":12},{"name":"CorrResp","targets":13},{"name":"Resp","targets":14},{"name":"ACC","targets":15},{"name":"RT","targets":16}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-12142212c917e2f34920" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-12142212c917e2f34920">{"x":{"filter":"none","vertical":false,"fillContainer":true,"data":[["1","2","3","4","5","6"],["02-May-2018_14:23:06","02-May-2018_14:23:08","02-May-2018_14:23:10","02-May-2018_14:23:13","02-May-2018_14:23:15","02-May-2018_14:23:17"],["Exp","Exp","Exp","Exp","Exp","Exp"],[7302,7302,7302,7302,7302,7302],[22,22,22,22,22,22],["female","female","female","female","female","female"],["R","R","R","R","R","R"],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,2,3,4,5,6],["immoralSelf","moralOther","immoralOther","moralSelf","immoralSelf","immoralSelf"],["immoralOther","moralSelf","moralOther","immoralSelf","immoralSelf","immoralSelf"],["mismatch","mismatch","mismatch","mismatch","match","match"],["n","n","n","n","m","m"],["m","n","n",null,"m","m"],[0,1,1,-1,1,1],[0.7561,0.7043,0.9903,1.042,0.8207,0.7547]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Date<\/th>\n      <th>Prac<\/th>\n      <th>Sub<\/th>\n      <th>Age<\/th>\n      <th>Sex<\/th>\n      <th>Hand<\/th>\n      <th>Block<\/th>\n      <th>Bin<\/th>\n      <th>Trial<\/th>\n      <th>Shape<\/th>\n      <th>Label<\/th>\n      <th>Match<\/th>\n      <th>CorrResp<\/th>\n      <th>Resp<\/th>\n      <th>ACC<\/th>\n      <th>RT<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[3,4,7,8,9,15,16]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Date","targets":1},{"name":"Prac","targets":2},{"name":"Sub","targets":3},{"name":"Age","targets":4},{"name":"Sex","targets":5},{"name":"Hand","targets":6},{"name":"Block","targets":7},{"name":"Bin","targets":8},{"name":"Trial","targets":9},{"name":"Shape","targets":10},{"name":"Label","targets":11},{"name":"Match","targets":12},{"name":"CorrResp","targets":13},{"name":"Resp","targets":14},{"name":"ACC","targets":15},{"name":"RT","targets":16}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 <p>这些数据看起来是这样的，对吧？如果我们打开这些文件，我们现在需要计算自我优势效应，即在匹配效应下，好的我和好的他人之间的差异。在这种情况下，好的我和好的他人都是好的，但是我的反应速度比他人快，这表明我们对自身的信息有一个优势效应。因此，我们需要批量读取数据，但由于有44个文件，我们不可能手动输入每个文件。我们必须使用代码来提高效率。</p>
 <p>接下来，我们需要拆分变量，了解如何对字符进行拆分，以及如何将长数据转换为宽数据。我们将稍后讨论这些操作。</p>
 </div>
@@ -1260,8 +1257,7 @@ read.table默认为” ”</p></li>
 <div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="第六讲数据预处理.html#cb233-1" tabindex="-1"></a><span class="co"># 分实验条件计算</span></span>
 <span id="cb233-2"><a href="第六讲数据预处理.html#cb233-2" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">group_by</span>(df4, Sub, Shape, Label, Match)</span>
 <span id="cb233-3"><a href="第六讲数据预处理.html#cb233-3" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">summarise</span>(df4, <span class="at">mean_ACC =</span> <span class="fu">mean</span>(ACC), <span class="at">mean_RT =</span> <span class="fu">mean</span>(RT))</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;Sub&#39;, &#39;Shape&#39;, &#39;Label&#39;. You can override using the
-## `.groups` argument.</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;Sub&#39;, &#39;Shape&#39;, &#39;Label&#39;. You can override using the `.groups` argument.</code></pre>
 <div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="第六讲数据预处理.html#cb235-1" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">ungroup</span>(df4)</span></code></pre></div>
 <ul>
 <li><strong>拆分变量[<code>extract</code>, <code>filter</code>]</strong></li>

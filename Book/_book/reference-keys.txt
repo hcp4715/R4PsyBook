@@ -2,8 +2,8 @@
 如何帮助完善本书
 使用许可
 目录
-v2-版本2024春季学期
-v1-版本2023春季学期
+春季学期助教及电子书转录志愿者
+春季学期助教
 lesson-1
 r在心理科学及社会科学中的运用
 id_1-data-science
@@ -41,7 +41,7 @@ rstuio的下载与安装
 安装rtoolswindows
 如何通过和鲸model-whale使用r
 第三讲git-rstudio工作流
-files-and-folders-system
+文件与文件夹结构系统
 git-and-git-hub
 git
 git-hub

@@ -136,6 +136,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -162,8 +185,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="关于作者.html"><a href="关于作者.html"><i class="fa fa-check"></i>关于作者</a>
 <ul>
-<li class="chapter" data-level="0.5" data-path="关于作者.html"><a href="关于作者.html#v2-版本2024春季学期"><i class="fa fa-check"></i><b>0.5</b> V2 版本(2024春季学期)：</a></li>
-<li class="chapter" data-level="0.6" data-path="关于作者.html"><a href="关于作者.html#v1-版本2023春季学期"><i class="fa fa-check"></i><b>0.6</b> V1 版本(2023春季学期)：</a></li>
+<li class="chapter" data-level="0.5" data-path="关于作者.html"><a href="关于作者.html#春季学期助教及电子书转录志愿者"><i class="fa fa-check"></i><b>0.5</b> 2024春季学期助教及电子书转录志愿者：</a></li>
+<li class="chapter" data-level="0.6" data-path="关于作者.html"><a href="关于作者.html#春季学期助教"><i class="fa fa-check"></i><b>0.6</b> 2023春季学期助教：</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>1</b> 第一讲：为什么要学习R</a>
 <ul>
@@ -215,7 +238,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html"><i class="fa fa-check"></i><b>3</b> 第三讲：Git &amp; RStudio工作流</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#files-and-folders-system"><i class="fa fa-check"></i><b>3.1</b> Files and Folders System</a></li>
+<li class="chapter" data-level="3.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#文件与文件夹结构系统"><i class="fa fa-check"></i><b>3.1</b> 文件与文件夹结构系统</a></li>
 <li class="chapter" data-level="3.2" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#git-and-git-hub"><i class="fa fa-check"></i><b>3.2</b> Git and Git Hub</a>
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="第三讲git-rstudio工作流.html"><a href="第三讲git-rstudio工作流.html#git"><i class="fa fa-check"></i><b>3.2.1</b> Git</a></li>
@@ -548,20 +571,19 @@ level)，以及每个被试个体试次的水平(trial
 level)，层级模型可以提高统计检验力并且为研究者提供十分丰富的信息，因此也是学界越来越推荐的一种统计方法。</p>
 <p>让我们先对本章数据进行预处理，这里用到的还是之前的认知实验的数据，我们先对正确率进行预处理。</p>
 <p>这里需要注意一下我们对于正确率ACC的处理，实际上我们的认知实验数据当中包含了其他两种反应，这里我们直接删除了另外两种情况，只保留了正确和错误的反应，即0和1，当然也有一些实验会将1之外的所有反应归到0中做处理。另外我们筛选去除了反应在1500ms以上和200ms以下的反应时，因为这在经验上是不符合人类的反应速度的。</p>
-<pre><code>## `summarise()` has grouped output by &#39;Sub&#39;, &#39;Valence&#39;. You can override using the
-## `.groups` argument.</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;Sub&#39;, &#39;Valence&#39;. You can override using the `.groups` argument.</code></pre>
 <div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="第十讲回归模型三广义线性模型.html#cb388-1" tabindex="-1"></a>df.match.aov <span class="sc">%&gt;%</span></span>
 <span id="cb388-2"><a href="第十讲回归模型三广义线性模型.html#cb388-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb388-3"><a href="第十讲回归模型三广义线性模型.html#cb388-3" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb388-4"><a href="第十讲回归模型三广义线性模型.html#cb388-4" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>()</span></code></pre></div>
-<div class="datatables html-widget html-fill-item" id="htmlwidget-f2ccf2b4382d2125a7ae" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-f2ccf2b4382d2125a7ae">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],[7304,7304,7304,7304,7305],["moral","moral","immoral","immoral","moral"],["Self","Other","Self","Other","Self"],[0.9866666666666667,0.8333333333333334,0.821917808219178,0.7183098591549296,0.9324324324324325]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sub<\/th>\n      <th>Valence<\/th>\n      <th>Identity<\/th>\n      <th>mean_ACC<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Sub","targets":1},{"name":"Valence","targets":2},{"name":"Identity","targets":3},{"name":"mean_ACC","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-d7a5bd754f743b4b6905" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d7a5bd754f743b4b6905">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],[7304,7304,7304,7304,7305],["moral","moral","immoral","immoral","moral"],["Self","Other","Self","Other","Self"],[0.9866666666666667,0.8333333333333334,0.821917808219178,0.7183098591549296,0.9324324324324325]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sub<\/th>\n      <th>Valence<\/th>\n      <th>Identity<\/th>\n      <th>mean_ACC<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Sub","targets":1},{"name":"Valence","targets":2},{"name":"Identity","targets":3},{"name":"mean_ACC","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>上面是我们通常所做的操作：将不同条件下的反应正确率做一个平均，然后进行方差分析。</p>
 <p>(知识补充：easystats系统包是过去五六年快速发展起来的一个包系列，适用于统计分析，特别是心理学相关背景的统计分析，具体使用可以参考我们在B站上传的视频（链接如下）。<a href="https://www.bilibili.com/video/BV1rz421D7iJ/?spm_id_from=333.337.search-card.all.click" class="uri">https://www.bilibili.com/video/BV1rz421D7iJ/?spm_id_from=333.337.search-card.all.click</a>)</p>
 <p>让我们再来看一下正确率的原始数据。</p>
 <div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="第十讲回归模型三广义线性模型.html#cb389-1" tabindex="-1"></a><span class="fu">head</span>(df.match[<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">11</span><span class="sc">:</span><span class="dv">17</span>)],<span class="dv">5</span>) <span class="sc">%&gt;%</span> DT<span class="sc">::</span><span class="fu">datatable</span>()</span></code></pre></div>
-<div class="datatables html-widget html-fill-item" id="htmlwidget-6f49ce45905ed498a25f" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-6f49ce45905ed498a25f">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],[7304,7304,7304,7304,7304],["moral","immoral","moral","immoral","moral"],["Other","Other","Self","Other","Self"],["moralOther","immoralOther","moralSelf","immoralOther","moralSelf"],["match","match","match","match","match"],["n","n","n","n","n"],["n","m","n","m","n"],[1,0,1,0,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sub<\/th>\n      <th>Valence<\/th>\n      <th>Identity<\/th>\n      <th>Label<\/th>\n      <th>Match<\/th>\n      <th>CorrResp<\/th>\n      <th>Resp<\/th>\n      <th>ACC<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,8]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Sub","targets":1},{"name":"Valence","targets":2},{"name":"Identity","targets":3},{"name":"Label","targets":4},{"name":"Match","targets":5},{"name":"CorrResp","targets":6},{"name":"Resp","targets":7},{"name":"ACC","targets":8}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-abbbbec1377006e9a695" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-abbbbec1377006e9a695">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],[7304,7304,7304,7304,7304],["moral","immoral","moral","immoral","moral"],["Other","Other","Self","Other","Self"],["moralOther","immoralOther","moralSelf","immoralOther","moralSelf"],["match","match","match","match","match"],["n","n","n","n","n"],["n","m","n","m","n"],[1,0,1,0,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sub<\/th>\n      <th>Valence<\/th>\n      <th>Identity<\/th>\n      <th>Label<\/th>\n      <th>Match<\/th>\n      <th>CorrResp<\/th>\n      <th>Resp<\/th>\n      <th>ACC<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,8]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Sub","targets":1},{"name":"Valence","targets":2},{"name":"Identity","targets":3},{"name":"Label","targets":4},{"name":"Match","targets":5},{"name":"CorrResp","targets":6},{"name":"Resp","targets":7},{"name":"ACC","targets":8}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>可以发现其只存在0和1两种取值，这种分布显然不服从正态分布，因此我们不能简单地用前一章提到的一般线性模型进行处理。在传统的方差分析中，我们对正确率数据的处理是求出每个条件下的平均正确率再进行统计分析。这个平均正确率的取值作为一个连续数据，可以被放在坐标轴上形成一个分布，其与以0为原点，向两端无限延伸的标准正态分布也存在差异。因此我们需要对一般线性模型进行拓展，这也就是我们这一章所要讲的广义线性模型（Generalized
 Linear Model, GLM）。</p>
 </div>
@@ -677,19 +699,19 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 <span id="cb395-5"><a href="第十讲回归模型三广义线性模型.html#cb395-5" tabindex="-1"></a><span class="co">#performance::model_performance(mod_null)</span></span>
 <span id="cb395-6"><a href="第十讲回归模型三广义线性模型.html#cb395-6" tabindex="-1"></a><span class="fu">summary</span>(mod_null) <span class="sc">%&gt;%</span></span>
 <span id="cb395-7"><a href="第十讲回归模型三广义线性模型.html#cb395-7" tabindex="-1"></a>  <span class="fu">capture.output</span>()<span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">14</span><span class="sc">:</span><span class="dv">24</span>)]</span></code></pre></div>
-<pre><code>##  [1] &quot;     AIC      BIC   logLik deviance df.resid &quot;                           
-##  [2] &quot;  9378.8   9460.2  -4678.4   9356.8    11999 &quot;                           
-##  [3] &quot;Random effects:&quot;                                                         
-##  [4] &quot; Groups Name                         Variance Std.Dev. Corr             &quot;
-##  [5] &quot; Sub    (Intercept)                  1.53     1.24                      &quot;
-##  [6] &quot;        IdentityOther                2.52     1.59     -0.86            &quot;
-##  [7] &quot;        Valenceimmoral               2.40     1.55     -0.85  0.83      &quot;
-##  [8] &quot;        IdentityOther:Valenceimmoral 3.33     1.83      0.69 -0.87 -0.82&quot;
-##  [9] &quot;Number of obs: 12010, groups:  Sub, 41&quot;                                  
-## [10] &quot;&quot;                                                                        
-## [11] &quot;Fixed effects:&quot;                                                          
-## [12] &quot;            Estimate Std. Error z value            Pr(&gt;|z|)    &quot;         
-## [13] &quot;(Intercept)    2.014      0.114    17.7 &lt;0.0000000000000002 ***&quot;</code></pre>
+<pre><code>##  [1] &quot;  9378.8   9460.2  -4678.4   9356.8    11999 &quot;                           
+##  [2] &quot;&quot;                                                                        
+##  [3] &quot; Groups Name                         Variance Std.Dev. Corr             &quot;
+##  [4] &quot; Sub    (Intercept)                  1.53     1.24                      &quot;
+##  [5] &quot;        IdentityOther                2.52     1.59     -0.86            &quot;
+##  [6] &quot;        Valenceimmoral               2.40     1.55     -0.85  0.83      &quot;
+##  [7] &quot;        IdentityOther:Valenceimmoral 3.33     1.83      0.69 -0.87 -0.82&quot;
+##  [8] &quot;Number of obs: 12010, groups:  Sub, 41&quot;                                  
+##  [9] &quot;&quot;                                                                        
+## [10] &quot;Fixed effects:&quot;                                                          
+## [11] &quot;            Estimate Std. Error z value            Pr(&gt;|z|)    &quot;         
+## [12] &quot;(Intercept)    2.014      0.114    17.7 &lt;0.0000000000000002 ***&quot;         
+## [13] &quot;---&quot;</code></pre>
 <p>接着我们建立一个随机效应只包含截距的模型。</p>
 <div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="第十讲回归模型三广义线性模型.html#cb397-1" tabindex="-1"></a><span class="co">#随机截距，固定斜率</span></span>
 <span id="cb397-2"><a href="第十讲回归模型三广义线性模型.html#cb397-2" tabindex="-1"></a>mod <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> df.match, <span class="co">#数据</span></span>
@@ -698,24 +720,24 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 <span id="cb397-5"><a href="第十讲回归模型三广义线性模型.html#cb397-5" tabindex="-1"></a><span class="co">#performance::model_performance(mod)</span></span>
 <span id="cb397-6"><a href="第十讲回归模型三广义线性模型.html#cb397-6" tabindex="-1"></a><span class="fu">summary</span>(mod) <span class="sc">%&gt;%</span></span>
 <span id="cb397-7"><a href="第十讲回归模型三广义线性模型.html#cb397-7" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">14</span><span class="sc">:</span><span class="dv">24</span>,<span class="dv">28</span><span class="sc">:</span><span class="dv">32</span>)]</span></code></pre></div>
-<pre><code>##  [1] &quot;     AIC      BIC   logLik deviance df.resid &quot;                                    
-##  [2] &quot;  9639.0   9675.9  -4814.5   9629.0    12005 &quot;                                    
-##  [3] &quot;Random effects:&quot;                                                                  
-##  [4] &quot; Groups Name        Variance Std.Dev.&quot;                                            
-##  [5] &quot; Sub    (Intercept) 0.237    0.487   &quot;                                            
-##  [6] &quot;Number of obs: 12010, groups:  Sub, 41&quot;                                           
-##  [7] &quot;&quot;                                                                                 
-##  [8] &quot;Fixed effects:&quot;                                                                   
-##  [9] &quot;                             Estimate Std. Error z value             Pr(&gt;|z|)    &quot;
-## [10] &quot;(Intercept)                    2.4964     0.1015   24.60 &lt; 0.0000000000000002 ***&quot;
-## [11] &quot;IdentityOther                 -0.7160     0.0839   -8.53 &lt; 0.0000000000000002 ***&quot;
-## [12] &quot;Valenceimmoral                -0.9474     0.0818  -11.58 &lt; 0.0000000000000002 ***&quot;
-## [13] &quot;IdentityOther:Valenceimmoral   0.8230     0.1086    7.58    0.000000000000034 ***&quot;
-## [14] &quot;Correlation of Fixed Effects:&quot;                                                    
-## [15] &quot;            (Intr) IdnttO Vlncmm&quot;                                                 
-## [16] &quot;IdenttyOthr -0.519              &quot;                                                 
-## [17] &quot;Valencemmrl -0.533  0.641       &quot;                                                 
-## [18] &quot;IdnttyOth:V  0.401 -0.773 -0.754&quot;</code></pre>
+<pre><code>##  [1] &quot;  9639.0   9675.9  -4814.5   9629.0    12005 &quot;                                    
+##  [2] &quot;&quot;                                                                                 
+##  [3] &quot; Groups Name        Variance Std.Dev.&quot;                                            
+##  [4] &quot; Sub    (Intercept) 0.237    0.487   &quot;                                            
+##  [5] &quot;Number of obs: 12010, groups:  Sub, 41&quot;                                           
+##  [6] &quot;&quot;                                                                                 
+##  [7] &quot;Fixed effects:&quot;                                                                   
+##  [8] &quot;                             Estimate Std. Error z value             Pr(&gt;|z|)    &quot;
+##  [9] &quot;(Intercept)                    2.4964     0.1015   24.60 &lt; 0.0000000000000002 ***&quot;
+## [10] &quot;IdentityOther                 -0.7160     0.0839   -8.53 &lt; 0.0000000000000002 ***&quot;
+## [11] &quot;Valenceimmoral                -0.9474     0.0818  -11.58 &lt; 0.0000000000000002 ***&quot;
+## [12] &quot;IdentityOther:Valenceimmoral   0.8230     0.1086    7.58    0.000000000000034 ***&quot;
+## [13] &quot;---&quot;                                                                              
+## [14] &quot;            (Intr) IdnttO Vlncmm&quot;                                                 
+## [15] &quot;IdenttyOthr -0.519              &quot;                                                 
+## [16] &quot;Valencemmrl -0.533  0.641       &quot;                                                 
+## [17] &quot;IdnttyOth:V  0.401 -0.773 -0.754&quot;                                                 
+## [18] NA</code></pre>
 <p>最后我们建立一个包含了所有固定效应和随机效应的全模型。</p>
 <div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="第十讲回归模型三广义线性模型.html#cb399-1" tabindex="-1"></a><span class="co">#随机截距，随机斜率</span></span>
 <span id="cb399-2"><a href="第十讲回归模型三广义线性模型.html#cb399-2" tabindex="-1"></a>mod_full <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> df.match, <span class="co">#数据</span></span>
@@ -724,26 +746,26 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 <span id="cb399-5"><a href="第十讲回归模型三广义线性模型.html#cb399-5" tabindex="-1"></a><span class="do">##performance::model_performance(mod_full)</span></span>
 <span id="cb399-6"><a href="第十讲回归模型三广义线性模型.html#cb399-6" tabindex="-1"></a><span class="fu">summary</span>(mod_full) <span class="sc">%&gt;%</span></span>
 <span id="cb399-7"><a href="第十讲回归模型三广义线性模型.html#cb399-7" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">13</span><span class="sc">:</span><span class="dv">18</span>,<span class="dv">21</span><span class="sc">:</span><span class="dv">26</span>,<span class="dv">30</span><span class="sc">:</span><span class="dv">34</span>)]</span></code></pre></div>
-<pre><code>##  [1] &quot;&quot;                                                                                 
-##  [2] &quot;     AIC      BIC   logLik deviance df.resid &quot;                                    
-##  [3] &quot;  9355.9   9459.4  -4664.0   9327.9    11996 &quot;                                    
-##  [4] &quot;&quot;                                                                                 
-##  [5] &quot;Random effects:&quot;                                                                  
-##  [6] &quot; Groups Name                         Variance Std.Dev. Corr             &quot;         
-##  [7] &quot; Sub    (Intercept)                  0.972    0.986                     &quot;         
-##  [8] &quot;        IdentityOther                1.771    1.331    -0.79            &quot;         
-##  [9] &quot;        Valenceimmoral               1.028    1.014    -0.75  0.75      &quot;         
-## [10] &quot;&quot;                                                                                 
-## [11] &quot;Fixed effects:&quot;                                                                   
-## [12] &quot;                             Estimate Std. Error z value             Pr(&gt;|z|)    &quot;
-## [13] &quot;(Intercept)                     2.772      0.178   15.53 &lt; 0.0000000000000002 ***&quot;
-## [14] &quot;IdentityOther                  -0.870      0.235   -3.71              0.00021 ***&quot;
-## [15] &quot;Valenceimmoral                 -1.150      0.190   -6.06         0.0000000013 ***&quot;
-## [16] &quot;&quot;                                                                                 
-## [17] &quot;Correlation of Fixed Effects:&quot;                                                    
-## [18] &quot;            (Intr) IdnttO Vlncmm&quot;                                                 
-## [19] &quot;IdenttyOthr -0.801              &quot;                                                 
-## [20] &quot;Valencemmrl -0.783  0.741       &quot;</code></pre>
+<pre><code>##  [1] &quot;     AIC      BIC   logLik deviance df.resid &quot;                                    
+##  [2] &quot;  9355.9   9459.4  -4664.0   9327.9    11996 &quot;                                    
+##  [3] &quot;&quot;                                                                                 
+##  [4] &quot;Random effects:&quot;                                                                  
+##  [5] &quot; Groups Name                         Variance Std.Dev. Corr             &quot;         
+##  [6] &quot; Sub    (Intercept)                  0.972    0.986                     &quot;         
+##  [7] &quot;        IdentityOther                1.771    1.331    -0.79            &quot;         
+##  [8] &quot;        Valenceimmoral               1.028    1.014    -0.75  0.75      &quot;         
+##  [9] &quot;        IdentityOther:Valenceimmoral 2.306    1.518     0.54 -0.82 -0.74&quot;         
+## [10] &quot;Fixed effects:&quot;                                                                   
+## [11] &quot;                             Estimate Std. Error z value             Pr(&gt;|z|)    &quot;
+## [12] &quot;(Intercept)                     2.772      0.178   15.53 &lt; 0.0000000000000002 ***&quot;
+## [13] &quot;IdentityOther                  -0.870      0.235   -3.71              0.00021 ***&quot;
+## [14] &quot;Valenceimmoral                 -1.150      0.190   -6.06         0.0000000013 ***&quot;
+## [15] &quot;IdentityOther:Valenceimmoral    0.988      0.272    3.63              0.00028 ***&quot;
+## [16] &quot;Correlation of Fixed Effects:&quot;                                                    
+## [17] &quot;            (Intr) IdnttO Vlncmm&quot;                                                 
+## [18] &quot;IdenttyOthr -0.801              &quot;                                                 
+## [19] &quot;Valencemmrl -0.783  0.741       &quot;                                                 
+## [20] &quot;IdnttyOth:V  0.573 -0.821 -0.747&quot;</code></pre>
 <p>我们在运行全模型的时候可以明显感受到运行时间相较于之前变长了。当我们的模型内参数越多，模型越复杂的时候，计算机就需要花更多时间去拟合模型，也会有些时候因为找不到合适的参数而导致模型无法拟合。习惯了SPSS的读者可能会难以忍受，但实际上我们在后面处理一些大数据或者跑机器学习的时候，等待会是一件很常见的事情。这就提示我们合理分配时间，把要运行的代码提前运行起来，然后去做别的工作。</p>
 <p>在这里，我们也可以根据结果来判断R语言对我们自变量的编码方式，可以看到结果中除了截距外的第一项为”Identityother”，由此我们可以判断R将”Identityself”编码为了基线，并据此来计算相应的回归系数和估计值，下面的其他结果也类似。</p>
 <p>接下来我们对上述三个模型进行比较。</p>
@@ -761,18 +783,17 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>可以发现全模型(mod_full)的效果是最好的，但当我们更换一种模型比较方法的时候，可能会得到不一样的结论，如下。</p>
 <div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="第十讲回归模型三广义线性模型.html#cb403-1" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">compare_performance</span>(mod_null, mod, mod_full, <span class="at">rank =</span> <span class="cn">TRUE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<pre><code>## Some of the nested models seem to be identical and probably only vary in their
-##   random effects.</code></pre>
+<pre><code>## Some of the nested models seem to be identical and probably only vary in their random effects.</code></pre>
 <p><img src="pic/chp10/performance1.png" /></p>
 <p>让我们输出全模型的结果，尝试进行解读。</p>
 <div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="第十讲回归模型三广义线性模型.html#cb405-1" tabindex="-1"></a><span class="fu">summary</span>(mod_full) <span class="sc">%&gt;%</span> <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">21</span><span class="sc">:</span><span class="dv">27</span>)]</span></code></pre></div>
-<pre><code>## [1] &quot;&quot;                                                                                 
-## [2] &quot;Fixed effects:&quot;                                                                   
-## [3] &quot;                             Estimate Std. Error z value             Pr(&gt;|z|)    &quot;
-## [4] &quot;(Intercept)                     2.772      0.178   15.53 &lt; 0.0000000000000002 ***&quot;
-## [5] &quot;IdentityOther                  -0.870      0.235   -3.71              0.00021 ***&quot;
-## [6] &quot;Valenceimmoral                 -1.150      0.190   -6.06         0.0000000013 ***&quot;
-## [7] &quot;IdentityOther:Valenceimmoral    0.988      0.272    3.63              0.00028 ***&quot;</code></pre>
+<pre><code>## [1] &quot;Fixed effects:&quot;                                                                   
+## [2] &quot;                             Estimate Std. Error z value             Pr(&gt;|z|)    &quot;
+## [3] &quot;(Intercept)                     2.772      0.178   15.53 &lt; 0.0000000000000002 ***&quot;
+## [4] &quot;IdentityOther                  -0.870      0.235   -3.71              0.00021 ***&quot;
+## [5] &quot;Valenceimmoral                 -1.150      0.190   -6.06         0.0000000013 ***&quot;
+## [6] &quot;IdentityOther:Valenceimmoral    0.988      0.272    3.63              0.00028 ***&quot;
+## [7] &quot;---&quot;</code></pre>
 <p>在结果里面显示的估计值，并不直接等于p值，我们要根据前面转换函数的逆运算来讲其转换为p值，转换公式如下。</p>
 <p><img src="pic/chp10/logit2.png" /></p>
 <p>代入之后我们便可以求出不同实验条件下各自的p值。</p>
@@ -805,12 +826,9 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 ##     You may use Linear Mixed Model to analyze the data,
 ##     e.g., with subjects and items as level-2 clusters.</code></pre>
 <div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="第十讲回归模型三广义线性模型.html#cb410-1" tabindex="-1"></a><span class="fu">capture.output</span>(res) <span class="sc">%&gt;%</span> .[<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>]</span></code></pre></div>
-<pre><code>## [1] &quot;Response: mean_ACC&quot;                                  
-## [2] &quot;            Effect    df  MSE         F  ges p.value&quot;
-## [3] &quot;1         Identity 1, 40 0.01    3.08 + .017    .087&quot;
-## [4] &quot;2          Valence 1, 40 0.01 16.26 *** .068   &lt;.001&quot;
-## [5] &quot;3 Identity:Valence 1, 40 0.01   8.52 ** .038    .006&quot;
-## [6] &quot;---&quot;</code></pre>
+<pre><code>## [1] &quot;Response: mean_ACC&quot;                                   &quot;            Effect    df  MSE         F  ges p.value&quot;
+## [3] &quot;1         Identity 1, 40 0.01    3.08 + .017    .087&quot; &quot;2          Valence 1, 40 0.01 16.26 *** .068   &lt;.001&quot;
+## [5] &quot;3 Identity:Valence 1, 40 0.01   8.52 ** .038    .006&quot; &quot;---&quot;</code></pre>
 <p>我们可以得到一个f值，并且因为研究的被试量比较大，我们可以发现这里呈现的主效应以及交互作用，和后面用glm或者层级模型做出来的结果有一样的趋势。我们可以用EMMAMNS()函数来查看模型的一些具体值。</p>
 <div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="第十讲回归模型三广义线性模型.html#cb412-1" tabindex="-1"></a>res <span class="sc">%&gt;%</span></span>
 <span id="cb412-2"><a href="第十讲回归模型三广义线性模型.html#cb412-2" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">EMMEANS</span>(<span class="at">effect =</span> <span class="st">&#39;Valence&#39;</span>, <span class="at">by =</span> <span class="st">&#39;Identity&#39;</span>) <span class="sc">%&gt;%</span></span>
