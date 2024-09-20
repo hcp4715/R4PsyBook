@@ -117,7 +117,7 @@ cat(normalized_path)
 pacman::p_load(here)
 
 # here::here()
-here::here("data","penguin","penguin_rawdata.csv")
+here::here("Book","data","penguin","penguin_rawdata.csv")
 ```
 
 [注：在Python及大多数编程语言中，路径都支持斜杠（/）]
@@ -162,7 +162,7 @@ OK，我们前面演示了如何通过点击的方式读取数据。那么我们
 
 ```{r echo=TRUE, eval=FALSE}
 # 读取数据,命名为penguin_data
-penguin_data = import(here::here('data', 'penguin', 'penguin_rawdata.csv'))
+penguin_data = import(here::here("Book",'data', 'penguin', 'penguin_rawdata.csv'))
 # 查看头(head) 5 行，有头就有尾(tail)
 # head(penguin_data,n = 3)
 # tail(penguin_data,n = 3)

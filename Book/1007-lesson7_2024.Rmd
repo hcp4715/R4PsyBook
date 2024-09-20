@@ -26,7 +26,7 @@ pacman::p_load(here,skimr,quartets,GGally,showtext,bruceR,tidyverse,DataExplorer
 # 所有数据路径
 files <- list.files(
   ## <- & =
-  here::here("data", "match"), 
+  here::here("Book", "data", "match"), 
   pattern = "data_exp7_rep_match_.*.out$", 
   full.names = TRUE)
 ```
@@ -72,7 +72,7 @@ rm(df, files, i)
 ## 上节课介绍了write.csv,也可使用bruceR::export
 bruceR::export(
   df3, 
-  file = here::here("data", "match","match_raw.csv"))
+  file = here::here("Book","data", "match","match_raw.csv"))
 
 ## 当然，export 不仅可以保存数据，也可以输出模型结果
 
@@ -133,10 +133,10 @@ Analysis,EDA），在传统的心理学中，我们通常会清楚地知道要�
 ```{r eval = T}
 # 读取数据
 pg_raw <- bruceR::import(here::here(
-  "data", "penguin","penguin_rawdata.csv"))
+  "Book","data", "penguin","penguin_rawdata.csv"))
 
 mt_raw <- bruceR::import(here::here(
-  "data", "match","match_raw.csv")) 
+  "Book","data", "match","match_raw.csv")) 
 ```
 
 ### 常用函数介绍

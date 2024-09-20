@@ -135,7 +135,7 @@ temperature。右边则是用身体温度来预测其他变量。我们主要关
 
 ```{r}
 # 导入数据
-df1 <- bruceR::import(here::here('data', 'penguin', 'penguin_rawdata.csv'))
+df1 <- bruceR::import(here::here("Book",'data', 'penguin', 'penguin_rawdata.csv'))
 ```
 
 下面是被读取的数据文件：
@@ -773,7 +773,7 @@ for (i in 1:10){
 ```{r for loop list.files, error=FALSE}
 # 把所有符合某种标题的文件全部读取到一个list中 
 # 使用 full.names 参数获取完整路径的文件列表
-files <- list.files(here::here("data", "match"), pattern = "data_exp7_rep_match_.*\\.out$", full.names = TRUE)  
+files <- list.files(here::here("Book","data", "match"), pattern = "data_exp7_rep_match_.*\\.out$", full.names = TRUE)  
 head(files, n = 10L)  
 str(files)
 ```
@@ -857,7 +857,7 @@ rm(df, files, i)
 
 ```{r error=FALSE}
 # 获取所有的.out文件名
-files <- list.files(here::here("data", "match"), pattern = "data_exp7_rep_match_.*\\.out$", full.names = TRUE)  
+files <- list.files(here::here("Book","data", "match"), pattern = "data_exp7_rep_match_.*\\.out$", full.names = TRUE)  
 # 读取每个.out文件，并进行数据清洗 
 df3 <- lapply(files, function(file) {
   df <- read.table(file, header = TRUE)
@@ -882,7 +882,7 @@ OK，假定大家都理解了这个`forloop`，那就我们就能够把这个`df
 ```{r error=FALSE}
 #for loop 或 lapply的都可以
 write.csv(df3,
-          file = here::here("data", "match","match_raw.csv"),
+          file = here::here("Book","data", "match","match_raw.csv"),
           row.names = FALSE)
 ```
 

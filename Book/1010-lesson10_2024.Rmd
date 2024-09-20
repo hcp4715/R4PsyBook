@@ -31,7 +31,7 @@ options(scipen=99999,digits = 5)
 
 ```{r, echo = FALSE}
 #读取数据
-df.match <- bruceR::import(here::here('data','match','match_raw.csv')) %>% 
+df.match <- bruceR::import(here::here("Book",'data','match','match_raw.csv')) %>% 
   tidyr::extract(Shape, 
                  into = c('Valence', 'Identity'),
                  regex = '(moral|immoral)(Self|Other)',

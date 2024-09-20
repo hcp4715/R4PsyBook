@@ -45,7 +45,7 @@ options(scipen=99999,digits = 5)
 首先这是实验中每个试次的数据。
 
 ```{r}
-df.match.trial <- bruceR::import(here::here('data','match','match_raw.csv')) %>% 
+df.match.trial <- bruceR::import(here::here("Book",'data','match','match_raw.csv')) %>% 
   tidyr::extract(Shape, 
                  into = c('Valence', 'Identity'),
                  regex = '(moral|immoral)(Self|Other)',

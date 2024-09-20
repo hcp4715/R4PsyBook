@@ -626,7 +626,7 @@ Rmarkdown 文件相同路径的文件夹中，如果你将 Rmarkdown
 <p><img src="pic/chp5/abspath.jpg" width="367" style="display: block; margin: auto;" /></p>
 <pre><code>&lt;img src=&quot;pic_abspath.jpg&quot; alt=&quot;abs_path&quot; style=&quot;zoom:50%;&quot;/&gt;</code></pre>
 <p>在R语言中，路径分隔符要求为斜杠（/），注意不能直接从路径栏中直接复制地址。这是一个非常细节的问题，但也有更加方便的方式来解决这个问题，即使用<code>here::here()</code>函数，只需要在这个函数中按顺序依次输出，比如对于上面的相对路径就可以写为：</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="lesson-5.html#cb51-1" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>,<span class="st">&#39;penguin&#39;</span>,<span class="st">&#39;penguin_rawdata.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="lesson-5.html#cb51-1" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;Book&quot;</span>,<span class="st">&#39;data&#39;</span>,<span class="st">&#39;penguin&#39;</span>,<span class="st">&#39;penguin_rawdata.csv&#39;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="读取数据-1" class="section level2 hasAnchor" number="5.2">
@@ -640,7 +640,7 @@ Excel 里导入数据的操作类似。</p>
 <div id="代码导入" class="section level3 hasAnchor" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> 代码导入<a href="lesson-5.html#代码导入" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>当然，我们更推荐使用代码的方式来导入数据：</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="lesson-5.html#cb52-1" tabindex="-1"></a>penguin_data <span class="ot">=</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>))</span>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="lesson-5.html#cb52-1" tabindex="-1"></a>penguin_data <span class="ot">=</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;Book&quot;</span>,<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>))</span>
 <span id="cb52-2"><a href="lesson-5.html#cb52-2" tabindex="-1"></a><span class="fu">ncol</span>(penguin_data)</span></code></pre></div>
 <pre><code>## [1] 232</code></pre>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="lesson-5.html#cb54-1" tabindex="-1"></a><span class="fu">nrow</span>(penguin_data)</span></code></pre></div>
@@ -1049,14 +1049,14 @@ file、encoding
 <div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="lesson-5.html#cb174-1" tabindex="-1"></a><span class="do">## 没有声明形参</span></span>
 <span id="cb174-2"><a href="lesson-5.html#cb174-2" tabindex="-1"></a>penguin_data <span class="ot">=</span> </span>
 <span id="cb174-3"><a href="lesson-5.html#cb174-3" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">import</span>(</span>
-<span id="cb174-4"><a href="lesson-5.html#cb174-4" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>),  <span class="do">### file</span></span>
+<span id="cb174-4"><a href="lesson-5.html#cb174-4" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;Book&quot;</span>,<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>),  <span class="do">### file</span></span>
 <span id="cb174-5"><a href="lesson-5.html#cb174-5" tabindex="-1"></a>  <span class="cn">NULL</span> <span class="do">### encoding</span></span>
 <span id="cb174-6"><a href="lesson-5.html#cb174-6" tabindex="-1"></a>  )</span>
 <span id="cb174-7"><a href="lesson-5.html#cb174-7" tabindex="-1"></a><span class="do">## 如果声明形参，顺序可以调换</span></span>
 <span id="cb174-8"><a href="lesson-5.html#cb174-8" tabindex="-1"></a>penguin_data <span class="ot">=</span> </span>
 <span id="cb174-9"><a href="lesson-5.html#cb174-9" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">import</span>(</span>
 <span id="cb174-10"><a href="lesson-5.html#cb174-10" tabindex="-1"></a>    <span class="at">encoding =</span> <span class="cn">NULL</span>,</span>
-<span id="cb174-11"><a href="lesson-5.html#cb174-11" tabindex="-1"></a>    <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>)</span>
+<span id="cb174-11"><a href="lesson-5.html#cb174-11" tabindex="-1"></a>    <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;Book&quot;</span>,<span class="st">&#39;data&#39;</span>, <span class="st">&#39;penguin&#39;</span>, <span class="st">&#39;penguin_rawdata.csv&#39;</span>)</span>
 <span id="cb174-12"><a href="lesson-5.html#cb174-12" tabindex="-1"></a>  )</span>
 <span id="cb174-13"><a href="lesson-5.html#cb174-13" tabindex="-1"></a><span class="do">## 当然，如果按照这个顺序不输入形参的话会报错，大家可自行尝试</span></span></code></pre></div>
 <div id="函数的调用" class="section level3 hasAnchor" number="5.9.1">

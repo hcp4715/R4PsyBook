@@ -377,7 +377,7 @@ $$= i_4 + c'X + abX + e_5$$
 
 ```{r  echo = F}
 # 数据导入
-pg_raw = bruceR::import(here::here('data','penguin','penguin_rawdata_full.csv'))
+pg_raw = bruceR::import(here::here("Book",'data','penguin','penguin_rawdata_full.csv'))
 
 # 计算CSI
 ### get the column names:
@@ -509,7 +509,7 @@ grViz(
 
 ```{r}
 # 数据导入
-pg_raw = bruceR::import(here::here('data','penguin','penguin_rawdata_full.csv'))
+pg_raw = bruceR::import(here::here("Book",'data','penguin','penguin_rawdata_full.csv'))
 ```
 
 数据预处理这里,可能会有很多这种变量名的选择，还有一些重新编码，

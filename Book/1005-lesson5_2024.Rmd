@@ -107,7 +107,7 @@ knitr::include_graphics('./pic/chp5/abspath.jpg')
 在R语言中，路径分隔符要求为斜杠（/），注意不能直接从路径栏中直接复制地址。这是一个非常细节的问题，但也有更加方便的方式来解决这个问题，即使用`here::here()`函数，只需要在这个函数中按顺序依次输出，比如对于上面的相对路径就可以写为：
 
 ```{r eval=FALSE}
-here::here('data','penguin','penguin_rawdata.csv')
+here::here("Book",'data','penguin','penguin_rawdata.csv')
 ```
 
 ## 读取数据
@@ -126,7 +126,7 @@ knitr::include_graphics('./pic/chp5/imp1.png')
 当然，我们更推荐使用代码的方式来导入数据：
 
 ```{r}
-penguin_data = bruceR::import(here::here('data', 'penguin', 'penguin_rawdata.csv'))
+penguin_data = bruceR::import(here::here("Book",'data', 'penguin', 'penguin_rawdata.csv'))
 ncol(penguin_data)
 nrow(penguin_data)
 ```
@@ -562,14 +562,14 @@ file、encoding
 ## 没有声明形参
 penguin_data = 
   bruceR::import(
-  here::here('data', 'penguin', 'penguin_rawdata.csv'),  ### file
+  here::here("Book",'data', 'penguin', 'penguin_rawdata.csv'),  ### file
   NULL ### encoding
   )
 ## 如果声明形参，顺序可以调换
 penguin_data = 
   bruceR::import(
     encoding = NULL,
-    file = here::here('data', 'penguin', 'penguin_rawdata.csv')
+    file = here::here("Book",'data', 'penguin', 'penguin_rawdata.csv')
   )
 ## 当然，如果按照这个顺序不输入形参的话会报错，大家可自行尝试
 ```

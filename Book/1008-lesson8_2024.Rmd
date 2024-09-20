@@ -63,7 +63,7 @@ $$t = \frac{\bar{X}_1 - \bar{X}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
 
 这些步骤都是数据预处理的一部分，是进行*t*检验之前必要的步骤。
 ```{r preprocessing}
-df.penguin <- bruceR::import(here::here('data', 'penguin', 'penguin_rawdata.csv')) %>%
+df.penguin <- bruceR::import(here::here("Book",'data', 'penguin', 'penguin_rawdata.csv')) %>%
   dplyr::mutate(subjID = row_number()) %>%
   dplyr::select(subjID,Temperature_t1, Temperature_t2, socialdiversity, 
                 Site, DEQ, romantic, ALEX1:ALEX16) %>%                                     # 选择变量

@@ -58,7 +58,7 @@ setwd("./Book")
 # render to gitbook:
 bookdown::render_book(input = "index.Rmd", "bookdown::gitbook")
 
-# render pdf:
+# render pdf (not solved yet):
 bookdown::render_book(input = "Book", "bookdown::pdf_book")
 
 # upload to bookdown:

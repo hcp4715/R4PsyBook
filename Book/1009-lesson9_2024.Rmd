@@ -42,7 +42,7 @@ xaringanExtra::use_panelset()
 
 [预处理]
 ```{r}
-df.penguin <- bruceR::import(here::here('data', 'penguin', 'penguin_rawdata.csv')) %>%
+df.penguin <- bruceR::import(here::here("Book",'data', 'penguin', 'penguin_rawdata.csv')) %>%
   dplyr::mutate(subjID = row_number()) %>%
   dplyr::select(subjID,Temperature_t1, Temperature_t2, socialdiversity, 
                 Site, DEQ, romantic, ALEX1:ALEX16) %>%
@@ -106,7 +106,7 @@ df.penguin %>%
     
 [预处理]
 ```{r}
-mt_raw <- bruceR::import(here::here('data','match','match_raw.csv'))
+mt_raw <- bruceR::import(here::here("Book",'data','match','match_raw.csv'))
 
 mt_raw <- mt_raw %>% 
   tidyr::extract(Shape, 
