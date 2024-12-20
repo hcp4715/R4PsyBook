@@ -18,22 +18,25 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 引言 {-}
 
-本电子书通过[`bookdown`](https://bookdown.org/)进行创建，相关代码见[这里](https://github.com/hcp4715/R4PsyBook)。由于文字稿来自于对课堂录音的整理，完全由本人与志愿者以志愿方式进行整理，因此，可能存在如下问题：
+本电子书通过[`bookdown`](https://bookdown.org/)进行创建。文字与代码是对本人2024年春季学期的《R语言在心理研究中应用》一课录音的整理而。文字稿由本人与志愿者以志愿方式进行整理，因此，可能存在如下问题：
 
 -   文字口语化严重
 -   图片或者文献引用不全
 -   错别字等
 -   代码错误
 
-望读者朋友多多包涵。欢迎有兴趣有能力的朋友多多批评指正。\
-指出问题的方式：在本电子书的GitHub仓库的[issues](https://github.com/hcp4715/R4PsyBook/issues)中开新的issue。\
+望读者朋友多多包涵。欢迎有兴趣有能力的朋友多多批评指正。如果您觉得这个电子书有用，可以给我们的github repo加一个🌟，这是对我们持续开源的巨大鼓励！\
+
+本课相关资源也完全开源，链接如下：[课件](https://github.com/hcp4715/R4Psy)、[B站录频](https://space.bilibili.com/252509184/channel/collectiondetail?sid=2314135)、[本电子书代码](https://github.com/hcp4715/R4PsyBook)。\
+
+本套课程及资源会在每年春季学期更新，欢迎大家多多批评指正。提出问题的最佳方式：在本电子书的GitHub仓库的[issues](https://github.com/hcp4715/R4PsyBook/issues)中开新的issue。\
 参与贡献方式：见下面《如何帮助完善本书》这一小节。
 
 ## 开放电子书的初衷
 分享知识，向众多开源的电子书作者致敬，为中文网络世界中的R语言相关教材略尽绵薄之力。
 
 ## 如何帮助完善本书
-可以参考[这个英文的教程](https://neuropsychology.github.io/NeuroKit/resources/contributing.html#how-to-use-github-to-contribute)，我们暂时还没有进行中文翻译，您也可以将这部分补充，这也是极大的贡献！
+可以参考[这个英文的教程](https://neuropsychology.github.io/NeuroKit/resources/contributing.html#how-to-use-github-to-contribute)，我们进行了大致的翻译！
 
 可能需要的前期知识：(1) 如何使用github;(2) 如何使用[bookdown](https://bookdown.org/)。
 

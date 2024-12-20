@@ -619,8 +619,8 @@ div.csl-indent {
 <span id="cb245-2"><a href="第七讲描述性统计与数据可视化基础.html#cb245-2" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">rename</span>(  <span class="do">## new_name = old_name</span></span>
 <span id="cb245-3"><a href="第七讲描述性统计与数据可视化基础.html#cb245-3" tabindex="-1"></a>  <span class="at">date =</span> Date</span>
 <span id="cb245-4"><a href="第七讲描述性统计与数据可视化基础.html#cb245-4" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">colnames</span>()  </span></code></pre></div>
-<pre><code>##  [1] &quot;date&quot;     &quot;Prac&quot;     &quot;Sub&quot;      &quot;Age&quot;      &quot;Sex&quot;      &quot;Hand&quot;     &quot;Block&quot;    &quot;Bin&quot;      &quot;Trial&quot;    &quot;Shape&quot;   
-## [11] &quot;Label&quot;    &quot;Match&quot;    &quot;CorrResp&quot; &quot;Resp&quot;     &quot;ACC&quot;      &quot;RT&quot;</code></pre>
+<pre><code>##  [1] &quot;date&quot;     &quot;Prac&quot;     &quot;Sub&quot;      &quot;Age&quot;      &quot;Sex&quot;      &quot;Hand&quot;     &quot;Block&quot;    &quot;Bin&quot;      &quot;Trial&quot;    &quot;Shape&quot;    &quot;Label&quot;   
+## [12] &quot;Match&quot;    &quot;CorrResp&quot; &quot;Resp&quot;     &quot;ACC&quot;      &quot;RT&quot;</code></pre>
 <div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="第七讲描述性统计与数据可视化基础.html#cb247-1" tabindex="-1"></a><span class="do">## 将全部列名都变成小写</span></span>
 <span id="cb247-2"><a href="第七讲描述性统计与数据可视化基础.html#cb247-2" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">rename_with</span>(</span>
 <span id="cb247-3"><a href="第七讲描述性统计与数据可视化基础.html#cb247-3" tabindex="-1"></a>  <span class="do">## 将字符向量全部变成小写； ~ 声明这是一个函数，.代表前面的数据(df3)传到.所在的位置</span></span>
@@ -628,8 +628,8 @@ div.csl-indent {
 <span id="cb247-5"><a href="第七讲描述性统计与数据可视化基础.html#cb247-5" tabindex="-1"></a>  <span class="do">## 即使用 tolower()对所有列名进行批量处理</span></span>
 <span id="cb247-6"><a href="第七讲描述性统计与数据可视化基础.html#cb247-6" tabindex="-1"></a>  <span class="do">##</span></span>
 <span id="cb247-7"><a href="第七讲描述性统计与数据可视化基础.html#cb247-7" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">colnames</span>()</span></code></pre></div>
-<pre><code>##  [1] &quot;date&quot;     &quot;prac&quot;     &quot;sub&quot;      &quot;age&quot;      &quot;sex&quot;      &quot;hand&quot;     &quot;block&quot;    &quot;bin&quot;      &quot;trial&quot;    &quot;shape&quot;   
-## [11] &quot;label&quot;    &quot;match&quot;    &quot;corrresp&quot; &quot;resp&quot;     &quot;acc&quot;      &quot;rt&quot;</code></pre>
+<pre><code>##  [1] &quot;date&quot;     &quot;prac&quot;     &quot;sub&quot;      &quot;age&quot;      &quot;sex&quot;      &quot;hand&quot;     &quot;block&quot;    &quot;bin&quot;      &quot;trial&quot;    &quot;shape&quot;    &quot;label&quot;   
+## [12] &quot;match&quot;    &quot;corrresp&quot; &quot;resp&quot;     &quot;acc&quot;      &quot;rt&quot;</code></pre>
 </div>
 <div id="代码书写规范" class="section level3 hasAnchor" number="7.1.2">
 <h3><span class="header-section-number">7.1.2</span> 代码书写规范<a href="第七讲描述性统计与数据可视化基础.html#代码书写规范" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -707,7 +707,7 @@ Analysis,EDA），在传统的心理学中，我们通常会清楚地知道要�
 <p>summary</p>
 <div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="第七讲描述性统计与数据可视化基础.html#cb254-1" tabindex="-1"></a><span class="fu">summary</span>(mt_raw) <span class="sc">%&gt;%</span>    </span>
 <span id="cb254-2"><a href="第七讲描述性统计与数据可视化基础.html#cb254-2" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="co"># 注：kable函数只为了输出 skim函数能够实现数据的快速预览，可以根据每一列的数据类型进行数据预览，会显示字符型数据的分布特点</span></span></code></pre></div>
-<table>
+<table style="width:100%;">
 <colgroup>
 <col width="1%" />
 <col width="6%" />
@@ -724,7 +724,7 @@ Analysis,EDA），在传统的心理学中，我们通常会清楚地知道要�
 <col width="6%" />
 <col width="6%" />
 <col width="6%" />
-<col width="6%" />
+<col width="5%" />
 <col width="5%" />
 </colgroup>
 <thead>
@@ -754,114 +754,114 @@ Analysis,EDA），在传统的心理学中，我们通常会清楚地知道要�
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
 <td align="left">Min. : 7302</td>
-<td align="left">Min. :18.00</td>
+<td align="left">Min. :18.0</td>
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
-<td align="left">Min. :1.000</td>
-<td align="left">Min. :1.000</td>
+<td align="left">Min. :1.00</td>
+<td align="left">Min. :1.00</td>
 <td align="left">Min. : 1.00</td>
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
 <td align="left">Length:25920</td>
-<td align="left">Min. :-1.0000</td>
-<td align="left">Min. :0.1060</td>
+<td align="left">Min. :-1.000</td>
+<td align="left">Min. :0.106</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
 <td align="left">1st Qu.: 7313</td>
-<td align="left">1st Qu.:19.00</td>
+<td align="left">1st Qu.:19.0</td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
-<td align="left">1st Qu.:1.000</td>
-<td align="left">1st Qu.:1.000</td>
+<td align="left">1st Qu.:1.00</td>
+<td align="left">1st Qu.:1.00</td>
 <td align="left">1st Qu.: 6.75</td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
 <td align="left">Class :character</td>
-<td align="left">1st Qu.: 1.0000</td>
-<td align="left">1st Qu.:0.6104</td>
+<td align="left">1st Qu.: 1.000</td>
+<td align="left">1st Qu.:0.610</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
 <td align="left">Median : 7324</td>
-<td align="left">Median :20.00</td>
+<td align="left">Median :20.0</td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
-<td align="left">Median :1.000</td>
-<td align="left">Median :2.000</td>
+<td align="left">Median :1.00</td>
+<td align="left">Median :2.00</td>
 <td align="left">Median :12.50</td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
 <td align="left">Mode :character</td>
-<td align="left">Median : 1.0000</td>
-<td align="left">Median :0.7019</td>
+<td align="left">Median : 1.000</td>
+<td align="left">Median :0.702</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">Mean : 8853</td>
-<td align="left">Mean :20.83</td>
+<td align="left">Mean :20.8</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">Mean :1.611</td>
-<td align="left">Mean :2.417</td>
+<td align="left">Mean :1.61</td>
+<td align="left">Mean :2.42</td>
 <td align="left">Mean :12.50</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">Mean : 0.7959</td>
-<td align="left">Mean :0.7150</td>
+<td align="left">Mean : 0.796</td>
+<td align="left">Mean :0.715</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">3rd Qu.: 7336</td>
-<td align="left">3rd Qu.:22.00</td>
+<td align="left">3rd Qu.:22.0</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">3rd Qu.:2.000</td>
-<td align="left">3rd Qu.:3.000</td>
+<td align="left">3rd Qu.:2.00</td>
+<td align="left">3rd Qu.:3.00</td>
 <td align="left">3rd Qu.:18.25</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">3rd Qu.: 1.0000</td>
-<td align="left">3rd Qu.:0.8053</td>
+<td align="left">3rd Qu.: 1.000</td>
+<td align="left">3rd Qu.:0.805</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">Max. :73370</td>
-<td align="left">Max. :28.00</td>
+<td align="left">Max. :28.0</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">Max. :3.000</td>
-<td align="left">Max. :5.000</td>
+<td align="left">Max. :3.00</td>
+<td align="left">Max. :5.00</td>
 <td align="left">Max. :24.00</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
-<td align="left">Max. : 2.0000</td>
-<td align="left">Max. :1.1831</td>
+<td align="left">Max. : 2.000</td>
+<td align="left">Max. :1.183</td>
 </tr>
 </tbody>
 </table>
@@ -879,38 +879,38 @@ Analysis,EDA），在传统的心理学中，我们通常会清楚地知道要�
 <div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="第七讲描述性统计与数据可视化基础.html#cb257-1" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(mt_raw) <span class="sc">%&gt;%</span> </span>
 <span id="cb257-2"><a href="第七讲描述性统计与数据可视化基础.html#cb257-2" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb257-3"><a href="第七讲描述性统计与数据可视化基础.html#cb257-3" tabindex="-1"></a>  .[<span class="dv">13</span><span class="sc">:</span><span class="dv">24</span>]</span></code></pre></div>
-<pre><code>##  [1] &quot;── Variable type: character ───────────────────────────────────────────────────────────────────────────────────────────────&quot;
-##  [2] &quot;  skim_variable n_missing complete_rate min max empty n_unique whitespace&quot;                                                  
-##  [3] &quot;1 Date                  0         1      20  20     0    24362          0&quot;                                                  
-##  [4] &quot;2 Prac                  0         1       3   3     0        1          0&quot;                                                  
-##  [5] &quot;3 Sex                   0         1       1   6     0        4          0&quot;                                                  
-##  [6] &quot;4 Hand                  0         1       1   1     0        2          0&quot;                                                  
-##  [7] &quot;5 Shape                 0         1       9  12     0        4          0&quot;                                                  
-##  [8] &quot;6 Label                 0         1       9  12     0        4          0&quot;                                                  
-##  [9] &quot;7 Match                 0         1       5   8     0        2          0&quot;                                                  
-## [10] &quot;8 CorrResp              0         1       1   1     0        2          0&quot;                                                  
-## [11] &quot;9 Resp                658         0.975   1   5     0        9          0&quot;                                                  
+<pre><code>##  [1] &quot;── Variable type: character ──────────────────────────────────────────────────────────────────────────────────────────────────────&quot;
+##  [2] &quot;  skim_variable n_missing complete_rate min max empty n_unique whitespace&quot;                                                         
+##  [3] &quot;1 Date                  0         1      20  20     0    24362          0&quot;                                                         
+##  [4] &quot;2 Prac                  0         1       3   3     0        1          0&quot;                                                         
+##  [5] &quot;3 Sex                   0         1       1   6     0        4          0&quot;                                                         
+##  [6] &quot;4 Hand                  0         1       1   1     0        2          0&quot;                                                         
+##  [7] &quot;5 Shape                 0         1       9  12     0        4          0&quot;                                                         
+##  [8] &quot;6 Label                 0         1       9  12     0        4          0&quot;                                                         
+##  [9] &quot;7 Match                 0         1       5   8     0        2          0&quot;                                                         
+## [10] &quot;8 CorrResp              0         1       1   1     0        2          0&quot;                                                         
+## [11] &quot;9 Resp                658         0.975   1   5     0        9          0&quot;                                                         
 ## [12] &quot;&quot;</code></pre>
 <p>skimr::skim()–3</p>
 <div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="第七讲描述性统计与数据可视化基础.html#cb259-1" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(mt_raw) <span class="sc">%&gt;%</span> </span>
 <span id="cb259-2"><a href="第七讲描述性统计与数据可视化基础.html#cb259-2" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb259-3"><a href="第七讲描述性统计与数据可视化基础.html#cb259-3" tabindex="-1"></a>  .[<span class="dv">25</span><span class="sc">:</span><span class="dv">41</span>]</span></code></pre></div>
-<pre><code>##  [1] &quot;── Variable type: numeric ─────────────────────────────────────────────────────────────────────────────────────────────────&quot;
-##  [2] &quot;  skim_variable n_missing complete_rate     mean       sd       p0      p25      p50      p75     p100 hist &quot;               
-##  [3] &quot;1 Sub                   0             1 8853.    9932.    7302     7313     7324     7336     73370    ▇▁▁▁▁&quot;               
-##  [4] &quot;2 Age                   0             1   20.8      2.48    18       19       20       22        28    ▇▂▁▁▁&quot;               
-##  [5] &quot;3 Block                 0             1    1.61     0.803    1        1        1        2         3    ▇▁▃▁▃&quot;               
-##  [6] &quot;4 Bin                   0             1    2.42     1.36     1        1        2        3         5    ▇▇▃▃▃&quot;               
-##  [7] &quot;5 Trial                 0             1   12.5      6.92     1        6.75    12.5     18.2      24    ▇▇▆▇▇&quot;               
-##  [8] &quot;6 ACC                   0             1    0.796    0.464   -1        1        1        1         2    ▁▂▁▇▁&quot;               
-##  [9] &quot;7 RT                    0             1    0.715    0.151    0.106    0.610    0.702    0.805     1.18 ▁▂▇▅▁&quot;               
-## [10] NA                                                                                                                           
-## [11] NA                                                                                                                           
-## [12] NA                                                                                                                           
-## [13] NA                                                                                                                           
-## [14] NA                                                                                                                           
-## [15] NA                                                                                                                           
-## [16] NA                                                                                                                           
+<pre><code>##  [1] &quot;── Variable type: numeric ────────────────────────────────────────────────────────────────────────────────────────────────────────&quot;
+##  [2] &quot;  skim_variable n_missing complete_rate     mean       sd       p0      p25      p50      p75     p100 hist &quot;                      
+##  [3] &quot;1 Sub                   0             1 8853.    9932.    7302     7313     7324     7336     73370    ▇▁▁▁▁&quot;                      
+##  [4] &quot;2 Age                   0             1   20.8      2.48    18       19       20       22        28    ▇▂▁▁▁&quot;                      
+##  [5] &quot;3 Block                 0             1    1.61     0.803    1        1        1        2         3    ▇▁▃▁▃&quot;                      
+##  [6] &quot;4 Bin                   0             1    2.42     1.36     1        1        2        3         5    ▇▇▃▃▃&quot;                      
+##  [7] &quot;5 Trial                 0             1   12.5      6.92     1        6.75    12.5     18.2      24    ▇▇▆▇▇&quot;                      
+##  [8] &quot;6 ACC                   0             1    0.796    0.464   -1        1        1        1         2    ▁▂▁▇▁&quot;                      
+##  [9] &quot;7 RT                    0             1    0.715    0.151    0.106    0.610    0.702    0.805     1.18 ▁▂▇▅▁&quot;                      
+## [10] NA                                                                                                                                  
+## [11] NA                                                                                                                                  
+## [12] NA                                                                                                                                  
+## [13] NA                                                                                                                                  
+## [14] NA                                                                                                                                  
+## [15] NA                                                                                                                                  
+## [16] NA                                                                                                                                  
 ## [17] NA</code></pre>
 <p>bruceR::Describe()</p>
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="第七讲描述性统计与数据可视化基础.html#cb261-1" tabindex="-1"></a>bruceR<span class="sc">::</span><span class="fu">Describe</span>(mt_raw) <span class="sc">%&gt;%</span> </span>
