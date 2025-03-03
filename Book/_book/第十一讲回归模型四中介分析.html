@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 第十一讲：回归模型(四)：中介分析 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</title>
   <meta name="description" content="课程bookdown" />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 第十一讲：回归模型(四)：中介分析 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
   <meta property="og:type" content="book" />
@@ -185,8 +185,9 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="关于作者.html"><a href="关于作者.html"><i class="fa fa-check"></i>关于作者</a>
 <ul>
-<li class="chapter" data-level="0.5" data-path="关于作者.html"><a href="关于作者.html#春季学期助教及电子书转录志愿者"><i class="fa fa-check"></i><b>0.5</b> 2024春季学期助教及电子书转录志愿者：</a></li>
-<li class="chapter" data-level="0.6" data-path="关于作者.html"><a href="关于作者.html#春季学期助教"><i class="fa fa-check"></i><b>0.6</b> 2023春季学期助教：</a></li>
+<li class="chapter" data-level="0.5" data-path="关于作者.html"><a href="关于作者.html#春季学期特邀分享人"><i class="fa fa-check"></i><b>0.5</b> 2024春季学期特邀分享人：</a></li>
+<li class="chapter" data-level="0.6" data-path="关于作者.html"><a href="关于作者.html#春季学期助教及电子书转录志愿者"><i class="fa fa-check"></i><b>0.6</b> 2024春季学期助教及电子书转录志愿者：</a></li>
+<li class="chapter" data-level="0.7" data-path="关于作者.html"><a href="关于作者.html#春季学期助教"><i class="fa fa-check"></i><b>0.7</b> 2023春季学期助教：</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>1</b> 第一讲：为什么要学习R</a>
 <ul>
@@ -573,19 +574,19 @@ div.csl-indent {
 </ol>
 <div id="准备工作" class="section level2 hasAnchor" number="11.1">
 <h2><span class="header-section-number">11.1</span> 准备工作<a href="第十一讲回归模型四中介分析.html#准备工作" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="第十一讲回归模型四中介分析.html#cb439-1" tabindex="-1"></a><span class="co"># Packages</span></span>
-<span id="cb439-2"><a href="第十一讲回归模型四中介分析.html#cb439-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&#39;pacman&#39;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb439-3"><a href="第十一讲回归模型四中介分析.html#cb439-3" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&#39;pacman&#39;</span>)</span>
-<span id="cb439-4"><a href="第十一讲回归模型四中介分析.html#cb439-4" tabindex="-1"></a>}</span>
-<span id="cb439-5"><a href="第十一讲回归模型四中介分析.html#cb439-5" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,easystats,magrittr,</span>
-<span id="cb439-6"><a href="第十一讲回归模型四中介分析.html#cb439-6" tabindex="-1"></a>               <span class="co"># 中介分析</span></span>
-<span id="cb439-7"><a href="第十一讲回归模型四中介分析.html#cb439-7" tabindex="-1"></a>               lavaan, bruceR,tidySEM,</span>
-<span id="cb439-8"><a href="第十一讲回归模型四中介分析.html#cb439-8" tabindex="-1"></a>               <span class="co"># 数据集</span></span>
-<span id="cb439-9"><a href="第十一讲回归模型四中介分析.html#cb439-9" tabindex="-1"></a>               quartets,</span>
-<span id="cb439-10"><a href="第十一讲回归模型四中介分析.html#cb439-10" tabindex="-1"></a>               <span class="co"># 绘图</span></span>
-<span id="cb439-11"><a href="第十一讲回归模型四中介分析.html#cb439-11" tabindex="-1"></a>               patchwork,DiagrammeR,magick)</span>
-<span id="cb439-12"><a href="第十一讲回归模型四中介分析.html#cb439-12" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">99999</span>,<span class="at">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb439-13"><a href="第十一讲回归模型四中介分析.html#cb439-13" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1002</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="第十一讲回归模型四中介分析.html#cb441-1" tabindex="-1"></a><span class="co"># Packages</span></span>
+<span id="cb441-2"><a href="第十一讲回归模型四中介分析.html#cb441-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&#39;pacman&#39;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb441-3"><a href="第十一讲回归模型四中介分析.html#cb441-3" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&#39;pacman&#39;</span>)</span>
+<span id="cb441-4"><a href="第十一讲回归模型四中介分析.html#cb441-4" tabindex="-1"></a>}</span>
+<span id="cb441-5"><a href="第十一讲回归模型四中介分析.html#cb441-5" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,easystats,magrittr,</span>
+<span id="cb441-6"><a href="第十一讲回归模型四中介分析.html#cb441-6" tabindex="-1"></a>               <span class="co"># 中介分析</span></span>
+<span id="cb441-7"><a href="第十一讲回归模型四中介分析.html#cb441-7" tabindex="-1"></a>               lavaan, bruceR,tidySEM,</span>
+<span id="cb441-8"><a href="第十一讲回归模型四中介分析.html#cb441-8" tabindex="-1"></a>               <span class="co"># 数据集</span></span>
+<span id="cb441-9"><a href="第十一讲回归模型四中介分析.html#cb441-9" tabindex="-1"></a>               quartets,</span>
+<span id="cb441-10"><a href="第十一讲回归模型四中介分析.html#cb441-10" tabindex="-1"></a>               <span class="co"># 绘图</span></span>
+<span id="cb441-11"><a href="第十一讲回归模型四中介分析.html#cb441-11" tabindex="-1"></a>               patchwork,DiagrammeR,magick)</span>
+<span id="cb441-12"><a href="第十一讲回归模型四中介分析.html#cb441-12" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">99999</span>,<span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb441-13"><a href="第十一讲回归模型四中介分析.html#cb441-13" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1002</span>)</span></code></pre></div>
 </div>
 <div id="线性模型回顾" class="section level2 hasAnchor" number="11.2">
 <h2><span class="header-section-number">11.2</span> 线性模型回顾<a href="第十一讲回归模型四中介分析.html#线性模型回顾" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -603,9 +604,9 @@ Quartet</strong>中展示了经典的、检查原始数据的情境。尽管四�
 <p>上面提到的这些问题，有的时候可以通过一些模型诊断的方法来将其诊断出来，
 比方说下图<code>performance::check_model</code>的回归模型评估结果中，我们可以看到，当有一个极大的偏移值的时候，我们的估计会产生误差。</p>
 <p><strong>[performance]</strong></p>
-<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="第十一讲回归模型四中介分析.html#cb440-1" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x,<span class="at">data =</span> anscombe_quartet <span class="sc">%&gt;%</span> </span>
-<span id="cb440-2"><a href="第十一讲回归模型四中介分析.html#cb440-2" tabindex="-1"></a>     dplyr<span class="sc">::</span><span class="fu">filter</span>(dataset <span class="sc">==</span> <span class="st">&#39;(3) Outlier&#39;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb440-3"><a href="第十一讲回归模型四中介分析.html#cb440-3" tabindex="-1"></a>  performance<span class="sc">::</span><span class="fu">check_model</span>(<span class="at">check =</span> <span class="fu">c</span>(<span class="st">&#39;linearity&#39;</span>,<span class="st">&#39;outliers&#39;</span>)) <span class="co">#&lt;&lt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="第十一讲回归模型四中介分析.html#cb442-1" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x,<span class="at">data =</span> anscombe_quartet <span class="sc">%&gt;%</span> </span>
+<span id="cb442-2"><a href="第十一讲回归模型四中介分析.html#cb442-2" tabindex="-1"></a>     dplyr<span class="sc">::</span><span class="fu">filter</span>(dataset <span class="sc">==</span> <span class="st">&#39;(3) Outlier&#39;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb442-3"><a href="第十一讲回归模型四中介分析.html#cb442-3" tabindex="-1"></a>  performance<span class="sc">::</span><span class="fu">check_model</span>(<span class="at">check =</span> <span class="fu">c</span>(<span class="st">&#39;linearity&#39;</span>,<span class="st">&#39;outliers&#39;</span>)) <span class="co">#&lt;&lt;</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/Outlier-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="多元线性模型的局限" class="section level3 hasAnchor" number="11.2.2">
@@ -674,8 +675,8 @@ Analysis，去看各个RCT研究中是否有差异。</p>
 <div id="对于机制的表示图" class="section level3 hasAnchor" number="11.3.1">
 <h3><span class="header-section-number">11.3.1</span> 2.1 对于“机制”的表示——“图”<a href="第十一讲回归模型四中介分析.html#对于机制的表示图" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>我们在做路径分析的时候，我们一般使用“图”来表征理论因果关系</p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-1795bda16dca1a63bc7e" style="width:672px;height:100px;"></div>
-<script type="application/json" data-for="htmlwidget-1795bda16dca1a63bc7e">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X1 ->X2\n  X2 -> X3\n  X1 -> X3\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-e62cab020e19515ef1b5" style="width:672px;height:100px;"></div>
+<script type="application/json" data-for="htmlwidget-e62cab020e19515ef1b5">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X1 ->X2\n  X2 -> X3\n  X1 -> X3\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <ul>
 <li><p>图包括两部分：节点和边。节点表示具体变量，而箭头表示变量之间的关系；</p></li>
 <li><p>对节点来说，在SEM中，观测变量用矩形表示，潜变量用椭圆表示。</p></li>
@@ -683,12 +684,12 @@ Analysis，去看各个RCT研究中是否有差异。</p>
 </ul>
 <p>我们在做假设模型时，一般都不会假设出现下图这种情况，可以看到，
 从x1到x2，x2到x3，x3又回来到x1了，形成了一个闭环。</p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-a3062922f5cd691b6cdf" style="width:672px;height:100px;"></div>
-<script type="application/json" data-for="htmlwidget-a3062922f5cd691b6cdf">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X1 ->X2\n  X2 -> X3\n  X3 -> X1\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-825ab6236c6dcefdadab" style="width:672px;height:100px;"></div>
+<script type="application/json" data-for="htmlwidget-825ab6236c6dcefdadab">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X1 ->X2\n  X2 -> X3\n  X3 -> X1\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>我们一般来说更希望的是不存在循环的关系，如下图，在统计和机械学习领域，称其为<strong>有向无环图(Directed
 Acyclic Graph, DAGs)</strong></p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-8411c8b7284a52462cd3" style="width:672px;height:100px;"></div>
-<script type="application/json" data-for="htmlwidget-8411c8b7284a52462cd3">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X1 ->X2\n  X2 -> X3\n  X1 -> X3\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-1769cab26cb5de1f9217" style="width:672px;height:100px;"></div>
+<script type="application/json" data-for="htmlwidget-1769cab26cb5de1f9217">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X1 ->X2\n  X2 -> X3\n  X1 -> X3\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="中介分析-1" class="section level3 hasAnchor" number="11.3.2">
 <h3><span class="header-section-number">11.3.2</span> 中介分析<a href="第十一讲回归模型四中介分析.html#中介分析-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -698,8 +699,8 @@ Acyclic Graph, DAGs)</strong></p>
 <p>对于中介过程的量化分析包括路径分析和SEM（同时包含测量模型和结构模型），后面的介绍基于路径分析。</p>
 <p>关注变量间因果关系，自变量如何影响因变量（即机制），如X通过M作用于Y，M为中介变量。中介的存在意味着时间上发生的先后顺序：
 <span class="math inline">\(X \rightarrow M \rightarrow Y\)</span> 。</p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-8004ef0d27e5c80b7f88" style="width:672px;height:100px;"></div>
-<script type="application/json" data-for="htmlwidget-8004ef0d27e5c80b7f88">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X -> M\n  X -> Y\n  M -> Y\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-d564be44a40337cfc442" style="width:672px;height:100px;"></div>
+<script type="application/json" data-for="htmlwidget-d564be44a40337cfc442">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X -> M\n  X -> Y\n  M -> Y\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>这里会有一个问题，我们为什么会关心中介机制呢，或者是中介变量呢？
 中介分析，它对我们现实生活到底有什么真实意义？</p>
 <p>有一种可能的例子，比方说原生家庭是自变量X，心理健康因变量是Y，
@@ -712,20 +713,20 @@ Acyclic Graph, DAGs)</strong></p>
 <span class="math inline">\(e_1\)</span>。这里就是一个简单的线性回归模型。</p>
 <p><strong>总方程:</strong></p>
 <p><span class="math display">\[Y = i_1 + cX + e_1\]</span></p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-716ff167fefe05f92172" style="width:672px;height:200px;"></div>
-<script type="application/json" data-for="htmlwidget-716ff167fefe05f92172">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  \n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.4,weight = 0.3,fontsize = 10]\n  e1[style = NULL,fillcolor = NULL,penwidth = 0,height = 0.02,width = 0.02]\n  \n  # 定义边\n  edge [color = black, arrowhead = vee]\n  {rank = same; e1; Y}\n  X -> Y [label = \"c\"]\n  e1 -> Y\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-4251a164bb680f277c5d" style="width:672px;height:200px;"></div>
+<script type="application/json" data-for="htmlwidget-4251a164bb680f277c5d">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  \n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.4,weight = 0.3,fontsize = 10]\n  e1[style = NULL,fillcolor = NULL,penwidth = 0,height = 0.02,width = 0.02]\n  \n  # 定义边\n  edge [color = black, arrowhead = vee]\n  {rank = same; e1; Y}\n  X -> Y [label = \"c\"]\n  e1 -> Y\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p><strong>分解:</strong></p>
 <p><span class="math display">\[M = i_2 + aX + e_2\]</span></p>
 <p><span class="math display">\[Y = i_3 + c&#39;X + bM + e_3\]</span></p>
 <p>当我们加入中介时，我们就假定有这么一个中介变量m，m是可以通过x来预测的：<span class="math inline">\(M = i_2 + aX + e_2\)</span>，且又能够再去预测y：<span class="math inline">\(Y = i_3 + c&#39;X + bM + e_3\)</span>，
 所以它最后形成这样的形式：</p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-3985e9cba2ca5b5a1add" style="width:672px;height:200px;"></div>
-<script type="application/json" data-for="htmlwidget-3985e9cba2ca5b5a1add">{"x":{"diagram":"digraph {\n  graph [layout = dot]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n  e2[style = NULL,fillcolor = NULL,penwidth = 0,\n    height = 0.02,width = 0.02]\n  e3[style = NULL,fillcolor = NULL,penwidth = 0,\n    height = 0.02,width = 0.02]\n    \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n  # {rank = min; X; Med}\n  {rank = same; e2 Med}\n  {rank = same; X Y}\n\n  X -> Med [label = \"a\", len = 1]  \n  Med -> Y [label = \"b\", len = 1]  \n  X -> Y [label = \"c′\", len = 15]  \n  e3 -> Y [len = 1]  \n  e2 -> Med [len = 1] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-79b136ef6a96bc565daf" style="width:672px;height:200px;"></div>
+<script type="application/json" data-for="htmlwidget-79b136ef6a96bc565daf">{"x":{"diagram":"digraph {\n  graph [layout = dot]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n  e2[style = NULL,fillcolor = NULL,penwidth = 0,\n    height = 0.02,width = 0.02]\n  e3[style = NULL,fillcolor = NULL,penwidth = 0,\n    height = 0.02,width = 0.02]\n    \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n  # {rank = min; X; Med}\n  {rank = same; e2 Med}\n  {rank = same; X Y}\n\n  X -> Med [label = \"a\", len = 1]  \n  Med -> Y [label = \"b\", len = 1]  \n  X -> Y [label = \"c′\", len = 15]  \n  e3 -> Y [len = 1]  \n  e2 -> Med [len = 1] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="中介效应" class="section level3 hasAnchor" number="11.3.3">
 <h3><span class="header-section-number">11.3.3</span> 中介效应<a href="第十一讲回归模型四中介分析.html#中介效应" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-db0cf370e086e7e79c28" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-db0cf370e086e7e79c28">{"x":{"diagram":"digraph {\n  graph [layout = dot]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n  e2[style = NULL,fillcolor = NULL,penwidth = 0,\n    height = 0.02,width = 0.02]\n  e3[style = NULL,fillcolor = NULL,penwidth = 0,\n    height = 0.02,width = 0.02]\n    \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n  # {rank = min; X; Med}\n  {rank = same; e2 Med}\n  {rank = same; X Y}\n\n  X -> Med [label = \"a\", len = 1]  \n  Med -> Y [label = \"b\", len = 1]  \n  X -> Y [label = \"c′\", len = 15]  \n  e3 -> Y [len = 1]  \n  e2 -> Med [len = 1] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-8e90cf1494183e714026" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-8e90cf1494183e714026">{"x":{"diagram":"digraph {\n  graph [layout = dot]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n  e2[style = NULL,fillcolor = NULL,penwidth = 0,\n    height = 0.02,width = 0.02]\n  e3[style = NULL,fillcolor = NULL,penwidth = 0,\n    height = 0.02,width = 0.02]\n    \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n  # {rank = min; X; Med}\n  {rank = same; e2 Med}\n  {rank = same; X Y}\n\n  X -> Med [label = \"a\", len = 1]  \n  Med -> Y [label = \"b\", len = 1]  \n  X -> Y [label = \"c′\", len = 15]  \n  e3 -> Y [len = 1]  \n  e2 -> Med [len = 1] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p><span class="math display">\[ Y = i_1 + cX + e_1\]</span></p>
 <p><span class="math display">\[ M = i_2 + aX + e_2\]</span></p>
 <p><span class="math display">\[Y = i_3 + c&#39;X + bM + e_3\]</span></p>
@@ -745,18 +746,18 @@ Acyclic Graph, DAGs)</strong></p>
 <ul>
 <li>以Penguin_data中CBT与DEQ的关系举例，对于总效应c来说：</li>
 </ul>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="第十一讲回归模型四中介分析.html#cb441-1" tabindex="-1"></a>tot <span class="ot">=</span> <span class="fu">lm</span>(CBT <span class="sc">~</span> DEQ,<span class="at">data =</span> pg_raw <span class="sc">%&gt;%</span> </span>
-<span id="cb441-2"><a href="第十一讲回归模型四中介分析.html#cb441-2" tabindex="-1"></a>           dplyr<span class="sc">::</span><span class="fu">filter</span>(romantic <span class="sc">==</span> <span class="dv">1</span>))</span>
-<span id="cb441-3"><a href="第十一讲回归模型四中介分析.html#cb441-3" tabindex="-1"></a><span class="co"># 计算相关</span></span>
-<span id="cb441-4"><a href="第十一讲回归模型四中介分析.html#cb441-4" tabindex="-1"></a>r <span class="ot">=</span> pg_raw <span class="sc">%&gt;%</span> </span>
-<span id="cb441-5"><a href="第十一讲回归模型四中介分析.html#cb441-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(romantic <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb441-6"><a href="第十一讲回归模型四中介分析.html#cb441-6" tabindex="-1"></a>  correlation<span class="sc">::</span><span class="fu">correlation</span>(<span class="at">select =</span> <span class="fu">cc</span>(<span class="st">&quot;DEQ,CBT&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb441-7"><a href="第十一讲回归模型四中介分析.html#cb441-7" tabindex="-1"></a>  .<span class="sc">$</span>r</span>
-<span id="cb441-8"><a href="第十一讲回归模型四中介分析.html#cb441-8" tabindex="-1"></a></span>
-<span id="cb441-9"><a href="第十一讲回归模型四中介分析.html#cb441-9" tabindex="-1"></a><span class="co"># 比较回归系数与相关</span></span>
-<span id="cb441-10"><a href="第十一讲回归模型四中介分析.html#cb441-10" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="st">&#39;相关系数&#39;</span> <span class="ot">=</span> </span>
-<span id="cb441-11"><a href="第十一讲回归模型四中介分析.html#cb441-11" tabindex="-1"></a>             (<span class="fu">sd</span>(pg_raw<span class="sc">$</span>CBT,<span class="at">na.rm =</span> T)<span class="sc">/</span><span class="fu">sd</span>(pg_raw<span class="sc">$</span>DEQ,<span class="at">na.rm =</span> T))<span class="sc">*</span>r,</span>
-<span id="cb441-12"><a href="第十一讲回归模型四中介分析.html#cb441-12" tabindex="-1"></a>           <span class="st">&#39;回归系数&#39;</span> <span class="ot">=</span> tot<span class="sc">$</span>coefficients[<span class="dv">2</span>]) <span class="sc">%&gt;%</span> <span class="fu">print</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="第十一讲回归模型四中介分析.html#cb443-1" tabindex="-1"></a>tot <span class="ot">=</span> <span class="fu">lm</span>(CBT <span class="sc">~</span> DEQ,<span class="at">data =</span> pg_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb443-2"><a href="第十一讲回归模型四中介分析.html#cb443-2" tabindex="-1"></a>           dplyr<span class="sc">::</span><span class="fu">filter</span>(romantic <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb443-3"><a href="第十一讲回归模型四中介分析.html#cb443-3" tabindex="-1"></a><span class="co"># 计算相关</span></span>
+<span id="cb443-4"><a href="第十一讲回归模型四中介分析.html#cb443-4" tabindex="-1"></a>r <span class="ot">=</span> pg_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb443-5"><a href="第十一讲回归模型四中介分析.html#cb443-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(romantic <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb443-6"><a href="第十一讲回归模型四中介分析.html#cb443-6" tabindex="-1"></a>  correlation<span class="sc">::</span><span class="fu">correlation</span>(<span class="at">select =</span> <span class="fu">cc</span>(<span class="st">&quot;DEQ,CBT&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb443-7"><a href="第十一讲回归模型四中介分析.html#cb443-7" tabindex="-1"></a>  .<span class="sc">$</span>r</span>
+<span id="cb443-8"><a href="第十一讲回归模型四中介分析.html#cb443-8" tabindex="-1"></a></span>
+<span id="cb443-9"><a href="第十一讲回归模型四中介分析.html#cb443-9" tabindex="-1"></a><span class="co"># 比较回归系数与相关</span></span>
+<span id="cb443-10"><a href="第十一讲回归模型四中介分析.html#cb443-10" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="st">&#39;相关系数&#39;</span> <span class="ot">=</span> </span>
+<span id="cb443-11"><a href="第十一讲回归模型四中介分析.html#cb443-11" tabindex="-1"></a>             (<span class="fu">sd</span>(pg_raw<span class="sc">$</span>CBT,<span class="at">na.rm =</span> T)<span class="sc">/</span><span class="fu">sd</span>(pg_raw<span class="sc">$</span>DEQ,<span class="at">na.rm =</span> T))<span class="sc">*</span>r,</span>
+<span id="cb443-12"><a href="第十一讲回归模型四中介分析.html#cb443-12" tabindex="-1"></a>           <span class="st">&#39;回归系数&#39;</span> <span class="ot">=</span> tot<span class="sc">$</span>coefficients[<span class="dv">2</span>]) <span class="sc">%&gt;%</span> <span class="fu">print</span>()</span></code></pre></div>
 <pre><code>##      相关系数  回归系数
 ## DEQ -0.000663 -0.000673</code></pre>
 <p>可以发现，回归系数本质上只是(偏)相关(
@@ -798,59 +799,59 @@ Carlo，MCMC）去近似这个参数值 。</p>
 <li><p>DEQ为自变量，CBT为因变量，CSI为中介变量。</p></li>
 <li><p>赤道距离(DEQ)应当正向预测社会复杂度(CSI)，而社会复杂度应当正向预测体温(CBT)，但赤道距离(DEQ)应当负向预测体温(CBT)(即遮掩效应，如下图)</p></li>
 </ul>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-733e94b79ed6c18be034" style="width:672px;height:300px;"></div>
-<script type="application/json" data-for="htmlwidget-733e94b79ed6c18be034">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  DEQ -> CSI[label = \"+\"]\n  DEQ -> CBT[label = \"-\"]\n  CSI -> CBT[label = \"+\"]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-53c2040ab899bf60815d" style="width:672px;height:300px;"></div>
+<script type="application/json" data-for="htmlwidget-53c2040ab899bf60815d">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  DEQ -> CSI[label = \"+\"]\n  DEQ -> CBT[label = \"-\"]\n  CSI -> CBT[label = \"+\"]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>这里我们不再去做探索分析，进行数据的预处理之后，直接计算各个变量的值，再去做中介分析。如果要从原始数据里面去计算社交网络的复杂度CSI，可以去仔细的去看一看这里面的代码，会涉及到比较多的反复的重新编码。</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="第十一讲回归模型四中介分析.html#cb443-1" tabindex="-1"></a><span class="co"># 数据导入</span></span>
-<span id="cb443-2"><a href="第十一讲回归模型四中介分析.html#cb443-2" tabindex="-1"></a>pg_raw <span class="ot">=</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;Book&quot;</span>,<span class="st">&#39;data&#39;</span>,<span class="st">&#39;penguin&#39;</span>,<span class="st">&#39;penguin_rawdata_full.csv&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="第十一讲回归模型四中介分析.html#cb445-1" tabindex="-1"></a><span class="co"># 数据导入</span></span>
+<span id="cb445-2"><a href="第十一讲回归模型四中介分析.html#cb445-2" tabindex="-1"></a>pg_raw <span class="ot">=</span> bruceR<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;Book&quot;</span>,<span class="st">&#39;data&#39;</span>,<span class="st">&#39;penguin&#39;</span>,<span class="st">&#39;penguin_rawdata_full.csv&#39;</span>))</span></code></pre></div>
 <p>数据预处理这里,可能会有很多这种变量名的选择，还有一些重新编码，
 大家可以看到这个地方用的code是我们2018年左右写的代码，
 当时是用的<code>apply</code>，自己写了一个function，来进行重新编码，</p>
 <p>但实际上，如果大家想要去锻炼一下数据预处理能力，可以尝试能不能用tidyverse改一改这个地方，可能会更简洁。这里不再仔细讲解。</p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="第十一讲回归模型四中介分析.html#cb444-1" tabindex="-1"></a><span class="co"># 计算CSI</span></span>
-<span id="cb444-2"><a href="第十一讲回归模型四中介分析.html#cb444-2" tabindex="-1"></a><span class="do">### get the column names:</span></span>
-<span id="cb444-3"><a href="第十一讲回归模型四中介分析.html#cb444-3" tabindex="-1"></a>snDivNames  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;SNI3&quot;</span>, <span class="st">&quot;SNI5&quot;</span>, <span class="st">&quot;SNI7&quot;</span>, <span class="st">&quot;SNI9&quot;</span>, <span class="st">&quot;SNI11&quot;</span>, <span class="st">&quot;SNI13&quot;</span>,  <span class="st">&quot;SNI15&quot;</span>, <span class="st">&quot;SNI17&quot;</span>,<span class="st">&quot;SNI18&quot;</span>,<span class="st">&quot;SNI19&quot;</span>,<span class="st">&quot;SNI21&quot;</span>)</span>
-<span id="cb444-4"><a href="第十一讲回归模型四中介分析.html#cb444-4" tabindex="-1"></a>extrDivName <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;SNI28&quot;</span>,<span class="st">&quot;SNI29&quot;</span>,<span class="st">&quot;SNI30&quot;</span>,<span class="st">&quot;SNI31&quot;</span>,<span class="st">&quot;SNI32&quot;</span>)    <span class="co"># colnames of the extra groups</span></span>
-<span id="cb444-5"><a href="第十一讲回归模型四中介分析.html#cb444-5" tabindex="-1"></a></span>
-<span id="cb444-6"><a href="第十一讲回归模型四中介分析.html#cb444-6" tabindex="-1"></a><span class="do">### create a empty dataframe for social network diversity</span></span>
-<span id="cb444-7"><a href="第十一讲回归模型四中介分析.html#cb444-7" tabindex="-1"></a>snDivData <span class="ot">&lt;-</span> <span class="fu">setNames</span>(<span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="at">ncol =</span> <span class="fu">length</span>(snDivNames), <span class="at">nrow =</span> <span class="fu">nrow</span>(pg_raw))), snDivNames)</span>
-<span id="cb444-8"><a href="第十一讲回归模型四中介分析.html#cb444-8" tabindex="-1"></a></span>
-<span id="cb444-9"><a href="第十一讲回归模型四中介分析.html#cb444-9" tabindex="-1"></a><span class="do">### recode Q10 (spouse): 1-&gt; 1; else -&gt;0</span></span>
-<span id="cb444-10"><a href="第十一讲回归模型四中介分析.html#cb444-10" tabindex="-1"></a>snDivData<span class="sc">$</span>SNI1_r <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(pg_raw<span class="sc">$</span>SNI1,<span class="st">&quot;1= 1; else = 0&quot;</span>)</span>
-<span id="cb444-11"><a href="第十一讲回归模型四中介分析.html#cb444-11" tabindex="-1"></a></span>
-<span id="cb444-12"><a href="第十一讲回归模型四中介分析.html#cb444-12" tabindex="-1"></a><span class="do">####re-code Q12 ~ Q30: NA -&gt; 0; 0 -&gt; 0; 1~10 -&gt; 1</span></span>
-<span id="cb444-13"><a href="第十一讲回归模型四中介分析.html#cb444-13" tabindex="-1"></a>snDivData[,snDivNames] <span class="ot">&lt;-</span> <span class="fu">apply</span>(pg_raw[,snDivNames],<span class="dv">2</span>,<span class="cf">function</span>(x) {x <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(x,<span class="st">&quot;0 = 0; NA = 0; 1:10 = 1;&quot;</span>); x}) </span>
-<span id="cb444-14"><a href="第十一讲回归模型四中介分析.html#cb444-14" tabindex="-1"></a></span>
-<span id="cb444-15"><a href="第十一讲回归模型四中介分析.html#cb444-15" tabindex="-1"></a><span class="do">### add suffix to the colnames</span></span>
-<span id="cb444-16"><a href="第十一讲回归模型四中介分析.html#cb444-16" tabindex="-1"></a><span class="fu">colnames</span>(snDivData[,snDivNames]) <span class="ot">&lt;-</span> <span class="fu">paste</span>(snDivNames,<span class="st">&quot;div&quot;</span>,  <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>)    </span>
-<span id="cb444-17"><a href="第十一讲回归模型四中介分析.html#cb444-17" tabindex="-1"></a></span>
-<span id="cb444-18"><a href="第十一讲回归模型四中介分析.html#cb444-18" tabindex="-1"></a><span class="do">### recode the social network at work by combining SNI17, SNI18</span></span>
-<span id="cb444-19"><a href="第十一讲回归模型四中介分析.html#cb444-19" tabindex="-1"></a>snDivData<span class="sc">$</span>SNIwork   <span class="ot">&lt;-</span> snDivData<span class="sc">$</span>SNI17 <span class="sc">+</span> snDivData<span class="sc">$</span>SNI18</span>
-<span id="cb444-20"><a href="第十一讲回归模型四中介分析.html#cb444-20" tabindex="-1"></a>snDivData<span class="sc">$</span>SNIwork_r <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(snDivData<span class="sc">$</span>SNIwork,<span class="st">&quot;0 = 0;1:10 = 1&quot;</span>)</span>
-<span id="cb444-21"><a href="第十一讲回归模型四中介分析.html#cb444-21" tabindex="-1"></a></span>
-<span id="cb444-22"><a href="第十一讲回归模型四中介分析.html#cb444-22" tabindex="-1"></a><span class="do">### re-code extra groups, 0/NA --&gt; 0; more than 0 --&gt; 1</span></span>
-<span id="cb444-23"><a href="第十一讲回归模型四中介分析.html#cb444-23" tabindex="-1"></a>extrDivData <span class="ot">&lt;-</span> pg_raw[,extrDivName]          <span class="co"># Get extra data</span></span>
-<span id="cb444-24"><a href="第十一讲回归模型四中介分析.html#cb444-24" tabindex="-1"></a>extrDivData<span class="sc">$</span>sum <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(extrDivData)    <span class="co"># sum the other groups</span></span>
-<span id="cb444-25"><a href="第十一讲回归模型四中介分析.html#cb444-25" tabindex="-1"></a>snDivData<span class="sc">$</span>extrDiv_r <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(extrDivData<span class="sc">$</span>sum,<span class="st">&quot;0 = 0; NA = 0; else = 1&quot;</span>)  <span class="co"># recode</span></span>
-<span id="cb444-26"><a href="第十一讲回归模型四中介分析.html#cb444-26" tabindex="-1"></a></span>
-<span id="cb444-27"><a href="第十一讲回归模型四中介分析.html#cb444-27" tabindex="-1"></a><span class="do">### Get the column names for social diversity </span></span>
-<span id="cb444-28"><a href="第十一讲回归模型四中介分析.html#cb444-28" tabindex="-1"></a>snDivNames_r <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;SNI1_r&quot;</span>,<span class="st">&quot;SNI3&quot;</span>,<span class="st">&quot;SNI5&quot;</span>,<span class="st">&quot;SNI7&quot;</span>,<span class="st">&quot;SNI9&quot;</span>,<span class="st">&quot;SNI11&quot;</span>,<span class="st">&quot;SNI13&quot;</span>,<span class="st">&quot;SNI15&quot;</span>,<span class="st">&quot;SNIwork_r&quot;</span>,</span>
-<span id="cb444-29"><a href="第十一讲回归模型四中介分析.html#cb444-29" tabindex="-1"></a>                  <span class="st">&quot;SNI19&quot;</span>,<span class="st">&quot;SNI21&quot;</span>,<span class="st">&quot;extrDiv_r&quot;</span>)</span>
-<span id="cb444-30"><a href="第十一讲回归模型四中介分析.html#cb444-30" tabindex="-1"></a></span>
-<span id="cb444-31"><a href="第十一讲回归模型四中介分析.html#cb444-31" tabindex="-1"></a><span class="do">### Get the social diveristy score</span></span>
-<span id="cb444-32"><a href="第十一讲回归模型四中介分析.html#cb444-32" tabindex="-1"></a>snDivData<span class="sc">$</span>SNdiversity <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(snDivData[,snDivNames_r])</span>
-<span id="cb444-33"><a href="第十一讲回归模型四中介分析.html#cb444-33" tabindex="-1"></a>pg_raw<span class="sc">$</span>socialdiversity <span class="ot">&lt;-</span> snDivData<span class="sc">$</span>SNdiversity</span></code></pre></div>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="第十一讲回归模型四中介分析.html#cb445-1" tabindex="-1"></a><span class="do">## 更改列名</span></span>
-<span id="cb445-2"><a href="第十一讲回归模型四中介分析.html#cb445-2" tabindex="-1"></a>pg_raw <span class="sc">%&lt;&gt;%</span> dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">CSI =</span> socialdiversity)</span>
-<span id="cb445-3"><a href="第十一讲回归模型四中介分析.html#cb445-3" tabindex="-1"></a><span class="do">###  计算CBT（mean）</span></span>
-<span id="cb445-4"><a href="第十一讲回归模型四中介分析.html#cb445-4" tabindex="-1"></a><span class="co"># 筛选大于34.99 的被试</span></span>
-<span id="cb445-5"><a href="第十一讲回归模型四中介分析.html#cb445-5" tabindex="-1"></a>pg_raw <span class="sc">%&lt;&gt;%</span></span>
-<span id="cb445-6"><a href="第十一讲回归模型四中介分析.html#cb445-6" tabindex="-1"></a>  <span class="fu">filter</span>(Temperature_t1 <span class="sc">&gt;</span> <span class="fl">34.99</span> <span class="sc">&amp;</span></span>
-<span id="cb445-7"><a href="第十一讲回归模型四中介分析.html#cb445-7" tabindex="-1"></a>          Temperature_t2 <span class="sc">&gt;</span> <span class="fl">34.99</span>)</span>
-<span id="cb445-8"><a href="第十一讲回归模型四中介分析.html#cb445-8" tabindex="-1"></a></span>
-<span id="cb445-9"><a href="第十一讲回归模型四中介分析.html#cb445-9" tabindex="-1"></a><span class="co"># 前测后测求均值</span></span>
-<span id="cb445-10"><a href="第十一讲回归模型四中介分析.html#cb445-10" tabindex="-1"></a>pg_raw <span class="sc">%&lt;&gt;%</span> </span>
-<span id="cb445-11"><a href="第十一讲回归模型四中介分析.html#cb445-11" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">CBT =</span> (Temperature_t1 <span class="sc">+</span> Temperature_t2)<span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="第十一讲回归模型四中介分析.html#cb446-1" tabindex="-1"></a><span class="co"># 计算CSI</span></span>
+<span id="cb446-2"><a href="第十一讲回归模型四中介分析.html#cb446-2" tabindex="-1"></a><span class="do">### get the column names:</span></span>
+<span id="cb446-3"><a href="第十一讲回归模型四中介分析.html#cb446-3" tabindex="-1"></a>snDivNames  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;SNI3&quot;</span>, <span class="st">&quot;SNI5&quot;</span>, <span class="st">&quot;SNI7&quot;</span>, <span class="st">&quot;SNI9&quot;</span>, <span class="st">&quot;SNI11&quot;</span>, <span class="st">&quot;SNI13&quot;</span>,  <span class="st">&quot;SNI15&quot;</span>, <span class="st">&quot;SNI17&quot;</span>,<span class="st">&quot;SNI18&quot;</span>,<span class="st">&quot;SNI19&quot;</span>,<span class="st">&quot;SNI21&quot;</span>)</span>
+<span id="cb446-4"><a href="第十一讲回归模型四中介分析.html#cb446-4" tabindex="-1"></a>extrDivName <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;SNI28&quot;</span>,<span class="st">&quot;SNI29&quot;</span>,<span class="st">&quot;SNI30&quot;</span>,<span class="st">&quot;SNI31&quot;</span>,<span class="st">&quot;SNI32&quot;</span>)    <span class="co"># colnames of the extra groups</span></span>
+<span id="cb446-5"><a href="第十一讲回归模型四中介分析.html#cb446-5" tabindex="-1"></a></span>
+<span id="cb446-6"><a href="第十一讲回归模型四中介分析.html#cb446-6" tabindex="-1"></a><span class="do">### create a empty dataframe for social network diversity</span></span>
+<span id="cb446-7"><a href="第十一讲回归模型四中介分析.html#cb446-7" tabindex="-1"></a>snDivData <span class="ot">&lt;-</span> <span class="fu">setNames</span>(<span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="at">ncol =</span> <span class="fu">length</span>(snDivNames), <span class="at">nrow =</span> <span class="fu">nrow</span>(pg_raw))), snDivNames)</span>
+<span id="cb446-8"><a href="第十一讲回归模型四中介分析.html#cb446-8" tabindex="-1"></a></span>
+<span id="cb446-9"><a href="第十一讲回归模型四中介分析.html#cb446-9" tabindex="-1"></a><span class="do">### recode Q10 (spouse): 1-&gt; 1; else -&gt;0</span></span>
+<span id="cb446-10"><a href="第十一讲回归模型四中介分析.html#cb446-10" tabindex="-1"></a>snDivData<span class="sc">$</span>SNI1_r <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(pg_raw<span class="sc">$</span>SNI1,<span class="st">&quot;1= 1; else = 0&quot;</span>)</span>
+<span id="cb446-11"><a href="第十一讲回归模型四中介分析.html#cb446-11" tabindex="-1"></a></span>
+<span id="cb446-12"><a href="第十一讲回归模型四中介分析.html#cb446-12" tabindex="-1"></a><span class="do">####re-code Q12 ~ Q30: NA -&gt; 0; 0 -&gt; 0; 1~10 -&gt; 1</span></span>
+<span id="cb446-13"><a href="第十一讲回归模型四中介分析.html#cb446-13" tabindex="-1"></a>snDivData[,snDivNames] <span class="ot">&lt;-</span> <span class="fu">apply</span>(pg_raw[,snDivNames],<span class="dv">2</span>,<span class="cf">function</span>(x) {x <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(x,<span class="st">&quot;0 = 0; NA = 0; 1:10 = 1;&quot;</span>); x}) </span>
+<span id="cb446-14"><a href="第十一讲回归模型四中介分析.html#cb446-14" tabindex="-1"></a></span>
+<span id="cb446-15"><a href="第十一讲回归模型四中介分析.html#cb446-15" tabindex="-1"></a><span class="do">### add suffix to the colnames</span></span>
+<span id="cb446-16"><a href="第十一讲回归模型四中介分析.html#cb446-16" tabindex="-1"></a><span class="fu">colnames</span>(snDivData[,snDivNames]) <span class="ot">&lt;-</span> <span class="fu">paste</span>(snDivNames,<span class="st">&quot;div&quot;</span>,  <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>)    </span>
+<span id="cb446-17"><a href="第十一讲回归模型四中介分析.html#cb446-17" tabindex="-1"></a></span>
+<span id="cb446-18"><a href="第十一讲回归模型四中介分析.html#cb446-18" tabindex="-1"></a><span class="do">### recode the social network at work by combining SNI17, SNI18</span></span>
+<span id="cb446-19"><a href="第十一讲回归模型四中介分析.html#cb446-19" tabindex="-1"></a>snDivData<span class="sc">$</span>SNIwork   <span class="ot">&lt;-</span> snDivData<span class="sc">$</span>SNI17 <span class="sc">+</span> snDivData<span class="sc">$</span>SNI18</span>
+<span id="cb446-20"><a href="第十一讲回归模型四中介分析.html#cb446-20" tabindex="-1"></a>snDivData<span class="sc">$</span>SNIwork_r <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(snDivData<span class="sc">$</span>SNIwork,<span class="st">&quot;0 = 0;1:10 = 1&quot;</span>)</span>
+<span id="cb446-21"><a href="第十一讲回归模型四中介分析.html#cb446-21" tabindex="-1"></a></span>
+<span id="cb446-22"><a href="第十一讲回归模型四中介分析.html#cb446-22" tabindex="-1"></a><span class="do">### re-code extra groups, 0/NA --&gt; 0; more than 0 --&gt; 1</span></span>
+<span id="cb446-23"><a href="第十一讲回归模型四中介分析.html#cb446-23" tabindex="-1"></a>extrDivData <span class="ot">&lt;-</span> pg_raw[,extrDivName]          <span class="co"># Get extra data</span></span>
+<span id="cb446-24"><a href="第十一讲回归模型四中介分析.html#cb446-24" tabindex="-1"></a>extrDivData<span class="sc">$</span>sum <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(extrDivData)    <span class="co"># sum the other groups</span></span>
+<span id="cb446-25"><a href="第十一讲回归模型四中介分析.html#cb446-25" tabindex="-1"></a>snDivData<span class="sc">$</span>extrDiv_r <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(extrDivData<span class="sc">$</span>sum,<span class="st">&quot;0 = 0; NA = 0; else = 1&quot;</span>)  <span class="co"># recode</span></span>
+<span id="cb446-26"><a href="第十一讲回归模型四中介分析.html#cb446-26" tabindex="-1"></a></span>
+<span id="cb446-27"><a href="第十一讲回归模型四中介分析.html#cb446-27" tabindex="-1"></a><span class="do">### Get the column names for social diversity </span></span>
+<span id="cb446-28"><a href="第十一讲回归模型四中介分析.html#cb446-28" tabindex="-1"></a>snDivNames_r <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;SNI1_r&quot;</span>,<span class="st">&quot;SNI3&quot;</span>,<span class="st">&quot;SNI5&quot;</span>,<span class="st">&quot;SNI7&quot;</span>,<span class="st">&quot;SNI9&quot;</span>,<span class="st">&quot;SNI11&quot;</span>,<span class="st">&quot;SNI13&quot;</span>,<span class="st">&quot;SNI15&quot;</span>,<span class="st">&quot;SNIwork_r&quot;</span>,</span>
+<span id="cb446-29"><a href="第十一讲回归模型四中介分析.html#cb446-29" tabindex="-1"></a>                  <span class="st">&quot;SNI19&quot;</span>,<span class="st">&quot;SNI21&quot;</span>,<span class="st">&quot;extrDiv_r&quot;</span>)</span>
+<span id="cb446-30"><a href="第十一讲回归模型四中介分析.html#cb446-30" tabindex="-1"></a></span>
+<span id="cb446-31"><a href="第十一讲回归模型四中介分析.html#cb446-31" tabindex="-1"></a><span class="do">### Get the social diveristy score</span></span>
+<span id="cb446-32"><a href="第十一讲回归模型四中介分析.html#cb446-32" tabindex="-1"></a>snDivData<span class="sc">$</span>SNdiversity <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(snDivData[,snDivNames_r])</span>
+<span id="cb446-33"><a href="第十一讲回归模型四中介分析.html#cb446-33" tabindex="-1"></a>pg_raw<span class="sc">$</span>socialdiversity <span class="ot">&lt;-</span> snDivData<span class="sc">$</span>SNdiversity</span></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="第十一讲回归模型四中介分析.html#cb447-1" tabindex="-1"></a><span class="do">## 更改列名</span></span>
+<span id="cb447-2"><a href="第十一讲回归模型四中介分析.html#cb447-2" tabindex="-1"></a>pg_raw <span class="sc">%&lt;&gt;%</span> dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">CSI =</span> socialdiversity)</span>
+<span id="cb447-3"><a href="第十一讲回归模型四中介分析.html#cb447-3" tabindex="-1"></a><span class="do">###  计算CBT（mean）</span></span>
+<span id="cb447-4"><a href="第十一讲回归模型四中介分析.html#cb447-4" tabindex="-1"></a><span class="co"># 筛选大于34.99 的被试</span></span>
+<span id="cb447-5"><a href="第十一讲回归模型四中介分析.html#cb447-5" tabindex="-1"></a>pg_raw <span class="sc">%&lt;&gt;%</span></span>
+<span id="cb447-6"><a href="第十一讲回归模型四中介分析.html#cb447-6" tabindex="-1"></a>  <span class="fu">filter</span>(Temperature_t1 <span class="sc">&gt;</span> <span class="fl">34.99</span> <span class="sc">&amp;</span></span>
+<span id="cb447-7"><a href="第十一讲回归模型四中介分析.html#cb447-7" tabindex="-1"></a>          Temperature_t2 <span class="sc">&gt;</span> <span class="fl">34.99</span>)</span>
+<span id="cb447-8"><a href="第十一讲回归模型四中介分析.html#cb447-8" tabindex="-1"></a></span>
+<span id="cb447-9"><a href="第十一讲回归模型四中介分析.html#cb447-9" tabindex="-1"></a><span class="co"># 前测后测求均值</span></span>
+<span id="cb447-10"><a href="第十一讲回归模型四中介分析.html#cb447-10" tabindex="-1"></a>pg_raw <span class="sc">%&lt;&gt;%</span> </span>
+<span id="cb447-11"><a href="第十一讲回归模型四中介分析.html#cb447-11" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">CBT =</span> (Temperature_t1 <span class="sc">+</span> Temperature_t2)<span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
 </div>
 <div id="代码实现" class="section level3 hasAnchor" number="11.3.6">
 <h3><span class="header-section-number">11.3.6</span> 代码实现<a href="第十一讲回归模型四中介分析.html#代码实现" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -917,25 +918,25 @@ groups、Growth curves等。 现在lavaan包在R中做SEM是最常用的，
 定义中介效应为<code>ab := a*b</code> - 定义总效应为为<code>total := c + (a*b)</code></p>
 <p>可以发现，这里本质上就是把之前线性回归的公式，换成了r代码。
 定义模型之后，我们再使用lavaan包进行拟合，这里Bootstrap次数因为时间关系设为100,实际研究中推荐1000次。</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="第十一讲回归模型四中介分析.html#cb446-1" tabindex="-1"></a>med_model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb446-2"><a href="第十一讲回归模型四中介分析.html#cb446-2" tabindex="-1"></a><span class="st">  # 直接效应(Y = cX)</span></span>
-<span id="cb446-3"><a href="第十一讲回归模型四中介分析.html#cb446-3" tabindex="-1"></a><span class="st">  CBT ~ c*DEQ   # 语法同回归，但需要声明回归系数</span></span>
-<span id="cb446-4"><a href="第十一讲回归模型四中介分析.html#cb446-4" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb446-5"><a href="第十一讲回归模型四中介分析.html#cb446-5" tabindex="-1"></a><span class="st">  # 中介路径(M)</span></span>
-<span id="cb446-6"><a href="第十一讲回归模型四中介分析.html#cb446-6" tabindex="-1"></a><span class="st">  CSI ~ a*DEQ</span></span>
-<span id="cb446-7"><a href="第十一讲回归模型四中介分析.html#cb446-7" tabindex="-1"></a><span class="st">  CBT ~ b*CSI</span></span>
-<span id="cb446-8"><a href="第十一讲回归模型四中介分析.html#cb446-8" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb446-9"><a href="第十一讲回归模型四中介分析.html#cb446-9" tabindex="-1"></a><span class="st">  # 定义间接效应c&#39;</span></span>
-<span id="cb446-10"><a href="第十一讲回归模型四中介分析.html#cb446-10" tabindex="-1"></a><span class="st">  #注： `:=`意思是根据已有的参数定义新的参数</span></span>
-<span id="cb446-11"><a href="第十一讲回归模型四中介分析.html#cb446-11" tabindex="-1"></a><span class="st">  ab := a*b</span></span>
-<span id="cb446-12"><a href="第十一讲回归模型四中介分析.html#cb446-12" tabindex="-1"></a></span>
-<span id="cb446-13"><a href="第十一讲回归模型四中介分析.html#cb446-13" tabindex="-1"></a><span class="st">  # 总效应</span></span>
-<span id="cb446-14"><a href="第十一讲回归模型四中介分析.html#cb446-14" tabindex="-1"></a><span class="st">  total := c + (a*b)&quot;</span></span>
-<span id="cb446-15"><a href="第十一讲回归模型四中介分析.html#cb446-15" tabindex="-1"></a><span class="co"># 注：这里数据仅以处于浪漫关系中的个体为例</span></span>
-<span id="cb446-16"><a href="第十一讲回归模型四中介分析.html#cb446-16" tabindex="-1"></a>fit <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">sem</span>(med_model,</span>
-<span id="cb446-17"><a href="第十一讲回归模型四中介分析.html#cb446-17" tabindex="-1"></a>           <span class="at">data =</span> pg_raw <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(romantic <span class="sc">==</span> <span class="dv">1</span>),</span>
-<span id="cb446-18"><a href="第十一讲回归模型四中介分析.html#cb446-18" tabindex="-1"></a>           <span class="at">bootstrap =</span> <span class="dv">100</span> <span class="co"># 建议1000</span></span>
-<span id="cb446-19"><a href="第十一讲回归模型四中介分析.html#cb446-19" tabindex="-1"></a>           )</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="第十一讲回归模型四中介分析.html#cb448-1" tabindex="-1"></a>med_model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb448-2"><a href="第十一讲回归模型四中介分析.html#cb448-2" tabindex="-1"></a><span class="st">  # 直接效应(Y = cX)</span></span>
+<span id="cb448-3"><a href="第十一讲回归模型四中介分析.html#cb448-3" tabindex="-1"></a><span class="st">  CBT ~ c*DEQ   # 语法同回归，但需要声明回归系数</span></span>
+<span id="cb448-4"><a href="第十一讲回归模型四中介分析.html#cb448-4" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb448-5"><a href="第十一讲回归模型四中介分析.html#cb448-5" tabindex="-1"></a><span class="st">  # 中介路径(M)</span></span>
+<span id="cb448-6"><a href="第十一讲回归模型四中介分析.html#cb448-6" tabindex="-1"></a><span class="st">  CSI ~ a*DEQ</span></span>
+<span id="cb448-7"><a href="第十一讲回归模型四中介分析.html#cb448-7" tabindex="-1"></a><span class="st">  CBT ~ b*CSI</span></span>
+<span id="cb448-8"><a href="第十一讲回归模型四中介分析.html#cb448-8" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb448-9"><a href="第十一讲回归模型四中介分析.html#cb448-9" tabindex="-1"></a><span class="st">  # 定义间接效应c&#39;</span></span>
+<span id="cb448-10"><a href="第十一讲回归模型四中介分析.html#cb448-10" tabindex="-1"></a><span class="st">  #注： `:=`意思是根据已有的参数定义新的参数</span></span>
+<span id="cb448-11"><a href="第十一讲回归模型四中介分析.html#cb448-11" tabindex="-1"></a><span class="st">  ab := a*b</span></span>
+<span id="cb448-12"><a href="第十一讲回归模型四中介分析.html#cb448-12" tabindex="-1"></a></span>
+<span id="cb448-13"><a href="第十一讲回归模型四中介分析.html#cb448-13" tabindex="-1"></a><span class="st">  # 总效应</span></span>
+<span id="cb448-14"><a href="第十一讲回归模型四中介分析.html#cb448-14" tabindex="-1"></a><span class="st">  total := c + (a*b)&quot;</span></span>
+<span id="cb448-15"><a href="第十一讲回归模型四中介分析.html#cb448-15" tabindex="-1"></a><span class="co"># 注：这里数据仅以处于浪漫关系中的个体为例</span></span>
+<span id="cb448-16"><a href="第十一讲回归模型四中介分析.html#cb448-16" tabindex="-1"></a>fit <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">sem</span>(med_model,</span>
+<span id="cb448-17"><a href="第十一讲回归模型四中介分析.html#cb448-17" tabindex="-1"></a>           <span class="at">data =</span> pg_raw <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(romantic <span class="sc">==</span> <span class="dv">1</span>),</span>
+<span id="cb448-18"><a href="第十一讲回归模型四中介分析.html#cb448-18" tabindex="-1"></a>           <span class="at">bootstrap =</span> <span class="dv">100</span> <span class="co"># 建议1000</span></span>
+<span id="cb448-19"><a href="第十一讲回归模型四中介分析.html#cb448-19" tabindex="-1"></a>           )</span></code></pre></div>
 <blockquote>
 <p>Tips:有一些同学可能不太习惯这种带有一定随机过程的结果，
 比如说跑了两次的结果不太一样。实际上，不管是使用bootstrap还是贝叶斯，这种带一些随机过程的结果输出，总体上大致相似，只是每一次输出的结果可能不会精确的一致。</p>
@@ -944,15 +945,15 @@ groups、Growth curves等。 现在lavaan包在R中做SEM是最常用的，
 <p><img src="_main_files/figure-html/unnamed-chunk-255-1.png" width="435" style="display: block; margin: auto;" /><img src="pic/chp11/lav.png" width="868" style="display: block; margin: auto;" /></p>
 <p>我们这里绘图使用的是tidySEM包，当然也有semPlot等包可以选择；tidySEM使用了tidyverse风格，并支持lavaan和Mplus等语法对SEM进行建模，可使用help(package
 = tidySEM)进行查看。</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="第十一讲回归模型四中介分析.html#cb447-1" tabindex="-1"></a><span class="co">#中介图-tidySEM</span></span>
-<span id="cb447-2"><a href="第十一讲回归模型四中介分析.html#cb447-2" tabindex="-1"></a><span class="do">## 与DiagrammeR::get_edges相冲突</span></span>
-<span id="cb447-3"><a href="第十一讲回归模型四中介分析.html#cb447-3" tabindex="-1"></a><span class="fu">detach</span>(<span class="st">&quot;package:DiagrammeR&quot;</span>, <span class="at">unload =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb447-4"><a href="第十一讲回归模型四中介分析.html#cb447-4" tabindex="-1"></a><span class="do">## 细节修改可在Vignettes中查看tidySEM::Plotting_graphs</span></span>
-<span id="cb447-5"><a href="第十一讲回归模型四中介分析.html#cb447-5" tabindex="-1"></a>lay <span class="ot">=</span> <span class="fu">get_layout</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;CSI&quot;</span>, <span class="st">&quot;&quot;</span>,</span>
-<span id="cb447-6"><a href="第十一讲回归模型四中介分析.html#cb447-6" tabindex="-1"></a>                 <span class="st">&quot;DEQ&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;CBT&quot;</span>, </span>
-<span id="cb447-7"><a href="第十一讲回归模型四中介分析.html#cb447-7" tabindex="-1"></a>                 <span class="at">rows =</span> <span class="dv">2</span>)</span>
-<span id="cb447-8"><a href="第十一讲回归模型四中介分析.html#cb447-8" tabindex="-1"></a>tidySEM<span class="sc">::</span><span class="fu">graph_sem</span>(fit,<span class="at">digits =</span> <span class="dv">3</span>,</span>
-<span id="cb447-9"><a href="第十一讲回归模型四中介分析.html#cb447-9" tabindex="-1"></a>                   <span class="at">layout =</span> lay)</span></code></pre></div>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="第十一讲回归模型四中介分析.html#cb449-1" tabindex="-1"></a><span class="co">#中介图-tidySEM</span></span>
+<span id="cb449-2"><a href="第十一讲回归模型四中介分析.html#cb449-2" tabindex="-1"></a><span class="do">## 与DiagrammeR::get_edges相冲突</span></span>
+<span id="cb449-3"><a href="第十一讲回归模型四中介分析.html#cb449-3" tabindex="-1"></a><span class="fu">detach</span>(<span class="st">&quot;package:DiagrammeR&quot;</span>, <span class="at">unload =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb449-4"><a href="第十一讲回归模型四中介分析.html#cb449-4" tabindex="-1"></a><span class="do">## 细节修改可在Vignettes中查看tidySEM::Plotting_graphs</span></span>
+<span id="cb449-5"><a href="第十一讲回归模型四中介分析.html#cb449-5" tabindex="-1"></a>lay <span class="ot">=</span> <span class="fu">get_layout</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;CSI&quot;</span>, <span class="st">&quot;&quot;</span>,</span>
+<span id="cb449-6"><a href="第十一讲回归模型四中介分析.html#cb449-6" tabindex="-1"></a>                 <span class="st">&quot;DEQ&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;CBT&quot;</span>, </span>
+<span id="cb449-7"><a href="第十一讲回归模型四中介分析.html#cb449-7" tabindex="-1"></a>                 <span class="at">rows =</span> <span class="dv">2</span>)</span>
+<span id="cb449-8"><a href="第十一讲回归模型四中介分析.html#cb449-8" tabindex="-1"></a>tidySEM<span class="sc">::</span><span class="fu">graph_sem</span>(fit,<span class="at">digits =</span> <span class="dv">3</span>,</span>
+<span id="cb449-9"><a href="第十一讲回归模型四中介分析.html#cb449-9" tabindex="-1"></a>                   <span class="at">layout =</span> lay)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-256-1.png" width="672" style="display: block; margin: auto;" /></p>
 <blockquote>
 <p>Tips:我们使用<code>tidySEM::</code>的话，可能与其他包中的函数产生冲突，一般我们在函数前面加这个包的名字就可以解决，但当我们调用的函数内部又要调用冲突函数时，我们需要通过<code>detach</code>函数来避免冲突。</p>
@@ -965,12 +966,12 @@ groups、Growth curves等。 现在lavaan包在R中做SEM是最常用的，
 前两年，BruceR的开发者包博士， 他也将类似功能加入了BruceR包里面。
 bruceR包中介分析的用法非常符合我们心理学研究者的习惯，我们用<code>bruceR::PROCESS</code>
 定义x、y、meds，再设定bootstrap的次数即可。</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="第十一讲回归模型四中介分析.html#cb448-1" tabindex="-1"></a><span class="co">#[bruceR::PROCESS]</span></span>
-<span id="cb448-2"><a href="第十一讲回归模型四中介分析.html#cb448-2" tabindex="-1"></a></span>
-<span id="cb448-3"><a href="第十一讲回归模型四中介分析.html#cb448-3" tabindex="-1"></a><span class="do">## RUN IN CONSOLE !!!</span></span>
-<span id="cb448-4"><a href="第十一讲回归模型四中介分析.html#cb448-4" tabindex="-1"></a>pg_raw <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(romantic <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb448-5"><a href="第十一讲回归模型四中介分析.html#cb448-5" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">PROCESS</span>( <span class="do">## 注意这里默认nsim = 100，建议1000</span></span>
-<span id="cb448-6"><a href="第十一讲回归模型四中介分析.html#cb448-6" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&#39;DEQ&#39;</span>, <span class="at">y =</span> <span class="st">&#39;CBT&#39;</span>,<span class="at">meds =</span> <span class="st">&#39;CSI&#39;</span>,<span class="at">nsim =</span> <span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="第十一讲回归模型四中介分析.html#cb450-1" tabindex="-1"></a><span class="co">#[bruceR::PROCESS]</span></span>
+<span id="cb450-2"><a href="第十一讲回归模型四中介分析.html#cb450-2" tabindex="-1"></a></span>
+<span id="cb450-3"><a href="第十一讲回归模型四中介分析.html#cb450-3" tabindex="-1"></a><span class="do">## RUN IN CONSOLE !!!</span></span>
+<span id="cb450-4"><a href="第十一讲回归模型四中介分析.html#cb450-4" tabindex="-1"></a>pg_raw <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(romantic <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb450-5"><a href="第十一讲回归模型四中介分析.html#cb450-5" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">PROCESS</span>( <span class="do">## 注意这里默认nsim = 100，建议1000</span></span>
+<span id="cb450-6"><a href="第十一讲回归模型四中介分析.html#cb450-6" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&#39;DEQ&#39;</span>, <span class="at">y =</span> <span class="st">&#39;CBT&#39;</span>,<span class="at">meds =</span> <span class="st">&#39;CSI&#39;</span>,<span class="at">nsim =</span> <span class="dv">100</span>)</span></code></pre></div>
 <pre><code>## 
 ## ****************** PART 1. Regression Model Summary ******************
 ## 
@@ -1027,13 +1028,13 @@ bruceR包中介分析的用法非常符合我们心理学研究者的习惯，�
 <pre><code>## 
 ## Running 100 simulations...
 ## Indirect Path: &quot;DEQ&quot; (X) ==&gt; &quot;CSI&quot; (M) ==&gt; &quot;CBT&quot; (Y)
-## ───────────────────────────────────────────────────────────────
-##                Effect    S.E.      z     p        [Boot 95% CI]
-## ───────────────────────────────────────────────────────────────
-## Indirect (ab)   0.001 (0.000)  3.947 &lt;.001 *** [ 0.001,  0.002]
-## Direct (c&#39;)    -0.002 (0.001) -1.713  .087 .   [-0.004, -0.000]
-## Total (c)      -0.001 (0.001) -0.632  .527     [-0.003,  0.001]
-## ───────────────────────────────────────────────────────────────
+## ──────────────────────────────────────────────────────────────
+##                Effect    S.E.      z     p       [Boot 95% CI]
+## ──────────────────────────────────────────────────────────────
+## Indirect (ab)   0.001 (0.000)  4.363 &lt;.001 *** [ 0.001, 0.002]
+## Direct (c&#39;)    -0.002 (0.001) -1.842  .066 .   [-0.004, 0.000]
+## Total (c)      -0.001 (0.001) -0.629  .529     [-0.003, 0.001]
+## ──────────────────────────────────────────────────────────────
 ## Percentile Bootstrap Confidence Interval
 ## (SE and CI are estimated based on 100 Bootstrap samples.)
 ## 
@@ -1042,13 +1043,13 @@ bruceR包中介分析的用法非常符合我们心理学研究者的习惯，�
 ## To make results reproducible, you need to set a seed (any number).
 ## Please see the help page for details: help(PROCESS)
 ## Ignore this note if you have already set a seed. :)</code></pre>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="第十一讲回归模型四中介分析.html#cb452-1" tabindex="-1"></a><span class="co">#bruceR::PROCESS-Regression</span></span>
-<span id="cb452-2"><a href="第十一讲回归模型四中介分析.html#cb452-2" tabindex="-1"></a></span>
-<span id="cb452-3"><a href="第十一讲回归模型四中介分析.html#cb452-3" tabindex="-1"></a><span class="do">## RUN IN CONSOLE !!!</span></span>
-<span id="cb452-4"><a href="第十一讲回归模型四中介分析.html#cb452-4" tabindex="-1"></a>pg_raw <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(romantic <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb452-5"><a href="第十一讲回归模型四中介分析.html#cb452-5" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">PROCESS</span>( <span class="do">## 注意这里默认nsim = 100，建议1000</span></span>
-<span id="cb452-6"><a href="第十一讲回归模型四中介分析.html#cb452-6" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&#39;DEQ&#39;</span>, <span class="at">y =</span> <span class="st">&#39;CBT&#39;</span>,<span class="at">meds =</span> <span class="st">&#39;CSI&#39;</span>,<span class="at">nsim =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb452-7"><a href="第十一讲回归模型四中介分析.html#cb452-7" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="dv">27</span><span class="sc">:</span><span class="dv">43</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="第十一讲回归模型四中介分析.html#cb454-1" tabindex="-1"></a><span class="co">#bruceR::PROCESS-Regression</span></span>
+<span id="cb454-2"><a href="第十一讲回归模型四中介分析.html#cb454-2" tabindex="-1"></a></span>
+<span id="cb454-3"><a href="第十一讲回归模型四中介分析.html#cb454-3" tabindex="-1"></a><span class="do">## RUN IN CONSOLE !!!</span></span>
+<span id="cb454-4"><a href="第十一讲回归模型四中介分析.html#cb454-4" tabindex="-1"></a>pg_raw <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(romantic <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb454-5"><a href="第十一讲回归模型四中介分析.html#cb454-5" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">PROCESS</span>( <span class="do">## 注意这里默认nsim = 100，建议1000</span></span>
+<span id="cb454-6"><a href="第十一讲回归模型四中介分析.html#cb454-6" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&#39;DEQ&#39;</span>, <span class="at">y =</span> <span class="st">&#39;CBT&#39;</span>,<span class="at">meds =</span> <span class="st">&#39;CSI&#39;</span>,<span class="at">nsim =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb454-7"><a href="第十一讲回归模型四中介分析.html#cb454-7" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="dv">27</span><span class="sc">:</span><span class="dv">43</span>]</span></code></pre></div>
 <pre><code>## 
 ## Warning: nsim=1000 (or larger) is suggested!</code></pre>
 <pre><code>##  [1] &quot;Model Summary&quot;                                      &quot;&quot;                                                  
@@ -1062,21 +1063,21 @@ bruceR包中介分析的用法非常符合我们心理学研究者的习惯，�
 ## [17] &quot;Note. * p &lt; .05, ** p &lt; .01, *** p &lt; .001.&quot;</code></pre>
 <pre><code>## 
 ## Warning: nsim=1000 (or larger) is suggested!</code></pre>
-<pre><code>##  [1] &quot;Package Use : ‘mediation’ (v4.5.0)&quot;                            
-##  [2] &quot;Effect Type : Simple Mediation (Model 4)&quot;                      
-##  [3] &quot;Sample Size : 763 (37 missing observations deleted)&quot;           
-##  [4] &quot;Random Seed : set.seed()&quot;                                      
-##  [5] &quot;Simulations : 100 (Bootstrap)&quot;                                 
-##  [6] &quot;&quot;                                                              
-##  [7] &quot;Running 100 simulations...&quot;                                    
-##  [8] &quot;Indirect Path: \&quot;DEQ\&quot; (X) ==&gt; \&quot;CSI\&quot; (M) ==&gt; \&quot;CBT\&quot; (Y)&quot;    
-##  [9] &quot;──────────────────────────────────────────────────────────────&quot;
-## [10] &quot;               Effect    S.E.      z     p       [Boot 95% CI]&quot;
-## [11] &quot;──────────────────────────────────────────────────────────────&quot;
-## [12] &quot;Indirect (ab)   0.001 (0.000)  3.810 &lt;.001 *** [ 0.001, 0.002]&quot;
-## [13] &quot;Direct (c&#39;)    -0.002 (0.001) -1.629  .103     [-0.005, 0.000]&quot;
-## [14] &quot;Total (c)      -0.001 (0.001) -0.558  .577     [-0.003, 0.002]&quot;
-## [15] &quot;──────────────────────────────────────────────────────────────&quot;</code></pre>
+<pre><code>##  [1] &quot;Package Use : ‘mediation’ (v4.5.0)&quot;                             
+##  [2] &quot;Effect Type : Simple Mediation (Model 4)&quot;                       
+##  [3] &quot;Sample Size : 763 (37 missing observations deleted)&quot;            
+##  [4] &quot;Random Seed : set.seed()&quot;                                       
+##  [5] &quot;Simulations : 100 (Bootstrap)&quot;                                  
+##  [6] &quot;&quot;                                                               
+##  [7] &quot;Running 100 simulations...&quot;                                     
+##  [8] &quot;Indirect Path: \&quot;DEQ\&quot; (X) ==&gt; \&quot;CSI\&quot; (M) ==&gt; \&quot;CBT\&quot; (Y)&quot;     
+##  [9] &quot;───────────────────────────────────────────────────────────────&quot;
+## [10] &quot;               Effect    S.E.      z     p        [Boot 95% CI]&quot;
+## [11] &quot;───────────────────────────────────────────────────────────────&quot;
+## [12] &quot;Indirect (ab)   0.001 (0.000)  3.915 &lt;.001 *** [ 0.001,  0.002]&quot;
+## [13] &quot;Direct (c&#39;)    -0.002 (0.001) -1.780  .075 .   [-0.004, -0.000]&quot;
+## [14] &quot;Total (c)      -0.001 (0.001) -0.636  .525     [-0.002,  0.001]&quot;
+## [15] &quot;───────────────────────────────────────────────────────────────&quot;</code></pre>
 <p>可以看到，<code>bruceR::PROCESS</code>的结果输出很符合我们在论文中看到的结果呈现方式，
 对我们研究生或者研究者来说，非常友好，而且跑出来的结果还可以输出到Word文档中去。</p>
 <p>R包给我们的便利是我们可以使用其快速得到想要的统计值，但回到我们这节课关于因果关系的讨论，我们需要时刻清楚我们在使用怎样的一个统计系数，我们该如何去验证变量间的因果关系。我们很容易直觉的认为中介模型是帮助我们去得到某种机制，帮助我们去获得某种因果关系。但实际上我们推断因果关系时不能仅数据与统计模型，也依赖于我们如何设计研究，收集数据。如果前提假设未能满足，那么统计本身并不能带来令人信服的结果。</p>
@@ -1137,8 +1138,8 @@ Pearl等人提出了一种用于进行反事实推理的方法，叫做“do cal
 <h3><span class="header-section-number">11.4.3</span> 基于实验的中介<a href="第十一讲回归模型四中介分析.html#基于实验的中介" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>中介模型的数值本身并不能告诉我们因果关系，而在心理学中，利用中介变量去发现因果关系又是很重要的，尤其是当自变量是一些不可干预的变量时，通过干预中介来达到科学研究的目的是很好的方式。这就会涉及到我们如何去验证带有真正的因果的中介，当然，就如同RCT研究中想要得出因果都需要很复杂的假设，要去验证真正有因果的中介，是一件难上加难的事情。</p>
 <p>这里，我们用一个国内的学者葛枭语老师，发表在JESP上面一篇文章为例子，来探讨如何验证中介中的因果。</p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-0b013ea46e581a74802e" style="width:672px;height:200px;"></div>
-<script type="application/json" data-for="htmlwidget-0b013ea46e581a74802e">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X -> M\n  X -> Y\n  M -> Y\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-0907ed2115a86d60f703" style="width:672px;height:200px;"></div>
+<script type="application/json" data-for="htmlwidget-0907ed2115a86d60f703">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X -> M\n  X -> Y\n  M -> Y\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>假设：教材难度(X)通过焦虑(M)来影响努力程度(Y)，可以穷举出在哪些情况下我们不能验证中介中的因果：</p>
 <ul>
 <li><p>教材难度(X)不能影响焦虑(M)</p></li>
@@ -1151,8 +1152,8 @@ Pearl等人提出了一种用于进行反事实推理的方法，叫做“do cal
 <p>• 测量 M</p>
 <p>• 测量 Y</p>
 <p>对X进行操纵（如使用不同难度的教材），可以验证X对M的因果关系，但M与Y之间的因果关系并没有得到验证</p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-7dcc1a16e29535a0bc86" style="width:672px;height:200px;"></div>
-<script type="application/json" data-for="htmlwidget-7dcc1a16e29535a0bc86">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X -> M\n  X -> Y\n  M -> Y\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-db65d271eaed0edd27bf" style="width:672px;height:200px;"></div>
+<script type="application/json" data-for="htmlwidget-db65d271eaed0edd27bf">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X -> M\n  X -> Y\n  M -> Y\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>但如果我们理论假设错误，测量的是焦虑（A），但实际上实验操纵引发的中介应为恐惧(M,即实际路径应为X -
 M - Y,而我们测量路径为X - A -
 Y)，那么刚才的实验设计可能无法证伪，因此需要对A进行操纵：</p>
@@ -1161,8 +1162,8 @@ Y)，那么刚才的实验设计可能无法证伪，因此需要对A进行操�
 <p>• 测量 Y</p>
 <p>对X(如使用不同难度的教材)和A(控制组 vs
 提供相关辅导以减轻焦虑)进行操纵，如果对A的操纵不能影响Y，则可以证明中介路径不合理</p>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-73b4817826bc3917e08c" style="width:672px;height:200px;"></div>
-<script type="application/json" data-for="htmlwidget-73b4817826bc3917e08c">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X -> M\n  X -> Y\n  M -> Y\n  X -> A\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-0c799a5088b308412b83" style="width:672px;height:200px;"></div>
+<script type="application/json" data-for="htmlwidget-0c799a5088b308412b83">{"x":{"diagram":"digraph {\n  graph [layout = dot,rankdir = LR]\n  # 定义节点\n  node [shape = box, style = filled, fillcolor = \"lightblue\",height = 0.3,weight = 0.3,fontsize = 10]\n \n  # 定义边\n  edge [color = black, arrowhead = vee,fontsize = 10]\n\n  X -> M\n  X -> Y\n  M -> Y\n  X -> A\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>所以这里意味着我们要去进行带有因果性质的中介分析时，我们要做很多科学的思考，
 在实验设计上，尽量去控制混淆变量，这样的话才能够去真正的把因果关系搞清楚。</p>
 <p>如果去看其他的一些领域的文章，

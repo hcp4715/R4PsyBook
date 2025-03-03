@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 第九讲：回归模型(二)：分层线性模型 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</title>
   <meta name="description" content="课程bookdown" />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 第九讲：回归模型(二)：分层线性模型 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
   <meta property="og:type" content="book" />
@@ -185,8 +185,9 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="关于作者.html"><a href="关于作者.html"><i class="fa fa-check"></i>关于作者</a>
 <ul>
-<li class="chapter" data-level="0.5" data-path="关于作者.html"><a href="关于作者.html#春季学期助教及电子书转录志愿者"><i class="fa fa-check"></i><b>0.5</b> 2024春季学期助教及电子书转录志愿者：</a></li>
-<li class="chapter" data-level="0.6" data-path="关于作者.html"><a href="关于作者.html#春季学期助教"><i class="fa fa-check"></i><b>0.6</b> 2023春季学期助教：</a></li>
+<li class="chapter" data-level="0.5" data-path="关于作者.html"><a href="关于作者.html#春季学期特邀分享人"><i class="fa fa-check"></i><b>0.5</b> 2024春季学期特邀分享人：</a></li>
+<li class="chapter" data-level="0.6" data-path="关于作者.html"><a href="关于作者.html#春季学期助教及电子书转录志愿者"><i class="fa fa-check"></i><b>0.6</b> 2024春季学期助教及电子书转录志愿者：</a></li>
+<li class="chapter" data-level="0.7" data-path="关于作者.html"><a href="关于作者.html#春季学期助教"><i class="fa fa-check"></i><b>0.7</b> 2023春季学期助教：</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>1</b> 第一讲：为什么要学习R</a>
 <ul>
@@ -693,8 +694,8 @@ div.csl-indent {
 <span id="cb344-6"><a href="第九讲回归模型二分层线性模型.html#cb344-6" tabindex="-1"></a>                 <span class="at">regex =</span> <span class="st">&quot;(moral|immoral)(Self|Other)&quot;</span>,</span>
 <span id="cb344-7"><a href="第九讲回归模型二分层线性模型.html#cb344-7" tabindex="-1"></a>                 <span class="at">remove =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>[数据展示]</p>
-<div class="datatables html-widget html-fill-item" id="htmlwidget-db7a3121fb1fe7e15680" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-db7a3121fb1fe7e15680">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],[7302,7302,7302,7302,7302],[22,22,22,22,22],["female","female","female","female","female"],["R","R","R","R","R"],[1,1,1,1,1],[1,1,1,1,1],[1,2,3,4,5],["immoralSelf","moralOther","immoralOther","moralSelf","immoralSelf"],["immoral","moral","immoral","moral","immoral"],["Self","Other","Other","Self","Self"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sub<\/th>\n      <th>Age<\/th>\n      <th>Sex<\/th>\n      <th>Hand<\/th>\n      <th>Block<\/th>\n      <th>Bin<\/th>\n      <th>Trial<\/th>\n      <th>Shape<\/th>\n      <th>Valence<\/th>\n      <th>Identity<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,5,6,7]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Sub","targets":1},{"name":"Age","targets":2},{"name":"Sex","targets":3},{"name":"Hand","targets":4},{"name":"Block","targets":5},{"name":"Bin","targets":6},{"name":"Trial","targets":7},{"name":"Shape","targets":8},{"name":"Valence","targets":9},{"name":"Identity","targets":10}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-c987454e603865b08f95" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-c987454e603865b08f95">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],[7302,7302,7302,7302,7302],[22,22,22,22,22],["female","female","female","female","female"],["R","R","R","R","R"],[1,1,1,1,1],[1,1,1,1,1],[1,2,3,4,5],["immoralSelf","moralOther","immoralOther","moralSelf","immoralSelf"],["immoral","moral","immoral","moral","immoral"],["Self","Other","Other","Self","Self"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sub<\/th>\n      <th>Age<\/th>\n      <th>Sex<\/th>\n      <th>Hand<\/th>\n      <th>Block<\/th>\n      <th>Bin<\/th>\n      <th>Trial<\/th>\n      <th>Shape<\/th>\n      <th>Valence<\/th>\n      <th>Identity<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,5,6,7]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Sub","targets":1},{"name":"Age","targets":2},{"name":"Sex","targets":3},{"name":"Hand","targets":4},{"name":"Block","targets":5},{"name":"Bin","targets":6},{"name":"Trial","targets":7},{"name":"Shape","targets":8},{"name":"Valence","targets":9},{"name":"Identity","targets":10}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>以match_raw.csv为例，一个2x2的被试内实验设计（Identity:Self vs.Other) x Valence:Moral vs.Immoral)），我们希望知道这两种条件之下被试的反应时是否存在显著差异然后我们就发现，这个数据实际上是有很多的，每个被试还有很多个试次，那么这种情况的话，大家通常做法是怎么做呢？如果通常我们用常规的这个重复测量方差分析，大家怎么做呢？比方说有40多个被试，然后有四种条件，我们最后会算出每个被试在每种条件下，比方说我们关心反应时间的话，就是反应时间的一个均值，那么最后我们得到比方说44个被试他们的这个反应时间的均值，然后呢我们就把它输入到SPSS里面，然后进行一个重复测量方差分析，然后把它对应好，这是我们常规的做法，它数理结构基本上就是这样的。每一个被试有自我有他人，自我和他人下面又有moral和immoral两个条件，other的也有moral和immoral。
 这样的话，如果说我们在本科阶段我们讲方差分析的时候，我们就会告诉大家，这里面会进行方差的分解，我们把它分解为，不同条件之间的变异，或者不同的自变量引起的变异，以及这个被试的个体差异，我们主要关注的，比方说就是这个自变量它引起的变异在总体的变异当中的比值，然后根据这个比值去计算f值等等等等，计算MSE就是谁的，这是本科的或大概考研的时候，可能会涉及到内容，那么在SPSS里面，大家可能也看到过，类似的这个实现的方式，那么在r里面也很方便的进行实现.</p>
 <p><img src=".\chp9\data.png" /></p>
@@ -805,8 +806,8 @@ div.csl-indent {
 <p>那么可能在有一些领域，它可能根据多层线性模型的思路，它发展出了一些新的，特异于处理某一些特定类型的数据的方法，那么它还会给它一些叠加一些其他的名字，最重要的就是你要看到它本质是什么，它是不是比方说用以线性模型，或是广义线性模型，广义线性模型我们下节课会讲以线性模型作为最核心的一个模型，然后去考虑他的这个数据的层级结构，或层次结构，如果他有做这样做，基本上你就可以确定，他的原理上，可能就是跟我们这里讲的是差不多的，这里跟多元回归是完全不一样，多元回归是说有多个自变量，但他是没有考虑这个层级的结构的，那么在这个多层线型模型或者层级线型模型当中，有两个很重要的概念，我们先给大家简单的说一下，因为我们这里的层级模型，它都是以回归模型，就是以正态分布为核心的，那么在这种现行的层级模型当中，一般我们会考虑，从截距和斜率这两个效应上面去考虑我们这些效应，那么层级模型当中，它最关注两个效应就是固定效应和随机效应，一个叫fixed effect，一个叫random effect，这个所谓的固定和随机，这个名字本身非常不好理解，那我这里也不去跟大家把这个做非常细致的展开，大家如果感兴趣的话，可以去看知乎上的一个博客，包寒吴霜老师写的，那个博客对随机效应做了一个比较详尽的一个梳理，那么我们就通过一个例子来给大家展示一下，什么叫做固定效应和随机效应，那比方说我们看一个非常简单明了的一个层级数据，比方说工龄和薪水之间的一个关系，我们想要调查高校老师的工龄和工资之间有没有关系，那么从某一个学校里面，随机抽取出5个学院，然后获得他们的工资和工龄之间的关系，这是一个网上的数据，这里有数据来源，大家如果拿到rmarkdown，可以点击这个来源，然后这个数据结构大家可以看到，它基本上是这么一个嵌套的结构，首先你整个大学或者你整个学校，然后它有不同的departments，它有不同的学院或者系，每个系下面有不同的人，你调查的时候，实际上就是在不同的学院下面，去搜不同的人，然后再去从这个每个人身上，找到两个数据，一个是他工作多少年，另外一个是他的这个工资，然后你关心的是工资，和他的工作年限之间关系。</p>
 <p>在回归模型中一般会在截距和斜率上分别讨论<strong>固定效应</strong>和<strong>随机效应</strong>。</p>
 <p>例如，关于研究教师的工龄(Experience)与薪水(Salary)之间是否存在关系。在某校随机抽取了5个学院的教师信息，具体数据如下：]</p>
-<div class="datatables html-widget html-fill-item" id="htmlwidget-5ab0748e006e28b57628" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-5ab0748e006e28b57628">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6"],[1,2,3,4,5,6],["sociology","biology","english","informatics","statistics","sociology"],[39628.505,54578.738,57113.633,75941.27099999999,87351.30100000001,39802.471],[3,5,0,8,7,1],[1819.75,488.662,518.375,1770.109,471.033,2112.536],[45087.753,57022.049,57113.633,90102.143,90648.531,41915.007]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ids<\/th>\n      <th>department<\/th>\n      <th>bases<\/th>\n      <th>experience<\/th>\n      <th>raises<\/th>\n      <th>salary<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"ids","targets":1},{"name":"department","targets":2},{"name":"bases","targets":3},{"name":"experience","targets":4},{"name":"raises","targets":5},{"name":"salary","targets":6}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-65d494f124dd16bb924c" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-65d494f124dd16bb924c">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6"],[1,2,3,4,5,6],["sociology","biology","english","informatics","statistics","sociology"],[39628.505,54578.738,57113.633,75941.27099999999,87351.30100000001,39802.471],[3,5,0,8,7,1],[1819.75,488.662,518.375,1770.109,471.033,2112.536],[45087.753,57022.049,57113.633,90102.143,90648.531,41915.007]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ids<\/th>\n      <th>department<\/th>\n      <th>bases<\/th>\n      <th>experience<\/th>\n      <th>raises<\/th>\n      <th>salary<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"ids","targets":1},{"name":"department","targets":2},{"name":"bases","targets":3},{"name":"experience","targets":4},{"name":"raises","targets":5},{"name":"salary","targets":6}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>数据来源见(<a href="https://github.com/mkfreeman/hierarchical-models/blob/master/generate-data.R" class="uri">https://github.com/mkfreeman/hierarchical-models/blob/master/generate-data.R</a>)
 问题：是否可用工龄预测某个学校员工的工资？</p>
 <p><a href="第四讲如何导入数据.html#数据结构">数据结构</a>
@@ -938,7 +939,9 @@ div.csl-indent {
 <pre><code>## Contrasts set to contr.sum for the following variables: Identity, Valence</code></pre>
 <pre><code>## REML argument to lmer() set to FALSE for method = &#39;PB&#39; or &#39;LRT&#39;</code></pre>
 <pre><code>## Fitting 4 (g)lmer() models:
-## [....]</code></pre>
+## [..</code></pre>
+<pre><code>## .</code></pre>
+<pre><code>## .]</code></pre>
 <pre><code>## Mixed Model Anova Table (Type 3 tests, LRT-method)
 ## 
 ## Model: RT ~ Identity * Valence + (1 + Identity * Valence | Sub)
@@ -952,13 +955,13 @@ div.csl-indent {
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>第三个方法是我们我们可以用叫做lmertest这个包，这个包实际上是跟lme4兼容的一个包，主要就是对混合效应模型，或者说层级模型进行假设检验，这里就包含了lmer这个函数，lmer和我们前面用到的lme4基本上名字都是一样的，就是不同的包，它的一个主要特点就是会报告显著性，它在这里使用它自己的一些算法。我们在用lmer这个函数的时候，这里的语法的输入跟我们在lme4里基本是一模一样的，然后我们可以通过summary来去看它的结果。我们第一个看到的是它随机效应的相关矩阵，这里主要关注不同的随机效应间有没有相关性，但绝大部分的时候我们可能不会太关注这些信息，然后我们可能更多的看的是两个，第一个就是把这个固定效应，就是类似两个自变量有没有主效应和交互效应，另外一个我们有时候也会专门去看变化的随机效应，这里我们可能没有展示。</p>
 <p>lmerTest是一个与lme4包兼容的包，主要用于对混合效应模型进行假设检验；其中也包含了lmerTest::lmer()函数，与lme4::lmer()不同的是，其结果报告了显著性（使用Satterthwaite分母自由）</p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="第九讲回归模型二分层线性模型.html#cb373-1" tabindex="-1"></a>lmer_model <span class="ot">&lt;-</span> lmerTest<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> mt_raw,</span>
-<span id="cb373-2"><a href="第九讲回归模型二分层线性模型.html#cb373-2" tabindex="-1"></a>                             RT <span class="sc">~</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub))</span>
-<span id="cb373-3"><a href="第九讲回归模型二分层线性模型.html#cb373-3" tabindex="-1"></a><span class="co"># summary(lmer_model)</span></span>
-<span id="cb373-4"><a href="第九讲回归模型二分层线性模型.html#cb373-4" tabindex="-1"></a></span>
-<span id="cb373-5"><a href="第九讲回归模型二分层线性模型.html#cb373-5" tabindex="-1"></a><span class="co"># 如果使用lmerTest包进行建模，可以使用bruceR::HLM_summary()进行输出</span></span>
-<span id="cb373-6"><a href="第九讲回归模型二分层线性模型.html#cb373-6" tabindex="-1"></a><span class="do">##  RUN IN CONSOLE</span></span>
-<span id="cb373-7"><a href="第九讲回归模型二分层线性模型.html#cb373-7" tabindex="-1"></a><span class="co"># HLM_summary(lmer_model)</span></span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="第九讲回归模型二分层线性模型.html#cb375-1" tabindex="-1"></a>lmer_model <span class="ot">&lt;-</span> lmerTest<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> mt_raw,</span>
+<span id="cb375-2"><a href="第九讲回归模型二分层线性模型.html#cb375-2" tabindex="-1"></a>                             RT <span class="sc">~</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub))</span>
+<span id="cb375-3"><a href="第九讲回归模型二分层线性模型.html#cb375-3" tabindex="-1"></a><span class="co"># summary(lmer_model)</span></span>
+<span id="cb375-4"><a href="第九讲回归模型二分层线性模型.html#cb375-4" tabindex="-1"></a></span>
+<span id="cb375-5"><a href="第九讲回归模型二分层线性模型.html#cb375-5" tabindex="-1"></a><span class="co"># 如果使用lmerTest包进行建模，可以使用bruceR::HLM_summary()进行输出</span></span>
+<span id="cb375-6"><a href="第九讲回归模型二分层线性模型.html#cb375-6" tabindex="-1"></a><span class="do">##  RUN IN CONSOLE</span></span>
+<span id="cb375-7"><a href="第九讲回归模型二分层线性模型.html#cb375-7" tabindex="-1"></a><span class="co"># HLM_summary(lmer_model)</span></span></code></pre></div>
 <p>[随机效应]
 注意：
 - 相关矩阵会体现自变量效应在个体上的差异，尤其是第一列(截距与斜率的相关)，而具体的解释也应考虑对应固定效应系数本身的正负；</p>
@@ -974,20 +977,23 @@ div.csl-indent {
 ## [7] &quot; Residual                           0.01801  0.1342                    &quot;
 ## [8] &quot;Number of obs: 25920, groups:  Sub, 44&quot;</code></pre>
 <p>[固定效应]</p>
-<pre><code>## [1] &quot;Fixed effects:&quot;                                        &quot;                          Estimate Std. Error t value&quot;
-## [3] &quot;(Intercept)                0.72328    0.00997   72.51&quot; &quot;IdentitySelf               0.01329    0.00624    2.13&quot;
-## [5] &quot;Valencemoral              -0.00913    0.00744   -1.23&quot; &quot;IdentitySelf:Valencemoral -0.04150    0.01128   -3.68&quot;</code></pre>
+<pre><code>## [1] &quot;Fixed effects:&quot;                                       
+## [2] &quot;                          Estimate Std. Error t value&quot;
+## [3] &quot;(Intercept)                0.72328    0.00997   72.52&quot;
+## [4] &quot;IdentitySelf               0.01329    0.00624    2.13&quot;
+## [5] &quot;Valencemoral              -0.00913    0.00744   -1.23&quot;
+## [6] &quot;IdentitySelf:Valencemoral -0.04150    0.01128   -3.68&quot;</code></pre>
 <p>比如说在这个模式里面，我们应该是可以把每一个被试在identity上的效应提取出来，看它在被试间是怎样一个变化，以及比方说valence的效应，或者它们之间的交互作用，我们也可以对它进行一个可视化，这个可视化是个非常简陋的可视化，这里全部采用的是默认值，比方说顺序就是他人和自我，道德也是moral和immoral，跟我们之前呈现的顺序不一样，在讲完了这个统计模型之后，我们会专门讲怎么在gPlot里面，对这种最后要呈现的结果进行精细的打磨。那么实际上在现在有很多包，包括像interaction这样的包，它能够帮助我们迅速地把一些我们关注的效应进行可视化，让我们看到它们之间是什么样的情况，比方说这里我们可以看到是一个比较明显的交互作用，在other的条件之下的immoral和moral的差别，肯定是要比在自我条件下的差别是要小的，所以在这里我们可以非常明显的看到交互作用的存在。</p>
 <p>[交互效应的可视化]</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="第九讲回归模型二分层线性模型.html#cb376-1" tabindex="-1"></a><span class="do">## 一种快捷的方法</span></span>
-<span id="cb376-2"><a href="第九讲回归模型二分层线性模型.html#cb376-2" tabindex="-1"></a>interactions<span class="sc">::</span><span class="fu">cat_plot</span>(<span class="at">model =</span> model_full,</span>
-<span id="cb376-3"><a href="第九讲回归模型二分层线性模型.html#cb376-3" tabindex="-1"></a>                       <span class="at">pred =</span> Identity,</span>
-<span id="cb376-4"><a href="第九讲回归模型二分层线性模型.html#cb376-4" tabindex="-1"></a>                       <span class="at">modx =</span> Valence)</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="第九讲回归模型二分层线性模型.html#cb378-1" tabindex="-1"></a><span class="do">## 一种快捷的方法</span></span>
+<span id="cb378-2"><a href="第九讲回归模型二分层线性模型.html#cb378-2" tabindex="-1"></a>interactions<span class="sc">::</span><span class="fu">cat_plot</span>(<span class="at">model =</span> model_full,</span>
+<span id="cb378-3"><a href="第九讲回归模型二分层线性模型.html#cb378-3" tabindex="-1"></a>                       <span class="at">pred =</span> Identity,</span>
+<span id="cb378-4"><a href="第九讲回归模型二分层线性模型.html#cb378-4" tabindex="-1"></a>                       <span class="at">modx =</span> Valence)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-203-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>我们前面讲不同模型之间是等价的，我们也说从重复测量方差分析是一个特定的混合陷阱模型，那么它们到底能不能做到完全等价，或者说几乎是相同的呢？大家觉得能做到吗？我们可以先看一看。我们这里直接把之前的重复测量方差分析的结果打印出来。
 我们可以仔细看一下它的这个值，对Valence来说，效应是f值是64.37，p值是很小的，另外一个f值是14.36；然后还有identity它的f值是2.55，df都是143，这个跟我们在心理统计学上学到的重复测量方差分析是很像的。</p>
 <p>[anova]</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="第九讲回归模型二分层线性模型.html#cb377-1" tabindex="-1"></a>m_aov</span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="第九讲回归模型二分层线性模型.html#cb379-1" tabindex="-1"></a>m_aov</span></code></pre></div>
 <pre><code>## Anova Table (Type 3 tests)
 ## 
 ## Response: RT
@@ -999,8 +1005,8 @@ div.csl-indent {
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>我们可以看一下lme4，我们刚才建了好多个模型，然后我们选出最合适的一个，那么我们看一下最合适这个是不是跟我们的重复测量方式分析是一样的呢？我们直接看的话，用anova这个函数，用fullmodel把它的方差分析表打出来，我们就会看到它的f值，有三个f值，identity是0.74，跟我们的2.55不一样，第二个是45.00，跟我们的64.37也不要太一样，第三个也不太一样，但总体趋势差不多，总体趋势就是identity很小，valence比较大，它们的交互作用也比较大。</p>
 <p>[lme4]</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="第九讲回归模型二分层线性模型.html#cb379-1" tabindex="-1"></a><span class="do">## 使用lme4建立的模型</span></span>
-<span id="cb379-2"><a href="第九讲回归模型二分层线性模型.html#cb379-2" tabindex="-1"></a>model_full <span class="sc">%&gt;%</span> <span class="fu">anova</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="第九讲回归模型二分层线性模型.html#cb381-1" tabindex="-1"></a><span class="do">## 使用lme4建立的模型</span></span>
+<span id="cb381-2"><a href="第九讲回归模型二分层线性模型.html#cb381-2" tabindex="-1"></a>model_full <span class="sc">%&gt;%</span> <span class="fu">anova</span>()</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ##                  npar Sum Sq Mean Sq F value
 ## Identity            1  0.013   0.013    0.74
@@ -1008,27 +1014,27 @@ div.csl-indent {
 ## Identity:Valence    1  0.244   0.244   13.54</code></pre>
 <p>我们再看一下lmertest的fullmodel，因为它是给出显著性的，所以我们可以看看它会不会得到类似结果，可以看到跟lme4得到类似的结果，但是模式也都是一样的，identity比较小，valence比较大，identity和valence的交互作用处于中间，下面两个都是显著的，所以我们发现重复测量的方差分析和常规的层级模型，其实好像不太一样。</p>
 <p>[lmerTest]</p>
-<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="第九讲回归模型二分层线性模型.html#cb381-1" tabindex="-1"></a><span class="do">## 使用lmerTest建立的模型</span></span>
-<span id="cb381-2"><a href="第九讲回归模型二分层线性模型.html#cb381-2" tabindex="-1"></a>lmer_model <span class="sc">%&gt;%</span> <span class="fu">anova</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="第九讲回归模型二分层线性模型.html#cb383-1" tabindex="-1"></a><span class="do">## 使用lmerTest建立的模型</span></span>
+<span id="cb383-2"><a href="第九讲回归模型二分层线性模型.html#cb383-2" tabindex="-1"></a>lmer_model <span class="sc">%&gt;%</span> <span class="fu">anova</span>()</span></code></pre></div>
 <pre><code>## Type III Analysis of Variance Table with Satterthwaite&#39;s method
 ##                  Sum Sq Mean Sq NumDF DenDF F value      Pr(&gt;F)    
-## Identity          0.031   0.031     1  43.0    1.73     0.19575    
+## Identity          0.031   0.031     1  43.0    1.73     0.19574    
 ## Valence           0.765   0.765     1  43.3   42.46 0.000000063 ***
 ## Identity:Valence  0.244   0.244     1  43.0   13.54     0.00065 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>其实这个刚开始我也是比较困惑的，也找了很多解决方案，后来发现它需要以一种很特定的方式来建构层级模型，才能达到跟它很一致的结果。
 因为我们今年一直采用matching_data的反应时的数据，我们用它来跟前面进行对比，这里大家可以看到我们用的是mt_mean，我们在数据上做到了一样，前面那里还有个问题，就是它们的数据是不太一样的，比如这里的mt_mean，它用的是一个原始的数据应不应该在这里使用？因为我们这个数据量很大，所以有一些没有清理的数据不影响整体的趋势但假如你自己做数据分析，数据预处理这里一定是要再考虑考虑的。当然这里我们也试过了，用一模一样的数据，也是用mt_mean来做层级模型，它得到的结果也也是不一样的，跟这里是同样的一个趋势。那么假如我们采用mt_mean这种方式去去建立这个模型，它最有可能得到跟重复测量方差分析一样的结果了，这个模型是比较特别的，首先它有identity和valence的主效应，然后它有被试间的random intercept，每一个被试在每一个identity下面会有一个独特的intercept，同样对每一个被试来说，在每一个valence上也有一个独特的random intercept。在这种情况之下，我们得到的结果是最接近的，是59.89，接近60，这个是15.36，跟64.37和14.36是最接近的，但还是没有达到一模一样，还有个问题大家可以看他的这个df，它的自由度，第一个自由度是一模一样的，所以它这里达到了一样的值，143和2.55，这个地方也是2.55，但后面两个自由度和F值不一样，如果大家有兴趣仔细去扒为什么出现这个问题，实际上是因为使用这两个不同函数的人是有不同的习惯的，或者说有不同的重视的点，对于做传统的重复测量方差分析的人来说，很重视方差的分解，然后如何去求f值，这方面会做的很精细，不同的包之间也是能达到精确的一致性的，对于绝大多数做lmer的人来说，他都是从线性模型的角度，他不会在把这个模型做完之后，再去做一个方差分析，然后看它跟重复测量方差分析是不是一模一样的结果。</p>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="第九讲回归模型二分层线性模型.html#cb383-1" tabindex="-1"></a><span class="co"># http://www.dwoll.de/rexrepos/posts/anovaMixed.html#two-way-repeated-measures-anova-rbf-pq-design</span></span>
-<span id="cb383-2"><a href="第九讲回归模型二分层线性模型.html#cb383-2" tabindex="-1"></a></span>
-<span id="cb383-3"><a href="第九讲回归模型二分层线性模型.html#cb383-3" tabindex="-1"></a>model_aov <span class="ot">&lt;-</span> mt_mean <span class="sc">%&gt;%</span></span>
-<span id="cb383-4"><a href="第九讲回归模型二分层线性模型.html#cb383-4" tabindex="-1"></a>  <span class="co"># dplyr::filter(!is.na(RT) &amp; Match == &quot;match&quot; &amp; ACC == 1) %&gt;%</span></span>
-<span id="cb383-5"><a href="第九讲回归模型二分层线性模型.html#cb383-5" tabindex="-1"></a>  lmerTest<span class="sc">::</span><span class="fu">lmer</span>(</span>
-<span id="cb383-6"><a href="第九讲回归模型二分层线性模型.html#cb383-6" tabindex="-1"></a>   <span class="at">data =</span> .,</span>
-<span id="cb383-7"><a href="第九讲回归模型二分层线性模型.html#cb383-7" tabindex="-1"></a>   RT <span class="sc">~</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Sub) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Identity<span class="sc">:</span>Sub) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Valence<span class="sc">:</span>Sub)</span>
-<span id="cb383-8"><a href="第九讲回归模型二分层线性模型.html#cb383-8" tabindex="-1"></a> )</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="第九讲回归模型二分层线性模型.html#cb385-1" tabindex="-1"></a><span class="co"># http://www.dwoll.de/rexrepos/posts/anovaMixed.html#two-way-repeated-measures-anova-rbf-pq-design</span></span>
+<span id="cb385-2"><a href="第九讲回归模型二分层线性模型.html#cb385-2" tabindex="-1"></a></span>
+<span id="cb385-3"><a href="第九讲回归模型二分层线性模型.html#cb385-3" tabindex="-1"></a>model_aov <span class="ot">&lt;-</span> mt_mean <span class="sc">%&gt;%</span></span>
+<span id="cb385-4"><a href="第九讲回归模型二分层线性模型.html#cb385-4" tabindex="-1"></a>  <span class="co"># dplyr::filter(!is.na(RT) &amp; Match == &quot;match&quot; &amp; ACC == 1) %&gt;%</span></span>
+<span id="cb385-5"><a href="第九讲回归模型二分层线性模型.html#cb385-5" tabindex="-1"></a>  lmerTest<span class="sc">::</span><span class="fu">lmer</span>(</span>
+<span id="cb385-6"><a href="第九讲回归模型二分层线性模型.html#cb385-6" tabindex="-1"></a>   <span class="at">data =</span> .,</span>
+<span id="cb385-7"><a href="第九讲回归模型二分层线性模型.html#cb385-7" tabindex="-1"></a>   RT <span class="sc">~</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Sub) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Identity<span class="sc">:</span>Sub) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Valence<span class="sc">:</span>Sub)</span>
+<span id="cb385-8"><a href="第九讲回归模型二分层线性模型.html#cb385-8" tabindex="-1"></a> )</span></code></pre></div>
 <pre><code>## boundary (singular) fit: see help(&#39;isSingular&#39;)</code></pre>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="第九讲回归模型二分层线性模型.html#cb385-1" tabindex="-1"></a>model_aov <span class="sc">%&gt;%</span> <span class="fu">anova</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="第九讲回归模型二分层线性模型.html#cb387-1" tabindex="-1"></a>model_aov <span class="sc">%&gt;%</span> <span class="fu">anova</span>()</span></code></pre></div>
 <pre><code>## Type III Analysis of Variance Table with Satterthwaite&#39;s method
 ##                  Sum Sq Mean Sq NumDF DenDF F value         Pr(&gt;F)    
 ## Identity         0.0055  0.0055     1    43    2.55        0.11735    

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 第十讲：回归模型(三)：广义线性模型 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)</title>
   <meta name="description" content="课程bookdown" />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 第十讲：回归模型(三)：广义线性模型 | R语言在心理学研究中的应用: 从原始数据到可重复的论文手稿(V2)" />
   <meta property="og:type" content="book" />
@@ -185,8 +185,9 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="关于作者.html"><a href="关于作者.html"><i class="fa fa-check"></i>关于作者</a>
 <ul>
-<li class="chapter" data-level="0.5" data-path="关于作者.html"><a href="关于作者.html#春季学期助教及电子书转录志愿者"><i class="fa fa-check"></i><b>0.5</b> 2024春季学期助教及电子书转录志愿者：</a></li>
-<li class="chapter" data-level="0.6" data-path="关于作者.html"><a href="关于作者.html#春季学期助教"><i class="fa fa-check"></i><b>0.6</b> 2023春季学期助教：</a></li>
+<li class="chapter" data-level="0.5" data-path="关于作者.html"><a href="关于作者.html#春季学期特邀分享人"><i class="fa fa-check"></i><b>0.5</b> 2024春季学期特邀分享人：</a></li>
+<li class="chapter" data-level="0.6" data-path="关于作者.html"><a href="关于作者.html#春季学期助教及电子书转录志愿者"><i class="fa fa-check"></i><b>0.6</b> 2024春季学期助教及电子书转录志愿者：</a></li>
+<li class="chapter" data-level="0.7" data-path="关于作者.html"><a href="关于作者.html#春季学期助教"><i class="fa fa-check"></i><b>0.7</b> 2023春季学期助教：</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>1</b> 第一讲：为什么要学习R</a>
 <ul>
@@ -572,18 +573,18 @@ level)，层级模型可以提高统计检验力并且为研究者提供十分�
 <p>让我们先对本章数据进行预处理，这里用到的还是之前的认知实验的数据，我们先对正确率进行预处理。</p>
 <p>这里需要注意一下我们对于正确率ACC的处理，实际上我们的认知实验数据当中包含了其他两种反应，这里我们直接删除了另外两种情况，只保留了正确和错误的反应，即0和1，当然也有一些实验会将1之外的所有反应归到0中做处理。另外我们筛选去除了反应在1500ms以上和200ms以下的反应时，因为这在经验上是不符合人类的反应速度的。</p>
 <pre><code>## `summarise()` has grouped output by &#39;Sub&#39;, &#39;Valence&#39;. You can override using the `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="第十讲回归模型三广义线性模型.html#cb388-1" tabindex="-1"></a>df.match.aov <span class="sc">%&gt;%</span></span>
-<span id="cb388-2"><a href="第十讲回归模型三广义线性模型.html#cb388-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb388-3"><a href="第十讲回归模型三广义线性模型.html#cb388-3" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb388-4"><a href="第十讲回归模型三广义线性模型.html#cb388-4" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>()</span></code></pre></div>
-<div class="datatables html-widget html-fill-item" id="htmlwidget-f41e3be057f292bad7fc" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-f41e3be057f292bad7fc">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],[7304,7304,7304,7304,7305],["moral","moral","immoral","immoral","moral"],["Self","Other","Self","Other","Self"],[0.9866666666666667,0.8333333333333334,0.821917808219178,0.7183098591549296,0.9324324324324325]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sub<\/th>\n      <th>Valence<\/th>\n      <th>Identity<\/th>\n      <th>mean_ACC<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Sub","targets":1},{"name":"Valence","targets":2},{"name":"Identity","targets":3},{"name":"mean_ACC","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="第十讲回归模型三广义线性模型.html#cb390-1" tabindex="-1"></a>df.match.aov <span class="sc">%&gt;%</span></span>
+<span id="cb390-2"><a href="第十讲回归模型三广义线性模型.html#cb390-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb390-3"><a href="第十讲回归模型三广义线性模型.html#cb390-3" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb390-4"><a href="第十讲回归模型三广义线性模型.html#cb390-4" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>()</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-d7a5bd754f743b4b6905" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d7a5bd754f743b4b6905">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],[7304,7304,7304,7304,7305],["moral","moral","immoral","immoral","moral"],["Self","Other","Self","Other","Self"],[0.9866666666666667,0.8333333333333334,0.821917808219178,0.7183098591549296,0.9324324324324325]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sub<\/th>\n      <th>Valence<\/th>\n      <th>Identity<\/th>\n      <th>mean_ACC<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Sub","targets":1},{"name":"Valence","targets":2},{"name":"Identity","targets":3},{"name":"mean_ACC","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>上面是我们通常所做的操作：将不同条件下的反应正确率做一个平均，然后进行方差分析。</p>
 <p>(知识补充：easystats系统包是过去五六年快速发展起来的一个包系列，适用于统计分析，特别是心理学相关背景的统计分析，具体使用可以参考我们在B站上传的视频（链接如下）。<a href="https://www.bilibili.com/video/BV1rz421D7iJ/?spm_id_from=333.337.search-card.all.click" class="uri">https://www.bilibili.com/video/BV1rz421D7iJ/?spm_id_from=333.337.search-card.all.click</a>)</p>
 <p>让我们再来看一下正确率的原始数据。</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="第十讲回归模型三广义线性模型.html#cb389-1" tabindex="-1"></a><span class="fu">head</span>(df.match[<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">11</span><span class="sc">:</span><span class="dv">17</span>)],<span class="dv">5</span>) <span class="sc">%&gt;%</span> DT<span class="sc">::</span><span class="fu">datatable</span>()</span></code></pre></div>
-<div class="datatables html-widget html-fill-item" id="htmlwidget-0500c132d96150e7541e" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-0500c132d96150e7541e">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],[7304,7304,7304,7304,7304],["moral","immoral","moral","immoral","moral"],["Other","Other","Self","Other","Self"],["moralOther","immoralOther","moralSelf","immoralOther","moralSelf"],["match","match","match","match","match"],["n","n","n","n","n"],["n","m","n","m","n"],[1,0,1,0,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sub<\/th>\n      <th>Valence<\/th>\n      <th>Identity<\/th>\n      <th>Label<\/th>\n      <th>Match<\/th>\n      <th>CorrResp<\/th>\n      <th>Resp<\/th>\n      <th>ACC<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,8]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Sub","targets":1},{"name":"Valence","targets":2},{"name":"Identity","targets":3},{"name":"Label","targets":4},{"name":"Match","targets":5},{"name":"CorrResp","targets":6},{"name":"Resp","targets":7},{"name":"ACC","targets":8}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="第十讲回归模型三广义线性模型.html#cb391-1" tabindex="-1"></a><span class="fu">head</span>(df.match[<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">11</span><span class="sc">:</span><span class="dv">17</span>)],<span class="dv">5</span>) <span class="sc">%&gt;%</span> DT<span class="sc">::</span><span class="fu">datatable</span>()</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-abbbbec1377006e9a695" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-abbbbec1377006e9a695">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],[7304,7304,7304,7304,7304],["moral","immoral","moral","immoral","moral"],["Other","Other","Self","Other","Self"],["moralOther","immoralOther","moralSelf","immoralOther","moralSelf"],["match","match","match","match","match"],["n","n","n","n","n"],["n","m","n","m","n"],[1,0,1,0,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sub<\/th>\n      <th>Valence<\/th>\n      <th>Identity<\/th>\n      <th>Label<\/th>\n      <th>Match<\/th>\n      <th>CorrResp<\/th>\n      <th>Resp<\/th>\n      <th>ACC<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,8]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Sub","targets":1},{"name":"Valence","targets":2},{"name":"Identity","targets":3},{"name":"Label","targets":4},{"name":"Match","targets":5},{"name":"CorrResp","targets":6},{"name":"Resp","targets":7},{"name":"ACC","targets":8}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>可以发现其只存在0和1两种取值，这种分布显然不服从正态分布，因此我们不能简单地用前一章提到的一般线性模型进行处理。在传统的方差分析中，我们对正确率数据的处理是求出每个条件下的平均正确率再进行统计分析。这个平均正确率的取值作为一个连续数据，可以被放在坐标轴上形成一个分布，其与以0为原点，向两端无限延伸的标准正态分布也存在差异。因此我们需要对一般线性模型进行拓展，这也就是我们这一章所要讲的广义线性模型（Generalized
 Linear Model, GLM）。</p>
 </div>
@@ -645,13 +646,13 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 <p>还是以抛硬币来举例，假如我们抛十次硬币，十次全部正面朝上的概率就是二分之一的十次方，我们用到的两个参数就是正面朝上的概率以及抛的次数，如果我们只知道抛了几次，或者只知道正面朝上的概率，都不足以算出具体的概率。因此对于二项分布，我们要知道的两个参数分别为实验次数n，以及事件发生的概率p。</p>
 <p>我们可以在R中来模拟一下抛硬币的实验。首先我们先写一个模拟抛硬币的函数。</p>
 <p>我们让若干人每人抛若干次硬币，首先让5个人每人抛10次硬币。理论上来说，对于一枚公平的硬币，正面朝上次数为5的应该是最多的。</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="第十讲回归模型三广义线性模型.html#cb390-1" tabindex="-1"></a><span class="fu">simulate_coin_toss</span>(<span class="at">prob_head =</span> <span class="fl">0.5</span>,<span class="at">num_people =</span> <span class="dv">5</span>, <span class="at">num_tosses =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="第十讲回归模型三广义线性模型.html#cb392-1" tabindex="-1"></a><span class="fu">simulate_coin_toss</span>(<span class="at">prob_head =</span> <span class="fl">0.5</span>,<span class="at">num_people =</span> <span class="dv">5</span>, <span class="at">num_tosses =</span> <span class="dv">10</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-214-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>但是事实上我们模拟出来发现小于5的反而更多一点，这好像在暗示我们这是一枚不公平的硬币。但是如果我们把人数n增多呢？以下模拟的是10人每人抛10次。</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="第十讲回归模型三广义线性模型.html#cb391-1" tabindex="-1"></a><span class="fu">simulate_coin_toss</span>(<span class="at">prob_head =</span> <span class="fl">0.5</span>,<span class="at">num_people =</span> <span class="dv">10</span>, <span class="at">num_tosses =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="第十讲回归模型三广义线性模型.html#cb393-1" tabindex="-1"></a><span class="fu">simulate_coin_toss</span>(<span class="at">prob_head =</span> <span class="fl">0.5</span>,<span class="at">num_people =</span> <span class="dv">10</span>, <span class="at">num_tosses =</span> <span class="dv">10</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-215-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>emmmm，似乎还是一枚不太公平的硬币。我们再将人数n增加到1000人。</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="第十讲回归模型三广义线性模型.html#cb392-1" tabindex="-1"></a><span class="fu">simulate_coin_toss</span>(<span class="at">prob_head =</span> <span class="fl">0.5</span>,<span class="at">num_people =</span> <span class="dv">1000</span>, <span class="at">num_tosses =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="第十讲回归模型三广义线性模型.html#cb394-1" tabindex="-1"></a><span class="fu">simulate_coin_toss</span>(<span class="at">prob_head =</span> <span class="fl">0.5</span>,<span class="at">num_people =</span> <span class="dv">1000</span>, <span class="at">num_tosses =</span> <span class="dv">10</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-216-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>这时候我们就可以看到数据呈现一个非常好的正态分布，此时正面朝上次数为5次的确实是最多的。</p>
 <p>这里主要想让大家直观了解一下参数n对于事件发生次数分布的影响。让我们总结一下，已知一次试验中的每次尝试中事件A发生的概率<span class="math inline">\(p\)</span>，共进行<span class="math inline">\(n\)</span>次独立重复的伯努利试验，假如事件A在一次试验中出现k次，事件A在n次试验中出现次数的平均数为：
@@ -673,13 +674,13 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 <h3><span class="header-section-number">10.3.2</span> GLM代码实操<a href="第十讲回归模型三广义线性模型.html#glm代码实操" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>虽然我们前面提到了非常复杂和抽象的数学运算，但是在R中我们可以用非常简单的几行代码来实现广义线性模型。在公式部分和前一章是一致的，1是截距，后面放上实验的两个自变量，因变量是正确率ACC。我们所做的改动主要是在前面将函数改成了glm，并且加上了family这个参数，让其等于binomial。</p>
 <p>这里我们可以明显地看到当我们使用广义线性模型之后，相较于传统的方差分析，我们可以对单个被试进行数据分析，这也意味着我们依然可以像前一章那样建立层级模型。以下是对单个被试进行glm建模的代码。</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="第十讲回归模型三广义线性模型.html#cb393-1" tabindex="-1"></a>df.match<span class="fl">.7304</span> <span class="ot">&lt;-</span> df.match <span class="sc">%&gt;%</span></span>
-<span id="cb393-2"><a href="第十讲回归模型三广义线性模型.html#cb393-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Sub <span class="sc">==</span> <span class="dv">7304</span>) <span class="co">#选择被试7304</span></span>
-<span id="cb393-3"><a href="第十讲回归模型三广义线性模型.html#cb393-3" tabindex="-1"></a>mod_7304_full <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">glm</span>(<span class="at">data =</span> df.match<span class="fl">.7304</span>, <span class="co">#数据</span></span>
-<span id="cb393-4"><a href="第十讲回归模型三广义线性模型.html#cb393-4" tabindex="-1"></a>                          <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence, <span class="co">#模型</span></span>
-<span id="cb393-5"><a href="第十讲回归模型三广义线性模型.html#cb393-5" tabindex="-1"></a>                          <span class="at">family =</span> binomial) <span class="co">#因变量为二项分布</span></span>
-<span id="cb393-6"><a href="第十讲回归模型三广义线性模型.html#cb393-6" tabindex="-1"></a><span class="fu">summary</span>(mod_7304_full) <span class="sc">%&gt;%</span> <span class="co">#查看模型信息</span></span>
-<span id="cb393-7"><a href="第十讲回归模型三广义线性模型.html#cb393-7" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">11</span>,<span class="dv">15</span><span class="sc">:</span><span class="dv">19</span>)] <span class="co">#课堂展示重要结果</span></span></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="第十讲回归模型三广义线性模型.html#cb395-1" tabindex="-1"></a>df.match<span class="fl">.7304</span> <span class="ot">&lt;-</span> df.match <span class="sc">%&gt;%</span></span>
+<span id="cb395-2"><a href="第十讲回归模型三广义线性模型.html#cb395-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Sub <span class="sc">==</span> <span class="dv">7304</span>) <span class="co">#选择被试7304</span></span>
+<span id="cb395-3"><a href="第十讲回归模型三广义线性模型.html#cb395-3" tabindex="-1"></a>mod_7304_full <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">glm</span>(<span class="at">data =</span> df.match<span class="fl">.7304</span>, <span class="co">#数据</span></span>
+<span id="cb395-4"><a href="第十讲回归模型三广义线性模型.html#cb395-4" tabindex="-1"></a>                          <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence, <span class="co">#模型</span></span>
+<span id="cb395-5"><a href="第十讲回归模型三广义线性模型.html#cb395-5" tabindex="-1"></a>                          <span class="at">family =</span> binomial) <span class="co">#因变量为二项分布</span></span>
+<span id="cb395-6"><a href="第十讲回归模型三广义线性模型.html#cb395-6" tabindex="-1"></a><span class="fu">summary</span>(mod_7304_full) <span class="sc">%&gt;%</span> <span class="co">#查看模型信息</span></span>
+<span id="cb395-7"><a href="第十讲回归模型三广义线性模型.html#cb395-7" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">11</span>,<span class="dv">15</span><span class="sc">:</span><span class="dv">19</span>)] <span class="co">#课堂展示重要结果</span></span></code></pre></div>
 <pre><code>##  [1] &quot;Coefficients:&quot;                                                        
 ##  [2] &quot;                             Estimate Std. Error z value Pr(&gt;|z|)    &quot;
 ##  [3] &quot;(Intercept)                      4.30       1.01    4.28 0.000019 ***&quot;
@@ -692,20 +693,20 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 ## [10] &quot;Residual deviance: 228.32  on 287  degrees of freedom&quot;                
 ## [11] &quot;AIC: 236.3&quot;</code></pre>
 <p>建立层级模型意味着我们需要对总体和单个被试的效应都进行比较，通常我们会建立多个模型，然后对不同的模型进行比较。首先我们建立一个只有被试随机效应而没有群体固定效应的模型。</p>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="第十讲回归模型三广义线性模型.html#cb395-1" tabindex="-1"></a><span class="co">#无固定效应</span></span>
-<span id="cb395-2"><a href="第十讲回归模型三广义线性模型.html#cb395-2" tabindex="-1"></a>mod_null <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> df.match, <span class="co">#数据</span></span>
-<span id="cb395-3"><a href="第十讲回归模型三广义线性模型.html#cb395-3" tabindex="-1"></a>                   <span class="at">formula =</span> ACC <span class="sc">~</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub), <span class="co">#模型</span></span>
-<span id="cb395-4"><a href="第十讲回归模型三广义线性模型.html#cb395-4" tabindex="-1"></a>                   <span class="at">family =</span> binomial) <span class="co">#因变量二项分布</span></span>
-<span id="cb395-5"><a href="第十讲回归模型三广义线性模型.html#cb395-5" tabindex="-1"></a><span class="co">#performance::model_performance(mod_null)</span></span>
-<span id="cb395-6"><a href="第十讲回归模型三广义线性模型.html#cb395-6" tabindex="-1"></a><span class="fu">summary</span>(mod_null) <span class="sc">%&gt;%</span></span>
-<span id="cb395-7"><a href="第十讲回归模型三广义线性模型.html#cb395-7" tabindex="-1"></a>  <span class="fu">capture.output</span>()<span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">14</span><span class="sc">:</span><span class="dv">24</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="第十讲回归模型三广义线性模型.html#cb397-1" tabindex="-1"></a><span class="co">#无固定效应</span></span>
+<span id="cb397-2"><a href="第十讲回归模型三广义线性模型.html#cb397-2" tabindex="-1"></a>mod_null <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> df.match, <span class="co">#数据</span></span>
+<span id="cb397-3"><a href="第十讲回归模型三广义线性模型.html#cb397-3" tabindex="-1"></a>                   <span class="at">formula =</span> ACC <span class="sc">~</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub), <span class="co">#模型</span></span>
+<span id="cb397-4"><a href="第十讲回归模型三广义线性模型.html#cb397-4" tabindex="-1"></a>                   <span class="at">family =</span> binomial) <span class="co">#因变量二项分布</span></span>
+<span id="cb397-5"><a href="第十讲回归模型三广义线性模型.html#cb397-5" tabindex="-1"></a><span class="co">#performance::model_performance(mod_null)</span></span>
+<span id="cb397-6"><a href="第十讲回归模型三广义线性模型.html#cb397-6" tabindex="-1"></a><span class="fu">summary</span>(mod_null) <span class="sc">%&gt;%</span></span>
+<span id="cb397-7"><a href="第十讲回归模型三广义线性模型.html#cb397-7" tabindex="-1"></a>  <span class="fu">capture.output</span>()<span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">14</span><span class="sc">:</span><span class="dv">24</span>)]</span></code></pre></div>
 <pre><code>##  [1] &quot;  9378.8   9460.2  -4678.4   9356.8    11999 &quot;                           
 ##  [2] &quot;&quot;                                                                        
 ##  [3] &quot; Groups Name                         Variance Std.Dev. Corr             &quot;
 ##  [4] &quot; Sub    (Intercept)                  1.53     1.24                      &quot;
 ##  [5] &quot;        IdentityOther                2.52     1.59     -0.86            &quot;
 ##  [6] &quot;        Valenceimmoral               2.40     1.55     -0.85  0.83      &quot;
-##  [7] &quot;        IdentityOther:Valenceimmoral 3.33     1.83      0.69 -0.87 -0.82&quot;
+##  [7] &quot;        IdentityOther:Valenceimmoral 3.34     1.83      0.69 -0.87 -0.82&quot;
 ##  [8] &quot;Number of obs: 12010, groups:  Sub, 41&quot;                                  
 ##  [9] &quot;&quot;                                                                        
 ## [10] &quot;Fixed effects:&quot;                                                          
@@ -713,13 +714,13 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 ## [12] &quot;(Intercept)    2.014      0.114    17.7 &lt;0.0000000000000002 ***&quot;         
 ## [13] &quot;---&quot;</code></pre>
 <p>接着我们建立一个随机效应只包含截距的模型。</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="第十讲回归模型三广义线性模型.html#cb397-1" tabindex="-1"></a><span class="co">#随机截距，固定斜率</span></span>
-<span id="cb397-2"><a href="第十讲回归模型三广义线性模型.html#cb397-2" tabindex="-1"></a>mod <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> df.match, <span class="co">#数据</span></span>
-<span id="cb397-3"><a href="第十讲回归模型三广义线性模型.html#cb397-3" tabindex="-1"></a>                     <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Sub), <span class="co">#模型</span></span>
-<span id="cb397-4"><a href="第十讲回归模型三广义线性模型.html#cb397-4" tabindex="-1"></a>                     <span class="at">family =</span> binomial) <span class="co">#因变量二项分布</span></span>
-<span id="cb397-5"><a href="第十讲回归模型三广义线性模型.html#cb397-5" tabindex="-1"></a><span class="co">#performance::model_performance(mod)</span></span>
-<span id="cb397-6"><a href="第十讲回归模型三广义线性模型.html#cb397-6" tabindex="-1"></a><span class="fu">summary</span>(mod) <span class="sc">%&gt;%</span></span>
-<span id="cb397-7"><a href="第十讲回归模型三广义线性模型.html#cb397-7" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">14</span><span class="sc">:</span><span class="dv">24</span>,<span class="dv">28</span><span class="sc">:</span><span class="dv">32</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="第十讲回归模型三广义线性模型.html#cb399-1" tabindex="-1"></a><span class="co">#随机截距，固定斜率</span></span>
+<span id="cb399-2"><a href="第十讲回归模型三广义线性模型.html#cb399-2" tabindex="-1"></a>mod <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> df.match, <span class="co">#数据</span></span>
+<span id="cb399-3"><a href="第十讲回归模型三广义线性模型.html#cb399-3" tabindex="-1"></a>                     <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Sub), <span class="co">#模型</span></span>
+<span id="cb399-4"><a href="第十讲回归模型三广义线性模型.html#cb399-4" tabindex="-1"></a>                     <span class="at">family =</span> binomial) <span class="co">#因变量二项分布</span></span>
+<span id="cb399-5"><a href="第十讲回归模型三广义线性模型.html#cb399-5" tabindex="-1"></a><span class="co">#performance::model_performance(mod)</span></span>
+<span id="cb399-6"><a href="第十讲回归模型三广义线性模型.html#cb399-6" tabindex="-1"></a><span class="fu">summary</span>(mod) <span class="sc">%&gt;%</span></span>
+<span id="cb399-7"><a href="第十讲回归模型三广义线性模型.html#cb399-7" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">14</span><span class="sc">:</span><span class="dv">24</span>,<span class="dv">28</span><span class="sc">:</span><span class="dv">32</span>)]</span></code></pre></div>
 <pre><code>##  [1] &quot;  9639.0   9675.9  -4814.5   9629.0    12005 &quot;                                    
 ##  [2] &quot;&quot;                                                                                 
 ##  [3] &quot; Groups Name        Variance Std.Dev.&quot;                                            
@@ -729,47 +730,47 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 ##  [7] &quot;Fixed effects:&quot;                                                                   
 ##  [8] &quot;                             Estimate Std. Error z value             Pr(&gt;|z|)    &quot;
 ##  [9] &quot;(Intercept)                    2.4964     0.1015   24.60 &lt; 0.0000000000000002 ***&quot;
-## [10] &quot;IdentityOther                 -0.7160     0.0839   -8.53 &lt; 0.0000000000000002 ***&quot;
+## [10] &quot;IdentityOther                 -0.7161     0.0839   -8.53 &lt; 0.0000000000000002 ***&quot;
 ## [11] &quot;Valenceimmoral                -0.9474     0.0818  -11.58 &lt; 0.0000000000000002 ***&quot;
-## [12] &quot;IdentityOther:Valenceimmoral   0.8230     0.1086    7.58    0.000000000000034 ***&quot;
+## [12] &quot;IdentityOther:Valenceimmoral   0.8230     0.1085    7.58    0.000000000000034 ***&quot;
 ## [13] &quot;---&quot;                                                                              
 ## [14] &quot;            (Intr) IdnttO Vlncmm&quot;                                                 
 ## [15] &quot;IdenttyOthr -0.519              &quot;                                                 
 ## [16] &quot;Valencemmrl -0.533  0.641       &quot;                                                 
-## [17] &quot;IdnttyOth:V  0.401 -0.773 -0.754&quot;                                                 
+## [17] &quot;IdnttyOth:V  0.401 -0.773 -0.753&quot;                                                 
 ## [18] NA</code></pre>
 <p>最后我们建立一个包含了所有固定效应和随机效应的全模型。</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="第十讲回归模型三广义线性模型.html#cb399-1" tabindex="-1"></a><span class="co">#随机截距，随机斜率</span></span>
-<span id="cb399-2"><a href="第十讲回归模型三广义线性模型.html#cb399-2" tabindex="-1"></a>mod_full <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> df.match, <span class="co">#数据</span></span>
-<span id="cb399-3"><a href="第十讲回归模型三广义线性模型.html#cb399-3" tabindex="-1"></a>                          <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub), <span class="co">#模型</span></span>
-<span id="cb399-4"><a href="第十讲回归模型三广义线性模型.html#cb399-4" tabindex="-1"></a>                          <span class="at">family =</span> binomial) <span class="co">#因变量二项分布</span></span>
-<span id="cb399-5"><a href="第十讲回归模型三广义线性模型.html#cb399-5" tabindex="-1"></a><span class="do">##performance::model_performance(mod_full)</span></span>
-<span id="cb399-6"><a href="第十讲回归模型三广义线性模型.html#cb399-6" tabindex="-1"></a><span class="fu">summary</span>(mod_full) <span class="sc">%&gt;%</span></span>
-<span id="cb399-7"><a href="第十讲回归模型三广义线性模型.html#cb399-7" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">13</span><span class="sc">:</span><span class="dv">18</span>,<span class="dv">21</span><span class="sc">:</span><span class="dv">26</span>,<span class="dv">30</span><span class="sc">:</span><span class="dv">34</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="第十讲回归模型三广义线性模型.html#cb401-1" tabindex="-1"></a><span class="co">#随机截距，随机斜率</span></span>
+<span id="cb401-2"><a href="第十讲回归模型三广义线性模型.html#cb401-2" tabindex="-1"></a>mod_full <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> df.match, <span class="co">#数据</span></span>
+<span id="cb401-3"><a href="第十讲回归模型三广义线性模型.html#cb401-3" tabindex="-1"></a>                          <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub), <span class="co">#模型</span></span>
+<span id="cb401-4"><a href="第十讲回归模型三广义线性模型.html#cb401-4" tabindex="-1"></a>                          <span class="at">family =</span> binomial) <span class="co">#因变量二项分布</span></span>
+<span id="cb401-5"><a href="第十讲回归模型三广义线性模型.html#cb401-5" tabindex="-1"></a><span class="do">##performance::model_performance(mod_full)</span></span>
+<span id="cb401-6"><a href="第十讲回归模型三广义线性模型.html#cb401-6" tabindex="-1"></a><span class="fu">summary</span>(mod_full) <span class="sc">%&gt;%</span></span>
+<span id="cb401-7"><a href="第十讲回归模型三广义线性模型.html#cb401-7" tabindex="-1"></a>  <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">13</span><span class="sc">:</span><span class="dv">18</span>,<span class="dv">21</span><span class="sc">:</span><span class="dv">26</span>,<span class="dv">30</span><span class="sc">:</span><span class="dv">34</span>)]</span></code></pre></div>
 <pre><code>##  [1] &quot;     AIC      BIC   logLik deviance df.resid &quot;                                    
 ##  [2] &quot;  9355.9   9459.4  -4664.0   9327.9    11996 &quot;                                    
 ##  [3] &quot;&quot;                                                                                 
 ##  [4] &quot;Random effects:&quot;                                                                  
 ##  [5] &quot; Groups Name                         Variance Std.Dev. Corr             &quot;         
 ##  [6] &quot; Sub    (Intercept)                  0.972    0.986                     &quot;         
-##  [7] &quot;        IdentityOther                1.771    1.331    -0.79            &quot;         
+##  [7] &quot;        IdentityOther                1.770    1.331    -0.79            &quot;         
 ##  [8] &quot;        Valenceimmoral               1.028    1.014    -0.75  0.75      &quot;         
-##  [9] &quot;        IdentityOther:Valenceimmoral 2.306    1.518     0.54 -0.82 -0.74&quot;         
+##  [9] &quot;        IdentityOther:Valenceimmoral 2.305    1.518     0.54 -0.82 -0.74&quot;         
 ## [10] &quot;Fixed effects:&quot;                                                                   
 ## [11] &quot;                             Estimate Std. Error z value             Pr(&gt;|z|)    &quot;
-## [12] &quot;(Intercept)                     2.772      0.178   15.53 &lt; 0.0000000000000002 ***&quot;
-## [13] &quot;IdentityOther                  -0.870      0.235   -3.71              0.00021 ***&quot;
-## [14] &quot;Valenceimmoral                 -1.150      0.190   -6.06         0.0000000013 ***&quot;
-## [15] &quot;IdentityOther:Valenceimmoral    0.988      0.272    3.63              0.00028 ***&quot;
+## [12] &quot;(Intercept)                     2.772      0.178   15.55 &lt; 0.0000000000000002 ***&quot;
+## [13] &quot;IdentityOther                  -0.870      0.234   -3.72              0.00020 ***&quot;
+## [14] &quot;Valenceimmoral                 -1.150      0.189   -6.07         0.0000000013 ***&quot;
+## [15] &quot;IdentityOther:Valenceimmoral    0.988      0.272    3.64              0.00027 ***&quot;
 ## [16] &quot;Correlation of Fixed Effects:&quot;                                                    
 ## [17] &quot;            (Intr) IdnttO Vlncmm&quot;                                                 
 ## [18] &quot;IdenttyOthr -0.801              &quot;                                                 
-## [19] &quot;Valencemmrl -0.783  0.741       &quot;                                                 
-## [20] &quot;IdnttyOth:V  0.573 -0.821 -0.747&quot;</code></pre>
+## [19] &quot;Valencemmrl -0.782  0.740       &quot;                                                 
+## [20] &quot;IdnttyOth:V  0.571 -0.820 -0.746&quot;</code></pre>
 <p>我们在运行全模型的时候可以明显感受到运行时间相较于之前变长了。当我们的模型内参数越多，模型越复杂的时候，计算机就需要花更多时间去拟合模型，也会有些时候因为找不到合适的参数而导致模型无法拟合。习惯了SPSS的读者可能会难以忍受，但实际上我们在后面处理一些大数据或者跑机器学习的时候，等待会是一件很常见的事情。这就提示我们合理分配时间，把要运行的代码提前运行起来，然后去做别的工作。</p>
 <p>在这里，我们也可以根据结果来判断R语言对我们自变量的编码方式，可以看到结果中除了截距外的第一项为”Identityother”，由此我们可以判断R将”Identityself”编码为了基线，并据此来计算相应的回归系数和估计值，下面的其他结果也类似。</p>
 <p>接下来我们对上述三个模型进行比较。</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="第十讲回归模型三广义线性模型.html#cb401-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(mod_null, mod, mod_full) <span class="co">#比较三个模型</span></span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="第十讲回归模型三广义线性模型.html#cb403-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(mod_null, mod, mod_full) <span class="co">#比较三个模型</span></span></code></pre></div>
 <pre><code>## Data: df.match
 ## Models:
 ## mod: ACC ~ 1 + Identity * Valence + (1 | Sub)
@@ -782,17 +783,17 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>可以发现全模型(mod_full)的效果是最好的，但当我们更换一种模型比较方法的时候，可能会得到不一样的结论，如下。</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="第十讲回归模型三广义线性模型.html#cb403-1" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">compare_performance</span>(mod_null, mod, mod_full, <span class="at">rank =</span> <span class="cn">TRUE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="第十讲回归模型三广义线性模型.html#cb405-1" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">compare_performance</span>(mod_null, mod, mod_full, <span class="at">rank =</span> <span class="cn">TRUE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## Some of the nested models seem to be identical and probably only vary in their random effects.</code></pre>
 <p><img src="pic/chp10/performance1.png" /></p>
 <p>让我们输出全模型的结果，尝试进行解读。</p>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="第十讲回归模型三广义线性模型.html#cb405-1" tabindex="-1"></a><span class="fu">summary</span>(mod_full) <span class="sc">%&gt;%</span> <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">21</span><span class="sc">:</span><span class="dv">27</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="第十讲回归模型三广义线性模型.html#cb407-1" tabindex="-1"></a><span class="fu">summary</span>(mod_full) <span class="sc">%&gt;%</span> <span class="fu">capture.output</span>() <span class="sc">%&gt;%</span> .[<span class="fu">c</span>(<span class="dv">21</span><span class="sc">:</span><span class="dv">27</span>)]</span></code></pre></div>
 <pre><code>## [1] &quot;Fixed effects:&quot;                                                                   
 ## [2] &quot;                             Estimate Std. Error z value             Pr(&gt;|z|)    &quot;
-## [3] &quot;(Intercept)                     2.772      0.178   15.53 &lt; 0.0000000000000002 ***&quot;
-## [4] &quot;IdentityOther                  -0.870      0.235   -3.71              0.00021 ***&quot;
-## [5] &quot;Valenceimmoral                 -1.150      0.190   -6.06         0.0000000013 ***&quot;
-## [6] &quot;IdentityOther:Valenceimmoral    0.988      0.272    3.63              0.00028 ***&quot;
+## [3] &quot;(Intercept)                     2.772      0.178   15.55 &lt; 0.0000000000000002 ***&quot;
+## [4] &quot;IdentityOther                  -0.870      0.234   -3.72              0.00020 ***&quot;
+## [5] &quot;Valenceimmoral                 -1.150      0.189   -6.07         0.0000000013 ***&quot;
+## [6] &quot;IdentityOther:Valenceimmoral    0.988      0.272    3.64              0.00027 ***&quot;
 ## [7] &quot;---&quot;</code></pre>
 <p>在结果里面显示的估计值，并不直接等于p值，我们要根据前面转换函数的逆运算来讲其转换为p值，转换公式如下。</p>
 <p><img src="pic/chp10/logit2.png" /></p>
@@ -803,10 +804,10 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 <p>ImmoralOther:
 <span class="math inline">\(P=\frac{e^{2.73-0.76-1.10+0.89}}{1+e^{2.73-0.76-1.10+0.89}} = 0.853\)</span></p>
 <p>我们可以使用cat_plot()函数将模型预测的结果快速地展示出来。</p>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="第十讲回归模型三广义线性模型.html#cb407-1" tabindex="-1"></a><span class="co">#交互作用</span></span>
-<span id="cb407-2"><a href="第十讲回归模型三广义线性模型.html#cb407-2" tabindex="-1"></a>interactions<span class="sc">::</span><span class="fu">cat_plot</span>(<span class="at">model =</span> mod_full,</span>
-<span id="cb407-3"><a href="第十讲回归模型三广义线性模型.html#cb407-3" tabindex="-1"></a>                       <span class="at">pred =</span> Identity,</span>
-<span id="cb407-4"><a href="第十讲回归模型三广义线性模型.html#cb407-4" tabindex="-1"></a>                       <span class="at">modx =</span> Valence)</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="第十讲回归模型三广义线性模型.html#cb409-1" tabindex="-1"></a><span class="co">#交互作用</span></span>
+<span id="cb409-2"><a href="第十讲回归模型三广义线性模型.html#cb409-2" tabindex="-1"></a>interactions<span class="sc">::</span><span class="fu">cat_plot</span>(<span class="at">model =</span> mod_full,</span>
+<span id="cb409-3"><a href="第十讲回归模型三广义线性模型.html#cb409-3" tabindex="-1"></a>                       <span class="at">pred =</span> Identity,</span>
+<span id="cb409-4"><a href="第十讲回归模型三广义线性模型.html#cb409-4" tabindex="-1"></a>                       <span class="at">modx =</span> Valence)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-224-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>这里可以看到很明显的交互作用，也就是当我们把不同颜色的柱子连线就会发现二者的交叉。</p>
 </div>
@@ -816,23 +817,26 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 <div id="不同的建模方法" class="section level3 hasAnchor" number="10.4.1">
 <h3><span class="header-section-number">10.4.1</span> 不同的建模方法<a href="第十讲回归模型三广义线性模型.html#不同的建模方法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>接下来我们对正确率不同的分析方法做一个比较。首先是传统的方差分析，方差分析实际上就是一个线性模型。以下是对正确率进行方差分析的代码。</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="第十讲回归模型三广义线性模型.html#cb408-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(<span class="at">data =</span> df.match.aov, <span class="co">#数据</span></span>
-<span id="cb408-2"><a href="第十讲回归模型三广义线性模型.html#cb408-2" tabindex="-1"></a>       <span class="at">subID =</span> <span class="st">&#39;Sub&#39;</span>, <span class="co"># 被试编号</span></span>
-<span id="cb408-3"><a href="第十讲回归模型三广义线性模型.html#cb408-3" tabindex="-1"></a>       <span class="at">dv=</span> <span class="st">&#39;mean_ACC&#39;</span>, <span class="co"># 因变量</span></span>
-<span id="cb408-4"><a href="第十讲回归模型三广义线性模型.html#cb408-4" tabindex="-1"></a>       <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&#39;Identity&#39;</span>, <span class="st">&#39;Valence&#39;</span>)) <span class="co">#自变量（被试内）</span></span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="第十讲回归模型三广义线性模型.html#cb410-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(<span class="at">data =</span> df.match.aov, <span class="co">#数据</span></span>
+<span id="cb410-2"><a href="第十讲回归模型三广义线性模型.html#cb410-2" tabindex="-1"></a>       <span class="at">subID =</span> <span class="st">&#39;Sub&#39;</span>, <span class="co"># 被试编号</span></span>
+<span id="cb410-3"><a href="第十讲回归模型三广义线性模型.html#cb410-3" tabindex="-1"></a>       <span class="at">dv=</span> <span class="st">&#39;mean_ACC&#39;</span>, <span class="co"># 因变量</span></span>
+<span id="cb410-4"><a href="第十讲回归模型三广义线性模型.html#cb410-4" tabindex="-1"></a>       <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&#39;Identity&#39;</span>, <span class="st">&#39;Valence&#39;</span>)) <span class="co">#自变量（被试内）</span></span></code></pre></div>
 <pre><code>## 
 ##     * Data are aggregated to mean (across items/trials)
 ##     if there are &gt;=2 observations per subject and cell.
 ##     You may use Linear Mixed Model to analyze the data,
 ##     e.g., with subjects and items as level-2 clusters.</code></pre>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="第十讲回归模型三广义线性模型.html#cb410-1" tabindex="-1"></a><span class="fu">capture.output</span>(res) <span class="sc">%&gt;%</span> .[<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>]</span></code></pre></div>
-<pre><code>## [1] &quot;Response: mean_ACC&quot;                                   &quot;            Effect    df  MSE         F  ges p.value&quot;
-## [3] &quot;1         Identity 1, 40 0.01    3.08 + .017    .087&quot; &quot;2          Valence 1, 40 0.01 16.26 *** .068   &lt;.001&quot;
-## [5] &quot;3 Identity:Valence 1, 40 0.01   8.52 ** .038    .006&quot; &quot;---&quot;</code></pre>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="第十讲回归模型三广义线性模型.html#cb412-1" tabindex="-1"></a><span class="fu">capture.output</span>(res) <span class="sc">%&gt;%</span> .[<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;Response: mean_ACC&quot;                                  
+## [2] &quot;            Effect    df  MSE         F  ges p.value&quot;
+## [3] &quot;1         Identity 1, 40 0.01    3.08 + .017    .087&quot;
+## [4] &quot;2          Valence 1, 40 0.01 16.26 *** .068   &lt;.001&quot;
+## [5] &quot;3 Identity:Valence 1, 40 0.01   8.52 ** .038    .006&quot;
+## [6] &quot;---&quot;</code></pre>
 <p>我们可以得到一个f值，并且因为研究的被试量比较大，我们可以发现这里呈现的主效应以及交互作用，和后面用glm或者层级模型做出来的结果有一样的趋势。我们可以用EMMAMNS()函数来查看模型的一些具体值。</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="第十讲回归模型三广义线性模型.html#cb412-1" tabindex="-1"></a>res <span class="sc">%&gt;%</span></span>
-<span id="cb412-2"><a href="第十讲回归模型三广义线性模型.html#cb412-2" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">EMMEANS</span>(<span class="at">effect =</span> <span class="st">&#39;Valence&#39;</span>, <span class="at">by =</span> <span class="st">&#39;Identity&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb412-3"><a href="第十讲回归模型三广义线性模型.html#cb412-3" tabindex="-1"></a>  <span class="fu">capture.output</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="第十讲回归模型三广义线性模型.html#cb414-1" tabindex="-1"></a>res <span class="sc">%&gt;%</span></span>
+<span id="cb414-2"><a href="第十讲回归模型三广义线性模型.html#cb414-2" tabindex="-1"></a>  bruceR<span class="sc">::</span><span class="fu">EMMEANS</span>(<span class="at">effect =</span> <span class="st">&#39;Valence&#39;</span>, <span class="at">by =</span> <span class="st">&#39;Identity&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb414-3"><a href="第十讲回归模型三广义线性模型.html#cb414-3" tabindex="-1"></a>  <span class="fu">capture.output</span>()</span></code></pre></div>
 <pre><code>##  [1] &quot;------ EMMEANS (effect = \&quot;Valence\&quot;) ------&quot;                                              
 ##  [2] &quot;&quot;                                                                                          
 ##  [3] &quot;Joint Tests of \&quot;Valence\&quot;:&quot;                                                               
@@ -872,25 +876,25 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 ## [37] &quot;You might also use `effectsize::t_to_d()` to compute d.&quot;                                   
 ## [38] &quot;&quot;</code></pre>
 <p>接下来是包括所有固定效应和随机效应的全模型的结果。</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="第十讲回归模型三广义线性模型.html#cb414-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(mod_full)</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="第十讲回归模型三广义线性模型.html#cb416-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(mod_full)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ##                  npar Sum Sq Mean Sq F value
 ## Identity            1    0.2     0.2     0.2
 ## Valence             1   26.8    26.8    26.8
 ## Identity:Valence    1   13.6    13.6    13.6</code></pre>
 <p>下面我们在求出每个被试的正确率之后，将其当作层级模型来进行处理的结果，和上面其他模型得到的也比较类似。</p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="第十讲回归模型三广义线性模型.html#cb416-1" tabindex="-1"></a>mod_anova <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> df.match,</span>
-<span id="cb416-2"><a href="第十讲回归模型三广义线性模型.html#cb416-2" tabindex="-1"></a>                        <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub))</span>
-<span id="cb416-3"><a href="第十讲回归模型三广义线性模型.html#cb416-3" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(mod_anova)</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="第十讲回归模型三广义线性模型.html#cb418-1" tabindex="-1"></a>mod_anova <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> df.match,</span>
+<span id="cb418-2"><a href="第十讲回归模型三广义线性模型.html#cb418-2" tabindex="-1"></a>                        <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub))</span>
+<span id="cb418-3"><a href="第十讲回归模型三广义线性模型.html#cb418-3" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(mod_anova)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ##                  npar Sum Sq Mean Sq F value
-## Identity            1   0.42    0.42    3.71
-## Valence             1   3.17    3.17   27.69
+## Identity            1   0.42    0.42    3.70
+## Valence             1   3.17    3.17   27.70
 ## Identity:Valence    1   0.98    0.98    8.54</code></pre>
 <p>我们还可以用线性模型来做出类似于方差分析的结果，但由于二者算法并不完全相同，因此结果也存在一些细微的差异。</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="第十讲回归模型三广义线性模型.html#cb418-1" tabindex="-1"></a>mod_mean <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> df.match.aov,</span>
-<span id="cb418-2"><a href="第十讲回归模型三广义线性模型.html#cb418-2" tabindex="-1"></a>                          <span class="at">formula =</span> mean_ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Sub) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Identity<span class="sc">:</span>Sub) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Valence<span class="sc">:</span>Sub))</span>
-<span id="cb418-3"><a href="第十讲回归模型三广义线性模型.html#cb418-3" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(mod_mean)</span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="第十讲回归模型三广义线性模型.html#cb420-1" tabindex="-1"></a>mod_mean <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> df.match.aov,</span>
+<span id="cb420-2"><a href="第十讲回归模型三广义线性模型.html#cb420-2" tabindex="-1"></a>                          <span class="at">formula =</span> mean_ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Sub) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Identity<span class="sc">:</span>Sub) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Valence<span class="sc">:</span>Sub))</span>
+<span id="cb420-3"><a href="第十讲回归模型三广义线性模型.html#cb420-3" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(mod_mean)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ##                  npar Sum Sq Mean Sq F value
 ## Identity            1 0.0272  0.0272    3.08
@@ -900,10 +904,10 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 <div id="不同的模型比较方法" class="section level3 hasAnchor" number="10.4.2">
 <h3><span class="header-section-number">10.4.2</span> 不同的模型比较方法<a href="第十讲回归模型三广义线性模型.html#不同的模型比较方法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>在建立了上述所有模型之后，我们想要知道的是，层级模型是否就是一个最好的模型呢？我们可以用默认的模型比较方法对上述模型进行比较。</p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="第十讲回归模型三广义线性模型.html#cb420-1" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">compare_performance</span>(mod_full, mod_anova, <span class="at">rank =</span> <span class="cn">TRUE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="第十讲回归模型三广义线性模型.html#cb422-1" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">compare_performance</span>(mod_full, mod_anova, <span class="at">rank =</span> <span class="cn">TRUE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p><img src="pic/chp10/performance2.png" /></p>
 <p>performance()结果会把比较好的模型排在上面，总体而言anova模型更好。不过我们可以看到一些参数，R2表示模型解释的变异，ICC反映的是个体变异的内容，这两个参数都是层级模型更优。我们再用anova()对模型做一次比较。</p>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="第十讲回归模型三广义线性模型.html#cb421-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(mod_full, mod_anova)</span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="第十讲回归模型三广义线性模型.html#cb423-1" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">anova</span>(mod_full, mod_anova)</span></code></pre></div>
 <pre><code>## refitting model(s) with ML (instead of REML)</code></pre>
 <pre><code>## Data: df.match
 ## Models:
@@ -916,47 +920,47 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>在结果的参数中，AIC的值一般是越小越好，我们会发现anova的模型反而是更好的。总体而言，两种方法似乎都提示我们传统的方差分析是更优的。</p>
 <p>接着我们还用机器学习的方法对层级模型和方差分析模型进行了比较，70%的数据作为训练集，剩余的30%作为测试集，以此比较二者的模型预测效果。</p>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="第十讲回归模型三广义线性模型.html#cb424-1" tabindex="-1"></a><span class="co"># 设置种子以确保结果的可重复性</span></span>
-<span id="cb424-2"><a href="第十讲回归模型三广义线性模型.html#cb424-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">456</span>)</span>
-<span id="cb424-3"><a href="第十讲回归模型三广义线性模型.html#cb424-3" tabindex="-1"></a></span>
-<span id="cb424-4"><a href="第十讲回归模型三广义线性模型.html#cb424-4" tabindex="-1"></a><span class="co"># 随机选择70%的数据作为训练集，剩余的30%作为测试集</span></span>
-<span id="cb424-5"><a href="第十讲回归模型三广义线性模型.html#cb424-5" tabindex="-1"></a>train_index <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">createDataPartition</span>(df.match<span class="sc">$</span>Sub, <span class="at">p =</span> <span class="fl">0.7</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb424-6"><a href="第十讲回归模型三广义线性模型.html#cb424-6" tabindex="-1"></a>train_data <span class="ot">&lt;-</span> df.match[train_index, ]</span>
-<span id="cb424-7"><a href="第十讲回归模型三广义线性模型.html#cb424-7" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> df.match[<span class="sc">-</span>train_index, ]</span>
-<span id="cb424-8"><a href="第十讲回归模型三广义线性模型.html#cb424-8" tabindex="-1"></a></span>
-<span id="cb424-9"><a href="第十讲回归模型三广义线性模型.html#cb424-9" tabindex="-1"></a><span class="co"># 根据训练集生成模型</span></span>
-<span id="cb424-10"><a href="第十讲回归模型三广义线性模型.html#cb424-10" tabindex="-1"></a>model_full <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> train_data,</span>
-<span id="cb424-11"><a href="第十讲回归模型三广义线性模型.html#cb424-11" tabindex="-1"></a>                          <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub), </span>
-<span id="cb424-12"><a href="第十讲回归模型三广义线性模型.html#cb424-12" tabindex="-1"></a>                          <span class="at">family =</span> binomial)</span>
-<span id="cb424-13"><a href="第十讲回归模型三广义线性模型.html#cb424-13" tabindex="-1"></a>model_anova <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> train_data,</span>
-<span id="cb424-14"><a href="第十讲回归模型三广义线性模型.html#cb424-14" tabindex="-1"></a>                          <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub))</span>
-<span id="cb424-15"><a href="第十讲回归模型三广义线性模型.html#cb424-15" tabindex="-1"></a></span>
-<span id="cb424-16"><a href="第十讲回归模型三广义线性模型.html#cb424-16" tabindex="-1"></a><span class="co"># 使用模型进行预测</span></span>
-<span id="cb424-17"><a href="第十讲回归模型三广义线性模型.html#cb424-17" tabindex="-1"></a>pre_mod_full <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">predict</span>(model_full, <span class="at">newdata =</span> test_data, <span class="at">type =</span> <span class="st">&#39;response&#39;</span>)</span>
-<span id="cb424-18"><a href="第十讲回归模型三广义线性模型.html#cb424-18" tabindex="-1"></a>pre_mod_anova <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">predict</span>(model_anova, <span class="at">newdata =</span> test_data)</span></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="第十讲回归模型三广义线性模型.html#cb426-1" tabindex="-1"></a><span class="co"># 设置种子以确保结果的可重复性</span></span>
+<span id="cb426-2"><a href="第十讲回归模型三广义线性模型.html#cb426-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">456</span>)</span>
+<span id="cb426-3"><a href="第十讲回归模型三广义线性模型.html#cb426-3" tabindex="-1"></a></span>
+<span id="cb426-4"><a href="第十讲回归模型三广义线性模型.html#cb426-4" tabindex="-1"></a><span class="co"># 随机选择70%的数据作为训练集，剩余的30%作为测试集</span></span>
+<span id="cb426-5"><a href="第十讲回归模型三广义线性模型.html#cb426-5" tabindex="-1"></a>train_index <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">createDataPartition</span>(df.match<span class="sc">$</span>Sub, <span class="at">p =</span> <span class="fl">0.7</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb426-6"><a href="第十讲回归模型三广义线性模型.html#cb426-6" tabindex="-1"></a>train_data <span class="ot">&lt;-</span> df.match[train_index, ]</span>
+<span id="cb426-7"><a href="第十讲回归模型三广义线性模型.html#cb426-7" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> df.match[<span class="sc">-</span>train_index, ]</span>
+<span id="cb426-8"><a href="第十讲回归模型三广义线性模型.html#cb426-8" tabindex="-1"></a></span>
+<span id="cb426-9"><a href="第十讲回归模型三广义线性模型.html#cb426-9" tabindex="-1"></a><span class="co"># 根据训练集生成模型</span></span>
+<span id="cb426-10"><a href="第十讲回归模型三广义线性模型.html#cb426-10" tabindex="-1"></a>model_full <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> train_data,</span>
+<span id="cb426-11"><a href="第十讲回归模型三广义线性模型.html#cb426-11" tabindex="-1"></a>                          <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub), </span>
+<span id="cb426-12"><a href="第十讲回归模型三广义线性模型.html#cb426-12" tabindex="-1"></a>                          <span class="at">family =</span> binomial)</span>
+<span id="cb426-13"><a href="第十讲回归模型三广义线性模型.html#cb426-13" tabindex="-1"></a>model_anova <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(<span class="at">data =</span> train_data,</span>
+<span id="cb426-14"><a href="第十讲回归模型三广义线性模型.html#cb426-14" tabindex="-1"></a>                          <span class="at">formula =</span> ACC <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Identity <span class="sc">*</span> Valence<span class="sc">|</span>Sub))</span>
+<span id="cb426-15"><a href="第十讲回归模型三广义线性模型.html#cb426-15" tabindex="-1"></a></span>
+<span id="cb426-16"><a href="第十讲回归模型三广义线性模型.html#cb426-16" tabindex="-1"></a><span class="co"># 使用模型进行预测</span></span>
+<span id="cb426-17"><a href="第十讲回归模型三广义线性模型.html#cb426-17" tabindex="-1"></a>pre_mod_full <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">predict</span>(model_full, <span class="at">newdata =</span> test_data, <span class="at">type =</span> <span class="st">&#39;response&#39;</span>)</span>
+<span id="cb426-18"><a href="第十讲回归模型三广义线性模型.html#cb426-18" tabindex="-1"></a>pre_mod_anova <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">predict</span>(model_anova, <span class="at">newdata =</span> test_data)</span></code></pre></div>
 <p>我们对二者的预测性能进行比较。</p>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="第十讲回归模型三广义线性模型.html#cb425-1" tabindex="-1"></a><span class="co"># 计算模型的性能指标</span></span>
-<span id="cb425-2"><a href="第十讲回归模型三广义线性模型.html#cb425-2" tabindex="-1"></a>performance_mod_full <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">RMSE =</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((test_data<span class="sc">$</span>ACC <span class="sc">-</span> pre_mod_full)<span class="sc">^</span><span class="dv">2</span>)),</span>
-<span id="cb425-3"><a href="第十讲回归模型三广义线性模型.html#cb425-3" tabindex="-1"></a>                <span class="at">R2 =</span> <span class="fu">cor</span>(test_data<span class="sc">$</span>ACC, pre_mod_full)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb425-4"><a href="第十讲回归模型三广义线性模型.html#cb425-4" tabindex="-1"></a><span class="co"># 打印性能指标</span></span>
-<span id="cb425-5"><a href="第十讲回归模型三广义线性模型.html#cb425-5" tabindex="-1"></a><span class="fu">print</span>(performance_mod_full)</span></code></pre></div>
-<pre><code>##     RMSE       R2 
-## 0.342402 0.074984</code></pre>
 <div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="第十讲回归模型三广义线性模型.html#cb427-1" tabindex="-1"></a><span class="co"># 计算模型的性能指标</span></span>
-<span id="cb427-2"><a href="第十讲回归模型三广义线性模型.html#cb427-2" tabindex="-1"></a>performance_mod_anova <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">RMSE =</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((test_data<span class="sc">$</span>ACC <span class="sc">-</span> pre_mod_anova)<span class="sc">^</span><span class="dv">2</span>)),</span>
-<span id="cb427-3"><a href="第十讲回归模型三广义线性模型.html#cb427-3" tabindex="-1"></a>                <span class="at">R2 =</span> <span class="fu">cor</span>(test_data<span class="sc">$</span>ACC, pre_mod_anova)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb427-4"><a href="第十讲回归模型三广义线性模型.html#cb427-4" tabindex="-1"></a></span>
-<span id="cb427-5"><a href="第十讲回归模型三广义线性模型.html#cb427-5" tabindex="-1"></a><span class="co"># 打印性能指标</span></span>
-<span id="cb427-6"><a href="第十讲回归模型三广义线性模型.html#cb427-6" tabindex="-1"></a><span class="fu">print</span>(performance_mod_anova)</span></code></pre></div>
+<span id="cb427-2"><a href="第十讲回归模型三广义线性模型.html#cb427-2" tabindex="-1"></a>performance_mod_full <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">RMSE =</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((test_data<span class="sc">$</span>ACC <span class="sc">-</span> pre_mod_full)<span class="sc">^</span><span class="dv">2</span>)),</span>
+<span id="cb427-3"><a href="第十讲回归模型三广义线性模型.html#cb427-3" tabindex="-1"></a>                <span class="at">R2 =</span> <span class="fu">cor</span>(test_data<span class="sc">$</span>ACC, pre_mod_full)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb427-4"><a href="第十讲回归模型三广义线性模型.html#cb427-4" tabindex="-1"></a><span class="co"># 打印性能指标</span></span>
+<span id="cb427-5"><a href="第十讲回归模型三广义线性模型.html#cb427-5" tabindex="-1"></a><span class="fu">print</span>(performance_mod_full)</span></code></pre></div>
+<pre><code>##     RMSE       R2 
+## 0.342402 0.074985</code></pre>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="第十讲回归模型三广义线性模型.html#cb429-1" tabindex="-1"></a><span class="co"># 计算模型的性能指标</span></span>
+<span id="cb429-2"><a href="第十讲回归模型三广义线性模型.html#cb429-2" tabindex="-1"></a>performance_mod_anova <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">RMSE =</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((test_data<span class="sc">$</span>ACC <span class="sc">-</span> pre_mod_anova)<span class="sc">^</span><span class="dv">2</span>)),</span>
+<span id="cb429-3"><a href="第十讲回归模型三广义线性模型.html#cb429-3" tabindex="-1"></a>                <span class="at">R2 =</span> <span class="fu">cor</span>(test_data<span class="sc">$</span>ACC, pre_mod_anova)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb429-4"><a href="第十讲回归模型三广义线性模型.html#cb429-4" tabindex="-1"></a></span>
+<span id="cb429-5"><a href="第十讲回归模型三广义线性模型.html#cb429-5" tabindex="-1"></a><span class="co"># 打印性能指标</span></span>
+<span id="cb429-6"><a href="第十讲回归模型三广义线性模型.html#cb429-6" tabindex="-1"></a><span class="fu">print</span>(performance_mod_anova)</span></code></pre></div>
 <pre><code>##     RMSE       R2 
 ## 0.342263 0.075676</code></pre>
 <p>RSME表示的是模型预测值和实际值之间的差异，可以发现二者的区别并不是很大。我们接下来还使用了混淆矩阵和ROC曲线的方法对模型性能进行比较，具体的代码和结果可以参考如下内容。</p>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="第十讲回归模型三广义线性模型.html#cb429-1" tabindex="-1"></a><span class="co"># 将预测概率转换为分类结果</span></span>
-<span id="cb429-2"><a href="第十讲回归模型三广义线性模型.html#cb429-2" tabindex="-1"></a>predicted_classes <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(pre_mod_full <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb429-3"><a href="第十讲回归模型三广义线性模型.html#cb429-3" tabindex="-1"></a><span class="co"># 计算混淆矩阵</span></span>
-<span id="cb429-4"><a href="第十讲回归模型三广义线性模型.html#cb429-4" tabindex="-1"></a>confusion_matrix <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">confusionMatrix</span>(<span class="fu">as.factor</span>(predicted_classes), <span class="fu">as.factor</span>(test_data<span class="sc">$</span>ACC))</span></code></pre></div>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="第十讲回归模型三广义线性模型.html#cb430-1" tabindex="-1"></a><span class="co"># 打印混淆矩阵和性能指标</span></span>
-<span id="cb430-2"><a href="第十讲回归模型三广义线性模型.html#cb430-2" tabindex="-1"></a><span class="fu">print</span>(confusion_matrix)</span></code></pre></div>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="第十讲回归模型三广义线性模型.html#cb431-1" tabindex="-1"></a><span class="co"># 将预测概率转换为分类结果</span></span>
+<span id="cb431-2"><a href="第十讲回归模型三广义线性模型.html#cb431-2" tabindex="-1"></a>predicted_classes <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(pre_mod_full <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb431-3"><a href="第十讲回归模型三广义线性模型.html#cb431-3" tabindex="-1"></a><span class="co"># 计算混淆矩阵</span></span>
+<span id="cb431-4"><a href="第十讲回归模型三广义线性模型.html#cb431-4" tabindex="-1"></a>confusion_matrix <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">confusionMatrix</span>(<span class="fu">as.factor</span>(predicted_classes), <span class="fu">as.factor</span>(test_data<span class="sc">$</span>ACC))</span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="第十讲回归模型三广义线性模型.html#cb432-1" tabindex="-1"></a><span class="co"># 打印混淆矩阵和性能指标</span></span>
+<span id="cb432-2"><a href="第十讲回归模型三广义线性模型.html#cb432-2" tabindex="-1"></a><span class="fu">print</span>(confusion_matrix)</span></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
@@ -984,20 +988,20 @@ p为参数的二项分布，写作 <span class="math inline">\(X \sim B(n, p)\)<
 ##                                              
 ##        &#39;Positive&#39; Class : 0                  
 ## </code></pre>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="第十讲回归模型三广义线性模型.html#cb432-1" tabindex="-1"></a><span class="co"># 计算ROC曲线和AUC</span></span>
-<span id="cb432-2"><a href="第十讲回归模型三广义线性模型.html#cb432-2" tabindex="-1"></a>roc_result <span class="ot">&lt;-</span> pROC<span class="sc">::</span><span class="fu">roc</span>(test_data<span class="sc">$</span>ACC, pre_mod_full)</span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="第十讲回归模型三广义线性模型.html#cb434-1" tabindex="-1"></a><span class="co"># 计算ROC曲线和AUC</span></span>
+<span id="cb434-2"><a href="第十讲回归模型三广义线性模型.html#cb434-2" tabindex="-1"></a>roc_result <span class="ot">&lt;-</span> pROC<span class="sc">::</span><span class="fu">roc</span>(test_data<span class="sc">$</span>ACC, pre_mod_full)</span></code></pre></div>
 <pre><code>## Setting levels: control = 0, case = 1</code></pre>
 <pre><code>## Setting direction: controls &lt; cases</code></pre>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="第十讲回归模型三广义线性模型.html#cb435-1" tabindex="-1"></a><span class="fu">print</span>(roc_result)</span></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="第十讲回归模型三广义线性模型.html#cb437-1" tabindex="-1"></a><span class="fu">print</span>(roc_result)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## roc.default(response = test_data$ACC, predictor = pre_mod_full)
 ## 
 ## Data: pre_mod_full in 536 controls (test_data$ACC 0) &lt; 3064 cases (test_data$ACC 1).
 ## Area under the curve: 0.699</code></pre>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="第十讲回归模型三广义线性模型.html#cb437-1" tabindex="-1"></a><span class="co"># 绘制ROC曲线</span></span>
-<span id="cb437-2"><a href="第十讲回归模型三广义线性模型.html#cb437-2" tabindex="-1"></a><span class="fu">plot</span>(roc_result, <span class="at">main =</span> <span class="st">&quot;ROC Curve&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb437-3"><a href="第十讲回归模型三广义线性模型.html#cb437-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>) <span class="co"># 添加对角线</span></span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="第十讲回归模型三广义线性模型.html#cb439-1" tabindex="-1"></a><span class="co"># 绘制ROC曲线</span></span>
+<span id="cb439-2"><a href="第十讲回归模型三广义线性模型.html#cb439-2" tabindex="-1"></a><span class="fu">plot</span>(roc_result, <span class="at">main =</span> <span class="st">&quot;ROC Curve&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb439-3"><a href="第十讲回归模型三广义线性模型.html#cb439-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>) <span class="co"># 添加对角线</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-238-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>ROC的结果会返回一个指标”area under the
 curve”（AUC，曲线下面积），这个值一般越大说明模型越好。可以发现anova的曲线下面积值低于glm，也就是说glm优于anova。</p>
@@ -1024,9 +1028,9 @@ distribution)，这是一种在医学或者流行病学领域研究中常见的�
 λ:事件在给定时间或空间内的平均发生率（或平均数量）。 -
 k:可能的事件发生次数，可以是0, 1, 2, …</p>
 <p>下面我们用代码来模拟一下泊松分布。</p>
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="第十讲回归模型三广义线性模型.html#cb438-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># 设置随机种子以获得可重复的结果</span></span>
-<span id="cb438-2"><a href="第十讲回归模型三广义线性模型.html#cb438-2" tabindex="-1"></a>random_samples <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">1000</span>, <span class="at">lambda =</span> <span class="dv">5</span>)</span>
-<span id="cb438-3"><a href="第十讲回归模型三广义线性模型.html#cb438-3" tabindex="-1"></a><span class="fu">hist</span>(random_samples,<span class="at">col =</span> <span class="st">&#39;white&#39;</span>, <span class="at">border =</span> <span class="st">&#39;black&#39;</span>,)</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="第十讲回归模型三广义线性模型.html#cb440-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># 设置随机种子以获得可重复的结果</span></span>
+<span id="cb440-2"><a href="第十讲回归模型三广义线性模型.html#cb440-2" tabindex="-1"></a>random_samples <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">1000</span>, <span class="at">lambda =</span> <span class="dv">5</span>)</span>
+<span id="cb440-3"><a href="第十讲回归模型三广义线性模型.html#cb440-3" tabindex="-1"></a><span class="fu">hist</span>(random_samples,<span class="at">col =</span> <span class="st">&#39;white&#39;</span>, <span class="at">border =</span> <span class="st">&#39;black&#39;</span>,)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-239-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>同样我们可以通过连接函数对其进行广义线性模型的建模。
 <img src="pic/chp10/poission.png" /> 另外一些常见的分布还包括伽马分布（Gamma
