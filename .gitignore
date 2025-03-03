@@ -23,3 +23,6 @@
 */*/.Ruserdata
 */*/*/.Ruserdata
 */*/*/*/.Ruserdata
+.Rdata
+.httr-oauth
+.quarto
