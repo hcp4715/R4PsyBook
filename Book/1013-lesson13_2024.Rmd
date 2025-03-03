@@ -16,16 +16,13 @@ editor_options:
 
 **代表作：**
 
-- **Du, X.,** Skjerdingstad, N., Freichel, R., Ebrahimi, O. V., Hoekstra, R. H. A., & Epskamp, S. (2025, February 7). Moving from exploratory to confirmatory network analysis: An evaluation of SEM fit indices and cutoff values in network psychometrics. [10.31234/osf.io/d76ab_v2](https://www.researchgate.net/publication/382294290_Moving_from_exploratory_to_confirmatory_network_analysis_An_evaluation_of_SEM_fit_indices_and_cutoff_values_in_network_psychometrics)
+- **Du, X.,** Skjerdingstad, N., Freichel, R., Ebrahimi, O. V., Hoekstra, R. H. A., & Epskamp, S. (2025, February 7). Moving from exploratory to confirmatory network analysis: An evaluation of SEM fit indices and cutoff values in network psychometrics. [10.31234/osf.io/d76ab_v2](https://www.researchgate.net/publication/382294290_Moving_from_exploratory_to_confirmatory_network_analysis_An_evaluation_of_SEM_fit_indices_and_cutoff_values_in_network_psychometrics).
 
-- **Du, X.,** Johnson, S. U., Epskamp, S. [in prep](https://github.com/xinkaidupsy/IVPP) The Invariance Partial Pruning Approach to The Network Comparison in Longitudinal Data
+- **Du, X.,** Johnson, S. U., Epskamp, S. [(in prep)](https://github.com/xinkaidupsy/IVPP) The Invariance Partial Pruning Approach to The Network Comparison in Longitudinal Data.
 
-- **Du, X.,** Epskamp, S. (in prep) Likelihood-free estimation of Gaussian Graphical Models
+- **Du, X.,** Epskamp, S. (in prep) Likelihood-free estimation of Gaussian Graphical Models.
 
-- **Du, X.,** Epskamp, S. (in prep) Dynamic fit index in Gaussian Graphical Models
-
-
-
+- **Du, X.,** Epskamp, S. (in prep) Dynamic fit index in Gaussian Graphical Models.
 
 本章主要围绕基于网络模型的心理学研究。
 
