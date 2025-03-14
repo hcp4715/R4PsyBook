@@ -436,7 +436,7 @@ rm(`1 首先`)
 -   NA：代表缺失值，任何数值与NA进行计算都会得到NA，因此在计算或绘图中，需要移除缺失值或对其进行填补
 
 ```{r echo=TRUE, eval=FALSE}
-unique(penguin_data\$ALEX1)
+unique(penguin_data$ALEX1)
 ```
 
 ```{r echo=TRUE, eval=FALSE}
